@@ -135,9 +135,9 @@
 
 ### Key Entities *(include if feature involves data)*
 
-- **学习章节 (LearningChapter)**: 代表一个独立的学习主题（如"标识符"、"关键字"等），包含章节ID、标题、内容文本、代码示例等属性
-- **内容提供者 (ContentProvider)**: 负责从统一数据源加载和提供章节内容，被命令行模式和HTTP模式共同使用
-- **HTTP路由 (HTTPRoute)**: 定义HTTP API的端点路径与章节内容的映射关系
+- **学习章节 (LearningChapter)**: 代表一个独立的学习主题（如"注释"、"标记"等），对应`lexical_elements`包中的Display函数（如`DisplayComments()`、`DisplayTokens()`）
+- **内容生成器 (ContentGenerator)**: 重构后的章节Display函数，返回字符串内容而非直接打印，供命令行和HTTP模式共同使用
+- **HTTP路由 (HTTPRoute)**: 定义HTTP API的端点路径与章节Display函数的映射关系
 - **服务配置 (ServiceConfig)**: 包含HTTP服务的运行参数,如监听端口、地址、超时设置、日志级别等,这些配置必须通过配置文件显式指定
 - **配置文件 (ConfigFile)**: 存储系统运行时配置的YAML格式文件,包含HTTP服务的必需配置项(监听地址、端口等)和可选配置项(日志级别等)
 
