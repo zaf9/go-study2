@@ -32,6 +32,13 @@
 - [ ] CHK005 Item with specific criteria
 - [ ] CHK006 Final item in this category
 
+## Constitution Compliance (Sample)
+
+- [ ] Is unit test coverage at or above 80%?
+- [ ] Are all comments and documentation in Chinese?
+- [ ] Is the code free of deep nesting and premature complexity?
+- [ ] Is the code concise and simple?
+
 ## Notes
 
 - Check items off as completed: `[x]`

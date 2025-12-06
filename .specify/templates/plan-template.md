@@ -31,7 +31,12 @@
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-[Gates determined based on constitution file]
+- **Principle I (Simplicity):** Is the proposed approach simple and clear for a Go beginner?
+- **Principle II (Comments):** Does the plan account for clear, layered comments?
+- **Principle III (Language):** Is all planned documentation and commenting in Chinese?
+- **Principle IV (Nesting):** Does the design avoid deep logical nesting?
+- **Principle V (YAGNI):** Does the plan avoid premature complexity and stick to current needs?
+- **Principle VI (Testing):** Is there a clear path to achieving >=80% unit test coverage?
 
 ## Project Structure
 

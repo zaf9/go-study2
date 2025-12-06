@@ -1,11 +1,21 @@
 # Feature Specification: [FEATURE NAME]
 
+<!--
+  NOTE: Per the constitution, all user-facing documentation and code comments
+  must be in Chinese.
+-->
+
 **Feature Branch**: `[###-feature-name]`  
 **Created**: [DATE]  
 **Status**: Draft  
 **Input**: User description: "$ARGUMENTS"
 
 ## User Scenarios & Testing *(mandatory)*
+
+<!--
+  NOTE: Per the constitution, all features must achieve at least 80% unit test coverage.
+  Ensure acceptance scenarios are comprehensive enough to meet this requirement.
+-->
 
 <!--
   IMPORTANT: User stories should be PRIORITIZED as user journeys ordered by importance.
