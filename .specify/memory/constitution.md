@@ -98,6 +98,16 @@ Menu systems MUST:
 * Handle invalid input gracefully with clear error messages
 * Maintain consistent numbering schemes (starting from 0) across menu levels
 
+### Principle XVIII: Dual Learning Mode Support
+All new Go learning chapter specifications MUST support both learning modes:
+* Command-line interactive mode (CLI) for terminal-based learning
+* HTTP request mode for web-based access
+This ensures consistent accessibility across different user preferences and integration scenarios.
+
+### Principle XIX: Documentation Synchronization
+After completing the development of any new specification, the `README.md` file MUST be updated to reflect the changes.
+Updates MUST include relevant sections such as features, usage instructions, project structure, and roadmap status.
+
 
 ## Governance
 
