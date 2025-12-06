@@ -56,8 +56,6 @@ specs/001-go-learn-lexical-elements/
 ```text
 api/                        # API 请求/响应结构定义（DTO/VO/Req/Res）
 internal/                   # 内部应用代码
-├── cmd/                    # 程序启动入口（main.go）
-│   └── main.go             # Main application entry point and menu logic
 └── app/                    # Application specific logic
     └── lexical_elements/   # Package for Lexical Elements learning content
         ├── comments.go     # Examples and explanations for Go comments
@@ -78,9 +76,10 @@ manifest/                   # 项目资源/配置
 resource/                   # 静态资源
 hack/                       # 代码生成工具
 utility/ or pkg/            # 公共工具包
+main.go                     # Main application entry point and menu logic
 ```
 
-**Structure Decision**: The project will strictly follow the GoFrame official recommended directory structure. The `lexical_elements` package will be placed under `internal/app/` to align with GoFrame's internal application logic separation. `main.go` will be under `internal/cmd/`.
+**Structure Decision**: The project will strictly follow the GoFrame official recommended directory structure, with one modification to adhere to the constitution: `main.go` will be placed in the repository root, and the `internal/cmd` directory will not be used. The `lexical_elements` package will be placed under `internal/app/` to align with GoFrame's internal application logic separation.
 
 ## Complexity Tracking
 
