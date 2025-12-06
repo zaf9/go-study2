@@ -89,6 +89,15 @@ The following tools MUST be executed regularly to ensure code quality:
 Each package MUST contain corresponding test files (`*_test.go`).
 Example functions (`ExampleXxx`) MUST be provided when appropriate to demonstrate usage.
 
+### Principle XVII: Hierarchical Menu Navigation
+Interactive applications MUST support hierarchical menu structures to improve user experience and content organization.
+Menu systems MUST:
+* Support multi-level navigation with clear entry and exit points
+* Pass I/O streams to enable interactive sub-menus
+* Provide intuitive navigation controls (e.g., 'q' to return to parent menu)
+* Handle invalid input gracefully with clear error messages
+* Maintain consistent numbering schemes (starting from 0) across menu levels
+
 
 ## Governance
 
