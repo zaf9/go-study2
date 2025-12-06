@@ -55,9 +55,10 @@
 ### 核心功能
 
 - 🎯 **双模式运行** - 支持命令行交互模式和HTTP服务模式
-- 📖 **全面覆盖** - 涵盖Go语言规范中所有词法元素子主题
+- 📖 **全面覆盖** - 涵盖Go语言规范中的词法元素和常量系统
 - 💻 **可运行示例** - 每个知识点都配有可直接运行的代码示例
 - 🇨🇳 **中文注释** - 所有代码注释和说明均为中文，降低学习门槛
+- 📚 **多模块支持** - 词法元素模块 + 常量学习模块（12个子主题）
 
 ### 命令行模式特性
 
@@ -153,6 +154,8 @@ go run main.go -d
 - **主题列表（HTML）**: http://localhost:8080/api/v1/topics?format=html
 - **词法元素菜单**: http://localhost:8080/api/v1/topic/lexical_elements?format=html
 - **注释章节**: http://localhost:8080/api/v1/topic/lexical_elements/comments?format=html
+- **Constants 菜单**: http://localhost:8080/api/v1/topic/constants?format=html 🆕
+- **布尔常量**: http://localhost:8080/api/v1/topic/constants/boolean?format=html 🆕
 
 **API调用（JSON）：**
 
@@ -163,8 +166,16 @@ curl http://localhost:8080/api/v1/topics
 # 获取词法元素菜单
 curl http://localhost:8080/api/v1/topic/lexical_elements
 
-# 获取具体章节内容
+# 获取词法元素具体章节内容
 curl http://localhost:8080/api/v1/topic/lexical_elements/comments
+
+# 获取 Constants 菜单 🆕
+curl http://localhost:8080/api/v1/topic/constants
+
+# 获取 Constants 子主题内容 🆕
+curl http://localhost:8080/api/v1/topic/constants/boolean
+curl http://localhost:8080/api/v1/topic/constants/iota
+curl http://localhost:8080/api/v1/topic/constants/expressions
 ```
 
 **停止服务：** 按 `Ctrl+C` 优雅关闭
@@ -210,10 +221,10 @@ go install github.com/yourusername/go-study2@latest
 ### 基本使用流程
 
 1. **启动程序**：运行 `go run main.go` 或编译后的可执行文件
-2. **选择主题**：在主菜单中输入 `0` 选择"词法元素"
-3. **浏览子主题**：在词法元素菜单中选择具体的子主题（如注释、标识符、关键字等）
+2. **选择主题**：在主菜单中输入 `0` 选择"词法元素"或 `1` 选择"Constants"
+3. **浏览子主题**：在子菜单中选择具体的主题（如注释、布尔常量、iota等）
 4. **查看示例**：程序会显示该主题的代码示例和详细解释
-5. **返回或退出**：输入 `b` 返回上级菜单，输入 `q` 退出程序
+5. **返回或退出**：输入 `q` 返回上级菜单或退出程序
 
 ### 交互示例
 
@@ -222,27 +233,29 @@ Go Lexical Elements Learning Tool
 ---------------------------------
 Please select a topic to study:
 0. Lexical elements
+1. Constants
 q. Quit
 
-Enter your choice: 0
+Enter your choice: 1
 
-Lexical Elements Menu
----------------------
-0. Comments (注释)
-1. Tokens (标记)
-2. Semicolons (分号)
-3. Identifiers (标识符)
-4. Keywords (关键字)
-5. Operators and punctuation (运算符和标点)
-6. Integer literals (整数字面量)
-7. Floating-point literals (浮点数字面量)
-8. Imaginary literals (虚数字面量)
-9. Rune literals (字符字面量)
-10. String literals (字符串字面量)
-b. Back to main menu
-q. Quit
+Constants 学习菜单
+---------------------------------
+请选择要学习的主题:
+0. Boolean Constants (布尔常量)
+1. Rune Constants (符文常量)
+2. Integer Constants (整数常量)
+3. Floating-point Constants (浮点常量)
+4. Complex Constants (复数常量)
+5. String Constants (字符串常量)
+6. Constant Expressions (常量表达式)
+7. Typed and Untyped Constants (类型化/无类型化常量)
+8. Conversions (类型转换)
+9. Built-in Functions (内置函数)
+10. Iota (iota 特性)
+11. Implementation Restrictions (实现限制)
+q. 返回上级菜单
 
-Enter your choice: 4
+请输入您的选择: 0
 ```
 
 ### HTTP服务模式使用 🆕
@@ -262,7 +275,9 @@ go run main.go --daemon
 |------|------|------|---------|
 | `/api/v1/topics` | GET/POST | 获取所有学习主题列表 | `http://localhost:8080/api/v1/topics` |
 | `/api/v1/topic/lexical_elements` | GET/POST | 获取词法元素章节菜单 | `http://localhost:8080/api/v1/topic/lexical_elements` |
-| `/api/v1/topic/lexical_elements/{chapter}` | GET/POST | 获取具体章节内容 | `http://localhost:8080/api/v1/topic/lexical_elements/comments` |
+| `/api/v1/topic/lexical_elements/{chapter}` | GET/POST | 获取词法元素具体章节内容 | `http://localhost:8080/api/v1/topic/lexical_elements/comments` |
+| `/api/v1/topic/constants` | GET/POST | 获取常量学习模块菜单 | `http://localhost:8080/api/v1/topic/constants` |
+| `/api/v1/topic/constants/{subtopic}` | GET/POST | 获取常量模块具体子主题内容 | `http://localhost:8080/api/v1/topic/constants/boolean` |
 
 #### 响应格式
 
@@ -283,6 +298,7 @@ curl "http://localhost:8080/api/v1/topics?format=html"
 
 #### 可用章节ID
 
+**词法元素模块 (Lexical Elements)**:
 - `comments` - 注释
 - `tokens` - 标记
 - `semicolons` - 分号
@@ -294,6 +310,20 @@ curl "http://localhost:8080/api/v1/topics?format=html"
 - `imaginary` - 虚数
 - `runes` - 符文
 - `strings` - 字符串
+
+**常量学习模块 (Constants)** 🆕:
+- `boolean` - 布尔常量
+- `rune` - 符文常量
+- `integer` - 整数常量
+- `floating_point` - 浮点常量
+- `complex` - 复数常量
+- `string` - 字符串常量
+- `expressions` - 常量表达式
+- `typed_untyped` - 类型化/无类型化常量
+- `conversions` - 类型转换
+- `builtin_functions` - 内置函数
+- `iota` - iota 特性
+- `implementation_restrictions` - 实现限制
 
 ---
 
@@ -342,6 +372,56 @@ World`  // 保留原始格式，不转义
 
 **更多示例**：每个词法元素子主题都包含完整的代码示例和中文解释。
 
+### 示例4：学习常量表达式
+
+选择"Constant Expressions"主题后，你会看到：
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+    const (
+        a = 10
+        b = 20
+        sum = a + b        // 30
+        diff = b - a       // 10
+        prod = a * b       // 200
+        quot = b / a       // 2
+    )
+    
+    fmt.Println(sum, diff, prod, quot)
+    // 输出: 30 10 200 2
+}
+```
+
+### 示例5：学习 iota 特性
+
+选择"Iota"主题后，程序会展示：
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+    const (
+        Sunday = iota    // 0
+        Monday           // 1
+        Tuesday          // 2
+        Wednesday        // 3
+        Thursday         // 4
+        Friday           // 5
+        Saturday         // 6
+    )
+    
+    fmt.Println(Sunday, Monday, Saturday)  // 输出: 0 1 6
+}
+```
+
+**更多示例**：每个学习模块的子主题都包含完整的代码示例和中文解释。
+
 ---
 
 ## 🗂 项目结构 Project Structure
@@ -372,6 +452,21 @@ go-study2/
 │       │   ├── strings.go           # 字符串字面量示例
 │       │   ├── lexical_elements.go  # 词法元素菜单逻辑
 │       │   └── *_test.go            # 各模块测试文件
+│       ├── constants/                # 常量学习模块 🆕
+│       │   ├── constants.go         # 常量模块主入口
+│       │   ├── boolean.go           # 布尔常量
+│       │   ├── rune.go              # 符文常量
+│       │   ├── integer.go           # 整数常量
+│       │   ├── floating_point.go    # 浮点常量
+│       │   ├── complex.go           # 复数常量
+│       │   ├── string.go           # 字符串常量
+│       │   ├── expressions.go      # 常量表达式
+│       │   ├── typed_untyped.go    # 类型化/无类型化常量
+│       │   ├── conversions.go      # 类型转换
+│       │   ├── builtin_functions.go # 内置函数
+│       │   ├── iota.go             # iota 特性
+│       │   ├── implementation_restrictions.go # 实现限制
+│       │   └── *_test.go           # 各模块测试文件
 │       └── http_server/             # HTTP服务模块 🆕
 │           ├── server.go            # HTTP服务器初始化
 │           ├── router.go            # 路由注册
@@ -382,7 +477,8 @@ go-study2/
 │               ├── types.go         # 数据类型定义
 │               ├── common.go        # 公共HTML样式
 │               ├── topics.go        # 主题列表处理器
-│               └── lexical.go       # 词法元素处理器
+│               ├── lexical.go       # 词法元素处理器
+│               └── constants.go     # 常量模块处理器 🆕
 ├── tests/                           # 测试目录 🆕
 │   ├── unit/                        # 单元测试
 │   │   ├── config_test.go           # 配置单元测试
@@ -405,7 +501,8 @@ go-study2/
 
 **目录说明：**
 
-- `internal/app/lexical_elements/`: 核心学习内容，每个文件对应一个词法元素子主题
+- `internal/app/lexical_elements/`: 词法元素学习模块，每个文件对应一个词法元素子主题
+- `internal/app/constants/`: 常量学习模块 🆕，包含12个常量相关子主题
 - `internal/app/http_server/`: HTTP服务实现，包含服务器、路由、中间件和处理器
 - `internal/config/`: 配置文件加载和验证逻辑
 - `tests/`: 完整的测试套件，包括单元测试和集成测试
@@ -483,7 +580,9 @@ logger:
 |------|------|------|
 | `/topics` | GET/POST | 获取主题列表 |
 | `/topic/lexical_elements` | GET/POST | 获取词法元素菜单 |
-| `/topic/lexical_elements/{chapter}` | GET/POST | 获取章节内容 |
+| `/topic/lexical_elements/{chapter}` | GET/POST | 获取词法元素章节内容 |
+| `/topic/constants` | GET/POST | 获取常量学习模块菜单 🆕 |
+| `/topic/constants/{subtopic}` | GET/POST | 获取常量模块子主题内容 🆕 |
 
 **响应格式**: 支持 `?format=json` 或 `?format=html`
 
@@ -582,9 +681,18 @@ go tool cover -html=coverage.out
   - [x] 内容一致性保证
   - [x] 完整测试覆盖
 
+- [x] **v0.5** - Constants 常量学习模块 🆕
+  - [x] 12个常量子主题完整实现
+  - [x] 基础常量类型（布尔、符文、整数、浮点、复数、字符串）
+  - [x] 常量表达式和类型系统
+  - [x] 类型转换和内置函数
+  - [x] iota 特性和实现限制
+  - [x] CLI和HTTP双模式支持
+  - [x] 99%测试覆盖率
+
 ### 进行中 🚧
 
-- [ ] **v0.5** - 文档完善
+- [ ] **v0.6** - 文档完善
   - [x] README.md更新
   - [ ] 贡献指南
   - [ ] 使用教程视频
@@ -597,6 +705,7 @@ go tool cover -html=coverage.out
   - [ ] 交互式练习题
 
 - [ ] **v1.1** - 扩展主题
+  - [x] Constants 常量学习模块 ✅
   - [ ] 数据类型学习模块
   - [ ] 控制流学习模块
   - [ ] 函数和方法学习模块

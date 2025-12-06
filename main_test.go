@@ -145,3 +145,33 @@ func TestApp_ReturnFromSubMenu(t *testing.T) {
 		t.Error("退出消息未显示")
 	}
 }
+
+// TestApp_NavigateToConstantsMenu 测试导航到 Constants 子菜单的功能。
+// 输入 "1" 后,应该显示 Constants 子菜单,包含选项 0-11 和 'q'。
+func TestApp_NavigateToConstantsMenu(t *testing.T) {
+	stdin := strings.NewReader("1\nq\nq\n")
+	stdout := &bytes.Buffer{}
+	app := NewApp(stdin, stdout, &bytes.Buffer{})
+
+	app.Run()
+
+	output := stdout.String()
+
+	// 验证子菜单显示
+	if !strings.Contains(output, "Constants 学习菜单") {
+		t.Error("Constants 子菜单标题未显示")
+	}
+
+	// 验证子菜单选项 0-11
+	for i := 0; i <= 11; i++ {
+		expectedOption := fmt.Sprintf("%d.", i)
+		if !strings.Contains(output, expectedOption) {
+			t.Errorf("Constants 子菜单选项 %d 未显示", i)
+		}
+	}
+
+	// 验证返回选项
+	if !strings.Contains(output, "q. 返回上级菜单") {
+		t.Error("返回上级菜单选项未显示")
+	}
+}

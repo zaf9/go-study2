@@ -16,6 +16,11 @@ func (h *Handler) GetTopics(r *ghttp.Request) {
 			Title:       "Lexical Elements",
 			Description: "Go 语言词法元素学习 (Lexical Elements)",
 		},
+		{
+			ID:          "constants",
+			Title:       "Constants",
+			Description: "Go 语言常量学习 (Constants)",
+		},
 	}
 
 	// 2. 获取格式 (由中间件设置)

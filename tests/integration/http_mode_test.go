@@ -56,6 +56,14 @@ func TestHttpMode(t *testing.T) {
 		if !strings.Contains(body, "topics") {
 			t.Error("Response body should contain 'topics'")
 		}
+
+		// 验证包含两个主题
+		if !strings.Contains(body, "lexical_elements") {
+			t.Error("Response should contain 'lexical_elements'")
+		}
+		if !strings.Contains(body, "constants") {
+			t.Error("Response should contain 'constants'")
+		}
 	})
 
 	// 3. Test Lexical Menu (User Story 2)

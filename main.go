@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"flag"
 	"fmt"
+	"go-study2/internal/app/constants"
 	"go-study2/internal/app/http_server"
 	"go-study2/internal/app/lexical_elements"
 	"go-study2/internal/config"
@@ -49,6 +50,10 @@ func NewApp(stdin io.Reader, stdout, stderr io.Writer) *App {
 			"0": {
 				Description: "Lexical elements",
 				Action:      lexical_elements.DisplayMenu,
+			},
+			"1": {
+				Description: "Constants",
+				Action:      constants.DisplayMenu,
 			},
 			// Add new items here
 		},

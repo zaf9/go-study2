@@ -24,6 +24,11 @@ func RegisterRoutes(s *ghttp.Server) {
 		// 词法元素章节内容
 		group.ALL("/topic/lexical_elements/:chapter", h.GetLexicalContent)
 
+		// Constants 菜单
+		group.ALL("/topic/constants", h.GetConstantsMenu)
+		// Constants 内容
+		group.ALL("/topic/constants/:subtopic", h.GetConstantsContent)
+
 		// 后续路由将在其他 User Story 中添加
 	})
 }
