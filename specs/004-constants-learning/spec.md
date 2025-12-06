@@ -34,8 +34,8 @@
 5. **Given** 用户在Constants菜单中, **When** 选择"Floating-point Constants"子主题, **Then** 显示浮点常量的详细说明、科学计数法和至少4个示例代码
 6. **Given** 用户在Constants菜单中, **When** 选择"Complex Constants"子主题, **Then** 显示复数常量的详细说明和至少3个示例代码
 7. **Given** 用户在Constants菜单中, **When** 选择"String Constants"子主题, **Then** 显示字符串常量的详细说明、原始字符串和解释字符串的区别,以及至少4个示例代码
-8. **Given** HTTP服务已启动, **When** 发送GET请求到`/learn/constants/boolean`, **Then** 返回JSON格式的布尔常量学习内容
-9. **Given** HTTP服务已启动, **When** 发送GET请求到`/learn/constants/integer`, **Then** 返回JSON格式的整数常量学习内容
+8. **Given** HTTP服务已启动, **When** 发送GET请求到`/api/v1/topic/constants/boolean`, **Then** 返回JSON格式的布尔常量学习内容
+9. **Given** HTTP服务已启动, **When** 发送GET请求到`/api/v1/topic/constants/integer`, **Then** 返回JSON格式的整数常量学习内容
 
 ---
 
@@ -51,8 +51,8 @@
 
 1. **Given** 用户在Constants菜单中, **When** 选择"Constant Expressions"子主题, **Then** 显示常量表达式的定义、求值规则和至少5个示例(包括算术、比较、逻辑运算)
 2. **Given** 用户在Constants菜单中, **When** 选择"Typed and Untyped Constants"子主题, **Then** 显示类型化常量和无类型化常量的区别、默认类型规则和至少4个对比示例
-3. **Given** 用户在Constants菜单中, **When** 选择"Default Types"子主题, **Then** 显示各种无类型化常量的默认类型映射表和至少3个示例
-4. **Given** HTTP服务已启动, **When** 发送GET请求到`/learn/constants/expressions`, **Then** 返回JSON格式的常量表达式学习内容
+3. **Given** 用户在Constants菜单中, **When** 选择"Typed and Untyped Constants"子主题, **Then** 显示类型化常量和无类型化常量的区别、默认类型映射表和至少4个对比示例
+4. **Given** HTTP服务已启动, **When** 发送GET请求到`/api/v1/topic/constants/expressions`, **Then** 返回JSON格式的常量表达式学习内容
 
 ---
 
@@ -69,7 +69,7 @@
 1. **Given** 用户在Constants菜单中, **When** 选择"Conversions"子主题, **Then** 显示常量类型转换的规则、可表示性要求和至少4个示例(包括成功和失败的转换)
 2. **Given** 用户在Constants菜单中, **When** 选择"Built-in Functions"子主题, **Then** 显示可用于常量的内置函数列表、每个函数的说明和至少6个示例(覆盖min、max、unsafe.Sizeof、len、real、imag、complex)
 3. **Given** 用户在Constants菜单中, **When** 选择"Representability"子主题, **Then** 显示常量可表示性的定义、溢出处理规则和至少3个示例
-4. **Given** HTTP服务已启动, **When** 发送GET请求到`/learn/constants/conversions`, **Then** 返回JSON格式的常量转换学习内容
+4. **Given** HTTP服务已启动, **When** 发送GET请求到`/api/v1/topic/constants/conversions`, **Then** 返回JSON格式的常量转换学习内容
 
 ---
 
@@ -86,7 +86,7 @@
 1. **Given** 用户在Constants菜单中, **When** 选择"Iota"子主题, **Then** 显示iota的定义、自增规则和至少5个实用示例(包括枚举、位掩码等常见模式)
 2. **Given** 用户在Constants菜单中, **When** 选择"Predeclared Constants"子主题, **Then** 显示预声明常量(true、false)的说明和示例
 3. **Given** 用户在Constants菜单中, **When** 选择"Implementation Restrictions"子主题, **Then** 显示编译器对常量的实现限制(整数至少256位、浮点数尾数至少256位、指数至少16位等)和相关说明
-4. **Given** HTTP服务已启动, **When** 发送GET请求到`/learn/constants/iota`, **Then** 返回JSON格式的iota学习内容
+4. **Given** HTTP服务已启动, **When** 发送GET请求到`/api/v1/topic/constants/iota`, **Then** 返回JSON格式的iota学习内容
 
 ---
 
@@ -102,7 +102,7 @@
 
 ### Functional Requirements
 
-- **FR-001**: 系统必须在`internal/learn/constants`包下创建Constants学习模块的目录结构
+- **FR-001**: 系统必须在`internal/app/constants`包下创建Constants学习模块的目录结构
 - **FR-002**: 系统必须为每个一级子主题(布尔常量、符文常量、整数常量、浮点常量、复数常量、字符串常量、常量表达式、类型化/无类型化常量、转换、内置函数、iota、实现限制)创建独立的.go文件
 - **FR-003**: 每个.go文件必须包含该主题的详细中文说明(作为注释)和至少3个可运行的示例代码
 - **FR-004**: 系统必须提供`Display()`函数,用于在命令行模式下显示所有常量学习内容
@@ -112,7 +112,7 @@
 - **FR-008**: 每个子主题的学习内容必须包含:主题说明、语法规则、使用场景、示例代码、常见错误
 - **FR-009**: 系统必须为所有学习内容提供至少80%的单元测试覆盖率
 - **FR-010**: 所有用户可见的文档和代码注释必须使用中文(符合项目宪章要求)
-- **FR-011**: HTTP接口路径必须遵循RESTful风格,格式为`/learn/constants/{subtopic}`
+- **FR-011**: HTTP接口路径必须遵循RESTful风格,格式为`/api/v1/topic/constants/{subtopic}`
 - **FR-012**: 系统必须处理文件读取错误、无效输入等异常情况,并返回友好的错误消息
 
 ### Key Entities *(include if feature involves data)*
