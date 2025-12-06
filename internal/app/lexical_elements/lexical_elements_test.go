@@ -2,8 +2,10 @@ package lexical_elements
 
 import (
 	"bytes"
+	"fmt"
 	"io"
 	"os"
+	"strings"
 	"testing"
 )
 
@@ -23,13 +25,202 @@ func captureOutput(f func()) string {
 	return buf.String()
 }
 
-func TestDisplay(t *testing.T) {
-	output := captureOutput(Display)
-	if output == "" {
-		t.Error("Display() produced no output")
+// TestDisplayMenu_SubMenuDisplay 测试子菜单显示功能。
+// 验证子菜单正确显示所有选项（0-10 和 'q'）。
+func TestDisplayMenu_SubMenuDisplay(t *testing.T) {
+	stdin := strings.NewReader("q\n")
+	stdout := &bytes.Buffer{}
+	stderr := &bytes.Buffer{}
+
+	DisplayMenu(stdin, stdout, stderr)
+
+	output := stdout.String()
+
+	// 验证子菜单标题
+	if !strings.Contains(output, "词法元素学习菜单") {
+		t.Error("子菜单标题未显示")
 	}
-	// Verify it produces a significant amount of output
-	if len(output) < 100 {
-		t.Errorf("Display() produced too little output: %d bytes", len(output))
+
+	// 验证所有选项 0-10
+	for i := 0; i <= 10; i++ {
+		expectedOption := fmt.Sprintf("%d.", i)
+		if !strings.Contains(output, expectedOption) {
+			t.Errorf("子菜单选项 %d 未显示", i)
+		}
+	}
+
+	// 验证返回选项
+	if !strings.Contains(output, "q. 返回上级菜单") {
+		t.Error("返回上级菜单选项未显示")
+	}
+}
+
+// TestDisplayMenu_ReturnToMainMenu 测试从子菜单返回主菜单的功能。
+// 输入 'q' 应该使 DisplayMenu 函数返回，不显示错误。
+func TestDisplayMenu_ReturnToMainMenu(t *testing.T) {
+	stdin := strings.NewReader("q\n")
+	stdout := &bytes.Buffer{}
+	stderr := &bytes.Buffer{}
+
+	DisplayMenu(stdin, stdout, stderr)
+
+	output := stdout.String()
+	errorOutput := stderr.String()
+
+	// 验证没有错误输出
+	if errorOutput != "" {
+		t.Errorf("不应该有错误输出，但得到: %q", errorOutput)
+	}
+
+	// 验证显示了菜单（在返回之前）
+	if !strings.Contains(output, "词法元素学习菜单") {
+		t.Error("子菜单应该显示一次")
+	}
+}
+
+// TestDisplayMenu_SelectTopic0 测试选择主题 "0" (Comments) 并验证 DisplayComments 被调用。
+func TestDisplayMenu_SelectTopic0(t *testing.T) {
+	// 捕获 os.Stdout 因为 DisplayComments 使用 fmt.Println
+	oldStdout := os.Stdout
+	r, w, _ := os.Pipe()
+	os.Stdout = w
+
+	var buf bytes.Buffer
+	done := make(chan bool)
+	go func() {
+		io.Copy(&buf, r)
+		done <- true
+	}()
+
+	stdin := strings.NewReader("0\nq\n")
+	stdout := &bytes.Buffer{}
+	stderr := &bytes.Buffer{}
+
+	DisplayMenu(stdin, stdout, stderr)
+
+	w.Close()
+	os.Stdout = oldStdout
+	<-done
+
+	capturedOutput := buf.String()
+	menuOutput := stdout.String()
+
+	// 验证菜单输出
+	if !strings.Contains(menuOutput, "词法元素学习菜单") {
+		t.Error("应该显示子菜单")
+	}
+
+	// 验证显示了 Comments 内容（从 os.Stdout 捕获）
+	if !strings.Contains(capturedOutput, "Go 语言的注释") {
+		t.Errorf("选择主题 0 后，应该显示 Comments 内容。实际输出: %q", capturedOutput)
+	}
+}
+
+// TestDisplayMenu_SelectTopic5 测试选择主题 "5" (Operators) 并验证 DisplayOperators 被调用。
+func TestDisplayMenu_SelectTopic5(t *testing.T) {
+	// 捕获 os.Stdout 因为 DisplayOperators 使用 fmt.Println
+	oldStdout := os.Stdout
+	r, w, _ := os.Pipe()
+	os.Stdout = w
+
+	var buf bytes.Buffer
+	done := make(chan bool)
+	go func() {
+		io.Copy(&buf, r)
+		done <- true
+	}()
+
+	stdin := strings.NewReader("5\nq\n")
+	stdout := &bytes.Buffer{}
+	stderr := &bytes.Buffer{}
+
+	DisplayMenu(stdin, stdout, stderr)
+
+	w.Close()
+	os.Stdout = oldStdout
+	<-done
+
+	capturedOutput := buf.String()
+	menuOutput := stdout.String()
+
+	// 验证菜单输出
+	if !strings.Contains(menuOutput, "词法元素学习菜单") {
+		t.Error("应该显示子菜单")
+	}
+
+	// 验证显示了 Operators 内容（从 os.Stdout 捕获）
+	if !strings.Contains(capturedOutput, "运算符") {
+		t.Errorf("选择主题 5 后，应该显示 Operators 内容。实际输出: %q", capturedOutput)
+	}
+}
+
+// TestDisplayMenu_InvalidInput 测试无效输入（如 "99", "abc"）并验证错误消息。
+func TestDisplayMenu_InvalidInput(t *testing.T) {
+	stdin := strings.NewReader("99\nabc\nq\n")
+	stdout := &bytes.Buffer{}
+	stderr := &bytes.Buffer{}
+
+	DisplayMenu(stdin, stdout, stderr)
+
+	output := stdout.String()
+
+	// 验证显示了错误消息
+	errorCount := strings.Count(output, "无效的选择，请重试。")
+	if errorCount < 2 {
+		t.Errorf("应该显示至少 2 次错误消息（对于 99 和 abc），实际显示 %d 次", errorCount)
+	}
+}
+
+// TestDisplayMenu_EmptyInput 测试空输入并验证重新提示行为。
+func TestDisplayMenu_EmptyInput(t *testing.T) {
+	stdin := strings.NewReader("\nq\n")
+	stdout := &bytes.Buffer{}
+	stderr := &bytes.Buffer{}
+
+	DisplayMenu(stdin, stdout, stderr)
+
+	output := stdout.String()
+
+	// 验证显示了错误消息（空输入应该被视为无效）
+	if !strings.Contains(output, "无效的选择，请重试。") {
+		t.Error("空输入应该显示错误消息")
+	}
+}
+
+// TestDisplayMenu_WhitespaceHandling 测试空白字符处理（如 " 3 "）并验证正确执行主题。
+func TestDisplayMenu_WhitespaceHandling(t *testing.T) {
+	// 捕获 os.Stdout 因为 DisplayIdentifiers 使用 fmt.Println
+	oldStdout := os.Stdout
+	r, w, _ := os.Pipe()
+	os.Stdout = w
+
+	var buf bytes.Buffer
+	done := make(chan bool)
+	go func() {
+		io.Copy(&buf, r)
+		done <- true
+	}()
+
+	stdin := strings.NewReader(" 3 \nq\n")
+	stdout := &bytes.Buffer{}
+	stderr := &bytes.Buffer{}
+
+	DisplayMenu(stdin, stdout, stderr)
+
+	w.Close()
+	os.Stdout = oldStdout
+	<-done
+
+	capturedOutput := buf.String()
+	menuOutput := stdout.String()
+
+	// 验证菜单输出
+	if !strings.Contains(menuOutput, "词法元素学习菜单") {
+		t.Error("应该显示子菜单")
+	}
+
+	// 验证显示了 Identifiers 内容（从 os.Stdout 捕获）
+	if !strings.Contains(capturedOutput, "标识符") {
+		t.Errorf("输入 ' 3 '（带空格）应该正确执行主题 3 (Identifiers)。实际输出: %q", capturedOutput)
 	}
 }

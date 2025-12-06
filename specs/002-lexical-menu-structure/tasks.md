@@ -25,9 +25,9 @@ This is a single Go project with the following structure:
 
 **Purpose**: Verify existing project structure and prepare for refactoring
 
-- [ ] T001 Verify Go 1.24.5 environment and dependencies in go.mod
-- [ ] T002 [P] Review existing main.go structure and MenuItem implementation
-- [ ] T003 [P] Review existing lexical_elements package structure
+- [X] T001 Verify Go 1.24.5 environment and dependencies in go.mod
+- [X] T002 [P] Review existing main.go structure and MenuItem implementation
+- [X] T003 [P] Review existing lexical_elements package structure
 
 ---
 
@@ -37,9 +37,9 @@ This is a single Go project with the following structure:
 
 **⚠️ CRITICAL**: No user story work can begin until this phase is complete
 
-- [ ] T004 Refactor MenuItem struct in main.go to change Action signature from `func()` to `func(io.Reader, io.Writer, io.Writer)`
-- [ ] T005 Update NewApp function in main.go to pass I/O streams to menu actions
-- [ ] T006 Update App.Run() method in main.go to call menu actions with I/O streams (app.stdin, app.stdout, app.stderr)
+- [X] T004 Refactor MenuItem struct in main.go to change Action signature from `func()` to `func(io.Reader, io.Writer, io.Writer)`
+- [X] T005 Update NewApp function in main.go to pass I/O streams to menu actions
+- [X] T006 Update App.Run() method in main.go to call menu actions with I/O streams (app.stdin, app.stdout, app.stderr)
 
 **Checkpoint**: Foundation ready - MenuItem now supports interactive sub-menus
 
@@ -55,18 +55,18 @@ This is a single Go project with the following structure:
 
 > **NOTE: Write these tests FIRST, ensure they FAIL before implementation**
 
-- [ ] T007 [P] [US1] Add test case in main_test.go for navigating to sub-menu (input "0", verify sub-menu display)
-- [ ] T008 [P] [US1] Add test case in main_test.go for returning from sub-menu (input "0" then "q", verify return to main menu)
-- [ ] T009 [P] [US1] Create test file internal/app/lexical_elements/lexical_elements_test.go with sub-menu display tests
+- [X] T007 [P] [US1] Add test case in main_test.go for navigating to sub-menu (input "0", verify sub-menu display)
+- [X] T008 [P] [US1] Add test case in main_test.go for returning from sub-menu (input "0" then "q", verify return to main menu)
+- [X] T009 [P] [US1] Create test file internal/app/lexical_elements/lexical_elements_test.go with sub-menu display tests
 
 ### Implementation for User Story 1
 
-- [ ] T010 [US1] Create DisplayMenu function in internal/app/lexical_elements/lexical_elements.go with signature `func(stdin io.Reader, stdout, stderr io.Writer)`
-- [ ] T011 [US1] Implement sub-menu map structure in DisplayMenu with 11 topics (0-10) and descriptions in Chinese
-- [ ] T012 [US1] Implement menu display loop in DisplayMenu showing all options 0-10 and 'q'
-- [ ] T013 [US1] Add input reading logic in DisplayMenu using bufio.Reader
-- [ ] T014 [US1] Implement 'q' handler in DisplayMenu to return to main menu
-- [ ] T015 [US1] Update main.go menu["0"].Action to call lexical_elements.DisplayMenu instead of Display
+- [X] T010 [US1] Create DisplayMenu function in internal/app/lexical_elements/lexical_elements.go with signature `func(stdin io.Reader, stdout, stderr io.Writer)`
+- [X] T011 [US1] Implement sub-menu map structure in DisplayMenu with 11 topics (0-10) and descriptions in Chinese
+- [X] T012 [US1] Implement menu display loop in DisplayMenu showing all options 0-10 and 'q'
+- [X] T013 [US1] Add input reading logic in DisplayMenu using bufio.Reader
+- [X] T014 [US1] Implement 'q' handler in DisplayMenu to return to main menu
+- [X] T015 [US1] Update main.go menu["0"].Action to call lexical_elements.DisplayMenu instead of Display
 
 **Checkpoint**: At this point, User Story 1 should be fully functional - users can navigate into and out of the sub-menu
 
@@ -80,29 +80,29 @@ This is a single Go project with the following structure:
 
 ### Tests for User Story 2 (MANDATORY) ⚠️
 
-- [ ] T016 [P] [US2] Add test case in lexical_elements_test.go for selecting topic "0" (Comments) and verifying DisplayComments is called
-- [ ] T017 [P] [US2] Add test case in lexical_elements_test.go for selecting topic "5" (Operators) and verifying DisplayOperators is called
-- [ ] T018 [P] [US2] Add test case in lexical_elements_test.go for invalid input (e.g., "99", "abc") and verifying error message
-- [ ] T019 [P] [US2] Add test case in lexical_elements_test.go for empty input and verifying re-prompt behavior
-- [ ] T020 [P] [US2] Add test case in lexical_elements_test.go for whitespace handling (e.g., " 3 ") and verifying correct topic execution
+- [X] T016 [P] [US2] Add test case in lexical_elements_test.go for selecting topic "0" (Comments) and verifying DisplayComments is called
+- [X] T017 [P] [US2] Add test case in lexical_elements_test.go for selecting topic "5" (Operators) and verifying DisplayOperators is called
+- [X] T018 [P] [US2] Add test case in lexical_elements_test.go for invalid input (e.g., "99", "abc") and verifying error message
+- [X] T019 [P] [US2] Add test case in lexical_elements_test.go for empty input and verifying re-prompt behavior
+- [X] T020 [P] [US2] Add test case in lexical_elements_test.go for whitespace handling (e.g., " 3 ") and verifying correct topic execution
 
 ### Implementation for User Story 2
 
-- [ ] T021 [US2] Map sub-menu option "0" to DisplayComments in DisplayMenu function
-- [ ] T022 [US2] Map sub-menu option "1" to DisplayTokens in DisplayMenu function
-- [ ] T023 [US2] Map sub-menu option "2" to DisplaySemicolons in DisplayMenu function
-- [ ] T024 [US2] Map sub-menu option "3" to DisplayIdentifiers in DisplayMenu function
-- [ ] T025 [US2] Map sub-menu option "4" to DisplayKeywords in DisplayMenu function
-- [ ] T026 [US2] Map sub-menu option "5" to DisplayOperators in DisplayMenu function
-- [ ] T027 [US2] Map sub-menu option "6" to DisplayIntegers in DisplayMenu function
-- [ ] T028 [US2] Map sub-menu option "7" to DisplayFloats in DisplayMenu function
-- [ ] T029 [US2] Map sub-menu option "8" to DisplayImaginary in DisplayMenu function
-- [ ] T030 [US2] Map sub-menu option "9" to DisplayRunes in DisplayMenu function
-- [ ] T031 [US2] Map sub-menu option "10" to DisplayStrings in DisplayMenu function
-- [ ] T032 [US2] Implement input validation in DisplayMenu (check range 0-10, handle non-numeric)
-- [ ] T033 [US2] Implement error handling in DisplayMenu for invalid input with Chinese error message
-- [ ] T034 [US2] Implement whitespace trimming in DisplayMenu using strings.TrimSpace
-- [ ] T035 [US2] Add menu loop logic to re-display sub-menu after topic execution
+- [X] T021 [US2] Map sub-menu option "0" to DisplayComments in DisplayMenu function
+- [X] T022 [US2] Map sub-menu option "1" to DisplayTokens in DisplayMenu function
+- [X] T023 [US2] Map sub-menu option "2" to DisplaySemicolons in DisplayMenu function
+- [X] T024 [US2] Map sub-menu option "3" to DisplayIdentifiers in DisplayMenu function
+- [X] T025 [US2] Map sub-menu option "4" to DisplayKeywords in DisplayMenu function
+- [X] T026 [US2] Map sub-menu option "5" to DisplayOperators in DisplayMenu function
+- [X] T027 [US2] Map sub-menu option "6" to DisplayIntegers in DisplayMenu function
+- [X] T028 [US2] Map sub-menu option "7" to DisplayFloats in DisplayMenu function
+- [X] T029 [US2] Map sub-menu option "8" to DisplayImaginary in DisplayMenu function
+- [X] T030 [US2] Map sub-menu option "9" to DisplayRunes in DisplayMenu function
+- [X] T031 [US2] Map sub-menu option "10" to DisplayStrings in DisplayMenu function
+- [X] T032 [US2] Implement input validation in DisplayMenu (check range 0-10, handle non-numeric)
+- [X] T033 [US2] Implement error handling in DisplayMenu for invalid input with Chinese error message
+- [X] T034 [US2] Implement whitespace trimming in DisplayMenu using strings.TrimSpace
+- [X] T035 [US2] Add menu loop logic to re-display sub-menu after topic execution
 
 **Checkpoint**: All user stories should now be independently functional - complete navigation and topic execution
 
@@ -112,17 +112,17 @@ This is a single Go project with the following structure:
 
 **Purpose**: Improvements that affect multiple user stories and ensure code quality
 
-- [ ] T036 [P] Add comprehensive Chinese comments to MenuItem struct in main.go explaining I/O stream parameters
-- [ ] T037 [P] Add comprehensive Chinese comments to DisplayMenu function in lexical_elements.go explaining menu navigation flow
-- [ ] T038 [P] Add Chinese comments to all sub-menu mapping logic explaining topic numbering scheme
-- [ ] T039 [P] Run `go test ./...` and verify 80%+ test coverage for main.go
-- [ ] T040 [P] Run `go test ./...` and verify 80%+ test coverage for internal/app/lexical_elements/
-- [ ] T041 [P] Run `go fmt ./...` to format all code
-- [ ] T042 [P] Run `go vet ./...` to check for code issues
-- [ ] T043 [P] Validate quickstart.md instructions by manually testing all navigation scenarios
-- [ ] T044 [P] Update main.go comments to reflect new MenuItem signature for future developers
-- [ ] T045 Remove old Display() function from lexical_elements.go (now replaced by DisplayMenu)
-- [ ] T046 [P] Run full integration test: main menu → sub-menu → all 11 topics → return → quit
+- [X] T036 [P] Add comprehensive Chinese comments to MenuItem struct in main.go explaining I/O stream parameters
+- [X] T037 [P] Add comprehensive Chinese comments to DisplayMenu function in lexical_elements.go explaining menu navigation flow
+- [X] T038 [P] Add Chinese comments to all sub-menu mapping logic explaining topic numbering scheme
+- [X] T039 [P] Run `go test ./...` and verify 80%+ test coverage for main.go
+- [X] T040 [P] Run `go test ./...` and verify 80%+ test coverage for internal/app/lexical_elements/
+- [X] T041 [P] Run `go fmt ./...` to format all code
+- [X] T042 [P] Run `go vet ./...` to check for code issues
+- [X] T043 [P] Validate quickstart.md instructions by manually testing all navigation scenarios
+- [X] T044 [P] Update main.go comments to reflect new MenuItem signature for future developers
+- [X] T045 Remove old Display() function from lexical_elements.go (now replaced by DisplayMenu)
+- [X] T046 [P] Run full integration test: main menu → sub-menu → all 11 topics → return → quit
 
 ---
 

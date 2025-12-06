@@ -18,10 +18,16 @@ type App struct {
 	menu   map[string]MenuItem
 }
 
-// MenuItem represents a single menu option.
+// MenuItem 表示一个菜单选项。
+// Action 函数接收三个 I/O 流参数：
+//   - stdin: 用于读取用户输入
+//   - stdout: 用于输出正常信息
+//   - stderr: 用于输出错误信息
+//
+// 这种设计使得菜单动作可以是交互式的，例如显示子菜单并读取用户选择。
 type MenuItem struct {
 	Description string
-	Action      func()
+	Action      func(io.Reader, io.Writer, io.Writer)
 }
 
 // NewApp creates a new App instance with configured menu items.
@@ -39,7 +45,7 @@ func NewApp(stdin io.Reader, stdout, stderr io.Writer) *App {
 		menu: map[string]MenuItem{
 			"0": {
 				Description: "Lexical elements",
-				Action:      lexical_elements.Display,
+				Action:      lexical_elements.DisplayMenu,
 			},
 			// Add new items here
 		},
@@ -81,7 +87,7 @@ func (a *App) Run() {
 		}
 
 		if item, ok := a.menu[choice]; ok {
-			item.Action()
+			item.Action(a.stdin, a.stdout, a.stderr)
 		} else {
 			fmt.Fprintln(a.stdout, "Invalid choice, please try again.")
 		}
