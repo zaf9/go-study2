@@ -1,6 +1,6 @@
 # Go-Study2 - Go语言词法元素学习工具
 
-> 一个交互式命令行工具，帮助Go语言学习者系统掌握词法元素知识，通过菜单驱动的方式提供代码示例和详细解释。
+> 一个支持**命令行**和**HTTP服务**双模式的Go语言学习工具，帮助学习者系统掌握词法元素知识，提供交互式菜单和Web API两种访问方式。
 
 [![Go Version](https://img.shields.io/badge/Go-1.24.5-blue.svg)](https://golang.org)
 [![GoFrame](https://img.shields.io/badge/GoFrame-v2.9.5-green.svg)](https://goframe.org)
@@ -52,13 +52,33 @@
 
 ## ✨ 功能特性 Features
 
-- 🎯 **菜单驱动界面** - 清晰的层级菜单，轻松导航各个知识点
+### 核心功能
+
+- 🎯 **双模式运行** - 支持命令行交互模式和HTTP服务模式
 - 📖 **全面覆盖** - 涵盖Go语言规范中所有词法元素子主题
 - 💻 **可运行示例** - 每个知识点都配有可直接运行的代码示例
 - 🇨🇳 **中文注释** - 所有代码注释和说明均为中文，降低学习门槛
-- 🧪 **高测试覆盖率** - 80%以上的单元测试覆盖率，保证代码质量
-- 🔌 **易于扩展** - 模块化设计，可轻松添加新的学习主题
+
+### 命令行模式特性
+
+- 🎯 **菜单驱动界面** - 清晰的层级菜单，轻松导航各个知识点
 - 🚀 **零依赖运行** - 编译后的可执行文件无需额外依赖
+- ⌨️ **交互式学习** - 即时反馈，边学边练
+
+### HTTP服务模式特性 🆕
+
+- 🌐 **RESTful API** - 标准化的HTTP接口，支持JSON和HTML两种响应格式
+- 🔌 **灵活访问** - 通过浏览器、curl、Postman或任何HTTP客户端访问
+- ⚙️ **YAML配置** - 灵活的配置文件管理服务器参数
+- 📊 **结构化日志** - 详细的请求日志和错误追踪
+- 🛡️ **优雅关闭** - 支持信号处理和优雅停机
+- 🚀 **并发支持** - 可处理多个并发请求
+
+### 质量保证
+
+- 🧪 **高测试覆盖率** - 80%以上的单元测试覆盖率，保证代码质量
+- ✅ **内容一致性** - CLI和HTTP模式返回完全相同的学习内容
+- 🔌 **易于扩展** - 模块化设计，可轻松添加新的学习主题
 
 ---
 
@@ -73,6 +93,8 @@
 ---
 
 ## 🚀 快速开始 Quick Start
+
+### 方式一：命令行模式（传统方式）
 
 **30秒快速体验：**
 
@@ -100,6 +122,52 @@ Enter your choice:
 ```
 
 输入 `0` 即可开始学习词法元素！
+
+### 方式二：HTTP服务模式 🆕
+
+**60秒启动Web服务：**
+
+```bash
+# 1. 克隆仓库（如果尚未克隆）
+git clone https://github.com/yourusername/go-study2.git
+cd go-study2
+
+# 2. 确保配置文件存在（项目已包含默认配置）
+# config.yaml 已配置好，默认端口 8080
+
+# 3. 启动HTTP服务
+go run main.go -d
+```
+
+**预期输出：**
+
+```
+2025-12-05 10:00:00 [INFO] http server started listening on [:8080]
+2025-12-05 10:00:00 [INFO] openapi specification is disabled
+```
+
+**浏览器访问：**
+
+打开浏览器访问以下URL：
+
+- **主题列表（HTML）**: http://localhost:8080/api/v1/topics?format=html
+- **词法元素菜单**: http://localhost:8080/api/v1/topic/lexical_elements?format=html
+- **注释章节**: http://localhost:8080/api/v1/topic/lexical_elements/comments?format=html
+
+**API调用（JSON）：**
+
+```bash
+# 获取主题列表
+curl http://localhost:8080/api/v1/topics
+
+# 获取词法元素菜单
+curl http://localhost:8080/api/v1/topic/lexical_elements
+
+# 获取具体章节内容
+curl http://localhost:8080/api/v1/topic/lexical_elements/comments
+```
+
+**停止服务：** 按 `Ctrl+C` 优雅关闭
 
 ---
 
@@ -177,6 +245,56 @@ q. Quit
 Enter your choice: 4
 ```
 
+### HTTP服务模式使用 🆕
+
+#### 启动HTTP服务
+
+```bash
+# 使用 -d 或 --daemon 参数启动
+go run main.go -d
+# 或
+go run main.go --daemon
+```
+
+#### API端点说明
+
+| 端点 | 方法 | 描述 | 示例URL |
+|------|------|------|---------|
+| `/api/v1/topics` | GET/POST | 获取所有学习主题列表 | `http://localhost:8080/api/v1/topics` |
+| `/api/v1/topic/lexical_elements` | GET/POST | 获取词法元素章节菜单 | `http://localhost:8080/api/v1/topic/lexical_elements` |
+| `/api/v1/topic/lexical_elements/{chapter}` | GET/POST | 获取具体章节内容 | `http://localhost:8080/api/v1/topic/lexical_elements/comments` |
+
+#### 响应格式
+
+通过 `format` 查询参数指定响应格式：
+
+**JSON格式（默认，适合API调用）：**
+
+```bash
+curl "http://localhost:8080/api/v1/topics?format=json"
+```
+
+**HTML格式（适合浏览器访问）：**
+
+```bash
+curl "http://localhost:8080/api/v1/topics?format=html"
+# 或在浏览器中直接访问
+```
+
+#### 可用章节ID
+
+- `comments` - 注释
+- `tokens` - 标记
+- `semicolons` - 分号
+- `identifiers` - 标识符
+- `keywords` - 关键字
+- `operators` - 运算符
+- `integers` - 整数
+- `floats` - 浮点数
+- `imaginary` - 虚数
+- `runes` - 符文
+- `strings` - 字符串
+
 ---
 
 ## 📚 示例 Examples
@@ -230,16 +348,70 @@ World`  // 保留原始格式，不转义
 
 ```
 go-study2/
-├── main.go                          # 主入口文件，包含菜单逻辑
+├── main.go                          # 主入口文件，支持CLI和HTTP两种模式
 ├── main_test.go                     # 主程序测试文件
+├── config.yaml                      # HTTP服务配置文件 🆕
 ├── go.mod                           # Go模块依赖管理
 ├── go.sum                           # 依赖校验文件
 ├── internal/                        # 内部包（不对外暴露）
+│   ├── config/                      # 配置管理模块 🆕
+│   │   ├── config.go                # 配置加载和验证
+│   │   └── config_test.go           # 配置测试
 │   └── app/
-│       └── lexical_elements/        # 词法元素学习模块
-│           ├── comments.go          # 注释相关示例
-│           ├── tokens.go            # 标记相关示例
-│           ├── semicolons.go        # 分号规则示例
+│       ├── lexical_elements/        # 词法元素学习模块
+│       │   ├── comments.go          # 注释相关示例
+│       │   ├── tokens.go            # 标记相关示例
+│       │   ├── semicolons.go        # 分号规则示例
+│       │   ├── identifiers.go       # 标识符示例
+│       │   ├── keywords.go          # 关键字示例
+│       │   ├── operators.go         # 运算符示例
+│       │   ├── integers.go          # 整数字面量示例
+│       │   ├── floats.go            # 浮点数字面量示例
+│       │   ├── imaginary.go         # 虚数字面量示例
+│       │   ├── runes.go             # 字符字面量示例
+│       │   ├── strings.go           # 字符串字面量示例
+│       │   ├── lexical_elements.go  # 词法元素菜单逻辑
+│       │   └── *_test.go            # 各模块测试文件
+│       └── http_server/             # HTTP服务模块 🆕
+│           ├── server.go            # HTTP服务器初始化
+│           ├── router.go            # 路由注册
+│           ├── middleware/          # 中间件
+│           │   ├── logger.go        # 请求日志中间件
+│           │   └── format.go        # 响应格式中间件
+│           └── handler/             # HTTP处理器
+│               ├── types.go         # 数据类型定义
+│               ├── common.go        # 公共HTML样式
+│               ├── topics.go        # 主题列表处理器
+│               └── lexical.go       # 词法元素处理器
+├── tests/                           # 测试目录 🆕
+│   ├── unit/                        # 单元测试
+│   │   ├── config_test.go           # 配置单元测试
+│   │   └── lexical_content_test.go  # 内容生成测试
+│   └── integration/                 # 集成测试
+│       ├── http_mode_test.go        # HTTP模式集成测试
+│       └── content_consistency_test.go  # 内容一致性测试
+├── specs/                           # 功能规格说明
+│   ├── 001-go-learn-lexical-elements/
+│   ├── 002-lexical-menu-structure/
+│   └── 003-http-learning-mode/      # HTTP学习模式规格 🆕
+├── doc/                             # 文档目录
+│   ├── README模板.md
+│   ├── Go开发工具生态全景图.md
+│   └── The Go-1.24 Programming Language Specification.md
+├── .specify/                        # 项目规范和模板
+├── .agent/                          # AI辅助开发工作流
+└── README.md                        # 本文件
+```
+
+**目录说明：**
+
+- `internal/app/lexical_elements/`: 核心学习内容，每个文件对应一个词法元素子主题
+- `internal/app/http_server/`: HTTP服务实现，包含服务器、路由、中间件和处理器
+- `internal/config/`: 配置文件加载和验证逻辑
+- `tests/`: 完整的测试套件，包括单元测试和集成测试
+- `specs/`: 使用SpecKit方法论管理的功能规格文档
+- `config.yaml`: HTTP服务器配置文件
+- `main.go`: 应用入口，支持CLI和HTTP两种运行模式
 │           ├── identifiers.go       # 标识符示例
 │           ├── keywords.go          # 关键字示例
 │           ├── operators.go         # 运算符示例
@@ -273,37 +445,63 @@ go-study2/
 
 ## ⚙️ 配置 Configuration
 
-**当前版本暂不涉及配置文件。**
+### 命令行模式
 
-本项目采用"零配置"设计理念，开箱即用。所有学习内容都硬编码在代码中，无需外部配置。
+命令行模式采用"零配置"设计，开箱即用。
 
-**未来可能支持的配置项：**
+### HTTP服务模式 🆕
 
-- 界面语言切换（中文/英文）
-- 代码示例输出格式
-- 学习进度记录
+HTTP服务模式通过 `config.yaml` 配置文件管理。配置文件位于项目根目录，包含以下配置项：
+
+```yaml
+server:
+  host: "127.0.0.1"  # 监听地址（必填）
+  port: 8080          # 监听端口（必填）
+  shutdownTimeout: 10 # 优雅关闭超时（秒）
+
+logger:
+  level: "INFO"       # 日志级别
+  path: "./logs"      # 日志路径
+  stdout: true        # 控制台输出
+```
+
+详细配置说明请参考 `specs/003-http-learning-mode/quickstart.md`
 
 ---
 
 ## 📖 API 文档 API Reference
 
-**当前版本暂不涉及公开API。**
+### HTTP API 端点 🆕
 
-本项目是一个独立的CLI工具，不提供对外API。所有功能通过命令行交互完成。
+本项目现在提供RESTful API接口：
 
-**内部包结构：**
+**基础URL**: `http://localhost:8080/api/v1`
+
+**端点列表**:
+
+| 端点 | 方法 | 描述 |
+|------|------|------|
+| `/topics` | GET/POST | 获取主题列表 |
+| `/topic/lexical_elements` | GET/POST | 获取词法元素菜单 |
+| `/topic/lexical_elements/{chapter}` | GET/POST | 获取章节内容 |
+
+**响应格式**: 支持 `?format=json` 或 `?format=html`
+
+详细API文档请参考 `specs/003-http-learning-mode/contracts/api-spec.md`
+
+### 内部包结构
 
 ```go
+// 词法元素模块
 package lexical_elements
+func GetCommentsContent() string
+func GetTokensContent() string
+// ... 其他内容生成函数
 
-// DisplayMenu 显示词法元素子菜单
-func DisplayMenu(stdin io.Reader, stdout, stderr io.Writer)
-
-// 各子主题的Display函数
-func DisplayComments(stdout io.Writer)
-func DisplayTokens(stdout io.Writer)
-func DisplaySemicolons(stdout io.Writer)
-// ... 其他子主题
+// HTTP服务模块
+package http_server
+func NewServer(cfg *config.Config, names ...string) *ghttp.Server
+func RegisterRoutes(s *ghttp.Server)
 ```
 
 ---
@@ -375,10 +573,19 @@ go tool cover -html=coverage.out
   - [x] 交互式子菜单
   - [x] 返回和退出功能
 
+- [x] **v0.4** - HTTP学习模式 🆕
+  - [x] 双模式支持（CLI + HTTP）
+  - [x] RESTful API实现
+  - [x] JSON/HTML响应格式
+  - [x] YAML配置管理
+  - [x] 请求日志和中间件
+  - [x] 内容一致性保证
+  - [x] 完整测试覆盖
+
 ### 进行中 🚧
 
-- [ ] **v0.4** - 文档完善
-  - [x] README.md编写
+- [ ] **v0.5** - 文档完善
+  - [x] README.md更新
   - [ ] 贡献指南
   - [ ] 使用教程视频
 
@@ -395,7 +602,7 @@ go tool cover -html=coverage.out
   - [ ] 函数和方法学习模块
 
 - [ ] **v2.0** - 高级功能
-  - [ ] Web界面版本
+  - [ ] 增强的Web界面
   - [ ] 学习进度可视化
   - [ ] 社区分享功能
   - [ ] 多语言支持（英文）

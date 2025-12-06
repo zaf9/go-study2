@@ -26,11 +26,11 @@
 
 **Purpose**: 项目初始化和基础结构搭建
 
-- [ ] T001 创建HTTP服务配置文件 `config.yaml` 在项目根目录
-- [ ] T002 创建 `internal/config/` 目录结构
-- [ ] T003 创建 `internal/app/http_server/` 目录结构（含handler/和middleware/子目录）
-- [ ] T004 创建 `tests/unit/` 和 `tests/integration/` 目录结构
-- [ ] T005 [P] 在 `go.mod` 中验证GoFrame v2.9.5依赖已存在
+- [x] T001 创建HTTP服务配置文件 `config.yaml` 在项目根目录
+- [x] T002 创建 `internal/config/` 目录结构
+- [x] T003 创建 `internal/app/http_server/` 目录结构（含handler/和middleware/子目录）
+- [x] T004 创建 `tests/unit/` 和 `tests/integration/` 目录结构
+- [x] T005 [P] 在 `go.mod` 中验证GoFrame v2.9.5依赖已存在
 
 ---
 
@@ -40,23 +40,23 @@
 
 **⚠️ CRITICAL**: 所有用户故事工作必须等待此阶段完成
 
-- [ ] T006 实现配置加载和验证 `internal/config/config.go`
-- [ ] T007 [P] 为配置加载编写单元测试 `tests/unit/config_test.go`
-- [ ] T008 重构 `internal/app/lexical_elements/comments.go` 添加 `GetCommentsContent()` 函数
-- [ ] T009 [P] 重构 `internal/app/lexical_elements/tokens.go` 添加 `GetTokensContent()` 函数
-- [ ] T010 [P] 重构 `internal/app/lexical_elements/semicolons.go` 添加 `GetSemicolonsContent()` 函数
-- [ ] T011 [P] 重构 `internal/app/lexical_elements/identifiers.go` 添加 `GetIdentifiersContent()` 函数
-- [ ] T012 [P] 重构 `internal/app/lexical_elements/keywords.go` 添加 `GetKeywordsContent()` 函数
-- [ ] T013 [P] 重构 `internal/app/lexical_elements/operators.go` 添加 `GetOperatorsContent()` 函数
-- [ ] T014 [P] 重构 `internal/app/lexical_elements/integers.go` 添加 `GetIntegersContent()` 函数
-- [ ] T015 [P] 重构 `internal/app/lexical_elements/floats.go` 添加 `GetFloatsContent()` 函数
-- [ ] T016 [P] 重构 `internal/app/lexical_elements/imaginary.go` 添加 `GetImaginaryContent()` 函数
-- [ ] T017 [P] 重构 `internal/app/lexical_elements/runes.go` 添加 `GetRunesContent()` 函数
-- [ ] T018 [P] 重构 `internal/app/lexical_elements/strings.go` 添加 `GetStringsContent()` 函数
-- [ ] T019 为所有重构的Get*Content()函数编写单元测试 `tests/unit/lexical_refactor_test.go`
-- [ ] T020 实现HTTP服务器初始化 `internal/app/http_server/server.go`
-- [ ] T021 [P] 实现日志中间件 `internal/app/http_server/middleware/logger.go`
-- [ ] T022 [P] 实现格式转换中间件 `internal/app/http_server/middleware/format.go`
+- [x] T006 实现配置加载和验证 `internal/config/config.go`
+- [x] T007 [P] 为配置加载编写单元测试 `tests/unit/config_test.go`
+- [x] T008 重构 `internal/app/lexical_elements/comments.go` 添加 `GetCommentsContent()` 函数
+- [x] T009 [P] 重构 `internal/app/lexical_elements/tokens.go` 添加 `GetTokensContent()` 函数
+- [x] T010 [P] 重构 `internal/app/lexical_elements/semicolons.go` 添加 `GetSemicolonsContent()` 函数
+- [x] T011 [P] 重构 `internal/app/lexical_elements/identifiers.go` 添加 `GetIdentifiersContent()` 函数
+- [x] T012 [P] 重构 `internal/app/lexical_elements/keywords.go` 添加 `GetKeywordsContent()` 函数
+- [x] T013 [P] 重构 `internal/app/lexical_elements/operators.go` 添加 `GetOperatorsContent()` 函数
+- [x] T014 [P] 重构 `internal/app/lexical_elements/integers.go` 添加 `GetIntegersContent()` 函数
+- [x] T015 [P] 重构 `internal/app/lexical_elements/floats.go` 添加 `GetFloatsContent()` 函数
+- [x] T016 [P] 重构 `internal/app/lexical_elements/imaginary.go` 添加 `GetImaginaryContent()` 函数
+- [x] T017 [P] 重构 `internal/app/lexical_elements/runes.go` 添加 `GetRunesContent()` 函数
+- [x] T018 [P] 重构 `internal/app/lexical_elements/strings.go` 添加 `GetStringsContent()` 函数
+- [x] T019 为所有重构的Get*Content()函数编写单元测试 `tests/unit/lexical_content_test.go`
+- [x] T020 实现HTTP服务器初始化 `internal/app/http_server/server.go`
+- [x] T021 [P] 实现日志中间件 `internal/app/http_server/middleware/logger.go`
+- [x] T022 [P] 实现格式转换中间件 `internal/app/http_server/middleware/format.go`
 
 **Checkpoint**: 基础设施就绪 - 用户故事实现现在可以并行开始
 
@@ -93,20 +93,20 @@
 
 ### Tests for User Story 2 (MANDATORY) ⚠️
 
-- [ ] T028 [P] [US2] 为 `/api/v1/topics` 接口编写集成测试 `tests/integration/http_topics_test.go`
-- [ ] T029 [P] [US2] 为 `/api/v1/topic/lexical_elements` 接口编写集成测试 `tests/integration/http_lexical_test.go`
-- [ ] T030 [P] [US2] 为章节接口编写集成测试 `tests/integration/http_chapter_test.go`
+- [x] T028 [P] [US2] 为 `/api/v1/topics` 接口编写集成测试 `tests/integration/http_topics_test.go` (Covered by tests/integration/http_mode_test.go)
+- [x] T029 [P] [US2] 为 `/api/v1/topic/lexical_elements` 接口编写集成测试 `tests/integration/http_lexical_test.go` (Covered by tests/integration/http_mode_test.go)
+- [x] T030 [P] [US2] 为章节接口编写集成测试 `tests/integration/http_chapter_test.go` (Covered by tests/integration/http_mode_test.go)
 
 ### Implementation for User Story 2
 
-- [ ] T031 [P] [US2] 实现Topics处理器 `internal/app/http_server/handler/topics.go`
-- [ ] T032 [P] [US2] 实现Lexical Elements菜单处理器 `internal/app/http_server/handler/lexical.go`
-- [ ] T033 [US2] 实现章节内容处理器 `internal/app/http_server/handler/chapter.go`（调用Get*Content()函数）
-- [ ] T034 [US2] 实现路由注册 `internal/app/http_server/router.go`（所有接口使用POST方法）
-- [ ] T035 [US2] 在 `main.go` 中添加命令行参数解析（-d 和 --daemon）
-- [ ] T036 [US2] 在 `main.go` 中实现HTTP模式启动逻辑
-- [ ] T037 [US2] 实现优雅关闭机制（信号监听）
-- [ ] T038 [US2] 测试HTTP模式：启动服务，验证所有接口返回正确的JSON格式内容
+- [x] T031 [P] [US2] 实现Topics处理器 `internal/app/http_server/handler/topics.go`
+- [x] T032 [P] [US2] 实现Lexical Elements菜单处理器 `internal/app/http_server/handler/lexical.go`
+- [x] T033 [US2] 实现章节内容处理器 `internal/app/http_server/handler/chapter.go`（调用Get*Content()函数）
+- [x] T034 [US2] 实现路由注册 `internal/app/http_server/router.go`（所有接口使用POST方法）
+- [x] T035 [US2] 在 `main.go` 中添加命令行参数解析（-d 和 --daemon）
+- [x] T036 [US2] 在 `main.go` 中实现HTTP模式启动逻辑
+- [x] T037 [US2] 实现优雅关闭机制（信号监听）
+- [x] T038 [US2] 测试HTTP模式：启动服务，验证所有接口返回正确的JSON格式内容
 
 **Checkpoint**: HTTP服务模式应完全功能，所有POST接口返回正确内容
 
@@ -120,12 +120,9 @@
 
 ### Tests for User Story 3 (MANDATORY) ⚠️
 
-- [ ] T039 [US3] 编写内容一致性集成测试 `tests/integration/content_consistency_test.go`
-
-### Implementation for User Story 3
-
-- [ ] T040 [US3] 验证所有11个章节在两种模式下内容一致
-- [ ] T041 [US3] 添加内容一致性验证到CI/CD流程（如果存在）
+- [x] T039 [US3] 编写内容一致性集成测试 `tests/integration/content_consistency_test.go`
+- [x] T040 [US3] 验证所有11个章节在两种模式下内容一致
+- [x] T041 [US3] 添加内容一致性验证到CI/CD流程（如果存在） (Skipped: No CI/CD provided)
 
 **Checkpoint**: 两种模式内容100%一致
 

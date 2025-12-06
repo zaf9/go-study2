@@ -2,8 +2,11 @@ package main
 
 import (
 	"bufio"
+	"flag"
 	"fmt"
+	"go-study2/internal/app/http_server"
 	"go-study2/internal/app/lexical_elements"
+	"go-study2/internal/config"
 	"io"
 	"os"
 	"sort"
@@ -95,6 +98,29 @@ func (a *App) Run() {
 }
 
 func main() {
-	app := NewApp(os.Stdin, os.Stdout, os.Stderr)
-	app.Run()
+	daemon := flag.Bool("d", false, "Run in daemon/HTTP mode")
+	flag.BoolVar(daemon, "daemon", false, "Run in daemon/HTTP mode")
+	flag.Parse()
+
+	if *daemon {
+		runHttpServer()
+	} else {
+		app := NewApp(os.Stdin, os.Stdout, os.Stderr)
+		app.Run()
+	}
+}
+
+func runHttpServer() {
+	// 加载配置 (Load 内部会自动读取默认配置文件并进行验证)
+	cfg, err := config.Load()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Failed to load config: %v\n", err)
+		os.Exit(1)
+	}
+
+	// 初始化服务器
+	s := http_server.NewServer(cfg)
+
+	// 启动服务器 (Run 会阻塞直到收到停止信号)
+	s.Run()
 }
