@@ -16,6 +16,10 @@ import (
 // Requirement 1: 100 concurrent requests, p95 < 100ms (we use avg here as proxy, target < 50ms avg)
 // Requirement 2: 1000 concurrent requests, no errors
 func TestConstantsAPI_Performance(t *testing.T) {
+	// 跳过短测试模式（使用 -short 标志时）
+	if testing.Short() {
+		t.Skip("跳过性能测试（短测试模式）")
+	}
 	// 1. Setup Server
 	cfg := &config.Config{
 		Server: config.ServerConfig{

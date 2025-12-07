@@ -175,3 +175,95 @@ func TestApp_NavigateToConstantsMenu(t *testing.T) {
 		t.Error("返回上级菜单选项未显示")
 	}
 }
+
+// TestNewApp 测试 NewApp 函数
+func TestNewApp(t *testing.T) {
+	stdin := strings.NewReader("")
+	stdout := &bytes.Buffer{}
+	stderr := &bytes.Buffer{}
+
+	app := NewApp(stdin, stdout, stderr)
+
+	if app == nil {
+		t.Error("NewApp should not return nil")
+	}
+
+	if app.stdin != stdin {
+		t.Error("App stdin should match input")
+	}
+
+	if app.stdout != stdout {
+		t.Error("App stdout should match input")
+	}
+
+	if app.stderr != stderr {
+		t.Error("App stderr should match input")
+	}
+
+	// 验证菜单项已初始化
+	if len(app.menu) == 0 {
+		t.Error("App menu should not be empty")
+	}
+
+	// 验证包含预期的菜单项
+	if _, ok := app.menu["0"]; !ok {
+		t.Error("Menu should contain '0' (Lexical elements)")
+	}
+
+	if _, ok := app.menu["1"]; !ok {
+		t.Error("Menu should contain '1' (Constants)")
+	}
+}
+
+// TestApp_MenuDisplay 测试菜单显示功能
+func TestApp_MenuDisplay(t *testing.T) {
+	stdin := strings.NewReader("q\n")
+	stdout := &bytes.Buffer{}
+	app := NewApp(stdin, stdout, &bytes.Buffer{})
+
+	app.Run()
+
+	output := stdout.String()
+
+	// 验证主菜单标题
+	if !strings.Contains(output, "Go Lexical Elements Learning Tool") {
+		t.Error("Main menu title should be displayed")
+	}
+
+	// 验证菜单选项
+	if !strings.Contains(output, "Lexical elements") {
+		t.Error("Menu should display 'Lexical elements' option")
+	}
+
+	if !strings.Contains(output, "Constants") {
+		t.Error("Menu should display 'Constants' option")
+	}
+
+	// 验证退出选项
+	if !strings.Contains(output, "q. Quit") {
+		t.Error("Menu should display quit option")
+	}
+}
+
+// TestApp_ErrorReadingInput 测试输入读取错误处理
+func TestApp_ErrorReadingInput(t *testing.T) {
+	// 创建一个会在读取时出错的 Reader
+	errorReader := &errorReader{}
+	stdout := &bytes.Buffer{}
+	stderr := &bytes.Buffer{}
+
+	app := NewApp(errorReader, stdout, stderr)
+	app.Run()
+
+	// 验证错误被记录到 stderr
+	if stderr.Len() == 0 {
+		t.Error("Error reading input should be logged to stderr")
+	}
+}
+
+// errorReader 是一个会在 Read 时返回错误的 Reader
+type errorReader struct{}
+
+func (e *errorReader) Read(p []byte) (n int, err error) {
+	return 0, fmt.Errorf("simulated read error")
+}
