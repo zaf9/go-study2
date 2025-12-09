@@ -109,6 +109,13 @@ Go 语言规范章节的学习内容必须遵循层次化的包结构组织:
 * 每个 .go 文件必须包含详细的示例代码和中文说明,便于学习者理解和实践
 * 层次结构必须清晰反映 Go 语言规范的章节组织,便于学习者按规范顺序学习
 
+### Principle XXI: HTTP/CLI Implementation Consistency
+* CLI 统一采用 `DisplayMenu(stdin, stdout, stderr)` 交互循环,编号从 0 递增、`q` 返回上级,使用映射将编号绑定到子主题展示/加载函数,签名与 `main.App` 的 `MenuItem.Action` 保持一致即可接入主菜单。
+* CLI 与 HTTP 共用同一内容源: 新章节参考Lexical/Constants 复用各自 `GetXContent`/展示函数输出字符串; 新章节必须提供可复用的内容与测验读取接口,避免两种模式分叉。
+* HTTP 路由固定为 `/api/v1/topic/{chapter}`(菜单) 与 `/api/v1/topic/{chapter}/{subtopic}`(内容),沿用 `middleware.Format` 的 `format=json|html` 协商; 菜单响应使用 `Response{code,message,data.items}`(items 结构同 `LexicalMenuItem`),内容响应使用 `Response{code,message,data}` 包装,HTML 通过 `getHtmlPage` 输出并附返回链接。
+* 错误处理保持显式: 未知子主题返回 404 并给出 JSON/HTML 提示; 内容或测验缺失参考 Variables 的做法返回业务错误信息但保持响应结构稳定,不静默失败。
+* 主题注册一致: 新章节需同步加入 `/api/v1/topics` 列表与 CLI 主菜单,路径标识使用与文件/目录一致的英文短名(snake_case); 若与既有约定冲突,以本原则为准。
+
 
 ## Governance
 
