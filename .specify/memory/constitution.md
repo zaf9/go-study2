@@ -1,22 +1,14 @@
 <!--
 Sync Impact Report:
-- Version change: none -> 1.0.0
+- Version change: 1.0.0 -> 1.1.0
 - Added sections:
-  - Principle I: Simplicity and Clarity
-  - Principle II: Clear Layered Comments
-  - Principle III: Chinese Language Documentation
-  - Principle IV: Shallow Logic
-  - Principle V: YAGNI (You Ain't Gonna Need It)
-  - Principle VI: Comprehensive Testing
-- Removed sections:
-  - [PRINCIPLE_1_NAME] to [PRINCIPLE_5_NAME]
-  - [SECTION_2_NAME]
-  - [SECTION_3_NAME]
-- Templates requiring updates:
-  - ✅ .specify/templates/plan-template.md
-  - ✅ .specify/templates/spec-template.md
-  - ✅ .specify/templates/tasks-template.md
-  - ✅ .specify/templates/checklist-template.md
+  - Principle XX: Hierarchical Chapter Learning Structure
+- Removed sections: none
+- Modified sections: none
+- Impact: 新增 Principle 规范了 Go 语言规范章节学习内容的组织结构,
+  要求每个章节创建独立 package,每个子章节对应一个 .go 文件,
+  支持多层次的子 package 结构,确保学习内容的层次化和规范化组织。
+- Templates requiring updates: none
 -->
 # go-study2 Constitution
 
@@ -108,9 +100,18 @@ This ensures consistent accessibility across different user preferences and inte
 After completing the development of any new specification, the `README.md` file MUST be updated to reflect the changes.
 Updates MUST include relevant sections such as features, usage instructions, project structure, and roadmap status.
 
+### Principle XX: Hierarchical Chapter Learning Structure
+Go 语言规范章节的学习内容必须遵循层次化的包结构组织:
+* 每个规范章节必须创建独立的 package(如 `constants`、`lexical_elements`)
+* 每个子章节必须对应一个独立的 .go 文件,文件名使用小写下划线命名(如 `boolean.go`、`integer.go`)
+* 当子章节包含更深层次的子章节时,必须在当前章节 package 下创建子 package,子子章节同样每个对应一个 .go 文件
+* 每个章节 package 必须包含 `README.md` 说明文档和主入口文件(如 `constants.go`)
+* 每个 .go 文件必须包含详细的示例代码和中文说明,便于学习者理解和实践
+* 层次结构必须清晰反映 Go 语言规范的章节组织,便于学习者按规范顺序学习
+
 
 ## Governance
 
 Compliance with this constitution is mandatory for all contributions. Pull requests and code reviews must verify that these principles are upheld. Any deviation requires explicit justification and approval.
 
-**Version**: 1.0.0 | **Ratified**: 2025-12-02 | **Last Amended**: 2025-12-02
+**Version**: 1.1.0 | **Ratified**: 2025-12-02 | **Last Amended**: 2025-12-09
