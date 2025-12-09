@@ -106,7 +106,7 @@ git clone https://github.com/yourusername/go-study2.git
 # 进入项目目录
 cd go-study2
 
-# 运行程序（主菜单含 Lexical / Constants / Variables）
+# 运行程序（主菜单含 Lexical / Constants / Variables / Types）
 go run main.go
 ```
 
@@ -119,12 +119,13 @@ Please select a topic to study:
 0. Lexical elements
 1. Constants
 2. Variables
+3. Types
 q. Quit
 
 Enter your choice: 
 ```
 
-输入 `0/1/2` 进入对应章节学习。
+输入 `0/1/2/3` 进入对应章节学习。Types 子菜单支持：编号查看内容与测验；`o` 打印提纲；`quiz` 综合测验；`search <keyword>` 关键词检索；`q` 返回。
 
 ### 方式二：HTTP服务模式 🆕
 
@@ -153,13 +154,17 @@ go run main.go -d
 
 打开浏览器访问以下URL：
 
-- **主题列表（HTML）**: http://localhost:8080/api/v1/topics?format=html
-- **词法元素菜单**: http://localhost:8080/api/v1/topic/lexical_elements?format=html
-- **注释章节**: http://localhost:8080/api/v1/topic/lexical_elements/comments?format=html
-- **Constants 菜单**: http://localhost:8080/api/v1/topic/constants?format=html 🆕
-- **布尔常量**: http://localhost:8080/api/v1/topic/constants/boolean?format=html 🆕
-- **Variables 菜单**: http://localhost:8080/api/v1/topic/variables?format=html 🆕
-- **Variables 子主题**: http://localhost:8080/api/v1/topic/variables/storage?format=html 🆕
+- **主题列表（HTML）**: http://localhost:8080/api/v1/topics?format=html  
+- **词法元素菜单**: http://localhost:8080/api/v1/topic/lexical_elements?format=html  
+- **注释章节**: http://localhost:8080/api/v1/topic/lexical_elements/comments?format=html  
+- **Constants 菜单**: http://localhost:8080/api/v1/topic/constants?format=html  
+- **布尔常量**: http://localhost:8080/api/v1/topic/constants/boolean?format=html  
+- **Variables 菜单**: http://localhost:8080/api/v1/topic/variables?format=html  
+- **Variables 子主题**: http://localhost:8080/api/v1/topic/variables/storage?format=html  
+- **Types 菜单**: http://localhost:8080/api/v1/topic/types?format=html 🆕  
+- **Types 子主题**: http://localhost:8080/api/v1/topic/types/array?format=html 🆕  
+- **Types 提纲**: http://localhost:8080/api/v1/topic/types/outline?format=html 🆕  
+- **Types 搜索**: http://localhost:8080/api/v1/topic/types/search?keyword=map%20key&format=html 🆕  
 
 **API调用（JSON）：**
 
@@ -181,18 +186,38 @@ curl http://localhost:8080/api/v1/topic/constants/boolean
 curl http://localhost:8080/api/v1/topic/constants/iota
 curl http://localhost:8080/api/v1/topic/constants/expressions
 
-# 获取 Variables 菜单与子主题内容 🆕
-curl http://localhost:8080/api/v1/topic/variables
-curl http://localhost:8080/api/v1/topic/variables/storage
 curl http://localhost:8080/api/v1/topic/variables/static
 curl http://localhost:8080/api/v1/topic/variables/dynamic
 curl http://localhost:8080/api/v1/topic/variables/zero
-
-# 获取 Variables 菜单与子主题内容 🆕
-curl http://localhost:8080/api/v1/topic/variables
-curl http://localhost:8080/api/v1/topic/variables/storage
-curl http://localhost:8080/api/v1/topic/variables/static
 ```
+
+**Types API（JSON）：**
+
+```bash
+# 菜单
+curl http://localhost:8080/api/v1/topic/types
+
+# 子主题内容（示例：array）
+curl http://localhost:8080/api/v1/topic/types/array
+
+# 提纲
+curl http://localhost:8080/api/v1/topic/types/outline
+
+# 搜索关键词
+curl "http://localhost:8080/api/v1/topic/types/search?keyword=map%20key"
+
+# 综合测验提交
+curl -X POST "http://localhost:8080/api/v1/topic/types/quiz/submit" \
+  -H "Content-Type: application/json" \
+  -d "{\"answers\":[{\"id\":\"q-all-1\",\"choice\":\"A\"},{\"id\":\"q-all-2\",\"choice\":\"B\"}]}"
+```
+
+### Types 搜索关键词列表
+- `map key`：map 键需可比较。
+- `~int`：底层类型为 int 的命名类型也匹配。
+- `interface nil`：带类型 nil 与接口 nil 区分。
+- `slice share`：切片共享底层数组的影响。
+- `array length`：数组长度属于类型，长度不同不兼容。
 
 **停止服务：** 按 `Ctrl+C` 优雅关闭
 

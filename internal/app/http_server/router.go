@@ -34,6 +34,17 @@ func RegisterRoutes(s *ghttp.Server) {
 		// Variables 内容
 		group.ALL("/topic/variables/:subtopic", h.GetVariableContent)
 
+		// Types 菜单
+		group.ALL("/topic/types", h.GetTypesMenu)
+		// Types 内容
+		group.ALL("/topic/types/:subtopic", h.GetTypesContent)
+		// Types 提纲
+		group.ALL("/topic/types/outline", h.GetTypesOutline)
+		// Types 测验提交
+		group.ALL("/topic/types/quiz/submit", h.SubmitTypesQuiz)
+		// Types 搜索
+		group.ALL("/topic/types/search", h.SearchTypes)
+
 		// 后续路由将在其他 User Story 中添加
 	})
 }

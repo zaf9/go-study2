@@ -8,6 +8,7 @@ import (
 	"go-study2/internal/app/http_server"
 	"go-study2/internal/app/lexical_elements"
 	"go-study2/internal/config"
+	typescli "go-study2/src/learning/types/cli"
 	varcli "go-study2/src/learning/variables/cli"
 	"io"
 	"os"
@@ -59,6 +60,10 @@ func NewApp(stdin io.Reader, stdout, stderr io.Writer) *App {
 			"2": {
 				Description: "Variables",
 				Action:      varcli.DisplayMenu,
+			},
+			"3": {
+				Description: "Types",
+				Action:      typescli.DisplayMenu,
 			},
 			// Add new items here
 		},
