@@ -7,7 +7,7 @@
 
 ## Summary
 
-为现有 HTTP 服务添加可配置的 HTTPS 支持。通过 `https.enabled` 配置项切换协议模式，支持 TLS 1.2+ 自签名证书，提供证书路径配置和友好的错误提示。
+为现有 HTTP 服务添加可配置的 HTTPS 支持。通过 `https.enabled` 配置项切换协议模式，支持 TLS 1.2+ 自签名证书（可选 root CA 或测试/开发跳过校验开关），启动时禁用 HTTP 明文端口，提供证书路径配置、友好的错误提示，并保持 CLI 学习模式兼容。
 
 ## Technical Context
 
@@ -20,6 +20,8 @@
 **Performance Goals**: N/A（与现有 HTTP 模式保持一致）  
 **Constraints**: TLS 1.2+ 最低版本要求  
 **Scale/Scope**: 单服务器实例，单协议模式运行
+**Self-signed Support**: 支持自签名证书加载，可选提供 root CA；仅在测试/开发环境允许跳过客户端校验，需文档提示风险
+**CLI Compatibility**: CLI 学习模式无需网络改动，需在验证中确认兼容并在文档声明
 
 ## Constitution Check
 
@@ -32,6 +34,7 @@
 - **Principle V (YAGNI):** ✅ 通过 - 仅实现当前需求（单协议切换），不添加双栈或证书自动生成等额外功能
 - **Principle VI (Testing):** ✅ 通过 - 将为配置验证和服务器启动逻辑编写单元测试，目标覆盖率 ≥80%
 - **Principle XVIII (Dual Mode):** ✅ 通过 - HTTPS 支持将同时适用于 CLI 和 HTTP 学习模式
+- **Principle XV (Quality Tools):** ✅ 通过 - 计划在收尾阶段执行 go fmt / go vet / golint / go mod tidy 并记录结果
 
 ## Project Structure
 

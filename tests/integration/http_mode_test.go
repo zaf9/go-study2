@@ -18,10 +18,15 @@ func TestHttpMode(t *testing.T) {
 	cfg := &config.Config{
 		Server: config.ServerConfig{
 			Host: "127.0.0.1",
+		},
+		Http: config.HttpConfig{
 			Port: 0, // Random port
 		},
 	}
-	s := http_server.NewServer(cfg, "http-mode-test")
+	s, err := http_server.NewServer(cfg, "http-mode-test")
+	if err != nil {
+		t.Fatalf("failed to create server: %v", err)
+	}
 
 	s.SetAccessLogEnabled(false)
 	s.Start()

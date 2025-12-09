@@ -16,6 +16,8 @@ func TestConfigValidation(t *testing.T) {
 			config: config.Config{
 				Server: config.ServerConfig{
 					Host: "127.0.0.1",
+				},
+				Http: config.HttpConfig{
 					Port: 8080,
 				},
 			},
@@ -25,36 +27,62 @@ func TestConfigValidation(t *testing.T) {
 			name: "缺少Host",
 			config: config.Config{
 				Server: config.ServerConfig{
+					Host: "",
+				},
+				Http: config.HttpConfig{
 					Port: 8080,
 				},
 			},
 			wantErr: true,
 		},
 		{
-			name: "缺少Port",
+			name: "缺少HTTP端口",
 			config: config.Config{
 				Server: config.ServerConfig{
 					Host: "127.0.0.1",
 				},
-			},
-			wantErr: true,
-		},
-		{
-			name: "Port超出范围(0)",
-			config: config.Config{
-				Server: config.ServerConfig{
-					Host: "127.0.0.1",
+				Http: config.HttpConfig{
 					Port: 0,
 				},
 			},
 			wantErr: true,
 		},
 		{
-			name: "Port超出范围(65536)",
+			name: "HTTP端口超出范围(0)",
 			config: config.Config{
 				Server: config.ServerConfig{
 					Host: "127.0.0.1",
+				},
+				Http: config.HttpConfig{
+					Port: 0,
+				},
+			},
+			wantErr: true,
+		},
+		{
+			name: "HTTP端口超出范围(65536)",
+			config: config.Config{
+				Server: config.ServerConfig{
+					Host: "127.0.0.1",
+				},
+				Http: config.HttpConfig{
 					Port: 65536,
+				},
+			},
+			wantErr: true,
+		},
+		{
+			name: "HTTPS启用缺少证书",
+			config: config.Config{
+				Server: config.ServerConfig{
+					Host: "127.0.0.1",
+				},
+				Http: config.HttpConfig{
+					Port: 8080,
+				},
+				Https: config.HttpsConfig{
+					Enabled: true,
+					Port:    8443,
 				},
 			},
 			wantErr: true,
@@ -72,8 +100,7 @@ func TestConfigValidation(t *testing.T) {
 }
 
 func TestConfigLoad(t *testing.T) {
-	// 测试从项目根目录的 config.yaml 加载
-	// 注意：这将依赖于 T001 创建的 config.yaml
+	// 测试从 configs/config.yaml 加载
 	cfg, err := config.Load()
 	if err != nil {
 		t.Fatalf("Load() failed: %v", err)
@@ -87,7 +114,7 @@ func TestConfigLoad(t *testing.T) {
 		t.Errorf("Expected host 127.0.0.1, got %s", cfg.Server.Host)
 	}
 
-	if cfg.Server.Port != 8080 {
-		t.Errorf("Expected port 8080, got %d", cfg.Server.Port)
+	if cfg.Http.Port != 8080 {
+		t.Errorf("Expected port 8080, got %d", cfg.Http.Port)
 	}
 }

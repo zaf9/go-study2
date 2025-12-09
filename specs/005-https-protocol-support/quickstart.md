@@ -43,8 +43,11 @@ go run main.go
 
 ```bash
 # 使用 curl 测试（-k 跳过证书验证，仅用于自签名证书）
-curl -k https://localhost:8443/api/topics
+# 注意：HTTP API 挂载在 /api/v1 前缀下
+curl -k https://localhost:8443/api/v1/topics
 ```
+
+> 提示：CLI 学习模式无需网络，不受 HTTPS 配置影响；仅 HTTP 服务模式依赖证书配置。
 
 ---
 
@@ -77,3 +80,7 @@ https:
 ### Q: TLS 版本要求？
 
 服务最低支持 TLS 1.2，同时支持 TLS 1.3。
+
+### Q: 可以跳过证书校验吗？
+
+测试/开发环境可将 `https.insecureSkipVerify` 设为 `true`；生产环境请保持 `false` 并配置可信 CA。

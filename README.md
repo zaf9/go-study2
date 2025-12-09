@@ -560,9 +560,22 @@ logger:
   level: "INFO"       # 日志级别
   path: "./logs"      # 日志路径
   stdout: true        # 控制台输出
+
+# HTTPS 配置（启用后禁用 HTTP 监听）
+https:
+  enabled: false                  # 是否启用 HTTPS
+  port: 8443                      # HTTPS 端口
+  certFile: "./configs/certs/server.crt"  # 证书路径（支持相对/绝对）
+  keyFile: "./configs/certs/server.key"   # 私钥路径（支持相对/绝对）
+  insecureSkipVerify: false       # 是否跳过证书校验（仅测试/开发使用，生产请关闭）
+  caFile: ""                      # 可选 CA 证书路径，用于自签名信任
 ```
 
 详细配置说明请参考 `specs/003-http-learning-mode/quickstart.md`
+
+**提示：**
+- CLI 学习模式不依赖网络，不受 HTTPS 配置影响。
+- 自签名证书场景建议提供 CA 或在测试/开发环境临时开启 `insecureSkipVerify`。
 
 ---
 
@@ -599,7 +612,7 @@ func GetTokensContent() string
 
 // HTTP服务模块
 package http_server
-func NewServer(cfg *config.Config, names ...string) *ghttp.Server
+func NewServer(cfg *config.Config, names ...string) (*ghttp.Server, error)
 func RegisterRoutes(s *ghttp.Server)
 ```
 

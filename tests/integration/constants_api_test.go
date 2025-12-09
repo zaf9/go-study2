@@ -20,10 +20,15 @@ func TestConstantsAPI_HTTPMode(t *testing.T) {
 	cfg := &config.Config{
 		Server: config.ServerConfig{
 			Host: "127.0.0.1",
+		},
+		Http: config.HttpConfig{
 			Port: 0, // Random port
 		},
 	}
-	s := http_server.NewServer(cfg, "constants-api-test")
+	s, err := http_server.NewServer(cfg, "constants-api-test")
+	if err != nil {
+		t.Fatalf("failed to create server: %v", err)
+	}
 
 	s.SetAccessLogEnabled(false)
 	s.Start()
@@ -415,10 +420,15 @@ func TestConstantsAPI_ContentConsistency(t *testing.T) {
 	cfg := &config.Config{
 		Server: config.ServerConfig{
 			Host: "127.0.0.1",
+		},
+		Http: config.HttpConfig{
 			Port: 0,
 		},
 	}
-	s := http_server.NewServer(cfg, "constants-consistency-test")
+	s, err := http_server.NewServer(cfg, "constants-consistency-test")
+	if err != nil {
+		t.Fatalf("failed to create server: %v", err)
+	}
 	s.SetAccessLogEnabled(false)
 	s.Start()
 	defer s.Shutdown()
@@ -475,4 +485,3 @@ func TestConstantsAPI_ContentConsistency(t *testing.T) {
 		})
 	}
 }
-

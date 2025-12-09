@@ -124,7 +124,11 @@ func runHttpServer() {
 	}
 
 	// 初始化服务器
-	s := http_server.NewServer(cfg)
+	s, err := http_server.NewServer(cfg)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Failed to init server: %v\n", err)
+		os.Exit(1)
+	}
 
 	// 启动服务器 (Run 会阻塞直到收到停止信号)
 	s.Run()
