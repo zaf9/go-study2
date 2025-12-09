@@ -29,6 +29,11 @@ func RegisterRoutes(s *ghttp.Server) {
 		// Constants 内容
 		group.ALL("/topic/constants/:subtopic", h.GetConstantsContent)
 
+		// Variables 菜单
+		group.ALL("/topic/variables", h.GetVariablesMenu)
+		// Variables 内容
+		group.ALL("/topic/variables/:subtopic", h.GetVariableContent)
+
 		// 后续路由将在其他 User Story 中添加
 	})
 }

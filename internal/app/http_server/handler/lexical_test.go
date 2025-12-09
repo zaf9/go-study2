@@ -292,4 +292,3 @@ func TestSendLexicalMenuHTML(t *testing.T) {
 		t.AssertIN("Test Chapter", body)
 	})
 }
-

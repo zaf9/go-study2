@@ -35,12 +35,12 @@ func TestLogger(t *testing.T) {
 		startTime := time.Now()
 		resp, err := client.Get(nil, "/test/hello")
 		duration := time.Since(startTime)
-		
+
 		t.AssertNil(err)
 		defer resp.Close()
 		t.Assert(resp.StatusCode, 200)
 		t.Assert(resp.ReadAllString(), "Hello World")
-		
+
 		// 验证请求已处理（中间件会记录日志，但这里主要验证功能正常）
 		// 由于日志是异步的，我们主要验证请求成功处理
 		t.Assert(duration < time.Second, true)
@@ -74,4 +74,3 @@ func TestLoggerWithError(t *testing.T) {
 		t.Assert(resp.StatusCode, 500)
 	})
 }
-

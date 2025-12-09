@@ -106,7 +106,7 @@ git clone https://github.com/yourusername/go-study2.git
 # 进入项目目录
 cd go-study2
 
-# 运行程序
+# 运行程序（主菜单含 Lexical / Constants / Variables）
 go run main.go
 ```
 
@@ -117,12 +117,14 @@ Go Lexical Elements Learning Tool
 ---------------------------------
 Please select a topic to study:
 0. Lexical elements
+1. Constants
+2. Variables
 q. Quit
 
 Enter your choice: 
 ```
 
-输入 `0` 即可开始学习词法元素！
+输入 `0/1/2` 进入对应章节学习。
 
 ### 方式二：HTTP服务模式 🆕
 
@@ -156,6 +158,8 @@ go run main.go -d
 - **注释章节**: http://localhost:8080/api/v1/topic/lexical_elements/comments?format=html
 - **Constants 菜单**: http://localhost:8080/api/v1/topic/constants?format=html 🆕
 - **布尔常量**: http://localhost:8080/api/v1/topic/constants/boolean?format=html 🆕
+- **Variables 菜单**: http://localhost:8080/api/v1/topic/variables?format=html 🆕
+- **Variables 子主题**: http://localhost:8080/api/v1/topic/variables/storage?format=html 🆕
 
 **API调用（JSON）：**
 
@@ -176,6 +180,18 @@ curl http://localhost:8080/api/v1/topic/constants
 curl http://localhost:8080/api/v1/topic/constants/boolean
 curl http://localhost:8080/api/v1/topic/constants/iota
 curl http://localhost:8080/api/v1/topic/constants/expressions
+
+# 获取 Variables 菜单与子主题内容 🆕
+curl http://localhost:8080/api/v1/topic/variables
+curl http://localhost:8080/api/v1/topic/variables/storage
+curl http://localhost:8080/api/v1/topic/variables/static
+curl http://localhost:8080/api/v1/topic/variables/dynamic
+curl http://localhost:8080/api/v1/topic/variables/zero
+
+# 获取 Variables 菜单与子主题内容 🆕
+curl http://localhost:8080/api/v1/topic/variables
+curl http://localhost:8080/api/v1/topic/variables/storage
+curl http://localhost:8080/api/v1/topic/variables/static
 ```
 
 **停止服务：** 按 `Ctrl+C` 优雅关闭
@@ -234,6 +250,7 @@ Go Lexical Elements Learning Tool
 Please select a topic to study:
 0. Lexical elements
 1. Constants
+2. Variables
 q. Quit
 
 Enter your choice: 1

@@ -187,4 +187,3 @@ func TestFormat_EmptyFormat(t *testing.T) {
 		t.Assert(result["format"], "json")
 	})
 }
-

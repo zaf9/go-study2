@@ -8,6 +8,7 @@ import (
 	"go-study2/internal/app/http_server"
 	"go-study2/internal/app/lexical_elements"
 	"go-study2/internal/config"
+	varcli "go-study2/src/learning/variables/cli"
 	"io"
 	"os"
 	"sort"
@@ -54,6 +55,10 @@ func NewApp(stdin io.Reader, stdout, stderr io.Writer) *App {
 			"1": {
 				Description: "Constants",
 				Action:      constants.DisplayMenu,
+			},
+			"2": {
+				Description: "Variables",
+				Action:      varcli.DisplayMenu,
 			},
 			// Add new items here
 		},

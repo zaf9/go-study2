@@ -85,4 +85,3 @@ func TestRegisterRoutesWithMiddleware(t *testing.T) {
 		t.AssertIN("text/html", resp2.Header.Get("Content-Type"))
 	})
 }
-

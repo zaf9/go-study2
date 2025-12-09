@@ -45,11 +45,12 @@ func TestGetTopics_JSON(t *testing.T) {
 		// 验证数据结构
 		dataMap := result.Data.(map[string]interface{})
 		topics := dataMap["topics"].([]interface{})
-		t.Assert(len(topics), 2)
+		t.Assert(len(topics), 3)
 
 		// 验证包含特定主题
 		foundLexical := false
 		foundConstants := false
+		foundVariables := false
 		for _, topic := range topics {
 			topicMap := topic.(map[string]interface{})
 			if topicMap["id"] == "lexical_elements" {
@@ -58,9 +59,13 @@ func TestGetTopics_JSON(t *testing.T) {
 			if topicMap["id"] == "constants" {
 				foundConstants = true
 			}
+			if topicMap["id"] == "variables" {
+				foundVariables = true
+			}
 		}
 		t.Assert(foundLexical, true)
 		t.Assert(foundConstants, true)
+		t.Assert(foundVariables, true)
 	})
 }
 
@@ -93,6 +98,7 @@ func TestGetTopics_HTML(t *testing.T) {
 		t.AssertIN("Available Learning Topics", body)
 		t.AssertIN("Lexical Elements", body)
 		t.AssertIN("Constants", body)
+		t.AssertIN("Variables", body)
 		t.AssertIN("<!DOCTYPE html>", body)
 	})
 }
@@ -200,4 +206,3 @@ func TestSendTopicsHTML(t *testing.T) {
 		t.AssertIN("Description 1", body)
 	})
 }
-

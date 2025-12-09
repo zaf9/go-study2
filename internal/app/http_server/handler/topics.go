@@ -21,6 +21,11 @@ func (h *Handler) GetTopics(r *ghttp.Request) {
 			Title:       "Constants",
 			Description: "Go 语言常量学习 (Constants)",
 		},
+		{
+			ID:          "variables",
+			Title:       "Variables",
+			Description: "Go 语言变量学习 (Variables)",
+		},
 	}
 
 	// 2. 获取格式 (由中间件设置)
