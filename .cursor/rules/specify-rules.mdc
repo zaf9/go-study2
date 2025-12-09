@@ -1,0 +1,29 @@
+﻿# go-study2 Development Guidelines
+
+Auto-generated from all feature plans. Last updated: 2025-12-09
+
+## Active Technologies
+
+- Go 1.24.5 + 标准库（fmt/strings/encoding/json/testing），GoFrame v2.9.5（沿用现有 HTTP 服务器） (007-go-types-study)
+
+## Project Structure
+
+```text
+src/
+tests/
+```
+
+## Commands
+
+# Add commands for Go 1.24.5
+
+## Code Style
+
+Go 1.24.5: Follow standard conventions
+
+## Recent Changes
+
+- 007-go-types-study: Added Go 1.24.5 + 标准库（fmt/strings/encoding/json/testing），GoFrame v2.9.5（沿用现有 HTTP 服务器）
+
+<!-- MANUAL ADDITIONS START -->
+<!-- MANUAL ADDITIONS END -->
