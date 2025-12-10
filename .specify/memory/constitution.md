@@ -1,14 +1,16 @@
 <!--
 Sync Impact Report:
-- Version change: 1.0.0 -> 1.1.0
-- Added sections:
-  - Principle XX: Hierarchical Chapter Learning Structure
+- Version change: 1.1.0 -> 1.1.0 (无宪法内容变更,仅模板同步)
+- Added sections: none
 - Removed sections: none
 - Modified sections: none
-- Impact: 新增 Principle 规范了 Go 语言规范章节学习内容的组织结构,
-  要求每个章节创建独立 package,每个子章节对应一个 .go 文件,
-  支持多层次的子 package 结构,确保学习内容的层次化和规范化组织。
-- Templates requiring updates: none
+- Templates requiring updates:
+  ✅ .specify/templates/plan-template.md
+  ✅ .specify/templates/spec-template.md
+  ✅ .specify/templates/tasks-template.md
+  ✅ .specify/templates/checklist-template.md
+  ⚠ .specify/templates/commands/ (目录不存在,暂无法核对)
+- Follow-up TODOs: none
 -->
 # go-study2 Constitution
 

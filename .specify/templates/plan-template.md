@@ -31,12 +31,20 @@
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-- **Principle I (Simplicity):** Is the proposed approach simple and clear for a Go beginner?
-- **Principle II (Comments):** Does the plan account for clear, layered comments?
-- **Principle III (Language):** Is all planned documentation and commenting in Chinese?
-- **Principle IV (Nesting):** Does the design avoid deep logical nesting?
-- **Principle V (YAGNI):** Does the plan avoid premature complexity and stick to current needs?
-- **Principle VI (Testing):** Is there a clear path to achieving >=80% unit test coverage?
+- **Principle I (Simplicity):** 方案是否对 Go 初学者足够简单清晰?
+- **Principle II (层次化注释):** 是否规划了各层职责的中文注释?
+- **Principle III/XIII (中文文档):** 所有注释与用户文档是否全中文?
+- **Principle IV (浅层逻辑):** 设计是否避免深层嵌套,使用早返回/拆分?
+- **Principle V (YAGNI):** 是否拒绝当前不需要的复杂度或模式?
+- **Principle VI/XVI (测试):** 是否有路径达成>=80%覆盖,各包配套 *_test.go/Example?
+- **Principle VII/VIII/XII (单一职责与结构):** 目录/文件/函数职责是否单一且结构可预测,遵循标准 Go 布局(仅根目录 main, 必备 go.mod/go.sum)?
+- **Principle IX (依赖纪律):** 引入外部依赖是否最小且必要?
+- **Principle X (显式错误):** 所有错误处理是否明确,无静默失败?
+- **Principle XIV (包级文档):** 是否为每个包规划 README 说明用途与用法?
+- **Principle XVII (分层菜单):** 如含交互,是否支持多级菜单与清晰返回/错误提示?
+- **Principle XVIII/XXI (CLI/HTTP 一致性):** 学习章节/主题是否同时支持 CLI 与 HTTP,共享内容源,路由与响应结构符合既定格式?
+- **Principle XIX (文档同步):** 方案是否包含完成后更新根 README 及相关文档?
+- **Principle XX (分层章节结构):** Go 规范章节是否按章节->子章节->子包的层次化结构规划,文件命名与示例齐备?
 
 ## Project Structure
 

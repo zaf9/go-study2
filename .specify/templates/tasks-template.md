@@ -25,6 +25,15 @@ description: "Task list template for feature implementation"
 - **Mobile**: `api/src/`, `ios/src/` or `android/src/`
 - Paths shown below assume single project - adjust based on plan.md structure
 
+## Constitution Guardrails
+
+- 所有注释与用户文档相关任务必须产出中文内容(Principle III/XIII)。
+- 需规划达到>=80%测试覆盖,各包包含 *_test.go 与示例(Principle VI/XVI)。
+- 目录/文件/函数保持单一职责与可预测结构,遵循标准 Go 布局并补齐包 README(Principle VII/VIII/XII/XIV)。
+- 外部依赖与复杂度最小化,错误处理显式(Principle I/V/IX/X)。
+- 涉及学习章节/菜单/主题时,需交付 CLI+HTTP 双模式且内容源共享,菜单导航/路由/响应符合约定,结构按章节->子章节->子包组织(Principle XVII/XVIII/XX/XXI)。
+- 完成后需包含更新 README 等文档的任务(Principle XIX)。
+
 <!-- 
   ============================================================================
   IMPORTANT: The tasks below are SAMPLE TASKS for illustration purposes only.

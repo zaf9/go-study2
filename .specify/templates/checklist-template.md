@@ -34,10 +34,14 @@
 
 ## Constitution Compliance (Sample)
 
-- [ ] Is unit test coverage at or above 80%?
-- [ ] Are all comments and documentation in Chinese?
-- [ ] Is the code free of deep nesting and premature complexity?
-- [ ] Is the code concise and simple?
+- [ ] 单元测试覆盖率是否>=80%,各包是否有 *_test.go/示例?
+- [ ] 注释与用户文档是否全部为中文?
+- [ ] 设计是否保持简单、浅层逻辑,无过度设计?
+- [ ] 目录/文件/函数是否单一职责且符合标准 Go 布局,包 README 是否补齐?
+- [ ] 外部依赖是否最小且必要,错误处理是否显式?
+- [ ] 若含学习章节/菜单/主题,是否交付 CLI+HTTP 双模式并共享内容源,菜单导航/路由/响应是否符合约定?
+- [ ] Go 规范章节是否按章节->子章节->子包层次组织且示例完善?
+- [ ] 变更完成后是否同步更新 README 等文档?
 
 ## Notes
 

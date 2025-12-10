@@ -10,6 +10,17 @@
 **Status**: Draft  
 **Input**: User description: "$ARGUMENTS"
 
+## Constitution Guardrails
+
+- 所有注释与用户文档必须为中文(Principle III/XIII)。
+- 设计需保持简单、浅层逻辑,避免过度设计(Principle I/IV/V)。
+- 需规划达到>=80%单元测试覆盖,各包配套 *_test.go 与示例(Principle VI/XVI)。
+- 目录/职责需可预测且单一,遵循标准 Go 布局与包 README 说明(Principle VII/VIII/XII/XIV)。
+- 外部依赖需最小且必要,错误处理必须显式(Principle IX/X)。
+- 若涉及章节/菜单/主题,需同时支持 CLI 与 HTTP、共享内容源、遵守菜单导航与路由/响应格式(Principle XVII/XVIII/XXI)。
+- Go 规范章节需按章节->子章节->子包的层次化结构与示例组织(Principle XX)。
+- 完成开发后需同步更新 README 等文档(Principle XIX)。
+
 ## User Scenarios & Testing *(mandatory)*
 
 <!--
