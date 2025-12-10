@@ -92,3 +92,13 @@ func signToken(userID int64, ttl time.Duration) (string, error) {
 	token := jwtlib.NewWithClaims(jwtlib.SigningMethodHS256, claims)
 	return token.SignedString(secretKey)
 }
+
+// AccessTokenTTL 返回当前的访问令牌有效期。
+func AccessTokenTTL() time.Duration {
+	return accessTokenTTL
+}
+
+// RefreshTokenTTL 返回当前的刷新令牌有效期。
+func RefreshTokenTTL() time.Duration {
+	return refreshTokenTTL
+}

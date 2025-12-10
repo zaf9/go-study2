@@ -5,12 +5,17 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"strings"
 
 	"go-study2/internal/config"
 
+	_ "github.com/gogf/gf/contrib/drivers/sqlite/v2"
+	_ "github.com/mattn/go-sqlite3"
+
 	"github.com/gogf/gf/v2/database/gdb"
-	"github.com/gogf/gf/v2/frame/g"
 )
+
+var defaultDB gdb.DB
 
 // Init 建立 SQLite 连接、设置 PRAGMA 并执行迁移。
 func Init(ctx context.Context, cfg config.DatabaseConfig) (gdb.DB, error) {
@@ -23,24 +28,44 @@ func Init(ctx context.Context, cfg config.DatabaseConfig) (gdb.DB, error) {
 		return nil, fmt.Errorf("创建数据目录失败: %w", err)
 	}
 
+	absPath, err := filepath.Abs(cfg.Path)
+	if err != nil {
+		return nil, fmt.Errorf("解析数据库路径失败: %w", err)
+	}
+
 	dbType := cfg.Type
 	if dbType == "" {
-		dbType = "sqlite3"
+		dbType = "sqlite"
 	}
+	if strings.HasPrefix(dbType, "sqlite3") {
+		dbType = "sqlite"
+	}
+	link := fmt.Sprintf("sqlite::@file(%s)", filepath.ToSlash(absPath))
 
 	gdb.SetConfig(gdb.Config{
 		"default": gdb.ConfigGroup{
 			{
 				Type: dbType,
-				Link: cfg.Path,
+				Link: link,
 			},
 		},
 	})
 
-	db := g.DB()
+	db, err := gdb.New(gdb.ConfigNode{
+		Type: dbType,
+		Link: link,
+	})
+	if err != nil {
+		return nil, fmt.Errorf("创建数据库连接失败: %w", err)
+	}
+	defaultDB = db
 
 	for _, pragma := range cfg.Pragmas {
-		if _, err := db.Exec(ctx, pragma); err != nil {
+		stmt := strings.TrimSpace(pragma)
+		if !strings.HasPrefix(strings.ToUpper(stmt), "PRAGMA") {
+			stmt = "PRAGMA " + stmt
+		}
+		if _, err := db.Exec(ctx, stmt); err != nil {
 			return nil, fmt.Errorf("设置 PRAGMA 失败: %w", err)
 		}
 	}
@@ -54,4 +79,9 @@ func Init(ctx context.Context, cfg config.DatabaseConfig) (gdb.DB, error) {
 	}
 
 	return db, nil
+}
+
+// Default 返回通过 Init 初始化的默认数据库实例。
+func Default() gdb.DB {
+	return defaultDB
 }

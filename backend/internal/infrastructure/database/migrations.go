@@ -2,6 +2,7 @@ package database
 
 import (
 	"context"
+	"strings"
 
 	"github.com/gogf/gf/v2/database/gdb"
 )
@@ -16,8 +17,15 @@ func Migrate(ctx context.Context, db gdb.DB) error {
 	}
 
 	for _, stmt := range migrations {
-		if _, err := db.Exec(ctx, stmt); err != nil {
-			return err
+		parts := strings.Split(stmt, ";")
+		for _, sql := range parts {
+			sql = strings.TrimSpace(sql)
+			if sql == "" {
+				continue
+			}
+			if _, err := db.Exec(ctx, sql); err != nil {
+				return err
+			}
 		}
 	}
 

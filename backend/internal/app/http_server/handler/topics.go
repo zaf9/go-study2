@@ -46,7 +46,7 @@ func (h *Handler) GetTopics(r *ghttp.Request) {
 
 func (h *Handler) sendTopicsJSON(r *ghttp.Request, topics []Topic) {
 	response := Response{
-		Code:    0,
+		Code:    20000,
 		Message: "OK",
 		Data: TopicListResponse{
 			Topics: topics,

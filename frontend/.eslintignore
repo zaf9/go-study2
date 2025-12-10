@@ -1,0 +1,9 @@
+# 忽略构建与依赖产物，避免 ESLint 扫描无关文件
+node_modules/
+.next/
+out/
+dist/
+build/
+coverage/
+*.min.js
+

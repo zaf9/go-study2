@@ -1,5 +1,7 @@
 package handler
 
+import "go-study2/internal/domain/user"
+
 // Topic 学习主题
 type Topic struct {
 	ID          string `json:"id"`
@@ -23,7 +25,7 @@ type TopicListResponse struct {
 type LexicalMenuItem struct {
 	ID    int    `json:"id"`
 	Title string `json:"title"`
-	Name  string `json:"name"` // 英文标识符，用于路由
+	Name  string `json:"name"`
 }
 
 // LexicalMenuResponse 词法元素菜单响应
@@ -31,9 +33,19 @@ type LexicalMenuResponse struct {
 	Items []LexicalMenuItem `json:"items"`
 }
 
-// Handler 处理HTTP请求的控制器
-type Handler struct{}
+// Handler 处理 HTTP 请求的控制器，包含需要的领域服务。
+type Handler struct {
+	userService *user.Service
+}
 
+// New 创建默认 Handler。
 func New() *Handler {
 	return &Handler{}
+}
+
+// NewWithUserService 允许注入自定义用户服务，便于测试。
+func NewWithUserService(userSvc *user.Service) *Handler {
+	return &Handler{
+		userService: userSvc,
+	}
 }

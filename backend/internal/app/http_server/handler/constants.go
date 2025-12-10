@@ -47,7 +47,7 @@ func (h *Handler) GetConstantsMenu(r *ghttp.Request) {
 
 func (h *Handler) sendConstantsMenuJSON(r *ghttp.Request, items []LexicalMenuItem) {
 	response := Response{
-		Code:    0,
+		Code:    20000,
 		Message: "OK",
 		Data: LexicalMenuResponse{
 			Items: items,
@@ -109,7 +109,7 @@ func (h *Handler) GetConstantsContent(r *ghttp.Request) {
 	} else {
 		// JSON 响应
 		r.Response.WriteJson(Response{
-			Code:    0,
+			Code:    20000,
 			Message: "OK",
 			Data: map[string]string{
 				"title":   title,

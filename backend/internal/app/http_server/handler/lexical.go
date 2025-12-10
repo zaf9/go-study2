@@ -52,7 +52,7 @@ func (h *Handler) GetLexicalMenu(r *ghttp.Request) {
 
 func (h *Handler) sendLexicalMenuJSON(r *ghttp.Request, items []LexicalMenuItem) {
 	response := Response{
-		Code:    0,
+		Code:    20000,
 		Message: "OK",
 		Data: LexicalMenuResponse{
 			Items: items,
@@ -115,7 +115,7 @@ func (h *Handler) GetLexicalContent(r *ghttp.Request) {
 		// JSON 响应：直接返回字符串内容
 		// 也可以包装在对象中
 		r.Response.WriteJson(Response{
-			Code:    0,
+			Code:    20000,
 			Message: "OK",
 			Data: map[string]string{
 				"title":   title,

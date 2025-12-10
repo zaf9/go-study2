@@ -43,7 +43,7 @@ func TestTypesMenuAndContentContract(t *testing.T) {
 		var result handler.Response
 		err = json.Unmarshal(resp.ReadAll(), &result)
 		t.AssertNil(err)
-		t.Assert(result.Code, 0)
+		t.Assert(result.Code, 20000)
 		items := result.Data.(map[string]interface{})["items"].([]interface{})
 		t.Assert(len(items) >= 12, true)
 		foundIface := false
@@ -64,7 +64,7 @@ func TestTypesMenuAndContentContract(t *testing.T) {
 		var contentResp handler.Response
 		err = json.Unmarshal(resp2.ReadAll(), &contentResp)
 		t.AssertNil(err)
-		t.Assert(contentResp.Code, 0)
+		t.Assert(contentResp.Code, 20000)
 		dataMap := contentResp.Data.(map[string]interface{})
 		t.AssertNE(dataMap["content"], nil)
 		t.AssertNE(dataMap["quiz"], nil)

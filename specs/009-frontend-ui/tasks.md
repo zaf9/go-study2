@@ -91,18 +91,18 @@
 
 ### 后端 - 认证功能
 
-- [ ] T028 [P] [US1] 实现 `backend/internal/domain/user/entity.go` 用户实体定义
-- [ ] T029 [P] [US1] 实现 `backend/internal/domain/user/repository.go` 用户仓储接口
-- [ ] T030 [US1] 实现 `backend/internal/domain/user/service.go` 用户服务（注册/登录/登出逻辑）
-- [ ] T031 [US1] 实现 `backend/internal/infrastructure/repository/user_repo.go` 用户仓储实现
-- [ ] T032 [US1] 实现 `backend/internal/app/http_server/handler/auth.go` 认证 handler（register/login/logout/refresh/profile，支持"记住我"功能）
-- [ ] T032a [US1] 在 `backend/internal/app/http_server/handler/auth.go` 中实现根据"记住我"参数设置 refresh token Cookie 过期时间（勾选=7天，未勾选=会话级）
-- [ ] T033 [US1] 更新 `backend/internal/app/http_server/router.go` 注册认证路由
-- [ ] T034 [P] [US1] 为 `backend/internal/domain/user/service_test.go` 编写单元测试
-- [ ] T035 [P] [US1] 为 `backend/internal/infrastructure/repository/user_repo_test.go` 编写单元测试
-- [ ] T036 [P] [US1] 为 `backend/internal/app/http_server/handler/auth_test.go` 编写单元测试
-- [ ] T037 [US1] 编写 `backend/tests/integration/auth_flow_test.go` 认证流程集成测试
-- [ ] T038 [US1] 编写 `backend/tests/contract/auth_api_test.go` 认证 API 契约测试
+ - [X] T028 [P] [US1] 实现 `backend/internal/domain/user/entity.go` 用户实体定义
+ - [X] T029 [P] [US1] 实现 `backend/internal/domain/user/repository.go` 用户仓储接口
+ - [X] T030 [US1] 实现 `backend/internal/domain/user/service.go` 用户服务（注册/登录/登出逻辑）
+ - [X] T031 [US1] 实现 `backend/internal/infrastructure/repository/user_repo.go` 用户仓储实现
+ - [X] T032 [US1] 实现 `backend/internal/app/http_server/handler/auth.go` 认证 handler（register/login/logout/refresh/profile，支持"记住我"功能）
+ - [X] T032a [US1] 在 `backend/internal/app/http_server/handler/auth.go` 中实现根据"记住我"参数设置 refresh token Cookie 过期时间（勾选=7天，未勾选=会话级）
+ - [X] T033 [US1] 更新 `backend/internal/app/http_server/router.go` 注册认证路由
+ - [X] T034 [P] [US1] 为 `backend/internal/domain/user/service_test.go` 编写单元测试
+ - [X] T035 [P] [US1] 为 `backend/internal/infrastructure/repository/user_repo_test.go` 编写单元测试
+ - [X] T036 [P] [US1] 为 `backend/internal/app/http_server/handler/auth_test.go` 编写单元测试
+ - [X] T037 [US1] 编写 `backend/tests/integration/auth_flow_test.go` 认证流程集成测试
+ - [X] T038 [US1] 编写 `backend/tests/contract/auth_api_test.go` 认证 API 契约测试
 
 ### 前端 - 认证功能
 

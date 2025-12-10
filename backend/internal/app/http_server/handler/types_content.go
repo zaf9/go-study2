@@ -22,7 +22,7 @@ func (h *Handler) GetTypesMenu(r *ghttp.Request) {
 	}
 
 	r.Response.WriteJson(Response{
-		Code:    0,
+		Code:    20000,
 		Message: "OK",
 		Data: LexicalMenuResponse{
 			Items: items,
@@ -69,7 +69,7 @@ func (h *Handler) GetTypesContent(r *ghttp.Request) {
 	}
 
 	r.Response.WriteJson(Response{
-		Code:    0,
+		Code:    20000,
 		Message: "OK",
 		Data: map[string]interface{}{
 			"content": content,
@@ -118,7 +118,7 @@ func (h *Handler) SubmitTypesQuiz(r *ghttp.Request) {
 	}
 
 	r.Response.WriteJson(Response{
-		Code:    0,
+		Code:    20000,
 		Message: "OK",
 		Data:    result,
 	})
@@ -144,7 +144,7 @@ func (h *Handler) SearchTypes(r *ghttp.Request) {
 	}
 
 	r.Response.WriteJson(Response{
-		Code:    0,
+		Code:    20000,
 		Message: "OK",
 		Data: map[string]interface{}{
 			"keyword": keyword,
@@ -288,7 +288,7 @@ func (h *Handler) GetTypesOutline(r *ghttp.Request) {
 	}
 
 	r.Response.WriteJson(Response{
-		Code:    0,
+		Code:    20000,
 		Message: "OK",
 		Data: map[string]interface{}{
 			"title":     overview.Title,

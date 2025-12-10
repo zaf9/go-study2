@@ -16,6 +16,18 @@ func RegisterRoutes(s *ghttp.Server) {
 		// 应用格式转换中间件
 		group.Middleware(middleware.Format)
 
+		// 认证路由（无需 JWT 验证）
+		group.POST("/auth/register", h.Register)
+		group.POST("/auth/login", h.Login)
+		group.POST("/auth/refresh", h.RefreshToken)
+
+		// 需要认证的路由
+		group.Group("/", func(authGroup *ghttp.RouterGroup) {
+			authGroup.Middleware(middleware.Auth)
+			authGroup.GET("/auth/profile", h.GetProfile)
+			authGroup.POST("/auth/logout", h.Logout)
+		})
+
 		// 主题列表
 		group.ALL("/topics", h.GetTopics)
 

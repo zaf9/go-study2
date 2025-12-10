@@ -39,7 +39,7 @@ func TestGetConstantsMenu(t *testing.T) {
 		var result Response
 		err = json.Unmarshal(resp.ReadAll(), &result)
 		t.AssertNil(err)
-		t.Assert(result.Code, 0)
+		t.Assert(result.Code, 20000)
 
 		// 验证数据结构
 		dataMap := result.Data.(map[string]interface{})

@@ -43,7 +43,7 @@ func TestTypesQuizContract(t *testing.T) {
 		var result handler.Response
 		err = json.Unmarshal(resp.ReadAll(), &result)
 		t.AssertNil(err)
-		t.Assert(result.Code, 0)
+		t.Assert(result.Code, 20000)
 		data := result.Data.(map[string]interface{})
 		t.AssertGT(data["score"], 0)
 	})

@@ -39,7 +39,7 @@ func TestGetTopics_JSON(t *testing.T) {
 		var result Response
 		err = json.Unmarshal(resp.ReadAll(), &result)
 		t.AssertNil(err)
-		t.Assert(result.Code, 0)
+		t.Assert(result.Code, 20000)
 		t.Assert(result.Message, "OK")
 
 		// 验证数据结构
@@ -137,7 +137,7 @@ func TestGetTopics_DefaultFormat(t *testing.T) {
 		var result Response
 		err = json.Unmarshal(resp.ReadAll(), &result)
 		t.AssertNil(err)
-		t.Assert(result.Code, 0)
+		t.Assert(result.Code, 20000)
 	})
 }
 
@@ -173,7 +173,7 @@ func TestSendTopicsJSON(t *testing.T) {
 
 		err = json.Unmarshal(resp.ReadAll(), &capturedResponse)
 		t.AssertNil(err)
-		t.Assert(capturedResponse.Code, 0)
+		t.Assert(capturedResponse.Code, 20000)
 		t.Assert(capturedResponse.Message, "OK")
 	})
 }

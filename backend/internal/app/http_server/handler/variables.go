@@ -43,7 +43,7 @@ func (h *Handler) GetVariablesMenu(r *ghttp.Request) {
 
 func (h *Handler) sendVariablesMenuJSON(r *ghttp.Request, items []LexicalMenuItem) {
 	r.Response.WriteJson(Response{
-		Code:    0,
+		Code:    20000,
 		Message: "OK",
 		Data: LexicalMenuResponse{
 			Items: items,
@@ -91,7 +91,7 @@ func (h *Handler) GetVariableContent(r *ghttp.Request) {
 	}
 
 	r.Response.WriteJson(Response{
-		Code:    0,
+		Code:    20000,
 		Message: "OK",
 		Data: map[string]interface{}{
 			"content": content,
