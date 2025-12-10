@@ -106,35 +106,35 @@
 
 ### 前端 - 认证功能
 
-- [ ] T039 [P] [US1] 实现 `frontend/contexts/AuthContext.tsx` 认证上下文
-- [ ] T040 [P] [US1] 实现 `frontend/hooks/useAuth.ts` 认证 Hook
-- [ ] T041 [P] [US1] 实现 `frontend/components/auth/LoginForm.tsx` 登录表单组件（包含"记住我"复选框）
-- [ ] T041a [US1] 在 `frontend/lib/auth.ts` 中实现"记住我"状态管理（传递给登录 API）
-- [ ] T042 [P] [US1] 实现 `frontend/components/auth/RegisterForm.tsx` 注册表单组件
-- [ ] T043 [P] [US1] 实现 `frontend/components/auth/AuthGuard.tsx` 认证路由守卫
-- [ ] T044 [US1] 实现 `frontend/app/(auth)/login/page.tsx` 登录页
-- [ ] T045 [US1] 实现 `frontend/app/(auth)/register/page.tsx` 注册页
-- [ ] T046 [US1] 实现 `frontend/app/(protected)/layout.tsx` 受保护路由 Layout（认证检查）
-- [ ] T047 [P] [US1] 为 `frontend/tests/components/LoginForm.test.tsx` 编写组件测试
-- [ ] T048 [P] [US1] 为 `frontend/tests/components/RegisterForm.test.tsx` 编写组件测试
-- [ ] T049 [P] [US1] 为 `frontend/tests/lib/auth.test.ts` 编写单元测试
+ - [X] T039 [P] [US1] 实现 `frontend/contexts/AuthContext.tsx` 认证上下文
+ - [X] T040 [P] [US1] 实现 `frontend/hooks/useAuth.ts` 认证 Hook
+ - [X] T041 [P] [US1] 实现 `frontend/components/auth/LoginForm.tsx` 登录表单组件（包含"记住我"复选框）
+ - [X] T041a [US1] 在 `frontend/lib/auth.ts` 中实现"记住我"状态管理（传递给登录 API）
+ - [X] T042 [P] [US1] 实现 `frontend/components/auth/RegisterForm.tsx` 注册表单组件
+ - [X] T043 [P] [US1] 实现 `frontend/components/auth/AuthGuard.tsx` 认证路由守卫
+ - [X] T044 [US1] 实现 `frontend/app/(auth)/login/page.tsx` 登录页
+ - [X] T045 [US1] 实现 `frontend/app/(auth)/register/page.tsx` 注册页
+ - [X] T046 [US1] 实现 `frontend/app/(protected)/layout.tsx` 受保护路由 Layout（认证检查）
+ - [X] T047 [P] [US1] 为 `frontend/tests/components/LoginForm.test.tsx` 编写组件测试
+ - [X] T048 [P] [US1] 为 `frontend/tests/components/RegisterForm.test.tsx` 编写组件测试
+ - [X] T049 [P] [US1] 为 `frontend/tests/lib/auth.test.ts` 编写单元测试
 
 ### 前端 - 布局与导航
 
-- [ ] T050 [P] [US1] 实现 `frontend/components/layout/Header.tsx` 页头组件（导航栏+用户菜单）
-- [ ] T051 [P] [US1] 实现 `frontend/components/layout/Footer.tsx` 页脚组件
-- [ ] T052 [P] [US1] 实现 `frontend/components/layout/Sidebar.tsx` 侧边栏组件（移动端折叠）
+ - [X] T050 [P] [US1] 实现 `frontend/components/layout/Header.tsx` 页头组件（导航栏+用户菜单）
+ - [X] T051 [P] [US1] 实现 `frontend/components/layout/Footer.tsx` 页脚组件
+ - [X] T052 [P] [US1] 实现 `frontend/components/layout/Sidebar.tsx` 侧边栏组件（移动端折叠）
 
 ### 前端 - 学习内容展示
 
-- [ ] T053 [P] [US1] 实现 `frontend/components/learning/TopicCard.tsx` 主题卡片组件
-- [ ] T054 [P] [US1] 实现 `frontend/components/learning/ChapterList.tsx` 章节列表组件
-- [ ] T055 [US1] 实现 `frontend/components/learning/ChapterContent.tsx` 章节内容组件（Markdown 渲染 + Prism.js 代码高亮）
-- [ ] T056 [US1] 实现 `frontend/app/(protected)/topics/page.tsx` 主题列表页
-- [ ] T057 [US1] 实现 `frontend/app/(protected)/topics/[topic]/page.tsx` 主题详情/章节列表页
-- [ ] T058 [US1] 实现 `frontend/app/(protected)/topics/[topic]/[chapter]/page.tsx` 章节内容页
-- [ ] T059 [P] [US1] 为 `frontend/tests/components/ChapterContent.test.tsx` 编写组件测试
-- [ ] T060 [P] [US1] 为 `frontend/tests/components/TopicCard.test.tsx` 编写组件测试
+ - [X] T053 [P] [US1] 实现 `frontend/components/learning/TopicCard.tsx` 主题卡片组件
+ - [X] T054 [P] [US1] 实现 `frontend/components/learning/ChapterList.tsx` 章节列表组件
+ - [X] T055 [US1] 实现 `frontend/components/learning/ChapterContent.tsx` 章节内容组件（Markdown 渲染 + Prism.js 代码高亮）
+ - [X] T056 [US1] 实现 `frontend/app/(protected)/topics/page.tsx` 主题列表页
+ - [X] T057 [US1] 实现 `frontend/app/(protected)/topics/[topic]/page.tsx` 主题详情/章节列表页
+ - [X] T058 [US1] 实现 `frontend/app/(protected)/topics/[topic]/[chapter]/page.tsx` 章节内容页
+ - [X] T059 [P] [US1] 为 `frontend/tests/components/ChapterContent.test.tsx` 编写组件测试
+ - [X] T060 [P] [US1] 为 `frontend/tests/components/TopicCard.test.tsx` 编写组件测试
 
 **检查点**: 此时 User Story 1 应完全功能可用且可独立测试
 
