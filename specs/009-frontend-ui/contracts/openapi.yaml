@@ -190,6 +190,19 @@ paths:
       summary: 获取测验历史
       security:
         - bearerAuth: []
+      parameters:
+        - in: query
+          name: from
+          schema:
+            type: string
+            format: date-time
+          description: 可选，起始时间
+        - in: query
+          name: to
+          schema:
+            type: string
+            format: date-time
+          description: 可选，结束时间
       responses:
         '200':
           description: 历史记录
@@ -204,6 +217,18 @@ paths:
         - bearerAuth: []
       parameters:
         - $ref: '#/components/parameters/TopicParam'
+        - in: query
+          name: from
+          schema:
+            type: string
+            format: date-time
+          description: 可选，起始时间
+        - in: query
+          name: to
+          schema:
+            type: string
+            format: date-time
+          description: 可选，结束时间
       responses:
         '200':
           description: 历史记录
@@ -339,6 +364,12 @@ components:
                 wrongIds:
                   type: array
                   items: { type: string }
+                submittedAt:
+                  type: string
+                  format: date-time
+                durationMs:
+                  type: integer
+                  description: 提交耗时毫秒
     QuizHistoryResponse:
       allOf:
         - $ref: '#/components/schemas/ApiResponse'
@@ -356,9 +387,12 @@ components:
           type: string
           minLength: 3
           maxLength: 50
+          pattern: '^[A-Za-z0-9_]{3,50}$'
         password:
           type: string
           minLength: 8
+          pattern: '^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{8,}$'
+          description: 至少包含大写、小写与数字
     LoginRequest:
       type: object
       required: [username, password]
@@ -369,7 +403,7 @@ components:
           type: string
     ProgressCreateRequest:
       type: object
-      required: [topic, chapter]
+      required: [topic, chapter, status]
       properties:
         topic:
           $ref: '#/components/schemas/TopicKey'
@@ -397,8 +431,11 @@ components:
             properties:
               id:
                 type: string
-              choice:
-                type: string
+              choices:
+                type: array
+                items:
+                  type: string
+                description: 单选长度为1，多选长度>1
     TopicKey:
       type: string
       enum: [lexical_elements, constants, variables, types]
@@ -478,6 +515,9 @@ components:
           nullable: true
         score: { type: integer }
         total: { type: integer }
+        durationMs:
+          type: integer
+          description: 本次测验耗时毫秒
         createdAt:
           type: string
           format: date-time

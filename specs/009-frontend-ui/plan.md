@@ -5,7 +5,7 @@
 
 ## Summary
 
-基于 Next.js 14（App Router）+ TypeScript 5 + Ant Design 5 + Tailwind CSS 构建浏览器端 UI，提供注册/登录、主题浏览、章节阅读、学习进度、测验记录等体验，并保持现有 CLI/API 的兼容性；前端静态产物使用 Next.js SSG 导出并由 GoFrame 2.9.5 同端口托管，数据落地 SQLite。
+基于 Next.js 14（App Router）+ TypeScript 5 + Ant Design 5 + Tailwind CSS 构建浏览器端 UI，提供注册/登录（含强校验与友好错误）、主题浏览、章节阅读、学习进度、测验记录等体验，并保持现有 CLI/API 的兼容性；前端静态产物使用 Next.js SSG 导出并由 GoFrame 2.9.5 同端口托管，数据落地 SQLite。
 
 ## Technical Context
 
@@ -15,7 +15,7 @@
 **Testing**: 后端 `go test ./...`；前端 Jest + React Testing Library（SWR 与 Axios mock）；契约测试基于 OpenAPI  
 **Target Platform**: GoFrame HTTP Server (8080) 单进程托管 `/api/*` 与静态文件 `/`；现代桌面/移动浏览器  
 **Project Type**: 全栈 Web（SSG 前端 + Go 后端）  
-**Performance Goals**: 登录后 2 秒内展示主题列表；测验提交 5 秒内返回；首页首屏 JS < 200KB；静态路由分块加载  
+**Performance Goals**: 本迭代无强制性能验收指标，重点在功能完整与错误提示一致性；保持 SSG 与按需加载以控制包体。  
 **Constraints**: 单端口托管、保持 CLI/HTTP 兼容；仅使用 SQLite，不增引其他存储；JWT 7 天过期，access token 内存+localStorage 恢复，refresh token HttpOnly Cookie + `/api/v1/auth/refresh`；依赖最小化且遵循 AntD/Tailwind 约束  
 **Scale/Scope**: 并发 ≤ 50；数据库 < 1GB；单用户记录 < 10MB；核心页面路由 ≤ 7 个
 
