@@ -414,7 +414,11 @@ components:
           enum: [not_started, in_progress, done]
         position:
           type: string
-          description: 可选，滚动或锚点信息
+          description: >
+            可选，JSON 字符串记录位置。格式示例：
+            滚动位置: {"scroll": 1200}
+            锚点位置: {"anchor": "section-3"}
+          example: '{"scroll": 1200}'
     QuizSubmitRequest:
       type: object
       required: [topic, answers]
@@ -487,6 +491,12 @@ components:
           format: date-time
         position:
           type: string
+          description: >
+            JSON 字符串，记录最近位置。格式示例：
+            滚动位置: {"scroll": 1200}
+            锚点位置: {"anchor": "section-3"}
+            混合位置: {"scroll": 1200, "anchor": "section-3"}
+          example: '{"scroll": 1200}'
     QuizItem:
       type: object
       properties:
