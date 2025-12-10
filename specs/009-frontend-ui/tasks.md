@@ -66,18 +66,18 @@
 
 ### 前端基础设施
 
-- [ ] T016 实现 `frontend/lib/api.ts` Axios 实例与请求/响应拦截器
-- [ ] T017 实现 `frontend/lib/auth.ts` token 管理工具（内存+localStorage）
-- [ ] T018 [P] 实现 `frontend/lib/constants.ts` 常量定义
-- [ ] T019 [P] 定义 `frontend/types/api.ts` API 响应类型
-- [ ] T020 [P] 定义 `frontend/types/auth.ts` 认证相关类型
-- [ ] T021 [P] 定义 `frontend/types/learning.ts` 学习相关类型
-- [ ] T022 [P] 定义 `frontend/types/quiz.ts` 测验相关类型
-- [ ] T023 实现 `frontend/app/layout.tsx` 根布局与 AntD ConfigProvider
-- [ ] T024 [P] 实现 `frontend/components/common/ErrorBoundary.tsx` 全局错误边界
-- [ ] T025 [P] 实现 `frontend/components/common/Loading.tsx` 加载状态组件
-- [ ] T026 [P] 实现 `frontend/components/common/ErrorMessage.tsx` 错误提示组件
-- [ ] T027 配置 `frontend/styles/globals.css` 全局样式与 Tailwind 导入
+ - [X] T016 实现 `frontend/lib/api.ts` Axios 实例与请求/响应拦截器
+ - [X] T017 实现 `frontend/lib/auth.ts` token 管理工具（内存+localStorage）
+ - [X] T018 [P] 实现 `frontend/lib/constants.ts` 常量定义
+ - [X] T019 [P] 定义 `frontend/types/api.ts` API 响应类型
+ - [X] T020 [P] 定义 `frontend/types/auth.ts` 认证相关类型
+ - [X] T021 [P] 定义 `frontend/types/learning.ts` 学习相关类型
+ - [X] T022 [P] 定义 `frontend/types/quiz.ts` 测验相关类型
+ - [X] T023 实现 `frontend/app/layout.tsx` 根布局与 AntD ConfigProvider
+ - [X] T024 [P] 实现 `frontend/components/common/ErrorBoundary.tsx` 全局错误边界
+ - [X] T025 [P] 实现 `frontend/components/common/Loading.tsx` 加载状态组件
+ - [X] T026 [P] 实现 `frontend/components/common/ErrorMessage.tsx` 错误提示组件
+ - [X] T027 配置 `frontend/styles/globals.css` 全局样式与 Tailwind 导入
 
 **检查点**: 基础设施就绪 - 用户故事实现现在可以并行开始
 
