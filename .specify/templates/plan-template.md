@@ -31,20 +31,26 @@
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-- **Principle I (Simplicity):** 方案是否对 Go 初学者足够简单清晰?
-- **Principle II (层次化注释):** 是否规划了各层职责的中文注释?
-- **Principle III/XIII (中文文档):** 所有注释与用户文档是否全中文?
-- **Principle IV (浅层逻辑):** 设计是否避免深层嵌套,使用早返回/拆分?
-- **Principle V (YAGNI):** 是否拒绝当前不需要的复杂度或模式?
-- **Principle VI/XVI (测试):** 是否有路径达成>=80%覆盖,各包配套 *_test.go/Example?
-- **Principle VII/VIII/XII (单一职责与结构):** 目录/文件/函数职责是否单一且结构可预测,遵循标准 Go 布局(仅根目录 main, 必备 go.mod/go.sum)?
-- **Principle IX (依赖纪律):** 引入外部依赖是否最小且必要?
-- **Principle X (显式错误):** 所有错误处理是否明确,无静默失败?
-- **Principle XIV (包级文档):** 是否为每个包规划 README 说明用途与用法?
-- **Principle XVII (分层菜单):** 如含交互,是否支持多级菜单与清晰返回/错误提示?
-- **Principle XVIII/XXI (CLI/HTTP 一致性):** 学习章节/主题是否同时支持 CLI 与 HTTP,共享内容源,路由与响应结构符合既定格式?
-- **Principle XIX (文档同步):** 方案是否包含完成后更新根 README 及相关文档?
-- **Principle XX (分层章节结构):** Go 规范章节是否按章节->子章节->子包的层次化结构规划,文件命名与示例齐备?
+- **Principle I (代码质量与可维护性):** 方案是否清晰、可读、单一职责且易测试?
+- **Principle II (显式错误处理):** 是否为所有错误设计明确处理,避免静默失败?
+- **Principle III/XXI/XXXVI (全面测试):** 是否规划覆盖率≥80%,各包具备 *_test.go/示例,前端核心组件同样达标?
+- **Principle IV (单一职责):** 目录/文件/函数职责是否单一且可拆分维护?
+- **Principle V/XV (一致文档与中文要求):** 注释与用户文档是否清晰,后端内容是否全部使用中文?
+- **Principle VI (YAGNI):** 是否拒绝当前不需要的复杂度或模式?
+- **Principle VII (安全优先):** 输入校验、鉴权授权、HTTPS、敏感信息保护是否覆盖到位?
+- **Principle VIII/XVIII (可预测结构):** 是否遵循标准 Go 布局,仅根目录定义 main, go.mod/go.sum 完整?
+- **Principle IX (依赖纪律):** 外部依赖是否最小且必要?
+- **Principle X (性能优化):** 是否考虑关键性能瓶颈(数据库查询/内存/前端渲染与包体积)?
+- **Principle XI (文档同步):** 方案是否包含完成后更新根 README 及相关文档?
+- **Principle XIV (清晰分层注释):** 是否规划各层职责的中文注释?
+- **Principle XVI (浅层逻辑):** 是否避免深层嵌套,采用卫语句与函数拆分?
+- **Principle XVII (一致开发者体验):** 初始化与工作流是否对初学者友好且一致?
+- **Principle XIX (包级 README):** 是否为每个包规划 README 说明用途与用法?
+- **Principle XX (代码质量执行):** 是否计划 go fmt/go vet/golint/go mod tidy 等质量检查?
+- **Principle XXII (分层菜单导航):** 如含交互,是否支持多级菜单、统一编号与清晰返回/错误提示?
+- **Principle XXIII (双学习模式):** 新章节是否同时支持 CLI 与 HTTP,共享内容源?
+- **Principle XXIV (层次化章节结构):** 章节/子章节/子包与文件命名是否按规范组织?
+- **Principle XXV (HTTP/CLI 一致性):** 菜单、路由、响应结构与 Topic 注册是否一致且显式错误处理?
 
 ## Project Structure
 

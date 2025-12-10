@@ -12,14 +12,16 @@
 
 ## Constitution Guardrails
 
-- 所有注释与用户文档必须为中文(Principle III/XIII)。
-- 设计需保持简单、浅层逻辑,避免过度设计(Principle I/IV/V)。
-- 需规划达到>=80%单元测试覆盖,各包配套 *_test.go 与示例(Principle VI/XVI)。
-- 目录/职责需可预测且单一,遵循标准 Go 布局与包 README 说明(Principle VII/VIII/XII/XIV)。
-- 外部依赖需最小且必要,错误处理必须显式(Principle IX/X)。
-- 若涉及章节/菜单/主题,需同时支持 CLI 与 HTTP、共享内容源、遵守菜单导航与路由/响应格式(Principle XVII/XVIII/XXI)。
-- Go 规范章节需按章节->子章节->子包的层次化结构与示例组织(Principle XX)。
-- 完成开发后需同步更新 README 等文档(Principle XIX)。
+- 注释与用户文档需清晰且后端全中文(Principle V/XV)。
+- 方案需保持可维护性与单一职责,避免过度设计并保持浅层逻辑(Principle I/IV/VI/XVI)。
+- 明确错误处理,无静默失败(Principle II)。
+- 规划测试覆盖率≥80%,各包具备 *_test.go 与示例; 前端核心组件同样达标(Principle III/XXI/XXXVI)。
+- 目录/职责可预测且遵循标准 Go 布局,仅根目录 main, go.mod/go.sum 完整,各包需 README 说明(Principle VIII/XVIII/XIX)。
+- 依赖最小且必要(Principle IX)。
+- 安全优先: 输入校验、鉴权、HTTPS、敏感信息保护(Principle VII)。
+- 如涉及章节/菜单/主题,需同时支持 CLI 与 HTTP,共享内容源,菜单导航与路由/响应格式一致且显式错误(Principle XXII/XXIII/XXV)。
+- Go 规范章节需按章节->子章节->子包层次组织,文件命名与示例齐备(Principle XXIV)。
+- 完成后需同步更新 README 等文档(Principle XI)。
 
 ## User Scenarios & Testing *(mandatory)*
 

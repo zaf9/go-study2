@@ -27,12 +27,12 @@ description: "Task list template for feature implementation"
 
 ## Constitution Guardrails
 
-- 所有注释与用户文档相关任务必须产出中文内容(Principle III/XIII)。
-- 需规划达到>=80%测试覆盖,各包包含 *_test.go 与示例(Principle VI/XVI)。
-- 目录/文件/函数保持单一职责与可预测结构,遵循标准 Go 布局并补齐包 README(Principle VII/VIII/XII/XIV)。
-- 外部依赖与复杂度最小化,错误处理显式(Principle I/V/IX/X)。
-- 涉及学习章节/菜单/主题时,需交付 CLI+HTTP 双模式且内容源共享,菜单导航/路由/响应符合约定,结构按章节->子章节->子包组织(Principle XVII/XVIII/XX/XXI)。
-- 完成后需包含更新 README 等文档的任务(Principle XIX)。
+- 所有注释与用户文档相关任务必须产出中文内容,且保持清晰一致(Principle V/XV)。
+- 需规划达到>=80%测试覆盖,各包包含 *_test.go 与示例,前端核心组件同样达标(Principle III/XXI/XXXVI)。
+- 目录/文件/函数保持单一职责与可预测结构,遵循标准 Go 布局(仅根目录 main, go.mod/go.sum 完整)并补齐包 README(Principle IV/VIII/XVIII/XIX)。
+- 外部依赖与复杂度最小化,错误处理显式,避免 YAGNI(Principle II/VI/IX)。
+- 涉及学习章节/菜单/主题时,需交付 CLI+HTTP 双模式且内容源共享,菜单导航/路由/响应符合约定,结构按章节->子章节->子包组织,Topic 注册一致且显式错误处理(Principle XXII/XXIII/XXIV/XXV)。
+- 完成后需包含更新 README 等文档的任务(Principle XI)。
 
 <!-- 
   ============================================================================
