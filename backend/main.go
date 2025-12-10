@@ -4,16 +4,20 @@ import (
 	"bufio"
 	"flag"
 	"fmt"
+	"github.com/gogf/gf/v2/os/gctx"
 	"go-study2/internal/app/constants"
 	"go-study2/internal/app/http_server"
 	"go-study2/internal/app/lexical_elements"
 	"go-study2/internal/config"
+	"go-study2/internal/infrastructure/database"
+	appjwt "go-study2/internal/pkg/jwt"
 	typescli "go-study2/src/learning/types/cli"
 	varcli "go-study2/src/learning/variables/cli"
 	"io"
 	"os"
 	"sort"
 	"strings"
+	"time"
 )
 
 // App represents the application with its I/O streams and menu configuration.
@@ -132,6 +136,21 @@ func runHttpServer() {
 		fmt.Fprintf(os.Stderr, "Failed to load config: %v\n", err)
 		os.Exit(1)
 	}
+
+	// 初始化数据库
+	ctx := gctx.New()
+	if _, err = database.Init(ctx, cfg.Database); err != nil {
+		fmt.Fprintf(os.Stderr, "Failed to init database: %v\n", err)
+		os.Exit(1)
+	}
+
+	// 配置 JWT
+	_ = appjwt.Configure(appjwt.Options{
+		Secret:             cfg.Jwt.Secret,
+		Issuer:             cfg.Jwt.Issuer,
+		AccessTokenExpiry:  time.Duration(cfg.Jwt.AccessTokenExpiry) * time.Second,
+		RefreshTokenExpiry: time.Duration(cfg.Jwt.RefreshTokenExpiry) * time.Second,
+	})
 
 	// 初始化服务器
 	s, err := http_server.NewServer(cfg)

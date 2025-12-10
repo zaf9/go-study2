@@ -5,6 +5,8 @@ import (
 	"crypto/x509"
 	"fmt"
 	"os"
+	"path/filepath"
+	"strings"
 
 	"go-study2/internal/app/http_server/middleware"
 	"go-study2/internal/config"
@@ -28,6 +30,7 @@ func NewServer(cfg *config.Config, names ...string) (*ghttp.Server, error) {
 
 	// 注册全局中间件
 	s.Use(middleware.Logger)
+	s.Use(middleware.Cors)
 
 	// 注册路由
 	RegisterRoutes(s)
@@ -49,6 +52,20 @@ func NewServer(cfg *config.Config, names ...string) (*ghttp.Server, error) {
 	} else {
 		s.SetAddr(fmt.Sprintf("%s:%d", cfg.Server.Host, cfg.Http.Port))
 		g.Log().Infof(gctx.New(), "HTTP 模式已启用，监听地址: %s:%d", cfg.Server.Host, cfg.Http.Port)
+	}
+
+	if cfg.Static.Enabled && cfg.Static.Path != "" {
+		s.SetServerRoot(cfg.Static.Path)
+		s.AddStaticPath("/", cfg.Static.Path)
+		if cfg.Static.SpaFallback {
+			s.BindHandler("/", func(r *ghttp.Request) {
+				if !strings.HasPrefix(r.URL.Path, "/api/") {
+					r.Response.ServeFile(filepath.Join(cfg.Static.Path, "index.html"))
+					return
+				}
+				r.Middleware.Next()
+			})
+		}
 	}
 
 	return s, nil

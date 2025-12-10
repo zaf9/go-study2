@@ -5,7 +5,6 @@ go 1.24.5
 require (
 	github.com/gogf/gf/v2 v2.9.5
 	github.com/golang-jwt/jwt/v5 v5.3.0
-	github.com/mattn/go-sqlite3 v1.14.32
 	golang.org/x/crypto v0.46.0
 )
 

@@ -53,16 +53,16 @@
 
 ### 后端基础设施
 
-- [ ] T006 实现 `backend/internal/infrastructure/database/sqlite.go` 初始化 SQLite 连接与 WAL 模式
-- [ ] T007 实现 `backend/internal/infrastructure/database/migrations.go` 数据库迁移（users/learning_progress/quiz_records/refresh_tokens 表）
-- [ ] T008 [P] 实现 `backend/internal/pkg/jwt/jwt.go` JWT 生成与验证工具
-- [ ] T009 [P] 实现 `backend/internal/pkg/password/password.go` bcrypt 密码哈希与验证
-- [ ] T010 [P] 实现 `backend/internal/app/http_server/middleware/auth.go` JWT 认证中间件
-- [ ] T011 [P] 实现 `backend/internal/app/http_server/middleware/cors.go` CORS 中间件（开发环境）
-- [ ] T012 更新 `backend/main.go` 初始化数据库连接
-- [ ] T013 [P] 为 `backend/internal/pkg/jwt/jwt_test.go` 编写单元测试
-- [ ] T014 [P] 为 `backend/internal/pkg/password/password_test.go` 编写单元测试
-- [ ] T015 [P] 为 `backend/internal/app/http_server/middleware/auth_test.go` 编写单元测试
+ - [X] T006 实现 `backend/internal/infrastructure/database/sqlite.go` 初始化 SQLite 连接与 WAL 模式
+ - [X] T007 实现 `backend/internal/infrastructure/database/migrations.go` 数据库迁移（users/learning_progress/quiz_records/refresh_tokens 表）
+ - [X] T008 [P] 实现 `backend/internal/pkg/jwt/jwt.go` JWT 生成与验证工具
+ - [X] T009 [P] 实现 `backend/internal/pkg/password/password.go` bcrypt 密码哈希与验证
+ - [X] T010 [P] 实现 `backend/internal/app/http_server/middleware/auth.go` JWT 认证中间件
+ - [X] T011 [P] 实现 `backend/internal/app/http_server/middleware/cors.go` CORS 中间件（开发环境）
+ - [X] T012 更新 `backend/main.go` 初始化数据库连接
+ - [X] T013 [P] 为 `backend/internal/pkg/jwt/jwt_test.go` 编写单元测试
+ - [X] T014 [P] 为 `backend/internal/pkg/password/password_test.go` 编写单元测试
+ - [X] T015 [P] 为 `backend/internal/app/http_server/middleware/auth_test.go` 编写单元测试
 
 ### 前端基础设施
 

@@ -15,10 +15,13 @@ import (
 
 // Config 应用配置结构
 type Config struct {
-	Http   HttpConfig   `json:"http"`
-	Https  HttpsConfig  `json:"https"`
-	Server ServerConfig `json:"server"`
-	Logger LoggerConfig `json:"logger"`
+	Http     HttpConfig     `json:"http"`
+	Https    HttpsConfig    `json:"https"`
+	Server   ServerConfig   `json:"server"`
+	Logger   LoggerConfig   `json:"logger"`
+	Database DatabaseConfig `json:"database"`
+	Jwt      JwtConfig      `json:"jwt"`
+	Static   StaticConfig   `json:"static"`
 }
 
 // HttpConfig HTTP 配置
@@ -47,6 +50,31 @@ type LoggerConfig struct {
 	Level  string `json:"level"`
 	Path   string `json:"path"`
 	Stdout bool   `json:"stdout"`
+}
+
+// DatabaseConfig 数据库配置
+type DatabaseConfig struct {
+	Type            string   `json:"type"`
+	Path            string   `json:"path"`
+	MaxOpenConns    int      `json:"maxOpenConns"`
+	MaxIdleConns    int      `json:"maxIdleConns"`
+	ConnMaxLifetime int      `json:"connMaxLifetime"`
+	Pragmas         []string `json:"pragmas"`
+}
+
+// JwtConfig JWT 配置
+type JwtConfig struct {
+	Secret             string `json:"secret"`
+	AccessTokenExpiry  int64  `json:"accessTokenExpiry"`
+	RefreshTokenExpiry int64  `json:"refreshTokenExpiry"`
+	Issuer             string `json:"issuer"`
+}
+
+// StaticConfig 静态资源配置
+type StaticConfig struct {
+	Enabled     bool   `json:"enabled"`
+	Path        string `json:"path"`
+	SpaFallback bool   `json:"spaFallback"`
 }
 
 // Load 加载配置文件（默认读取 configs/config.yaml）
@@ -119,6 +147,19 @@ func Validate(cfg *Config) error {
 		if err := validateCertKeyPair(cfg.Https.CertFile, cfg.Https.KeyFile); err != nil {
 			return err
 		}
+	}
+
+	if cfg.Database.Type != "" || cfg.Database.Path != "" {
+		if cfg.Database.Path == "" {
+			return fmt.Errorf("配置项 database.path 为必填项，请在configs/config.yaml中设置")
+		}
+		if cfg.Database.Type == "" {
+			cfg.Database.Type = "sqlite3"
+		}
+	}
+
+	if cfg.Static.Enabled && cfg.Static.Path == "" {
+		return fmt.Errorf("配置项 static.path 为必填项，请在configs/config.yaml中设置")
 	}
 
 	return nil
