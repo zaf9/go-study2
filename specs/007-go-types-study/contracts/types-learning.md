@@ -1,7 +1,7 @@
 # Contracts: Types 学习模块（CLI / HTTP）
 
 ## CLI 契约
-- 入口：`go run main.go`，主菜单编号 `3` 为 Types。编号从 0 开始，输入 `q` 返回上一层。  
+- 入口：`cd backend && go run main.go`，主菜单编号 `3` 为 Types。编号从 0 开始，输入 `q` 返回上一层。  
 - 子菜单：按顺序列出 `boolean|numeric|string|array|slice|struct|pointer|function|interface|map|channel`。显示格式：`<index>. <title>`。  
 - 内容展示：选择子主题后输出标题、摘要、规则列表（含规则编号/说明）、正反例代码块（含预期输出）、测验题目与答案解析。  
 - 测验：显示题干与编号选项，用户输入选项序号后返回得分、正确答案与解析，可提示重做。  

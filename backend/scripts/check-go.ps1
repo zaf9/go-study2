@@ -2,7 +2,7 @@
 # 用法：
 #   powershell -ExecutionPolicy Bypass -File scripts/check-go.ps1
 # 说明：
-#   - 自动切换到仓库根目录
+#   - 自动切换到后端目录 (backend)
 #   - 仅在目标目录存在时执行 gofmt
 #   - golint 不存在时给出提示但不中断
 

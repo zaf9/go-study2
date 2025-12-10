@@ -32,7 +32,7 @@
 
 ```bash
 # 启动 CLI 交互式学习
-go run main.go
+cd backend && go run main.go
 
 # 在主菜单中选择 "1. Constants"
 # 然后选择具体的子主题编号 (0-11)
@@ -42,7 +42,7 @@ go run main.go
 
 ```bash
 # 启动 HTTP 服务器
-go run main.go -d
+cd backend && go run main.go -d
 
 # 获取 Constants 菜单
 curl http://localhost:8080/api/v1/topic/constants
@@ -106,13 +106,13 @@ constants/
 
 ```bash
 # 运行所有 Constants 测试
-go test ./internal/app/constants/...
+cd backend && go test ./internal/app/constants/...
 
 # 查看测试覆盖率
-go test -cover ./internal/app/constants/...
+cd backend && go test -cover ./internal/app/constants/...
 
 # 生成覆盖率报告
-go test -coverprofile=coverage.out ./internal/app/constants/...
+cd backend && go test -coverprofile=coverage.out ./internal/app/constants/...
 go tool cover -html=coverage.out
 ```
 

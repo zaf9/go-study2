@@ -40,7 +40,7 @@ The project structure is based on the GoFrame standard layout as defined in `pla
 
 **Goal**: As a Go learner, I want to run the application and see a menu of topics so that I can choose what to study.
 
-**Independent Test**: Running `go run main.go` starts the application, displays the main menu, and entering 'q' exits the program correctly.
+**Independent Test**: Running `cd backend && go run main.go` starts the application, displays the main menu, and entering 'q' exits the program correctly.
 
 ### Implementation for User Story 1
 

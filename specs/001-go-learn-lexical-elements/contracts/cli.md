@@ -8,9 +8,9 @@ This document defines the command-line interface (CLI) contract for the Go Lexic
 
 ### Main Entry Point
 
-The application is started by running the `main.go` file.
+The application is started by running the `main.go` file from `backend/`.
 
-**Command**: `go run main.go`
+**Command**: `cd backend && go run main.go`
 
 **Description**: Launches the interactive menu for the learning tool.
 

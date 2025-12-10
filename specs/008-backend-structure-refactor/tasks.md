@@ -17,8 +17,8 @@
 
 **Purpose**: 为迁移做最小准备，不引入新目录（除计划中的 backend/ 骨架）。
 
-- [ ] T001 检查根构建入口 `./build.bat` 是否存在，记录可用构建命令到 `specs/008-backend-structure-refactor/quickstart.md`（若文件后续生成）
-- [ ] T002 [P] 在 `backend/` 创建目录骨架（api/application/conf/crossdomain/domain/infra/internal/pkg/script/types），仅当不存在时创建
+- [x] T001 检查根构建入口 `./build.bat` 是否存在，记录可用构建命令到 `specs/008-backend-structure-refactor/quickstart.md`（若文件后续生成）
+- [x] T002 [P] 在 `backend/` 创建目录骨架（api/application/conf/crossdomain/domain/infra/internal/pkg/script/types），仅当不存在时创建
 
 ---
 
@@ -26,8 +26,8 @@
 
 **Purpose**: 梳理需迁移的文件与路径引用，形成可执行清单。
 
-- [ ] T003 [P] 清点当前后端源码与配置清单，输出到 `specs/008-backend-structure-refactor/research.md`
-- [ ] T004 [P] 列出脚本与配置中的路径引用（如 `scripts/*`, `Dockerfile`, `build.sh`），记录到 `specs/008-backend-structure-refactor/research.md`
+- [x] T003 [P] 清点当前后端源码与配置清单，输出到 `specs/008-backend-structure-refactor/research.md`
+- [x] T004 [P] 列出脚本与配置中的路径引用（如 `scripts/*`, `Dockerfile`, `build.sh`），记录到 `specs/008-backend-structure-refactor/research.md`
 
 ---
 
@@ -38,15 +38,15 @@
 
 ### Tests for User Story 1 (MANDATORY)
 
-- [ ] T005 [P] [US1] 迁移后在 `backend/` 运行 `go test ./...`，记录结果到 `specs/008-backend-structure-refactor/quickstart.md`
-- [ ] T006 [P] [US1] 迁移后从仓库根执行 `./build.bat`（若不存在则使用通用构建命令），记录结果到 `specs/008-backend-structure-refactor/quickstart.md`
+- [x] T005 [P] [US1] 迁移后在 `backend/` 运行 `go test ./...`，记录结果到 `specs/008-backend-structure-refactor/quickstart.md`
+- [x] T006 [P] [US1] 迁移后从仓库根执行 `./build.bat`（若不存在则使用通用构建命令），记录结果到 `specs/008-backend-structure-refactor/quickstart.md`
 
 ### Implementation for User Story 1
 
-- [ ] T007 [US1] 将后端源码、配置、`Dockerfile`、`build.sh` 等迁移至 `backend/`，保持原有相对结构
-- [ ] T008 [US1] 更新后端脚本与配置中的路径引用（如 `backend/script/*`, `backend/Dockerfile` 等），确保指向新目录
-- [ ] T009 [US1] 在 `backend/go.mod` 校验模块路径与依赖，执行 `go mod tidy`
-- [ ] T010 [US1] 清理仓库根遗留的后端源码/配置重复文件，确认根仅保留 `backend/` 与预留的 `frontend/`
+- [x] T007 [US1] 将后端源码、配置、`Dockerfile`、`build.sh` 等迁移至 `backend/`，保持原有相对结构
+- [x] T008 [US1] 更新后端脚本与配置中的路径引用（如 `backend/script/*`, `backend/Dockerfile` 等），确保指向新目录
+- [x] T009 [US1] 在 `backend/go.mod` 校验模块路径与依赖，执行 `go mod tidy`
+- [x] T010 [US1] 清理仓库根遗留的后端源码/配置重复文件，确认根仅保留 `backend/` 与预留的 `frontend/`
 
 **Checkpoint**: User Story 1 可独立构建与测试。
 
@@ -59,13 +59,13 @@
 
 ### Tests for User Story 2 (MANDATORY)
 
-- [ ] T011 [P] [US2] 按更新后的根 `README.md` 指引执行一次后端构建/运行，记录验证到 `specs/008-backend-structure-refactor/quickstart.md`
+- [x] T011 [P] [US2] 按更新后的根 `README.md` 指引执行一次后端构建/运行，记录验证到 `specs/008-backend-structure-refactor/quickstart.md`
 
 ### Implementation for User Story 2
 
-- [ ] T012 [US2] 重写 `backend/README.md`，补充后端架构与主要 API 说明
-- [ ] T013 [US2] 更新根 `README.md` 中的目录结构与后端路径描述，保持其他内容不变
-- [ ] T014 [P] [US2] 若 `docs/` 目录存在，更新其中的目录结构示意与后端路径说明
+- [x] T012 [US2] 重写 `backend/README.md`，补充后端架构与主要 API 说明
+- [x] T013 [US2] 更新根 `README.md` 中的目录结构与后端路径描述，保持其他内容不变
+- [x] T014 [P] [US2] 若 `docs/` 目录存在，更新其中的目录结构示意与后端路径说明
 
 **Checkpoint**: 文档可指导新人完成后端构建与运行。
 
@@ -78,12 +78,12 @@
 
 ### Tests for User Story 3 (MANDATORY)
 
-- [ ] T015 [P] [US3] 创建/确认 `frontend/` 占位（必要时添加 `.gitkeep`），确保构建脚本不会误用
-- [ ] T016 [US3] 占位后在 `backend/` 运行 `go test ./...`，确认不受影响
+- [x] T015 [P] [US3] 创建/确认 `frontend/` 占位（必要时添加 `.gitkeep`），确保构建脚本不会误用
+- [x] T016 [US3] 占位后在 `backend/` 运行 `go test ./...`，确认不受影响
 
 ### Implementation for User Story 3
 
-- [ ] T017 [US3] 检查构建/脚本（如 `./build.bat`、`backend/script/*`）对 `frontend/` 的潜在依赖，确保无耦合
+- [x] T017 [US3] 检查构建/脚本（如 `./build.bat`、`backend/script/*`）对 `frontend/` 的潜在依赖，确保无耦合
 
 **Checkpoint**: 预留前端空间且后端流程不受影响。
 
@@ -93,9 +93,9 @@
 
 **Purpose**: 收尾与一致性校验。
 
-- [ ] T018 [P] 扫描并修正残留的旧路径引用（`scripts/`, `docs/`, `Dockerfile` 等）  
-- [ ] T019 [P] 确认新增/更新文档均为中文且同步目录变更（根 `README.md`、`backend/README.md`、若有 `docs/`）  
-- [ ] T020 全量验证：仓库根执行 `./build.bat`（或等效命令）与 `backend/` 下 `go test ./...` 均通过
+- [x] T018 [P] 扫描并修正残留的旧路径引用（`scripts/`, `docs/`, `Dockerfile` 等）  
+- [x] T019 [P] 确认新增/更新文档均为中文且同步目录变更（根 `README.md`、`backend/README.md`、若有 `docs/`）  
+- [x] T020 全量验证：仓库根执行 `./build.bat`（或等效命令）与 `backend/` 下 `go test ./...` 均通过
 
 ---
 

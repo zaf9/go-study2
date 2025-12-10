@@ -10,19 +10,20 @@
 
 ## 启动应用
 
-在项目根目录运行：
+在项目根目录运行（需先进入 `backend/`）：
 
 ```bash
+cd backend
 go run main.go
 ```
 
 或者使用已编译的可执行文件：
 
 ```bash
-# Windows
+# Windows（在 backend 目录执行）
 .\go-study2.exe
 
-# Linux/macOS
+# Linux/macOS（在 backend 目录执行）
 ./go-study2
 ```
 

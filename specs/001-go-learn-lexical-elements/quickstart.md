@@ -19,9 +19,10 @@ cd go-study2
 
 ## 2. Run the Application
 
-Navigate to the project root directory and run the `main.go` file:
+Navigate to the project root directory and run the `main.go` file from `backend/`:
 
 ```bash
+cd backend
 go run main.go
 ```
 
@@ -46,4 +47,4 @@ Enter your choice:
 
 ## 4. (Optional) Explore the Code
 
-The core logic and examples for "Lexical elements" are located in the `internal/app/lexical_elements` package. Each sub-topic (e.g., Comments, Keywords) will have its own `.go` file containing examples and explanations.
+The core logic and examples for "Lexical elements" are located in the `backend/internal/app/lexical_elements` package. Each sub-topic (e.g., Comments, Keywords) will have its own `.go` file containing examples and explanations.

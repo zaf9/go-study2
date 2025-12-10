@@ -7,16 +7,16 @@
 ### 1. 生成自签名证书
 
 ```bash
-# 创建证书目录
-mkdir -p configs/certs
+# 创建证书目录（在仓库根执行）
+mkdir -p backend/configs/certs
 
 # 生成私钥和自签名证书（有效期 365 天）
-openssl req -x509 -newkey rsa:4096 -keyout configs/certs/server.key -out configs/certs/server.crt -days 365 -nodes -subj "/CN=localhost"
+openssl req -x509 -newkey rsa:4096 -keyout backend/configs/certs/server.key -out backend/configs/certs/server.crt -days 365 -nodes -subj "/CN=localhost"
 ```
 
 ### 2. 修改配置文件
 
-编辑 `configs/config.yaml`，添加 HTTPS 配置：
+编辑 `backend/configs/config.yaml`，添加 HTTPS 配置：
 
 ```yaml
 http:
@@ -36,6 +36,7 @@ server:
 ### 3. 启动服务
 
 ```bash
+cd backend
 go run main.go
 ```
 
@@ -53,7 +54,7 @@ curl -k https://localhost:8443/api/v1/topics
 
 ## 切换回 HTTP 模式
 
-修改 `configs/config.yaml`：
+修改 `backend/configs/config.yaml`：
 
 ```yaml
 http:

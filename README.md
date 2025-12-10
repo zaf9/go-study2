@@ -103,8 +103,8 @@
 # 克隆仓库
 git clone https://github.com/yourusername/go-study2.git
 
-# 进入项目目录
-cd go-study2
+# 进入项目目录并切换到后端
+cd go-study2/backend
 
 # 运行程序（主菜单含 Lexical / Constants / Variables / Types）
 go run main.go
@@ -134,10 +134,10 @@ Enter your choice:
 ```bash
 # 1. 克隆仓库（如果尚未克隆）
 git clone https://github.com/yourusername/go-study2.git
-cd go-study2
+cd go-study2/backend
 
 # 2. 确保配置文件存在（项目已包含默认配置）
-# config.yaml 已配置好，默认端口 8080
+# config.yaml 已配置好，默认端口 8080（位于 backend/configs/config.yaml）
 
 # 3. 启动HTTP服务
 go run main.go -d
@@ -229,7 +229,7 @@ curl -X POST "http://localhost:8080/api/v1/topic/types/quiz/submit" \
 
 ```bash
 git clone https://github.com/yourusername/go-study2.git
-cd go-study2
+cd go-study2/backend
 go run main.go
 ```
 
@@ -237,7 +237,7 @@ go run main.go
 
 ```bash
 git clone https://github.com/yourusername/go-study2.git
-cd go-study2
+cd go-study2/backend
 go build -o go-study2
 ./go-study2  # Linux/macOS
 # 或
@@ -261,7 +261,7 @@ go install github.com/yourusername/go-study2@latest
 
 ### 基本使用流程
 
-1. **启动程序**：运行 `go run main.go` 或编译后的可执行文件
+1. **启动程序**：进入 `backend/` 运行 `go run main.go` 或编译后的可执行文件
 2. **选择主题**：在主菜单中输入 `0` 选择"词法元素"或 `1` 选择"Constants"
 3. **浏览子主题**：在子菜单中选择具体的主题（如注释、布尔常量、iota等）
 4. **查看示例**：程序会显示该主题的代码示例和详细解释
@@ -306,9 +306,9 @@ q. 返回上级菜单
 
 ```bash
 # 使用 -d 或 --daemon 参数启动
-go run main.go -d
+cd backend && go run main.go -d
 # 或
-go run main.go --daemon
+cd backend && go run main.go --daemon
 ```
 
 #### API端点说明
@@ -470,82 +470,27 @@ func main() {
 
 ```
 go-study2/
-├── main.go                          # 主入口文件，支持CLI和HTTP两种模式
-├── main_test.go                     # 主程序测试文件
-├── config.yaml                      # HTTP服务配置文件 🆕
-├── go.mod                           # Go模块依赖管理
-├── go.sum                           # 依赖校验文件
-├── internal/                        # 内部包（不对外暴露）
-│   ├── config/                      # 配置管理模块 🆕
-│   │   ├── config.go                # 配置加载和验证
-│   │   └── config_test.go           # 配置测试
-│   └── app/
-│       ├── lexical_elements/        # 词法元素学习模块
-│       │   ├── comments.go          # 注释相关示例
-│       │   ├── tokens.go            # 标记相关示例
-│       │   ├── semicolons.go        # 分号规则示例
-│       │   ├── identifiers.go       # 标识符示例
-│       │   ├── keywords.go          # 关键字示例
-│       │   ├── operators.go         # 运算符示例
-│       │   ├── integers.go          # 整数字面量示例
-│       │   ├── floats.go            # 浮点数字面量示例
-│       │   ├── imaginary.go         # 虚数字面量示例
-│       │   ├── runes.go             # 字符字面量示例
-│       │   ├── strings.go           # 字符串字面量示例
-│       │   ├── lexical_elements.go  # 词法元素菜单逻辑
-│       │   └── *_test.go            # 各模块测试文件
-│       ├── constants/                # 常量学习模块 🆕
-│       │   ├── constants.go         # 常量模块主入口
-│       │   ├── boolean.go           # 布尔常量
-│       │   ├── rune.go              # 符文常量
-│       │   ├── integer.go           # 整数常量
-│       │   ├── floating_point.go    # 浮点常量
-│       │   ├── complex.go           # 复数常量
-│       │   ├── string.go           # 字符串常量
-│       │   ├── expressions.go      # 常量表达式
-│       │   ├── typed_untyped.go    # 类型化/无类型化常量
-│       │   ├── conversions.go      # 类型转换
-│       │   ├── builtin_functions.go # 内置函数
-│       │   ├── iota.go             # iota 特性
-│       │   ├── implementation_restrictions.go # 实现限制
-│       │   └── *_test.go           # 各模块测试文件
-│       └── http_server/             # HTTP服务模块 🆕
-│           ├── server.go            # HTTP服务器初始化
-│           ├── router.go            # 路由注册
-│           ├── middleware/          # 中间件
-│           │   ├── logger.go        # 请求日志中间件
-│           │   └── format.go        # 响应格式中间件
-│           └── handler/             # HTTP处理器
-│               ├── types.go         # 数据类型定义
-│               ├── common.go        # 公共HTML样式
-│               ├── topics.go        # 主题列表处理器
-│               ├── lexical.go       # 词法元素处理器
-│               └── constants.go     # 常量模块处理器 🆕
-├── tests/                           # 测试目录 🆕
-│   ├── unit/                        # 单元测试
-│   │   ├── config_test.go           # 配置单元测试
-│   │   └── lexical_content_test.go  # 内容生成测试
-│   └── integration/                 # 集成测试
-│       ├── http_mode_test.go        # HTTP模式集成测试
-│       └── content_consistency_test.go  # 内容一致性测试
-├── specs/                           # 功能规格说明
-│   ├── 001-go-learn-lexical-elements/
-│   ├── 002-lexical-menu-structure/
-│   └── 003-http-learning-mode/      # HTTP学习模式规格 🆕
-├── doc/                             # 文档目录
-│   ├── README模板.md
-│   ├── Go开发工具生态全景图.md
-│   └── The Go-1.24 Programming Language Specification.md
-├── .specify/                        # 项目规范和模板
-├── .agent/                          # AI辅助开发工作流
-└── README.md                        # 本文件
+├── backend/                         # 后端主目录
+│   ├── go.mod / go.sum              # Go 模块定义与依赖
+│   ├── main.go / main_test.go       # 主入口与测试
+│   ├── configs/                     # 配置（含 config.yaml、certs/）
+│   ├── internal/                    # 内部实现（config、app/lexical_elements、app/constants、app/http_server）
+│   ├── src/                         # 学习内容与 CLI/HTTP 复用逻辑
+│   ├── tests/                       # unit / integration / contract 测试
+│   ├── scripts/                     # 工具脚本（check-go.ps1）
+│   ├── doc/ / docs/                 # 文档材料、quickstart
+│   └── README.md                    # 后端架构与 API 说明
+├── specs/                           # 功能规格、计划、任务
+├── .specify/                        # 规范与模板
+├── .github/                         # GitHub 配置
+└── README.md                        # 本文件（根级说明）
 ```
 
 **目录说明：**
 
-- `internal/app/lexical_elements/`: 词法元素学习模块，每个文件对应一个词法元素子主题
-- `internal/app/constants/`: 常量学习模块 🆕，包含12个常量相关子主题
-- `internal/app/http_server/`: HTTP服务实现，包含服务器、路由、中间件和处理器
+- `backend/internal/app/lexical_elements/`: 词法元素学习模块，每个文件对应一个词法元素子主题
+- `backend/internal/app/constants/`: 常量学习模块，包含12个常量相关子主题
+- `backend/internal/app/http_server/`: HTTP服务实现，包含服务器、路由、中间件和处理器
 - `internal/config/`: 配置文件加载和验证逻辑
 - `tests/`: 完整的测试套件，包括单元测试和集成测试
 - `specs/`: 使用SpecKit方法论管理的功能规格文档
@@ -667,7 +612,7 @@ func RegisterRoutes(s *ghttp.Server)
 ```bash
 # 克隆仓库
 git clone https://github.com/yourusername/go-study2.git
-cd go-study2
+cd go-study2/backend
 
 # 安装依赖（如果有）
 go mod download

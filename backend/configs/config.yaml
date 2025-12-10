@@ -4,7 +4,7 @@ http:
 
 # HTTPS 配置（开启后将禁用 HTTP 监听）
 https:
-  enabled: false                    # 默认关闭 HTTPS，测试与开发仅使用 HTTP
+  enabled: true                    # 默认关闭 HTTPS，测试与开发仅使用 HTTP
   port: 8443                        # 如需启用，请补充证书文件后再切换
   certFile: "./configs/certs/server.crt"   # 证书路径（支持相对/绝对）
   keyFile: "./configs/certs/server.key"    # 私钥路径（支持相对/绝对）
