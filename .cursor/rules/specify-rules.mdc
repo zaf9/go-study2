@@ -3,6 +3,8 @@
 Auto-generated from all feature plans. Last updated: 2025-12-09
 
 ## Active Technologies
+- 前端 Next.js 14（React 18, TypeScript 5）；后端 Go 1.24.5 + GoFrame v2.9.5 + 前端 Ant Design 5、Tailwind CSS、SWR、Axios、Prism.js（按需语言包）；后端 GoFrame ORM (gdb)、JWT、中间件、bcrypt (009-frontend-ui)
+- SQLite3（文件路径 `backend/data/gostudy.db`，启用 WAL，自动迁移） (009-frontend-ui)
 
 - Go 1.24.5 + 标准库（fmt/strings/encoding/json/testing），GoFrame v2.9.5（沿用现有 HTTP 服务器） (007-go-types-study)
 
@@ -22,6 +24,7 @@ tests/
 Go 1.24.5: Follow standard conventions
 
 ## Recent Changes
+- 009-frontend-ui: Added 前端 Next.js 14（React 18, TypeScript 5）；后端 Go 1.24.5 + GoFrame v2.9.5 + 前端 Ant Design 5、Tailwind CSS、SWR、Axios、Prism.js（按需语言包）；后端 GoFrame ORM (gdb)、JWT、中间件、bcrypt
 
 - 007-go-types-study: Added Go 1.24.5 + 标准库（fmt/strings/encoding/json/testing），GoFrame v2.9.5（沿用现有 HTTP 服务器）
 

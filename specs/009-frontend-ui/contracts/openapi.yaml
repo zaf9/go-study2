@@ -1,0 +1,491 @@
+openapi: 3.0.3
+info:
+  title: Go-Study2 前端 UI 接口
+  version: 1.0.0
+  description: >
+    认证、学习进度与测验相关 API。遵循统一响应格式 `{code,message,data}`，
+    成功 code=20000，常见错误码：40001(认证失败)、40002(token 过期)、40004(参数错误)、50001(服务器错误)。
+servers:
+  - url: http://localhost:8080
+paths:
+  /api/v1/auth/register:
+    post:
+      summary: 用户注册
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegisterRequest'
+      responses:
+        '200':
+          description: 注册成功
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthResponse'
+  /api/v1/auth/login:
+    post:
+      summary: 用户登录
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+      responses:
+        '200':
+          description: 登录成功
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthResponse'
+  /api/v1/auth/logout:
+    post:
+      summary: 退出登录（失效 refresh token）
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: 成功退出
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+  /api/v1/auth/refresh:
+    post:
+      summary: 刷新 access token（依赖 HttpOnly refresh cookie）
+      responses:
+        '200':
+          description: 返回新 access token
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthRefreshResponse'
+  /api/v1/auth/profile:
+    get:
+      summary: 获取当前用户信息
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: 用户信息
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProfileResponse'
+  /api/v1/topics:
+    get:
+      summary: 主题列表
+      responses:
+        '200':
+          description: 主题数组
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TopicsResponse'
+  /api/v1/topic/{topic}:
+    get:
+      summary: 主题菜单
+      parameters:
+        - $ref: '#/components/parameters/TopicParam'
+      responses:
+        '200':
+          description: 章节菜单
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TopicMenuResponse'
+  /api/v1/topic/{topic}/{chapter}:
+    get:
+      summary: 章节内容
+      parameters:
+        - $ref: '#/components/parameters/TopicParam'
+        - $ref: '#/components/parameters/ChapterParam'
+      responses:
+        '200':
+          description: 章节详情（含 markdown/html 与代码块）
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChapterResponse'
+  /api/v1/progress:
+    get:
+      summary: 获取用户所有学习进度
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: 进度列表
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProgressListResponse'
+    post:
+      summary: 记录学习进度
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProgressCreateRequest'
+      responses:
+        '200':
+          description: 记录成功
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+  /api/v1/progress/{topic}:
+    get:
+      summary: 获取指定主题进度
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/TopicParam'
+      responses:
+        '200':
+          description: 主题进度
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProgressListResponse'
+  /api/v1/quiz/{topic}/{chapter}:
+    get:
+      summary: 获取测验题目
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/TopicParam'
+        - $ref: '#/components/parameters/ChapterParam'
+      responses:
+        '200':
+          description: 题目列表
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QuizResponse'
+  /api/v1/quiz/submit:
+    post:
+      summary: 提交测验
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QuizSubmitRequest'
+      responses:
+        '200':
+          description: 评分结果
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QuizSubmitResponse'
+  /api/v1/quiz/history:
+    get:
+      summary: 获取测验历史
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: 历史记录
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QuizHistoryResponse'
+  /api/v1/quiz/history/{topic}:
+    get:
+      summary: 按主题获取测验历史
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/TopicParam'
+      responses:
+        '200':
+          description: 历史记录
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QuizHistoryResponse'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  parameters:
+    TopicParam:
+      name: topic
+      in: path
+      required: true
+      schema:
+        type: string
+        enum: [lexical_elements, constants, variables, types]
+    ChapterParam:
+      name: chapter
+      in: path
+      required: true
+      schema:
+        type: string
+  schemas:
+    ApiResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          example: 20000
+        message:
+          type: string
+        data: {}
+    AuthResponse:
+      allOf:
+        - $ref: '#/components/schemas/ApiResponse'
+        - type: object
+          properties:
+            data:
+              type: object
+              properties:
+                accessToken:
+                  type: string
+                expiresIn:
+                  type: integer
+                  description: 秒
+    AuthRefreshResponse:
+      allOf:
+        - $ref: '#/components/schemas/ApiResponse'
+        - type: object
+          properties:
+            data:
+              type: object
+              properties:
+                accessToken:
+                  type: string
+                expiresIn:
+                  type: integer
+    ProfileResponse:
+      allOf:
+        - $ref: '#/components/schemas/ApiResponse'
+        - type: object
+          properties:
+            data:
+              $ref: '#/components/schemas/UserProfile'
+    TopicsResponse:
+      allOf:
+        - $ref: '#/components/schemas/ApiResponse'
+        - type: object
+          properties:
+            data:
+              type: array
+              items:
+                $ref: '#/components/schemas/Topic'
+    TopicMenuResponse:
+      allOf:
+        - $ref: '#/components/schemas/ApiResponse'
+        - type: object
+          properties:
+            data:
+              type: object
+              properties:
+                topic:
+                  $ref: '#/components/schemas/Topic'
+                chapters:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Chapter'
+    ChapterResponse:
+      allOf:
+        - $ref: '#/components/schemas/ApiResponse'
+        - type: object
+          properties:
+            data:
+              $ref: '#/components/schemas/ChapterContent'
+    ProgressListResponse:
+      allOf:
+        - $ref: '#/components/schemas/ApiResponse'
+        - type: object
+          properties:
+            data:
+              type: array
+              items:
+                $ref: '#/components/schemas/Progress'
+    QuizResponse:
+      allOf:
+        - $ref: '#/components/schemas/ApiResponse'
+        - type: object
+          properties:
+            data:
+              type: array
+              items:
+                $ref: '#/components/schemas/QuizItem'
+    QuizSubmitResponse:
+      allOf:
+        - $ref: '#/components/schemas/ApiResponse'
+        - type: object
+          properties:
+            data:
+              type: object
+              properties:
+                score:
+                  type: integer
+                total:
+                  type: integer
+                correctIds:
+                  type: array
+                  items: { type: string }
+                wrongIds:
+                  type: array
+                  items: { type: string }
+    QuizHistoryResponse:
+      allOf:
+        - $ref: '#/components/schemas/ApiResponse'
+        - type: object
+          properties:
+            data:
+              type: array
+              items:
+                $ref: '#/components/schemas/QuizRecord'
+    RegisterRequest:
+      type: object
+      required: [username, password]
+      properties:
+        username:
+          type: string
+          minLength: 3
+          maxLength: 50
+        password:
+          type: string
+          minLength: 8
+    LoginRequest:
+      type: object
+      required: [username, password]
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+    ProgressCreateRequest:
+      type: object
+      required: [topic, chapter]
+      properties:
+        topic:
+          $ref: '#/components/schemas/TopicKey'
+        chapter:
+          type: string
+        status:
+          type: string
+          enum: [not_started, in_progress, done]
+        position:
+          type: string
+          description: 可选，滚动或锚点信息
+    QuizSubmitRequest:
+      type: object
+      required: [topic, answers]
+      properties:
+        topic:
+          $ref: '#/components/schemas/TopicKey'
+        chapter:
+          type: string
+          nullable: true
+        answers:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              choice:
+                type: string
+    TopicKey:
+      type: string
+      enum: [lexical_elements, constants, variables, types]
+    Topic:
+      type: object
+      properties:
+        key:
+          $ref: '#/components/schemas/TopicKey'
+        title:
+          type: string
+        summary:
+          type: string
+        chapterCount:
+          type: integer
+    Chapter:
+      type: object
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        order:
+          type: integer
+        summary:
+          type: string
+    ChapterContent:
+      type: object
+      properties:
+        id: { type: string }
+        title: { type: string }
+        content: { type: string, description: markdown/html }
+        codeBlocks:
+          type: array
+          items:
+            type: object
+            properties:
+              language: { type: string }
+              code: { type: string }
+    Progress:
+      type: object
+      properties:
+        topic: { $ref: '#/components/schemas/TopicKey' }
+        chapter: { type: string }
+        status:
+          type: string
+          enum: [not_started, in_progress, done]
+        lastVisit:
+          type: string
+          format: date-time
+        position:
+          type: string
+    QuizItem:
+      type: object
+      properties:
+        id: { type: string }
+        stem: { type: string }
+        options:
+          type: array
+          items:
+            type: object
+            properties:
+              id: { type: string }
+              label: { type: string }
+        multi:
+          type: boolean
+        answer:
+          type: array
+          items: { type: string }
+        explanation: { type: string }
+    QuizRecord:
+      type: object
+      properties:
+        id: { type: integer }
+        topic: { $ref: '#/components/schemas/TopicKey' }
+        chapter:
+          type: string
+          nullable: true
+        score: { type: integer }
+        total: { type: integer }
+        createdAt:
+          type: string
+          format: date-time
+    UserProfile:
+      type: object
+      properties:
+        id:
+          type: integer
+        username:
+          type: string
+
