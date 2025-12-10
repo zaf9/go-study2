@@ -1,6 +1,10 @@
 package handler
 
-import "go-study2/internal/domain/user"
+import (
+	"go-study2/internal/domain/progress"
+	"go-study2/internal/domain/quiz"
+	"go-study2/internal/domain/user"
+)
 
 // Topic 学习主题
 type Topic struct {
@@ -35,7 +39,9 @@ type LexicalMenuResponse struct {
 
 // Handler 处理 HTTP 请求的控制器，包含需要的领域服务。
 type Handler struct {
-	userService *user.Service
+	userService     *user.Service
+	progressService *progress.Service
+	quizService     *quiz.Service
 }
 
 // New 创建默认 Handler。

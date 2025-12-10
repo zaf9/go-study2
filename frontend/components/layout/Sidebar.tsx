@@ -1,7 +1,7 @@
 'use client';
 
 import { Layout, Menu } from "antd";
-import { BookOutlined, HomeOutlined } from "@ant-design/icons";
+import { BookOutlined, HomeOutlined, LineChartOutlined, QuestionCircleOutlined } from "@ant-design/icons";
 import { usePathname, useRouter } from "next/navigation";
 import { useMemo } from "react";
 
@@ -19,6 +19,8 @@ export default function Sidebar({ collapsed, onCollapse }: SidebarProps) {
   const selectedKeys = useMemo(() => {
     if (!pathname) return [];
     if (pathname.startsWith("/topics")) return ["/topics"];
+    if (pathname.startsWith("/progress")) return ["/progress"];
+    if (pathname.startsWith("/quiz")) return ["/quiz"];
     return [pathname];
   }, [pathname]);
 
@@ -28,6 +30,18 @@ export default function Sidebar({ collapsed, onCollapse }: SidebarProps) {
       icon: <BookOutlined />,
       label: "学习主题",
       onClick: () => router.push("/topics"),
+    },
+    {
+      key: "/progress",
+      icon: <LineChartOutlined />,
+      label: "学习进度",
+      onClick: () => router.push("/progress"),
+    },
+    {
+      key: "/quiz",
+      icon: <QuestionCircleOutlined />,
+      label: "章节测验",
+      onClick: () => router.push("/quiz/variables"),
     },
     {
       key: "/",

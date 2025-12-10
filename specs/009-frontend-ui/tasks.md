@@ -148,26 +148,26 @@
 
 ### 后端 - 学习进度功能
 
-- [ ] T061 [P] [US2] 实现 `backend/internal/domain/progress/entity.go` 学习进度实体定义
-- [ ] T062 [P] [US2] 实现 `backend/internal/domain/progress/repository.go` 进度仓储接口
-- [ ] T063 [US2] 实现 `backend/internal/domain/progress/service.go` 进度服务（记录/查询逻辑）
-- [ ] T064 [US2] 实现 `backend/internal/infrastructure/repository/progress_repo.go` 进度仓储实现
-- [ ] T065 [US2] 实现 `backend/internal/app/http_server/handler/progress.go` 进度 handler（获取/记录进度）
-- [ ] T066 [US2] 更新 `backend/internal/app/http_server/router.go` 注册进度路由
-- [ ] T067 [P] [US2] 为 `backend/internal/domain/progress/service_test.go` 编写单元测试
-- [ ] T068 [P] [US2] 为 `backend/internal/infrastructure/repository/progress_repo_test.go` 编写单元测试
-- [ ] T069 [P] [US2] 为 `backend/internal/app/http_server/handler/progress_test.go` 编写单元测试
-- [ ] T070 [US2] 编写 `backend/tests/integration/progress_test.go` 进度记录集成测试
+- [X] T061 [P] [US2] 实现 `backend/internal/domain/progress/entity.go` 学习进度实体定义
+- [X] T062 [P] [US2] 实现 `backend/internal/domain/progress/repository.go` 进度仓储接口
+- [X] T063 [US2] 实现 `backend/internal/domain/progress/service.go` 进度服务（记录/查询逻辑）
+- [X] T064 [US2] 实现 `backend/internal/infrastructure/repository/progress_repo.go` 进度仓储实现
+- [X] T065 [US2] 实现 `backend/internal/app/http_server/handler/progress.go` 进度 handler（获取/记录进度）
+- [X] T066 [US2] 更新 `backend/internal/app/http_server/router.go` 注册进度路由
+- [X] T067 [P] [US2] 为 `backend/internal/domain/progress/service_test.go` 编写单元测试
+- [X] T068 [P] [US2] 为 `backend/internal/infrastructure/repository/progress_repo_test.go` 编写单元测试
+- [X] T069 [P] [US2] 为 `backend/internal/app/http_server/handler/progress_test.go` 编写单元测试
+- [X] T070 [US2] 编写 `backend/tests/integration/progress_test.go` 进度记录集成测试
 
 ### 前端 - 学习进度功能
 
-- [ ] T071 [P] [US2] 实现 `frontend/hooks/useProgress.ts` 进度管理 Hook
-- [ ] T072 [P] [US2] 实现 `frontend/hooks/useScrollPosition.ts` 滚动位置监听 Hook
-- [ ] T073 [P] [US2] 实现 `frontend/components/learning/ProgressBar.tsx` 进度条组件
-- [ ] T074 [US2] 在 `frontend/app/(protected)/topics/[topic]/[chapter]/page.tsx` 集成进度记录功能
-- [ ] T075 [US2] 在 `frontend/app/(protected)/topics/page.tsx` 添加"继续上次学习"入口
-- [ ] T076 [US2] 实现 `frontend/app/(protected)/progress/page.tsx` 学习进度总览页
-- [ ] T077 [P] [US2] 为 `frontend/tests/hooks/useProgress.test.ts` 编写单元测试
+- [X] T071 [P] [US2] 实现 `frontend/hooks/useProgress.ts` 进度管理 Hook
+- [X] T072 [P] [US2] 实现 `frontend/hooks/useScrollPosition.ts` 滚动位置监听 Hook
+- [X] T073 [P] [US2] 实现 `frontend/components/learning/ProgressBar.tsx` 进度条组件
+- [X] T074 [US2] 在 `frontend/app/(protected)/topics/[topic]/[chapter]/page.tsx` 集成进度记录功能
+- [X] T075 [US2] 在 `frontend/app/(protected)/topics/page.tsx` 添加"继续上次学习"入口
+- [X] T076 [US2] 实现 `frontend/app/(protected)/progress/page.tsx` 学习进度总览页
+- [X] T077 [P] [US2] 为 `frontend/tests/hooks/useProgress.test.ts` 编写单元测试
 
 **检查点**: 此时 User Stories 1 和 2 应都能独立工作
 
@@ -181,27 +181,27 @@
 
 ### 后端 - 测验功能
 
-- [ ] T078 [P] [US3] 实现 `backend/internal/domain/quiz/entity.go` 测验记录实体定义
-- [ ] T079 [P] [US3] 实现 `backend/internal/domain/quiz/repository.go` 测验仓储接口
-- [ ] T080 [US3] 实现 `backend/internal/domain/quiz/service.go` 测验服务（获取题目/评分/查询历史）
-- [ ] T081 [US3] 实现 `backend/internal/infrastructure/repository/quiz_repo.go` 测验仓储实现
-- [ ] T082 [US3] 实现 `backend/internal/app/http_server/handler/quiz.go` 测验 handler（获取题目/提交/历史记录）
-- [ ] T083 [US3] 更新 `backend/internal/app/http_server/router.go` 注册测验路由
-- [ ] T084 [P] [US3] 为 `backend/internal/domain/quiz/service_test.go` 编写单元测试
-- [ ] T085 [P] [US3] 为 `backend/internal/infrastructure/repository/quiz_repo_test.go` 编写单元测试
-- [ ] T086 [P] [US3] 为 `backend/internal/app/http_server/handler/quiz_test.go` 编写单元测试
-- [ ] T087 [US3] 编写 `backend/tests/integration/quiz_flow_test.go` 测验流程集成测试
+- [X] T078 [P] [US3] 实现 `backend/internal/domain/quiz/entity.go` 测验记录实体定义
+- [X] T079 [P] [US3] 实现 `backend/internal/domain/quiz/repository.go` 测验仓储接口
+- [X] T080 [US3] 实现 `backend/internal/domain/quiz/service.go` 测验服务（获取题目/评分/查询历史）
+- [X] T081 [US3] 实现 `backend/internal/infrastructure/repository/quiz_repo.go` 测验仓储实现
+- [X] T082 [US3] 实现 `backend/internal/app/http_server/handler/quiz.go` 测验 handler（获取题目/提交/历史记录）
+- [X] T083 [US3] 更新 `backend/internal/app/http_server/router.go` 注册测验路由
+- [X] T084 [P] [US3] 为 `backend/internal/domain/quiz/service_test.go` 编写单元测试
+- [X] T085 [P] [US3] 为 `backend/internal/infrastructure/repository/quiz_repo_test.go` 编写单元测试
+- [X] T086 [P] [US3] 为 `backend/internal/app/http_server/handler/quiz_test.go` 编写单元测试
+- [X] T087 [US3] 编写 `backend/tests/integration/quiz_flow_test.go` 测验流程集成测试
 
 ### 前端 - 测验功能
 
-- [ ] T088 [P] [US3] 实现 `frontend/hooks/useQuiz.ts` 测验管理 Hook
-- [ ] T089 [P] [US3] 实现 `frontend/components/quiz/QuizItem.tsx` 测验题目组件（单选/多选）
-- [ ] T090 [P] [US3] 实现 `frontend/components/quiz/QuizResult.tsx` 测验结果组件
-- [ ] T091 [P] [US3] 实现 `frontend/components/quiz/QuizHistory.tsx` 测验历史列表组件
-- [ ] T092 [US3] 实现 `frontend/app/(protected)/quiz/[topic]/page.tsx` 测验作答页
-- [ ] T093 [US3] 实现 `frontend/app/(protected)/quiz/history/page.tsx` 测验历史记录页
-- [ ] T094 [P] [US3] 为 `frontend/tests/components/QuizItem.test.tsx` 编写组件测试
-- [ ] T095 [P] [US3] 为 `frontend/tests/components/QuizResult.test.tsx` 编写组件测试
+- [X] T088 [P] [US3] 实现 `frontend/hooks/useQuiz.ts` 测验管理 Hook
+- [X] T089 [P] [US3] 实现 `frontend/components/quiz/QuizItem.tsx` 测验题目组件（单选/多选）
+- [X] T090 [P] [US3] 实现 `frontend/components/quiz/QuizResult.tsx` 测验结果组件
+- [X] T091 [P] [US3] 实现 `frontend/components/quiz/QuizHistory.tsx` 测验历史列表组件
+- [X] T092 [US3] 实现 `frontend/app/(protected)/quiz/[topic]/page.tsx` 测验作答页
+- [X] T093 [US3] 实现 `frontend/app/(protected)/quiz/history/page.tsx` 测验历史记录页
+- [X] T094 [P] [US3] 为 `frontend/tests/components/QuizItem.test.tsx` 编写组件测试
+- [X] T095 [P] [US3] 为 `frontend/tests/components/QuizResult.test.tsx` 编写组件测试
 
 **检查点**: 所有用户故事现在应该都能独立功能运行
 

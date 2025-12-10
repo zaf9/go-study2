@@ -26,6 +26,17 @@ func RegisterRoutes(s *ghttp.Server) {
 			authGroup.Middleware(middleware.Auth)
 			authGroup.GET("/auth/profile", h.GetProfile)
 			authGroup.POST("/auth/logout", h.Logout)
+
+			// 学习进度
+			authGroup.GET("/progress", h.GetAllProgress)
+			authGroup.GET("/progress/:topic", h.GetTopicProgress)
+			authGroup.POST("/progress", h.SaveProgress)
+
+			// 测验
+			authGroup.GET("/quiz/:topic/:chapter", h.GetQuiz)
+			authGroup.POST("/quiz/submit", h.SubmitQuiz)
+			authGroup.GET("/quiz/history", h.GetQuizHistory)
+			authGroup.GET("/quiz/history/:topic", h.GetQuizHistory)
 		})
 
 		// 主题列表

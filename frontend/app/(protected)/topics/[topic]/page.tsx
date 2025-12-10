@@ -8,6 +8,7 @@ import Loading from "@/components/common/Loading";
 import ErrorMessage from "@/components/common/ErrorMessage";
 import { fetchChapters } from "@/lib/learning";
 import { ChapterSummary } from "@/types/learning";
+import useProgress from "@/hooks/useProgress";
 
 const { Title, Paragraph } = Typography;
 
@@ -17,6 +18,7 @@ export default function TopicDetailPage({ params }: { params: { topic: string } 
   const { data, error, isLoading } = useSWR<ChapterSummary[]>(["chapters", topicKey], () =>
     fetchChapters(topicKey)
   );
+  const { progress, isLoading: progressLoading } = useProgress(topicKey);
 
   if (isLoading) {
     return <Loading />;
@@ -40,7 +42,7 @@ export default function TopicDetailPage({ params }: { params: { topic: string } 
         <Button onClick={() => router.push("/topics")}>返回主题</Button>
       </div>
       <Space direction="vertical" className="w-full">
-        <ChapterList topicKey={topicKey} chapters={chapters} />
+        <ChapterList topicKey={topicKey} chapters={chapters} progress={progressLoading ? [] : progress} />
       </Space>
     </div>
   );

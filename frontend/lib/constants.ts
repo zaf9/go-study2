@@ -14,5 +14,11 @@ export const API_PATHS = {
   topics: "/topics",
   topicMenu: (topic: string) => `/topic/${topic}`,
   chapterContent: (topic: string, chapter: string) => `/topic/${topic}/${chapter}`,
+  progress: "/progress",
+  progressByTopic: (topic: string) => `/progress/${topic}`,
+  quiz: (topic: string, chapter: string) => `/quiz/${topic}/${chapter}`,
+  quizSubmit: "/quiz/submit",
+  quizHistory: "/quiz/history",
+  quizHistoryByTopic: (topic: string) => `/quiz/history/${topic}`,
 };
 
