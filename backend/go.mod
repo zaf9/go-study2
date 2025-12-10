@@ -2,7 +2,12 @@ module go-study2
 
 go 1.24.5
 
-require github.com/gogf/gf/v2 v2.9.5
+require (
+	github.com/gogf/gf/v2 v2.9.5
+	github.com/golang-jwt/jwt/v5 v5.3.0
+	github.com/mattn/go-sqlite3 v1.14.32
+	golang.org/x/crypto v0.46.0
+)
 
 require (
 	github.com/BurntSushi/toml v1.5.0 // indirect
@@ -28,8 +33,8 @@ require (
 	go.opentelemetry.io/otel/metric v1.38.0 // indirect
 	go.opentelemetry.io/otel/sdk v1.38.0 // indirect
 	go.opentelemetry.io/otel/trace v1.38.0 // indirect
-	golang.org/x/net v0.40.0 // indirect
-	golang.org/x/sys v0.35.0 // indirect
-	golang.org/x/text v0.25.0 // indirect
+	golang.org/x/net v0.47.0 // indirect
+	golang.org/x/sys v0.39.0 // indirect
+	golang.org/x/text v0.32.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )

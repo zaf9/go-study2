@@ -37,11 +37,11 @@
 
 **目的**: 项目初始化与基础结构搭建
 
-- [ ] T001 在 `backend/` 目录添加 SQLite、JWT、bcrypt 依赖到 go.mod
-- [ ] T002 在 `frontend/` 目录创建 Next.js 14 项目并安装 antd、axios、swr、prismjs 依赖
-- [ ] T003 [P] 配置 `frontend/next.config.js` 启用静态导出 (output: 'export')
-- [ ] T004 [P] 配置 `frontend/tailwind.config.js` 与 `frontend/tsconfig.json` 路径别名
-- [ ] T005 [P] 更新 `backend/configs/config.yaml` 添加 database、jwt、static 配置段
+ - [X] T001 在 `backend/` 目录添加 SQLite、JWT、bcrypt 依赖到 go.mod
+ - [X] T002 在 `frontend/` 目录创建 Next.js 14 项目并安装 antd、axios、swr、prismjs 依赖
+ - [X] T003 [P] 配置 `frontend/next.config.js` 启用静态导出 (output: 'export')
+ - [X] T004 [P] 配置 `frontend/tailwind.config.js` 与 `frontend/tsconfig.json` 路径别名
+ - [X] T005 [P] 更新 `backend/configs/config.yaml` 添加 database、jwt、static 配置段
 
 ---
 

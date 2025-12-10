@@ -9,6 +9,17 @@
 bin/
 vendor/
 
+# Node/Next.js artifacts
+node_modules/
+dist/
+build/
+.next/
+out/
+*.tsbuildinfo
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
 # Log files
 *.log
 *.log*

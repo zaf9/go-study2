@@ -20,3 +20,30 @@ logger:
   path: "./logs"
   stdout: true
 
+# 数据库配置
+database:
+  type: "sqlite3"
+  path: "./data/gostudy.db"
+  maxOpenConns: 10
+  maxIdleConns: 5
+  connMaxLifetime: 3600
+  pragmas:
+    - "journal_mode=WAL"
+    - "busy_timeout=5000"
+    - "synchronous=NORMAL"
+    - "cache_size=-64000"
+    - "foreign_keys=ON"
+
+# JWT 配置
+jwt:
+  secret: "${JWT_SECRET}"
+  accessTokenExpiry: 604800
+  refreshTokenExpiry: 604800
+  issuer: "go-study2"
+
+# 静态资源配置
+static:
+  enabled: true
+  path: "../frontend/out"
+  spaFallback: true
+
