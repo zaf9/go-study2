@@ -1,5 +1,21 @@
-export const API_BASE_URL =
-  process.env.NEXT_PUBLIC_API_URL?.replace(/\/+$/, "") || "/api/v1";
+const RAW_API_BASE = process.env.NEXT_PUBLIC_API_URL?.trim() ?? "";
+
+// 统一 API 基址，确保附加 /api/v1（或已有版本号则尊重）
+function normalizeApiBase(raw: string): string {
+  if (!raw) {
+    return "/api/v1";
+  }
+  const cleaned = raw.replace(/\/+$/, "");
+  if (/\/api\/v\d+$/.test(cleaned)) {
+    return cleaned;
+  }
+  if (cleaned.endsWith("/api")) {
+    return `${cleaned}/v1`;
+  }
+  return `${cleaned}/api/v1`;
+}
+
+export const API_BASE_URL = normalizeApiBase(RAW_API_BASE);
 
 export const ACCESS_TOKEN_KEY = "go-study2.access_token";
 export const REMEMBER_ME_KEY = "go-study2.remember_me";

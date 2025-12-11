@@ -42,18 +42,27 @@ export default function Header({ onToggleSidebar }: HeaderProps) {
   ];
 
   return (
-    <AntHeader className="flex items-center justify-between bg-white px-4 shadow-sm">
+    <AntHeader
+      className="flex items-center justify-between px-4 shadow-sm"
+      style={{
+        background: "#ffffff",
+        position: "sticky",
+        top: 0,
+        zIndex: 10,
+      }}
+    >
       <Space size="large" align="center">
         <Button icon={<MenuOutlined />} type="text" onClick={onToggleSidebar} />
-        <Text className="text-lg font-semibold">Go Study 2</Text>
+        <Text className="text-lg font-semibold text-gray-800">Go Study 2</Text>
       </Space>
       <Dropdown menu={{ items: menuItems }} trigger={["click"]}>
         <Button
-          type="text"
+          type="default"
+          shape="round"
           icon={<UserOutlined />}
           className="flex items-center"
         >
-          <span className="ml-2">{user?.username || "未登录"}</span>
+          <span className="ml-2 text-gray-800">{user?.username || "未登录"}</span>
         </Button>
       </Dropdown>
     </AntHeader>
