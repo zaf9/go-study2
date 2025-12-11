@@ -5,16 +5,17 @@ import (
 	"time"
 
 	"go-study2/internal/app/http_server/handler/internal"
-	"go-study2/internal/domain/quiz"
+	appquiz "go-study2/internal/app/quiz"
 
 	"github.com/gogf/gf/v2/net/ghttp"
 )
 
 type quizSubmitRequest struct {
-	Topic      string              `json:"topic"`
-	Chapter    string              `json:"chapter"`
-	Answers    []quiz.SubmitAnswer `json:"answers"`
-	DurationMs int64               `json:"durationMs"`
+	SessionID  string                     `json:"sessionId"`
+	Topic      string                     `json:"topic"`
+	Chapter    string                     `json:"chapter"`
+	Answers    []appquiz.AnswerSubmission `json:"answers"`
+	DurationMs int64                      `json:"durationMs"`
 }
 
 // GetQuiz 返回指定主题与章节的测验题目。
@@ -31,12 +32,17 @@ func (h *Handler) GetQuiz(r *ghttp.Request) {
 	topic := r.Get("topic").String()
 	chapter := r.Get("chapter").String()
 
-	questions, err := svc.GetQuestions(r.GetCtx(), topic, chapter)
+	payload, err := svc.GetQuizQuestions(r.GetCtx(), userID, topic, chapter)
 	if err != nil {
 		h.writeQuizError(r, err)
 		return
 	}
-	writeSuccess(r, "success", questions)
+	writeSuccess(r, "success", map[string]interface{}{
+		"topic":     payload.Topic,
+		"chapter":   payload.Chapter,
+		"sessionId": payload.SessionID,
+		"questions": payload.Questions,
+	})
 }
 
 // SubmitQuiz 接收测验答案并返回评分结果。
@@ -57,19 +63,19 @@ func (h *Handler) SubmitQuiz(r *ghttp.Request) {
 		return
 	}
 
-	result, err := svc.Submit(r.GetCtx(), userID, req.Topic, req.Chapter, req.Answers, req.DurationMs)
+	result, err := svc.SubmitQuiz(r.GetCtx(), userID, req.SessionID, req.Topic, req.Chapter, req.Answers)
 	if err != nil {
 		h.writeQuizError(r, err)
 		return
 	}
 
 	writeSuccess(r, "提交成功", map[string]interface{}{
-		"score":       result.Score,
-		"total":       result.Total,
-		"correctIds":  result.CorrectIDs,
-		"wrongIds":    result.WrongIDs,
-		"submittedAt": result.SubmittedAt.Format(time.RFC3339),
-		"durationMs":  result.DurationMs,
+		"score":           result.Score,
+		"total_questions": result.TotalQuestions,
+		"correct_answers": result.CorrectAnswers,
+		"passed":          result.Passed,
+		"details":         result.Details,
+		"submittedAt":     time.Now().Format(time.RFC3339),
 	})
 }
 
@@ -85,20 +91,8 @@ func (h *Handler) GetQuizHistory(r *ghttp.Request) {
 		return
 	}
 
-	var fromPtr, toPtr *time.Time
-	if fromStr := r.GetQuery("from").String(); fromStr != "" {
-		if ts, err := time.Parse(time.RFC3339, fromStr); err == nil {
-			fromPtr = &ts
-		}
-	}
-	if toStr := r.GetQuery("to").String(); toStr != "" {
-		if ts, err := time.Parse(time.RFC3339, toStr); err == nil {
-			toPtr = &ts
-		}
-	}
-
 	topic := r.Get("topic").String()
-	items, err := svc.History(r.GetCtx(), userID, topic, fromPtr, toPtr)
+	items, err := svc.GetQuizHistory(r.GetCtx(), userID, topic, 20)
 	if err != nil {
 		h.writeQuizError(r, err)
 		return
@@ -106,7 +100,7 @@ func (h *Handler) GetQuizHistory(r *ghttp.Request) {
 	writeSuccess(r, "success", items)
 }
 
-func (h *Handler) getQuizService(r *ghttp.Request) (*quiz.Service, bool) {
+func (h *Handler) getQuizService(r *ghttp.Request) (*appquiz.Service, bool) {
 	if h.quizService != nil {
 		return h.quizService, true
 	}
@@ -124,10 +118,12 @@ func (h *Handler) writeQuizError(r *ghttp.Request, err error) {
 		return
 	}
 	switch err {
-	case quiz.ErrInvalidInput:
+	case appquiz.ErrInvalidInput:
 		writeError(r, http.StatusBadRequest, 40004, "请求参数无效")
-	case quiz.ErrQuizUnavailable:
+	case appquiz.ErrQuizUnavailable:
 		writeSuccess(r, "当前主题暂无测验", []interface{}{})
+	case appquiz.ErrDuplicateSubmit:
+		writeError(r, http.StatusConflict, 40009, "重复提交会话")
 	default:
 		writeError(r, http.StatusInternalServerError, 50001, "服务器繁忙，请稍后再试")
 	}

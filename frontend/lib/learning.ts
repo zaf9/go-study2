@@ -78,10 +78,12 @@ function buildTypesMarkdown(content: TypesTopicContent): string {
 }
 
 export async function fetchTopics(): Promise<TopicSummary[]> {
-  const data = await api.get<{
+  const resp = (await api.get<{
     topics: Array<{ id: string; title: string; description?: string }>;
-  }>(API_PATHS.topics);
-  const topics = Array.isArray(data?.topics) ? data.topics : null;
+  }>(API_PATHS.topics)) as unknown as {
+    topics?: Array<{ id: string; title: string; description?: string }>;
+  };
+  const topics = Array.isArray(resp?.topics) ? resp.topics : null;
   if (!topics) {
     throw new Error("未能解析主题数据，请检查 API 地址配置是否指向后端 /api/v1");
   }
@@ -94,10 +96,12 @@ export async function fetchTopics(): Promise<TopicSummary[]> {
 }
 
 export async function fetchChapters(topic: string): Promise<ChapterSummary[]> {
-  const data = await api.get<{
+  const resp = (await api.get<{
     items: Array<{ id: number; title: string; name: string }>;
-  }>(API_PATHS.topicMenu(topic));
-  const items = data?.items ?? [];
+  }>(API_PATHS.topicMenu(topic))) as unknown as {
+    items?: Array<{ id: number; title: string; name: string }>;
+  };
+  const items = resp?.items ?? [];
   return items.map<ChapterSummary>((item) => ({
     id: item.name,
     topicKey: topic as ChapterSummary["topicKey"],
@@ -110,15 +114,16 @@ export async function fetchChapterContent(
   topic: string,
   chapter: string,
 ): Promise<ChapterContent> {
-  const data = await api.get<{
+  const resp = (await api.get<{
     title?: string;
     content?: string | TypesTopicContent;
-  }>(
-    API_PATHS.chapterContent(topic, chapter),
-  );
-  const rawContent = data?.content;
+  }>(API_PATHS.chapterContent(topic, chapter))) as unknown as {
+    title?: string;
+    content?: string | TypesTopicContent;
+  };
+  const rawContent = resp?.content;
   const title =
-    data?.title ||
+    resp?.title ||
     (typeof rawContent === "object" && rawContent?.concept?.title) ||
     chapter;
 

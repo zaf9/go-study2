@@ -2,30 +2,26 @@ package handler
 
 import (
 	"net/http"
-	"time"
 
 	"go-study2/internal/app/http_server/handler/internal"
-	"go-study2/internal/domain/progress"
+	progapp "go-study2/internal/app/progress"
 
 	"github.com/gogf/gf/v2/net/ghttp"
 )
 
 type progressRequest struct {
-	Topic    string `json:"topic"`
-	Chapter  string `json:"chapter"`
-	Status   string `json:"status"`
-	Position string `json:"position"`
+	Topic            string `json:"topic"`
+	Chapter          string `json:"chapter"`
+	ReadDuration     int64  `json:"read_duration"`
+	ScrollProgress   int    `json:"scroll_progress"`
+	LastPosition     string `json:"last_position"`
+	QuizScore        int    `json:"quiz_score"`
+	QuizPassed       bool   `json:"quiz_passed"`
+	EstimatedSeconds int64  `json:"estimated_seconds"`
+	ForceSync        bool   `json:"force_sync"`
 }
 
-type progressResponse struct {
-	Topic        string `json:"topic"`
-	Chapter      string `json:"chapter"`
-	Status       string `json:"status"`
-	LastVisit    string `json:"lastVisit"`
-	LastPosition string `json:"lastPosition,omitempty"`
-}
-
-// GetAllProgress 返回当前用户的全部学习进度。
+// GetAllProgress 返回整体与主题汇总。
 func (h *Handler) GetAllProgress(r *ghttp.Request) {
 	svc, ok := h.getProgressService(r)
 	if !ok {
@@ -36,16 +32,21 @@ func (h *Handler) GetAllProgress(r *ghttp.Request) {
 		writeError(r, http.StatusUnauthorized, 40001, "认证信息缺失")
 		return
 	}
-
-	items, err := svc.ListAll(r.GetCtx(), userID)
+	overall, topics, err := svc.GetOverallProgress(r.GetCtx(), userID)
 	if err != nil {
-		h.writeProgressError(r, err)
+		writeError(r, http.StatusBadRequest, 40004, err.Error())
 		return
 	}
-	writeSuccess(r, "success", toProgressResponses(items))
+	next, _ := svc.GetNextUnfinishedChapter(r.GetCtx(), userID)
+	payload := map[string]interface{}{
+		"overall": overall,
+		"topics":  topics,
+		"next":    next,
+	}
+	writeSuccess(r, "success", payload)
 }
 
-// GetTopicProgress 返回指定主题下的进度。
+// GetTopicProgress 返回指定主题的章节进度。
 func (h *Handler) GetTopicProgress(r *ghttp.Request) {
 	svc, ok := h.getProgressService(r)
 	if !ok {
@@ -57,12 +58,15 @@ func (h *Handler) GetTopicProgress(r *ghttp.Request) {
 		return
 	}
 	topic := r.Get("topic").String()
-	items, err := svc.ListByTopic(r.GetCtx(), userID, topic)
+	summary, items, err := svc.GetTopicProgress(r.GetCtx(), userID, topic)
 	if err != nil {
-		h.writeProgressError(r, err)
+		writeError(r, http.StatusBadRequest, 40004, err.Error())
 		return
 	}
-	writeSuccess(r, "success", toProgressResponses(items))
+	writeSuccess(r, "success", map[string]interface{}{
+		"topic":    summary,
+		"chapters": items,
+	})
 }
 
 // SaveProgress 记录或更新学习进度。
@@ -83,21 +87,33 @@ func (h *Handler) SaveProgress(r *ghttp.Request) {
 		return
 	}
 
-	record, err := svc.Save(r.GetCtx(), userID, req.Topic, req.Chapter, req.Status, req.Position)
+	result, err := svc.CreateOrUpdateProgress(r.GetCtx(), progapp.UpdateProgressRequest{
+		UserID:         userID,
+		Topic:          req.Topic,
+		Chapter:        req.Chapter,
+		ReadDuration:   req.ReadDuration,
+		ScrollProgress: req.ScrollProgress,
+		LastPosition:   req.LastPosition,
+		QuizScore:      req.QuizScore,
+		QuizPassed:     req.QuizPassed,
+		EstimatedSec:   req.EstimatedSeconds,
+		ForceSync:      req.ForceSync,
+	})
 	if err != nil {
-		h.writeProgressError(r, err)
+		writeError(r, http.StatusBadRequest, 40004, err.Error())
 		return
 	}
-	writeSuccess(r, "进度已保存", progressResponse{
-		Topic:        record.Topic,
-		Chapter:      record.Chapter,
-		Status:       record.Status,
-		LastVisit:    record.LastVisit.Format(time.RFC3339),
-		LastPosition: record.LastPosition,
+	writeSuccess(r, "进度已保存", map[string]interface{}{
+		"status":          result.Status,
+		"overall":         result.Overall,
+		"topic":           result.Topic,
+		"read_duration":   result.ReadDuration,
+		"scroll_progress": result.ScrollProgress,
+		"last_position":   result.LastPosition,
 	})
 }
 
-func (h *Handler) getProgressService(r *ghttp.Request) (*progress.Service, bool) {
+func (h *Handler) getProgressService(r *ghttp.Request) (*progapp.Service, bool) {
 	if h.progressService != nil {
 		return h.progressService, true
 	}
@@ -108,31 +124,4 @@ func (h *Handler) getProgressService(r *ghttp.Request) (*progress.Service, bool)
 	}
 	h.progressService = svc
 	return svc, true
-}
-
-func (h *Handler) writeProgressError(r *ghttp.Request, err error) {
-	if err == nil {
-		return
-	}
-	switch err {
-	case progress.ErrInvalidInput:
-		writeError(r, http.StatusBadRequest, 40004, "请求参数无效")
-	default:
-		writeError(r, http.StatusInternalServerError, 50001, "服务器繁忙，请稍后再试")
-	}
-}
-
-func toProgressResponses(items []progress.Progress) []progressResponse {
-	list := make([]progressResponse, 0, len(items))
-	for _, item := range items {
-		resp := progressResponse{
-			Topic:        item.Topic,
-			Chapter:      item.Chapter,
-			Status:       item.Status,
-			LastVisit:    item.LastVisit.Format(time.RFC3339),
-			LastPosition: item.LastPosition,
-		}
-		list = append(list, resp)
-	}
-	return list
 }

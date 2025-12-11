@@ -1,30 +1,28 @@
-import api from "./api";
-import { API_PATHS } from "./constants";
-import { LearningProgress, ProgressStatus } from "@/types/learning";
+import {
+  getProgress,
+  getTopicProgress,
+  updateProgress,
+  UpdateProgressPayload,
+} from "@/services/progressService";
+import {
+  ChapterProgress,
+  TopicProgressSummary,
+} from "@/types/learning";
 
-export interface SaveProgressRequest {
-  topic: string;
-  chapter: string;
-  status: ProgressStatus;
-  position?: string;
-}
+export type SaveProgressRequest = UpdateProgressPayload;
 
-export async function fetchAllProgress(): Promise<LearningProgress[]> {
-  const { data } = await api.get<LearningProgress[]>(API_PATHS.progress);
-  return data || [];
+export async function fetchAllProgress(): Promise<TopicProgressSummary[]> {
+  const snapshot = await getProgress();
+  return snapshot.topics;
 }
 
 export async function fetchProgressByTopic(
   topic: string,
-): Promise<LearningProgress[]> {
-  const { data } = await api.get<LearningProgress[]>(
-    API_PATHS.progressByTopic(topic),
-  );
-  return data || [];
+): Promise<ChapterProgress[]> {
+  const detail = await getTopicProgress(topic);
+  return detail.chapters;
 }
 
-export async function saveProgress(
-  payload: SaveProgressRequest,
-): Promise<void> {
-  await api.post(API_PATHS.progress, payload);
+export async function saveProgress(payload: SaveProgressRequest): Promise<void> {
+  await updateProgress(payload);
 }

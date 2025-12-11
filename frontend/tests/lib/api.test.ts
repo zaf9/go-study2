@@ -1,11 +1,6 @@
 import "@testing-library/jest-dom";
+import { message } from "antd";
 import api from "@/lib/api";
-
-jest.mock("antd", () => ({
-  message: {
-    error: jest.fn(),
-  },
-}));
 
 jest.mock("@/lib/auth", () => ({
   getAccessToken: jest.fn(() => null),
@@ -14,6 +9,17 @@ jest.mock("@/lib/auth", () => ({
 }));
 
 const authMock = jest.requireMock("@/lib/auth");
+const messageErrorSpy = jest
+  .spyOn(message, "error")
+  .mockImplementation(jest.fn());
+
+afterEach(() => {
+  messageErrorSpy.mockClear();
+});
+
+afterAll(() => {
+  messageErrorSpy.mockRestore();
+});
 
 describe("api 拦截器行为", () => {
   it("业务成功时返回 data", async () => {

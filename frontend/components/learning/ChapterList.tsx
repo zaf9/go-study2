@@ -3,12 +3,12 @@
 import { List, Button, Space, Typography, Tag } from "antd";
 import { useRouter } from "next/navigation";
 import { ChapterSummary } from "@/types/learning";
-import { LearningProgress } from "@/types/learning";
+import { ChapterProgress } from "@/types/learning";
 
 interface ChapterListProps {
   topicKey: string;
   chapters: ChapterSummary[];
-  progress?: LearningProgress[];
+  progress?: ChapterProgress[];
 }
 
 const { Text } = Typography;
@@ -20,7 +20,7 @@ export default function ChapterList({
 }: ChapterListProps) {
   const router = useRouter();
   const progressMap =
-    progress?.reduce<Record<string, LearningProgress>>((map, item) => {
+    progress?.reduce<Record<string, ChapterProgress>>((map, item) => {
       map[item.chapter] = item;
       return map;
     }, {}) ?? {};
@@ -53,12 +53,18 @@ export default function ChapterList({
                 {progressMap[item.id]?.status && (
                   <Tag
                     color={
-                      progressMap[item.id].status === "done" ? "green" : "blue"
+                      progressMap[item.id].status === "completed"
+                        ? "green"
+                        : progressMap[item.id].status === "tested"
+                          ? "orange"
+                          : "blue"
                     }
                   >
-                    {progressMap[item.id].status === "done"
+                    {progressMap[item.id].status === "completed"
                       ? "已完成"
-                      : "学习中"}
+                      : progressMap[item.id].status === "tested"
+                        ? "已测验"
+                        : "学习中"}
                   </Tag>
                 )}
               </Space>

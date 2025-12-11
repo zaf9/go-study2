@@ -25,12 +25,55 @@ export interface ChapterContent {
   lastPosition?: string;
 }
 
-export type ProgressStatus = "not_started" | "in_progress" | "done";
+export type ProgressStatus =
+  | "not_started"
+  | "in_progress"
+  | "completed"
+  | "tested";
 
-export interface LearningProgress {
+export interface ChapterProgress {
   topic: TopicKey;
   chapter: string;
   status: ProgressStatus;
-  lastVisit: string;
+  scrollProgress?: number;
+  readDuration?: number;
   lastPosition?: string;
+  lastVisitAt?: string;
+  quizScore?: number;
+  quizPassed?: boolean;
+}
+
+export interface TopicProgressSummary {
+  id: TopicKey;
+  name: string;
+  weight: number;
+  progress: number;
+  completedChapters: number;
+  totalChapters: number;
+  lastVisitAt?: string;
+}
+
+export interface TopicProgressDetail extends TopicProgressSummary {
+  chapters: ChapterProgress[];
+}
+
+export interface OverallProgress {
+  progress: number;
+  completedChapters: number;
+  totalChapters: number;
+  studyDays: number;
+  totalStudyTime: number;
+}
+
+export interface NextChapterHint {
+  topic: TopicKey;
+  chapter: string;
+  status: ProgressStatus;
+  progress: number;
+}
+
+export interface ProgressSnapshot {
+  overall: OverallProgress;
+  topics: TopicProgressSummary[];
+  next?: NextChapterHint | null;
 }

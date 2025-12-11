@@ -10,6 +10,9 @@ export interface QuizItem {
   multi: boolean;
   answer: string[];
   explanation?: string;
+  type?: string;
+  difficulty?: string;
+  codeSnippet?: string | null;
 }
 
 export interface QuizSubmitAnswer {
@@ -32,12 +35,45 @@ export interface QuizResult {
   durationMs: number;
 }
 
+export interface QuizAnswerDetail {
+  question_id: number;
+  is_correct: boolean;
+  correct_answers: string[];
+  explanation: string;
+}
+
+export interface QuizSubmitResult {
+  score: number;
+  total_questions: number;
+  correct_answers: number;
+  passed: boolean;
+  details: QuizAnswerDetail[];
+}
+
+export interface QuizQuestion {
+  id: number;
+  type: string;
+  difficulty: string;
+  question: string;
+  options: QuizOption[];
+  codeSnippet?: string | null;
+}
+
+export interface QuizSessionPayload {
+  sessionId: string;
+  topic: string;
+  chapter: string;
+  questions: QuizQuestion[];
+}
+
 export interface QuizHistoryItem {
   id: number;
+  sessionId?: string;
   topic: string;
   chapter?: string | null;
   score: number;
-  total: number;
-  durationMs: number;
-  createdAt: string;
+  totalQuestions?: number;
+  correctAnswers?: number;
+  passed?: boolean;
+  completedAt?: string | null;
 }

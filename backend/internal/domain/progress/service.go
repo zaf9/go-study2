@@ -36,7 +36,7 @@ func (s *Service) Save(ctx context.Context, userID int64, topic, chapter, status
 		Topic:        topic,
 		Chapter:      chapter,
 		Status:       status,
-		LastVisit:    time.Now(),
+		LastVisitAt:  time.Now(),
 		LastPosition: position,
 	}
 

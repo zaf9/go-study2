@@ -1,40 +1,46 @@
 "use client";
 
-import useSWR from "swr";
 import { useCallback } from "react";
 import {
-  fetchAllProgress,
-  fetchProgressByTopic,
-  saveProgress,
-  SaveProgressRequest,
-} from "@/lib/progress";
-import { LearningProgress } from "@/types/learning";
+  UpdateProgressPayload,
+  updateProgress,
+  useProgressOverview,
+  useTopicProgress,
+} from "@/services/progressService";
 
 export default function useProgress(topic?: string) {
-  const key = topic ? ["progress", topic] : ["progress", "all"];
-  const { data, error, isLoading, mutate } = useSWR<LearningProgress[]>(
-    key,
-    () => (topic ? fetchProgressByTopic(topic) : fetchAllProgress()),
-  );
+  const {
+    data: overview,
+    error: overviewError,
+    isLoading: overviewLoading,
+    mutate: mutateOverview,
+  } = useProgressOverview();
+  const {
+    data: topicDetail,
+    error: topicError,
+    isLoading: topicLoading,
+    mutate: mutateTopic,
+  } = useTopicProgress(topic);
 
   const recordProgress = useCallback(
-    async (payload: SaveProgressRequest) => {
-      await saveProgress(payload);
-      await mutate();
+    async (payload: UpdateProgressPayload) => {
+      await updateProgress(payload);
+      await Promise.all([
+        mutateOverview(),
+        topic ? mutateTopic() : Promise.resolve(),
+      ]);
     },
-    [mutate],
+    [mutateOverview, mutateTopic, topic],
   );
 
-  const latest = (data ?? []).reduce<LearningProgress | null>((acc, item) => {
-    if (!acc) return item;
-    return new Date(item.lastVisit) > new Date(acc.lastVisit) ? item : acc;
-  }, null);
-
   return {
-    progress: data ?? [],
-    latest,
-    error,
-    isLoading,
+    overview,
+    topicDetail,
+    chapters: topicDetail?.chapters ?? [],
+    next: overview?.next ?? null,
+    error: overviewError || topicError,
+    isLoading: overviewLoading || (!!topic && topicLoading),
     recordProgress,
+    refresh: () => Promise.all([mutateOverview(), mutateTopic()]),
   };
 }

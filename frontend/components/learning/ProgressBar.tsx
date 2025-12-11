@@ -11,12 +11,20 @@ interface ProgressBarProps {
 const statusColor: Record<ProgressStatus, string> = {
   not_started: "default",
   in_progress: "blue",
-  done: "green",
+  completed: "green",
+  tested: "orange",
 };
 
 export default function ProgressBar({ status, percent }: ProgressBarProps) {
   const value =
-    percent ?? (status === "done" ? 100 : status === "in_progress" ? 50 : 0);
+    percent ??
+    (status === "completed"
+      ? 100
+      : status === "tested"
+        ? 70
+        : status === "in_progress"
+          ? 50
+          : 0);
   return (
     <div className="flex items-center gap-3">
       <Tag color={statusColor[status]}>{statusLabel(status)}</Tag>
@@ -24,7 +32,7 @@ export default function ProgressBar({ status, percent }: ProgressBarProps) {
         <Progress
           percent={value}
           size="small"
-          status={status === "done" ? "success" : "active"}
+          status={status === "completed" ? "success" : "active"}
         />
       </div>
     </div>
@@ -33,8 +41,10 @@ export default function ProgressBar({ status, percent }: ProgressBarProps) {
 
 function statusLabel(status: ProgressStatus) {
   switch (status) {
-    case "done":
+    case "completed":
       return "已完成";
+    case "tested":
+      return "已测验";
     case "in_progress":
       return "学习中";
     default:

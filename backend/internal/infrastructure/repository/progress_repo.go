@@ -2,6 +2,7 @@ package repository
 
 import (
 	"context"
+	"strconv"
 	"strings"
 	"time"
 
@@ -23,16 +24,22 @@ func NewProgressRepository(db gdb.DB) *ProgressRepository {
 // Upsert 写入或更新进度记录。
 func (r *ProgressRepository) Upsert(ctx context.Context, record *progress.Progress) error {
 	now := time.Now()
-	record.LastVisit = now
+	record.LastVisitAt = now
+	lastPosition := int64(0)
+	if v := strings.TrimSpace(record.LastPosition); v != "" {
+		if parsed, err := strconv.ParseInt(v, 10, 64); err == nil && parsed >= 0 {
+			lastPosition = parsed
+		}
+	}
 	_, err := r.db.Exec(ctx, `
-INSERT INTO learning_progress (user_id, topic, chapter, status, last_visit, last_position, updated_at)
+INSERT INTO learning_progress (user_id, topic, chapter, status, last_visit_at, last_position, updated_at)
 VALUES (?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
 ON CONFLICT(user_id, topic, chapter)
 DO UPDATE SET status=excluded.status,
-              last_visit=excluded.last_visit,
+              last_visit_at=excluded.last_visit_at,
               last_position=excluded.last_position,
               updated_at=CURRENT_TIMESTAMP
-`, record.UserID, record.Topic, record.Chapter, record.Status, record.LastVisit, nullableString(record.LastPosition))
+`, record.UserID, record.Topic, record.Chapter, record.Status, record.LastVisitAt, lastPosition)
 	return err
 }
 
@@ -47,7 +54,7 @@ func (r *ProgressRepository) ListByTopic(ctx context.Context, userID int64, topi
 }
 
 func (r *ProgressRepository) query(ctx context.Context, model *gdb.Model) ([]progress.Progress, error) {
-	records, err := model.OrderDesc("last_visit").All(ctx)
+	records, err := model.OrderDesc("last_visit_at").All(ctx)
 	if err != nil {
 		return nil, err
 	}

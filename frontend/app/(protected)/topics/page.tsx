@@ -18,7 +18,7 @@ export default function TopicsPage() {
     "topics",
     fetchTopics,
   );
-  const { latest, isLoading: progressLoading } = useProgress();
+  const { next, isLoading: progressLoading } = useProgress();
 
   if (isLoading) {
     return <Loading />;
@@ -41,14 +41,12 @@ export default function TopicsPage() {
         <Paragraph type="secondary">
           选择主题，进入章节学习并查看代码示例。
         </Paragraph>
-        {latest && !progressLoading && (
+        {next && !progressLoading && (
           <Button
             type="primary"
-            onClick={() =>
-              router.push(`/topics/${latest.topic}/${latest.chapter}`)
-            }
+            onClick={() => router.push(`/topics/${next.topic}/${next.chapter}`)}
           >
-            继续学习：{latest.topic} / {latest.chapter}
+            继续学习：{next.topic} / {next.chapter}
           </Button>
         )}
       </div>

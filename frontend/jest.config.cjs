@@ -12,6 +12,7 @@ const customJestConfig = {
   testMatch: ["**/?(*.)+(spec|test).[tj]s?(x)"],
   collectCoverage: true,
   coverageProvider: "v8",
+  resetModules: true,
   collectCoverageFrom: [
     "app/**/*.{ts,tsx}",
     "components/**/*.{ts,tsx}",

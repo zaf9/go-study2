@@ -1,53 +1,83 @@
 "use client";
 
-import { Table, Tag, Typography } from "antd";
+import { Select, Space, Typography } from "antd";
+import { useMemo, useState } from "react";
+import { useRouter } from "next/navigation";
 import Loading from "@/components/common/Loading";
 import ErrorMessage from "@/components/common/ErrorMessage";
+import ProgressOverview from "@/components/progress/ProgressOverview";
+import TopicProgressCard from "@/components/progress/TopicProgressCard";
+import { topicChapters } from "@/lib/static-routes";
+import { TopicProgressDetail } from "@/types/learning";
 import useProgress from "@/hooks/useProgress";
 
 const { Title } = Typography;
 
 export default function ProgressPage() {
-  const { progress, isLoading, error } = useProgress();
+  const router = useRouter();
+  const { overview, next, isLoading, error } = useProgress();
+  const [selectedTopic, setSelectedTopic] = useState<string | undefined>();
+
+  const topics = useMemo(
+    () =>
+      (overview?.topics ?? [])
+        .map<TopicProgressDetail>((item) => ({
+          ...item,
+          chapters: [],
+        }))
+        .sort((a, b) => b.progress - a.progress),
+    [overview?.topics],
+  );
+
+  const filteredTopics = useMemo(() => {
+    if (!selectedTopic) return topics;
+    return topics.filter((t) => t.id === selectedTopic);
+  }, [selectedTopic, topics]);
 
   if (isLoading) return <Loading />;
   if (error)
     return <ErrorMessage message="加载进度失败" description={error.message} />;
-
-  const columns = [
-    { title: "主题", dataIndex: "topic", key: "topic" },
-    { title: "章节", dataIndex: "chapter", key: "chapter" },
-    {
-      title: "状态",
-      dataIndex: "status",
-      key: "status",
-      render: (v: string) => (
-        <Tag color={v === "done" ? "green" : "blue"}>{statusLabel(v)}</Tag>
-      ),
-    },
-    {
-      title: "最近访问",
-      dataIndex: "lastVisit",
-      key: "lastVisit",
-      render: (v: string) => new Date(v).toLocaleString(),
-    },
-  ];
+  if (!overview) return null;
 
   return (
-    <div className="space-y-4">
+    <Space direction="vertical" className="w-full">
       <Title level={3}>学习进度</Title>
-      <Table
-        rowKey={(row) => `${row.topic}-${row.chapter}`}
-        columns={columns}
-        dataSource={progress}
-        pagination={false}
+      <ProgressOverview
+        overall={overview.overall}
+        next={next}
+        onContinue={(hint) =>
+          router.push(`/topics/${hint.topic}/${hint.chapter}`)
+        }
       />
-    </div>
+      <div className="flex items-center justify-between">
+        <Title level={4} className="mb-0">
+          主题进度
+        </Title>
+        <Select
+          allowClear
+          placeholder="筛选主题"
+          value={selectedTopic}
+          onChange={(v) => setSelectedTopic(v)}
+          options={topics.map((t) => ({ label: t.name, value: t.id }))}
+          style={{ minWidth: 200 }}
+        />
+      </div>
+      <Space direction="vertical" className="w-full">
+        {filteredTopics.map((topic) => (
+          <TopicProgressCard
+            key={topic.id}
+            topic={topic}
+            onContinue={(chapter) => {
+              const target =
+                chapter?.chapter ??
+                topicChapters[topic.id as keyof typeof topicChapters]?.[0];
+              if (target) {
+                router.push(`/topics/${topic.id}/${target}`);
+              }
+            }}
+          />
+        ))}
+      </Space>
+    </Space>
   );
-}
-
-function statusLabel(status: string) {
-  if (status === "done") return "已完成";
-  if (status === "in_progress") return "学习中";
-  return "未开始";
 }

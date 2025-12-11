@@ -25,7 +25,12 @@ let refreshing: Promise<string | null> | null = null;
 api.interceptors.response.use(
   (response) => {
     const { data } = response;
-    if (data && typeof data.code === "number" && data.code !== 20000) {
+    if (
+      data &&
+      typeof data.code === "number" &&
+      data.code !== 20000 &&
+      data.code !== 0
+    ) {
       if (isBrowser && data.message) {
         message.error(data.message);
       }

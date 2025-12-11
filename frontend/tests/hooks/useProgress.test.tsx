@@ -1,58 +1,91 @@
-import React from "react";
-import { render, screen, waitFor } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { SWRConfig } from "swr";
 import useProgress from "@/hooks/useProgress";
-import { saveProgress, fetchAllProgress } from "@/lib/progress";
+import {
+  updateProgress,
+  useProgressOverview,
+  useTopicProgress,
+} from "@/services/progressService";
 
-jest.mock("@/lib/progress", () => ({
-  fetchAllProgress: jest.fn(),
-  fetchProgressByTopic: jest.fn(),
-  saveProgress: jest.fn(),
+jest.mock("@/services/progressService", () => ({
+  useProgressOverview: jest.fn(),
+  useTopicProgress: jest.fn(),
+  updateProgress: jest.fn(),
 }));
 
-const mockedSaveProgress = saveProgress as jest.MockedFunction<
-  typeof saveProgress
+const mockedUpdate = updateProgress as jest.MockedFunction<typeof updateProgress>;
+const mockedOverview = useProgressOverview as jest.MockedFunction<
+  typeof useProgressOverview
 >;
-const mockedFetchAll = fetchAllProgress as jest.MockedFunction<
-  typeof fetchAllProgress
+const mockedTopic = useTopicProgress as jest.MockedFunction<
+  typeof useTopicProgress
 >;
 
 function Wrapper() {
-  const { progress, recordProgress } = useProgress();
-  React.useEffect(() => {
-    void recordProgress({
-      topic: "variables",
-      chapter: "storage",
-      status: "in_progress",
-      position: "{}",
-    });
-  }, [recordProgress]);
-  return <div data-testid="count">{progress.length}</div>;
+  const { overview, topicDetail, recordProgress } = useProgress("variables");
+  return (
+    <div>
+      <div data-testid="overall">{overview?.overall.progress}</div>
+      <div data-testid="topic">{topicDetail?.id}</div>
+      <button
+        onClick={() =>
+          recordProgress({ topic: "variables", chapter: "storage" })
+        }
+      >
+        save
+      </button>
+    </div>
+  );
 }
 
 describe("useProgress", () => {
   beforeEach(() => {
-    mockedFetchAll.mockResolvedValue([
-      {
-        topic: "variables",
-        chapter: "storage",
-        status: "done",
-        lastVisit: new Date().toISOString(),
+    mockedOverview.mockReturnValue({
+      data: {
+        overall: {
+          progress: 30,
+          completedChapters: 1,
+          totalChapters: 4,
+          studyDays: 2,
+          totalStudyTime: 120,
+        },
+        topics: [],
+        next: null,
       },
-    ] as any);
-    mockedSaveProgress.mockResolvedValue();
+      error: null,
+      isLoading: false,
+      mutate: jest.fn().mockResolvedValue(undefined),
+    } as any);
+    mockedTopic.mockReturnValue({
+      data: {
+        id: "variables",
+        name: "Variables",
+        weight: 25,
+        progress: 50,
+        completedChapters: 2,
+        totalChapters: 4,
+        chapters: [],
+      },
+      error: null,
+      isLoading: false,
+      mutate: jest.fn().mockResolvedValue(undefined),
+    } as any);
+    mockedUpdate.mockResolvedValue({ status: "ok" } as any);
   });
 
-  it("loads progress and triggers save", async () => {
+  it("exposes overview and triggers update", async () => {
     render(
       <SWRConfig value={{ provider: () => new Map(), dedupingInterval: 0 }}>
         <Wrapper />
       </SWRConfig>,
     );
 
-    await waitFor(() => {
-      expect(screen.getByTestId("count").textContent).toBe("1");
+    expect(screen.getByTestId("overall").textContent).toBe("30");
+    expect(screen.getByTestId("topic").textContent).toBe("variables");
+    fireEvent.click(screen.getByText("save"));
+    expect(mockedUpdate).toHaveBeenCalledWith({
+      topic: "variables",
+      chapter: "storage",
     });
-    expect(mockedSaveProgress).toHaveBeenCalled();
   });
 });

@@ -99,9 +99,13 @@ func TestAPIContract_Responses(t *testing.T) {
 	if progressResp.Code != 20000 {
 		t.Fatalf("进度接口返回码异常: %d, msg=%s", progressResp.Code, progressResp.Message)
 	}
-	var progressList []map[string]interface{}
-	_ = json.Unmarshal(progressResp.Data, &progressList)
-	if progressList == nil {
+	var progressData struct {
+		Overall map[string]interface{}   `json:"overall"`
+		Topics  []map[string]interface{} `json:"topics"`
+		Next    map[string]interface{}   `json:"next"`
+	}
+	_ = json.Unmarshal(progressResp.Data, &progressData)
+	if progressData.Overall == nil || progressData.Topics == nil {
 		t.Fatalf("进度接口 data 解析失败")
 	}
 }

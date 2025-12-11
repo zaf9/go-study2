@@ -1,8 +1,8 @@
 package handler
 
 import (
-	"go-study2/internal/domain/progress"
-	"go-study2/internal/domain/quiz"
+	progapp "go-study2/internal/app/progress"
+	appquiz "go-study2/internal/app/quiz"
 	"go-study2/internal/domain/user"
 )
 
@@ -40,8 +40,8 @@ type LexicalMenuResponse struct {
 // Handler 处理 HTTP 请求的控制器，包含需要的领域服务。
 type Handler struct {
 	userService     *user.Service
-	progressService *progress.Service
-	quizService     *quiz.Service
+	progressService *progapp.Service
+	quizService     *appquiz.Service
 }
 
 // New 创建默认 Handler。

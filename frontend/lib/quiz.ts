@@ -3,23 +3,31 @@ import { API_PATHS } from "./constants";
 import {
   QuizHistoryItem,
   QuizItem,
-  QuizResult,
   QuizSubmitRequest,
+  QuizSubmitResult,
 } from "@/types/quiz";
 
 export async function fetchQuizQuestions(
   topic: string,
   chapter: string,
 ): Promise<QuizItem[]> {
-  const { data } = await api.get<QuizItem[]>(API_PATHS.quiz(topic, chapter));
-  return data || [];
+  const resp = (await api.get<{ questions?: QuizItem[] }>(
+    API_PATHS.quiz(topic, chapter),
+  )) as unknown as { questions?: QuizItem[] } | QuizItem[];
+  if (Array.isArray(resp)) {
+    return resp;
+  }
+  return Array.isArray(resp?.questions) ? resp.questions : [];
 }
 
 export async function submitQuiz(
   request: QuizSubmitRequest & { durationMs?: number },
-): Promise<QuizResult> {
-  const { data } = await api.post<QuizResult>(API_PATHS.quizSubmit, request);
-  return data as QuizResult;
+): Promise<QuizSubmitResult> {
+  const resp = (await api.post<QuizSubmitResult>(
+    API_PATHS.quizSubmit,
+    request,
+  )) as unknown as QuizSubmitResult;
+  return resp;
 }
 
 export async function fetchQuizHistory(
@@ -28,6 +36,13 @@ export async function fetchQuizHistory(
   const path = topic
     ? API_PATHS.quizHistoryByTopic(topic)
     : API_PATHS.quizHistory;
-  const { data } = await api.get<QuizHistoryItem[]>(path);
-  return data || [];
+  const resp = (await api.get<QuizHistoryItem[]>(path)) as unknown as
+    | QuizHistoryItem[]
+    | { items?: QuizHistoryItem[] };
+  if (Array.isArray(resp)) {
+    return resp;
+  }
+  return Array.isArray((resp as { items?: QuizHistoryItem[] })?.items)
+    ? (resp as { items?: QuizHistoryItem[] }).items || []
+    : [];
 }

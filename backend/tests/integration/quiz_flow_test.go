@@ -125,24 +125,33 @@ func TestQuizFlow_EndToEnd(t *testing.T) {
 		t.Fatalf("获取题目失败: %s", quizResp.Message)
 	}
 
-	var questions []map[string]interface{}
-	_ = json.Unmarshal(quizResp.Data, &questions)
-	if len(questions) == 0 {
+	var quizData struct {
+		SessionID string                   `json:"sessionId"`
+		Questions []map[string]interface{} `json:"questions"`
+	}
+	_ = json.Unmarshal(quizResp.Data, &quizData)
+	if quizData.SessionID == "" {
+		t.Fatalf("题目响应缺少 sessionId")
+	}
+	if len(quizData.Questions) == 0 {
 		t.Fatalf("题目列表为空")
 	}
-	first := questions[0]
-	qid, _ := first["id"].(string)
-	ans := ""
-	if arr, ok := first["answer"].([]interface{}); ok && len(arr) > 0 {
-		if v, ok := arr[0].(string); ok {
-			ans = v
-		}
+	first := quizData.Questions[0]
+	var qid int64
+	switch v := first["id"].(type) {
+	case float64:
+		qid = int64(v)
+	case int:
+		qid = int64(v)
+	case int64:
+		qid = v
 	}
-	if qid == "" || ans == "" {
+	if qid == 0 {
 		t.Fatalf("题目信息不完整")
 	}
+	answerChoice := "A"
 
-	submitBody := fmt.Sprintf(`{"topic":"variables","chapter":"storage","answers":[{"id":"%s","choices":["%s"]}]}`, qid, ans)
+	submitBody := fmt.Sprintf(`{"sessionId":"%s","topic":"variables","chapter":"storage","answers":[{"questionId":%d,"userAnswers":["%s"]}]}`, quizData.SessionID, qid, answerChoice)
 	submitReq, _ := http.NewRequest(http.MethodPost, baseURL+"/api/v1/quiz/submit", bytes.NewBufferString(submitBody))
 	submitReq.Header.Set("Content-Type", "application/json")
 	submitReq.Header.Set("Authorization", "Bearer "+access)

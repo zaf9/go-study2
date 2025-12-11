@@ -182,12 +182,18 @@ func TestLearningFlow_EndToEnd(t *testing.T) {
 	if progressResp.Code != 20000 {
 		t.Fatalf("查询进度失败: %s", progressResp.Message)
 	}
-	var progressList []map[string]interface{}
-	_ = json.Unmarshal(progressResp.Data, &progressList)
-	if len(progressList) == 0 {
+	var progressData struct {
+		Topic    map[string]interface{}   `json:"topic"`
+		Chapters []map[string]interface{} `json:"chapters"`
+	}
+	_ = json.Unmarshal(progressResp.Data, &progressData)
+	if len(progressData.Chapters) == 0 {
 		t.Fatalf("进度列表为空，期望至少一条记录")
 	}
-	if fmt.Sprintf("%v", progressList[0]["chapter"]) == "" {
+	if fmt.Sprintf("%v", progressData.Topic["id"]) == "" {
+		t.Fatalf("进度摘要缺少主题信息")
+	}
+	if fmt.Sprintf("%v", progressData.Chapters[0]["chapter"]) == "" {
 		t.Fatalf("进度记录缺少章节信息")
 	}
 }

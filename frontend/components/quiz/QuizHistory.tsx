@@ -21,21 +21,23 @@ export default function QuizHistory({ items, loading }: QuizHistoryProps) {
       title: "得分",
       dataIndex: "score",
       key: "score",
-      render: (_: unknown, row: QuizHistoryItem) => `${row.score}/${row.total}`,
+      render: (_: unknown, row: QuizHistoryItem) =>
+        row.totalQuestions
+          ? `${row.score}/${row.totalQuestions}`
+          : `${row.score}`,
     },
-    { title: "用时(ms)", dataIndex: "durationMs", key: "durationMs" },
     {
-      title: "提交时间",
-      dataIndex: "createdAt",
-      key: "createdAt",
-      render: (v: string) => new Date(v).toLocaleString(),
+      title: "完成时间",
+      dataIndex: "completedAt",
+      key: "completedAt",
+      render: (v: string) => (v ? new Date(v).toLocaleString() : "-"),
     },
     {
       title: "状态",
       key: "status",
       render: (_: unknown, row: QuizHistoryItem) => (
-        <Tag color={row.score == row.total ? "green" : "blue"}>
-          {row.score == row.total ? "全对" : "已提交"}
+        <Tag color={row.passed ? "green" : "blue"}>
+          {row.passed ? "通过" : "未通过"}
         </Tag>
       ),
     },

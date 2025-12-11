@@ -129,10 +129,10 @@ func TestProgressHandlers_Flow(t *testing.T) {
 		t.Fatalf("查询进度失败: %s", listResp.Message)
 	}
 
-	var list []map[string]interface{}
-	_ = json.Unmarshal(listResp.Data, &list)
-	if len(list) == 0 {
-		t.Fatalf("进度列表为空，不符合预期")
+	var overallResp map[string]interface{}
+	_ = json.Unmarshal(listResp.Data, &overallResp)
+	if overallResp["overall"] == nil {
+		t.Fatalf("整体进度为空，不符合预期")
 	}
 }
 

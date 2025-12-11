@@ -192,6 +192,12 @@ npm install
 npm run dev
 ```
 
+**主要页面与路由：**
+
+- 学习进度页：`/progress`（整体进度、继续学习）
+- 主题/章节详情：`/topics/[topic]/[chapter]`（阅读恢复与测验入口）
+- 测验：`/quiz/[topic]/[chapter]`，历史记录：`/quiz`
+
 **前后端联调（开发模式）：**
 
 ```bash
@@ -709,6 +715,8 @@ func RegisterRoutes(s *ghttp.Server)
 
 ## 🧪 开发与测试 Development & Testing
 
+> 说明：当前分支未实际执行测试，请按下述命令自行验证。
+
 ### 开发环境设置
 
 ```bash
@@ -754,6 +762,12 @@ go tool cover -html=coverage.out
 - 使用 `gofmt` 格式化 Go 代码，前端使用 `npm run lint`（如已配置）
 - 所有代码注释和文档使用中文
 - 提交前确保前后端测试通过且覆盖率 ≥ 80%
+
+### 性能与边界验证计划
+
+- 性能：针对 `/api/v1/progress`、`/api/v1/quiz/*` 使用 `ab`/`wrk` 目标 p95 < 300ms（预估数据量下）。
+- 边界：快速进入/离开页面、网络抖动、并发多窗口、测验中途刷新，需人工或脚本验证。
+- 质量检查建议：后端 `go fmt && go vet`（必要时 `golint`）、前端 `npm run lint && npm run build`，执行前确保根目录已运行 `./build.bat`。
 
 ### 本地开发工作流
 
