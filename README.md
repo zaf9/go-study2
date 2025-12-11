@@ -192,6 +192,27 @@ npm install
 npm run dev
 ```
 
+**前后端联调（开发模式）：**
+
+```bash
+# 1) 若仓库根存在 build.bat，优先执行（依赖检查与编译）
+./build.bat
+
+# 2) 启动后端（默认 8080，提供 /api/v1）
+cd backend
+go run main.go -d
+
+# 3) 启动前端（显式指向后端 API，避免 404）
+cd ../frontend
+$env:NEXT_PUBLIC_API_URL="http://localhost:8080/api/v1"
+npm install
+npm run dev   # http://localhost:3000/
+```
+
+说明：
+- 前端开发服务器跑在 3000 端口。设置 `NEXT_PUBLIC_API_URL` 后，`/auth/login` 等请求会直接访问 `http://localhost:8080/api/v1`，不会落到前端导致 404。
+- 若需同端口访问生产效果，可 `npm run build && npm run export` 生成 `frontend/out`，然后让后端托管静态文件（访问 `http://localhost:8080/`）。
+
 **生产静态导出与托管：**
 
 ```bash
