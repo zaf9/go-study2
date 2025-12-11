@@ -19,4 +19,3 @@ describe("QuizResultView", () => {
     expect(screen.getByText(/q3/)).toBeInTheDocument();
   });
 });
-

@@ -31,5 +31,3 @@ describe("TopicCard", () => {
     expect(pushMock).toHaveBeenCalledWith("/topics/constants");
   });
 });
-
-

@@ -41,4 +41,3 @@ export interface QuizHistoryItem {
   durationMs: number;
   createdAt: string;
 }
-

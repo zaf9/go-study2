@@ -54,5 +54,3 @@ describe("RegisterForm", () => {
     expect(pushMock).toHaveBeenCalledWith("/topics");
   });
 });
-
-

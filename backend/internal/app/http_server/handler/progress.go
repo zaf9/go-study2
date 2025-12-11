@@ -136,4 +136,3 @@ func toProgressResponses(items []progress.Progress) []progressResponse {
 	}
 	return list
 }
-

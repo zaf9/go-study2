@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { Button, Result, Typography } from "antd";
 import { useRouter } from "next/navigation";
@@ -30,4 +30,3 @@ export default function NotFoundPage() {
     </div>
   );
 }
-

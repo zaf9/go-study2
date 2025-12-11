@@ -1,14 +1,20 @@
-'use client';
+"use client";
 
 import useSWR from "swr";
 import { useCallback } from "react";
-import { fetchAllProgress, fetchProgressByTopic, saveProgress, SaveProgressRequest } from "@/lib/progress";
+import {
+  fetchAllProgress,
+  fetchProgressByTopic,
+  saveProgress,
+  SaveProgressRequest,
+} from "@/lib/progress";
 import { LearningProgress } from "@/types/learning";
 
 export default function useProgress(topic?: string) {
   const key = topic ? ["progress", topic] : ["progress", "all"];
-  const { data, error, isLoading, mutate } = useSWR<LearningProgress[]>(key, () =>
-    topic ? fetchProgressByTopic(topic) : fetchAllProgress()
+  const { data, error, isLoading, mutate } = useSWR<LearningProgress[]>(
+    key,
+    () => (topic ? fetchProgressByTopic(topic) : fetchAllProgress()),
   );
 
   const recordProgress = useCallback(
@@ -16,7 +22,7 @@ export default function useProgress(topic?: string) {
       await saveProgress(payload);
       await mutate();
     },
-    [mutate]
+    [mutate],
   );
 
   const latest = (data ?? []).reduce<LearningProgress | null>((acc, item) => {
@@ -32,4 +38,3 @@ export default function useProgress(topic?: string) {
     recordProgress,
   };
 }
-

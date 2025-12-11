@@ -11,10 +11,10 @@ import (
 )
 
 type quizSubmitRequest struct {
-	Topic      string                `json:"topic"`
-	Chapter    string                `json:"chapter"`
-	Answers    []quiz.SubmitAnswer   `json:"answers"`
-	DurationMs int64                 `json:"durationMs"`
+	Topic      string              `json:"topic"`
+	Chapter    string              `json:"chapter"`
+	Answers    []quiz.SubmitAnswer `json:"answers"`
+	DurationMs int64               `json:"durationMs"`
 }
 
 // GetQuiz 返回指定主题与章节的测验题目。
@@ -64,10 +64,10 @@ func (h *Handler) SubmitQuiz(r *ghttp.Request) {
 	}
 
 	writeSuccess(r, "提交成功", map[string]interface{}{
-		"score":      result.Score,
-		"total":      result.Total,
-		"correctIds": result.CorrectIDs,
-		"wrongIds":   result.WrongIDs,
+		"score":       result.Score,
+		"total":       result.Total,
+		"correctIds":  result.CorrectIDs,
+		"wrongIds":    result.WrongIDs,
 		"submittedAt": result.SubmittedAt.Format(time.RFC3339),
 		"durationMs":  result.DurationMs,
 	})
@@ -132,4 +132,3 @@ func (h *Handler) writeQuizError(r *ghttp.Request, err error) {
 		writeError(r, http.StatusInternalServerError, 50001, "服务器繁忙，请稍后再试")
 	}
 }
-

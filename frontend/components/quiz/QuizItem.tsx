@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { Checkbox, Radio, Space, Typography } from "antd";
 import { QuizItem as QuizItemType } from "@/types/quiz";
@@ -47,4 +47,3 @@ export default function QuizItem({ question, value, onChange }: QuizItemProps) {
     </div>
   );
 }
-

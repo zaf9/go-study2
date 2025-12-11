@@ -24,4 +24,3 @@ describe("QuizItem", () => {
     expect(handleChange).toHaveBeenCalledWith(["A"]);
   });
 });
-

@@ -64,4 +64,3 @@ func nullableString(v string) interface{} {
 	}
 	return v
 }
-

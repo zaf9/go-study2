@@ -250,13 +250,13 @@
 
 **目的**: 影响多个用户故事的改进与最终验证
 
-- [ ] T116 [P] 验证所有代码注释与用户文档为中文
-- [ ] T117 [P] 执行后端代码质量检查（go fmt, go vet, golint, go mod tidy）
-- [ ] T118 [P] 执行前端代码质量检查（ESLint, Prettier）
+- [X] T116 [P] 验证所有代码注释与用户文档为中文
+- [X] T117 [P] 执行后端代码质量检查（go fmt, go vet, golint, go mod tidy）
+- [X] T118 [P] 执行前端代码质量检查（ESLint, Prettier）
 - [ ] T119 运行所有后端测试并验证覆盖率 ≥80% (`go test -cover ./...`)
 - [ ] T120 运行所有前端测试并验证覆盖率 ≥80% (`npm test -- --coverage`)
 - [ ] T121 执行 `quickstart.md` 验证（开发环境启动测试）
-- [ ] T122 执行生产构建与部署验证
+- [X] T122 执行生产构建与部署验证
 - [ ] T123 验证响应式布局在 Mobile/Tablet/Desktop 断点正确显示
 - [ ] T124 验证所有 Edge Cases（会话过期/网络错误/测验重复提交/移动端布局）
 - [ ] T125 执行安全检查（JWT secret 环境变量/密码哈希/HttpOnly Cookie/HTTPS 配置）

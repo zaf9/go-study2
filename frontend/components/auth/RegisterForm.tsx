@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { useState } from "react";
 import { Button, Checkbox, Form, Input, Typography, message } from "antd";
@@ -31,7 +31,8 @@ export default function RegisterForm() {
       message.success("注册成功，已自动登录");
       router.push("/topics");
     } catch (error) {
-      const reason = error instanceof Error ? error.message : "注册失败，请重试";
+      const reason =
+        error instanceof Error ? error.message : "注册失败，请重试";
       message.error(reason);
     } finally {
       setSubmitting(false);
@@ -96,7 +97,13 @@ export default function RegisterForm() {
           <Checkbox>记住我</Checkbox>
         </Form.Item>
         <Form.Item>
-          <Button type="primary" htmlType="submit" block size="large" loading={submitting}>
+          <Button
+            type="primary"
+            htmlType="submit"
+            block
+            size="large"
+            loading={submitting}
+          >
             注册并登录
           </Button>
         </Form.Item>
@@ -104,5 +111,3 @@ export default function RegisterForm() {
     </div>
   );
 }
-
-

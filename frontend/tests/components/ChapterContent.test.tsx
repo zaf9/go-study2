@@ -12,7 +12,7 @@ describe("ChapterContent", () => {
       id: "intro",
       topicKey: "constants",
       title: "示例章节",
-      markdown: "```go\nfmt.Println(\"hi\")\n```",
+      markdown: '```go\nfmt.Println("hi")\n```',
     };
 
     render(<ChapterContent content={content} />);
@@ -21,5 +21,3 @@ describe("ChapterContent", () => {
     expect(screen.getByText(/fmt\.Println\("hi"\)/)).toBeInTheDocument();
   });
 });
-
-

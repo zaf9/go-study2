@@ -13,7 +13,8 @@ export const API_PATHS = {
   logout: "/auth/logout",
   topics: "/topics",
   topicMenu: (topic: string) => `/topic/${topic}`,
-  chapterContent: (topic: string, chapter: string) => `/topic/${topic}/${chapter}`,
+  chapterContent: (topic: string, chapter: string) =>
+    `/topic/${topic}/${chapter}`,
   progress: "/progress",
   progressByTopic: (topic: string) => `/progress/${topic}`,
   quiz: (topic: string, chapter: string) => `/quiz/${topic}/${chapter}`,
@@ -21,4 +22,3 @@ export const API_PATHS = {
   quizHistory: "/quiz/history",
   quizHistoryByTopic: (topic: string) => `/quiz/history/${topic}`,
 };
-

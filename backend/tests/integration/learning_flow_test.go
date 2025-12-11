@@ -183,4 +183,3 @@ func doLearningRequest(t *testing.T, client *http.Client, req *http.Request) lea
 	}
 	return body
 }
-

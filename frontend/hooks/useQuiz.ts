@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import useSWR from "swr";
 import { useMemo, useState } from "react";
@@ -15,7 +15,9 @@ export default function useQuiz(topic: string, chapter: string) {
     error,
     isLoading,
     mutate,
-  } = useSWR<QuizItem[]>(["quiz", topic, chapter], () => fetchQuizQuestions(topic, chapter));
+  } = useSWR<QuizItem[]>(["quiz", topic, chapter], () =>
+    fetchQuizQuestions(topic, chapter),
+  );
 
   const selectAnswer = (id: string, choices: string[]) => {
     setAnswers((prev) => ({ ...prev, [id]: choices }));
@@ -66,7 +68,7 @@ export default function useQuiz(topic: string, chapter: string) {
 export function useQuizHistory(topic?: string) {
   const { data, error, isLoading, mutate } = useSWR<QuizHistoryItem[]>(
     ["quiz-history", topic || "all"],
-    () => fetchQuizHistory(topic)
+    () => fetchQuizHistory(topic),
   );
 
   return {
@@ -76,4 +78,3 @@ export function useQuizHistory(topic?: string) {
     refresh: mutate,
   };
 }
-

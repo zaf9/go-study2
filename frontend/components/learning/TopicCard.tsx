@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { Card, Space, Tag, Typography } from "antd";
 import { useRouter } from "next/navigation";
@@ -18,7 +18,7 @@ export default function TopicCard({ topic }: TopicCardProps) {
       hoverable
       onClick={() => router.push(`/topics/${topic.key}`)}
       className="h-full"
-      bodyStyle={{ height: "100%" }}
+      styles={{ body: { height: "100%" } }}
     >
       <Space direction="vertical" size="middle" className="h-full w-full">
         <Space align="center" size="small">
@@ -28,11 +28,11 @@ export default function TopicCard({ topic }: TopicCardProps) {
         <Title level={4} className="mb-0">
           {topic.title}
         </Title>
-        <Paragraph ellipsis={{ rows: 2 }}>{topic.summary || "快速开始该主题的学习。"}</Paragraph>
+        <Paragraph ellipsis={{ rows: 2 }}>
+          {topic.summary || "快速开始该主题的学习。"}
+        </Paragraph>
         <Text type="secondary">章节数：{topic.chapterCount ?? 0}</Text>
       </Space>
     </Card>
   );
 }
-
-

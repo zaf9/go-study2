@@ -1,7 +1,12 @@
-'use client';
+"use client";
 
 import { Layout, Menu } from "antd";
-import { BookOutlined, HomeOutlined, LineChartOutlined, QuestionCircleOutlined } from "@ant-design/icons";
+import {
+  BookOutlined,
+  HomeOutlined,
+  LineChartOutlined,
+  QuestionCircleOutlined,
+} from "@ant-design/icons";
 import { usePathname, useRouter } from "next/navigation";
 import { useMemo } from "react";
 
@@ -63,9 +68,12 @@ export default function Sidebar({ collapsed, onCollapse }: SidebarProps) {
       <div className="h-12 text-center text-white flex items-center justify-center font-semibold text-base">
         Go Study 2
       </div>
-      <Menu theme="dark" mode="inline" selectedKeys={selectedKeys} items={items} />
+      <Menu
+        theme="dark"
+        mode="inline"
+        selectedKeys={selectedKeys}
+        items={items}
+      />
     </Sider>
   );
 }
-
-

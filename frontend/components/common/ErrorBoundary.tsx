@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import React from "react";
 import { Result, Button } from "antd";
 
@@ -7,7 +7,10 @@ interface ErrorBoundaryState {
 }
 
 // 捕获渲染错误并提供重试入口
-class ErrorBoundary extends React.Component<React.PropsWithChildren, ErrorBoundaryState> {
+class ErrorBoundary extends React.Component<
+  React.PropsWithChildren,
+  ErrorBoundaryState
+> {
   constructor(props: React.PropsWithChildren) {
     super(props);
     this.state = { hasError: false };
@@ -47,4 +50,3 @@ class ErrorBoundary extends React.Component<React.PropsWithChildren, ErrorBounda
 }
 
 export default ErrorBoundary;
-

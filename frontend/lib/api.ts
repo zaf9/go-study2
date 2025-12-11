@@ -54,13 +54,13 @@ api.interceptors.response.use(
       }
     }
 
-    const msg = error?.response?.data?.message || error.message || "网络错误，请重试";
+    const msg =
+      error?.response?.data?.message || error.message || "网络错误，请重试";
     if (isBrowser) {
       message.error(msg);
     }
     return Promise.reject(error);
-  }
+  },
 );
 
 export default api;
-

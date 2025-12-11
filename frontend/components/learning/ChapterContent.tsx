@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { useEffect } from "react";
 import ReactMarkdown from "react-markdown";
@@ -42,7 +42,7 @@ export default function ChapterContent({ content }: ChapterContentProps) {
             const html = Prism.highlight(
               codeText,
               Prism.languages[language] || Prism.languages.markup,
-              language
+              language,
             );
             return (
               <pre className={`language-${language}`}>
@@ -57,5 +57,3 @@ export default function ChapterContent({ content }: ChapterContentProps) {
     </Card>
   );
 }
-
-

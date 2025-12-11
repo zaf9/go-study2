@@ -1,20 +1,43 @@
-'use client';
+"use client";
 
 import type React from "react";
-import { createContext, useCallback, useEffect, useMemo, useState } from "react";
-import { clearTokens, fetchProfile, getAccessToken, loginWithPassword, logoutAccount, registerAccount } from "@/lib/auth";
+import {
+  createContext,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
+import {
+  clearTokens,
+  fetchProfile,
+  getAccessToken,
+  loginWithPassword,
+  logoutAccount,
+  registerAccount,
+} from "@/lib/auth";
 import { Profile } from "@/types/auth";
 
 export interface AuthContextValue {
   user: Profile | null;
   loading: boolean;
-  login: (username: string, password: string, remember: boolean) => Promise<Profile>;
-  register: (username: string, password: string, remember: boolean) => Promise<Profile>;
+  login: (
+    username: string,
+    password: string,
+    remember: boolean,
+  ) => Promise<Profile>;
+  register: (
+    username: string,
+    password: string,
+    remember: boolean,
+  ) => Promise<Profile>;
   logout: () => Promise<void>;
   refreshProfile: () => Promise<Profile | null>;
 }
 
-export const AuthContext = createContext<AuthContextValue | undefined>(undefined);
+export const AuthContext = createContext<AuthContextValue | undefined>(
+  undefined,
+);
 
 export function AuthProvider({ children }: React.PropsWithChildren) {
   const [user, setUser] = useState<Profile | null>(null);
@@ -35,29 +58,35 @@ export function AuthProvider({ children }: React.PropsWithChildren) {
       .finally(() => setLoading(false));
   }, []);
 
-  const login = useCallback(async (username: string, password: string, remember: boolean) => {
-    setLoading(true);
-    try {
-      await loginWithPassword({ username, password, remember });
-      const profile = await fetchProfile();
-      setUser(profile);
-      return profile;
-    } finally {
-      setLoading(false);
-    }
-  }, []);
+  const login = useCallback(
+    async (username: string, password: string, remember: boolean) => {
+      setLoading(true);
+      try {
+        await loginWithPassword({ username, password, remember });
+        const profile = await fetchProfile();
+        setUser(profile);
+        return profile;
+      } finally {
+        setLoading(false);
+      }
+    },
+    [],
+  );
 
-  const register = useCallback(async (username: string, password: string, remember: boolean) => {
-    setLoading(true);
-    try {
-      await registerAccount({ username, password, remember });
-      const profile = await fetchProfile();
-      setUser(profile);
-      return profile;
-    } finally {
-      setLoading(false);
-    }
-  }, []);
+  const register = useCallback(
+    async (username: string, password: string, remember: boolean) => {
+      setLoading(true);
+      try {
+        await registerAccount({ username, password, remember });
+        const profile = await fetchProfile();
+        setUser(profile);
+        return profile;
+      } finally {
+        setLoading(false);
+      }
+    },
+    [],
+  );
 
   const logout = useCallback(async () => {
     try {
@@ -94,10 +123,8 @@ export function AuthProvider({ children }: React.PropsWithChildren) {
       logout,
       refreshProfile,
     }),
-    [user, loading, login, register, logout, refreshProfile]
+    [user, loading, login, register, logout, refreshProfile],
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
-
-

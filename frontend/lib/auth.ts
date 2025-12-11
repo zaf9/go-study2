@@ -1,7 +1,18 @@
 import axios, { AxiosResponse } from "axios";
-import { ACCESS_TOKEN_KEY, API_BASE_URL, API_PATHS, REMEMBER_ME_KEY, REQUEST_TIMEOUT } from "./constants";
+import {
+  ACCESS_TOKEN_KEY,
+  API_BASE_URL,
+  API_PATHS,
+  REMEMBER_ME_KEY,
+  REQUEST_TIMEOUT,
+} from "./constants";
 import { ApiResponse } from "@/types/api";
-import { AuthTokens, LoginRequest, Profile, RegisterRequest } from "@/types/auth";
+import {
+  AuthTokens,
+  LoginRequest,
+  Profile,
+  RegisterRequest,
+} from "@/types/auth";
 
 let accessTokenInMemory: string | null = null;
 let rememberInMemory = false;
@@ -93,7 +104,9 @@ function unwrapResponse<T>(resp: AxiosResponse<ApiResponse<T>>): T {
   return payload.data;
 }
 
-export async function loginWithPassword(request: LoginRequest): Promise<AuthTokens> {
+export async function loginWithPassword(
+  request: LoginRequest,
+): Promise<AuthTokens> {
   const remember = !!request.remember;
   setRememberMe(remember);
   const resp = await authClient.post<ApiResponse<AuthTokens>>(API_PATHS.login, {
@@ -108,14 +121,19 @@ export async function loginWithPassword(request: LoginRequest): Promise<AuthToke
   return tokens;
 }
 
-export async function registerAccount(request: RegisterRequest & { remember?: boolean }): Promise<AuthTokens> {
+export async function registerAccount(
+  request: RegisterRequest & { remember?: boolean },
+): Promise<AuthTokens> {
   const remember = !!request.remember;
   setRememberMe(remember);
-  const resp = await authClient.post<ApiResponse<AuthTokens>>(API_PATHS.register, {
-    username: request.username,
-    password: request.password,
-    remember,
-  });
+  const resp = await authClient.post<ApiResponse<AuthTokens>>(
+    API_PATHS.register,
+    {
+      username: request.username,
+      password: request.password,
+      remember,
+    },
+  );
   const tokens = unwrapResponse<AuthTokens>(resp);
   if (tokens?.accessToken) {
     setAccessToken(tokens.accessToken);
@@ -131,13 +149,20 @@ export async function fetchProfile(): Promise<Profile> {
 }
 
 export async function logoutAccount(): Promise<void> {
-  await authClient.post<ApiResponse<null>>(API_PATHS.logout, {}, { headers: buildAuthHeaders() });
+  await authClient.post<ApiResponse<null>>(
+    API_PATHS.logout,
+    {},
+    { headers: buildAuthHeaders() },
+  );
   clearTokens();
 }
 
 export async function refreshAccessToken(): Promise<string | null> {
   try {
-    const resp = await authClient.post<ApiResponse<AuthTokens>>(API_PATHS.refresh, {});
+    const resp = await authClient.post<ApiResponse<AuthTokens>>(
+      API_PATHS.refresh,
+      {},
+    );
     const tokens = unwrapResponse<AuthTokens>(resp);
     const token = tokens?.accessToken;
     if (token) {
@@ -150,4 +175,3 @@ export async function refreshAccessToken(): Promise<string | null> {
     return null;
   }
 }
-

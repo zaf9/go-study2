@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import dynamic from "next/dynamic";
 import useSWR from "swr";
@@ -8,23 +8,34 @@ import { useEffect, useMemo, useRef } from "react";
 import Loading from "@/components/common/Loading";
 import ErrorMessage from "@/components/common/ErrorMessage";
 import { fetchChapterContent } from "@/lib/learning";
-import { ChapterContent as ChapterContentType, ProgressStatus } from "@/types/learning";
+import {
+  ChapterContent as ChapterContentType,
+  ProgressStatus,
+} from "@/types/learning";
 import useProgress from "@/hooks/useProgress";
 import useScrollPosition from "@/hooks/useScrollPosition";
 import ProgressBar from "@/components/learning/ProgressBar";
 
 const { Title, Paragraph } = Typography;
 
-const ChapterContent = dynamic(() => import("@/components/learning/ChapterContent"), {
-  loading: () => <Loading />,
-  ssr: false,
-});
+const ChapterContent = dynamic(
+  () => import("@/components/learning/ChapterContent"),
+  {
+    loading: () => <Loading />,
+    ssr: false,
+  },
+);
 
-export default function ChapterPageClient({ params }: { params: { topic: string; chapter: string } }) {
+export default function ChapterPageClient({
+  params,
+}: {
+  params: { topic: string; chapter: string };
+}) {
   const router = useRouter();
   const { topic, chapter } = params;
-  const { data, error, isLoading } = useSWR<ChapterContentType>(["chapter", topic, chapter], () =>
-    fetchChapterContent(topic, chapter)
+  const { data, error, isLoading } = useSWR<ChapterContentType>(
+    ["chapter", topic, chapter],
+    () => fetchChapterContent(topic, chapter),
   );
   const { progress, recordProgress } = useProgress(topic);
   const scroll = useScrollPosition();
@@ -52,18 +63,19 @@ export default function ChapterPageClient({ params }: { params: { topic: string;
     };
   }, [data, topic, chapter, recordProgress]);
 
-  const currentStatus: ProgressStatus =
-    useMemo(
-      () => progress.find((p) => p.chapter === chapter)?.status ?? "not_started",
-      [progress, chapter]
-    );
+  const currentStatus: ProgressStatus = useMemo(
+    () => progress.find((p) => p.chapter === chapter)?.status ?? "not_started",
+    [progress, chapter],
+  );
 
   if (isLoading) {
     return <Loading />;
   }
 
   if (error) {
-    return <ErrorMessage message="加载章节内容失败" description={error.message} />;
+    return (
+      <ErrorMessage message="加载章节内容失败" description={error.message} />
+    );
   }
 
   const content = data;
@@ -79,14 +91,19 @@ export default function ChapterPageClient({ params }: { params: { topic: string;
           <ProgressBar status={currentStatus} />
         </div>
         <Space>
-          <Button onClick={() => router.push(`/topics/${topic}`)}>返回章节列表</Button>
+          <Button onClick={() => router.push(`/topics/${topic}`)}>
+            返回章节列表
+          </Button>
           <Button type="primary" onClick={() => router.push("/topics")}>
             返回主题
           </Button>
         </Space>
       </div>
-      {content ? <ChapterContent content={content} /> : <ErrorMessage message="暂无内容" />}
+      {content ? (
+        <ChapterContent content={content} />
+      ) : (
+        <ErrorMessage message="暂无内容" />
+      )}
     </Space>
   );
 }
-

@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { useEffect, useState } from "react";
 import useSWR from "swr";
@@ -12,11 +12,17 @@ import useQuiz from "@/hooks/useQuiz";
 
 const { Title, Paragraph } = Typography;
 
-export default function QuizPageClient({ params }: { params: { topic: string } }) {
+export default function QuizPageClient({
+  params,
+}: {
+  params: { topic: string };
+}) {
   const topic = params.topic;
-  const { data: chapters, error: chapterError, isLoading: chapterLoading } = useSWR(["quiz-chapters", topic], () =>
-    fetchChapters(topic)
-  );
+  const {
+    data: chapters,
+    error: chapterError,
+    isLoading: chapterLoading,
+  } = useSWR(["quiz-chapters", topic], () => fetchChapters(topic));
   const [selectedChapter, setSelectedChapter] = useState("");
 
   useEffect(() => {
@@ -37,7 +43,10 @@ export default function QuizPageClient({ params }: { params: { topic: string } }
   } = useQuiz(topic, selectedChapter);
 
   if (chapterLoading) return <Loading />;
-  if (chapterError) return <ErrorMessage message="加载章节失败" description={chapterError.message} />;
+  if (chapterError)
+    return (
+      <ErrorMessage message="加载章节失败" description={chapterError.message} />
+    );
   if (!selectedChapter) return <ErrorMessage message="暂无章节可用" />;
 
   const handleSubmit = async () => {
@@ -55,7 +64,9 @@ export default function QuizPageClient({ params }: { params: { topic: string } }
             <Title level={3} className="mb-1">
               {topic} 测验
             </Title>
-            <Paragraph type="secondary">选择章节后完成测验，提交即可查看结果。</Paragraph>
+            <Paragraph type="secondary">
+              选择章节后完成测验，提交即可查看结果。
+            </Paragraph>
           </div>
           <Select
             style={{ minWidth: 220 }}
@@ -64,7 +75,10 @@ export default function QuizPageClient({ params }: { params: { topic: string } }
               setSelectedChapter(v);
               reset();
             }}
-            options={(chapters ?? []).map((c) => ({ label: c.title, value: c.id }))}
+            options={(chapters ?? []).map((c) => ({
+              label: c.title,
+              value: c.id,
+            }))}
           />
         </div>
         {quizLoading ? (
@@ -72,11 +86,23 @@ export default function QuizPageClient({ params }: { params: { topic: string } }
         ) : (
           <Space direction="vertical" className="w-full" size="middle">
             {questions.map((q) => (
-              <QuizItem key={q.id} question={q} value={answers[q.id] ?? []} onChange={(val) => selectAnswer(q.id, val)} />
+              <QuizItem
+                key={q.id}
+                question={q}
+                value={answers[q.id] ?? []}
+                onChange={(val) => selectAnswer(q.id, val)}
+              />
             ))}
-            {questions.length === 0 && <ErrorMessage message="当前章节暂无测验" />}
+            {questions.length === 0 && (
+              <ErrorMessage message="当前章节暂无测验" />
+            )}
             <Space>
-              <Button type="primary" onClick={handleSubmit} loading={submitting} disabled={questions.length === 0}>
+              <Button
+                type="primary"
+                onClick={handleSubmit}
+                loading={submitting}
+                disabled={questions.length === 0}
+              >
                 提交测验
               </Button>
               <Button onClick={reset}>重置</Button>
@@ -93,4 +119,3 @@ export default function QuizPageClient({ params }: { params: { topic: string } }
     </div>
   );
 }
-

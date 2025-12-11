@@ -21,7 +21,8 @@ describe("auth storage helpers", () => {
 
   it("记住我为 true 时会持久化 token", async () => {
     mockAxios();
-    const { setRememberMe, setAccessToken, getAccessToken, clearTokens } = await import("@/lib/auth");
+    const { setRememberMe, setAccessToken, getAccessToken, clearTokens } =
+      await import("@/lib/auth");
 
     setRememberMe(true);
     setAccessToken("abc");
@@ -34,7 +35,8 @@ describe("auth storage helpers", () => {
 
   it("未勾选记住我时仅使用内存中的 token", async () => {
     mockAxios();
-    const { setRememberMe, setAccessToken, getAccessToken, clearTokens } = await import("@/lib/auth");
+    const { setRememberMe, setAccessToken, getAccessToken, clearTokens } =
+      await import("@/lib/auth");
 
     setRememberMe(false);
     setAccessToken("temp-token");
@@ -48,11 +50,16 @@ describe("auth storage helpers", () => {
 
   it("刷新 access token 成功时更新缓存", async () => {
     const axiosMock = mockAxios();
-    const { setRememberMe, refreshAccessToken, getAccessToken, clearTokens } = await import("@/lib/auth");
+    const { setRememberMe, refreshAccessToken, getAccessToken, clearTokens } =
+      await import("@/lib/auth");
 
     setRememberMe(true);
     axiosMock.post.mockResolvedValue({
-      data: { code: 20000, message: "ok", data: { accessToken: "new-token", expiresIn: 3600 } },
+      data: {
+        code: 20000,
+        message: "ok",
+        data: { accessToken: "new-token", expiresIn: 3600 },
+      },
     });
 
     const token = await refreshAccessToken();
@@ -66,7 +73,13 @@ describe("auth storage helpers", () => {
 
   it("刷新失败时返回 null 且清理 token", async () => {
     const axiosMock = mockAxios();
-    const { setRememberMe, setAccessToken, refreshAccessToken, getAccessToken, clearTokens } = await import("@/lib/auth");
+    const {
+      setRememberMe,
+      setAccessToken,
+      refreshAccessToken,
+      getAccessToken,
+      clearTokens,
+    } = await import("@/lib/auth");
 
     setRememberMe(true);
     setAccessToken("old-token");
@@ -82,4 +95,3 @@ describe("auth storage helpers", () => {
     clearTokens();
   });
 });
-

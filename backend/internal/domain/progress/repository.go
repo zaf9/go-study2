@@ -8,4 +8,3 @@ type Repository interface {
 	ListByUser(ctx context.Context, userID int64) ([]Progress, error)
 	ListByTopic(ctx context.Context, userID int64, topic string) ([]Progress, error)
 }
-

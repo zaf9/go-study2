@@ -76,4 +76,3 @@ func TestService_GetQuestionsAndSubmit(t *testing.T) {
 		t.Fatalf("历史记录数量不正确")
 	}
 }
-

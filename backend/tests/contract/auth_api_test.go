@@ -32,7 +32,7 @@ func TestAuthAPI_Contract(t *testing.T) {
 	baseURL, client, shutdown := startContractServer(t)
 	defer shutdown()
 
-	register := doContractPost(t, client, baseURL+"/api/v1/auth/register", `{"username":"contract_user","password":"TestPass123","rememberMe":true}`)
+	register := doAuthContractPost(t, client, baseURL+"/api/v1/auth/register", `{"username":"contract_user","password":"TestPass123","rememberMe":true}`)
 	if register.Code != 20000 {
 		t.Fatalf("注册返回码错误: %d, msg=%s", register.Code, register.Message)
 	}
@@ -45,12 +45,12 @@ func TestAuthAPI_Contract(t *testing.T) {
 		t.Fatalf("注册响应缺少 accessToken 或 expiresIn")
 	}
 
-	invalidLogin := doContractPost(t, client, baseURL+"/api/v1/auth/login", `{"username":"","password":""}`)
+	invalidLogin := doAuthContractPost(t, client, baseURL+"/api/v1/auth/login", `{"username":"","password":""}`)
 	if invalidLogin.Code != 40004 {
 		t.Fatalf("无效登录参数应返回 40004，实际 %d", invalidLogin.Code)
 	}
 
-	refresh := doContractPost(t, client, baseURL+"/api/v1/auth/refresh", `{}`)
+	refresh := doAuthContractPost(t, client, baseURL+"/api/v1/auth/refresh", `{}`)
 	if refresh.Code != 20000 && refresh.Code != 40002 {
 		t.Fatalf("刷新接口应返回成功或 40002，实际 %d", refresh.Code)
 	}
@@ -132,14 +132,14 @@ func ensureConfigPath() {
 	}
 }
 
-func doContractPost(t *testing.T, client *http.Client, url string, payload string) contractResp {
+func doAuthContractPost(t *testing.T, client *http.Client, url string, payload string) contractResp {
 	t.Helper()
 	req, _ := http.NewRequest(http.MethodPost, url, bytes.NewBufferString(payload))
 	req.Header.Set("Content-Type", "application/json")
-	return doContractRequest(t, client, req)
+	return doAuthContractRequest(t, client, req)
 }
 
-func doContractRequest(t *testing.T, client *http.Client, req *http.Request) contractResp {
+func doAuthContractRequest(t *testing.T, client *http.Client, req *http.Request) contractResp {
 	t.Helper()
 	resp, err := client.Do(req)
 	if err != nil {

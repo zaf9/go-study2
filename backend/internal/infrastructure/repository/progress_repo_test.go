@@ -22,6 +22,7 @@ func TestProgressRepository_UpsertAndQuery(t *testing.T) {
 	ctx := gctx.New()
 	db := setupProgressRepoDB(t)
 	repo := NewProgressRepository(db)
+	createTestUser(t, db, 1)
 
 	record := &progress.Progress{
 		UserID:  1,
@@ -85,6 +86,20 @@ func setupProgressRepoDB(t *testing.T) gdb.DB {
 	return db
 }
 
+func createTestUser(t *testing.T, db gdb.DB, id int64) {
+	t.Helper()
+	_, err := db.Model("users").Data(g.Map{
+		"id":            id,
+		"username":      fmt.Sprintf("user_%d", id),
+		"password_hash": "hash",
+		"created_at":    time.Now(),
+		"updated_at":    time.Now(),
+	}).Insert()
+	if err != nil {
+		t.Fatalf("创建测试用户失败: %v", err)
+	}
+}
+
 func ensureRepoConfigPath() {
 	adapter, ok := g.Cfg().GetAdapter().(*gcfg.AdapterFile)
 	if !ok {
@@ -95,4 +110,3 @@ func ensureRepoConfigPath() {
 		adapter.SetFileName("config")
 	}
 }
-

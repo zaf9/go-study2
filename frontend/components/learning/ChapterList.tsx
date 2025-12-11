@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { List, Button, Space, Typography, Tag } from "antd";
 import { useRouter } from "next/navigation";
@@ -13,7 +13,11 @@ interface ChapterListProps {
 
 const { Text } = Typography;
 
-export default function ChapterList({ topicKey, chapters, progress }: ChapterListProps) {
+export default function ChapterList({
+  topicKey,
+  chapters,
+  progress,
+}: ChapterListProps) {
   const router = useRouter();
   const progressMap =
     progress?.reduce<Record<string, LearningProgress>>((map, item) => {
@@ -29,7 +33,11 @@ export default function ChapterList({ topicKey, chapters, progress }: ChapterLis
       renderItem={(item) => (
         <List.Item
           actions={[
-            <Button key="view" type="link" onClick={() => router.push(`/topics/${topicKey}/${item.id}`)}>
+            <Button
+              key="view"
+              type="link"
+              onClick={() => router.push(`/topics/${topicKey}/${item.id}`)}
+            >
               查看
             </Button>,
           ]}
@@ -39,10 +47,18 @@ export default function ChapterList({ topicKey, chapters, progress }: ChapterLis
             description={
               <Space size="small">
                 <Text type="secondary">{item.summary || "章节内容"}</Text>
-                {typeof item.order === "number" && <Text type="secondary">序号：{item.order + 1}</Text>}
+                {typeof item.order === "number" && (
+                  <Text type="secondary">序号：{item.order + 1}</Text>
+                )}
                 {progressMap[item.id]?.status && (
-                  <Tag color={progressMap[item.id].status === "done" ? "green" : "blue"}>
-                    {progressMap[item.id].status === "done" ? "已完成" : "学习中"}
+                  <Tag
+                    color={
+                      progressMap[item.id].status === "done" ? "green" : "blue"
+                    }
+                  >
+                    {progressMap[item.id].status === "done"
+                      ? "已完成"
+                      : "学习中"}
                   </Tag>
                 )}
               </Space>
@@ -53,5 +69,3 @@ export default function ChapterList({ topicKey, chapters, progress }: ChapterLis
     />
   );
 }
-
-

@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { Typography } from "antd";
 import QuizHistory from "@/components/quiz/QuizHistory";
@@ -12,7 +12,10 @@ export default function QuizHistoryPage() {
   const { history, isLoading, error } = useQuizHistory();
 
   if (isLoading) return <Loading />;
-  if (error) return <ErrorMessage message="加载测验历史失败" description={error.message} />;
+  if (error)
+    return (
+      <ErrorMessage message="加载测验历史失败" description={error.message} />
+    );
 
   return (
     <div className="space-y-4">
@@ -21,4 +24,3 @@ export default function QuizHistoryPage() {
     </div>
   );
 }
-

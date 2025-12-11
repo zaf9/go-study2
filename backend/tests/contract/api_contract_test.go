@@ -15,8 +15,6 @@ import (
 	"go-study2/internal/infrastructure/database"
 	appjwt "go-study2/internal/pkg/jwt"
 
-	"github.com/gogf/gf/v2/frame/g"
-	"github.com/gogf/gf/v2/os/gcfg"
 	"github.com/gogf/gf/v2/os/gctx"
 	"github.com/gogf/gf/v2/os/gfile"
 )
@@ -157,4 +155,3 @@ func mustNewRequest(t *testing.T, method, url, payload string) *http.Request {
 	}
 	return req
 }
-

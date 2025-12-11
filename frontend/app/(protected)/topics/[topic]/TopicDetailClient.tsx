@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import useSWR from "swr";
 import { Button, Space, Typography } from "antd";
@@ -12,11 +12,16 @@ import useProgress from "@/hooks/useProgress";
 
 const { Title, Paragraph } = Typography;
 
-export default function TopicDetailClient({ params }: { params: { topic: string } }) {
+export default function TopicDetailClient({
+  params,
+}: {
+  params: { topic: string };
+}) {
   const router = useRouter();
   const topicKey = params.topic;
-  const { data, error, isLoading } = useSWR<ChapterSummary[]>(["chapters", topicKey], () =>
-    fetchChapters(topicKey)
+  const { data, error, isLoading } = useSWR<ChapterSummary[]>(
+    ["chapters", topicKey],
+    () => fetchChapters(topicKey),
   );
   const { progress, isLoading: progressLoading } = useProgress(topicKey);
 
@@ -25,7 +30,9 @@ export default function TopicDetailClient({ params }: { params: { topic: string 
   }
 
   if (error) {
-    return <ErrorMessage message="加载章节列表失败" description={error.message} />;
+    return (
+      <ErrorMessage message="加载章节列表失败" description={error.message} />
+    );
   }
 
   const chapters = data ?? [];
@@ -42,9 +49,12 @@ export default function TopicDetailClient({ params }: { params: { topic: string 
         <Button onClick={() => router.push("/topics")}>返回主题</Button>
       </div>
       <Space direction="vertical" className="w-full">
-        <ChapterList topicKey={topicKey} chapters={chapters} progress={progressLoading ? [] : progress} />
+        <ChapterList
+          topicKey={topicKey}
+          chapters={chapters}
+          progress={progressLoading ? [] : progress}
+        />
       </Space>
     </div>
   );
 }
-

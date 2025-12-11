@@ -62,4 +62,3 @@ func (s *Service) ListByTopic(ctx context.Context, userID int64, topic string) (
 	}
 	return s.repo.ListByTopic(ctx, userID, topic)
 }
-

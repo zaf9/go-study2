@@ -1,7 +1,12 @@
 import { TopicKey } from "@/types/learning";
 
 // 预定义可导出的主题与章节，需与后端内容保持一致
-export const topics: TopicKey[] = ["lexical_elements", "constants", "variables", "types"];
+export const topics: TopicKey[] = [
+  "lexical_elements",
+  "constants",
+  "variables",
+  "types",
+];
 
 export const topicChapters: Record<TopicKey, string[]> = {
   lexical_elements: [
@@ -55,6 +60,7 @@ export function buildTopicParams() {
 }
 
 export function buildTopicChapterParams() {
-  return topics.flatMap((topic) => (topicChapters[topic] || []).map((chapter) => ({ topic, chapter })));
+  return topics.flatMap((topic) =>
+    (topicChapters[topic] || []).map((chapter) => ({ topic, chapter })),
+  );
 }
-

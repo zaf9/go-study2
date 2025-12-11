@@ -1,49 +1,81 @@
-# HTTP 配置（默认开启，适用于本地开发）
+# HTTP 配置：本地开发默认开启，便于直接通过 http://127.0.0.1 访问
 http:
+  # HTTP 监听端口，生产若启用 HTTPS 可关闭 HTTP 监听
   port: 8080
 
-# HTTPS 配置（开启后将禁用 HTTP 监听）
+# HTTPS 配置：启用后建议关闭 HTTP 监听并正确配置证书
 https:
-  enabled: false                    # 默认关闭 HTTPS，测试与开发仅使用 HTTP
-  port: 8443                        # 如需启用，请补充证书文件后再切换
-  certFile: "./configs/certs/server.crt"   # 证书路径（支持相对/绝对）
-  keyFile: "./configs/certs/server.key"    # 私钥路径（支持相对/绝对）
-  insecureSkipVerify: false         # 是否跳过证书校验（仅测试/开发使用，生产请关闭）
-  caFile: ""                        # 可选 CA 证书路径，用于自签名信任
+  # 是否启用 HTTPS；开启需提供证书与私钥
+  enabled: false
+  # HTTPS 监听端口，通常使用 443 或 8443
+  port: 8443
+  # 服务端证书路径，支持相对或绝对路径
+  certFile: "./configs/certs/server.crt"
+  # 服务端私钥路径，需与证书匹配
+  keyFile: "./configs/certs/server.key"
+  # 是否跳过客户端证书校验，仅限测试/开发使用
+  insecureSkipVerify: false
+  # 可选 CA 证书路径，自签名证书时用于建立信任链
+  caFile: ""
 
+# 服务基础配置
 server:
+  # 服务监听地址，生产建议绑定 0.0.0.0 或具体内网地址
   host: "127.0.0.1"
+  # 优雅停机等待时间（秒），用于处理中的请求
   shutdownTimeout: 10
 
+# 日志配置
 logger:
+  # 日志级别，支持 DEBUG/INFO/WARN/ERROR
   level: "INFO"
+  # 日志文件存储目录
   path: "./logs"
+  # 是否输出到 stdout，容器环境可开启
   stdout: true
 
-# 数据库配置
+# 数据库配置（默认使用 SQLite3）
 database:
+  # 数据库类型，当前支持 sqlite3
   type: "sqlite3"
+  # 数据文件路径，确保目录可写
   path: "./data/gostudy.db"
+  # 最大打开连接数，SQLite 一般保持较小值
   maxOpenConns: 10
+  # 最大空闲连接数，避免频繁创建连接
   maxIdleConns: 5
+  # 连接最大生命周期（秒），0 表示无限制
   connMaxLifetime: 3600
+  # SQLite PRAGMA 配置列表，可按需调整
   pragmas:
+    # 采用 WAL 模式提升并发读性能
     - "journal_mode=WAL"
+    # 设置数据库忙等待时间（毫秒）
     - "busy_timeout=5000"
+    # 同步策略 NORMAL 在可靠性与性能间平衡
     - "synchronous=NORMAL"
+    # 负值表示以 KiB 为单位的缓存大小
     - "cache_size=-64000"
+    # 开启外键约束校验
     - "foreign_keys=ON"
 
 # JWT 配置
 jwt:
+  # 签名密钥，强烈建议通过环境变量注入
   secret: "${JWT_SECRET}"
+  # 访问令牌过期时间（秒）
   accessTokenExpiry: 604800
+  # 刷新令牌过期时间（秒）
   refreshTokenExpiry: 604800
+  # JWT 发行方标识
   issuer: "go-study2"
 
 # 静态资源配置
 static:
+  # 是否启用静态资源托管
   enabled: true
+  # 静态资源目录，默认指向前端构建产物
   path: "../frontend/out"
+  # SPA 路由回退到 index.html
   spaFallback: true
 

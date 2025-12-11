@@ -56,6 +56,10 @@
 ### 核心功能
 
 - 🎯 **双模式运行** - 支持命令行交互模式和HTTP服务模式
+- 🖥️ **现代Web界面** 🆕 - Next.js + Ant Design 响应式 UI，桌面/移动端适配
+- 🔐 **用户认证** 🆕 - 注册/登录/记住我，JWT 访问令牌 + HttpOnly 刷新令牌，过期自动刷新
+- 📍 **学习进度** 🆕 - 记录章节状态与滚动位置，支持“继续上次学习”
+- 📝 **主题测验** 🆕 - 单选/多选测验与历史记录，提交即时评分
 - 📖 **全面覆盖** - 涵盖Go语言规范中的词法元素和常量系统
 - 💻 **可运行示例** - 每个知识点都配有可直接运行的代码示例
 - 🇨🇳 **中文注释** - 所有代码注释和说明均为中文，降低学习门槛
@@ -70,11 +74,21 @@
 ### HTTP服务模式特性 🆕
 
 - 🌐 **RESTful API** - 标准化的HTTP接口，支持JSON和HTML两种响应格式
+- 🪪 **鉴权保护** - 受保护路由统一JWT校验，自动重定向登录
+- 🔁 **刷新机制** - 7天刷新令牌，可配置“记住我”延长会话
 - 🔌 **灵活访问** - 通过浏览器、curl、Postman或任何HTTP客户端访问
 - ⚙️ **YAML配置** - 灵活的配置文件管理服务器参数
 - 📊 **结构化日志** - 详细的请求日志和错误追踪
 - 🛡️ **优雅关闭** - 支持信号处理和优雅停机
 - 🚀 **并发支持** - 可处理多个并发请求
+
+### 前端 UI 特性 🆕
+
+- 📱 **响应式布局** - Mobile <768px / Tablet 768-1024px / Desktop >1024px
+- 🧭 **学习导航** - 主题列表、章节锚点、代码高亮与分段呈现
+- 🔖 **进度续学** - 展示百分比、最近访问时间、滚动位置恢复
+- 🧪 **测验体验** - 题目来源说明、防重复提交、历史筛选
+- ⚙️ **一体化部署** - 静态导出到 `frontend/out`，后端同端口托管
 
 ### 质量保证
 
@@ -86,15 +100,18 @@
 
 ## 🧱 技术栈 Tech Stack
 
-- **语言**: Go 1.24.5
-- **框架**: GoFrame v2.9.5（最小化使用）
-- **构建工具**: Go Modules
-- **测试框架**: Go标准测试库
-- **开发环境**: 支持 Windows/Linux/macOS
+- **语言**: Go 1.24.5；TypeScript 5 + React 18
+- **后端**: GoFrame v2.9.5、SQLite3（WAL）、JWT（golang-jwt v5）、bcrypt、GoFrame ORM
+- **前端**: Next.js 14（App Router，`output: 'export'`）、Ant Design 5、SWR、Axios、Prism.js（按需语言包）、Tailwind CSS
+- **构建工具**: Go Modules、npm；前端静态导出目录 `frontend/out`
+- **测试**: Go 标准测试 + 覆盖率工具；前端 Jest + React Testing Library，核心组件/Hook 覆盖率≥80%
+- **开发环境**: 支持 Windows/Linux/macOS，前后端同端口一体化部署
 
 ---
 
 ## 🚀 快速开始 Quick Start
+
+> 提示：如仓库根存在 `./build.bat`，优先执行以完成依赖检查与编译，再按下列方式启动。
 
 ### 方式一：命令行模式（传统方式）
 
@@ -137,88 +154,63 @@ Enter your choice:
 git clone https://github.com/yourusername/go-study2.git
 cd go-study2/backend
 
-# 2. 确保配置文件存在（项目已包含默认配置）
-# config.yaml 已配置好，默认端口 8080（位于 backend/configs/config.yaml）
+# 2. 确保配置文件存在（默认端口 8080）
+#   - backend/configs/config.yaml 已预置 server/logger/jwt/database/static 段
 
-# 3. 启动HTTP服务
+# 3. 启动HTTP服务（生产推荐先在根执行 ./build.bat）
 go run main.go -d
-```
-
-**预期输出：**
-
-```
-2025-12-05 10:00:00 [INFO] http server started listening on [:8080]
-2025-12-05 10:00:00 [INFO] openapi specification is disabled
 ```
 
 **浏览器访问：**
 
-打开浏览器访问以下URL：
+- 主题列表（HTML）：http://localhost:8080/api/v1/topics?format=html  
+- 词法元素章节：http://localhost:8080/api/v1/topic/lexical_elements/comments?format=html  
+- Constants 菜单：http://localhost:8080/api/v1/topic/constants?format=html  
+- Types 提纲：http://localhost:8080/api/v1/topic/types/outline?format=html  
+- 受保护路由示例：`/api/v1/progress`（需登录并携带 Authorization 头）
 
-- **主题列表（HTML）**: http://localhost:8080/api/v1/topics?format=html  
-- **词法元素菜单**: http://localhost:8080/api/v1/topic/lexical_elements?format=html  
-- **注释章节**: http://localhost:8080/api/v1/topic/lexical_elements/comments?format=html  
-- **Constants 菜单**: http://localhost:8080/api/v1/topic/constants?format=html  
-- **布尔常量**: http://localhost:8080/api/v1/topic/constants/boolean?format=html  
-- **Variables 菜单**: http://localhost:8080/api/v1/topic/variables?format=html  
-- **Variables 子主题**: http://localhost:8080/api/v1/topic/variables/storage?format=html  
-- **Types 菜单**: http://localhost:8080/api/v1/topic/types?format=html 🆕  
-- **Types 子主题**: http://localhost:8080/api/v1/topic/types/array?format=html 🆕  
-- **Types 提纲**: http://localhost:8080/api/v1/topic/types/outline?format=html 🆕  
-- **Types 搜索**: http://localhost:8080/api/v1/topic/types/search?keyword=map%20key&format=html 🆕  
-
-**API调用（JSON）：**
+**API 调用（JSON 示例）：**
 
 ```bash
-# 获取主题列表
 curl http://localhost:8080/api/v1/topics
-
-# 获取词法元素菜单
-curl http://localhost:8080/api/v1/topic/lexical_elements
-
-# 获取词法元素具体章节内容
-curl http://localhost:8080/api/v1/topic/lexical_elements/comments
-
-# 获取 Constants 菜单 🆕
-curl http://localhost:8080/api/v1/topic/constants
-
-# 获取 Constants 子主题内容 🆕
 curl http://localhost:8080/api/v1/topic/constants/boolean
-curl http://localhost:8080/api/v1/topic/constants/iota
-curl http://localhost:8080/api/v1/topic/constants/expressions
-
-curl http://localhost:8080/api/v1/topic/variables/static
-curl http://localhost:8080/api/v1/topic/variables/dynamic
-curl http://localhost:8080/api/v1/topic/variables/zero
+curl http://localhost:8080/api/v1/topic/types/search?keyword=map%20key
 ```
 
-**Types API（JSON）：**
+### 方式三：前端 UI 模式（Web） 🆕
+
+**开发调试：**
 
 ```bash
-# 菜单
-curl http://localhost:8080/api/v1/topic/types
+# 后端启动（默认 8080）
+cd backend
+go run main.go -d   # 若有 ./build.bat 请先在根执行
 
-# 子主题内容（示例：array）
-curl http://localhost:8080/api/v1/topic/types/array
-
-# 提纲
-curl http://localhost:8080/api/v1/topic/types/outline
-
-# 搜索关键词
-curl "http://localhost:8080/api/v1/topic/types/search?keyword=map%20key"
-
-# 综合测验提交
-curl -X POST "http://localhost:8080/api/v1/topic/types/quiz/submit" \
-  -H "Content-Type: application/json" \
-  -d "{\"answers\":[{\"id\":\"q-all-1\",\"choice\":\"A\"},{\"id\":\"q-all-2\",\"choice\":\"B\"}]}"
+# 前端启动（默认 3000，已代理到 http://localhost:8080/api）
+cd ../frontend
+npm install
+npm run dev
 ```
 
-### Types 搜索关键词列表
-- `map key`：map 键需可比较。
-- `~int`：底层类型为 int 的命名类型也匹配。
-- `interface nil`：带类型 nil 与接口 nil 区分。
-- `slice share`：切片共享底层数组的影响。
-- `array length`：数组长度属于类型，长度不同不兼容。
+**生产静态导出与托管：**
+
+```bash
+cd frontend
+npm install
+npm run build && npm run export   # 产物输出到 frontend/out
+cd ..
+
+# 后端编译（优先 ./build.bat）
+./build.bat || (cd backend && go test ./... && go build -o ./bin/gostudy main.go)
+
+# 启动后端托管 / 与 /api/*
+./bin/gostudy -d
+```
+
+**访问入口：**
+
+- 开发：`http://localhost:3000/`（前端开发服务器）
+- 生产：`http://localhost:8080/`（后端托管静态文件与 API，同端口）
 
 **停止服务：** 按 `Ctrl+C` 优雅关闭
 
@@ -474,14 +466,33 @@ go-study2/
 ├── backend/                         # 后端主目录
 │   ├── go.mod / go.sum              # Go 模块定义与依赖
 │   ├── main.go / main_test.go       # 主入口与测试
-│   ├── configs/                     # 配置（含 config.yaml、certs/）
-│   ├── internal/                    # 内部实现（config、app/lexical_elements、app/constants、app/http_server）
-│   ├── src/                         # 学习内容与 CLI/HTTP 复用逻辑
+│   ├── configs/                     # 配置（config.yaml、certs/）
+│   ├── data/                        # SQLite 数据文件（自动迁移生成）
+│   ├── internal/
+│   │   ├── app/                     # 应用层：HTTP 服务器、学习内容
+│   │   │   ├── http_server/         # handler、middleware、router、server
+│   │   │   ├── lexical_elements/    # 词法元素内容
+│   │   │   ├── constants/           # 常量模块内容
+│   │   │   └── ...                  # 其他学习主题
+│   │   ├── domain/                  # 领域层（user/progress/quiz 实体与服务）
+│   │   ├── infrastructure/          # 基础设施层（database、repository 实现）
+│   │   ├── pkg/                     # 共享工具（jwt、password）
+│   │   └── config/                  # 配置加载与校验
 │   ├── tests/                       # unit / integration / contract 测试
-│   ├── scripts/                     # 工具脚本（check-go.ps1）
-│   ├── doc/ / docs/                 # 文档材料、quickstart
-│   └── README.md                    # 后端架构与 API 说明
-├── specs/                           # 功能规格、计划、任务
+│   ├── docs/                        # 后端文档 materials
+│   └── scripts/                     # 工具脚本（check-go.ps1）
+├── frontend/                        # 前端主目录（Next.js 14）
+│   ├── app/                         # 路由：auth、topics、quiz、progress、profile
+│   ├── components/                  # UI 组件：auth/layout/learning/quiz/common
+│   ├── hooks/                       # 自定义 Hooks（useAuth/useProgress/useQuiz 等）
+│   ├── lib/                         # Axios 实例、auth 工具、常量
+│   ├── types/                       # TypeScript 类型定义
+│   ├── styles/                      # 全局样式与 Tailwind
+│   ├── tests/                       # 前端单元与集成测试
+│   ├── public/                      # 静态资源
+│   └── out/                         # 静态导出产物（构建后生成）
+├── specs/                           # 功能规格、计划、任务（含 009-frontend-ui）
+├── docs/                            # API、部署等文档
 ├── .specify/                        # 规范与模板
 ├── .github/                         # GitHub 配置
 └── README.md                        # 本文件（根级说明）
@@ -489,91 +500,124 @@ go-study2/
 
 **目录说明：**
 
-- `backend/internal/app/lexical_elements/`: 词法元素学习模块，每个文件对应一个词法元素子主题
-- `backend/internal/app/constants/`: 常量学习模块，包含12个常量相关子主题
-- `backend/internal/app/http_server/`: HTTP服务实现，包含服务器、路由、中间件和处理器
-- `internal/config/`: 配置文件加载和验证逻辑
-- `tests/`: 完整的测试套件，包括单元测试和集成测试
-- `specs/`: 使用SpecKit方法论管理的功能规格文档
-- `config.yaml`: HTTP服务器配置文件
-- `main.go`: 应用入口，支持CLI和HTTP两种运行模式
-│           ├── identifiers.go       # 标识符示例
-│           ├── keywords.go          # 关键字示例
-│           ├── operators.go         # 运算符示例
-│           ├── integer_literals.go  # 整数字面量示例
-│           ├── float_literals.go    # 浮点数字面量示例
-│           ├── imaginary_literals.go # 虚数字面量示例
-│           ├── rune_literals.go     # 字符字面量示例
-│           ├── string_literals.go   # 字符串字面量示例
-│           ├── menu.go              # 词法元素菜单逻辑
-│           └── *_test.go            # 各模块测试文件
-├── specs/                           # 功能规格说明
-│   ├── 001-go-learn-lexical-elements/
-│   └── 002-lexical-menu-structure/
-├── doc/                             # 文档目录
-│   ├── README模板.md
-│   ├── Go开发工具生态全景图.md
-│   └── The Go-1.24 Programming Language Specification.md
-├── .specify/                        # 项目规范和模板
-├── .agent/                          # AI辅助开发工作流
-└── README.md                        # 本文件
-```
-
-**目录说明：**
-
-- `internal/app/lexical_elements/`: 核心学习内容，每个文件对应一个词法元素子主题
-- `specs/`: 使用SpecKit方法论管理的功能规格文档
-- `doc/`: 参考文档和学习资料
-- `main.go`: 应用入口，实现菜单系统和模块调度
+- `backend/internal/app/http_server/`：API 入口与路由、中间件、认证/进度/测验 handler
+- `backend/internal/domain/`：用户、进度、测验的实体、仓储接口与服务
+- `backend/internal/infrastructure/`：SQLite 连接、迁移与仓储实现
+- `backend/internal/pkg/`：JWT、密码工具等复用模块
+- `backend/tests/`：单元、集成、契约测试，覆盖认证/进度/测验/学习内容
+- `frontend/app/`：登录注册路由 `(auth)`、受保护路由 `(protected)`（topics/progress/quiz/profile）
+- `frontend/components/`：AuthGuard、LoginForm、ChapterContent、QuizItem 等核心组件
+- `frontend/hooks/`：`useAuth`、`useProgress`、`useQuiz` 管理跨页面状态
+- `frontend/lib/`：Axios 实例与 token 管理，统一错误处理
+- `frontend/tests/`：Jest + RTL 测试，覆盖核心组件与 API 层
 
 ---
 
 ## 🌐 前端 UI
 
-- 位置：`frontend/`（Next.js 14 + TypeScript + Ant Design，静态导出）。
-- 开发：`cd frontend && npm install && npm run dev`（默认端口 3000，API 代理到 8080）。
-- 构建：`npm run build`（已启用 `generateStaticParams` 预生成 topics/quiz 路由，产物位于 `frontend/out/`）。
-- 部署：后端 `configs/config.yaml` 的 `static.path` 指向 `../frontend/out`，`server.go` 已启用静态托管与 SPA 回退。
-- 更多：`frontend/README.md`、`docs/DEPLOYMENT.md`。
+- 位置：`frontend/`（Next.js 14 App Router + TypeScript 5 + Ant Design 5，静态导出）
+- 功能：登录/注册/记住我，主题列表、章节阅读、学习进度同步、测验作答与历史记录
+- 交互：响应式断点 Mobile/Tablet/Desktop，代码高亮（Prism），章节锚点与进度百分比展示
+- 开发：`cd frontend && npm install && npm run dev`（默认 3000，API 代理到 http://localhost:8080/api）
+- 构建：`npm run build && npm run export`（预生成 topics/quiz 路由，产物位于 `frontend/out/`）
+- 部署：后端 `configs/config.yaml` 的 `static.path` 指向 `../frontend/out`，`server.go` 已启用静态托管与 SPA 回退
+- 更多：`frontend/README.md`、`docs/DEPLOYMENT.md`
 
 ---
 
 ## ⚙️ 配置 Configuration
 
-### 命令行模式
-
-命令行模式采用"零配置"设计，开箱即用。
-
-### HTTP服务模式 🆕
-
-HTTP服务模式通过 `config.yaml` 配置文件管理。配置文件位于项目根目录，包含以下配置项：
+CLI 模式零配置即可运行；HTTP/前端模式需填写 `backend/configs/config.yaml`：
 
 ```yaml
-server:
-  host: "127.0.0.1"  # 监听地址（必填）
-  port: 8080          # 监听端口（必填）
-  shutdownTimeout: 10 # 优雅关闭超时（秒）
+# HTTP 配置：本地开发默认开启，便于直接通过 http://127.0.0.1 访问
+http:
+  # HTTP 监听端口，生产若启用 HTTPS 可关闭 HTTP 监听
+  port: 8080
 
-logger:
-  level: "INFO"       # 日志级别
-  path: "./logs"      # 日志路径
-  stdout: true        # 控制台输出
-
-# HTTPS 配置（启用后禁用 HTTP 监听）
+# HTTPS 配置：启用后建议关闭 HTTP 监听并正确配置证书
 https:
-  enabled: false                  # 是否启用 HTTPS
-  port: 8443                      # HTTPS 端口
-  certFile: "./configs/certs/server.crt"  # 证书路径（支持相对/绝对）
-  keyFile: "./configs/certs/server.key"   # 私钥路径（支持相对/绝对）
-  insecureSkipVerify: false       # 是否跳过证书校验（仅测试/开发使用，生产请关闭）
-  caFile: ""                      # 可选 CA 证书路径，用于自签名信任
+  # 是否启用 HTTPS；开启需提供证书与私钥
+  enabled: false
+  # HTTPS 监听端口，通常使用 443 或 8443
+  port: 8443
+  # 服务端证书路径，支持相对或绝对路径
+  certFile: "./configs/certs/server.crt"
+  # 服务端私钥路径，需与证书匹配
+  keyFile: "./configs/certs/server.key"
+  # 是否跳过客户端证书校验，仅限测试/开发使用
+  insecureSkipVerify: false
+  # 可选 CA 证书路径，自签名证书时用于建立信任链
+  caFile: ""
+
+# 服务基础配置
+server:
+  # 服务监听地址，生产建议绑定 0.0.0.0 或具体内网地址
+  host: "127.0.0.1"
+  # 优雅停机等待时间（秒），用于处理中的请求
+  shutdownTimeout: 10
+
+# 日志配置
+logger:
+  # 日志级别，支持 DEBUG/INFO/WARN/ERROR
+  level: "INFO"
+  # 日志文件存储目录
+  path: "./logs"
+  # 是否输出到 stdout，容器环境可开启
+  stdout: true
+
+# 数据库配置（默认使用 SQLite3）
+database:
+  # 数据库类型，当前支持 sqlite3
+  type: "sqlite3"
+  # 数据文件路径，确保目录可写
+  path: "./data/gostudy.db"
+  # 最大打开连接数，SQLite 一般保持较小值
+  maxOpenConns: 10
+  # 最大空闲连接数，避免频繁创建连接
+  maxIdleConns: 5
+  # 连接最大生命周期（秒），0 表示无限制
+  connMaxLifetime: 3600
+  # SQLite PRAGMA 配置列表，可按需调整
+  pragmas:
+    # 采用 WAL 模式提升并发读性能
+    - "journal_mode=WAL"
+    # 设置数据库忙等待时间（毫秒）
+    - "busy_timeout=5000"
+    # 同步策略 NORMAL 在可靠性与性能间平衡
+    - "synchronous=NORMAL"
+    # 负值表示以 KiB 为单位的缓存大小
+    - "cache_size=-64000"
+    # 开启外键约束校验
+    - "foreign_keys=ON"
+
+# JWT 配置
+jwt:
+  # 签名密钥，强烈建议通过环境变量注入
+  secret: "${JWT_SECRET}"
+  # 访问令牌过期时间（秒）
+  accessTokenExpiry: 604800
+  # 刷新令牌过期时间（秒）
+  refreshTokenExpiry: 604800
+  # JWT 发行方标识
+  issuer: "go-study2"
+
+# 静态资源配置
+static:
+  # 是否启用静态资源托管
+  enabled: true
+  # 静态资源目录，默认指向前端构建产物
+  path: "../frontend/out"
+  # SPA 路由回退到 index.html
+  spaFallback: true
 ```
 
-详细配置说明请参考 `specs/003-http-learning-mode/quickstart.md`
-
-**提示：**
-- CLI 学习模式不依赖网络，不受 HTTPS 配置影响。
-- 自签名证书场景建议提供 CA 或在测试/开发环境临时开启 `insecureSkipVerify`。
+- HTTP/HTTPS：启用 HTTPS 时建议关闭 HTTP 监听，需配置 cert/key；自签证书可临时配合 `caFile` 与 `insecureSkipVerify`（仅测试）。
+- server：生产可改为 `0.0.0.0`；`shutdownTimeout` 用于优雅停机等待在途请求完成。
+- logger：`stdout=true` 适合容器化部署，`path` 为文件输出目录。
+- database：SQLite WAL 提升并发读；`busy_timeout` 毫秒，`cache_size` 负值为 KiB，`foreign_keys=ON` 开启外键校验。
+- jwt：`secret` 必须通过环境变量注入；访问/刷新令牌时间单位为秒。
+- static：指向 `frontend/out` 导出目录，`spaFallback=true` 支持 SPA 前端路由。
 
 ---
 
@@ -585,19 +629,42 @@ https:
 
 **基础URL**: `http://localhost:8080/api/v1`
 
-**端点列表**:
+**认证与用户**：
+
+| 端点 | 方法 | 描述 |
+|------|------|------|
+| `/auth/register` | POST | 用户注册（用户名校验、bcrypt 存储） |
+| `/auth/login` | POST | 用户登录，返回访问令牌；支持 `rememberMe` |
+| `/auth/refresh` | POST | 使用 HttpOnly 刷新令牌换取新访问令牌 |
+| `/auth/profile` | GET | 获取当前用户信息（需 `Authorization: Bearer`） |
+| `/auth/logout` | POST | 退出并清除刷新令牌（需 `Authorization: Bearer`） |
+
+**学习/进度/测验**：
 
 | 端点 | 方法 | 描述 |
 |------|------|------|
 | `/topics` | GET/POST | 获取主题列表 |
 | `/topic/lexical_elements` | GET/POST | 获取词法元素菜单 |
 | `/topic/lexical_elements/{chapter}` | GET/POST | 获取词法元素章节内容 |
-| `/topic/constants` | GET/POST | 获取常量学习模块菜单 🆕 |
-| `/topic/constants/{subtopic}` | GET/POST | 获取常量模块子主题内容 🆕 |
+| `/topic/constants` | GET/POST | 获取常量学习模块菜单 |
+| `/topic/constants/{subtopic}` | GET/POST | 获取常量模块子主题内容 |
+| `/topic/variables` | GET/POST | 获取 Variables 菜单 |
+| `/topic/variables/{subtopic}` | GET/POST | 获取 Variables 子主题 |
+| `/topic/types` | GET/POST | 获取 Types 菜单 |
+| `/topic/types/{subtopic}` | GET/POST | 获取 Types 子主题内容 |
+| `/topic/types/outline` | GET/POST | 获取 Types 提纲 |
+| `/topic/types/search` | GET/POST | Types 搜索 |
+| `/topic/types/quiz/submit` | GET/POST | Types 综合测验提交 |
+| `/progress` | GET | 获取当前用户全部学习进度（需登录） |
+| `/progress/{topic}` | GET | 获取指定主题进度（需登录） |
+| `/progress` | POST | 保存/更新章节进度（需登录） |
+| `/quiz/{topic}/{chapter}` | GET | 获取测验题目（需登录） |
+| `/quiz/submit` | POST | 提交测验并评分（需登录） |
+| `/quiz/history` | GET | 查看历史测验记录，可按主题过滤（需登录） |
 
-**响应格式**: 支持 `?format=json` 或 `?format=html`
+**响应格式**：`{code, message, data}`；学习内容接口支持 `?format=json|html`
 
-详细API文档请参考 `specs/003-http-learning-mode/contracts/api-spec.md`
+详细 API 文档：`docs/API.md`、`specs/009-frontend-ui/contracts/openapi.yaml`
 
 ### 内部包结构
 
@@ -625,42 +692,54 @@ func RegisterRoutes(s *ghttp.Server)
 git clone https://github.com/yourusername/go-study2.git
 cd go-study2/backend
 
-# 安装依赖（如果有）
+# 安装后端依赖
 go mod download
 
-# 运行程序
-go run main.go
+# 启动后端（默认 8080，若存在 ./build.bat 请先在根执行）
+go run main.go -d
+
+# 前端（新终端）
+cd ../frontend
+npm install
+npm run dev  # 默认 3000，代理到 http://localhost:8080/api
 ```
 
 ### 运行测试
 
 ```bash
-# 运行所有测试
+# 后端：运行所有测试
+cd backend
 go test ./...
 
-# 运行测试并显示覆盖率
+# 后端：运行测试并显示覆盖率
 go test -cover ./...
 
-# 生成详细的覆盖率报告
+# 前端：运行单元与集成测试并输出覆盖率
+cd ../frontend
+npm test -- --coverage
+
+# 生成后端覆盖率报告（可选）
+cd ../backend
 go test -coverprofile=coverage.out ./...
 go tool cover -html=coverage.out
 ```
 
 ### 代码规范
 
-- 遵循Go官方代码规范
-- 使用 `gofmt` 格式化代码
+- 遵循 Go 官方代码规范与 ESLint/Prettier 规则
+- 使用 `gofmt` 格式化 Go 代码，前端使用 `npm run lint`（如已配置）
 - 所有代码注释和文档使用中文
-- 提交前确保测试通过且覆盖率 ≥ 80%
+- 提交前确保前后端测试通过且覆盖率 ≥ 80%
 
 ### 本地开发工作流
 
 1. 创建功能分支：`git checkout -b feature/your-feature`
 2. 编写代码和测试
-3. 运行测试：`go test ./...`
-4. 格式化代码：`gofmt -w .`
-5. 提交代码：`git commit -m "feat: your feature description"`
-6. 推送分支：`git push origin feature/your-feature`
+3. 后端测试：`go test ./...`
+4. 前端测试：`cd frontend && npm test -- --coverage`
+5. 格式化：`gofmt -w .`；前端运行 `npm run lint`（若配置）
+6. 提交代码：`git commit -m "feat: your feature description"`
+7. 推送分支：`git push origin feature/your-feature`
 
 ---
 

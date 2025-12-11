@@ -10,13 +10,22 @@ jest.mock("@/lib/progress", () => ({
   saveProgress: jest.fn(),
 }));
 
-const mockedSaveProgress = saveProgress as jest.MockedFunction<typeof saveProgress>;
-const mockedFetchAll = fetchAllProgress as jest.MockedFunction<typeof fetchAllProgress>;
+const mockedSaveProgress = saveProgress as jest.MockedFunction<
+  typeof saveProgress
+>;
+const mockedFetchAll = fetchAllProgress as jest.MockedFunction<
+  typeof fetchAllProgress
+>;
 
 function Wrapper() {
   const { progress, recordProgress } = useProgress();
   React.useEffect(() => {
-    void recordProgress({ topic: "variables", chapter: "storage", status: "in_progress", position: "{}" });
+    void recordProgress({
+      topic: "variables",
+      chapter: "storage",
+      status: "in_progress",
+      position: "{}",
+    });
   }, [recordProgress]);
   return <div data-testid="count">{progress.length}</div>;
 }
@@ -24,7 +33,12 @@ function Wrapper() {
 describe("useProgress", () => {
   beforeEach(() => {
     mockedFetchAll.mockResolvedValue([
-      { topic: "variables", chapter: "storage", status: "done", lastVisit: new Date().toISOString() },
+      {
+        topic: "variables",
+        chapter: "storage",
+        status: "done",
+        lastVisit: new Date().toISOString(),
+      },
     ] as any);
     mockedSaveProgress.mockResolvedValue();
   });
@@ -33,7 +47,7 @@ describe("useProgress", () => {
     render(
       <SWRConfig value={{ provider: () => new Map(), dedupingInterval: 0 }}>
         <Wrapper />
-      </SWRConfig>
+      </SWRConfig>,
     );
 
     await waitFor(() => {
@@ -42,4 +56,3 @@ describe("useProgress", () => {
     expect(mockedSaveProgress).toHaveBeenCalled();
   });
 });
-

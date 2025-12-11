@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { useState } from "react";
 import { Button, Checkbox, Form, Input, Typography, message } from "antd";
@@ -30,7 +30,8 @@ export default function LoginForm() {
       message.success("登录成功");
       router.push("/topics");
     } catch (error) {
-      const reason = error instanceof Error ? error.message : "登录失败，请重试";
+      const reason =
+        error instanceof Error ? error.message : "登录失败，请重试";
       message.error(reason);
     } finally {
       setSubmitting(false);
@@ -73,7 +74,13 @@ export default function LoginForm() {
           <Checkbox>记住我</Checkbox>
         </Form.Item>
         <Form.Item>
-          <Button type="primary" htmlType="submit" block size="large" loading={submitting}>
+          <Button
+            type="primary"
+            htmlType="submit"
+            block
+            size="large"
+            loading={submitting}
+          >
             登录
           </Button>
         </Form.Item>
@@ -81,5 +88,3 @@ export default function LoginForm() {
     </div>
   );
 }
-
-

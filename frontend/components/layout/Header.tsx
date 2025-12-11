@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { Button, Dropdown, Layout, Space, Typography, message } from "antd";
 import { MenuOutlined, UserOutlined } from "@ant-design/icons";
@@ -48,12 +48,14 @@ export default function Header({ onToggleSidebar }: HeaderProps) {
         <Text className="text-lg font-semibold">Go Study 2</Text>
       </Space>
       <Dropdown menu={{ items: menuItems }} trigger={["click"]}>
-        <Button type="text" icon={<UserOutlined />} className="flex items-center">
+        <Button
+          type="text"
+          icon={<UserOutlined />}
+          className="flex items-center"
+        >
           <span className="ml-2">{user?.username || "未登录"}</span>
         </Button>
       </Dropdown>
     </AntHeader>
   );
 }
-
-

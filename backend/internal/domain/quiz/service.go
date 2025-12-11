@@ -242,4 +242,3 @@ func equalChoice(expected, given []string) bool {
 	}
 	return strings.Join(expected, ",") == strings.Join(given, ",")
 }
-

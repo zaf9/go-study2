@@ -46,4 +46,3 @@ func IsValidStatus(status string) bool {
 	_, ok := validStatuses[status]
 	return ok
 }
-

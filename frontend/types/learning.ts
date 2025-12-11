@@ -34,4 +34,3 @@ export interface LearningProgress {
   lastVisit: string;
   lastPosition?: string;
 }
-

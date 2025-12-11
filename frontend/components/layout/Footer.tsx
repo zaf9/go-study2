@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { Layout, Typography } from "antd";
 
@@ -12,5 +12,3 @@ export default function Footer() {
     </AntFooter>
   );
 }
-
-

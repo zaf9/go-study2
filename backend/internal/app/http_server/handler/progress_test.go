@@ -11,7 +11,6 @@ import (
 	"testing"
 	"time"
 
-	"go-study2/internal/app/http_server"
 	"go-study2/internal/app/http_server/middleware"
 	"go-study2/internal/config"
 	"go-study2/internal/infrastructure/database"
@@ -130,4 +129,3 @@ func doProgressRequest(t *testing.T, client *http.Client, req *http.Request) pro
 	}
 	return body
 }
-

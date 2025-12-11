@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { Table, Tag, Typography } from "antd";
 import Loading from "@/components/common/Loading";
@@ -11,7 +11,8 @@ export default function ProgressPage() {
   const { progress, isLoading, error } = useProgress();
 
   if (isLoading) return <Loading />;
-  if (error) return <ErrorMessage message="加载进度失败" description={error.message} />;
+  if (error)
+    return <ErrorMessage message="加载进度失败" description={error.message} />;
 
   const columns = [
     { title: "主题", dataIndex: "topic", key: "topic" },
@@ -20,7 +21,9 @@ export default function ProgressPage() {
       title: "状态",
       dataIndex: "status",
       key: "status",
-      render: (v: string) => <Tag color={v === "done" ? "green" : "blue"}>{statusLabel(v)}</Tag>,
+      render: (v: string) => (
+        <Tag color={v === "done" ? "green" : "blue"}>{statusLabel(v)}</Tag>
+      ),
     },
     {
       title: "最近访问",
@@ -33,7 +36,12 @@ export default function ProgressPage() {
   return (
     <div className="space-y-4">
       <Title level={3}>学习进度</Title>
-      <Table rowKey={(row) => `${row.topic}-${row.chapter}`} columns={columns} dataSource={progress} pagination={false} />
+      <Table
+        rowKey={(row) => `${row.topic}-${row.chapter}`}
+        columns={columns}
+        dataSource={progress}
+        pagination={false}
+      />
     </div>
   );
 }
@@ -43,4 +51,3 @@ function statusLabel(status: string) {
   if (status === "in_progress") return "学习中";
   return "未开始";
 }
-

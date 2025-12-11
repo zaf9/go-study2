@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import type React from "react";
 import { useState } from "react";
@@ -11,7 +11,11 @@ import Footer from "@/components/layout/Footer";
 
 const { Content } = Layout;
 
-export default function ProtectedLayout({ children }: { children: React.ReactNode }) {
+export default function ProtectedLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const [collapsed, setCollapsed] = useState(false);
 
   return (
@@ -35,5 +39,3 @@ export default function ProtectedLayout({ children }: { children: React.ReactNod
     </SWRConfig>
   );
 }
-
-

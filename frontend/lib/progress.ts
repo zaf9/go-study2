@@ -14,12 +14,17 @@ export async function fetchAllProgress(): Promise<LearningProgress[]> {
   return data || [];
 }
 
-export async function fetchProgressByTopic(topic: string): Promise<LearningProgress[]> {
-  const { data } = await api.get<LearningProgress[]>(API_PATHS.progressByTopic(topic));
+export async function fetchProgressByTopic(
+  topic: string,
+): Promise<LearningProgress[]> {
+  const { data } = await api.get<LearningProgress[]>(
+    API_PATHS.progressByTopic(topic),
+  );
   return data || [];
 }
 
-export async function saveProgress(payload: SaveProgressRequest): Promise<void> {
+export async function saveProgress(
+  payload: SaveProgressRequest,
+): Promise<void> {
   await api.post(API_PATHS.progress, payload);
 }
-

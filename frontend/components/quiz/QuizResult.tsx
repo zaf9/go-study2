@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { Alert, List, Typography } from "antd";
 import { QuizResult } from "@/types/quiz";
@@ -19,7 +19,10 @@ export default function QuizResultView({ result }: QuizResultProps) {
       />
       <Title level={5}>答题详情</Title>
       <List
-        dataSource={[...result.correctIds.map((id) => ({ id, correct: true })), ...result.wrongIds.map((id) => ({ id, correct: false }))]}
+        dataSource={[
+          ...result.correctIds.map((id) => ({ id, correct: true })),
+          ...result.wrongIds.map((id) => ({ id, correct: false })),
+        ]}
         renderItem={(item) => (
           <List.Item>
             <Text type={item.correct ? "success" : "danger"}>
@@ -31,4 +34,3 @@ export default function QuizResultView({ result }: QuizResultProps) {
     </div>
   );
 }
-

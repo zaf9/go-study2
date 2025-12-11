@@ -26,7 +26,7 @@ function renderWithAuth(consumer: (ctx: any) => void) {
   render(
     <AuthProvider>
       <Wrapper />
-    </AuthProvider>
+    </AuthProvider>,
   );
 }
 
@@ -37,7 +37,9 @@ describe("AuthProvider 集成", () => {
 
   it("login 会调用后端并填充用户信息", async () => {
     const profile = { id: 1, username: "tester" };
-    (authMock.loginWithPassword as jest.Mock).mockResolvedValue({ accessToken: "token" });
+    (authMock.loginWithPassword as jest.Mock).mockResolvedValue({
+      accessToken: "token",
+    });
     (authMock.fetchProfile as jest.Mock).mockResolvedValue(profile);
 
     let latest: any;
@@ -51,13 +53,19 @@ describe("AuthProvider 集成", () => {
 
     await waitFor(() => expect(latest.user?.username).toBe("tester"));
     expect(authMock.loginWithPassword).toHaveBeenCalledWith(
-      expect.objectContaining({ username: "tester", password: "Passw0rd", remember: true })
+      expect.objectContaining({
+        username: "tester",
+        password: "Passw0rd",
+        remember: true,
+      }),
     );
   });
 
   it("logout 会清空用户状态", async () => {
     const profile = { id: 2, username: "logout_user" };
-    (authMock.loginWithPassword as jest.Mock).mockResolvedValue({ accessToken: "token2" });
+    (authMock.loginWithPassword as jest.Mock).mockResolvedValue({
+      accessToken: "token2",
+    });
     (authMock.fetchProfile as jest.Mock).mockResolvedValue(profile);
 
     let latest: any;
@@ -77,4 +85,3 @@ describe("AuthProvider 集成", () => {
     expect(authMock.logoutAccount).toHaveBeenCalled();
   });
 });
-

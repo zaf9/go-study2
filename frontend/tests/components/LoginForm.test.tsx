@@ -53,5 +53,3 @@ describe("LoginForm", () => {
     expect(pushMock).toHaveBeenCalledWith("/topics");
   });
 });
-
-

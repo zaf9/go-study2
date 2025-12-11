@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import useSWR from "swr";
 import { Button, Col, Row, Typography } from "antd";
@@ -14,7 +14,10 @@ const { Title, Paragraph } = Typography;
 
 export default function TopicsPage() {
   const router = useRouter();
-  const { data, error, isLoading } = useSWR<TopicSummary[]>("topics", fetchTopics);
+  const { data, error, isLoading } = useSWR<TopicSummary[]>(
+    "topics",
+    fetchTopics,
+  );
   const { latest, isLoading: progressLoading } = useProgress();
 
   if (isLoading) {
@@ -22,7 +25,9 @@ export default function TopicsPage() {
   }
 
   if (error) {
-    return <ErrorMessage message="加载主题列表失败" description={error.message} />;
+    return (
+      <ErrorMessage message="加载主题列表失败" description={error.message} />
+    );
   }
 
   const topics = data ?? [];
@@ -33,9 +38,16 @@ export default function TopicsPage() {
         <Title level={3} className="mb-1">
           学习主题
         </Title>
-        <Paragraph type="secondary">选择主题，进入章节学习并查看代码示例。</Paragraph>
+        <Paragraph type="secondary">
+          选择主题，进入章节学习并查看代码示例。
+        </Paragraph>
         {latest && !progressLoading && (
-          <Button type="primary" onClick={() => router.push(`/topics/${latest.topic}/${latest.chapter}`)}>
+          <Button
+            type="primary"
+            onClick={() =>
+              router.push(`/topics/${latest.topic}/${latest.chapter}`)
+            }
+          >
             继续学习：{latest.topic} / {latest.chapter}
           </Button>
         )}
@@ -50,5 +62,3 @@ export default function TopicsPage() {
     </div>
   );
 }
-
-

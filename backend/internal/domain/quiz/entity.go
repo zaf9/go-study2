@@ -70,4 +70,3 @@ func IsSupportedTopic(topic string) bool {
 	_, ok := supportedTopics[topic]
 	return ok
 }
-

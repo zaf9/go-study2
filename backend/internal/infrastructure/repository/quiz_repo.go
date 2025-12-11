@@ -60,4 +60,3 @@ func (r *QuizRepository) ListRecords(ctx context.Context, userID int64, topic st
 	}
 	return items, nil
 }
-

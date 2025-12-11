@@ -11,6 +11,7 @@ import (
 
 func TestQuizRepository_SaveAndList(t *testing.T) {
 	db := setupProgressRepoDB(t)
+	createTestUser(t, db, 2)
 	repo := NewQuizRepository(db)
 	ctx := gctx.New()
 
@@ -48,4 +49,3 @@ func TestQuizRepository_SaveAndList(t *testing.T) {
 		t.Fatalf("未来时间应返回空结果")
 	}
 }
-
