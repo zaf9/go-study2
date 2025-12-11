@@ -4,12 +4,6 @@ import { useEffect } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import Prism from "prismjs";
-import "prismjs/components/prism-go";
-import "prismjs/components/prism-typescript";
-import "prismjs/components/prism-javascript";
-import "prismjs/components/prism-json";
-import "prismjs/components/prism-bash";
-import "prismjs/components/prism-markdown";
 import "prismjs/themes/prism.css";
 import { Card, Typography } from "antd";
 import { ChapterContent as ChapterContentType } from "@/types/learning";
@@ -22,7 +16,18 @@ const { Title } = Typography;
 
 export default function ChapterContent({ content }: ChapterContentProps) {
   useEffect(() => {
-    Prism.highlightAll();
+    const loadLanguages = async () => {
+      await Promise.all([
+        import("prismjs/components/prism-go"),
+        import("prismjs/components/prism-typescript"),
+        import("prismjs/components/prism-javascript"),
+        import("prismjs/components/prism-json"),
+        import("prismjs/components/prism-bash"),
+        import("prismjs/components/prism-markdown"),
+      ]);
+      Prism.highlightAll();
+    };
+    void loadLanguages();
   }, [content.markdown]);
 
   return (

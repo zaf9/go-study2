@@ -2,6 +2,7 @@
 
 import type React from "react";
 import { useState } from "react";
+import { SWRConfig } from "swr";
 import { Layout } from "antd";
 import AuthGuard from "@/components/auth/AuthGuard";
 import Header from "@/components/layout/Header";
@@ -14,16 +15,24 @@ export default function ProtectedLayout({ children }: { children: React.ReactNod
   const [collapsed, setCollapsed] = useState(false);
 
   return (
-    <AuthGuard>
-      <Layout style={{ minHeight: "100vh" }}>
-        <Sidebar collapsed={collapsed} onCollapse={setCollapsed} />
-        <Layout>
-          <Header onToggleSidebar={() => setCollapsed((prev) => !prev)} />
-          <Content className="p-6 bg-gray-50">{children}</Content>
-          <Footer />
+    <SWRConfig
+      value={{
+        revalidateOnFocus: false,
+        dedupingInterval: 60000,
+        errorRetryInterval: 2000,
+      }}
+    >
+      <AuthGuard>
+        <Layout style={{ minHeight: "100vh" }}>
+          <Sidebar collapsed={collapsed} onCollapse={setCollapsed} />
+          <Layout>
+            <Header onToggleSidebar={() => setCollapsed((prev) => !prev)} />
+            <Content className="p-6 bg-gray-50">{children}</Content>
+            <Footer />
+          </Layout>
         </Layout>
-      </Layout>
-    </AuthGuard>
+      </AuthGuard>
+    </SWRConfig>
   );
 }
 

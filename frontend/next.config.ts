@@ -6,7 +6,6 @@ const nextConfig: NextConfig = {
     unoptimized: true,
   },
   trailingSlash: true,
-  reactCompiler: true,
 };
 
 export default nextConfig;

@@ -1,10 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import { ConfigProvider, App as AntdApp } from "antd";
-import { StyleProvider } from "@ant-design/cssinjs";
-import zhCN from "antd/locale/zh_CN";
-import ErrorBoundary from "@/components/common/ErrorBoundary";
-import { AuthProvider } from "@/contexts/AuthContext";
+import AppProviders from "@/components/providers/AppProviders";
 import "./globals.css";
 
 const geistSans = localFont({
@@ -31,15 +27,7 @@ export default function RootLayout({
   return (
     <html lang="zh-CN">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <StyleProvider hashPriority="high">
-          <ConfigProvider locale={zhCN} theme={{ token: { colorPrimary: "#1677ff" } }}>
-            <AntdApp>
-              <AuthProvider>
-                <ErrorBoundary>{children}</ErrorBoundary>
-              </AuthProvider>
-            </AntdApp>
-          </ConfigProvider>
-        </StyleProvider>
+        <AppProviders>{children}</AppProviders>
       </body>
     </html>
   );

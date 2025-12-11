@@ -18,6 +18,7 @@
 - [使用方法](#-使用方法-usage)
 - [示例](#-示例-examples)
 - [项目结构](#-项目结构-project-structure)
+- [前端 UI](#-前端-ui)
 - [配置](#️-配置-configuration)
 - [开发与测试](#-开发与测试-development--testing)
 - [Roadmap](#-roadmap)
@@ -524,6 +525,16 @@ go-study2/
 - `specs/`: 使用SpecKit方法论管理的功能规格文档
 - `doc/`: 参考文档和学习资料
 - `main.go`: 应用入口，实现菜单系统和模块调度
+
+---
+
+## 🌐 前端 UI
+
+- 位置：`frontend/`（Next.js 14 + TypeScript + Ant Design，静态导出）。
+- 开发：`cd frontend && npm install && npm run dev`（默认端口 3000，API 代理到 8080）。
+- 构建：`npm run build`（已启用 `generateStaticParams` 预生成 topics/quiz 路由，产物位于 `frontend/out/`）。
+- 部署：后端 `configs/config.yaml` 的 `static.path` 指向 `../frontend/out`，`server.go` 已启用静态托管与 SPA 回退。
+- 更多：`frontend/README.md`、`docs/DEPLOYMENT.md`。
 
 ---
 

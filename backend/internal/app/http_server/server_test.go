@@ -23,6 +23,67 @@ import (
 	"github.com/gogf/gf/v2/test/gtest"
 )
 
+func TestStaticFallbackAndApiPriority(t *testing.T) {
+	gtest.C(t, func(t *gtest.T) {
+		// 构造临时静态目录，包含 index.html 与静态资源文件
+		staticDir := t.TempDir()
+		indexContent := "<html><body>index</body></html>"
+		staticAsset := "console.log('static');"
+		err := os.WriteFile(filepath.Join(staticDir, "index.html"), []byte(indexContent), 0o644)
+		t.AssertNil(err)
+		err = os.WriteFile(filepath.Join(staticDir, "app.js"), []byte(staticAsset), 0o644)
+		t.AssertNil(err)
+
+		cfg := &config.Config{
+			Server: config.ServerConfig{
+				Host: "127.0.0.1",
+			},
+			Http: config.HttpConfig{
+				Port: 0,
+			},
+			Static: config.StaticConfig{
+				Enabled:     true,
+				Path:        staticDir,
+				SpaFallback: true,
+			},
+		}
+
+		s, err := NewServer(cfg, "static-priority-test")
+		t.AssertNil(err)
+		t.AssertNE(s, nil)
+
+		s.SetAccessLogEnabled(false)
+		s.Start()
+		defer s.Shutdown()
+
+		base := fmt.Sprintf("http://127.0.0.1:%d", s.GetListenedPort())
+		client := g.Client()
+		client.SetPrefix(base)
+
+		// 静态资源应直接返回文件内容
+		respStatic, err := client.Get(gctx.New(), "/app.js")
+		t.AssertNil(err)
+		defer respStatic.Close()
+		bodyStatic := respStatic.ReadAllString()
+		t.Assert(respStatic.StatusCode, 200)
+		t.AssertIN("console.log('static')", bodyStatic)
+
+		// 未命中的路径应回退到 index.html
+		respFallback, err := client.Get(gctx.New(), "/unknown/path")
+		t.AssertNil(err)
+		defer respFallback.Close()
+		bodyFallback := respFallback.ReadAllString()
+		t.Assert(respFallback.StatusCode, 200)
+		t.AssertIN("index", bodyFallback)
+
+		// API 路由应保持优先级，不被静态回退覆盖
+		respAPI, err := client.Get(gctx.New(), "/api/v1/topics?format=json")
+		t.AssertNil(err)
+		defer respAPI.Close()
+		t.Assert(respAPI.StatusCode, 200)
+	})
+}
+
 func TestNewServer(t *testing.T) {
 	gtest.C(t, func(t *gtest.T) {
 		cfg := &config.Config{

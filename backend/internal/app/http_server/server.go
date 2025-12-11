@@ -14,6 +14,7 @@ import (
 	"github.com/gogf/gf/v2/frame/g"
 	"github.com/gogf/gf/v2/net/ghttp"
 	"github.com/gogf/gf/v2/os/gctx"
+	"github.com/gogf/gf/v2/os/gfile"
 )
 
 // NewServer 创建并配置 HTTP/HTTPS 服务器
@@ -55,15 +56,26 @@ func NewServer(cfg *config.Config, names ...string) (*ghttp.Server, error) {
 	}
 
 	if cfg.Static.Enabled && cfg.Static.Path != "" {
-		s.SetServerRoot(cfg.Static.Path)
-		s.AddStaticPath("/", cfg.Static.Path)
+		// 静态资源目录清理，确保路径可复用
+		staticPath := filepath.Clean(cfg.Static.Path)
+		s.SetServerRoot(staticPath)
+		s.AddStaticPath("/", staticPath)
+
+		// SPA 回退：非 /api/ 路径优先尝试静态文件，否则返回 index.html
 		if cfg.Static.SpaFallback {
-			s.BindHandler("/", func(r *ghttp.Request) {
-				if !strings.HasPrefix(r.URL.Path, "/api/") {
-					r.Response.ServeFile(filepath.Join(cfg.Static.Path, "index.html"))
+			s.BindHandler("/*", func(r *ghttp.Request) {
+				if strings.HasPrefix(r.URL.Path, "/api/") {
+					r.Middleware.Next()
 					return
 				}
-				r.Middleware.Next()
+				requested := strings.TrimPrefix(r.URL.Path, "/")
+				candidate := filepath.Join(staticPath, requested)
+
+				if requested != "" && gfile.Exists(candidate) && !gfile.IsDir(candidate) {
+					r.Response.ServeFile(candidate)
+					return
+				}
+				r.Response.ServeFile(filepath.Join(staticPath, "index.html"))
 			})
 		}
 	}

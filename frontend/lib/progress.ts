@@ -10,12 +10,12 @@ export interface SaveProgressRequest {
 }
 
 export async function fetchAllProgress(): Promise<LearningProgress[]> {
-  const data = await api.get<LearningProgress[]>(API_PATHS.progress);
+  const { data } = await api.get<LearningProgress[]>(API_PATHS.progress);
   return data || [];
 }
 
 export async function fetchProgressByTopic(topic: string): Promise<LearningProgress[]> {
-  const data = await api.get<LearningProgress[]>(API_PATHS.progressByTopic(topic));
+  const { data } = await api.get<LearningProgress[]>(API_PATHS.progressByTopic(topic));
   return data || [];
 }
 

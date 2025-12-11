@@ -213,36 +213,36 @@
 
 ### 后端 - 静态文件服务
 
-- [ ] T096 更新 `backend/internal/app/http_server/server.go` 配置静态文件托管 (frontend/out/)
-- [ ] T097 实现 SPA 回退逻辑（非 /api/* 路径返回 index.html）
-- [ ] T098 测试 API 与静态资源路由优先级
-- [ ] T098a [P] 实现 `frontend/app/not-found.tsx` 404 页面（显示友好错误提示与返回首页链接）
+ - [X] T096 更新 `backend/internal/app/http_server/server.go` 配置静态文件托管 (frontend/out/)
+ - [X] T097 实现 SPA 回退逻辑（非 /api/* 路径返回 index.html）
+ - [X] T098 测试 API 与静态资源路由优先级
+ - [X] T098a [P] 实现 `frontend/app/not-found.tsx` 404 页面（显示友好错误提示与返回首页链接）
 
 ### 前端 - 构建与优化
 
-- [ ] T099 [P] 配置 `frontend/next.config.js` 的 generateStaticParams 预生成路由
-- [ ] T100 [P] 实现代码分割（动态导入 ChapterContent 等重组件）
-- [ ] T101 [P] 配置 SWR 缓存策略（revalidateOnFocus、dedupingInterval）
-- [ ] T102 [P] 优化 Prism.js 按需导入语言包（Go/TypeScript/JavaScript/JSON/bash/markdown）
-- [ ] T103 执行前端构建测试 (`npm run build`)
-- [ ] T104 验证构建产物 `frontend/out/` 目录结构
+ - [X] T099 [P] 配置 `frontend/next.config.js` 的 generateStaticParams 预生成路由
+ - [X] T100 [P] 实现代码分割（动态导入 ChapterContent 等重组件）
+ - [X] T101 [P] 配置 SWR 缓存策略（revalidateOnFocus、dedupingInterval）
+ - [X] T102 [P] 优化 Prism.js 按需导入语言包（Go/TypeScript/JavaScript/JSON/bash/markdown）
+ - [X] T103 执行前端构建测试 (`npm run build`)
+ - [X] T104 验证构建产物 `frontend/out/` 目录结构
 
 ### 集成测试
 
-- [ ] T105 编写 `backend/tests/integration/learning_flow_test.go` 学习流程端到端测试
-- [ ] T106 编写 `backend/tests/contract/api_contract_test.go` API 契约测试（验证响应格式）
-- [ ] T107 [P] 编写 `frontend/tests/integration/auth.test.tsx` 前端认证流程集成测试
-- [ ] T108 [P] 编写 `frontend/tests/lib/api.test.ts` API 层集成测试
+ - [X] T105 编写 `backend/tests/integration/learning_flow_test.go` 学习流程端到端测试
+ - [X] T106 编写 `backend/tests/contract/api_contract_test.go` API 契约测试（验证响应格式）
+ - [X] T107 [P] 编写 `frontend/tests/integration/auth.test.tsx` 前端认证流程集成测试
+ - [X] T108 [P] 编写 `frontend/tests/lib/api.test.ts` API 层集成测试
 
 ### 文档与配置
 
-- [ ] T109 [P] 创建 `backend/internal/pkg/jwt/README.md` JWT 工具使用文档
-- [ ] T110 [P] 创建 `backend/internal/domain/README.md` 领域层架构说明
-- [ ] T111 [P] 创建 `backend/internal/infrastructure/README.md` 基础设施层说明
-- [ ] T112 [P] 创建 `frontend/README.md` 前端开发指南（安装/运行/构建）
-- [ ] T113 更新根目录 `README.md` 添加新功能章节（用户认证/学习进度跟踪/测验功能）
-- [ ] T114 [P] 创建 `docs/API.md` API 文档（基于 openapi.yaml）
-- [ ] T115 [P] 创建 `docs/DEPLOYMENT.md` 部署指南（环境变量/构建流程/启动步骤）
+ - [X] T109 [P] 创建 `backend/internal/pkg/jwt/README.md` JWT 工具使用文档
+ - [X] T110 [P] 创建 `backend/internal/domain/README.md` 领域层架构说明
+ - [X] T111 [P] 创建 `backend/internal/infrastructure/README.md` 基础设施层说明
+ - [X] T112 [P] 创建 `frontend/README.md` 前端开发指南（安装/运行/构建）
+ - [X] T113 更新根目录 `README.md` 添加新功能章节（用户认证/学习进度跟踪/测验功能）
+ - [X] T114 [P] 创建 `docs/API.md` API 文档（基于 openapi.yaml）
+ - [X] T115 [P] 创建 `docs/DEPLOYMENT.md` 部署指南（环境变量/构建流程/启动步骤）
 
 ---
 
