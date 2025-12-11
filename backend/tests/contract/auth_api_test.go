@@ -13,6 +13,7 @@ import (
 
 	"go-study2/internal/app/http_server"
 	"go-study2/internal/config"
+	"go-study2/internal/domain/user"
 	"go-study2/internal/infrastructure/database"
 	appjwt "go-study2/internal/pkg/jwt"
 
@@ -32,7 +33,45 @@ func TestAuthAPI_Contract(t *testing.T) {
 	baseURL, client, shutdown := startContractServer(t)
 	defer shutdown()
 
-	register := doAuthContractPost(t, client, baseURL+"/api/v1/auth/register", `{"username":"contract_user","password":"TestPass123","rememberMe":true}`)
+	login := doAuthContractPost(t, client, baseURL+"/api/v1/auth/login", fmt.Sprintf(`{"username":"%s","password":"%s","rememberMe":true}`, user.DefaultAdminUsername, user.DefaultAdminPassword))
+	if login.Code != 20000 {
+		t.Fatalf("管理员登录失败: %d, msg=%s", login.Code, login.Message)
+	}
+
+	var loginData struct {
+		AccessToken        string `json:"accessToken"`
+		NeedPasswordChange bool   `json:"needPasswordChange"`
+	}
+	_ = json.Unmarshal(login.Data, &loginData)
+	adminPassword := user.DefaultAdminPassword
+	if loginData.NeedPasswordChange {
+		changeReqBody := fmt.Sprintf(`{"oldPassword":"%s","newPassword":"ContractFlow123!"}`, adminPassword)
+		changeReq, _ := http.NewRequest(http.MethodPost, baseURL+"/api/v1/auth/change-password", bytes.NewBufferString(changeReqBody))
+		changeReq.Header.Set("Content-Type", "application/json")
+		changeReq.Header.Set("Authorization", "Bearer "+loginData.AccessToken)
+		changeResp := doAuthContractRequest(t, client, changeReq)
+		if changeResp.Code != 20000 {
+			t.Fatalf("改密失败: %d, msg=%s", changeResp.Code, changeResp.Message)
+		}
+
+		adminPassword = "ContractFlow123!"
+		login = doAuthContractPost(t, client, baseURL+"/api/v1/auth/login", fmt.Sprintf(`{"username":"%s","password":"%s","rememberMe":true}`, user.DefaultAdminUsername, adminPassword))
+		if login.Code != 20000 {
+			t.Fatalf("改密后管理员登录失败: %d, msg=%s", login.Code, login.Message)
+		}
+		_ = json.Unmarshal(login.Data, &loginData)
+	}
+	adminAccess := loginData.AccessToken
+
+	unauthorized := doAuthContractPost(t, client, baseURL+"/api/v1/auth/register", `{"username":"contract_user","password":"TestPass123!","rememberMe":true}`)
+	if unauthorized.Code == 20000 {
+		t.Fatalf("未携带管理员令牌不应注册成功")
+	}
+
+	registerReq, _ := http.NewRequest(http.MethodPost, baseURL+"/api/v1/auth/register", bytes.NewBufferString(`{"username":"contract_user","password":"TestPass123!","rememberMe":true}`))
+	registerReq.Header.Set("Content-Type", "application/json")
+	registerReq.Header.Set("Authorization", "Bearer "+adminAccess)
+	register := doAuthContractRequest(t, client, registerReq)
 	if register.Code != 20000 {
 		t.Fatalf("注册返回码错误: %d, msg=%s", register.Code, register.Message)
 	}

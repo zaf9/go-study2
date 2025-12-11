@@ -9,6 +9,7 @@ import {
 import { ApiResponse } from "@/types/api";
 import {
   AuthTokens,
+  ChangePasswordRequest,
   LoginRequest,
   Profile,
   RegisterRequest,
@@ -124,21 +125,16 @@ export async function loginWithPassword(
 export async function registerAccount(
   request: RegisterRequest & { remember?: boolean },
 ): Promise<AuthTokens> {
-  const remember = !!request.remember;
-  setRememberMe(remember);
   const resp = await authClient.post<ApiResponse<AuthTokens>>(
     API_PATHS.register,
     {
       username: request.username,
       password: request.password,
-      remember,
+      remember: !!request.remember,
     },
+    { headers: buildAuthHeaders() },
   );
-  const tokens = unwrapResponse<AuthTokens>(resp);
-  if (tokens?.accessToken) {
-    setAccessToken(tokens.accessToken);
-  }
-  return tokens;
+  return unwrapResponse<AuthTokens>(resp);
 }
 
 export async function fetchProfile(): Promise<Profile> {
@@ -174,4 +170,19 @@ export async function refreshAccessToken(): Promise<string | null> {
     clearTokens();
     return null;
   }
+}
+
+export async function changePassword(
+  request: ChangePasswordRequest,
+): Promise<void> {
+  const resp = await authClient.post<ApiResponse<null>>(
+    API_PATHS.changePassword,
+    {
+      oldPassword: request.oldPassword,
+      newPassword: request.newPassword,
+    },
+    { headers: buildAuthHeaders() },
+  );
+  unwrapResponse<null>(resp);
+  clearTokens();
 }

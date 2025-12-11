@@ -2,6 +2,7 @@ package repository
 
 import (
 	"context"
+	"strings"
 
 	"go-study2/internal/domain/user"
 
@@ -21,8 +22,11 @@ func NewUserRepository(db gdb.DB) *UserRepository {
 // Create 写入新用户并返回自增 ID。
 func (r *UserRepository) Create(ctx context.Context, entity *user.User) (int64, error) {
 	res, err := r.db.Insert(ctx, "users", map[string]interface{}{
-		"username":      entity.Username,
-		"password_hash": entity.PasswordHash,
+		"username":             entity.Username,
+		"password_hash":        entity.PasswordHash,
+		"is_admin":             entity.IsAdmin,
+		"status":               chooseStatus(entity.Status),
+		"must_change_password": entity.MustChangePassword,
 	})
 	if err != nil {
 		return 0, err
@@ -82,6 +86,15 @@ func (r *UserRepository) DeleteRefreshTokensByUser(ctx context.Context, userID i
 	return err
 }
 
+// UpdatePasswordAndFlag 更新密码哈希与需改密标记。
+func (r *UserRepository) UpdatePasswordAndFlag(ctx context.Context, userID int64, passwordHash string, mustChange bool) error {
+	_, err := r.db.Exec(ctx, `
+UPDATE users
+SET password_hash = ?, must_change_password = ?, updated_at = CURRENT_TIMESTAMP
+WHERE id = ?`, passwordHash, mustChange, userID)
+	return err
+}
+
 // FindRefreshToken 通过哈希查询刷新令牌记录。
 func (r *UserRepository) FindRefreshToken(ctx context.Context, tokenHash string) (*user.RefreshToken, error) {
 	record, err := r.db.Model("refresh_tokens").Where("token_hash = ?", tokenHash).One(ctx)
@@ -96,4 +109,11 @@ func (r *UserRepository) FindRefreshToken(ctx context.Context, tokenHash string)
 		return nil, err
 	}
 	return &entity, nil
+}
+
+func chooseStatus(status string) string {
+	if strings.TrimSpace(status) == "" {
+		return "active"
+	}
+	return status
 }

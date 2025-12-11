@@ -10,4 +10,5 @@ type Repository interface {
 	SaveRefreshToken(ctx context.Context, token RefreshToken) error
 	DeleteRefreshTokensByUser(ctx context.Context, userID int64) error
 	FindRefreshToken(ctx context.Context, tokenHash string) (*RefreshToken, error)
+	UpdatePasswordAndFlag(ctx context.Context, userID int64, passwordHash string, mustChange bool) error
 }

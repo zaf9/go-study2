@@ -53,6 +53,13 @@ api.interceptors.response.use(
         window.location.href = "/login";
       }
     }
+    if (
+      status === 403 &&
+      error?.response?.data?.code === 40011 &&
+      isBrowser
+    ) {
+      window.location.href = "/change-password";
+    }
 
     const msg =
       error?.response?.data?.message || error.message || "网络错误，请重试";

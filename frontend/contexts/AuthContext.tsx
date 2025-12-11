@@ -10,6 +10,7 @@ import {
 } from "react";
 import {
   clearTokens,
+  changePassword as changePasswordApi,
   fetchProfile,
   getAccessToken,
   loginWithPassword,
@@ -31,6 +32,7 @@ export interface AuthContextValue {
     password: string,
     remember: boolean,
   ) => Promise<Profile>;
+  changePassword: (oldPassword: string, newPassword: string) => Promise<void>;
   logout: () => Promise<void>;
   refreshProfile: () => Promise<Profile | null>;
 }
@@ -97,6 +99,20 @@ export function AuthProvider({ children }: React.PropsWithChildren) {
     }
   }, []);
 
+  const changePassword = useCallback(
+    async (oldPassword: string, newPassword: string) => {
+      setLoading(true);
+      try {
+        await changePasswordApi({ oldPassword, newPassword });
+        clearTokens();
+        setUser(null);
+      } finally {
+        setLoading(false);
+      }
+    },
+    [],
+  );
+
   const refreshProfile = useCallback(async () => {
     const token = getAccessToken();
     if (!token) {
@@ -120,10 +136,11 @@ export function AuthProvider({ children }: React.PropsWithChildren) {
       loading,
       login,
       register,
+      changePassword,
       logout,
       refreshProfile,
     }),
-    [user, loading, login, register, logout, refreshProfile],
+    [user, loading, login, register, changePassword, logout, refreshProfile],
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

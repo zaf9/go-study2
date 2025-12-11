@@ -15,6 +15,7 @@ import (
 	"go-study2/internal/config"
 	"go-study2/internal/infrastructure/database"
 	appjwt "go-study2/internal/pkg/jwt"
+	"go-study2/internal/pkg/password"
 
 	"github.com/gogf/gf/v2/net/ghttp"
 	"github.com/gogf/gf/v2/os/gctx"
@@ -59,11 +60,11 @@ func TestQuizHandlers_Flow(t *testing.T) {
 	h := New()
 	server.Group("/api/v1", func(group *ghttp.RouterGroup) {
 		group.Middleware(middleware.Format)
-		group.POST("/auth/register", h.Register)
 		group.POST("/auth/login", h.Login)
 		group.POST("/auth/refresh", h.RefreshToken)
 		group.Group("/", func(authGroup *ghttp.RouterGroup) {
 			authGroup.Middleware(middleware.Auth)
+			authGroup.POST("/auth/register", h.Register)
 			authGroup.GET("/quiz/:topic/:chapter", h.GetQuiz)
 			authGroup.POST("/quiz/submit", h.SubmitQuiz)
 			authGroup.GET("/quiz/history", h.GetQuizHistory)
@@ -77,12 +78,39 @@ func TestQuizHandlers_Flow(t *testing.T) {
 	jar, _ := cookiejar.New(nil)
 	client := &http.Client{Jar: jar}
 
-	register := doQuizPost(t, client, baseURL+"/api/v1/auth/register", `{"username":"quiz_user","password":"TestPass123","remember":true}`)
+	adminPwd, _ := password.Hash("Admin123!")
+	if _, err := database.Default().Insert(ctx, "users", map[string]interface{}{
+		"username":             "admin",
+		"password_hash":        adminPwd,
+		"is_admin":             1,
+		"status":               "active",
+		"must_change_password": 0,
+	}); err != nil {
+		t.Fatalf("创建管理员失败: %v", err)
+	}
+
+	adminLogin := doQuizPost(t, client, baseURL+"/api/v1/auth/login", `{"username":"admin","password":"Admin123!","remember":true}`)
+	if adminLogin.Code != 20000 {
+		t.Fatalf("管理员登录失败: %s", adminLogin.Message)
+	}
+	var adminTokens map[string]interface{}
+	_ = json.Unmarshal(adminLogin.Data, &adminTokens)
+	adminAccess := fmt.Sprintf("%v", adminTokens["accessToken"])
+
+	registerReq, _ := http.NewRequest(http.MethodPost, baseURL+"/api/v1/auth/register", bytes.NewBufferString(`{"username":"quiz_user","password":"TestPass123!","remember":true}`))
+	registerReq.Header.Set("Content-Type", "application/json")
+	registerReq.Header.Set("Authorization", "Bearer "+adminAccess)
+	register := doQuizRequest(t, client, registerReq)
 	if register.Code != 20000 {
 		t.Fatalf("注册失败: %s", register.Message)
 	}
+
+	login := doQuizPost(t, client, baseURL+"/api/v1/auth/login", `{"username":"quiz_user","password":"TestPass123!","remember":true}`)
+	if login.Code != 20000 {
+		t.Fatalf("登录失败: %s", login.Message)
+	}
 	var tokens map[string]interface{}
-	_ = json.Unmarshal(register.Data, &tokens)
+	_ = json.Unmarshal(login.Data, &tokens)
 	access := fmt.Sprintf("%v", tokens["accessToken"])
 
 	getQuizReq, _ := http.NewRequest(http.MethodGet, baseURL+"/api/v1/quiz/variables/storage", nil)

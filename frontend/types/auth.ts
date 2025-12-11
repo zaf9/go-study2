@@ -12,9 +12,17 @@ export interface RegisterRequest {
 export interface AuthTokens {
   accessToken: string;
   expiresIn: number;
+  needPasswordChange?: boolean;
 }
 
 export interface Profile {
   id: number;
   username: string;
+  isAdmin: boolean;
+  mustChangePassword: boolean;
+}
+
+export interface ChangePasswordRequest {
+  oldPassword: string;
+  newPassword: string;
 }

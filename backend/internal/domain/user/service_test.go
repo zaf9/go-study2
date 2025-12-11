@@ -7,6 +7,7 @@ import (
 	"time"
 
 	appjwt "go-study2/internal/pkg/jwt"
+	"go-study2/internal/pkg/password"
 )
 
 type mockRepo struct {
@@ -30,6 +31,9 @@ func (m *mockRepo) Create(_ context.Context, u *User) (int64, error) {
 	m.autoID++
 	clone := *u
 	clone.ID = id
+	if clone.Status == "" {
+		clone.Status = defaultUserStatus
+	}
 	m.users[u.Username] = &clone
 	m.usersByID[id] = &clone
 	return id, nil
@@ -73,6 +77,18 @@ func (m *mockRepo) FindRefreshToken(_ context.Context, tokenHash string) (*Refre
 	return nil, nil
 }
 
+func (m *mockRepo) UpdatePasswordAndFlag(_ context.Context, userID int64, passwordHash string, mustChange bool) error {
+	if u, ok := m.usersByID[userID]; ok {
+		clone := *u
+		clone.PasswordHash = passwordHash
+		clone.MustChangePassword = mustChange
+		m.usersByID[userID] = &clone
+		m.users[u.Username] = &clone
+		return nil
+	}
+	return errors.New("user not found")
+}
+
 func TestService_RegisterAndLogin(t *testing.T) {
 	_ = appjwt.Configure(appjwt.Options{
 		Secret:             "0123456789abcdef",
@@ -84,7 +100,13 @@ func TestService_RegisterAndLogin(t *testing.T) {
 	svc := NewService(repo, time.Hour, 24*time.Hour)
 	ctx := context.Background()
 
-	result, err := svc.Register(ctx, "tester_1", "TestPass123")
+	adminID, _ := repo.Create(ctx, &User{
+		Username: "admin",
+		IsAdmin:  true,
+		Status:   "active",
+	})
+
+	result, err := svc.Register(ctx, adminID, "tester_1", "TestPass123!")
 	if err != nil {
 		t.Fatalf("注册失败: %v", err)
 	}
@@ -92,12 +114,12 @@ func TestService_RegisterAndLogin(t *testing.T) {
 		t.Fatalf("注册返回数据不完整")
 	}
 
-	_, err = svc.Register(ctx, "tester_1", "TestPass123")
+	_, err = svc.Register(ctx, adminID, "tester_1", "TestPass123!")
 	if !errors.Is(err, ErrUserExists) {
 		t.Fatalf("重复注册应返回 ErrUserExists")
 	}
 
-	login, err := svc.Login(ctx, "tester_1", "TestPass123")
+	login, err := svc.Login(ctx, "tester_1", "TestPass123!")
 	if err != nil {
 		t.Fatalf("登录失败: %v", err)
 	}
@@ -105,7 +127,7 @@ func TestService_RegisterAndLogin(t *testing.T) {
 		t.Fatalf("登录返回的令牌为空")
 	}
 
-	_, err = svc.Login(ctx, "tester_1", "WrongPass123")
+	_, err = svc.Login(ctx, "tester_1", "WrongPass123!")
 	if !errors.Is(err, ErrInvalidCredential) {
 		t.Fatalf("错误密码应返回 ErrInvalidCredential")
 	}
@@ -122,7 +144,13 @@ func TestService_RefreshAndLogout(t *testing.T) {
 	svc := NewService(repo, time.Hour, time.Hour)
 	ctx := context.Background()
 
-	register, err := svc.Register(ctx, "tester_2", "TestPass123")
+	adminID, _ := repo.Create(ctx, &User{
+		Username: "admin",
+		IsAdmin:  true,
+		Status:   "active",
+	})
+
+	register, err := svc.Register(ctx, adminID, "tester_2", "TestPass123!")
 	if err != nil {
 		t.Fatalf("注册失败: %v", err)
 	}
@@ -151,4 +179,173 @@ func TestService_RefreshAndLogout(t *testing.T) {
 	if len(repo.refreshData) != 0 {
 		t.Fatalf("退出后应清空刷新令牌")
 	}
+}
+
+func TestService_RejectsWeakPassword(t *testing.T) {
+	_ = appjwt.Configure(appjwt.Options{
+		Secret:             "abcdef0123456789",
+		AccessTokenExpiry:  time.Hour,
+		RefreshTokenExpiry: time.Hour,
+	})
+
+	repo := newMockRepo()
+	svc := NewService(repo, time.Hour, time.Hour)
+	ctx := context.Background()
+
+	adminID, _ := repo.Create(ctx, &User{
+		Username: "admin",
+		IsAdmin:  true,
+		Status:   "active",
+	})
+
+	_, err := svc.Register(ctx, adminID, "weakuser", "Weakpass1")
+	if !errors.Is(err, ErrInvalidInput) {
+		t.Fatalf("弱口令应返回 ErrInvalidInput")
+	}
+}
+
+func TestService_EnsureDefaultAdmin_CreatesWhenMissing(t *testing.T) {
+	_ = appjwt.Configure(appjwt.Options{
+		Secret:             "abcdef0123456789",
+		AccessTokenExpiry:  time.Hour,
+		RefreshTokenExpiry: time.Hour,
+	})
+
+	repo := newMockRepo()
+	svc := NewService(repo, time.Hour, time.Hour)
+	ctx := context.Background()
+
+	err := svc.EnsureDefaultAdmin(ctx)
+	if err != nil {
+		t.Fatalf("创建默认管理员失败: %v", err)
+	}
+	created, _ := repo.FindByUsername(ctx, DefaultAdminUsername)
+	if created == nil || !created.IsAdmin || !created.MustChangePassword {
+		t.Fatalf("默认管理员字段不符合预期")
+	}
+}
+
+func TestService_EnsureDefaultAdmin_Idempotent(t *testing.T) {
+	_ = appjwt.Configure(appjwt.Options{
+		Secret:             "abcdef0123456789",
+		AccessTokenExpiry:  time.Hour,
+		RefreshTokenExpiry: time.Hour,
+	})
+
+	repo := newMockRepo()
+	svc := NewService(repo, time.Hour, time.Hour)
+	ctx := context.Background()
+
+	hashed, _ := password.Hash("Admin123!")
+	_, _ = repo.Create(ctx, &User{
+		Username:           DefaultAdminUsername,
+		PasswordHash:       hashed,
+		IsAdmin:            true,
+		Status:             defaultUserStatus,
+		MustChangePassword: false,
+	})
+
+	err := svc.EnsureDefaultAdmin(ctx)
+	if err != nil {
+		t.Fatalf("幂等检查失败: %v", err)
+	}
+	after, _ := repo.FindByUsername(ctx, DefaultAdminUsername)
+	if after == nil || after.PasswordHash != hashed || after.MustChangePassword {
+		t.Fatalf("已有管理员不应被覆盖")
+	}
+}
+
+func TestService_Register_PermissionDenied(t *testing.T) {
+	_ = appjwt.Configure(appjwt.Options{
+		Secret:             "abcdef0123456789",
+		AccessTokenExpiry:  time.Hour,
+		RefreshTokenExpiry: time.Hour,
+	})
+
+	repo := newMockRepo()
+	svc := NewService(repo, time.Hour, time.Hour)
+	ctx := context.Background()
+
+	nonAdminID, _ := repo.Create(ctx, &User{
+		Username: "user1",
+		Status:   "active",
+	})
+
+	_, err := svc.Register(ctx, nonAdminID, "tester_x", "TestPass123!")
+	if !errors.Is(err, ErrPermissionDenied) {
+		t.Fatalf("非管理员注册应拒绝，得到: %v", err)
+	}
+}
+
+func TestService_ChangePassword_Success(t *testing.T) {
+	_ = appjwt.Configure(appjwt.Options{
+		Secret:             "abcdef0123456789",
+		AccessTokenExpiry:  time.Hour,
+		RefreshTokenExpiry: time.Hour,
+	})
+
+	repo := newMockRepo()
+	svc := NewService(repo, time.Hour, time.Hour)
+	ctx := context.Background()
+
+	oldHash := hashOrFail(t, "OldPass123!")
+	userID, _ := repo.Create(ctx, &User{
+		Username:           "need_change",
+		Status:             defaultUserStatus,
+		PasswordHash:       oldHash,
+		MustChangePassword: true,
+	})
+	_ = repo.SaveRefreshToken(ctx, RefreshToken{
+		UserID:    userID,
+		TokenHash: hashToken("old_refresh"),
+		ExpiresAt: time.Now().Add(time.Hour),
+	})
+
+	if err := svc.ChangePassword(ctx, userID, "OldPass123!", "NewPass123!"); err != nil {
+		t.Fatalf("改密失败: %v", err)
+	}
+
+	updated, _ := repo.FindByID(ctx, userID)
+	if updated == nil || updated.MustChangePassword {
+		t.Fatalf("改密后需改密标记应为 false")
+	}
+	if updated.PasswordHash == "" || updated.PasswordHash == oldHash {
+		t.Fatalf("密码未更新")
+	}
+	if len(repo.refreshData) != 0 {
+		t.Fatalf("改密后应清理刷新令牌")
+	}
+}
+
+func TestService_ChangePassword_InvalidOldPassword(t *testing.T) {
+	_ = appjwt.Configure(appjwt.Options{
+		Secret:             "abcdef0123456789",
+		AccessTokenExpiry:  time.Hour,
+		RefreshTokenExpiry: time.Hour,
+	})
+
+	repo := newMockRepo()
+	svc := NewService(repo, time.Hour, time.Hour)
+	ctx := context.Background()
+
+	userID, _ := repo.Create(ctx, &User{
+		Username:           "need_change",
+		Status:             defaultUserStatus,
+		PasswordHash:       hashOrFail(t, "OldPass123!"),
+		MustChangePassword: true,
+	})
+
+	err := svc.ChangePassword(ctx, userID, "wrongOld!", "NewPass123!")
+	if !errors.Is(err, ErrInvalidCredential) {
+		t.Fatalf("错误旧密码应返回 ErrInvalidCredential")
+	}
+}
+
+func hashOrFail(t *testing.T, raw string) string {
+	t.Helper()
+	hashed, err := password.Hash(raw)
+	if err != nil {
+		t.Fatalf("hash 失败: %v", err)
+	}
+	return hashed
 }

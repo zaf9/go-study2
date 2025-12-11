@@ -62,7 +62,8 @@ database:
 # JWT 配置
 jwt:
   # 签名密钥，强烈建议通过环境变量注入
-  secret: "${JWT_SECRET}"
+  # secret: "${JWT_SECRET}"
+  secret: "S3cureTestKey_987!"
   # 访问令牌过期时间（秒）
   accessTokenExpiry: 604800
   # 刷新令牌过期时间（秒）

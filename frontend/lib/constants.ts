@@ -10,6 +10,7 @@ export const API_PATHS = {
   register: "/auth/register",
   refresh: "/auth/refresh",
   profile: "/auth/profile",
+  changePassword: "/auth/change-password",
   logout: "/auth/logout",
   topics: "/topics",
   topicMenu: (topic: string) => `/topic/${topic}`,

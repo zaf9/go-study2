@@ -17,15 +17,17 @@ func RegisterRoutes(s *ghttp.Server) {
 		group.Middleware(middleware.Format)
 
 		// 认证路由（无需 JWT 验证）
-		group.POST("/auth/register", h.Register)
 		group.POST("/auth/login", h.Login)
 		group.POST("/auth/refresh", h.RefreshToken)
 
 		// 需要认证的路由
 		group.Group("/", func(authGroup *ghttp.RouterGroup) {
 			authGroup.Middleware(middleware.Auth)
+			authGroup.Middleware(middleware.ForceChangePassword)
+			authGroup.POST("/auth/register", h.Register)
 			authGroup.GET("/auth/profile", h.GetProfile)
 			authGroup.POST("/auth/logout", h.Logout)
+			authGroup.POST("/auth/change-password", h.ChangePassword)
 
 			// 学习进度
 			authGroup.GET("/progress", h.GetAllProgress)

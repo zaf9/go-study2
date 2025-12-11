@@ -8,6 +8,7 @@ import (
 	"regexp"
 	"time"
 
+	"go-study2/internal/infrastructure/audit"
 	appjwt "go-study2/internal/pkg/jwt"
 	"go-study2/internal/pkg/password"
 )
@@ -20,11 +21,25 @@ var (
 	ErrRefreshTokenInvalid = errors.New("refresh token 无效")
 	ErrRefreshTokenExpired = errors.New("refresh token 已过期")
 	ErrUserNotFound        = errors.New("用户不存在")
+	ErrPermissionDenied    = errors.New("权限不足")
+	ErrMustChangePassword  = errors.New("需要先修改密码")
 )
 
 var (
 	usernamePattern = regexp.MustCompile(`^[A-Za-z0-9_]{3,50}$`)
 )
+
+const (
+	DefaultAdminUsername = "admin"
+	DefaultAdminPassword = "GoStudy@123"
+	defaultUserStatus    = "active"
+)
+
+type createUserOptions struct {
+	isAdmin            bool
+	mustChangePassword bool
+	issueTokens        bool
+}
 
 // Service 封装用户注册、登录、刷新令牌等业务能力。
 type Service struct {
@@ -42,45 +57,50 @@ func NewService(repo Repository, accessTTL, refreshTTL time.Duration) *Service {
 	}
 }
 
-// Register 注册新用户，返回令牌对与用户信息。
-func (s *Service) Register(ctx context.Context, username, rawPassword string) (*AuthResult, error) {
-	if err := s.validateCredential(username, rawPassword); err != nil {
-		return nil, ErrInvalidInput
+// Register 由管理员创建新用户，返回令牌对与用户信息。
+func (s *Service) Register(ctx context.Context, operatorID int64, username, rawPassword string) (*AuthResult, error) {
+	if operatorID <= 0 {
+		audit.Record(ctx, "register_denied", 0, "permission_denied", "missing_operator")
+		return nil, ErrPermissionDenied
 	}
-
-	existing, err := s.repo.FindByUsername(ctx, username)
+	operator, err := s.repo.FindByID(ctx, operatorID)
 	if err != nil {
 		return nil, err
+	}
+	if operator == nil || !operator.IsAdmin {
+		audit.Record(ctx, "register_denied", operatorID, "permission_denied", "non_admin_operator")
+		return nil, ErrPermissionDenied
+	}
+	result, regErr := s.registerUser(ctx, username, rawPassword, createUserOptions{
+		isAdmin:            false,
+		mustChangePassword: false,
+		issueTokens:        true,
+	})
+	if regErr == nil {
+		audit.Record(ctx, "register_success", operatorID, "ok", username)
+	}
+	return result, regErr
+}
+
+// EnsureDefaultAdmin 确保默认管理员存在，幂等且不覆盖已存在账户。
+func (s *Service) EnsureDefaultAdmin(ctx context.Context) error {
+	existing, err := s.repo.FindByUsername(ctx, DefaultAdminUsername)
+	if err != nil {
+		return err
 	}
 	if existing != nil {
-		return nil, ErrUserExists
+		return nil
 	}
 
-	hashed, err := password.Hash(rawPassword)
-	if err != nil {
-		return nil, err
+	created, err := s.registerUser(ctx, DefaultAdminUsername, DefaultAdminPassword, createUserOptions{
+		isAdmin:            true,
+		mustChangePassword: true,
+		issueTokens:        false,
+	})
+	if err == nil && created != nil && created.User != nil {
+		audit.Record(ctx, "default_admin_created", created.User.ID, "ok", "")
 	}
-
-	user := &User{
-		Username:     username,
-		PasswordHash: hashed,
-	}
-
-	userID, err := s.repo.Create(ctx, user)
-	if err != nil {
-		return nil, err
-	}
-	user.ID = userID
-
-	tokens, err := s.issueTokenPair(ctx, userID)
-	if err != nil {
-		return nil, err
-	}
-
-	return &AuthResult{
-		User:   user,
-		Tokens: *tokens,
-	}, nil
+	return err
 }
 
 // Login 验证账号密码并返回新的令牌对。
@@ -193,6 +213,40 @@ func (s *Service) Profile(ctx context.Context, userID int64) (*User, error) {
 	return record, nil
 }
 
+// ChangePassword 修改密码并重置需改密标记，清理历史刷新令牌。
+func (s *Service) ChangePassword(ctx context.Context, userID int64, oldPassword, newPassword string) error {
+	if userID <= 0 {
+		return ErrInvalidInput
+	}
+
+	record, err := s.repo.FindByID(ctx, userID)
+	if err != nil {
+		return err
+	}
+	if record == nil {
+		return ErrUserNotFound
+	}
+
+	if err := password.Verify(record.PasswordHash, oldPassword); err != nil {
+		return ErrInvalidCredential
+	}
+	if err := password.Validate(newPassword); err != nil {
+		return ErrInvalidInput
+	}
+
+	hashed, err := password.Hash(newPassword)
+	if err != nil {
+		return err
+	}
+
+	if err := s.repo.UpdatePasswordAndFlag(ctx, userID, hashed, false); err != nil {
+		return err
+	}
+
+	audit.Record(ctx, "password_changed", userID, "ok", "")
+	return s.repo.DeleteRefreshTokensByUser(ctx, userID)
+}
+
 // RefreshTTL 返回刷新令牌有效期。
 func (s *Service) RefreshTTL() time.Duration {
 	return s.refreshTTL
@@ -202,7 +256,7 @@ func (s *Service) validateCredential(username, rawPassword string) error {
 	if !usernamePattern.MatchString(username) {
 		return ErrInvalidInput
 	}
-	if !validPassword(rawPassword) {
+	if err := password.Validate(rawPassword); err != nil {
 		return ErrInvalidInput
 	}
 	return nil
@@ -244,22 +298,52 @@ func hashToken(token string) string {
 	return hex.EncodeToString(sum[:])
 }
 
-func validPassword(raw string) bool {
-	if len(raw) < 8 {
-		return false
+func (s *Service) registerUser(ctx context.Context, username, rawPassword string, opts createUserOptions) (*AuthResult, error) {
+	if err := s.validateCredential(username, rawPassword); err != nil {
+		return nil, ErrInvalidInput
 	}
-	hasLower := false
-	hasUpper := false
-	hasDigit := false
-	for _, r := range raw {
-		switch {
-		case r >= 'a' && r <= 'z':
-			hasLower = true
-		case r >= 'A' && r <= 'Z':
-			hasUpper = true
-		case r >= '0' && r <= '9':
-			hasDigit = true
-		}
+
+	existing, err := s.repo.FindByUsername(ctx, username)
+	if err != nil {
+		return nil, err
 	}
-	return hasLower && hasUpper && hasDigit
+	if existing != nil {
+		return nil, ErrUserExists
+	}
+
+	hashed, err := password.Hash(rawPassword)
+	if err != nil {
+		return nil, err
+	}
+
+	user := &User{
+		Username:           username,
+		PasswordHash:       hashed,
+		IsAdmin:            opts.isAdmin,
+		Status:             defaultUserStatus,
+		MustChangePassword: opts.mustChangePassword,
+	}
+
+	userID, err := s.repo.Create(ctx, user)
+	if err != nil {
+		return nil, err
+	}
+	user.ID = userID
+
+	if !opts.issueTokens {
+		return &AuthResult{
+			User:   user,
+			Tokens: TokenPair{},
+		}, nil
+	}
+
+	tokens, err := s.issueTokenPair(ctx, userID)
+	if err != nil {
+		return nil, err
+	}
+
+	return &AuthResult{
+		User:   user,
+		Tokens: *tokens,
+	}, nil
 }

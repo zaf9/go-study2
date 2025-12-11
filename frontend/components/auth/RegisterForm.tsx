@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { Button, Checkbox, Form, Input, Typography, message } from "antd";
-import { useRouter } from "next/navigation";
 import useAuth from "@/hooks/useAuth";
 
 interface RegisterFormValues {
@@ -20,16 +19,16 @@ const formLayout = {
 };
 
 export default function RegisterForm() {
-  const router = useRouter();
   const { register } = useAuth();
   const [submitting, setSubmitting] = useState(false);
+  const [form] = Form.useForm<RegisterFormValues>();
 
   const handleFinish = async (values: RegisterFormValues) => {
     setSubmitting(true);
     try {
       await register(values.username, values.password, values.remember);
-      message.success("注册成功，已自动登录");
-      router.push("/topics");
+      message.success("注册成功，已创建新用户");
+      form.resetFields(["username", "password", "confirm"]);
     } catch (error) {
       const reason =
         error instanceof Error ? error.message : "注册失败，请重试";
@@ -44,6 +43,7 @@ export default function RegisterForm() {
       <Title level={3}>创建账号</Title>
       <Text type="secondary">注册后即可浏览全部学习主题</Text>
       <Form
+        form={form}
         {...formLayout}
         layout="vertical"
         className="mt-6"
@@ -68,8 +68,8 @@ export default function RegisterForm() {
             { required: true, message: "请输入密码" },
             { min: 8, message: "密码至少 8 位" },
             {
-              pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/,
-              message: "需包含大小写字母与数字",
+              pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}$/,
+              message: "需包含大写、小写、数字和特殊字符",
             },
           ]}
         >

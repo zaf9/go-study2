@@ -658,6 +658,7 @@ static:
 | `/auth/login` | POST | 用户登录，返回访问令牌；支持 `rememberMe` |
 | `/auth/refresh` | POST | 使用 HttpOnly 刷新令牌换取新访问令牌 |
 | `/auth/profile` | GET | 获取当前用户信息（需 `Authorization: Bearer`） |
+| `/auth/change-password` | POST | 已登录用户修改密码（默认管理员首登必须完成） |
 | `/auth/logout` | POST | 退出并清除刷新令牌（需 `Authorization: Bearer`） |
 
 **学习/进度/测验**：
@@ -683,7 +684,9 @@ static:
 | `/quiz/submit` | POST | 提交测验并评分（需登录） |
 | `/quiz/history` | GET | 查看历史测验记录，可按主题过滤（需登录） |
 
-**响应格式**：`{code, message, data}`；学习内容接口支持 `?format=json|html`
+**响应格式**：`{code, message, data}`；学习内容接口支持 `?format=json|html`。默认管理员首登时 `login`/`register` 响应将返回 `needPasswordChange=true`，此时除改密/资料/退出外的请求会被 403 并写入审计。
+
+**默认管理员**：初始账号 `admin` / `GoStudy@123`，首次登录会被强制改密，改密后旧口令与旧令牌全部失效。
 
 详细 API 文档：`docs/API.md`、`specs/009-frontend-ui/contracts/openapi.yaml`
 

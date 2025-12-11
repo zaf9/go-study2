@@ -43,13 +43,31 @@ describe("LoginForm", () => {
 
     await act(async () => {
       await userEvent.type(screen.getByLabelText("用户名"), "tester");
+      await userEvent.type(screen.getByLabelText("密码"), "Password123!");
+      await userEvent.click(screen.getByRole("button", { name: /登\s*录/ }));
+    });
+
+    await waitFor(() => {
+      expect(loginMock).toHaveBeenCalledWith("tester", "Password123!", true);
+    });
+    expect(pushMock).toHaveBeenCalledWith("/topics");
+  });
+
+  it("弱口令时展示校验提示并不触发登录", async () => {
+    render(<LoginForm />);
+
+    await act(async () => {
+      await userEvent.type(screen.getByLabelText("用户名"), "tester");
       await userEvent.type(screen.getByLabelText("密码"), "Password123");
       await userEvent.click(screen.getByRole("button", { name: /登\s*录/ }));
     });
 
     await waitFor(() => {
-      expect(loginMock).toHaveBeenCalledWith("tester", "Password123", true);
+      expect(
+        screen.getByText("需包含大写、小写、数字和特殊字符"),
+      ).toBeInTheDocument();
     });
-    expect(pushMock).toHaveBeenCalledWith("/topics");
+    expect(loginMock).not.toHaveBeenCalled();
+    expect(pushMock).not.toHaveBeenCalled();
   });
 });

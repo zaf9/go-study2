@@ -26,8 +26,16 @@ export default function LoginForm() {
   const handleFinish = async (values: LoginFormValues) => {
     setSubmitting(true);
     try {
-      await login(values.username, values.password, values.remember);
+      const profile = await login(
+        values.username,
+        values.password,
+        values.remember,
+      );
       message.success("登录成功");
+      if (profile.mustChangePassword) {
+        router.push("/change-password");
+        return;
+      }
       router.push("/topics");
     } catch (error) {
       const reason =
@@ -66,6 +74,10 @@ export default function LoginForm() {
           rules={[
             { required: true, message: "请输入密码" },
             { min: 8, message: "密码至少 8 位" },
+            {
+              pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}$/,
+              message: "需包含大写、小写、数字和特殊字符",
+            },
           ]}
         >
           <Input.Password placeholder="请输入密码" />

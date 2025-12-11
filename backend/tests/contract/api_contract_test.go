@@ -12,6 +12,7 @@ import (
 
 	"go-study2/internal/app/http_server"
 	"go-study2/internal/config"
+	"go-study2/internal/domain/user"
 	"go-study2/internal/infrastructure/database"
 	appjwt "go-study2/internal/pkg/jwt"
 
@@ -30,6 +31,36 @@ func TestAPIContract_Responses(t *testing.T) {
 	baseURL, client, shutdown := startGenericServer(t)
 	defer shutdown()
 
+	adminLogin := doContractRequest(t, client, mustNewRequest(t, http.MethodPost, baseURL+"/api/v1/auth/login", fmt.Sprintf(`{"username":"%s","password":"%s","rememberMe":true}`, user.DefaultAdminUsername, user.DefaultAdminPassword)))
+	if adminLogin.Code != 20000 {
+		t.Fatalf("管理员登录失败: %v", adminLogin.Message)
+	}
+	var adminData struct {
+		AccessToken        string `json:"accessToken"`
+		NeedPasswordChange bool   `json:"needPasswordChange"`
+	}
+	_ = json.Unmarshal(adminLogin.Data, &adminData)
+
+	adminPassword := user.DefaultAdminPassword
+	if adminData.NeedPasswordChange {
+		changeReqBody := fmt.Sprintf(`{"oldPassword":"%s","newPassword":"ContractApi123!"}`, adminPassword)
+		changeReq, _ := http.NewRequest(http.MethodPost, baseURL+"/api/v1/auth/change-password", bytes.NewBufferString(changeReqBody))
+		changeReq.Header.Set("Content-Type", "application/json")
+		changeReq.Header.Set("Authorization", "Bearer "+adminData.AccessToken)
+		changeResp := doContractRequest(t, client, changeReq)
+		if changeResp.Code != 20000 {
+			t.Fatalf("改密失败: %s", changeResp.Message)
+		}
+
+		adminPassword = "ContractApi123!"
+		adminLogin = doContractRequest(t, client, mustNewRequest(t, http.MethodPost, baseURL+"/api/v1/auth/login", fmt.Sprintf(`{"username":"%s","password":"%s","rememberMe":true}`, user.DefaultAdminUsername, adminPassword)))
+		if adminLogin.Code != 20000 {
+			t.Fatalf("改密后管理员登录失败: %v", adminLogin.Message)
+		}
+		_ = json.Unmarshal(adminLogin.Data, &adminData)
+	}
+	adminAccess := adminData.AccessToken
+
 	// 1) topics 响应结构
 	topics := doContractRequest(t, client, mustNewRequest(t, http.MethodGet, baseURL+"/api/v1/topics?format=json", ""))
 	if topics.Code != 20000 {
@@ -47,7 +78,10 @@ func TestAPIContract_Responses(t *testing.T) {
 	}
 
 	// 2) 认证 + 进度契约
-	register := doContractRequest(t, client, mustNewRequest(t, http.MethodPost, baseURL+"/api/v1/auth/register", `{"username":"contract_api_user","password":"TestPass123","remember":true}`))
+	registerReq, _ := http.NewRequest(http.MethodPost, baseURL+"/api/v1/auth/register", bytes.NewBufferString(`{"username":"contract_api_user","password":"TestPass123!","remember":true}`))
+	registerReq.Header.Set("Content-Type", "application/json")
+	registerReq.Header.Set("Authorization", "Bearer "+adminAccess)
+	register := doContractRequest(t, client, registerReq)
 	if register.Code != 20000 {
 		t.Fatalf("注册失败: %s", register.Message)
 	}

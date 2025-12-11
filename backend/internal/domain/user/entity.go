@@ -4,11 +4,14 @@ import "time"
 
 // User 表示系统中的用户实体。
 type User struct {
-	ID           int64     `json:"id"`
-	Username     string    `json:"username"`
-	PasswordHash string    `json:"-"`
-	CreatedAt    time.Time `json:"createdAt"`
-	UpdatedAt    time.Time `json:"updatedAt"`
+	ID                 int64     `json:"id"`
+	Username           string    `json:"username"`
+	PasswordHash       string    `json:"-"`
+	IsAdmin            bool      `json:"isAdmin"`
+	Status             string    `json:"status"`
+	MustChangePassword bool      `json:"mustChangePassword"`
+	CreatedAt          time.Time `json:"createdAt"`
+	UpdatedAt          time.Time `json:"updatedAt"`
 }
 
 // RefreshToken 表示刷新令牌的持久化记录。

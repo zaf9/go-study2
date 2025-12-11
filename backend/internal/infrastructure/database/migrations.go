@@ -2,6 +2,7 @@ package database
 
 import (
 	"context"
+	"fmt"
 	"strings"
 
 	"github.com/gogf/gf/v2/database/gdb"
@@ -14,6 +15,7 @@ func Migrate(ctx context.Context, db gdb.DB) error {
 		createLearningProgressTableSQL,
 		createQuizRecordsTableSQL,
 		createRefreshTokensTableSQL,
+		createAuditEventsTableSQL,
 	}
 
 	for _, stmt := range migrations {
@@ -29,6 +31,10 @@ func Migrate(ctx context.Context, db gdb.DB) error {
 		}
 	}
 
+	if err := ensureUserColumns(ctx, db); err != nil {
+		return err
+	}
+
 	return nil
 }
 
@@ -42,6 +48,42 @@ CREATE TABLE IF NOT EXISTS users (
 );
 CREATE UNIQUE INDEX IF NOT EXISTS idx_users_username ON users(username);
 `
+
+func ensureUserColumns(ctx context.Context, db gdb.DB) error {
+	columns, err := db.GetAll(ctx, "PRAGMA table_info(users)")
+	if err != nil {
+		return err
+	}
+	has := func(name string) bool {
+		for _, col := range columns {
+			if strings.EqualFold(col["name"].String(), name) {
+				return true
+			}
+		}
+		return false
+	}
+
+	type columnDef struct {
+		name string
+		def  string
+	}
+
+	additions := []columnDef{
+		{name: "is_admin", def: "INTEGER NOT NULL DEFAULT 0"},
+		{name: "status", def: "TEXT NOT NULL DEFAULT 'active'"},
+		{name: "must_change_password", def: "INTEGER NOT NULL DEFAULT 0"},
+	}
+
+	for _, col := range additions {
+		if has(col.name) {
+			continue
+		}
+		if _, err := db.Exec(ctx, fmt.Sprintf("ALTER TABLE users ADD COLUMN %s %s", col.name, col.def)); err != nil {
+			return err
+		}
+	}
+	return nil
+}
 
 const createLearningProgressTableSQL = `
 CREATE TABLE IF NOT EXISTS learning_progress (
@@ -89,4 +131,18 @@ CREATE TABLE IF NOT EXISTS refresh_tokens (
 );
 CREATE INDEX IF NOT EXISTS idx_refresh_tokens_user ON refresh_tokens(user_id);
 CREATE INDEX IF NOT EXISTS idx_refresh_tokens_expires ON refresh_tokens(expires_at);
+`
+
+const createAuditEventsTableSQL = `
+CREATE TABLE IF NOT EXISTS audit_events (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    event_type TEXT NOT NULL,
+    user_id INTEGER,
+    result TEXT NOT NULL,
+    metadata TEXT,
+    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+CREATE INDEX IF NOT EXISTS idx_audit_events_type ON audit_events(event_type);
+CREATE INDEX IF NOT EXISTS idx_audit_events_user ON audit_events(user_id);
+CREATE INDEX IF NOT EXISTS idx_audit_events_created ON audit_events(created_at DESC);
 `

@@ -16,6 +16,7 @@ import (
 	"go-study2/internal/config"
 	"go-study2/internal/infrastructure/database"
 	appjwt "go-study2/internal/pkg/jwt"
+	"go-study2/internal/pkg/password"
 
 	"github.com/gogf/gf/v2/frame/g"
 	"github.com/gogf/gf/v2/net/ghttp"
@@ -35,18 +36,49 @@ func TestAuthHandlers_Flow(t *testing.T) {
 	baseURL, client, shutdown := startAuthServer(t)
 	defer shutdown()
 
-	registerPayload := `{"username":"auth_user","password":"TestPass123","rememberMe":true}`
-	registerResp := doPost(t, client, baseURL+"/api/v1/auth/register", registerPayload)
+	adminPwd, _ := password.Hash("Admin123!")
+	if _, err := database.Default().Insert(gctx.New(), "users", map[string]interface{}{
+		"username":             "admin",
+		"password_hash":        adminPwd,
+		"is_admin":             1,
+		"status":               "active",
+		"must_change_password": 0,
+	}); err != nil {
+		t.Fatalf("创建管理员失败: %v", err)
+	}
+
+	adminLoginPayload := `{"username":"admin","password":"Admin123!","rememberMe":true}`
+	adminLogin := doPost(t, client, baseURL+"/api/v1/auth/login", adminLoginPayload)
+	if adminLogin.Code != 20000 {
+		t.Fatalf("管理员登录失败: %d, msg=%s", adminLogin.Code, adminLogin.Message)
+	}
+	var adminTokens authResponse
+	if err := json.Unmarshal(adminLogin.Data, &adminTokens); err != nil {
+		t.Fatalf("解析管理员登录响应失败: %v", err)
+	}
+	if adminTokens.AccessToken == "" {
+		t.Fatalf("管理员登录未返回 accessToken")
+	}
+
+	registerReq, _ := http.NewRequest(http.MethodPost, baseURL+"/api/v1/auth/register", bytes.NewBufferString(`{"username":"auth_user","password":"TestPass123!","rememberMe":true}`))
+	registerReq.Header.Set("Content-Type", "application/json")
+	registerReq.Header.Set("Authorization", "Bearer "+adminTokens.AccessToken)
+	registerResp := doRequest(t, client, registerReq)
 	if registerResp.Code != 20000 {
 		t.Fatalf("注册返回错误码: %d, msg=%s", registerResp.Code, registerResp.Message)
 	}
 
+	loginResp := doPost(t, client, baseURL+"/api/v1/auth/login", `{"username":"auth_user","password":"TestPass123!","rememberMe":true}`)
+	if loginResp.Code != 20000 {
+		t.Fatalf("登录返回错误码: %d, msg=%s", loginResp.Code, loginResp.Message)
+	}
+
 	var tokens authResponse
-	if err := json.Unmarshal(registerResp.Data, &tokens); err != nil {
-		t.Fatalf("解析注册响应失败: %v", err)
+	if err := json.Unmarshal(loginResp.Data, &tokens); err != nil {
+		t.Fatalf("解析登录响应失败: %v", err)
 	}
 	if tokens.AccessToken == "" {
-		t.Fatalf("注册响应缺少 accessToken")
+		t.Fatalf("登录响应缺少 accessToken")
 	}
 
 	refreshResp := doPost(t, client, baseURL+"/api/v1/auth/refresh", `{}`)
@@ -111,11 +143,11 @@ func startAuthServer(t *testing.T) (string, *http.Client, func()) {
 	h := New()
 	server.Group("/api/v1", func(group *ghttp.RouterGroup) {
 		group.Middleware(middleware.Format)
-		group.POST("/auth/register", h.Register)
 		group.POST("/auth/login", h.Login)
 		group.POST("/auth/refresh", h.RefreshToken)
 		group.Group("/", func(authGroup *ghttp.RouterGroup) {
 			authGroup.Middleware(middleware.Auth)
+			authGroup.POST("/auth/register", h.Register)
 			authGroup.GET("/auth/profile", h.GetProfile)
 			authGroup.POST("/auth/logout", h.Logout)
 		})

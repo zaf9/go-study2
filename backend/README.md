@@ -30,6 +30,11 @@ go test ./...
 - 默认配置位于 `configs/config.yaml`，HTTPS 证书放置于 `configs/certs/`。  
 - 配置加载通过 `internal/config`，工作目录以 `backend/` 为基准。  
 
+## 默认管理员
+
+- 初始账号：`admin` / `GoStudy@123`。  
+- 首次登录会被强制修改密码；改密后旧口令与旧令牌全部失效。
+
 ## API 速览
 
 - 主题列表：`GET /api/v1/topics?format=json|html`

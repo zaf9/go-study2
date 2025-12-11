@@ -19,13 +19,22 @@ type authRequest struct {
 }
 
 type authResponse struct {
-	AccessToken string `json:"accessToken"`
-	ExpiresIn   int64  `json:"expiresIn"`
+	AccessToken        string `json:"accessToken"`
+	ExpiresIn          int64  `json:"expiresIn"`
+	NeedPasswordChange bool   `json:"needPasswordChange"`
+	IsAdmin            bool   `json:"isAdmin"`
 }
 
 type profileResponse struct {
-	ID       int64  `json:"id"`
-	Username string `json:"username"`
+	ID                 int64  `json:"id"`
+	Username           string `json:"username"`
+	IsAdmin            bool   `json:"isAdmin"`
+	MustChangePassword bool   `json:"mustChangePassword"`
+}
+
+type changePasswordRequest struct {
+	OldPassword string `json:"oldPassword"`
+	NewPassword string `json:"newPassword"`
 }
 
 // Register 处理用户注册。
@@ -41,16 +50,26 @@ func (h *Handler) Register(r *ghttp.Request) {
 		return
 	}
 
-	result, err := svc.Register(r.GetCtx(), req.Username, req.Password)
+	operatorID := r.GetCtxVar("user_id").Int64()
+	if operatorID <= 0 {
+		writeError(r, http.StatusUnauthorized, 40001, "缺少管理员凭证")
+		return
+	}
+
+	result, err := svc.Register(r.GetCtx(), operatorID, req.Username, req.Password)
 	if err != nil {
 		writeAuthError(r, err)
 		return
 	}
 
-	h.setRefreshCookie(r, svc, result.Tokens.RefreshToken, req.isRemember())
+	if operatorID == result.User.ID {
+		h.setRefreshCookie(r, svc, result.Tokens.RefreshToken, req.isRemember())
+	}
 	writeSuccess(r, "注册成功", authResponse{
-		AccessToken: result.Tokens.AccessToken,
-		ExpiresIn:   result.Tokens.AccessExpiresIn,
+		AccessToken:        result.Tokens.AccessToken,
+		ExpiresIn:          result.Tokens.AccessExpiresIn,
+		NeedPasswordChange: result.User.MustChangePassword,
+		IsAdmin:            result.User.IsAdmin,
 	})
 }
 
@@ -75,8 +94,10 @@ func (h *Handler) Login(r *ghttp.Request) {
 
 	h.setRefreshCookie(r, svc, result.Tokens.RefreshToken, req.isRemember())
 	writeSuccess(r, "登录成功", authResponse{
-		AccessToken: result.Tokens.AccessToken,
-		ExpiresIn:   result.Tokens.AccessExpiresIn,
+		AccessToken:        result.Tokens.AccessToken,
+		ExpiresIn:          result.Tokens.AccessExpiresIn,
+		NeedPasswordChange: result.User.MustChangePassword,
+		IsAdmin:            result.User.IsAdmin,
 	})
 }
 
@@ -101,6 +122,35 @@ func (h *Handler) Logout(r *ghttp.Request) {
 
 	h.clearRefreshCookie(r)
 	writeSuccess(r, "退出成功", nil)
+}
+
+// ChangePassword 处理已登录用户修改密码，完成后要求重新登录。
+func (h *Handler) ChangePassword(r *ghttp.Request) {
+	svc, err := h.ensureUserService()
+	if err != nil {
+		writeError(r, http.StatusInternalServerError, 50001, "认证服务不可用")
+		return
+	}
+
+	userID := r.GetCtxVar("user_id").Int64()
+	if userID <= 0 {
+		writeError(r, http.StatusUnauthorized, 40001, "认证信息缺失")
+		return
+	}
+
+	var req changePasswordRequest
+	if err := r.Parse(&req); err != nil || req.OldPassword == "" || req.NewPassword == "" {
+		writeError(r, http.StatusBadRequest, 40004, "请求参数无效")
+		return
+	}
+
+	if err := svc.ChangePassword(r.GetCtx(), userID, req.OldPassword, req.NewPassword); err != nil {
+		writeAuthError(r, err)
+		return
+	}
+
+	h.clearRefreshCookie(r)
+	writeSuccess(r, "密码修改成功，请重新登录", nil)
 }
 
 // RefreshToken 通过刷新令牌换取新的访问令牌。
@@ -153,8 +203,10 @@ func (h *Handler) GetProfile(r *ghttp.Request) {
 	}
 
 	writeSuccess(r, "success", profileResponse{
-		ID:       info.ID,
-		Username: info.Username,
+		ID:                 info.ID,
+		Username:           info.Username,
+		IsAdmin:            info.IsAdmin,
+		MustChangePassword: info.MustChangePassword,
 	})
 }
 
@@ -195,6 +247,10 @@ func writeAuthError(r *ghttp.Request, err error) {
 		writeError(r, http.StatusBadRequest, 40004, "请求参数无效")
 	case user.ErrUserExists:
 		writeError(r, http.StatusConflict, 40009, "用户名已存在")
+	case user.ErrPermissionDenied:
+		writeError(r, http.StatusForbidden, 40010, "需要管理员权限")
+	case user.ErrMustChangePassword:
+		writeError(r, http.StatusForbidden, 40011, "需要先修改密码")
 	case user.ErrInvalidCredential:
 		writeError(r, http.StatusUnauthorized, 40001, "用户名或密码错误")
 	case user.ErrRefreshTokenInvalid, user.ErrRefreshTokenExpired:

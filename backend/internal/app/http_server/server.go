@@ -10,6 +10,10 @@ import (
 
 	"go-study2/internal/app/http_server/middleware"
 	"go-study2/internal/config"
+	"go-study2/internal/domain/user"
+	"go-study2/internal/infrastructure/database"
+	"go-study2/internal/infrastructure/repository"
+	appjwt "go-study2/internal/pkg/jwt"
 
 	"github.com/gogf/gf/v2/frame/g"
 	"github.com/gogf/gf/v2/net/ghttp"
@@ -35,6 +39,11 @@ func NewServer(cfg *config.Config, names ...string) (*ghttp.Server, error) {
 
 	// 注册路由
 	RegisterRoutes(s)
+
+	// 启动前确保默认管理员存在（幂等）
+	if err := ensureDefaultAdmin(cfg); err != nil {
+		return nil, err
+	}
 
 	if cfg.Https.Enabled {
 		tlsCfg, err := buildTLSConfig(cfg.Https)
@@ -109,4 +118,20 @@ func buildTLSConfig(cfg config.HttpsConfig) (*tls.Config, error) {
 	}
 
 	return tlsCfg, nil
+}
+
+func ensureDefaultAdmin(cfg *config.Config) error {
+	if cfg.Database.Path == "" {
+		return nil
+	}
+	db := database.Default()
+	if db == nil {
+		var err error
+		db, err = database.Init(gctx.New(), cfg.Database)
+		if err != nil {
+			return err
+		}
+	}
+	svc := user.NewService(repository.NewUserRepository(db), appjwt.AccessTokenTTL(), appjwt.RefreshTokenTTL())
+	return svc.EnsureDefaultAdmin(gctx.New())
 }

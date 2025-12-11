@@ -2,7 +2,7 @@
 
 import type React from "react";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import useAuth from "@/hooks/useAuth";
 import Loading from "@/components/common/Loading";
 
@@ -12,6 +12,7 @@ interface AuthGuardProps {
 
 export default function AuthGuard({ children }: AuthGuardProps) {
   const router = useRouter();
+  const pathname = usePathname();
   const { user, loading } = useAuth();
   const [redirecting, setRedirecting] = useState(false);
 
@@ -19,14 +20,23 @@ export default function AuthGuard({ children }: AuthGuardProps) {
     if (!loading && !user) {
       setRedirecting(true);
       router.replace("/login");
+      return;
     }
-  }, [loading, user, router]);
+    if (!loading && user?.mustChangePassword && pathname !== "/change-password") {
+      setRedirecting(true);
+      router.replace("/change-password");
+    }
+  }, [loading, user, router, pathname]);
 
-  if (loading || (!user && redirecting)) {
+  if (loading || redirecting) {
     return <Loading />;
   }
 
   if (!user) {
+    return null;
+  }
+
+  if (user.mustChangePassword && pathname !== "/change-password") {
     return null;
   }
 
