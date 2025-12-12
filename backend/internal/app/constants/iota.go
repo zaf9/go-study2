@@ -5,8 +5,12 @@
 package constants
 
 import (
+	"context"
 	"fmt"
 	"strings"
+	"time"
+
+	"go-study2/internal/infrastructure/logger"
 )
 
 // GetIotaContent 返回 iota 特性相关的学习内容
@@ -207,5 +211,14 @@ func GetIotaContent() string {
 // DisplayIota 展示并解释 Go 语言中的 iota 特性。
 // iota 是预声明的标识符，在常量声明中自增，常用于枚举和位掩码。
 func DisplayIota() {
+	start := time.Now()
+	defer func() {
+		duration := time.Since(start)
+		logger.LogBiz(context.Background(), "DisplayIota", map[string]interface{}{
+			"operation": "display_iota_feature",
+			"result":    "success",
+		}, nil, duration)
+	}()
+
 	fmt.Print(GetIotaContent())
 }

@@ -1,3 +1,37 @@
+logger:
+  level: "INFO"
+  stdout: true
+  timeFormat: "2006-01-02T15:04:05.000Z07:00"
+  ctxKeys: ["TraceId", "UserId"]
+
+  default:
+    path: "backend/logs"
+    file: "app-{Y-m-d}.log"
+    format: "json"
+    level: "all"
+    rotateSize: "100M"
+    rotateExpire: "30d"
+    rotateBackupLimit: 10
+    rotateBackupExpire: "30d"
+    stdoutPrint: false
+
+  access:
+    path: "backend/logs/access"
+    file: "access-{Y-m-d}.log"
+    format: "json"
+    level: "info"
+
+  error:
+    path: "backend/logs/error"
+    file: "error-{Y-m-d}.log"
+    format: "json"
+    level: "error"
+
+  slow:
+    path: "backend/logs/slow"
+    file: "slow-{Y-m-d}.log"
+    format: "json"
+    level: "warning"
 # HTTP 配置：本地开发默认开启，便于直接通过 http://127.0.0.1 访问
 http:
   # HTTP 监听端口，生产若启用 HTTPS 可关闭 HTTP 监听
@@ -25,15 +59,6 @@ server:
   # 优雅停机等待时间（秒），用于处理中的请求
   shutdownTimeout: 10
 
-# 日志配置
-logger:
-  # 日志级别，支持 DEBUG/INFO/WARN/ERROR
-  level: "INFO"
-  # 日志文件存储目录
-  path: "./logs"
-  # 是否输出到 stdout，容器环境可开启
-  stdout: true
-
 # 数据库配置（默认使用 SQLite3）
 database:
   # 数据库类型，当前支持 sqlite3
@@ -46,6 +71,8 @@ database:
   maxIdleConns: 5
   # 连接最大生命周期（秒），0 表示无限制
   connMaxLifetime: 3600
+  # 慢查询阈值（毫秒），超过此时间的查询将被记录为慢查询
+  slowThreshold: 100
   # SQLite PRAGMA 配置列表，可按需调整
   pragmas:
     # 采用 WAL 模式提升并发读性能

@@ -2,9 +2,13 @@ package lexical_elements
 
 import (
 	"bufio"
+	"context"
 	"fmt"
 	"io"
 	"strings"
+	"time"
+
+	"go-study2/internal/infrastructure/logger"
 )
 
 // DisplayMenu 显示词法元素子菜单，允许用户选择特定的主题进行学习。
@@ -76,12 +80,29 @@ func DisplayMenu(stdin io.Reader, stdout, stderr io.Writer) {
 
 		// 验证输入范围（0-10）并执行对应的主题显示函数
 		if action, ok := topicActions[choice]; ok {
+			// 记录用户选择的学习主题
+			ctx := context.Background()
+			start := time.Now()
+			logger.LogBiz(ctx, "lexical_topic_selection", map[string]interface{}{
+				"topic_id":   choice,
+				"topic_name": subMenu[choice],
+			}, "started", 0)
+
 			// 执行对应的主题显示函数
 			action()
+
+			// 记录学习完成
+			duration := time.Since(start)
+			logger.LogBiz(ctx, "lexical_topic_completion", map[string]interface{}{
+				"topic_id":   choice,
+				"topic_name": subMenu[choice],
+			}, "completed", duration)
+
 			// 执行完毕后，循环会继续显示菜单，允许用户选择其他主题或返回
 		} else {
 			// 处理无效输入：显示错误消息并重新提示
 			fmt.Fprintln(stdout, "无效的选择，请重试。")
+			logger.LogInfo(context.Background(), "Invalid lexical topic selection: %s", choice)
 		}
 	}
 }

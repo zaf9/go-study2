@@ -5,8 +5,12 @@
 package constants
 
 import (
+	"context"
 	"fmt"
 	"strings"
+	"time"
+
+	"go-study2/internal/infrastructure/logger"
 )
 
 // GetImplementationRestrictionsContent 返回实现限制相关的学习内容
@@ -131,5 +135,14 @@ func GetImplementationRestrictionsContent() string {
 // DisplayImplementationRestrictions 展示并解释 Go 语言编译器对常量实现的限制。
 // 了解这些限制有助于理解常量的精度和范围。
 func DisplayImplementationRestrictions() {
+	start := time.Now()
+	defer func() {
+		duration := time.Since(start)
+		logger.LogBiz(context.Background(), "DisplayImplementationRestrictions", map[string]interface{}{
+			"operation": "display_implementation_restrictions",
+			"result":    "success",
+		}, nil, duration)
+	}()
+
 	fmt.Print(GetImplementationRestrictionsContent())
 }

@@ -4,12 +4,12 @@ import (
 	"bufio"
 	"flag"
 	"fmt"
-	"github.com/gogf/gf/v2/os/gctx"
 	"go-study2/internal/app/constants"
 	"go-study2/internal/app/http_server"
 	"go-study2/internal/app/lexical_elements"
 	"go-study2/internal/config"
 	"go-study2/internal/infrastructure/database"
+	logger "go-study2/internal/infrastructure/logger"
 	appjwt "go-study2/internal/pkg/jwt"
 	typescli "go-study2/src/learning/types/cli"
 	varcli "go-study2/src/learning/variables/cli"
@@ -18,6 +18,8 @@ import (
 	"sort"
 	"strings"
 	"time"
+
+	"github.com/gogf/gf/v2/os/gctx"
 )
 
 // App represents the application with its I/O streams and menu configuration.
@@ -134,6 +136,17 @@ func runHttpServer() {
 	cfg, err := config.Load()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Failed to load config: %v\n", err)
+		os.Exit(1)
+	}
+
+	// 初始化日志系统 (从 backend/configs 中加载 logger 配置)
+	lcfg, err := logger.LoadConfig()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Failed to load logger config: %v\n", err)
+		os.Exit(1)
+	}
+	if err := logger.Initialize(lcfg); err != nil {
+		fmt.Fprintf(os.Stderr, "Failed to initialize logger: %v\n", err)
 		os.Exit(1)
 	}
 

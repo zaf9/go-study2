@@ -1,0 +1,12 @@
+logger:
+  level: "prod"
+  stdout: false
+  ctxKeys: ["TraceId"]
+  default:
+    path: "backend/logs"
+    file: "app-{Y-m-d}.log"
+    format: "json"
+    level: "prod"
+    rotateSize: "500M"
+    rotateExpire: "30d"
+    rotateBackupLimit: 10

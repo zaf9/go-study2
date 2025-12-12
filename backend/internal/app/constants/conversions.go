@@ -5,8 +5,12 @@
 package constants
 
 import (
+	"context"
 	"fmt"
 	"strings"
+	"time"
+
+	"go-study2/internal/infrastructure/logger"
 )
 
 // GetConversionsContent 返回常量类型转换相关的学习内容
@@ -159,5 +163,14 @@ func GetConversionsContent() string {
 // DisplayConversions 展示并解释 Go 语言中常量类型转换的规则。
 // 常量转换需要满足可表示性要求，值必须在目标类型的范围内。
 func DisplayConversions() {
+	start := time.Now()
+	defer func() {
+		duration := time.Since(start)
+		logger.LogBiz(context.Background(), "DisplayConversions", map[string]interface{}{
+			"operation": "display_constant_conversions",
+			"result":    "success",
+		}, nil, duration)
+	}()
+
 	fmt.Print(GetConversionsContent())
 }

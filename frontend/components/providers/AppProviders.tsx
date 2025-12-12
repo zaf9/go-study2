@@ -4,6 +4,7 @@ import { ConfigProvider, App as AntdApp } from "antd";
 import { StyleProvider } from "@ant-design/cssinjs";
 import zhCN from "antd/locale/zh_CN";
 import ErrorBoundary from "@/components/common/ErrorBoundary";
+import ErrorListener from "@/components/common/ErrorListener";
 import { AuthProvider } from "@/contexts/AuthContext";
 
 export default function AppProviders({
@@ -18,6 +19,7 @@ export default function AppProviders({
         theme={{ token: { colorPrimary: "#1677ff" } }}
       >
         <AntdApp>
+          <ErrorListener />
           <AuthProvider>
             <ErrorBoundary>{children}</ErrorBoundary>
           </AuthProvider>

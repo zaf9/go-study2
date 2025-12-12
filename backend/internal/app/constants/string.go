@@ -5,8 +5,12 @@
 package constants
 
 import (
+	"context"
 	"fmt"
 	"strings"
+	"time"
+
+	"go-study2/internal/infrastructure/logger"
 )
 
 // GetStringContent 返回字符串常量相关的学习内容
@@ -107,5 +111,14 @@ func GetStringContent() string {
 
 // DisplayString 展示并解释 Go 语言中的字符串常量。
 func DisplayString() {
+	start := time.Now()
+	defer func() {
+		duration := time.Since(start)
+		logger.LogBiz(context.Background(), "DisplayString", map[string]interface{}{
+			"operation": "display_string_constants",
+			"result":    "success",
+		}, nil, duration)
+	}()
+
 	fmt.Print(GetStringContent())
 }

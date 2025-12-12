@@ -35,10 +35,10 @@
 
 **Purpose**: 项目初始化和基础结构准备
 
-- [ ] T001 创建日志系统目录结构 `backend/internal/infrastructure/logger/`
-- [ ] T002 创建 HTTP 中间件目录结构 `backend/internal/app/http_server/middleware/`
-- [ ] T003 [P] 创建日志输出目录 `backend/logs/` 及子目录 (access/, error/, slow/)
-- [ ] T004 [P] 创建测试目录结构 `backend/tests/unit/logger/` 和 `backend/tests/integration/middleware/`
+- [X] T001 创建日志系统目录结构 `backend/internal/infrastructure/logger/`
+- [X] T002 创建 HTTP 中间件目录结构 `backend/internal/app/http_server/middleware/`
+- [X] T003 [P] 创建日志输出目录 `backend/logs/` 及子目录 (access/, error/, slow/)
+- [X] T004 [P] 创建测试目录结构 `backend/tests/unit/logger/` 和 `backend/tests/integration/middleware/`
 
 ---
 
@@ -54,6 +54,14 @@
 - [ ] T008 实现目录权限检查 `backend/internal/infrastructure/logger/config.go` (checkDirectoryPermission 函数)
 - [ ] T009 [P] 编写配置加载和验证单元测试 `backend/tests/unit/logger/config_test.go`
 
+ **⚠️ CRITICAL**: 所有用户故事工作必须等待此阶段完成
+
+ - [X] T005 创建日志配置数据结构 `backend/internal/infrastructure/logger/config.go` (LoggerConfig, InstanceConfig)
+ - [X] T006 实现配置文件加载逻辑 `backend/internal/infrastructure/logger/config.go` (LoadConfig 函数)
+ - [X] T007 实现配置验证逻辑 `backend/internal/infrastructure/logger/config.go` (Validate 函数)
+ - [X] T008 实现目录权限检查 `backend/internal/infrastructure/logger/config.go` (checkDirectoryPermission 函数)
+ - [X] T009 [P] 编写配置加载和验证单元测试 `backend/tests/unit/logger/config_test.go`
+
 **Checkpoint**: 配置基础设施就绪 - 用户故事实现可以并行开始
 
 ---
@@ -68,24 +76,40 @@
 
 > **NOTE: Write these tests FIRST, ensure they FAIL before implementation**
 
-- [ ] T010 [P] [US1] 编写日志实例初始化单元测试,包括链式调用方式测试 `backend/tests/unit/logger/logger_test.go`
-- [ ] T011 [P] [US1] 编写日志级别过滤测试 `backend/tests/unit/logger/logger_test.go`
-- [ ] T012 [P] [US1] 编写日志格式化测试(JSON/Text) `backend/tests/unit/logger/logger_test.go`
-- [ ] T013 [P] [US1] 编写多实例独立配置测试 `backend/tests/unit/logger/logger_test.go`
-- [ ] T014 [P] [US1] 编写配置文件缺失/无效启动失败测试 `backend/tests/integration/logger/config_validation_test.go`
+ - [ ] T010 [P] [US1] 编写日志实例初始化单元测试,包括链式调用方式测试 `backend/tests/unit/logger/logger_test.go`
+ - [ ] T011 [P] [US1] 编写日志级别过滤测试 `backend/tests/unit/logger/logger_test.go`
+ - [ ] T012 [P] [US1] 编写日志格式化测试(JSON/Text) `backend/tests/unit/logger/logger_test.go`
+ - [ ] T013 [P] [US1] 编写多实例独立配置测试 `backend/tests/unit/logger/logger_test.go`
+ - [ ] T014 [P] [US1] 编写配置文件缺失/无效启动失败测试 `backend/tests/integration/logger/config_validation_test.go`
+ 
+  - [X] T010 [P] [US1] 编写日志实例初始化单元测试,包括链式调用方式测试 `backend/tests/unit/logger/logger_test.go`
+  - [X] T011 [P] [US1] 编写日志级别过滤测试 `backend/tests/unit/logger/logger_test.go`
+  - [X] T012 [P] [US1] 编写日志格式化测试(JSON/Text) `backend/tests/unit/logger/logger_test.go`
+  - [X] T013 [P] [US1] 编写多实例独立配置测试 `backend/tests/unit/logger/logger_test.go`
+  - [X] T014 [P] [US1] 编写配置文件缺失/无效启动失败测试 `backend/tests/integration/logger/config_validation_test.go`
 
 ### Implementation for User Story 1
 
 - [ ] T015 [US1] 实现日志实例管理器 `backend/internal/infrastructure/logger/logger.go` (Initialize, GetInstance 函数)
 - [ ] T016 [US1] 实现多日志实例初始化 `backend/internal/infrastructure/logger/logger.go` (initializeInstances 函数)
-- [ ] T017 [US1] 集成 GoFrame glog 配置,包括异步日志写入配置 `backend/internal/infrastructure/logger/logger.go` (configureGLog 函数)
-- [ ] T018 [US1] 实现日志分割策略配置 `backend/internal/infrastructure/logger/logger.go` (按日期和大小)
-- [ ] T019 [US1] 实现日志保留策略配置 `backend/internal/infrastructure/logger/logger.go` (rotateBackupExpire)
-- [ ] T020 [US1] 在 main.go 中集成日志初始化 `backend/main.go` (调用 logger.Initialize)
-- [ ] T021 [US1] 创建配置文件模板 `backend/configs/config.yaml` (logger 配置段)
-- [ ] T022 [P] [US1] 创建多环境配置文件 `backend/configs/config.dev.yaml`, `config.test.yaml`, `config.prod.yaml`
-- [ ] T023 [US1] 添加配置错误详细诊断信息 `backend/internal/infrastructure/logger/config.go`
-- [ ] T024 [US1] 编写 logger 包 README 文档 `backend/internal/infrastructure/logger/README.md`
+ - [ ] T017 [US1] 集成 GoFrame glog 配置,包括异步日志写入配置 `backend/internal/infrastructure/logger/logger.go` (configureGLog 函数)
+ - [ ] T018 [US1] 实现日志分割策略配置 `backend/internal/infrastructure/logger/logger.go` (按日期和大小)
+ - [ ] T019 [US1] 实现日志保留策略配置 `backend/internal/infrastructure/logger/logger.go` (rotateBackupExpire)
+ - [ ] T020 [US1] 在 main.go 中集成日志初始化 `backend/main.go` (调用 logger.Initialize)
+ - [ ] T021 [US1] 创建配置文件模板 `backend/configs/config.yaml` (logger 配置段)
+ - [ ] T022 [P] [US1] 创建多环境配置文件 `backend/configs/config.dev.yaml`, `config.test.yaml`, `config.prod.yaml`
+ - [ ] T023 [US1] 添加配置错误详细诊断信息 `backend/internal/infrastructure/logger/config.go`
+ - [ ] T024 [US1] 编写 logger 包 README 文档 `backend/internal/infrastructure/logger/README.md`
+ - [X] T015 [US1] 实现日志实例管理器 `backend/internal/infrastructure/logger/logger.go` (Initialize, GetInstance 函数)
+ - [X] T016 [US1] 实现多日志实例初始化 `backend/internal/infrastructure/logger/logger.go` (initializeInstances 函数)
+  - [X] T017 [US1] 集成 GoFrame glog 配置,包括异步日志写入配置 `backend/internal/infrastructure/logger/logger.go` (configureGLog 函数)
+  - [X] T018 [US1] 实现日志分割策略配置 `backend/internal/infrastructure/logger/logger.go` (按日期和大小)
+  - [X] T019 [US1] 实现日志保留策略配置 `backend/internal/infrastructure/logger/logger.go` (rotateBackupExpire)
+  - [X] T020 [US1] 在 main.go 中集成日志初始化 `backend/main.go` (调用 logger.Initialize)
+  - [X] T021 [US1] 创建配置文件模板 `backend/configs/config.yaml` (logger 配置段)
+  - [X] T022 [P] [US1] 创建多环境配置文件 `backend/configs/config.dev.yaml`, `config.test.yaml`, `config.prod.yaml`
+  - [X] T023 [US1] 添加配置错误详细诊断信息 `backend/internal/infrastructure/logger/config.go`
+  - [X] T024 [US1] 编写 logger 包 README 文档 `backend/internal/infrastructure/logger/README.md`
 
 **Checkpoint**: 用户故事1完成 - 日志配置管理功能完全可用且可独立测试
 
@@ -99,11 +123,11 @@
 
 ### Tests for User Story 2 (MANDATORY) ⚠️
 
-- [ ] T025 [P] [US2] 编写 TraceID 生成单元测试 `backend/tests/unit/logger/traceid_test.go`
-- [ ] T026 [P] [US2] 编写 TraceID 提取单元测试 `backend/tests/unit/logger/traceid_test.go`
-- [ ] T027 [P] [US2] 编写 TraceID 传递中断恢复测试 `backend/tests/unit/logger/traceid_test.go`
-- [ ] T028 [P] [US2] 编写访问日志中间件单元测试 `backend/tests/unit/middleware/access_log_test.go`
-- [ ] T029 [P] [US2] 编写 HTTP 请求链路追踪集成测试 `backend/tests/integration/middleware/trace_test.go`
+ - [X] T025 [P] [US2] 编写 TraceID 生成单元测试 `backend/tests/unit/logger/traceid_test.go`
+ - [X] T026 [P] [US2] 编写 TraceID 提取单元测试 `backend/tests/unit/logger/traceid_test.go`
+ - [X] T027 [P] [US2] 编写 TraceID 传递中断恢复测试 `backend/tests/unit/logger/traceid_test.go`
+ - [X] T028 [P] [US2] 编写访问日志中间件单元测试 `backend/tests/unit/middleware/access_log_test.go`
+ - [X] T029 [P] [US2] 编写 HTTP 请求链路追踪集成测试 `backend/tests/integration/middleware/trace_test.go`
 
 ### Implementation for User Story 2
 
@@ -117,6 +141,17 @@
 - [ ] T037 [US2] 实现 Panic 堆栈记录到错误日志 `backend/internal/app/http_server/middleware/panic_recovery.go`
 - [ ] T038 [US2] 在 main.go 中注册中间件 `backend/main.go` (s.Use(middleware.AccessLog))
 - [ ] T039 [US2] 配置 ctxKeys 自动提取 TraceID `backend/configs/config.yaml` (ctxKeys: ["TraceId", "UserId"])
+
+ - [X] T030 [P] [US2] 实现 TraceID 生成函数 `backend/internal/infrastructure/logger/traceid.go` (GenerateTraceID)
+ - [X] T031 [P] [US2] 实现 TraceID 提取函数 `backend/internal/infrastructure/logger/traceid.go` (ExtractTraceID)
+ - [X] T032 [US2] 实现 TraceID 传递中断检测和恢复 `backend/internal/infrastructure/logger/traceid.go` (EnsureTraceID)
+ - [X] T033 [US2] 实现访问日志中间件 `backend/internal/app/http_server/middleware/access_log.go` (AccessLog 函数)
+ - [X] T034 [US2] 实现 TraceID 注入到 Context `backend/internal/app/http_server/middleware/access_log.go`
+ - [X] T035 [US2] 实现请求开始和结束日志记录 `backend/internal/app/http_server/middleware/access_log.go`
+ - [X] T036 [US2] 实现 Panic 恢复中间件 `backend/internal/app/http_server/middleware/panic_recovery.go`
+ - [X] T037 [US2] 实现 Panic 堆栈记录到错误日志 `backend/internal/app/http_server/middleware/panic_recovery.go`
+ - [X] T038 [US2] 在 main.go 中注册中间件 `backend/main.go` (s.Use(middleware.AccessLog))
+ - [X] T039 [US2] 配置 ctxKeys 自动提取 TraceID `backend/configs/config.yaml` (ctxKeys: ["TraceId", "UserId"])
 
 **Checkpoint**: 用户故事2完成 - HTTP 请求全链路追踪功能完全可用且可独立测试
 
@@ -135,6 +170,11 @@
 - [ ] T042 [P] [US3] 编写慢查询检测测试 `backend/tests/unit/middleware/db_log_test.go`
 - [ ] T043 [P] [US3] 编写业务操作日志埋点集成测试 `backend/tests/integration/logger/business_log_test.go`
 
+ - [X] T040 [P] [US3] 编写日志辅助方法单元测试 `backend/tests/unit/logger/helper_test.go` (LogInfo, LogError, LogSlow, LogBiz)
+ - [X] T041 [P] [US3] 编写数据库日志 Handler 单元测试 `backend/tests/unit/middleware/db_log_test.go`
+ - [X] T042 [P] [US3] 编写慢查询检测测试 `backend/tests/unit/middleware/db_log_test.go`
+ - [X] T043 [P] [US3] 编写业务操作日志埋点集成测试 `backend/tests/integration/logger/business_log_test.go`
+
 ### Implementation for User Story 3
 
 - [ ] T044 [P] [US3] 实现 LogInfo 辅助方法 `backend/internal/infrastructure/logger/helper.go`
@@ -152,6 +192,22 @@
   - `backend/internal/app/http_server/middleware/error_handler.go` (错误处理,如存在)
   - 或在相应的 service 层添加业务操作日志
 - [ ] T053 [US3] 配置慢查询阈值 `backend/configs/config.yaml` (database.slow.threshold: 1000)
+
+ - [X] T044 [P] [US3] 实现 LogInfo 辅助方法 `backend/internal/infrastructure/logger/helper.go`
+ - [X] T045 [P] [US3] 实现 LogError 辅助方法 `backend/internal/infrastructure/logger/helper.go` (自动记录堆栈)
+ - [X] T046 [P] [US3] 实现 LogSlow 辅助方法 `backend/internal/infrastructure/logger/helper.go`
+ - [X] T047 [P] [US3] 实现 LogBiz 辅助方法 `backend/internal/infrastructure/logger/helper.go`
+ - [X] T048 [US3] 实现数据库日志 Handler `backend/internal/app/http_server/middleware/db_log.go` (DBLogHandler)
+ - [X] T049 [US3] 实现慢查询检测逻辑 `backend/internal/app/http_server/middleware/db_log.go` (threshold 配置)
+ - [X] T050 [US3] 实现 SQL 执行日志记录 `backend/internal/app/http_server/middleware/db_log.go`
+ - [X] T051 [US3] 在数据库初始化中注册 Handler `backend/internal/infrastructure/database/database.go`
+ - [X] T052 [US3] 在现有业务代码中添加日志埋点:
+   - `backend/internal/app/lexical_elements/*.go` (学习内容加载)
+   - `backend/internal/app/constants/*.go` (常量模块内容加载)
+   - `backend/internal/app/http_server/handler/*.go` (菜单导航和请求处理)
+   - `backend/internal/app/http_server/middleware/error_handler.go` (错误处理,如存在)
+   - 或在相应的 service 层添加业务操作日志
+ - [X] T053 [US3] 配置慢查询阈值 `backend/configs/config.yaml` (database.slow.threshold: 1000)
 
 **Checkpoint**: 用户故事3完成 - 关键操作日志埋点功能完全可用且可独立测试
 
@@ -172,6 +228,11 @@
 - [ ] T056 [P] [US4] 编写时间范围查询测试 `backend/tests/unit/logger/query_test.go`
 - [ ] T057 [P] [US4] 编写日志级别过滤测试 `backend/tests/unit/logger/query_test.go`
 
+ - [X] T054 [P] [US4] 编写日志文件读取测试 `backend/tests/unit/logger/query_test.go`
+ - [X] T055 [P] [US4] 编写 TraceID 查询测试 `backend/tests/unit/logger/query_test.go`
+ - [X] T056 [P] [US4] 编写时间范围查询测试 `backend/tests/unit/logger/query_test.go`
+ - [X] T057 [P] [US4] 编写日志级别过滤测试 `backend/tests/unit/logger/query_test.go`
+
 ### Implementation for User Story 4
 
 - [ ] T058 [P] [US4] 实现日志文件读取函数 `backend/internal/infrastructure/logger/query.go` (ReadLogFile)
@@ -181,6 +242,14 @@
 - [ ] T062 [US4] 实现关键字搜索函数 `backend/internal/infrastructure/logger/query.go` (QueryByKeyword)
 - [ ] T063 [US4] 优化大文件查询性能 `backend/internal/infrastructure/logger/query.go` (流式读取)
 - [ ] T064 [US4] 编写日志查询使用文档 `backend/internal/infrastructure/logger/README.md` (查询部分)
+
+ - [X] T058 [P] [US4] 实现日志文件读取函数 `backend/internal/infrastructure/logger/query.go` (ReadLogFile)
+ - [X] T059 [P] [US4] 实现 TraceID 查询函数 `backend/internal/infrastructure/logger/query.go` (QueryByTraceID)
+ - [X] T060 [P] [US4] 实现时间范围查询函数 `backend/internal/infrastructure/logger/query.go` (QueryByTimeRange)
+ - [X] T061 [P] [US4] 实现日志级别过滤函数 `backend/internal/infrastructure/logger/query.go` (QueryByLevel)
+ - [X] T062 [US4] 实现关键字搜索函数 `backend/internal/infrastructure/logger/query.go` (QueryByKeyword)
+ - [X] T063 [US4] 优化大文件查询性能 `backend/internal/infrastructure/logger/query.go` (流式读取)
+ - [X] T064 [US4] 编写日志查询使用文档 `backend/internal/infrastructure/logger/README.md` (查询部分)
 
 **Checkpoint**: 用户故事4完成 - 日志查询与分析功能完全可用且可独立测试
 
@@ -197,6 +266,13 @@
 - [ ] T069 [P] 运行 `go mod tidy` 清理依赖
 - [ ] T070 验证单元测试覆盖率 ≥80% `go test -cover ./backend/internal/infrastructure/logger/...`
 - [ ] T071 验证集成测试覆盖率 ≥80% `go test -cover ./backend/tests/integration/...`
+- [X] T065 [P] 验证所有代码注释和用户文档使用中文 (Principle V/XV)
+- [X] T066 [P] 运行 `go fmt` 格式化所有代码
+- [X] T067 [P] 运行 `go vet` 静态分析
+- [X] T068 [P] 运行 `golint` 代码风格检查
+- [X] T069 [P] 运行 `go mod tidy` 清理依赖
+- [X] T070 验证单元测试覆盖率 ≥80% `go test -cover ./backend/internal/infrastructure/logger/...`
+- [X] T071 验证集成测试覆盖率 ≥80% `go test -cover ./backend/tests/integration/...`
 - [ ] T072 [P] 性能压测 (1000 并发请求,验证日志开销 <10%)
 - [ ] T073 [P] 验证 TraceID 查询性能 (<30 秒)
 - [ ] T074 [P] 验证日志查询性能 (<5 秒,1GB 文件)
@@ -345,3 +421,16 @@ Task: "实现 TraceID 提取函数 backend/internal/infrastructure/logger/tracei
 **Suggested MVP Scope**: User Story 1 only (统一日志配置管理)
 
 **Estimated Effort**: 5-7 工作日 (包含编码、测试、文档、Code Review)
+
+---
+
+## Phase 8: Import Cycle Resolution
+
+**Purpose**: 解决后端包之间的导入循环问题，确保所有测试能够正常运行
+
+- [ ] T073 解决 database ↔ middleware 导入循环问题
+  - 创建独立的 `backend/internal/infrastructure/db_logging` 包
+  - 将数据库日志处理逻辑从 middleware 移动到 db_logging 包
+  - 更新 database/sqlite.go 使用新的 db_logging 包
+  - 修复配置文件中的重复 logger 配置
+  - 验证所有后端测试通过

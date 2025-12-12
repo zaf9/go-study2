@@ -59,6 +59,7 @@ type DatabaseConfig struct {
 	MaxOpenConns    int      `json:"maxOpenConns"`
 	MaxIdleConns    int      `json:"maxIdleConns"`
 	ConnMaxLifetime int      `json:"connMaxLifetime"`
+	SlowThreshold   int      `json:"slowThreshold"`
 	Pragmas         []string `json:"pragmas"`
 }
 

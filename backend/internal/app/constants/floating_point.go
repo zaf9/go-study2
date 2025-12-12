@@ -5,8 +5,12 @@
 package constants
 
 import (
+	"context"
 	"fmt"
 	"strings"
+	"time"
+
+	"go-study2/internal/infrastructure/logger"
 )
 
 // GetFloatingPointContent 返回浮点常量相关的学习内容
@@ -109,5 +113,14 @@ func GetFloatingPointContent() string {
 
 // DisplayFloatingPoint 展示并解释 Go 语言中的浮点常量。
 func DisplayFloatingPoint() {
+	start := time.Now()
+	defer func() {
+		duration := time.Since(start)
+		logger.LogBiz(context.Background(), "DisplayFloatingPoint", map[string]interface{}{
+			"operation": "display_floating_point_constants",
+			"result":    "success",
+		}, nil, duration)
+	}()
+
 	fmt.Print(GetFloatingPointContent())
 }

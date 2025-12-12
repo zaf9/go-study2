@@ -36,6 +36,8 @@ func NewServer(cfg *config.Config, names ...string) (*ghttp.Server, error) {
 	// 注册全局中间件
 	s.Use(middleware.Logger)
 	s.Use(middleware.Cors)
+	s.Use(middleware.PanicRecovery) // Panic recovery should be before access logging
+	s.Use(middleware.AccessLog)
 
 	// 注册路由
 	RegisterRoutes(s)

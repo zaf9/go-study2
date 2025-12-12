@@ -5,8 +5,12 @@
 package constants
 
 import (
+	"context"
 	"fmt"
 	"strings"
+	"time"
+
+	"go-study2/internal/infrastructure/logger"
 )
 
 // GetIntegerContent 返回整数常量相关的学习内容
@@ -130,5 +134,14 @@ func GetIntegerContent() string {
 
 // DisplayInteger 展示并解释 Go 语言中的整数常量。
 func DisplayInteger() {
+	start := time.Now()
+	defer func() {
+		duration := time.Since(start)
+		logger.LogBiz(context.Background(), "DisplayInteger", map[string]interface{}{
+			"operation": "display_integer_constants",
+			"result":    "success",
+		}, nil, duration)
+	}()
+
 	fmt.Print(GetIntegerContent())
 }

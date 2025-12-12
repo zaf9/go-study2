@@ -5,8 +5,12 @@
 package constants
 
 import (
+	"context"
 	"fmt"
 	"strings"
+	"time"
+
+	"go-study2/internal/infrastructure/logger"
 )
 
 // GetBooleanContent 返回布尔常量相关的学习内容
@@ -91,5 +95,14 @@ func GetBooleanContent() string {
 // DisplayBoolean 展示并解释 Go 语言中的布尔常量。
 // 布尔常量只有 true 和 false 两个值,用于表示逻辑真值。
 func DisplayBoolean() {
+	start := time.Now()
+	defer func() {
+		duration := time.Since(start)
+		logger.LogBiz(context.Background(), "DisplayBoolean", map[string]interface{}{
+			"operation": "display_boolean_constants",
+			"result":    "success",
+		}, nil, duration)
+	}()
+
 	fmt.Print(GetBooleanContent())
 }

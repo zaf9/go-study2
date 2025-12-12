@@ -5,8 +5,12 @@
 package constants
 
 import (
+	"context"
 	"fmt"
 	"strings"
+	"time"
+
+	"go-study2/internal/infrastructure/logger"
 )
 
 // GetComplexContent 返回复数常量相关的学习内容
@@ -89,5 +93,14 @@ func GetComplexContent() string {
 
 // DisplayComplex 展示并解释 Go 语言中的复数常量。
 func DisplayComplex() {
+	start := time.Now()
+	defer func() {
+		duration := time.Since(start)
+		logger.LogBiz(context.Background(), "DisplayComplex", map[string]interface{}{
+			"operation": "display_complex_constants",
+			"result":    "success",
+		}, nil, duration)
+	}()
+
 	fmt.Print(GetComplexContent())
 }

@@ -1,8 +1,12 @@
 package lexical_elements
 
 import (
+	"context"
 	"fmt"
 	"strings"
+	"time"
+
+	"go-study2/internal/infrastructure/logger"
 )
 
 // GetCommentsContent 返回注释相关的学习内容
@@ -34,5 +38,18 @@ func GetCommentsContent() string {
 // DisplayComments 展示并解释 Go 语言中的注释。
 // 注释是程序员为了解释代码而添加的文本，它们会被编译器忽略。
 func DisplayComments() {
-	fmt.Print(GetCommentsContent())
+	start := time.Now()
+	ctx := context.Background()
+
+	defer func() {
+		duration := time.Since(start)
+		logger.LogBiz(ctx, "DISPLAY_LEXICAL_ELEMENT", map[string]interface{}{
+			"element": "comments",
+		}, "success", duration)
+	}()
+
+	content := GetCommentsContent()
+	fmt.Print(content)
+
+	logger.LogInfo(ctx, "Displayed comments learning content")
 }

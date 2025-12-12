@@ -243,6 +243,24 @@ cd ..
 
 ---
 
+### 🧭 日志系统快速验证 (Quickstart Validation)
+
+本项目包含日志子系统的可验流程。要在本地一键验证日志生成与性能，请运行仓库中的快速验证脚本（PowerShell）：
+
+```powershell
+cd backend\scripts
+powershell -ExecutionPolicy Bypass -File quickstart_validate.ps1
+```
+
+脚本会启动服务、执行并发请求压测并将日志收集到 `backend/logs/validation-<timestamp>`。详细手动验证步骤见 `backend/docs/quickstart_validation.md`。
+
+文档索引：
+
+- `backend/docs/quickstart_validation.md` — 快速开始验证步骤
+- `backend/docs/logging_best_practices.md` — 日志最佳实践（中文）
+- `backend/docs/logging_troubleshooting.md` — 日志故障排查指南（中文）
+- `backend/README-logging.md` — 日志系统使用说明与示例
+
 ## 📦 安装 Installation
 
 ### 方式一：从源码运行（推荐用于学习）
@@ -959,3 +977,28 @@ go tool cover -html=coverage.out
 Made with ❤️ for Go learners
 
 </div>
+---
+
+## 🧭 日志系统快速验证 (Quickstart Validation)
+
+本仓库包含可验证的日志子系统，已在 `backend/docs/` 中提供详细指南与故障排查文档。为便于本地一键验证，项目提供了一个 PowerShell 快速验证脚本，完成以下步骤：
+
+- 启动后端服务（若尚未构建，会尝试使用 `go run` 启动）
+- 运行并发压测（使用 `backend/scripts/stress_client.go`）
+- 收集并归档 `backend/logs/` 下的日志到 `backend/logs/validation-<timestamp>`
+
+运行（Windows PowerShell）：
+
+```powershell
+cd backend\\scripts
+powershell -ExecutionPolicy Bypass -File quickstart_validate.ps1
+```
+
+结果：脚本会在结束时打印压测统计并将日志归档到 `backend/logs/validation-<timestamp>`，详细手动验证步骤见 `backend/docs/quickstart_validation.md`。
+
+文档索引（已添加）:
+
+- `backend/docs/quickstart_validation.md` — 快速开始验证步骤
+- `backend/docs/logging_best_practices.md` — 日志最佳实践（中文）
+- `backend/docs/logging_troubleshooting.md` — 日志故障排查指南（中文）
+- `backend/README-logging.md` — 日志系统使用说明与示例

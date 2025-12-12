@@ -5,8 +5,12 @@
 package constants
 
 import (
+	"context"
 	"fmt"
 	"strings"
+	"time"
+
+	"go-study2/internal/infrastructure/logger"
 )
 
 // GetRuneContent 返回符文常量相关的学习内容
@@ -114,5 +118,14 @@ func GetRuneContent() string {
 // DisplayRune 展示并解释 Go 语言中的符文常量。
 // 符文是表示 Unicode 代码点的整数值。
 func DisplayRune() {
+	start := time.Now()
+	defer func() {
+		duration := time.Since(start)
+		logger.LogBiz(context.Background(), "DisplayRune", map[string]interface{}{
+			"operation": "display_rune_constants",
+			"result":    "success",
+		}, nil, duration)
+	}()
+
 	fmt.Print(GetRuneContent())
 }

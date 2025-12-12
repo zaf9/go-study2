@@ -6,8 +6,10 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
+	"time"
 
 	"go-study2/internal/config"
+	"go-study2/internal/infrastructure/db_logging"
 
 	_ "github.com/gogf/gf/contrib/drivers/sqlite/v2"
 	_ "github.com/mattn/go-sqlite3"
@@ -76,6 +78,15 @@ func Init(ctx context.Context, cfg config.DatabaseConfig) (gdb.DB, error) {
 
 	if err := db.PingMaster(); err != nil {
 		return nil, fmt.Errorf("数据库连接验证失败: %w", err)
+	}
+
+	// 注册数据库日志处理器
+	slowThreshold := time.Duration(cfg.SlowThreshold) * time.Millisecond
+	if slowThreshold <= 0 {
+		slowThreshold = 100 * time.Millisecond // 默认100毫秒
+	}
+	if err := db_logging.RegisterDBLogging(db, slowThreshold); err != nil {
+		return nil, fmt.Errorf("注册数据库日志处理器失败: %w", err)
 	}
 
 	return db, nil

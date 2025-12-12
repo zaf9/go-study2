@@ -3,8 +3,10 @@ package handler
 import (
 	"fmt"
 	"strings"
+	"time"
 
 	"go-study2/internal/app/lexical_elements"
+	"go-study2/internal/infrastructure/logger"
 
 	"github.com/gogf/gf/v2/net/ghttp"
 )
@@ -79,6 +81,15 @@ func (h *Handler) GetLexicalContent(r *ghttp.Request) {
 	chapterName := r.Get("chapter").String()
 	format := r.GetCtxVar("format").String()
 
+	start := time.Now()
+	ctx := r.Context()
+
+	// 记录内容请求
+	logger.LogBiz(ctx, "lexical_content_request", map[string]interface{}{
+		"chapter": chapterName,
+		"format":  format,
+	}, "started", 0)
+
 	var contentFunc func() string
 	var title string
 
@@ -91,6 +102,9 @@ func (h *Handler) GetLexicalContent(r *ghttp.Request) {
 	}
 
 	if contentFunc == nil {
+		duration := time.Since(start)
+		logger.LogError(ctx, fmt.Errorf("chapter not found: %s", chapterName), "Lexical chapter not found", duration)
+
 		r.Response.WriteStatus(404)
 		if format == "html" {
 			r.Response.Write("Chapter not found")
@@ -104,6 +118,14 @@ func (h *Handler) GetLexicalContent(r *ghttp.Request) {
 	}
 
 	content := contentFunc()
+
+	duration := time.Since(start)
+	logger.LogBiz(ctx, "lexical_content_delivery", map[string]interface{}{
+		"chapter": chapterName,
+		"title":   title,
+		"format":  format,
+		"size":    len(content),
+	}, "completed", duration)
 
 	if format == "html" {
 		var sb strings.Builder

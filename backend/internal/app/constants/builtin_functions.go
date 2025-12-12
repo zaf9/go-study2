@@ -5,8 +5,12 @@
 package constants
 
 import (
+	"context"
 	"fmt"
 	"strings"
+	"time"
+
+	"go-study2/internal/infrastructure/logger"
 )
 
 // GetBuiltinFunctionsContent 返回内置函数相关的学习内容
@@ -198,5 +202,14 @@ func GetBuiltinFunctionsContent() string {
 // DisplayBuiltinFunctions 展示并解释 Go 语言中可以用于常量的内置函数。
 // 这些函数在编译时求值，结果也是常量。
 func DisplayBuiltinFunctions() {
+	start := time.Now()
+	defer func() {
+		duration := time.Since(start)
+		logger.LogBiz(context.Background(), "DisplayBuiltinFunctions", map[string]interface{}{
+			"operation": "display_builtin_functions",
+			"result":    "success",
+		}, nil, duration)
+	}()
+
 	fmt.Print(GetBuiltinFunctionsContent())
 }

@@ -1,11 +1,5 @@
 import axios, { AxiosResponse } from "axios";
-import {
-  ACCESS_TOKEN_KEY,
-  API_BASE_URL,
-  API_PATHS,
-  REMEMBER_ME_KEY,
-  REQUEST_TIMEOUT,
-} from "./constants";
+import { ACCESS_TOKEN_KEY, API_PATHS, REMEMBER_ME_KEY } from "./constants";
 import { ApiResponse } from "@/types/api";
 import {
   AuthTokens,
@@ -19,12 +13,7 @@ let accessTokenInMemory: string | null = null;
 let rememberInMemory = false;
 
 const isBrowser = typeof window !== "undefined";
-
-const authClient = axios.create({
-  baseURL: API_BASE_URL,
-  timeout: REQUEST_TIMEOUT,
-  withCredentials: true,
-});
+import authClient from "./http";
 
 function readStorage(key: string): string | null {
   if (!isBrowser) return null;
@@ -98,9 +87,6 @@ function unwrapResponse<T>(resp: AxiosResponse<ApiResponse<T>>): T {
   const payload = resp.data;
   if (!payload) {
     throw new Error("服务返回为空");
-  }
-  if (typeof payload.code === "number" && payload.code !== 20000) {
-    throw new Error(payload.message || "请求失败");
   }
   return payload.data;
 }

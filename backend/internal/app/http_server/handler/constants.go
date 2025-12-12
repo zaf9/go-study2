@@ -3,8 +3,10 @@ package handler
 import (
 	"fmt"
 	"strings"
+	"time"
 
 	"go-study2/internal/app/constants"
+	"go-study2/internal/infrastructure/logger"
 
 	"github.com/gogf/gf/v2/net/ghttp"
 )
@@ -27,6 +29,16 @@ var constantsChapters = []chapterDef{
 
 // GetConstantsMenu 获取 Constants 菜单
 func (h *Handler) GetConstantsMenu(r *ghttp.Request) {
+	start := time.Now()
+	defer func() {
+		duration := time.Since(start)
+		logger.LogBiz(r.Context(), "GetConstantsMenu", map[string]interface{}{
+			"operation": "get_constants_menu",
+			"format":    r.GetCtxVar("format").String(),
+			"result":    "success",
+		}, nil, duration)
+	}()
+
 	format := r.GetCtxVar("format").String()
 
 	items := make([]LexicalMenuItem, len(constantsChapters))
@@ -71,6 +83,17 @@ func (h *Handler) sendConstantsMenuHTML(r *ghttp.Request, items []LexicalMenuIte
 
 // GetConstantsContent 获取具体章节内容
 func (h *Handler) GetConstantsContent(r *ghttp.Request) {
+	start := time.Now()
+	defer func() {
+		duration := time.Since(start)
+		logger.LogBiz(r.Context(), "GetConstantsContent", map[string]interface{}{
+			"operation":    "get_constants_content",
+			"chapter_name": r.Get("subtopic").String(),
+			"format":       r.GetCtxVar("format").String(),
+			"result":       "success",
+		}, nil, duration)
+	}()
+
 	chapterName := r.Get("subtopic").String() // 路由参数 subtopic
 	format := r.GetCtxVar("format").String()
 

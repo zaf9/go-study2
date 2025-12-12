@@ -5,8 +5,12 @@
 package constants
 
 import (
+	"context"
 	"fmt"
 	"strings"
+	"time"
+
+	"go-study2/internal/infrastructure/logger"
 )
 
 // GetTypedUntypedContent 返回类型化/无类型化常量相关的学习内容
@@ -160,5 +164,14 @@ func GetTypedUntypedContent() string {
 // DisplayTypedUntyped 展示并解释 Go 语言中类型化和无类型化常量的区别。
 // 理解这两种常量的区别对于掌握 Go 的类型系统非常重要。
 func DisplayTypedUntyped() {
+	start := time.Now()
+	defer func() {
+		duration := time.Since(start)
+		logger.LogBiz(context.Background(), "DisplayTypedUntyped", map[string]interface{}{
+			"operation": "display_typed_untyped_constants",
+			"result":    "success",
+		}, nil, duration)
+	}()
+
 	fmt.Print(GetTypedUntypedContent())
 }

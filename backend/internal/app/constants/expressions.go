@@ -5,8 +5,12 @@
 package constants
 
 import (
+	"context"
 	"fmt"
 	"strings"
+	"time"
+
+	"go-study2/internal/infrastructure/logger"
 )
 
 // GetExpressionsContent 返回常量表达式相关的学习内容
@@ -167,5 +171,14 @@ func GetExpressionsContent() string {
 // DisplayExpressions 展示并解释 Go 语言中的常量表达式。
 // 常量表达式在编译时求值，支持算术、比较、逻辑等运算。
 func DisplayExpressions() {
+	start := time.Now()
+	defer func() {
+		duration := time.Since(start)
+		logger.LogBiz(context.Background(), "DisplayExpressions", map[string]interface{}{
+			"operation": "display_constant_expressions",
+			"result":    "success",
+		}, nil, duration)
+	}()
+
 	fmt.Print(GetExpressionsContent())
 }

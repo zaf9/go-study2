@@ -256,7 +256,9 @@ func writeAuthError(r *ghttp.Request, err error) {
 	case user.ErrRefreshTokenInvalid, user.ErrRefreshTokenExpired:
 		writeError(r, http.StatusUnauthorized, 40002, "刷新令牌无效或已过期")
 	case user.ErrUserNotFound:
-		writeError(r, http.StatusNotFound, 40001, "用户不存在")
+		// 为避免泄露用户名是否存在（信息泄露），对用户未找到的情况
+		// 返回与凭证错误相同的响应：401 + 通用提示。
+		writeError(r, http.StatusUnauthorized, 40001, "用户名或密码错误")
 	default:
 		g.Log().Error(r.GetCtx(), err)
 		writeError(r, http.StatusInternalServerError, 50001, "服务器繁忙，请稍后再试")
