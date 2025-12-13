@@ -1,4 +1,4 @@
-import axios, { AxiosResponse } from "axios";
+import type { AxiosResponse } from "axios";
 import { ACCESS_TOKEN_KEY, API_PATHS, REMEMBER_ME_KEY } from "./constants";
 import { ApiResponse } from "@/types/api";
 import {

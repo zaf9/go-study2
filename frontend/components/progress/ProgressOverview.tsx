@@ -2,6 +2,7 @@
 
 import { Alert, Button, Card, Col, Row, Statistic } from "antd";
 import ProgressBar from "./ProgressBar";
+import { ProgressStatuses } from "@/lib/progressStatus";
 import { NextChapterHint, OverallProgress } from "@/types/learning";
 
 /** 总览卡片属性：承载整体进度与“继续学习”提示。 */
@@ -21,11 +22,11 @@ export default function ProgressOverview({
       <Row gutter={16}>
         <Col span={12}>
           <ProgressBar
-            percent={overall.progress}
-            status={overall.progress >= 100 ? "completed" : "in_progress"}
-            segments={12}
-            label="整体进度"
-          />
+              percent={overall.progress}
+              status={overall.progress >= 100 ? ProgressStatuses.Completed : ProgressStatuses.InProgress}
+              segments={12}
+              label="整体进度"
+            />
         </Col>
         <Col span={12}>
           <Row gutter={16}>

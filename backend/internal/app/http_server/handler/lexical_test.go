@@ -1,6 +1,7 @@
 package handler
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
 	"testing"
@@ -31,7 +32,7 @@ func TestGetLexicalMenu_JSON(t *testing.T) {
 		client := g.Client()
 		client.SetPrefix(fmt.Sprintf("http://127.0.0.1:%d", port))
 
-		resp, err := client.Get(nil, "/api/v1/topic/lexical_elements?format=json")
+		resp, err := client.Get(context.TODO(), "/api/v1/topic/lexical_elements?format=json")
 		t.AssertNil(err)
 		defer resp.Close()
 		t.Assert(resp.StatusCode, 200)
@@ -79,7 +80,7 @@ func TestGetLexicalMenu_HTML(t *testing.T) {
 		client := g.Client()
 		client.SetPrefix(fmt.Sprintf("http://127.0.0.1:%d", port))
 
-		resp, err := client.Get(nil, "/api/v1/topic/lexical_elements?format=html")
+		resp, err := client.Get(context.TODO(), "/api/v1/topic/lexical_elements?format=html")
 		t.AssertNil(err)
 		defer resp.Close()
 		t.Assert(resp.StatusCode, 200)
@@ -110,7 +111,7 @@ func TestGetLexicalContent_ValidChapter_JSON(t *testing.T) {
 		client := g.Client()
 		client.SetPrefix(fmt.Sprintf("http://127.0.0.1:%d", port))
 
-		resp, err := client.Get(nil, "/api/v1/topic/lexical_elements/comments?format=json")
+		resp, err := client.Get(context.TODO(), "/api/v1/topic/lexical_elements/comments?format=json")
 		t.AssertNil(err)
 		defer resp.Close()
 		t.Assert(resp.StatusCode, 200)
@@ -147,7 +148,7 @@ func TestGetLexicalContent_ValidChapter_HTML(t *testing.T) {
 		client := g.Client()
 		client.SetPrefix(fmt.Sprintf("http://127.0.0.1:%d", port))
 
-		resp, err := client.Get(nil, "/api/v1/topic/lexical_elements/comments?format=html")
+		resp, err := client.Get(context.TODO(), "/api/v1/topic/lexical_elements/comments?format=html")
 		t.AssertNil(err)
 		defer resp.Close()
 		t.Assert(resp.StatusCode, 200)
@@ -177,7 +178,7 @@ func TestGetLexicalContent_InvalidChapter_JSON(t *testing.T) {
 		client := g.Client()
 		client.SetPrefix(fmt.Sprintf("http://127.0.0.1:%d", port))
 
-		resp, err := client.Get(nil, "/api/v1/topic/lexical_elements/invalid_chapter?format=json")
+		resp, err := client.Get(context.TODO(), "/api/v1/topic/lexical_elements/invalid_chapter?format=json")
 		t.AssertNil(err)
 		defer resp.Close()
 		t.Assert(resp.StatusCode, 404)
@@ -213,7 +214,7 @@ func TestGetLexicalContent_InvalidChapter_HTML(t *testing.T) {
 		client := g.Client()
 		client.SetPrefix(fmt.Sprintf("http://127.0.0.1:%d", port))
 
-		resp, err := client.Get(nil, "/api/v1/topic/lexical_elements/invalid_chapter?format=html")
+		resp, err := client.Get(context.TODO(), "/api/v1/topic/lexical_elements/invalid_chapter?format=html")
 		t.AssertNil(err)
 		defer resp.Close()
 		t.Assert(resp.StatusCode, 404)
@@ -248,7 +249,7 @@ func TestSendLexicalMenuJSON(t *testing.T) {
 		client := g.Client()
 		client.SetPrefix(fmt.Sprintf("http://127.0.0.1:%d", port))
 
-		resp, err := client.Get(nil, "/test/menu")
+		resp, err := client.Get(context.TODO(), "/test/menu")
 		t.AssertNil(err)
 		defer resp.Close()
 
@@ -283,7 +284,7 @@ func TestSendLexicalMenuHTML(t *testing.T) {
 		client := g.Client()
 		client.SetPrefix(fmt.Sprintf("http://127.0.0.1:%d", port))
 
-		resp, err := client.Get(nil, "/test/menu")
+		resp, err := client.Get(context.TODO(), "/test/menu")
 		t.AssertNil(err)
 		defer resp.Close()
 

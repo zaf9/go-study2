@@ -11,8 +11,8 @@ export default function ErrorListener() {
 
   useEffect(() => {
     function handler(e: Event) {
-      const detail = (e as CustomEvent)?.detail as any;
-      const msg = detail?.message || "发生错误";
+      const detail = (e as CustomEvent)?.detail as { message?: string } | undefined;
+      const msg = detail?.message ?? "发生错误";
       setMessage(msg);
       setVisible(true);
       window.setTimeout(() => setVisible(false), AUTO_HIDE_MS);

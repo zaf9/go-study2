@@ -1,6 +1,7 @@
 package types_test
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
 	"testing"
@@ -35,7 +36,7 @@ func TestTypesMenuAndContentContract(t *testing.T) {
 		client.SetPrefix(fmt.Sprintf("http://127.0.0.1:%d", port))
 
 		// JSON 菜单
-		resp, err := client.Get(nil, "/api/v1/topic/types?format=json")
+		resp, err := client.Get(context.TODO(), "/api/v1/topic/types?format=json")
 		t.AssertNil(err)
 		defer resp.Close()
 		t.Assert(resp.StatusCode, 200)
@@ -56,7 +57,7 @@ func TestTypesMenuAndContentContract(t *testing.T) {
 		t.Assert(foundIface, true)
 
 		// JSON 内容
-		resp2, err := client.Get(nil, "/api/v1/topic/types/boolean?format=json")
+		resp2, err := client.Get(context.TODO(), "/api/v1/topic/types/boolean?format=json")
 		t.AssertNil(err)
 		defer resp2.Close()
 		t.Assert(resp2.StatusCode, 200)
@@ -70,13 +71,13 @@ func TestTypesMenuAndContentContract(t *testing.T) {
 		t.AssertNE(dataMap["quiz"], nil)
 
 		// 接口子主题 JSON
-		respIface, err := client.Get(nil, "/api/v1/topic/types/interface_basic?format=json")
+		respIface, err := client.Get(context.TODO(), "/api/v1/topic/types/interface_basic?format=json")
 		t.AssertNil(err)
 		defer respIface.Close()
 		t.Assert(respIface.StatusCode, 200)
 
 		// HTML 菜单
-		resp3, err := client.Get(nil, "/api/v1/topic/types?format=html")
+		resp3, err := client.Get(context.TODO(), "/api/v1/topic/types?format=html")
 		t.AssertNil(err)
 		defer resp3.Close()
 		t.Assert(resp3.StatusCode, 200)
@@ -86,7 +87,7 @@ func TestTypesMenuAndContentContract(t *testing.T) {
 		t.AssertIN("Interface", body)
 
 		// 未知子主题 404 JSON
-		resp404, err := client.Get(nil, "/api/v1/topic/types/unknown?format=json")
+		resp404, err := client.Get(context.TODO(), "/api/v1/topic/types/unknown?format=json")
 		t.AssertNil(err)
 		defer resp404.Close()
 		t.Assert(resp404.StatusCode, 404)
@@ -96,7 +97,7 @@ func TestTypesMenuAndContentContract(t *testing.T) {
 		t.Assert(notFound.Code, 404)
 
 		// 未知子主题 404 HTML
-		resp404h, err := client.Get(nil, "/api/v1/topic/types/unknown?format=html")
+		resp404h, err := client.Get(context.TODO(), "/api/v1/topic/types/unknown?format=html")
 		t.AssertNil(err)
 		defer resp404h.Close()
 		t.Assert(resp404h.StatusCode, 404)

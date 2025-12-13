@@ -5,6 +5,7 @@ import {
   updateProgress,
   __test__,
 } from "@/services/progressService";
+import { ProgressStatuses } from "@/lib/progressStatus";
 
 jest.mock("@/lib/api", () => {
   const post = jest.fn();
@@ -70,7 +71,7 @@ describe("progressService", () => {
         completedChapters: 1,
         totalChapters: 4,
       },
-      chapters: [{ chapter: "storage", status: "in_progress" }],
+      chapters: [{ chapter: "storage", status: ProgressStatuses.InProgress }],
     });
     const detail = await getTopicProgress("variables");
     expect(detail.id).toBe("variables");

@@ -1,6 +1,7 @@
 package types_test
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
 	"testing"
@@ -33,7 +34,7 @@ func TestTypesOutlineContract(t *testing.T) {
 		client := g.Client()
 		client.SetPrefix(fmt.Sprintf("http://127.0.0.1:%d", port))
 
-		resp, err := client.Get(nil, "/api/v1/topic/types/outline?format=json")
+		resp, err := client.Get(context.TODO(), "/api/v1/topic/types/outline?format=json")
 		t.AssertNil(err)
 		defer resp.Close()
 		t.Assert(resp.StatusCode, 200)
@@ -46,7 +47,7 @@ func TestTypesOutlineContract(t *testing.T) {
 		printable := data["printable"].([]interface{})
 		t.AssertGT(len(printable), 5)
 
-		resp2, err := client.Get(nil, "/api/v1/topic/types/outline?format=html")
+		resp2, err := client.Get(context.TODO(), "/api/v1/topic/types/outline?format=html")
 		t.AssertNil(err)
 		defer resp2.Close()
 		t.Assert(resp2.StatusCode, 200)

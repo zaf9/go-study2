@@ -22,6 +22,17 @@ type Config struct {
 	Database DatabaseConfig `json:"database"`
 	Jwt      JwtConfig      `json:"jwt"`
 	Static   StaticConfig   `json:"static"`
+	// Progress 配置（可选）
+	Progress ProgressConfig `json:"progress"`
+}
+
+// ProgressConfig 学习进度估算与完成判定配置
+type ProgressConfig struct {
+	ReadCharsPerSec    float64            `json:"readCharsPerSec"`
+	Difficulty         map[string]float64 `json:"difficulty"`
+	MinSeconds         int64              `json:"minSeconds"`
+	MaxSeconds         int64              `json:"maxSeconds"`
+	CompletionFraction float64            `json:"completionFraction"`
 }
 
 // HttpConfig HTTP 配置

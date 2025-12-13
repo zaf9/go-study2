@@ -1,6 +1,7 @@
 package middleware
 
 import (
+	"context"
 	"fmt"
 	"testing"
 	"time"
@@ -33,7 +34,7 @@ func TestLogger(t *testing.T) {
 
 		// 发送请求
 		startTime := time.Now()
-		resp, err := client.Get(nil, "/test/hello")
+		resp, err := client.Get(context.TODO(), "/test/hello")
 		duration := time.Since(startTime)
 
 		t.AssertNil(err)
@@ -68,7 +69,7 @@ func TestLoggerWithError(t *testing.T) {
 		client := g.Client()
 		client.SetPrefix(fmt.Sprintf("http://127.0.0.1:%d", port))
 
-		resp, err := client.Get(nil, "/test/error")
+		resp, err := client.Get(context.TODO(), "/test/error")
 		t.AssertNil(err)
 		defer resp.Close()
 		t.Assert(resp.StatusCode, 500)

@@ -2,6 +2,7 @@
 
 import { Button, Card, Collapse, List, Space, Typography } from "antd";
 import ChapterStatusIcon from "./ChapterStatusIcon";
+import ProgressStatuses from "@/lib/progressStatus";
 import ProgressBar from "./ProgressBar";
 import { ChapterProgress, TopicProgressDetail } from "@/types/learning";
 
@@ -45,7 +46,7 @@ export default function TopicProgressCard({
         </div>
         <ProgressBar
           percent={topic.progress}
-          status={topic.progress >= 100 ? "completed" : "in_progress"}
+          status={topic.progress >= 100 ? ProgressStatuses.Completed : ProgressStatuses.InProgress}
           segments={10}
           label="主题完成度"
         />

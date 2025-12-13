@@ -1,5 +1,6 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import ChapterProgress from "@/components/progress/ChapterProgress";
+import { ProgressStatuses } from "@/lib/progressStatus";
 
 describe("ChapterProgress", () => {
   it("renders status and triggers resume", () => {
@@ -7,7 +8,7 @@ describe("ChapterProgress", () => {
     render(
       <ChapterProgress
         title="章节一"
-        status="in_progress"
+        status={ProgressStatuses.InProgress}
         scrollProgress={60}
         readDuration={120}
         estimatedSeconds={300}

@@ -1,6 +1,7 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import ProgressPage from "@/app/(protected)/progress/page";
 import useProgress from "@/hooks/useProgress";
+import { ProgressStatuses } from "@/lib/progressStatus";
 import { useRouter } from "next/navigation";
 
 jest.mock("next/navigation", () => ({
@@ -42,7 +43,7 @@ describe("Progress page", () => {
       next: {
         topic: "variables",
         chapter: "storage",
-        status: "in_progress",
+        status: ProgressStatuses.InProgress,
         progress: 30,
       },
       isLoading: false,

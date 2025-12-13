@@ -1,6 +1,7 @@
 package handler
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
 	"testing"
@@ -31,7 +32,7 @@ func TestGetTopics_JSON(t *testing.T) {
 		client := g.Client()
 		client.SetPrefix(fmt.Sprintf("http://127.0.0.1:%d", port))
 
-		resp, err := client.Get(nil, "/api/v1/topics?format=json")
+		resp, err := client.Get(context.TODO(), "/api/v1/topics?format=json")
 		t.AssertNil(err)
 		defer resp.Close()
 		t.Assert(resp.StatusCode, 200)
@@ -93,7 +94,7 @@ func TestGetTopics_HTML(t *testing.T) {
 		client := g.Client()
 		client.SetPrefix(fmt.Sprintf("http://127.0.0.1:%d", port))
 
-		resp, err := client.Get(nil, "/api/v1/topics?format=html")
+		resp, err := client.Get(context.TODO(), "/api/v1/topics?format=html")
 		t.AssertNil(err)
 		defer resp.Close()
 		t.Assert(resp.StatusCode, 200)
@@ -129,7 +130,7 @@ func TestGetTopics_DefaultFormat(t *testing.T) {
 		client.SetPrefix(fmt.Sprintf("http://127.0.0.1:%d", port))
 
 		// 不提供 format 参数，应该默认为 JSON
-		resp, err := client.Get(nil, "/api/v1/topics")
+		resp, err := client.Get(context.TODO(), "/api/v1/topics")
 		t.AssertNil(err)
 		defer resp.Close()
 		t.Assert(resp.StatusCode, 200)
@@ -167,7 +168,7 @@ func TestSendTopicsJSON(t *testing.T) {
 		client := g.Client()
 		client.SetPrefix(fmt.Sprintf("http://127.0.0.1:%d", port))
 
-		resp, err := client.Get(nil, "/test/topics")
+		resp, err := client.Get(context.TODO(), "/test/topics")
 		t.AssertNil(err)
 		defer resp.Close()
 
@@ -202,7 +203,7 @@ func TestSendTopicsHTML(t *testing.T) {
 		client := g.Client()
 		client.SetPrefix(fmt.Sprintf("http://127.0.0.1:%d", port))
 
-		resp, err := client.Get(nil, "/test/topics")
+		resp, err := client.Get(context.TODO(), "/test/topics")
 		t.AssertNil(err)
 		defer resp.Close()
 

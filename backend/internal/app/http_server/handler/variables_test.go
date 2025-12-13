@@ -1,6 +1,7 @@
 package handler
 
 import (
+	"context"
 	"fmt"
 	"testing"
 
@@ -32,13 +33,13 @@ func TestVariablesMenuAndContent(t *testing.T) {
 		client.SetPrefix(fmt.Sprintf("http://127.0.0.1:%d", port))
 
 		// Menu JSON
-		resp, err := client.Get(nil, "/api/v1/topic/variables?format=json")
+		resp, err := client.Get(context.TODO(), "/api/v1/topic/variables?format=json")
 		t.AssertNil(err)
 		defer resp.Close()
 		t.Assert(resp.StatusCode, 200)
 
 		// Content HTML
-		resp, err = client.Get(nil, "/api/v1/topic/variables/storage?format=html")
+		resp, err = client.Get(context.TODO(), "/api/v1/topic/variables/storage?format=html")
 		t.AssertNil(err)
 		defer resp.Close()
 		t.Assert(resp.StatusCode, 200)

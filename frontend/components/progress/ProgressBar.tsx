@@ -2,6 +2,7 @@
 
 import { Progress, Tag, Tooltip } from "antd";
 import { ProgressStatus } from "@/types/learning";
+import ProgressStatuses from "@/lib/progressStatus";
 
 interface ProgressBarProps {
   percent: number;
@@ -18,15 +19,15 @@ const statusColor: Record<ProgressStatus, string> = {
 };
 
 function statusLabel(status?: ProgressStatus) {
-  if (status === "completed") return "已完成";
-  if (status === "tested") return "已测验";
-  if (status === "in_progress") return "学习中";
+  if (status === ProgressStatuses.Completed) return "已完成";
+  if (status === ProgressStatuses.Tested) return "已测验";
+  if (status === ProgressStatuses.InProgress) return "学习中";
   return "未开始";
 }
 
 export default function ProgressBar({
   percent,
-  status = "in_progress",
+  status = ProgressStatuses.InProgress,
   segments = 0,
   label,
 }: ProgressBarProps) {
@@ -37,7 +38,7 @@ export default function ProgressBar({
       steps={segments > 0 ? segments : undefined}
       showInfo
       size="small"
-      status={status === "completed" ? "success" : "active"}
+      status={status === ProgressStatuses.Completed ? "success" : "active"}
     />
   );
 

@@ -1,6 +1,7 @@
 package middleware
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
 	"testing"
@@ -34,7 +35,7 @@ func TestFormat_DefaultJSON(t *testing.T) {
 		client.SetPrefix(fmt.Sprintf("http://127.0.0.1:%d", port))
 
 		// 测试默认格式（不提供 format 参数）
-		resp, err := client.Get(nil, "/test/data")
+		resp, err := client.Get(context.TODO(), "/test/data")
 		t.AssertNil(err)
 		defer resp.Close()
 		t.Assert(resp.StatusCode, 200)
@@ -70,7 +71,7 @@ func TestFormat_ExplicitJSON(t *testing.T) {
 		client.SetPrefix(fmt.Sprintf("http://127.0.0.1:%d", port))
 
 		// 测试显式指定 JSON 格式
-		resp, err := client.Get(nil, "/test/data?format=json")
+		resp, err := client.Get(context.TODO(), "/test/data?format=json")
 		t.AssertNil(err)
 		defer resp.Close()
 		t.Assert(resp.StatusCode, 200)
@@ -104,7 +105,7 @@ func TestFormat_HTML(t *testing.T) {
 		client.SetPrefix(fmt.Sprintf("http://127.0.0.1:%d", port))
 
 		// 测试 HTML 格式
-		resp, err := client.Get(nil, "/test/data?format=html")
+		resp, err := client.Get(context.TODO(), "/test/data?format=html")
 		t.AssertNil(err)
 		defer resp.Close()
 		t.Assert(resp.StatusCode, 200)
@@ -133,7 +134,7 @@ func TestFormat_InvalidFormat(t *testing.T) {
 		client.SetPrefix(fmt.Sprintf("http://127.0.0.1:%d", port))
 
 		// 测试无效格式
-		resp, err := client.Get(nil, "/test/data?format=xml")
+		resp, err := client.Get(context.TODO(), "/test/data?format=xml")
 		t.AssertNil(err)
 		defer resp.Close()
 		t.Assert(resp.StatusCode, 400)
@@ -176,7 +177,7 @@ func TestFormat_EmptyFormat(t *testing.T) {
 		client.SetPrefix(fmt.Sprintf("http://127.0.0.1:%d", port))
 
 		// 测试空格式参数（应该默认为 json）
-		resp, err := client.Get(nil, "/test/data?format=")
+		resp, err := client.Get(context.TODO(), "/test/data?format=")
 		t.AssertNil(err)
 		defer resp.Close()
 		t.Assert(resp.StatusCode, 200)

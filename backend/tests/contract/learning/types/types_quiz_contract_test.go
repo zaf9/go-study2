@@ -2,6 +2,7 @@ package types_test
 
 import (
 	"bytes"
+	"context"
 	"encoding/json"
 	"fmt"
 	"testing"
@@ -35,7 +36,7 @@ func TestTypesQuizContract(t *testing.T) {
 		client.SetPrefix(fmt.Sprintf("http://127.0.0.1:%d", port))
 
 		payload := []byte(`{"answers":[{"id":"q-all-1","choice":"A"},{"id":"q-all-2","choice":"B"},{"id":"q-all-3","choice":"A"},{"id":"q-all-4","choice":"A"},{"id":"q-all-5","choice":"A"}]}`)
-		resp, err := client.Post(nil, "/api/v1/topic/types/quiz/submit?format=json", bytes.NewReader(payload))
+		resp, err := client.Post(context.TODO(), "/api/v1/topic/types/quiz/submit?format=json", bytes.NewReader(payload))
 		t.AssertNil(err)
 		defer resp.Close()
 		t.Assert(resp.StatusCode, 200)

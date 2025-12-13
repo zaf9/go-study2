@@ -1,5 +1,6 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import ProgressOverview from "@/components/progress/ProgressOverview";
+import { ProgressStatuses } from "@/lib/progressStatus";
 
 describe("ProgressOverview", () => {
   it("renders overview stats and continue action", () => {
@@ -16,7 +17,7 @@ describe("ProgressOverview", () => {
         next={{
           topic: "variables",
           chapter: "storage",
-          status: "in_progress",
+          status: ProgressStatuses.InProgress,
           progress: 40,
         }}
         onContinue={onContinue}

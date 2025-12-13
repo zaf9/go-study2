@@ -107,3 +107,19 @@ static:
   # SPA 路由回退到 index.html
   spaFallback: true
 
+# 学习进度估算与完成判定配置
+progress:
+  # 每秒可读字符数（字符/秒），默认 5（约 300 字/分钟）
+  readCharsPerSec: 5.0
+  # 主题难度系数（可覆盖默认），示例：lexical_elements:1.0，constants:1.1
+  difficulty:
+    lexical_elements: 1.0
+    constants: 1.1
+    variables: 1.0
+    types: 1.2
+  # 估算的最小/最大秒数边界
+  minSeconds: 60
+  maxSeconds: 3600
+  # 完成判定所需的停留时间比例（0-1），例如 0.5 表示需停留 >= 50% 的预计时长
+  completionFraction: 0.5
+

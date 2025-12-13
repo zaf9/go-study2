@@ -1,6 +1,7 @@
 package types_test
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
 	"testing"
@@ -33,7 +34,7 @@ func TestTypesSearchContract(t *testing.T) {
 		client := g.Client()
 		client.SetPrefix(fmt.Sprintf("http://127.0.0.1:%d", port))
 
-		resp, err := client.Get(nil, "/api/v1/topic/types/search?keyword=map%20key&format=json")
+		resp, err := client.Get(context.TODO(), "/api/v1/topic/types/search?keyword=map%20key&format=json")
 		t.AssertNil(err)
 		defer resp.Close()
 		t.Assert(resp.StatusCode, 200)

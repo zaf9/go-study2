@@ -2,8 +2,6 @@ import axios from "axios";
 import { API_BASE_URL, REQUEST_TIMEOUT } from "./constants";
 import type { AxiosResponse } from "axios";
 
-const isBrowser = typeof window !== "undefined";
-
 export const authClient = axios.create({
   baseURL: API_BASE_URL,
   timeout: REQUEST_TIMEOUT,
@@ -28,7 +26,7 @@ if (authClient.interceptors && authClient.interceptors.response) {
   authClient.interceptors.response.use(
     (resp: AxiosResponse) => {
       try {
-        const payload = resp?.data as any;
+        const payload = resp?.data as { code?: number; message?: string } | undefined;
         if (payload && typeof payload.code === "number" && payload.code !== 20000) {
           const msg = payload.message || "请求失败";
           // 在浏览器环境广播错误事件，页面组件可监听并展示友好 UI
@@ -39,14 +37,14 @@ if (authClient.interceptors && authClient.interceptors.response) {
           }
           return Promise.reject(new Error(msg));
         }
-      } catch (e) {
+      } catch {
         // ignore and continue
       }
       return resp;
     },
     (error) => {
       // Axios 网络或 HTTP 错误
-      const aerr: any = error;
+      const aerr = error as { response?: { status?: number; data?: { message?: string } }; message?: string };
       const status = aerr?.response?.status;
       let message = aerr?.message || "网络错误，请稍后重试";
       if (status === 401) {

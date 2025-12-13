@@ -3,6 +3,7 @@
 import { Alert, Button, Space, Typography } from "antd";
 import ProgressBar from "./ProgressBar";
 import { ProgressStatus } from "@/types/learning";
+import ProgressStatuses from "@/lib/progressStatus";
 
 interface ChapterProgressProps {
   title: string;
@@ -62,7 +63,7 @@ export default function ChapterProgress({
           <Text type="success">预计剩余 {Math.round(remaining)} 秒</Text>
         )}
       </div>
-      {status === "tested" && (
+      {status === ProgressStatuses.Tested && (
         <Alert
           type="info"
           showIcon

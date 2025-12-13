@@ -1,6 +1,7 @@
 package types_test
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
 	"testing"
@@ -33,7 +34,7 @@ func TestTopicsContract(t *testing.T) {
 		client := g.Client()
 		client.SetPrefix(fmt.Sprintf("http://127.0.0.1:%d", port))
 
-		resp, err := client.Get(nil, "/api/v1/topics?format=json")
+		resp, err := client.Get(context.TODO(), "/api/v1/topics?format=json")
 		t.AssertNil(err)
 		defer resp.Close()
 		t.Assert(resp.StatusCode, 200)
@@ -54,7 +55,7 @@ func TestTopicsContract(t *testing.T) {
 		}
 		t.Assert(foundTypes, true)
 
-		resp2, err := client.Get(nil, "/api/v1/topics?format=html")
+		resp2, err := client.Get(context.TODO(), "/api/v1/topics?format=html")
 		t.AssertNil(err)
 		defer resp2.Close()
 		t.Assert(resp2.StatusCode, 200)

@@ -4,8 +4,13 @@ package progress
 
 import (
 	"time"
+	"unicode/utf8"
 
 	progressdom "go-study2/internal/domain/progress"
+
+	"go-study2/internal/app/constants"
+	"go-study2/internal/app/lexical_elements"
+	appconfig "go-study2/internal/config"
 )
 
 // Calculator 负责进度与汇总计算。
@@ -13,14 +18,96 @@ type Calculator struct {
 	TopicWeights      map[string]int
 	ChapterTotals     map[string]int
 	EstimatedDuration map[string]int64
+	// 可配置参数（从 configs/config.yaml 读取）
+	charsPerSec        float64
+	difficulty         map[string]float64
+	minSeconds         int64
+	maxSeconds         int64
+	completionFraction float64
 }
 
 // NewCalculator 创建计算器，未提供的权重与总数将使用默认值。
 func NewCalculator(weights map[string]int, totals map[string]int) *Calculator {
-	return &Calculator{
+	calc := &Calculator{
 		TopicWeights:      cloneIntMap(weights, defaultWeights()),
 		ChapterTotals:     cloneIntMap(totals, defaultChapterTotals()),
 		EstimatedDuration: map[string]int64{},
+		// 默认值
+		charsPerSec:        5.0,
+		difficulty:         map[string]float64{"lexical_elements": 1.0, "constants": 1.1, "variables": 1.0, "types": 1.2},
+		minSeconds:         60,
+		maxSeconds:         3600,
+		completionFraction: 0.5,
+	}
+
+	// 尝试从配置加载可配置参数（失败则使用默认值）
+	if cfg, err := appconfig.Load(); err == nil && cfg != nil {
+		// 如果配置中包含 progress 段则覆盖默认值
+		if cfg.Progress.ReadCharsPerSec > 0 {
+			calc.charsPerSec = cfg.Progress.ReadCharsPerSec
+		}
+		if cfg.Progress.Difficulty != nil && len(cfg.Progress.Difficulty) > 0 {
+			calc.difficulty = cfg.Progress.Difficulty
+		}
+		if cfg.Progress.MinSeconds > 0 {
+			calc.minSeconds = cfg.Progress.MinSeconds
+		}
+		if cfg.Progress.MaxSeconds > 0 {
+			calc.maxSeconds = cfg.Progress.MaxSeconds
+		}
+		if cfg.Progress.CompletionFraction > 0 {
+			calc.completionFraction = cfg.Progress.CompletionFraction
+		}
+	}
+
+	// 预计算已知章节预计时长
+	calc.initEstimatedDurations()
+	return calc
+}
+
+// 初始化时预计算已知章节的预计时长，避免运行时缺失导致回退到固定值。
+func (c *Calculator) initEstimatedDurations() {
+	if c.EstimatedDuration == nil {
+		c.EstimatedDuration = map[string]int64{}
+	}
+
+	// 词法元素章节
+	lexicalMap := map[string]func() string{
+		"comments":    lexical_elements.GetCommentsContent,
+		"tokens":      lexical_elements.GetTokensContent,
+		"semicolons":  lexical_elements.GetSemicolonsContent,
+		"identifiers": lexical_elements.GetIdentifiersContent,
+		"keywords":    lexical_elements.GetKeywordsContent,
+		"operators":   lexical_elements.GetOperatorsContent,
+		"integers":    lexical_elements.GetIntegersContent,
+		"floats":      lexical_elements.GetFloatsContent,
+		"imaginary":   lexical_elements.GetImaginaryContent,
+		"runes":       lexical_elements.GetRunesContent,
+		"strings":     lexical_elements.GetStringsContent,
+	}
+	for k, fn := range lexicalMap {
+		content := fn()
+		c.EstimatedDuration["lexical_elements/"+k] = c.estimateSecondsFromContent(content, "lexical_elements")
+	}
+
+	// Constants 章节
+	constantsMap := map[string]func() string{
+		"boolean":                     constants.GetBooleanContent,
+		"rune":                        constants.GetRuneContent,
+		"integer":                     constants.GetIntegerContent,
+		"floating_point":              constants.GetFloatingPointContent,
+		"complex":                     constants.GetComplexContent,
+		"string":                      constants.GetStringContent,
+		"expressions":                 constants.GetExpressionsContent,
+		"typed_untyped":               constants.GetTypedUntypedContent,
+		"conversions":                 constants.GetConversionsContent,
+		"builtin_functions":           constants.GetBuiltinFunctionsContent,
+		"iota":                        constants.GetIotaContent,
+		"implementation_restrictions": constants.GetImplementationRestrictionsContent,
+	}
+	for k, fn := range constantsMap {
+		content := fn()
+		c.EstimatedDuration["constants/"+k] = c.estimateSecondsFromContent(content, "constants")
 	}
 }
 
@@ -30,12 +117,18 @@ func (c *Calculator) CalculateChapterStatus(p progressdom.LearningProgress, esti
 	if est <= 0 {
 		est = c.lookupDuration(p.Topic, p.Chapter)
 	}
-	needed := int64(float64(est) * 0.8)
+	// 要求：即使滚动到 100%，也需要停留至少章节预计时间的 50% 才视为已完成
+	needed := int64(float64(est) * 0.5)
 	if needed <= 0 {
 		needed = est
 	}
 
+	// 优先：测验通过且已阅读足够并接近全文时视为已完成（保持原有行为）
 	if p.QuizPassed && p.ScrollProgress >= 90 && p.ReadDuration >= needed {
+		return progressdom.StatusCompleted
+	}
+	// 若用户已滚动到100%并且阅读时长达到阈值，也可视为已完成（接受不测验也完成的场景）
+	if p.ScrollProgress >= 100 && p.ReadDuration >= needed {
 		return progressdom.StatusCompleted
 	}
 	if p.QuizScore > 0 && !p.QuizPassed {
@@ -103,7 +196,50 @@ func (c *Calculator) lookupDuration(topic, chapter string) int64 {
 	if v, ok := c.EstimatedDuration[key]; ok && v > 0 {
 		return v
 	}
-	return 600
+	// 尝试在首次请求时进行初始化已知章节的预计算
+	c.initEstimatedDurations()
+	if v, ok := c.EstimatedDuration[key]; ok && v > 0 {
+		return v
+	}
+	// 通用回退：基于章节名长度与主题难度估算一个保守值
+	diff := 1.0
+	if c.difficulty != nil {
+		if d, ok := c.difficulty[topic]; ok {
+			diff = d
+		}
+	}
+	// 使用章节标识长度作为保守估算基础
+	length := utf8.RuneCountInString(chapter)
+	est := int64(float64(length) / c.charsPerSec * diff)
+	if est < c.minSeconds {
+		est = c.minSeconds
+	}
+	if est > c.maxSeconds {
+		est = c.maxSeconds
+	}
+	return est
+}
+
+// estimateSecondsFromContent 基于内容长度与主题难度估算阅读秒数（使用 Calculator 的配置）
+func (c *Calculator) estimateSecondsFromContent(content, topic string) int64 {
+	if content == "" {
+		return c.minSeconds
+	}
+	base := float64(utf8.RuneCountInString(content)) / c.charsPerSec
+	diff := 1.0
+	if c.difficulty != nil {
+		if d, ok := c.difficulty[topic]; ok {
+			diff = d
+		}
+	}
+	est := int64(base * diff * 1.1) // 加入 10% 额外停顿/示例时间
+	if est < c.minSeconds {
+		est = c.minSeconds
+	}
+	if est > c.maxSeconds {
+		est = c.maxSeconds
+	}
+	return est
 }
 
 func (c *Calculator) topicWeight(topic string) int {
