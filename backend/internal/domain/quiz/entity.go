@@ -1,72 +1,46 @@
 package quiz
 
-import "time"
-
-// Option 表示题目选项。
-type Option struct {
-	ID    string `json:"id"`
-	Label string `json:"label"`
+// YAMLQuestion 表示用于从 YAML 解码的题目结构，避免与数据库模型冲突。
+type YAMLQuestion struct {
+	ID          string   `yaml:"id" json:"id"`
+	Type        string   `yaml:"type" json:"type"`             // single/multiple
+	Difficulty  string   `yaml:"difficulty" json:"difficulty"` // easy/medium/hard
+	Stem        string   `yaml:"stem" json:"stem"`
+	Options     []string `yaml:"options" json:"options"`
+	Answer      string   `yaml:"answer" json:"answer"`
+	Explanation string   `yaml:"explanation" json:"explanation"`
+	Topic       string   `yaml:"topic" json:"topic"`
+	Chapter     string   `yaml:"chapter" json:"chapter"`
 }
 
-// Question 表示单个测验题目。
-type Question struct {
-	ID          string   `json:"id"`
-	Stem        string   `json:"stem"`
-	Options     []Option `json:"options"`
-	Multi       bool     `json:"multi"`
-	Answer      []string `json:"answer"`
-	Explanation string   `json:"explanation,omitempty"`
+// YAMLBank 表示一个章节/文件内的题目集合（用于 YAML 文件）
+type YAMLBank struct {
+	Questions []YAMLQuestion `yaml:"questions" json:"questions"`
 }
 
-// SubmitAnswer 表示用户提交的答案。
-type SubmitAnswer struct {
-	ID      string   `json:"id"`
-	Choices []string `json:"choices"`
+// QuizRepository 内存仓储，按 topic->chapter 映射（存放 YAMLQuestion 转换后的业务模型）
+type QuizRepository struct {
+	banks map[string]map[string][]YAMLQuestion // banks[topic][chapter] = []YAMLQuestion
 }
 
-// Result 表示测验评分结果。
-type Result struct {
-	Score       int       `json:"score"`
-	Total       int       `json:"total"`
-	CorrectIDs  []string  `json:"correctIds"`
-	WrongIDs    []string  `json:"wrongIds"`
-	SubmittedAt time.Time `json:"submittedAt"`
-	DurationMs  int64     `json:"durationMs"`
+// NewRepository 创建仓储
+func NewRepository() *QuizRepository {
+	return &QuizRepository{banks: make(map[string]map[string][]YAMLQuestion)}
 }
 
-// HistoryItem 表示测验历史记录。
-type HistoryItem struct {
-	ID         int64     `json:"id"`
-	Topic      string    `json:"topic"`
-	Chapter    string    `json:"chapter,omitempty"`
-	Score      int       `json:"score"`
-	Total      int       `json:"total"`
-	DurationMs int64     `json:"durationMs"`
-	CreatedAt  time.Time `json:"createdAt"`
+// AddBank 将题目加入仓储
+func (r *QuizRepository) AddBank(topic, chapter string, qs []YAMLQuestion) {
+	if _, ok := r.banks[topic]; !ok {
+		r.banks[topic] = make(map[string][]YAMLQuestion)
+	}
+	r.banks[topic][chapter] = qs
 }
 
-// Record 表示持久化的测验记录。
-type Record struct {
-	ID         int64     `json:"id" orm:"id"`
-	UserID     int64     `json:"userId" orm:"user_id"`
-	Topic      string    `json:"topic" orm:"topic"`
-	Chapter    string    `json:"chapter" orm:"chapter"`
-	Score      int       `json:"score" orm:"score"`
-	Total      int       `json:"total" orm:"total"`
-	DurationMs int64     `json:"durationMs" orm:"duration_ms"`
-	Answers    string    `json:"answers" orm:"answers"`
-	CreatedAt  time.Time `json:"createdAt" orm:"created_at"`
-}
-
-var supportedTopics = map[string]struct{}{
-	"lexical_elements": {},
-	"constants":        {},
-	"variables":        {},
-	"types":            {},
-}
-
-// IsSupportedTopic 判断 topic 是否在允许范围内。
-func IsSupportedTopic(topic string) bool {
-	_, ok := supportedTopics[topic]
-	return ok
+// GetBank 获取题库
+func (r *QuizRepository) GetBank(topic, chapter string) ([]YAMLQuestion, bool) {
+	if chs, ok := r.banks[topic]; ok {
+		qs, ok2 := chs[chapter]
+		return qs, ok2
+	}
+	return nil, false
 }

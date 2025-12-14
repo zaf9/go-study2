@@ -123,3 +123,19 @@ progress:
   # 完成判定所需的停留时间比例（0-1），例如 0.5 表示需停留 >= 50% 的预计时长
   completionFraction: 0.5
 
+  # Quiz 题库配置
+  quiz:
+    dataPath: "backend/quiz_data"           # 题库文件根目录
+    questionCount:
+      single: 4                              # 单选题数量
+      multiple: 4                            # 多选题数量
+    difficultyDistribution:
+      easy: 40                               # 简单题占比%
+      medium: 40                             # 中等题占比%
+      hard: 20                               # 困难题占比%
+    loadTimeout: 5s                          # 题库加载超时（秒）
+    validation:
+      strictMode: true                       # 严格验证模式
+      failFast: true                         # 首个错误即停止
+
+

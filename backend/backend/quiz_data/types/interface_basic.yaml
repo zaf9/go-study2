@@ -1,0 +1,586 @@
+questions:
+    - id: type-interface_basic-001
+      type: multiple
+      difficulty: easy
+      stem: 【单项基础】关于 types.interface_basic，下面哪个选项是正确的？
+      options:
+        - 'A: 正确项（关于interface_basic.types的重要结论）'
+        - 'B: 正确项（关于interface_basic.types的重要结论）'
+        - 'C: 正确项（关于interface_basic.types的重要结论）'
+        - 'D: 语法/语义上不正确的陈述'
+      answer: ABC
+      explanation: 本题考查 types.interface_basic 的相关知识。正确答案：ABC。解析：interface_basic 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: interface_basic
+    - id: type-interface_basic-002
+      type: single
+      difficulty: easy
+      stem: 【单项基础】关于 types.interface_basic，下面哪个选项是正确的？
+      options:
+        - 'A: 常见误解或反例（容易混淆）'
+        - 'B: 正确：关于interface_basic.types的关键点描述（正确选项）'
+        - 'C: 常见误解或反例（容易混淆）'
+        - 'D: 语法/语义上不正确的陈述'
+      answer: B
+      explanation: 本题考查 types.interface_basic 的概念。正确答案为 B。解析：interface_basic 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: interface_basic
+    - id: type-interface_basic-003
+      type: multiple
+      difficulty: easy
+      stem: 【单项基础】关于 types.interface_basic，下面哪个选项是正确的？
+      options:
+        - 'A: 部分正确但不完整的说法'
+        - 'B: 正确项（关于interface_basic.types的重要结论）'
+        - 'C: 正确项（关于interface_basic.types的重要结论）'
+        - 'D: 正确项（关于interface_basic.types的重要结论）'
+      answer: BCD
+      explanation: 本题考查 types.interface_basic 的相关知识。正确答案：BCD。解析：interface_basic 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: interface_basic
+    - id: type-interface_basic-004
+      type: single
+      difficulty: easy
+      stem: 【单项基础】关于 types.interface_basic，下面哪个选项是正确的？
+      options:
+        - 'A: 语法/语义上不正确的陈述'
+        - 'B: 正确：关于interface_basic.types的关键点描述（正确选项）'
+        - 'C: 语法/语义上不正确的陈述'
+        - 'D: 与interface_basic.types 相关但不适用的选项'
+      answer: B
+      explanation: 本题考查 types.interface_basic 的概念。正确答案为 B。解析：interface_basic 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: interface_basic
+    - id: type-interface_basic-005
+      type: multiple
+      difficulty: easy
+      stem: 【单项基础】关于 types.interface_basic，下面哪个选项是正确的？
+      options:
+        - 'A: 部分正确但不完整的说法'
+        - 'B: 正确项（关于interface_basic.types的重要结论）'
+        - 'C: 正确项（关于interface_basic.types的重要结论）'
+        - 'D: 正确项（关于interface_basic.types的重要结论）'
+      answer: BCD
+      explanation: 本题考查 types.interface_basic 的相关知识。正确答案：BCD。解析：interface_basic 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: interface_basic
+    - id: type-interface_basic-006
+      type: single
+      difficulty: easy
+      stem: 【单项基础】关于 types.interface_basic，下面哪个选项是正确的？
+      options:
+        - 'A: 常见误解或反例（容易混淆）'
+        - 'B: 正确：关于interface_basic.types的关键点描述（正确选项）'
+        - 'C: 部分正确但不完整的说法'
+        - 'D: 部分正确但不完整的说法'
+      answer: B
+      explanation: 本题考查 types.interface_basic 的概念。正确答案为 B。解析：interface_basic 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: interface_basic
+    - id: type-interface_basic-007
+      type: multiple
+      difficulty: easy
+      stem: 【单项基础】关于 types.interface_basic，下面哪个选项是正确的？
+      options:
+        - 'A: 正确项（关于interface_basic.types的重要结论）'
+        - 'B: 语法/语义上不正确的陈述'
+        - 'C: 正确项（关于interface_basic.types的重要结论）'
+        - 'D: 正确项（关于interface_basic.types的重要结论）'
+      answer: ACD
+      explanation: 本题考查 types.interface_basic 的相关知识。正确答案：ACD。解析：interface_basic 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: interface_basic
+    - id: type-interface_basic-008
+      type: single
+      difficulty: easy
+      stem: 【单项基础】关于 types.interface_basic，下面哪个选项是正确的？
+      options:
+        - 'A: 正确：关于interface_basic.types的关键点描述（正确选项）'
+        - 'B: 语法/语义上不正确的陈述'
+        - 'C: 语法/语义上不正确的陈述'
+        - 'D: 与interface_basic.types 相关但不适用的选项'
+      answer: A
+      explanation: 本题考查 types.interface_basic 的概念。正确答案为 A。解析：interface_basic 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: interface_basic
+    - id: type-interface_basic-009
+      type: multiple
+      difficulty: easy
+      stem: 【单项基础】关于 types.interface_basic，下面哪个选项是正确的？
+      options:
+        - 'A: 正确项（关于interface_basic.types的重要结论）'
+        - 'B: 正确项（关于interface_basic.types的重要结论）'
+        - 'C: 部分正确但不完整的说法'
+        - 'D: 语法/语义上不正确的陈述'
+      answer: AB
+      explanation: 本题考查 types.interface_basic 的相关知识。正确答案：AB。解析：interface_basic 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: interface_basic
+    - id: type-interface_basic-010
+      type: single
+      difficulty: easy
+      stem: 【单项基础】关于 types.interface_basic，下面哪个选项是正确的？
+      options:
+        - 'A: 部分正确但不完整的说法'
+        - 'B: 正确：关于interface_basic.types的关键点描述（正确选项）'
+        - 'C: 语法/语义上不正确的陈述'
+        - 'D: 与interface_basic.types 相关但不适用的选项'
+      answer: B
+      explanation: 本题考查 types.interface_basic 的概念。正确答案为 B。解析：interface_basic 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: interface_basic
+    - id: type-interface_basic-011
+      type: multiple
+      difficulty: easy
+      stem: 【单项基础】关于 types.interface_basic，下面哪个选项是正确的？
+      options:
+        - 'A: 正确项（关于interface_basic.types的重要结论）'
+        - 'B: 常见误解或反例（容易混淆）'
+        - 'C: 正确项（关于interface_basic.types的重要结论）'
+        - 'D: 正确项（关于interface_basic.types的重要结论）'
+      answer: ACD
+      explanation: 本题考查 types.interface_basic 的相关知识。正确答案：ACD。解析：interface_basic 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: interface_basic
+    - id: type-interface_basic-012
+      type: single
+      difficulty: easy
+      stem: 【单项基础】关于 types.interface_basic，下面哪个选项是正确的？
+      options:
+        - 'A: 语法/语义上不正确的陈述'
+        - 'B: 正确：关于interface_basic.types的关键点描述（正确选项）'
+        - 'C: 语法/语义上不正确的陈述'
+        - 'D: 常见误解或反例（容易混淆）'
+      answer: B
+      explanation: 本题考查 types.interface_basic 的概念。正确答案为 B。解析：interface_basic 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: interface_basic
+    - id: type-interface_basic-013
+      type: multiple
+      difficulty: easy
+      stem: 【单项基础】关于 types.interface_basic，下面哪个选项是正确的？
+      options:
+        - 'A: 正确项（关于interface_basic.types的重要结论）'
+        - 'B: 部分正确但不完整的说法'
+        - 'C: 部分正确但不完整的说法'
+        - 'D: 正确项（关于interface_basic.types的重要结论）'
+      answer: AD
+      explanation: 本题考查 types.interface_basic 的相关知识。正确答案：AD。解析：interface_basic 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: interface_basic
+    - id: type-interface_basic-014
+      type: single
+      difficulty: easy
+      stem: 【单项基础】关于 types.interface_basic，下面哪个选项是正确的？
+      options:
+        - 'A: 正确：关于interface_basic.types的关键点描述（正确选项）'
+        - 'B: 常见误解或反例（容易混淆）'
+        - 'C: 常见误解或反例（容易混淆）'
+        - 'D: 常见误解或反例（容易混淆）'
+      answer: A
+      explanation: 本题考查 types.interface_basic 的概念。正确答案为 A。解析：interface_basic 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: interface_basic
+    - id: type-interface_basic-015
+      type: multiple
+      difficulty: easy
+      stem: 【单项基础】关于 types.interface_basic，下面哪个选项是正确的？
+      options:
+        - 'A: 正确项（关于interface_basic.types的重要结论）'
+        - 'B: 与interface_basic.types 相关但不适用的选项'
+        - 'C: 正确项（关于interface_basic.types的重要结论）'
+        - 'D: 正确项（关于interface_basic.types的重要结论）'
+      answer: ACD
+      explanation: 本题考查 types.interface_basic 的相关知识。正确答案：ACD。解析：interface_basic 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: interface_basic
+    - id: type-interface_basic-016
+      type: single
+      difficulty: easy
+      stem: 【单项基础】关于 types.interface_basic，下面哪个选项是正确的？
+      options:
+        - 'A: 部分正确但不完整的说法'
+        - 'B: 正确：关于interface_basic.types的关键点描述（正确选项）'
+        - 'C: 常见误解或反例（容易混淆）'
+        - 'D: 语法/语义上不正确的陈述'
+      answer: B
+      explanation: 本题考查 types.interface_basic 的概念。正确答案为 B。解析：interface_basic 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: interface_basic
+    - id: type-interface_basic-017
+      type: multiple
+      difficulty: easy
+      stem: 【单项基础】关于 types.interface_basic，下面哪个选项是正确的？
+      options:
+        - 'A: 常见误解或反例（容易混淆）'
+        - 'B: 正确项（关于interface_basic.types的重要结论）'
+        - 'C: 正确项（关于interface_basic.types的重要结论）'
+        - 'D: 正确项（关于interface_basic.types的重要结论）'
+      answer: BCD
+      explanation: 本题考查 types.interface_basic 的相关知识。正确答案：BCD。解析：interface_basic 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: interface_basic
+    - id: type-interface_basic-018
+      type: single
+      difficulty: easy
+      stem: 【单项基础】关于 types.interface_basic，下面哪个选项是正确的？
+      options:
+        - 'A: 部分正确但不完整的说法'
+        - 'B: 正确：关于interface_basic.types的关键点描述（正确选项）'
+        - 'C: 语法/语义上不正确的陈述'
+        - 'D: 部分正确但不完整的说法'
+      answer: B
+      explanation: 本题考查 types.interface_basic 的概念。正确答案为 B。解析：interface_basic 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: interface_basic
+    - id: type-interface_basic-019
+      type: multiple
+      difficulty: medium
+      stem: 【应用题】在 types.interface_basic 的情境下，哪个说法更合适？
+      options:
+        - 'A: 部分正确但不完整的说法'
+        - 'B: 正确项（关于interface_basic.types的重要结论）'
+        - 'C: 正确项（关于interface_basic.types的重要结论）'
+        - 'D: 正确项（关于interface_basic.types的重要结论）'
+      answer: BCD
+      explanation: 本题考查 types.interface_basic 的相关知识。正确答案：BCD。解析：interface_basic 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: interface_basic
+    - id: type-interface_basic-020
+      type: single
+      difficulty: medium
+      stem: 【应用题】在 types.interface_basic 的情境下，哪个说法更合适？
+      options:
+        - 'A: 部分正确但不完整的说法'
+        - 'B: 正确：关于interface_basic.types的关键点描述（正确选项）'
+        - 'C: 与interface_basic.types 相关但不适用的选项'
+        - 'D: 部分正确但不完整的说法'
+      answer: B
+      explanation: 本题考查 types.interface_basic 的概念。正确答案为 B。解析：interface_basic 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: interface_basic
+    - id: type-interface_basic-021
+      type: multiple
+      difficulty: medium
+      stem: 【应用题】在 types.interface_basic 的情境下，哪个说法更合适？
+      options:
+        - 'A: 正确项（关于interface_basic.types的重要结论）'
+        - 'B: 正确项（关于interface_basic.types的重要结论）'
+        - 'C: 正确项（关于interface_basic.types的重要结论）'
+        - 'D: 语法/语义上不正确的陈述'
+      answer: ABC
+      explanation: 本题考查 types.interface_basic 的相关知识。正确答案：ABC。解析：interface_basic 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: interface_basic
+    - id: type-interface_basic-022
+      type: single
+      difficulty: medium
+      stem: 【应用题】在 types.interface_basic 的情境下，哪个说法更合适？
+      options:
+        - 'A: 常见误解或反例（容易混淆）'
+        - 'B: 语法/语义上不正确的陈述'
+        - 'C: 正确：关于interface_basic.types的关键点描述（正确选项）'
+        - 'D: 常见误解或反例（容易混淆）'
+      answer: C
+      explanation: 本题考查 types.interface_basic 的概念。正确答案为 C。解析：interface_basic 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: interface_basic
+    - id: type-interface_basic-023
+      type: multiple
+      difficulty: medium
+      stem: 【应用题】在 types.interface_basic 的情境下，哪个说法更合适？
+      options:
+        - 'A: 正确项（关于interface_basic.types的重要结论）'
+        - 'B: 正确项（关于interface_basic.types的重要结论）'
+        - 'C: 常见误解或反例（容易混淆）'
+        - 'D: 正确项（关于interface_basic.types的重要结论）'
+      answer: ABD
+      explanation: 本题考查 types.interface_basic 的相关知识。正确答案：ABD。解析：interface_basic 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: interface_basic
+    - id: type-interface_basic-024
+      type: single
+      difficulty: medium
+      stem: 【应用题】在 types.interface_basic 的情境下，哪个说法更合适？
+      options:
+        - 'A: 部分正确但不完整的说法'
+        - 'B: 与interface_basic.types 相关但不适用的选项'
+        - 'C: 正确：关于interface_basic.types的关键点描述（正确选项）'
+        - 'D: 部分正确但不完整的说法'
+      answer: C
+      explanation: 本题考查 types.interface_basic 的概念。正确答案为 C。解析：interface_basic 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: interface_basic
+    - id: type-interface_basic-025
+      type: multiple
+      difficulty: medium
+      stem: 【应用题】在 types.interface_basic 的情境下，哪个说法更合适？
+      options:
+        - 'A: 正确项（关于interface_basic.types的重要结论）'
+        - 'B: 正确项（关于interface_basic.types的重要结论）'
+        - 'C: 与interface_basic.types 相关但不适用的选项'
+        - 'D: 常见误解或反例（容易混淆）'
+      answer: AB
+      explanation: 本题考查 types.interface_basic 的相关知识。正确答案：AB。解析：interface_basic 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: interface_basic
+    - id: type-interface_basic-026
+      type: single
+      difficulty: medium
+      stem: 【应用题】在 types.interface_basic 的情境下，哪个说法更合适？
+      options:
+        - 'A: 常见误解或反例（容易混淆）'
+        - 'B: 正确：关于interface_basic.types的关键点描述（正确选项）'
+        - 'C: 常见误解或反例（容易混淆）'
+        - 'D: 语法/语义上不正确的陈述'
+      answer: B
+      explanation: 本题考查 types.interface_basic 的概念。正确答案为 B。解析：interface_basic 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: interface_basic
+    - id: type-interface_basic-027
+      type: multiple
+      difficulty: medium
+      stem: 【应用题】在 types.interface_basic 的情境下，哪个说法更合适？
+      options:
+        - 'A: 正确项（关于interface_basic.types的重要结论）'
+        - 'B: 语法/语义上不正确的陈述'
+        - 'C: 正确项（关于interface_basic.types的重要结论）'
+        - 'D: 常见误解或反例（容易混淆）'
+      answer: AC
+      explanation: 本题考查 types.interface_basic 的相关知识。正确答案：AC。解析：interface_basic 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: interface_basic
+    - id: type-interface_basic-028
+      type: single
+      difficulty: medium
+      stem: 【应用题】在 types.interface_basic 的情境下，哪个说法更合适？
+      options:
+        - 'A: 语法/语义上不正确的陈述'
+        - 'B: 正确：关于interface_basic.types的关键点描述（正确选项）'
+        - 'C: 与interface_basic.types 相关但不适用的选项'
+        - 'D: 语法/语义上不正确的陈述'
+      answer: B
+      explanation: 本题考查 types.interface_basic 的概念。正确答案为 B。解析：interface_basic 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: interface_basic
+    - id: type-interface_basic-029
+      type: multiple
+      difficulty: medium
+      stem: 【应用题】在 types.interface_basic 的情境下，哪个说法更合适？
+      options:
+        - 'A: 与interface_basic.types 相关但不适用的选项'
+        - 'B: 正确项（关于interface_basic.types的重要结论）'
+        - 'C: 部分正确但不完整的说法'
+        - 'D: 正确项（关于interface_basic.types的重要结论）'
+      answer: BD
+      explanation: 本题考查 types.interface_basic 的相关知识。正确答案：BD。解析：interface_basic 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: interface_basic
+    - id: type-interface_basic-030
+      type: single
+      difficulty: medium
+      stem: 【应用题】在 types.interface_basic 的情境下，哪个说法更合适？
+      options:
+        - 'A: 语法/语义上不正确的陈述'
+        - 'B: 正确：关于interface_basic.types的关键点描述（正确选项）'
+        - 'C: 语法/语义上不正确的陈述'
+        - 'D: 部分正确但不完整的说法'
+      answer: B
+      explanation: 本题考查 types.interface_basic 的概念。正确答案为 B。解析：interface_basic 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: interface_basic
+    - id: type-interface_basic-031
+      type: multiple
+      difficulty: medium
+      stem: 【应用题】在 types.interface_basic 的情境下，哪个说法更合适？
+      options:
+        - 'A: 语法/语义上不正确的陈述'
+        - 'B: 正确项（关于interface_basic.types的重要结论）'
+        - 'C: 正确项（关于interface_basic.types的重要结论）'
+        - 'D: 与interface_basic.types 相关但不适用的选项'
+      answer: BC
+      explanation: 本题考查 types.interface_basic 的相关知识。正确答案：BC。解析：interface_basic 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: interface_basic
+    - id: type-interface_basic-032
+      type: single
+      difficulty: medium
+      stem: 【应用题】在 types.interface_basic 的情境下，哪个说法更合适？
+      options:
+        - 'A: 常见误解或反例（容易混淆）'
+        - 'B: 与interface_basic.types 相关但不适用的选项'
+        - 'C: 正确：关于interface_basic.types的关键点描述（正确选项）'
+        - 'D: 与interface_basic.types 相关但不适用的选项'
+      answer: C
+      explanation: 本题考查 types.interface_basic 的概念。正确答案为 C。解析：interface_basic 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: interface_basic
+    - id: type-interface_basic-033
+      type: multiple
+      difficulty: medium
+      stem: 【应用题】在 types.interface_basic 的情境下，哪个说法更合适？
+      options:
+        - 'A: 正确项（关于interface_basic.types的重要结论）'
+        - 'B: 正确项（关于interface_basic.types的重要结论）'
+        - 'C: 与interface_basic.types 相关但不适用的选项'
+        - 'D: 常见误解或反例（容易混淆）'
+      answer: AB
+      explanation: 本题考查 types.interface_basic 的相关知识。正确答案：AB。解析：interface_basic 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: interface_basic
+    - id: type-interface_basic-034
+      type: single
+      difficulty: medium
+      stem: 【应用题】在 types.interface_basic 的情境下，哪个说法更合适？
+      options:
+        - 'A: 语法/语义上不正确的陈述'
+        - 'B: 正确：关于interface_basic.types的关键点描述（正确选项）'
+        - 'C: 语法/语义上不正确的陈述'
+        - 'D: 与interface_basic.types 相关但不适用的选项'
+      answer: B
+      explanation: 本题考查 types.interface_basic 的概念。正确答案为 B。解析：interface_basic 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: interface_basic
+    - id: type-interface_basic-035
+      type: multiple
+      difficulty: medium
+      stem: 【应用题】在 types.interface_basic 的情境下，哪个说法更合适？
+      options:
+        - 'A: 正确项（关于interface_basic.types的重要结论）'
+        - 'B: 语法/语义上不正确的陈述'
+        - 'C: 正确项（关于interface_basic.types的重要结论）'
+        - 'D: 正确项（关于interface_basic.types的重要结论）'
+      answer: ACD
+      explanation: 本题考查 types.interface_basic 的相关知识。正确答案：ACD。解析：interface_basic 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: interface_basic
+    - id: type-interface_basic-036
+      type: single
+      difficulty: medium
+      stem: 【应用题】在 types.interface_basic 的情境下，哪个说法更合适？
+      options:
+        - 'A: 常见误解或反例（容易混淆）'
+        - 'B: 部分正确但不完整的说法'
+        - 'C: 正确：关于interface_basic.types的关键点描述（正确选项）'
+        - 'D: 常见误解或反例（容易混淆）'
+      answer: C
+      explanation: 本题考查 types.interface_basic 的概念。正确答案为 C。解析：interface_basic 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: interface_basic
+    - id: type-interface_basic-037
+      type: multiple
+      difficulty: hard
+      stem: 【思考题】针对 types.interface_basic，判断下列说法的正确性并选择最合适的选项。
+      options:
+        - 'A: 正确项（关于interface_basic.types的重要结论）'
+        - 'B: 部分正确但不完整的说法'
+        - 'C: 正确项（关于interface_basic.types的重要结论）'
+        - 'D: 正确项（关于interface_basic.types的重要结论）'
+      answer: ACD
+      explanation: 本题考查 types.interface_basic 的相关知识。正确答案：ACD。解析：interface_basic 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: interface_basic
+    - id: type-interface_basic-038
+      type: single
+      difficulty: hard
+      stem: 【思考题】针对 types.interface_basic，判断下列说法的正确性并选择最合适的选项。
+      options:
+        - 'A: 与interface_basic.types 相关但不适用的选项'
+        - 'B: 语法/语义上不正确的陈述'
+        - 'C: 正确：关于interface_basic.types的关键点描述（正确选项）'
+        - 'D: 与interface_basic.types 相关但不适用的选项'
+      answer: C
+      explanation: 本题考查 types.interface_basic 的概念。正确答案为 C。解析：interface_basic 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: interface_basic
+    - id: type-interface_basic-039
+      type: multiple
+      difficulty: hard
+      stem: 【思考题】针对 types.interface_basic，判断下列说法的正确性并选择最合适的选项。
+      options:
+        - 'A: 正确项（关于interface_basic.types的重要结论）'
+        - 'B: 部分正确但不完整的说法'
+        - 'C: 与interface_basic.types 相关但不适用的选项'
+        - 'D: 正确项（关于interface_basic.types的重要结论）'
+      answer: AD
+      explanation: 本题考查 types.interface_basic 的相关知识。正确答案：AD。解析：interface_basic 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: interface_basic
+    - id: type-interface_basic-040
+      type: single
+      difficulty: hard
+      stem: 【思考题】针对 types.interface_basic，判断下列说法的正确性并选择最合适的选项。
+      options:
+        - 'A: 常见误解或反例（容易混淆）'
+        - 'B: 常见误解或反例（容易混淆）'
+        - 'C: 正确：关于interface_basic.types的关键点描述（正确选项）'
+        - 'D: 语法/语义上不正确的陈述'
+      answer: C
+      explanation: 本题考查 types.interface_basic 的概念。正确答案为 C。解析：interface_basic 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: interface_basic
+    - id: type-interface_basic-041
+      type: multiple
+      difficulty: hard
+      stem: 【思考题】针对 types.interface_basic，判断下列说法的正确性并选择最合适的选项。
+      options:
+        - 'A: 正确项（关于interface_basic.types的重要结论）'
+        - 'B: 正确项（关于interface_basic.types的重要结论）'
+        - 'C: 与interface_basic.types 相关但不适用的选项'
+        - 'D: 正确项（关于interface_basic.types的重要结论）'
+      answer: ABD
+      explanation: 本题考查 types.interface_basic 的相关知识。正确答案：ABD。解析：interface_basic 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: interface_basic
+    - id: type-interface_basic-042
+      type: single
+      difficulty: hard
+      stem: 【思考题】针对 types.interface_basic，判断下列说法的正确性并选择最合适的选项。
+      options:
+        - 'A: 与interface_basic.types 相关但不适用的选项'
+        - 'B: 部分正确但不完整的说法'
+        - 'C: 常见误解或反例（容易混淆）'
+        - 'D: 正确：关于interface_basic.types的关键点描述（正确选项）'
+      answer: D
+      explanation: 本题考查 types.interface_basic 的概念。正确答案为 D。解析：interface_basic 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: interface_basic
+    - id: type-interface_basic-043
+      type: multiple
+      difficulty: hard
+      stem: 【思考题】针对 types.interface_basic，判断下列说法的正确性并选择最合适的选项。
+      options:
+        - 'A: 部分正确但不完整的说法'
+        - 'B: 正确项（关于interface_basic.types的重要结论）'
+        - 'C: 正确项（关于interface_basic.types的重要结论）'
+        - 'D: 常见误解或反例（容易混淆）'
+      answer: BC
+      explanation: 本题考查 types.interface_basic 的相关知识。正确答案：BC。解析：interface_basic 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: interface_basic
+    - id: type-interface_basic-044
+      type: single
+      difficulty: hard
+      stem: 【思考题】针对 types.interface_basic，判断下列说法的正确性并选择最合适的选项。
+      options:
+        - 'A: 与interface_basic.types 相关但不适用的选项'
+        - 'B: 部分正确但不完整的说法'
+        - 'C: 正确：关于interface_basic.types的关键点描述（正确选项）'
+        - 'D: 与interface_basic.types 相关但不适用的选项'
+      answer: C
+      explanation: 本题考查 types.interface_basic 的概念。正确答案为 C。解析：interface_basic 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: interface_basic
+    - id: type-interface_basic-045
+      type: multiple
+      difficulty: hard
+      stem: 【思考题】针对 types.interface_basic，判断下列说法的正确性并选择最合适的选项。
+      options:
+        - 'A: 正确项（关于interface_basic.types的重要结论）'
+        - 'B: 正确项（关于interface_basic.types的重要结论）'
+        - 'C: 与interface_basic.types 相关但不适用的选项'
+        - 'D: 正确项（关于interface_basic.types的重要结论）'
+      answer: ABD
+      explanation: 本题考查 types.interface_basic 的相关知识。正确答案：ABD。解析：interface_basic 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: interface_basic

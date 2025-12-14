@@ -1,20 +1,23 @@
 package quiz
 
-import (
-	"context"
-	"time"
-)
+// repository.go 可扩展的仓储方法（简单包装）
 
-// QuizRepository 定义测验题目、会话与作答的完整持久化接口。
-type QuizRepository interface {
-	GetQuestionsByChapter(ctx context.Context, topic, chapter string) ([]QuizQuestion, error)
-	CreateSession(ctx context.Context, session *QuizSession) (string, error)
-	SaveAttempts(ctx context.Context, attempts []QuizAttempt) error
-	GetHistory(ctx context.Context, userID int64, topic string, limit int) ([]QuizSession, error)
+// Topics 返回所有主题名称
+func (r *QuizRepository) Topics() []string {
+	out := []string{}
+	for t := range r.banks {
+		out = append(out, t)
+	}
+	return out
 }
 
-// Repository 定义测验记录的持久化接口。
-type Repository interface {
-	SaveRecord(ctx context.Context, record *Record) (int64, error)
-	ListRecords(ctx context.Context, userID int64, topic string, from, to *time.Time) ([]Record, error)
+// Chapters 返回指定主题的章节列表
+func (r *QuizRepository) Chapters(topic string) []string {
+	out := []string{}
+	if chs, ok := r.banks[topic]; ok {
+		for c := range chs {
+			out = append(out, c)
+		}
+	}
+	return out
 }

@@ -1,0 +1,456 @@
+questions:
+    - id: const-rune-001
+      type: multiple
+      difficulty: easy
+      stem: 【单项基础】关于 constants.rune，下面哪个选项是正确的？
+      options:
+        - 'A: 正确项（关于rune.constants的重要结论）'
+        - 'B: 正确项（关于rune.constants的重要结论）'
+        - 'C: 常见误解或反例（容易混淆）'
+        - 'D: 正确项（关于rune.constants的重要结论）'
+      answer: ABD
+      explanation: 本题考查 constants.rune 的相关知识。正确答案：ABD。解析：rune 的关键点在于...（请在校稿时补充具体细节）。
+      topic: constants
+      chapter: rune
+    - id: const-rune-002
+      type: single
+      difficulty: easy
+      stem: 【单项基础】关于 constants.rune，下面哪个选项是正确的？
+      options:
+        - 'A: 常见误解或反例（容易混淆）'
+        - 'B: 正确：关于rune.constants的关键点描述（正确选项）'
+        - 'C: 语法/语义上不正确的陈述'
+        - 'D: 语法/语义上不正确的陈述'
+      answer: B
+      explanation: 本题考查 constants.rune 的概念。正确答案为 B。解析：rune 的关键点在于...（请在校稿时补充具体细节）。
+      topic: constants
+      chapter: rune
+    - id: const-rune-003
+      type: multiple
+      difficulty: easy
+      stem: 【单项基础】关于 constants.rune，下面哪个选项是正确的？
+      options:
+        - 'A: 正确项（关于rune.constants的重要结论）'
+        - 'B: 正确项（关于rune.constants的重要结论）'
+        - 'C: 部分正确但不完整的说法'
+        - 'D: 正确项（关于rune.constants的重要结论）'
+      answer: ABD
+      explanation: 本题考查 constants.rune 的相关知识。正确答案：ABD。解析：rune 的关键点在于...（请在校稿时补充具体细节）。
+      topic: constants
+      chapter: rune
+    - id: const-rune-004
+      type: single
+      difficulty: easy
+      stem: 【单项基础】关于 constants.rune，下面哪个选项是正确的？
+      options:
+        - 'A: 正确：关于rune.constants的关键点描述（正确选项）'
+        - 'B: 常见误解或反例（容易混淆）'
+        - 'C: 常见误解或反例（容易混淆）'
+        - 'D: 语法/语义上不正确的陈述'
+      answer: A
+      explanation: 本题考查 constants.rune 的概念。正确答案为 A。解析：rune 的关键点在于...（请在校稿时补充具体细节）。
+      topic: constants
+      chapter: rune
+    - id: const-rune-005
+      type: multiple
+      difficulty: easy
+      stem: 【单项基础】关于 constants.rune，下面哪个选项是正确的？
+      options:
+        - 'A: 语法/语义上不正确的陈述'
+        - 'B: 常见误解或反例（容易混淆）'
+        - 'C: 正确项（关于rune.constants的重要结论）'
+        - 'D: 正确项（关于rune.constants的重要结论）'
+      answer: CD
+      explanation: 本题考查 constants.rune 的相关知识。正确答案：CD。解析：rune 的关键点在于...（请在校稿时补充具体细节）。
+      topic: constants
+      chapter: rune
+    - id: const-rune-006
+      type: single
+      difficulty: easy
+      stem: 【单项基础】关于 constants.rune，下面哪个选项是正确的？
+      options:
+        - 'A: 常见误解或反例（容易混淆）'
+        - 'B: 正确：关于rune.constants的关键点描述（正确选项）'
+        - 'C: 与rune.constants 相关但不适用的选项'
+        - 'D: 语法/语义上不正确的陈述'
+      answer: B
+      explanation: 本题考查 constants.rune 的概念。正确答案为 B。解析：rune 的关键点在于...（请在校稿时补充具体细节）。
+      topic: constants
+      chapter: rune
+    - id: const-rune-007
+      type: multiple
+      difficulty: easy
+      stem: 【单项基础】关于 constants.rune，下面哪个选项是正确的？
+      options:
+        - 'A: 部分正确但不完整的说法'
+        - 'B: 正确项（关于rune.constants的重要结论）'
+        - 'C: 正确项（关于rune.constants的重要结论）'
+        - 'D: 正确项（关于rune.constants的重要结论）'
+      answer: BCD
+      explanation: 本题考查 constants.rune 的相关知识。正确答案：BCD。解析：rune 的关键点在于...（请在校稿时补充具体细节）。
+      topic: constants
+      chapter: rune
+    - id: const-rune-008
+      type: single
+      difficulty: easy
+      stem: 【单项基础】关于 constants.rune，下面哪个选项是正确的？
+      options:
+        - 'A: 语法/语义上不正确的陈述'
+        - 'B: 正确：关于rune.constants的关键点描述（正确选项）'
+        - 'C: 语法/语义上不正确的陈述'
+        - 'D: 部分正确但不完整的说法'
+      answer: B
+      explanation: 本题考查 constants.rune 的概念。正确答案为 B。解析：rune 的关键点在于...（请在校稿时补充具体细节）。
+      topic: constants
+      chapter: rune
+    - id: const-rune-009
+      type: multiple
+      difficulty: easy
+      stem: 【单项基础】关于 constants.rune，下面哪个选项是正确的？
+      options:
+        - 'A: 正确项（关于rune.constants的重要结论）'
+        - 'B: 正确项（关于rune.constants的重要结论）'
+        - 'C: 部分正确但不完整的说法'
+        - 'D: 正确项（关于rune.constants的重要结论）'
+      answer: ABD
+      explanation: 本题考查 constants.rune 的相关知识。正确答案：ABD。解析：rune 的关键点在于...（请在校稿时补充具体细节）。
+      topic: constants
+      chapter: rune
+    - id: const-rune-010
+      type: single
+      difficulty: easy
+      stem: 【单项基础】关于 constants.rune，下面哪个选项是正确的？
+      options:
+        - 'A: 正确：关于rune.constants的关键点描述（正确选项）'
+        - 'B: 语法/语义上不正确的陈述'
+        - 'C: 常见误解或反例（容易混淆）'
+        - 'D: 与rune.constants 相关但不适用的选项'
+      answer: A
+      explanation: 本题考查 constants.rune 的概念。正确答案为 A。解析：rune 的关键点在于...（请在校稿时补充具体细节）。
+      topic: constants
+      chapter: rune
+    - id: const-rune-011
+      type: multiple
+      difficulty: easy
+      stem: 【单项基础】关于 constants.rune，下面哪个选项是正确的？
+      options:
+        - 'A: 正确项（关于rune.constants的重要结论）'
+        - 'B: 正确项（关于rune.constants的重要结论）'
+        - 'C: 正确项（关于rune.constants的重要结论）'
+        - 'D: 部分正确但不完整的说法'
+      answer: ABC
+      explanation: 本题考查 constants.rune 的相关知识。正确答案：ABC。解析：rune 的关键点在于...（请在校稿时补充具体细节）。
+      topic: constants
+      chapter: rune
+    - id: const-rune-012
+      type: single
+      difficulty: easy
+      stem: 【单项基础】关于 constants.rune，下面哪个选项是正确的？
+      options:
+        - 'A: 正确：关于rune.constants的关键点描述（正确选项）'
+        - 'B: 常见误解或反例（容易混淆）'
+        - 'C: 常见误解或反例（容易混淆）'
+        - 'D: 语法/语义上不正确的陈述'
+      answer: A
+      explanation: 本题考查 constants.rune 的概念。正确答案为 A。解析：rune 的关键点在于...（请在校稿时补充具体细节）。
+      topic: constants
+      chapter: rune
+    - id: const-rune-013
+      type: multiple
+      difficulty: easy
+      stem: 【单项基础】关于 constants.rune，下面哪个选项是正确的？
+      options:
+        - 'A: 正确项（关于rune.constants的重要结论）'
+        - 'B: 常见误解或反例（容易混淆）'
+        - 'C: 正确项（关于rune.constants的重要结论）'
+        - 'D: 正确项（关于rune.constants的重要结论）'
+      answer: ACD
+      explanation: 本题考查 constants.rune 的相关知识。正确答案：ACD。解析：rune 的关键点在于...（请在校稿时补充具体细节）。
+      topic: constants
+      chapter: rune
+    - id: const-rune-014
+      type: single
+      difficulty: easy
+      stem: 【单项基础】关于 constants.rune，下面哪个选项是正确的？
+      options:
+        - 'A: 与rune.constants 相关但不适用的选项'
+        - 'B: 正确：关于rune.constants的关键点描述（正确选项）'
+        - 'C: 常见误解或反例（容易混淆）'
+        - 'D: 部分正确但不完整的说法'
+      answer: B
+      explanation: 本题考查 constants.rune 的概念。正确答案为 B。解析：rune 的关键点在于...（请在校稿时补充具体细节）。
+      topic: constants
+      chapter: rune
+    - id: const-rune-015
+      type: multiple
+      difficulty: medium
+      stem: 【应用题】在 constants.rune 的情境下，哪个说法更合适？
+      options:
+        - 'A: 正确项（关于rune.constants的重要结论）'
+        - 'B: 正确项（关于rune.constants的重要结论）'
+        - 'C: 语法/语义上不正确的陈述'
+        - 'D: 正确项（关于rune.constants的重要结论）'
+      answer: ABD
+      explanation: 本题考查 constants.rune 的相关知识。正确答案：ABD。解析：rune 的关键点在于...（请在校稿时补充具体细节）。
+      topic: constants
+      chapter: rune
+    - id: const-rune-016
+      type: single
+      difficulty: medium
+      stem: 【应用题】在 constants.rune 的情境下，哪个说法更合适？
+      options:
+        - 'A: 常见误解或反例（容易混淆）'
+        - 'B: 正确：关于rune.constants的关键点描述（正确选项）'
+        - 'C: 常见误解或反例（容易混淆）'
+        - 'D: 常见误解或反例（容易混淆）'
+      answer: B
+      explanation: 本题考查 constants.rune 的概念。正确答案为 B。解析：rune 的关键点在于...（请在校稿时补充具体细节）。
+      topic: constants
+      chapter: rune
+    - id: const-rune-017
+      type: multiple
+      difficulty: medium
+      stem: 【应用题】在 constants.rune 的情境下，哪个说法更合适？
+      options:
+        - 'A: 正确项（关于rune.constants的重要结论）'
+        - 'B: 部分正确但不完整的说法'
+        - 'C: 正确项（关于rune.constants的重要结论）'
+        - 'D: 正确项（关于rune.constants的重要结论）'
+      answer: ACD
+      explanation: 本题考查 constants.rune 的相关知识。正确答案：ACD。解析：rune 的关键点在于...（请在校稿时补充具体细节）。
+      topic: constants
+      chapter: rune
+    - id: const-rune-018
+      type: single
+      difficulty: medium
+      stem: 【应用题】在 constants.rune 的情境下，哪个说法更合适？
+      options:
+        - 'A: 常见误解或反例（容易混淆）'
+        - 'B: 正确：关于rune.constants的关键点描述（正确选项）'
+        - 'C: 常见误解或反例（容易混淆）'
+        - 'D: 常见误解或反例（容易混淆）'
+      answer: B
+      explanation: 本题考查 constants.rune 的概念。正确答案为 B。解析：rune 的关键点在于...（请在校稿时补充具体细节）。
+      topic: constants
+      chapter: rune
+    - id: const-rune-019
+      type: multiple
+      difficulty: medium
+      stem: 【应用题】在 constants.rune 的情境下，哪个说法更合适？
+      options:
+        - 'A: 与rune.constants 相关但不适用的选项'
+        - 'B: 正确项（关于rune.constants的重要结论）'
+        - 'C: 正确项（关于rune.constants的重要结论）'
+        - 'D: 正确项（关于rune.constants的重要结论）'
+      answer: BCD
+      explanation: 本题考查 constants.rune 的相关知识。正确答案：BCD。解析：rune 的关键点在于...（请在校稿时补充具体细节）。
+      topic: constants
+      chapter: rune
+    - id: const-rune-020
+      type: single
+      difficulty: medium
+      stem: 【应用题】在 constants.rune 的情境下，哪个说法更合适？
+      options:
+        - 'A: 部分正确但不完整的说法'
+        - 'B: 正确：关于rune.constants的关键点描述（正确选项）'
+        - 'C: 与rune.constants 相关但不适用的选项'
+        - 'D: 部分正确但不完整的说法'
+      answer: B
+      explanation: 本题考查 constants.rune 的概念。正确答案为 B。解析：rune 的关键点在于...（请在校稿时补充具体细节）。
+      topic: constants
+      chapter: rune
+    - id: const-rune-021
+      type: multiple
+      difficulty: medium
+      stem: 【应用题】在 constants.rune 的情境下，哪个说法更合适？
+      options:
+        - 'A: 正确项（关于rune.constants的重要结论）'
+        - 'B: 部分正确但不完整的说法'
+        - 'C: 部分正确但不完整的说法'
+        - 'D: 正确项（关于rune.constants的重要结论）'
+      answer: AD
+      explanation: 本题考查 constants.rune 的相关知识。正确答案：AD。解析：rune 的关键点在于...（请在校稿时补充具体细节）。
+      topic: constants
+      chapter: rune
+    - id: const-rune-022
+      type: single
+      difficulty: medium
+      stem: 【应用题】在 constants.rune 的情境下，哪个说法更合适？
+      options:
+        - 'A: 部分正确但不完整的说法'
+        - 'B: 部分正确但不完整的说法'
+        - 'C: 正确：关于rune.constants的关键点描述（正确选项）'
+        - 'D: 语法/语义上不正确的陈述'
+      answer: C
+      explanation: 本题考查 constants.rune 的概念。正确答案为 C。解析：rune 的关键点在于...（请在校稿时补充具体细节）。
+      topic: constants
+      chapter: rune
+    - id: const-rune-023
+      type: multiple
+      difficulty: medium
+      stem: 【应用题】在 constants.rune 的情境下，哪个说法更合适？
+      options:
+        - 'A: 部分正确但不完整的说法'
+        - 'B: 正确项（关于rune.constants的重要结论）'
+        - 'C: 正确项（关于rune.constants的重要结论）'
+        - 'D: 语法/语义上不正确的陈述'
+      answer: BC
+      explanation: 本题考查 constants.rune 的相关知识。正确答案：BC。解析：rune 的关键点在于...（请在校稿时补充具体细节）。
+      topic: constants
+      chapter: rune
+    - id: const-rune-024
+      type: single
+      difficulty: medium
+      stem: 【应用题】在 constants.rune 的情境下，哪个说法更合适？
+      options:
+        - 'A: 部分正确但不完整的说法'
+        - 'B: 与rune.constants 相关但不适用的选项'
+        - 'C: 正确：关于rune.constants的关键点描述（正确选项）'
+        - 'D: 部分正确但不完整的说法'
+      answer: C
+      explanation: 本题考查 constants.rune 的概念。正确答案为 C。解析：rune 的关键点在于...（请在校稿时补充具体细节）。
+      topic: constants
+      chapter: rune
+    - id: const-rune-025
+      type: multiple
+      difficulty: medium
+      stem: 【应用题】在 constants.rune 的情境下，哪个说法更合适？
+      options:
+        - 'A: 正确项（关于rune.constants的重要结论）'
+        - 'B: 正确项（关于rune.constants的重要结论）'
+        - 'C: 正确项（关于rune.constants的重要结论）'
+        - 'D: 语法/语义上不正确的陈述'
+      answer: ABC
+      explanation: 本题考查 constants.rune 的相关知识。正确答案：ABC。解析：rune 的关键点在于...（请在校稿时补充具体细节）。
+      topic: constants
+      chapter: rune
+    - id: const-rune-026
+      type: single
+      difficulty: medium
+      stem: 【应用题】在 constants.rune 的情境下，哪个说法更合适？
+      options:
+        - 'A: 语法/语义上不正确的陈述'
+        - 'B: 正确：关于rune.constants的关键点描述（正确选项）'
+        - 'C: 常见误解或反例（容易混淆）'
+        - 'D: 部分正确但不完整的说法'
+      answer: B
+      explanation: 本题考查 constants.rune 的概念。正确答案为 B。解析：rune 的关键点在于...（请在校稿时补充具体细节）。
+      topic: constants
+      chapter: rune
+    - id: const-rune-027
+      type: multiple
+      difficulty: medium
+      stem: 【应用题】在 constants.rune 的情境下，哪个说法更合适？
+      options:
+        - 'A: 正确项（关于rune.constants的重要结论）'
+        - 'B: 语法/语义上不正确的陈述'
+        - 'C: 正确项（关于rune.constants的重要结论）'
+        - 'D: 正确项（关于rune.constants的重要结论）'
+      answer: ACD
+      explanation: 本题考查 constants.rune 的相关知识。正确答案：ACD。解析：rune 的关键点在于...（请在校稿时补充具体细节）。
+      topic: constants
+      chapter: rune
+    - id: const-rune-028
+      type: single
+      difficulty: medium
+      stem: 【应用题】在 constants.rune 的情境下，哪个说法更合适？
+      options:
+        - 'A: 部分正确但不完整的说法'
+        - 'B: 常见误解或反例（容易混淆）'
+        - 'C: 正确：关于rune.constants的关键点描述（正确选项）'
+        - 'D: 部分正确但不完整的说法'
+      answer: C
+      explanation: 本题考查 constants.rune 的概念。正确答案为 C。解析：rune 的关键点在于...（请在校稿时补充具体细节）。
+      topic: constants
+      chapter: rune
+    - id: const-rune-029
+      type: multiple
+      difficulty: hard
+      stem: 【思考题】针对 constants.rune，判断下列说法的正确性并选择最合适的选项。
+      options:
+        - 'A: 正确项（关于rune.constants的重要结论）'
+        - 'B: 语法/语义上不正确的陈述'
+        - 'C: 正确项（关于rune.constants的重要结论）'
+        - 'D: 部分正确但不完整的说法'
+      answer: AC
+      explanation: 本题考查 constants.rune 的相关知识。正确答案：AC。解析：rune 的关键点在于...（请在校稿时补充具体细节）。
+      topic: constants
+      chapter: rune
+    - id: const-rune-030
+      type: single
+      difficulty: hard
+      stem: 【思考题】针对 constants.rune，判断下列说法的正确性并选择最合适的选项。
+      options:
+        - 'A: 常见误解或反例（容易混淆）'
+        - 'B: 与rune.constants 相关但不适用的选项'
+        - 'C: 语法/语义上不正确的陈述'
+        - 'D: 正确：关于rune.constants的关键点描述（正确选项）'
+      answer: D
+      explanation: 本题考查 constants.rune 的概念。正确答案为 D。解析：rune 的关键点在于...（请在校稿时补充具体细节）。
+      topic: constants
+      chapter: rune
+    - id: const-rune-031
+      type: multiple
+      difficulty: hard
+      stem: 【思考题】针对 constants.rune，判断下列说法的正确性并选择最合适的选项。
+      options:
+        - 'A: 部分正确但不完整的说法'
+        - 'B: 正确项（关于rune.constants的重要结论）'
+        - 'C: 正确项（关于rune.constants的重要结论）'
+        - 'D: 正确项（关于rune.constants的重要结论）'
+      answer: BCD
+      explanation: 本题考查 constants.rune 的相关知识。正确答案：BCD。解析：rune 的关键点在于...（请在校稿时补充具体细节）。
+      topic: constants
+      chapter: rune
+    - id: const-rune-032
+      type: single
+      difficulty: hard
+      stem: 【思考题】针对 constants.rune，判断下列说法的正确性并选择最合适的选项。
+      options:
+        - 'A: 部分正确但不完整的说法'
+        - 'B: 与rune.constants 相关但不适用的选项'
+        - 'C: 正确：关于rune.constants的关键点描述（正确选项）'
+        - 'D: 常见误解或反例（容易混淆）'
+      answer: C
+      explanation: 本题考查 constants.rune 的概念。正确答案为 C。解析：rune 的关键点在于...（请在校稿时补充具体细节）。
+      topic: constants
+      chapter: rune
+    - id: const-rune-033
+      type: multiple
+      difficulty: hard
+      stem: 【思考题】针对 constants.rune，判断下列说法的正确性并选择最合适的选项。
+      options:
+        - 'A: 正确项（关于rune.constants的重要结论）'
+        - 'B: 常见误解或反例（容易混淆）'
+        - 'C: 正确项（关于rune.constants的重要结论）'
+        - 'D: 正确项（关于rune.constants的重要结论）'
+      answer: ACD
+      explanation: 本题考查 constants.rune 的相关知识。正确答案：ACD。解析：rune 的关键点在于...（请在校稿时补充具体细节）。
+      topic: constants
+      chapter: rune
+    - id: const-rune-034
+      type: single
+      difficulty: hard
+      stem: 【思考题】针对 constants.rune，判断下列说法的正确性并选择最合适的选项。
+      options:
+        - 'A: 部分正确但不完整的说法'
+        - 'B: 常见误解或反例（容易混淆）'
+        - 'C: 正确：关于rune.constants的关键点描述（正确选项）'
+        - 'D: 部分正确但不完整的说法'
+      answer: C
+      explanation: 本题考查 constants.rune 的概念。正确答案为 C。解析：rune 的关键点在于...（请在校稿时补充具体细节）。
+      topic: constants
+      chapter: rune
+    - id: const-rune-035
+      type: multiple
+      difficulty: hard
+      stem: 【思考题】针对 constants.rune，判断下列说法的正确性并选择最合适的选项。
+      options:
+        - 'A: 语法/语义上不正确的陈述'
+        - 'B: 正确项（关于rune.constants的重要结论）'
+        - 'C: 正确项（关于rune.constants的重要结论）'
+        - 'D: 正确项（关于rune.constants的重要结论）'
+      answer: BCD
+      explanation: 本题考查 constants.rune 的相关知识。正确答案：BCD。解析：rune 的关键点在于...（请在校稿时补充具体细节）。
+      topic: constants
+      chapter: rune

@@ -1,0 +1,586 @@
+questions:
+    - id: const-iota-001
+      type: multiple
+      difficulty: easy
+      stem: 【单项基础】关于 constants.iota，下面哪个选项是正确的？
+      options:
+        - 'A: 正确项（关于iota.constants的重要结论）'
+        - 'B: 部分正确但不完整的说法'
+        - 'C: 正确项（关于iota.constants的重要结论）'
+        - 'D: 正确项（关于iota.constants的重要结论）'
+      answer: ACD
+      explanation: 本题考查 constants.iota 的相关知识。正确答案：ACD。解析：iota 的关键点在于...（请在校稿时补充具体细节）。
+      topic: constants
+      chapter: iota
+    - id: const-iota-002
+      type: single
+      difficulty: easy
+      stem: 【单项基础】关于 constants.iota，下面哪个选项是正确的？
+      options:
+        - 'A: 正确：关于iota.constants的关键点描述（正确选项）'
+        - 'B: 语法/语义上不正确的陈述'
+        - 'C: 与iota.constants 相关但不适用的选项'
+        - 'D: 与iota.constants 相关但不适用的选项'
+      answer: A
+      explanation: 本题考查 constants.iota 的概念。正确答案为 A。解析：iota 的关键点在于...（请在校稿时补充具体细节）。
+      topic: constants
+      chapter: iota
+    - id: const-iota-003
+      type: multiple
+      difficulty: easy
+      stem: 【单项基础】关于 constants.iota，下面哪个选项是正确的？
+      options:
+        - 'A: 正确项（关于iota.constants的重要结论）'
+        - 'B: 常见误解或反例（容易混淆）'
+        - 'C: 正确项（关于iota.constants的重要结论）'
+        - 'D: 正确项（关于iota.constants的重要结论）'
+      answer: ACD
+      explanation: 本题考查 constants.iota 的相关知识。正确答案：ACD。解析：iota 的关键点在于...（请在校稿时补充具体细节）。
+      topic: constants
+      chapter: iota
+    - id: const-iota-004
+      type: single
+      difficulty: easy
+      stem: 【单项基础】关于 constants.iota，下面哪个选项是正确的？
+      options:
+        - 'A: 部分正确但不完整的说法'
+        - 'B: 正确：关于iota.constants的关键点描述（正确选项）'
+        - 'C: 部分正确但不完整的说法'
+        - 'D: 与iota.constants 相关但不适用的选项'
+      answer: B
+      explanation: 本题考查 constants.iota 的概念。正确答案为 B。解析：iota 的关键点在于...（请在校稿时补充具体细节）。
+      topic: constants
+      chapter: iota
+    - id: const-iota-005
+      type: multiple
+      difficulty: easy
+      stem: 【单项基础】关于 constants.iota，下面哪个选项是正确的？
+      options:
+        - 'A: 正确项（关于iota.constants的重要结论）'
+        - 'B: 正确项（关于iota.constants的重要结论）'
+        - 'C: 正确项（关于iota.constants的重要结论）'
+        - 'D: 与iota.constants 相关但不适用的选项'
+      answer: ABC
+      explanation: 本题考查 constants.iota 的相关知识。正确答案：ABC。解析：iota 的关键点在于...（请在校稿时补充具体细节）。
+      topic: constants
+      chapter: iota
+    - id: const-iota-006
+      type: single
+      difficulty: easy
+      stem: 【单项基础】关于 constants.iota，下面哪个选项是正确的？
+      options:
+        - 'A: 正确：关于iota.constants的关键点描述（正确选项）'
+        - 'B: 部分正确但不完整的说法'
+        - 'C: 常见误解或反例（容易混淆）'
+        - 'D: 语法/语义上不正确的陈述'
+      answer: A
+      explanation: 本题考查 constants.iota 的概念。正确答案为 A。解析：iota 的关键点在于...（请在校稿时补充具体细节）。
+      topic: constants
+      chapter: iota
+    - id: const-iota-007
+      type: multiple
+      difficulty: easy
+      stem: 【单项基础】关于 constants.iota，下面哪个选项是正确的？
+      options:
+        - 'A: 语法/语义上不正确的陈述'
+        - 'B: 正确项（关于iota.constants的重要结论）'
+        - 'C: 正确项（关于iota.constants的重要结论）'
+        - 'D: 与iota.constants 相关但不适用的选项'
+      answer: BC
+      explanation: 本题考查 constants.iota 的相关知识。正确答案：BC。解析：iota 的关键点在于...（请在校稿时补充具体细节）。
+      topic: constants
+      chapter: iota
+    - id: const-iota-008
+      type: single
+      difficulty: easy
+      stem: 【单项基础】关于 constants.iota，下面哪个选项是正确的？
+      options:
+        - 'A: 与iota.constants 相关但不适用的选项'
+        - 'B: 正确：关于iota.constants的关键点描述（正确选项）'
+        - 'C: 常见误解或反例（容易混淆）'
+        - 'D: 部分正确但不完整的说法'
+      answer: B
+      explanation: 本题考查 constants.iota 的概念。正确答案为 B。解析：iota 的关键点在于...（请在校稿时补充具体细节）。
+      topic: constants
+      chapter: iota
+    - id: const-iota-009
+      type: multiple
+      difficulty: easy
+      stem: 【单项基础】关于 constants.iota，下面哪个选项是正确的？
+      options:
+        - 'A: 正确项（关于iota.constants的重要结论）'
+        - 'B: 部分正确但不完整的说法'
+        - 'C: 正确项（关于iota.constants的重要结论）'
+        - 'D: 正确项（关于iota.constants的重要结论）'
+      answer: ACD
+      explanation: 本题考查 constants.iota 的相关知识。正确答案：ACD。解析：iota 的关键点在于...（请在校稿时补充具体细节）。
+      topic: constants
+      chapter: iota
+    - id: const-iota-010
+      type: single
+      difficulty: easy
+      stem: 【单项基础】关于 constants.iota，下面哪个选项是正确的？
+      options:
+        - 'A: 正确：关于iota.constants的关键点描述（正确选项）'
+        - 'B: 常见误解或反例（容易混淆）'
+        - 'C: 部分正确但不完整的说法'
+        - 'D: 与iota.constants 相关但不适用的选项'
+      answer: A
+      explanation: 本题考查 constants.iota 的概念。正确答案为 A。解析：iota 的关键点在于...（请在校稿时补充具体细节）。
+      topic: constants
+      chapter: iota
+    - id: const-iota-011
+      type: multiple
+      difficulty: easy
+      stem: 【单项基础】关于 constants.iota，下面哪个选项是正确的？
+      options:
+        - 'A: 与iota.constants 相关但不适用的选项'
+        - 'B: 正确项（关于iota.constants的重要结论）'
+        - 'C: 正确项（关于iota.constants的重要结论）'
+        - 'D: 语法/语义上不正确的陈述'
+      answer: BC
+      explanation: 本题考查 constants.iota 的相关知识。正确答案：BC。解析：iota 的关键点在于...（请在校稿时补充具体细节）。
+      topic: constants
+      chapter: iota
+    - id: const-iota-012
+      type: single
+      difficulty: easy
+      stem: 【单项基础】关于 constants.iota，下面哪个选项是正确的？
+      options:
+        - 'A: 正确：关于iota.constants的关键点描述（正确选项）'
+        - 'B: 与iota.constants 相关但不适用的选项'
+        - 'C: 部分正确但不完整的说法'
+        - 'D: 与iota.constants 相关但不适用的选项'
+      answer: A
+      explanation: 本题考查 constants.iota 的概念。正确答案为 A。解析：iota 的关键点在于...（请在校稿时补充具体细节）。
+      topic: constants
+      chapter: iota
+    - id: const-iota-013
+      type: multiple
+      difficulty: easy
+      stem: 【单项基础】关于 constants.iota，下面哪个选项是正确的？
+      options:
+        - 'A: 正确项（关于iota.constants的重要结论）'
+        - 'B: 常见误解或反例（容易混淆）'
+        - 'C: 语法/语义上不正确的陈述'
+        - 'D: 正确项（关于iota.constants的重要结论）'
+      answer: AD
+      explanation: 本题考查 constants.iota 的相关知识。正确答案：AD。解析：iota 的关键点在于...（请在校稿时补充具体细节）。
+      topic: constants
+      chapter: iota
+    - id: const-iota-014
+      type: single
+      difficulty: easy
+      stem: 【单项基础】关于 constants.iota，下面哪个选项是正确的？
+      options:
+        - 'A: 与iota.constants 相关但不适用的选项'
+        - 'B: 正确：关于iota.constants的关键点描述（正确选项）'
+        - 'C: 与iota.constants 相关但不适用的选项'
+        - 'D: 部分正确但不完整的说法'
+      answer: B
+      explanation: 本题考查 constants.iota 的概念。正确答案为 B。解析：iota 的关键点在于...（请在校稿时补充具体细节）。
+      topic: constants
+      chapter: iota
+    - id: const-iota-015
+      type: multiple
+      difficulty: easy
+      stem: 【单项基础】关于 constants.iota，下面哪个选项是正确的？
+      options:
+        - 'A: 部分正确但不完整的说法'
+        - 'B: 正确项（关于iota.constants的重要结论）'
+        - 'C: 正确项（关于iota.constants的重要结论）'
+        - 'D: 正确项（关于iota.constants的重要结论）'
+      answer: BCD
+      explanation: 本题考查 constants.iota 的相关知识。正确答案：BCD。解析：iota 的关键点在于...（请在校稿时补充具体细节）。
+      topic: constants
+      chapter: iota
+    - id: const-iota-016
+      type: single
+      difficulty: easy
+      stem: 【单项基础】关于 constants.iota，下面哪个选项是正确的？
+      options:
+        - 'A: 正确：关于iota.constants的关键点描述（正确选项）'
+        - 'B: 语法/语义上不正确的陈述'
+        - 'C: 部分正确但不完整的说法'
+        - 'D: 部分正确但不完整的说法'
+      answer: A
+      explanation: 本题考查 constants.iota 的概念。正确答案为 A。解析：iota 的关键点在于...（请在校稿时补充具体细节）。
+      topic: constants
+      chapter: iota
+    - id: const-iota-017
+      type: multiple
+      difficulty: easy
+      stem: 【单项基础】关于 constants.iota，下面哪个选项是正确的？
+      options:
+        - 'A: 部分正确但不完整的说法'
+        - 'B: 正确项（关于iota.constants的重要结论）'
+        - 'C: 正确项（关于iota.constants的重要结论）'
+        - 'D: 正确项（关于iota.constants的重要结论）'
+      answer: BCD
+      explanation: 本题考查 constants.iota 的相关知识。正确答案：BCD。解析：iota 的关键点在于...（请在校稿时补充具体细节）。
+      topic: constants
+      chapter: iota
+    - id: const-iota-018
+      type: single
+      difficulty: easy
+      stem: 【单项基础】关于 constants.iota，下面哪个选项是正确的？
+      options:
+        - 'A: 部分正确但不完整的说法'
+        - 'B: 正确：关于iota.constants的关键点描述（正确选项）'
+        - 'C: 部分正确但不完整的说法'
+        - 'D: 与iota.constants 相关但不适用的选项'
+      answer: B
+      explanation: 本题考查 constants.iota 的概念。正确答案为 B。解析：iota 的关键点在于...（请在校稿时补充具体细节）。
+      topic: constants
+      chapter: iota
+    - id: const-iota-019
+      type: multiple
+      difficulty: medium
+      stem: 【应用题】在 constants.iota 的情境下，哪个说法更合适？
+      options:
+        - 'A: 正确项（关于iota.constants的重要结论）'
+        - 'B: 常见误解或反例（容易混淆）'
+        - 'C: 语法/语义上不正确的陈述'
+        - 'D: 正确项（关于iota.constants的重要结论）'
+      answer: AD
+      explanation: 本题考查 constants.iota 的相关知识。正确答案：AD。解析：iota 的关键点在于...（请在校稿时补充具体细节）。
+      topic: constants
+      chapter: iota
+    - id: const-iota-020
+      type: single
+      difficulty: medium
+      stem: 【应用题】在 constants.iota 的情境下，哪个说法更合适？
+      options:
+        - 'A: 与iota.constants 相关但不适用的选项'
+        - 'B: 正确：关于iota.constants的关键点描述（正确选项）'
+        - 'C: 部分正确但不完整的说法'
+        - 'D: 部分正确但不完整的说法'
+      answer: B
+      explanation: 本题考查 constants.iota 的概念。正确答案为 B。解析：iota 的关键点在于...（请在校稿时补充具体细节）。
+      topic: constants
+      chapter: iota
+    - id: const-iota-021
+      type: multiple
+      difficulty: medium
+      stem: 【应用题】在 constants.iota 的情境下，哪个说法更合适？
+      options:
+        - 'A: 正确项（关于iota.constants的重要结论）'
+        - 'B: 正确项（关于iota.constants的重要结论）'
+        - 'C: 部分正确但不完整的说法'
+        - 'D: 正确项（关于iota.constants的重要结论）'
+      answer: ABD
+      explanation: 本题考查 constants.iota 的相关知识。正确答案：ABD。解析：iota 的关键点在于...（请在校稿时补充具体细节）。
+      topic: constants
+      chapter: iota
+    - id: const-iota-022
+      type: single
+      difficulty: medium
+      stem: 【应用题】在 constants.iota 的情境下，哪个说法更合适？
+      options:
+        - 'A: 与iota.constants 相关但不适用的选项'
+        - 'B: 语法/语义上不正确的陈述'
+        - 'C: 正确：关于iota.constants的关键点描述（正确选项）'
+        - 'D: 常见误解或反例（容易混淆）'
+      answer: C
+      explanation: 本题考查 constants.iota 的概念。正确答案为 C。解析：iota 的关键点在于...（请在校稿时补充具体细节）。
+      topic: constants
+      chapter: iota
+    - id: const-iota-023
+      type: multiple
+      difficulty: medium
+      stem: 【应用题】在 constants.iota 的情境下，哪个说法更合适？
+      options:
+        - 'A: 正确项（关于iota.constants的重要结论）'
+        - 'B: 部分正确但不完整的说法'
+        - 'C: 正确项（关于iota.constants的重要结论）'
+        - 'D: 常见误解或反例（容易混淆）'
+      answer: AC
+      explanation: 本题考查 constants.iota 的相关知识。正确答案：AC。解析：iota 的关键点在于...（请在校稿时补充具体细节）。
+      topic: constants
+      chapter: iota
+    - id: const-iota-024
+      type: single
+      difficulty: medium
+      stem: 【应用题】在 constants.iota 的情境下，哪个说法更合适？
+      options:
+        - 'A: 部分正确但不完整的说法'
+        - 'B: 与iota.constants 相关但不适用的选项'
+        - 'C: 正确：关于iota.constants的关键点描述（正确选项）'
+        - 'D: 部分正确但不完整的说法'
+      answer: C
+      explanation: 本题考查 constants.iota 的概念。正确答案为 C。解析：iota 的关键点在于...（请在校稿时补充具体细节）。
+      topic: constants
+      chapter: iota
+    - id: const-iota-025
+      type: multiple
+      difficulty: medium
+      stem: 【应用题】在 constants.iota 的情境下，哪个说法更合适？
+      options:
+        - 'A: 部分正确但不完整的说法'
+        - 'B: 正确项（关于iota.constants的重要结论）'
+        - 'C: 语法/语义上不正确的陈述'
+        - 'D: 正确项（关于iota.constants的重要结论）'
+      answer: BD
+      explanation: 本题考查 constants.iota 的相关知识。正确答案：BD。解析：iota 的关键点在于...（请在校稿时补充具体细节）。
+      topic: constants
+      chapter: iota
+    - id: const-iota-026
+      type: single
+      difficulty: medium
+      stem: 【应用题】在 constants.iota 的情境下，哪个说法更合适？
+      options:
+        - 'A: 常见误解或反例（容易混淆）'
+        - 'B: 部分正确但不完整的说法'
+        - 'C: 正确：关于iota.constants的关键点描述（正确选项）'
+        - 'D: 常见误解或反例（容易混淆）'
+      answer: C
+      explanation: 本题考查 constants.iota 的概念。正确答案为 C。解析：iota 的关键点在于...（请在校稿时补充具体细节）。
+      topic: constants
+      chapter: iota
+    - id: const-iota-027
+      type: multiple
+      difficulty: medium
+      stem: 【应用题】在 constants.iota 的情境下，哪个说法更合适？
+      options:
+        - 'A: 正确项（关于iota.constants的重要结论）'
+        - 'B: 语法/语义上不正确的陈述'
+        - 'C: 语法/语义上不正确的陈述'
+        - 'D: 正确项（关于iota.constants的重要结论）'
+      answer: AD
+      explanation: 本题考查 constants.iota 的相关知识。正确答案：AD。解析：iota 的关键点在于...（请在校稿时补充具体细节）。
+      topic: constants
+      chapter: iota
+    - id: const-iota-028
+      type: single
+      difficulty: medium
+      stem: 【应用题】在 constants.iota 的情境下，哪个说法更合适？
+      options:
+        - 'A: 语法/语义上不正确的陈述'
+        - 'B: 正确：关于iota.constants的关键点描述（正确选项）'
+        - 'C: 常见误解或反例（容易混淆）'
+        - 'D: 常见误解或反例（容易混淆）'
+      answer: B
+      explanation: 本题考查 constants.iota 的概念。正确答案为 B。解析：iota 的关键点在于...（请在校稿时补充具体细节）。
+      topic: constants
+      chapter: iota
+    - id: const-iota-029
+      type: multiple
+      difficulty: medium
+      stem: 【应用题】在 constants.iota 的情境下，哪个说法更合适？
+      options:
+        - 'A: 正确项（关于iota.constants的重要结论）'
+        - 'B: 常见误解或反例（容易混淆）'
+        - 'C: 正确项（关于iota.constants的重要结论）'
+        - 'D: 常见误解或反例（容易混淆）'
+      answer: AC
+      explanation: 本题考查 constants.iota 的相关知识。正确答案：AC。解析：iota 的关键点在于...（请在校稿时补充具体细节）。
+      topic: constants
+      chapter: iota
+    - id: const-iota-030
+      type: single
+      difficulty: medium
+      stem: 【应用题】在 constants.iota 的情境下，哪个说法更合适？
+      options:
+        - 'A: 部分正确但不完整的说法'
+        - 'B: 与iota.constants 相关但不适用的选项'
+        - 'C: 正确：关于iota.constants的关键点描述（正确选项）'
+        - 'D: 部分正确但不完整的说法'
+      answer: C
+      explanation: 本题考查 constants.iota 的概念。正确答案为 C。解析：iota 的关键点在于...（请在校稿时补充具体细节）。
+      topic: constants
+      chapter: iota
+    - id: const-iota-031
+      type: multiple
+      difficulty: medium
+      stem: 【应用题】在 constants.iota 的情境下，哪个说法更合适？
+      options:
+        - 'A: 正确项（关于iota.constants的重要结论）'
+        - 'B: 部分正确但不完整的说法'
+        - 'C: 正确项（关于iota.constants的重要结论）'
+        - 'D: 正确项（关于iota.constants的重要结论）'
+      answer: ACD
+      explanation: 本题考查 constants.iota 的相关知识。正确答案：ACD。解析：iota 的关键点在于...（请在校稿时补充具体细节）。
+      topic: constants
+      chapter: iota
+    - id: const-iota-032
+      type: single
+      difficulty: medium
+      stem: 【应用题】在 constants.iota 的情境下，哪个说法更合适？
+      options:
+        - 'A: 部分正确但不完整的说法'
+        - 'B: 正确：关于iota.constants的关键点描述（正确选项）'
+        - 'C: 语法/语义上不正确的陈述'
+        - 'D: 与iota.constants 相关但不适用的选项'
+      answer: B
+      explanation: 本题考查 constants.iota 的概念。正确答案为 B。解析：iota 的关键点在于...（请在校稿时补充具体细节）。
+      topic: constants
+      chapter: iota
+    - id: const-iota-033
+      type: multiple
+      difficulty: medium
+      stem: 【应用题】在 constants.iota 的情境下，哪个说法更合适？
+      options:
+        - 'A: 与iota.constants 相关但不适用的选项'
+        - 'B: 语法/语义上不正确的陈述'
+        - 'C: 正确项（关于iota.constants的重要结论）'
+        - 'D: 正确项（关于iota.constants的重要结论）'
+      answer: CD
+      explanation: 本题考查 constants.iota 的相关知识。正确答案：CD。解析：iota 的关键点在于...（请在校稿时补充具体细节）。
+      topic: constants
+      chapter: iota
+    - id: const-iota-034
+      type: single
+      difficulty: medium
+      stem: 【应用题】在 constants.iota 的情境下，哪个说法更合适？
+      options:
+        - 'A: 常见误解或反例（容易混淆）'
+        - 'B: 与iota.constants 相关但不适用的选项'
+        - 'C: 正确：关于iota.constants的关键点描述（正确选项）'
+        - 'D: 与iota.constants 相关但不适用的选项'
+      answer: C
+      explanation: 本题考查 constants.iota 的概念。正确答案为 C。解析：iota 的关键点在于...（请在校稿时补充具体细节）。
+      topic: constants
+      chapter: iota
+    - id: const-iota-035
+      type: multiple
+      difficulty: medium
+      stem: 【应用题】在 constants.iota 的情境下，哪个说法更合适？
+      options:
+        - 'A: 与iota.constants 相关但不适用的选项'
+        - 'B: 正确项（关于iota.constants的重要结论）'
+        - 'C: 正确项（关于iota.constants的重要结论）'
+        - 'D: 正确项（关于iota.constants的重要结论）'
+      answer: BCD
+      explanation: 本题考查 constants.iota 的相关知识。正确答案：BCD。解析：iota 的关键点在于...（请在校稿时补充具体细节）。
+      topic: constants
+      chapter: iota
+    - id: const-iota-036
+      type: single
+      difficulty: medium
+      stem: 【应用题】在 constants.iota 的情境下，哪个说法更合适？
+      options:
+        - 'A: 语法/语义上不正确的陈述'
+        - 'B: 正确：关于iota.constants的关键点描述（正确选项）'
+        - 'C: 常见误解或反例（容易混淆）'
+        - 'D: 部分正确但不完整的说法'
+      answer: B
+      explanation: 本题考查 constants.iota 的概念。正确答案为 B。解析：iota 的关键点在于...（请在校稿时补充具体细节）。
+      topic: constants
+      chapter: iota
+    - id: const-iota-037
+      type: multiple
+      difficulty: hard
+      stem: 【思考题】针对 constants.iota，判断下列说法的正确性并选择最合适的选项。
+      options:
+        - 'A: 正确项（关于iota.constants的重要结论）'
+        - 'B: 正确项（关于iota.constants的重要结论）'
+        - 'C: 常见误解或反例（容易混淆）'
+        - 'D: 语法/语义上不正确的陈述'
+      answer: AB
+      explanation: 本题考查 constants.iota 的相关知识。正确答案：AB。解析：iota 的关键点在于...（请在校稿时补充具体细节）。
+      topic: constants
+      chapter: iota
+    - id: const-iota-038
+      type: single
+      difficulty: hard
+      stem: 【思考题】针对 constants.iota，判断下列说法的正确性并选择最合适的选项。
+      options:
+        - 'A: 语法/语义上不正确的陈述'
+        - 'B: 部分正确但不完整的说法'
+        - 'C: 正确：关于iota.constants的关键点描述（正确选项）'
+        - 'D: 语法/语义上不正确的陈述'
+      answer: C
+      explanation: 本题考查 constants.iota 的概念。正确答案为 C。解析：iota 的关键点在于...（请在校稿时补充具体细节）。
+      topic: constants
+      chapter: iota
+    - id: const-iota-039
+      type: multiple
+      difficulty: hard
+      stem: 【思考题】针对 constants.iota，判断下列说法的正确性并选择最合适的选项。
+      options:
+        - 'A: 正确项（关于iota.constants的重要结论）'
+        - 'B: 正确项（关于iota.constants的重要结论）'
+        - 'C: 正确项（关于iota.constants的重要结论）'
+        - 'D: 常见误解或反例（容易混淆）'
+      answer: ABC
+      explanation: 本题考查 constants.iota 的相关知识。正确答案：ABC。解析：iota 的关键点在于...（请在校稿时补充具体细节）。
+      topic: constants
+      chapter: iota
+    - id: const-iota-040
+      type: single
+      difficulty: hard
+      stem: 【思考题】针对 constants.iota，判断下列说法的正确性并选择最合适的选项。
+      options:
+        - 'A: 部分正确但不完整的说法'
+        - 'B: 部分正确但不完整的说法'
+        - 'C: 正确：关于iota.constants的关键点描述（正确选项）'
+        - 'D: 与iota.constants 相关但不适用的选项'
+      answer: C
+      explanation: 本题考查 constants.iota 的概念。正确答案为 C。解析：iota 的关键点在于...（请在校稿时补充具体细节）。
+      topic: constants
+      chapter: iota
+    - id: const-iota-041
+      type: multiple
+      difficulty: hard
+      stem: 【思考题】针对 constants.iota，判断下列说法的正确性并选择最合适的选项。
+      options:
+        - 'A: 正确项（关于iota.constants的重要结论）'
+        - 'B: 正确项（关于iota.constants的重要结论）'
+        - 'C: 语法/语义上不正确的陈述'
+        - 'D: 部分正确但不完整的说法'
+      answer: AB
+      explanation: 本题考查 constants.iota 的相关知识。正确答案：AB。解析：iota 的关键点在于...（请在校稿时补充具体细节）。
+      topic: constants
+      chapter: iota
+    - id: const-iota-042
+      type: single
+      difficulty: hard
+      stem: 【思考题】针对 constants.iota，判断下列说法的正确性并选择最合适的选项。
+      options:
+        - 'A: 常见误解或反例（容易混淆）'
+        - 'B: 部分正确但不完整的说法'
+        - 'C: 常见误解或反例（容易混淆）'
+        - 'D: 正确：关于iota.constants的关键点描述（正确选项）'
+      answer: D
+      explanation: 本题考查 constants.iota 的概念。正确答案为 D。解析：iota 的关键点在于...（请在校稿时补充具体细节）。
+      topic: constants
+      chapter: iota
+    - id: const-iota-043
+      type: multiple
+      difficulty: hard
+      stem: 【思考题】针对 constants.iota，判断下列说法的正确性并选择最合适的选项。
+      options:
+        - 'A: 正确项（关于iota.constants的重要结论）'
+        - 'B: 与iota.constants 相关但不适用的选项'
+        - 'C: 正确项（关于iota.constants的重要结论）'
+        - 'D: 语法/语义上不正确的陈述'
+      answer: AC
+      explanation: 本题考查 constants.iota 的相关知识。正确答案：AC。解析：iota 的关键点在于...（请在校稿时补充具体细节）。
+      topic: constants
+      chapter: iota
+    - id: const-iota-044
+      type: single
+      difficulty: hard
+      stem: 【思考题】针对 constants.iota，判断下列说法的正确性并选择最合适的选项。
+      options:
+        - 'A: 语法/语义上不正确的陈述'
+        - 'B: 语法/语义上不正确的陈述'
+        - 'C: 正确：关于iota.constants的关键点描述（正确选项）'
+        - 'D: 语法/语义上不正确的陈述'
+      answer: C
+      explanation: 本题考查 constants.iota 的概念。正确答案为 C。解析：iota 的关键点在于...（请在校稿时补充具体细节）。
+      topic: constants
+      chapter: iota
+    - id: const-iota-045
+      type: multiple
+      difficulty: hard
+      stem: 【思考题】针对 constants.iota，判断下列说法的正确性并选择最合适的选项。
+      options:
+        - 'A: 语法/语义上不正确的陈述'
+        - 'B: 正确项（关于iota.constants的重要结论）'
+        - 'C: 正确项（关于iota.constants的重要结论）'
+        - 'D: 与iota.constants 相关但不适用的选项'
+      answer: BC
+      explanation: 本题考查 constants.iota 的相关知识。正确答案：BC。解析：iota 的关键点在于...（请在校稿时补充具体细节）。
+      topic: constants
+      chapter: iota

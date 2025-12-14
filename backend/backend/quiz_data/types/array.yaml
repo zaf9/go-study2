@@ -1,0 +1,586 @@
+questions:
+    - id: type-array-001
+      type: multiple
+      difficulty: easy
+      stem: 【单项基础】关于 types.array，下面哪个选项是正确的？
+      options:
+        - 'A: 正确项（关于array.types的重要结论）'
+        - 'B: 语法/语义上不正确的陈述'
+        - 'C: 正确项（关于array.types的重要结论）'
+        - 'D: 语法/语义上不正确的陈述'
+      answer: AC
+      explanation: 本题考查 types.array 的相关知识。正确答案：AC。解析：array 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: array
+    - id: type-array-002
+      type: single
+      difficulty: easy
+      stem: 【单项基础】关于 types.array，下面哪个选项是正确的？
+      options:
+        - 'A: 正确：关于array.types的关键点描述（正确选项）'
+        - 'B: 部分正确但不完整的说法'
+        - 'C: 与array.types 相关但不适用的选项'
+        - 'D: 部分正确但不完整的说法'
+      answer: A
+      explanation: 本题考查 types.array 的概念。正确答案为 A。解析：array 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: array
+    - id: type-array-003
+      type: multiple
+      difficulty: easy
+      stem: 【单项基础】关于 types.array，下面哪个选项是正确的？
+      options:
+        - 'A: 正确项（关于array.types的重要结论）'
+        - 'B: 正确项（关于array.types的重要结论）'
+        - 'C: 与array.types 相关但不适用的选项'
+        - 'D: 正确项（关于array.types的重要结论）'
+      answer: ABD
+      explanation: 本题考查 types.array 的相关知识。正确答案：ABD。解析：array 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: array
+    - id: type-array-004
+      type: single
+      difficulty: easy
+      stem: 【单项基础】关于 types.array，下面哪个选项是正确的？
+      options:
+        - 'A: 与array.types 相关但不适用的选项'
+        - 'B: 正确：关于array.types的关键点描述（正确选项）'
+        - 'C: 常见误解或反例（容易混淆）'
+        - 'D: 与array.types 相关但不适用的选项'
+      answer: B
+      explanation: 本题考查 types.array 的概念。正确答案为 B。解析：array 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: array
+    - id: type-array-005
+      type: multiple
+      difficulty: easy
+      stem: 【单项基础】关于 types.array，下面哪个选项是正确的？
+      options:
+        - 'A: 正确项（关于array.types的重要结论）'
+        - 'B: 语法/语义上不正确的陈述'
+        - 'C: 正确项（关于array.types的重要结论）'
+        - 'D: 正确项（关于array.types的重要结论）'
+      answer: ACD
+      explanation: 本题考查 types.array 的相关知识。正确答案：ACD。解析：array 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: array
+    - id: type-array-006
+      type: single
+      difficulty: easy
+      stem: 【单项基础】关于 types.array，下面哪个选项是正确的？
+      options:
+        - 'A: 与array.types 相关但不适用的选项'
+        - 'B: 正确：关于array.types的关键点描述（正确选项）'
+        - 'C: 与array.types 相关但不适用的选项'
+        - 'D: 部分正确但不完整的说法'
+      answer: B
+      explanation: 本题考查 types.array 的概念。正确答案为 B。解析：array 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: array
+    - id: type-array-007
+      type: multiple
+      difficulty: easy
+      stem: 【单项基础】关于 types.array，下面哪个选项是正确的？
+      options:
+        - 'A: 正确项（关于array.types的重要结论）'
+        - 'B: 正确项（关于array.types的重要结论）'
+        - 'C: 正确项（关于array.types的重要结论）'
+        - 'D: 与array.types 相关但不适用的选项'
+      answer: ABC
+      explanation: 本题考查 types.array 的相关知识。正确答案：ABC。解析：array 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: array
+    - id: type-array-008
+      type: single
+      difficulty: easy
+      stem: 【单项基础】关于 types.array，下面哪个选项是正确的？
+      options:
+        - 'A: 正确：关于array.types的关键点描述（正确选项）'
+        - 'B: 常见误解或反例（容易混淆）'
+        - 'C: 常见误解或反例（容易混淆）'
+        - 'D: 语法/语义上不正确的陈述'
+      answer: A
+      explanation: 本题考查 types.array 的概念。正确答案为 A。解析：array 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: array
+    - id: type-array-009
+      type: multiple
+      difficulty: easy
+      stem: 【单项基础】关于 types.array，下面哪个选项是正确的？
+      options:
+        - 'A: 常见误解或反例（容易混淆）'
+        - 'B: 正确项（关于array.types的重要结论）'
+        - 'C: 正确项（关于array.types的重要结论）'
+        - 'D: 正确项（关于array.types的重要结论）'
+      answer: BCD
+      explanation: 本题考查 types.array 的相关知识。正确答案：BCD。解析：array 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: array
+    - id: type-array-010
+      type: single
+      difficulty: easy
+      stem: 【单项基础】关于 types.array，下面哪个选项是正确的？
+      options:
+        - 'A: 常见误解或反例（容易混淆）'
+        - 'B: 正确：关于array.types的关键点描述（正确选项）'
+        - 'C: 部分正确但不完整的说法'
+        - 'D: 部分正确但不完整的说法'
+      answer: B
+      explanation: 本题考查 types.array 的概念。正确答案为 B。解析：array 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: array
+    - id: type-array-011
+      type: multiple
+      difficulty: easy
+      stem: 【单项基础】关于 types.array，下面哪个选项是正确的？
+      options:
+        - 'A: 正确项（关于array.types的重要结论）'
+        - 'B: 与array.types 相关但不适用的选项'
+        - 'C: 正确项（关于array.types的重要结论）'
+        - 'D: 正确项（关于array.types的重要结论）'
+      answer: ACD
+      explanation: 本题考查 types.array 的相关知识。正确答案：ACD。解析：array 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: array
+    - id: type-array-012
+      type: single
+      difficulty: easy
+      stem: 【单项基础】关于 types.array，下面哪个选项是正确的？
+      options:
+        - 'A: 正确：关于array.types的关键点描述（正确选项）'
+        - 'B: 与array.types 相关但不适用的选项'
+        - 'C: 常见误解或反例（容易混淆）'
+        - 'D: 语法/语义上不正确的陈述'
+      answer: A
+      explanation: 本题考查 types.array 的概念。正确答案为 A。解析：array 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: array
+    - id: type-array-013
+      type: multiple
+      difficulty: easy
+      stem: 【单项基础】关于 types.array，下面哪个选项是正确的？
+      options:
+        - 'A: 正确项（关于array.types的重要结论）'
+        - 'B: 与array.types 相关但不适用的选项'
+        - 'C: 与array.types 相关但不适用的选项'
+        - 'D: 正确项（关于array.types的重要结论）'
+      answer: AD
+      explanation: 本题考查 types.array 的相关知识。正确答案：AD。解析：array 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: array
+    - id: type-array-014
+      type: single
+      difficulty: easy
+      stem: 【单项基础】关于 types.array，下面哪个选项是正确的？
+      options:
+        - 'A: 正确：关于array.types的关键点描述（正确选项）'
+        - 'B: 语法/语义上不正确的陈述'
+        - 'C: 部分正确但不完整的说法'
+        - 'D: 语法/语义上不正确的陈述'
+      answer: A
+      explanation: 本题考查 types.array 的概念。正确答案为 A。解析：array 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: array
+    - id: type-array-015
+      type: multiple
+      difficulty: easy
+      stem: 【单项基础】关于 types.array，下面哪个选项是正确的？
+      options:
+        - 'A: 正确项（关于array.types的重要结论）'
+        - 'B: 正确项（关于array.types的重要结论）'
+        - 'C: 常见误解或反例（容易混淆）'
+        - 'D: 正确项（关于array.types的重要结论）'
+      answer: ABD
+      explanation: 本题考查 types.array 的相关知识。正确答案：ABD。解析：array 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: array
+    - id: type-array-016
+      type: single
+      difficulty: easy
+      stem: 【单项基础】关于 types.array，下面哪个选项是正确的？
+      options:
+        - 'A: 正确：关于array.types的关键点描述（正确选项）'
+        - 'B: 部分正确但不完整的说法'
+        - 'C: 与array.types 相关但不适用的选项'
+        - 'D: 部分正确但不完整的说法'
+      answer: A
+      explanation: 本题考查 types.array 的概念。正确答案为 A。解析：array 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: array
+    - id: type-array-017
+      type: multiple
+      difficulty: easy
+      stem: 【单项基础】关于 types.array，下面哪个选项是正确的？
+      options:
+        - 'A: 部分正确但不完整的说法'
+        - 'B: 正确项（关于array.types的重要结论）'
+        - 'C: 正确项（关于array.types的重要结论）'
+        - 'D: 正确项（关于array.types的重要结论）'
+      answer: BCD
+      explanation: 本题考查 types.array 的相关知识。正确答案：BCD。解析：array 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: array
+    - id: type-array-018
+      type: single
+      difficulty: easy
+      stem: 【单项基础】关于 types.array，下面哪个选项是正确的？
+      options:
+        - 'A: 正确：关于array.types的关键点描述（正确选项）'
+        - 'B: 常见误解或反例（容易混淆）'
+        - 'C: 常见误解或反例（容易混淆）'
+        - 'D: 常见误解或反例（容易混淆）'
+      answer: A
+      explanation: 本题考查 types.array 的概念。正确答案为 A。解析：array 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: array
+    - id: type-array-019
+      type: multiple
+      difficulty: medium
+      stem: 【应用题】在 types.array 的情境下，哪个说法更合适？
+      options:
+        - 'A: 正确项（关于array.types的重要结论）'
+        - 'B: 常见误解或反例（容易混淆）'
+        - 'C: 正确项（关于array.types的重要结论）'
+        - 'D: 正确项（关于array.types的重要结论）'
+      answer: ACD
+      explanation: 本题考查 types.array 的相关知识。正确答案：ACD。解析：array 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: array
+    - id: type-array-020
+      type: single
+      difficulty: medium
+      stem: 【应用题】在 types.array 的情境下，哪个说法更合适？
+      options:
+        - 'A: 部分正确但不完整的说法'
+        - 'B: 与array.types 相关但不适用的选项'
+        - 'C: 正确：关于array.types的关键点描述（正确选项）'
+        - 'D: 常见误解或反例（容易混淆）'
+      answer: C
+      explanation: 本题考查 types.array 的概念。正确答案为 C。解析：array 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: array
+    - id: type-array-021
+      type: multiple
+      difficulty: medium
+      stem: 【应用题】在 types.array 的情境下，哪个说法更合适？
+      options:
+        - 'A: 正确项（关于array.types的重要结论）'
+        - 'B: 常见误解或反例（容易混淆）'
+        - 'C: 正确项（关于array.types的重要结论）'
+        - 'D: 正确项（关于array.types的重要结论）'
+      answer: ACD
+      explanation: 本题考查 types.array 的相关知识。正确答案：ACD。解析：array 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: array
+    - id: type-array-022
+      type: single
+      difficulty: medium
+      stem: 【应用题】在 types.array 的情境下，哪个说法更合适？
+      options:
+        - 'A: 语法/语义上不正确的陈述'
+        - 'B: 正确：关于array.types的关键点描述（正确选项）'
+        - 'C: 语法/语义上不正确的陈述'
+        - 'D: 与array.types 相关但不适用的选项'
+      answer: B
+      explanation: 本题考查 types.array 的概念。正确答案为 B。解析：array 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: array
+    - id: type-array-023
+      type: multiple
+      difficulty: medium
+      stem: 【应用题】在 types.array 的情境下，哪个说法更合适？
+      options:
+        - 'A: 正确项（关于array.types的重要结论）'
+        - 'B: 正确项（关于array.types的重要结论）'
+        - 'C: 正确项（关于array.types的重要结论）'
+        - 'D: 与array.types 相关但不适用的选项'
+      answer: ABC
+      explanation: 本题考查 types.array 的相关知识。正确答案：ABC。解析：array 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: array
+    - id: type-array-024
+      type: single
+      difficulty: medium
+      stem: 【应用题】在 types.array 的情境下，哪个说法更合适？
+      options:
+        - 'A: 语法/语义上不正确的陈述'
+        - 'B: 常见误解或反例（容易混淆）'
+        - 'C: 正确：关于array.types的关键点描述（正确选项）'
+        - 'D: 语法/语义上不正确的陈述'
+      answer: C
+      explanation: 本题考查 types.array 的概念。正确答案为 C。解析：array 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: array
+    - id: type-array-025
+      type: multiple
+      difficulty: medium
+      stem: 【应用题】在 types.array 的情境下，哪个说法更合适？
+      options:
+        - 'A: 正确项（关于array.types的重要结论）'
+        - 'B: 与array.types 相关但不适用的选项'
+        - 'C: 正确项（关于array.types的重要结论）'
+        - 'D: 正确项（关于array.types的重要结论）'
+      answer: ACD
+      explanation: 本题考查 types.array 的相关知识。正确答案：ACD。解析：array 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: array
+    - id: type-array-026
+      type: single
+      difficulty: medium
+      stem: 【应用题】在 types.array 的情境下，哪个说法更合适？
+      options:
+        - 'A: 常见误解或反例（容易混淆）'
+        - 'B: 常见误解或反例（容易混淆）'
+        - 'C: 正确：关于array.types的关键点描述（正确选项）'
+        - 'D: 语法/语义上不正确的陈述'
+      answer: C
+      explanation: 本题考查 types.array 的概念。正确答案为 C。解析：array 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: array
+    - id: type-array-027
+      type: multiple
+      difficulty: medium
+      stem: 【应用题】在 types.array 的情境下，哪个说法更合适？
+      options:
+        - 'A: 正确项（关于array.types的重要结论）'
+        - 'B: 部分正确但不完整的说法'
+        - 'C: 正确项（关于array.types的重要结论）'
+        - 'D: 正确项（关于array.types的重要结论）'
+      answer: ACD
+      explanation: 本题考查 types.array 的相关知识。正确答案：ACD。解析：array 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: array
+    - id: type-array-028
+      type: single
+      difficulty: medium
+      stem: 【应用题】在 types.array 的情境下，哪个说法更合适？
+      options:
+        - 'A: 语法/语义上不正确的陈述'
+        - 'B: 与array.types 相关但不适用的选项'
+        - 'C: 正确：关于array.types的关键点描述（正确选项）'
+        - 'D: 部分正确但不完整的说法'
+      answer: C
+      explanation: 本题考查 types.array 的概念。正确答案为 C。解析：array 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: array
+    - id: type-array-029
+      type: multiple
+      difficulty: medium
+      stem: 【应用题】在 types.array 的情境下，哪个说法更合适？
+      options:
+        - 'A: 正确项（关于array.types的重要结论）'
+        - 'B: 正确项（关于array.types的重要结论）'
+        - 'C: 正确项（关于array.types的重要结论）'
+        - 'D: 部分正确但不完整的说法'
+      answer: ABC
+      explanation: 本题考查 types.array 的相关知识。正确答案：ABC。解析：array 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: array
+    - id: type-array-030
+      type: single
+      difficulty: medium
+      stem: 【应用题】在 types.array 的情境下，哪个说法更合适？
+      options:
+        - 'A: 常见误解或反例（容易混淆）'
+        - 'B: 部分正确但不完整的说法'
+        - 'C: 正确：关于array.types的关键点描述（正确选项）'
+        - 'D: 与array.types 相关但不适用的选项'
+      answer: C
+      explanation: 本题考查 types.array 的概念。正确答案为 C。解析：array 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: array
+    - id: type-array-031
+      type: multiple
+      difficulty: medium
+      stem: 【应用题】在 types.array 的情境下，哪个说法更合适？
+      options:
+        - 'A: 常见误解或反例（容易混淆）'
+        - 'B: 部分正确但不完整的说法'
+        - 'C: 正确项（关于array.types的重要结论）'
+        - 'D: 正确项（关于array.types的重要结论）'
+      answer: CD
+      explanation: 本题考查 types.array 的相关知识。正确答案：CD。解析：array 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: array
+    - id: type-array-032
+      type: single
+      difficulty: medium
+      stem: 【应用题】在 types.array 的情境下，哪个说法更合适？
+      options:
+        - 'A: 部分正确但不完整的说法'
+        - 'B: 正确：关于array.types的关键点描述（正确选项）'
+        - 'C: 语法/语义上不正确的陈述'
+        - 'D: 部分正确但不完整的说法'
+      answer: B
+      explanation: 本题考查 types.array 的概念。正确答案为 B。解析：array 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: array
+    - id: type-array-033
+      type: multiple
+      difficulty: medium
+      stem: 【应用题】在 types.array 的情境下，哪个说法更合适？
+      options:
+        - 'A: 语法/语义上不正确的陈述'
+        - 'B: 常见误解或反例（容易混淆）'
+        - 'C: 正确项（关于array.types的重要结论）'
+        - 'D: 正确项（关于array.types的重要结论）'
+      answer: CD
+      explanation: 本题考查 types.array 的相关知识。正确答案：CD。解析：array 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: array
+    - id: type-array-034
+      type: single
+      difficulty: medium
+      stem: 【应用题】在 types.array 的情境下，哪个说法更合适？
+      options:
+        - 'A: 与array.types 相关但不适用的选项'
+        - 'B: 正确：关于array.types的关键点描述（正确选项）'
+        - 'C: 常见误解或反例（容易混淆）'
+        - 'D: 语法/语义上不正确的陈述'
+      answer: B
+      explanation: 本题考查 types.array 的概念。正确答案为 B。解析：array 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: array
+    - id: type-array-035
+      type: multiple
+      difficulty: medium
+      stem: 【应用题】在 types.array 的情境下，哪个说法更合适？
+      options:
+        - 'A: 正确项（关于array.types的重要结论）'
+        - 'B: 正确项（关于array.types的重要结论）'
+        - 'C: 常见误解或反例（容易混淆）'
+        - 'D: 语法/语义上不正确的陈述'
+      answer: AB
+      explanation: 本题考查 types.array 的相关知识。正确答案：AB。解析：array 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: array
+    - id: type-array-036
+      type: single
+      difficulty: medium
+      stem: 【应用题】在 types.array 的情境下，哪个说法更合适？
+      options:
+        - 'A: 部分正确但不完整的说法'
+        - 'B: 正确：关于array.types的关键点描述（正确选项）'
+        - 'C: 语法/语义上不正确的陈述'
+        - 'D: 与array.types 相关但不适用的选项'
+      answer: B
+      explanation: 本题考查 types.array 的概念。正确答案为 B。解析：array 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: array
+    - id: type-array-037
+      type: multiple
+      difficulty: hard
+      stem: 【思考题】针对 types.array，判断下列说法的正确性并选择最合适的选项。
+      options:
+        - 'A: 正确项（关于array.types的重要结论）'
+        - 'B: 正确项（关于array.types的重要结论）'
+        - 'C: 常见误解或反例（容易混淆）'
+        - 'D: 正确项（关于array.types的重要结论）'
+      answer: ABD
+      explanation: 本题考查 types.array 的相关知识。正确答案：ABD。解析：array 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: array
+    - id: type-array-038
+      type: single
+      difficulty: hard
+      stem: 【思考题】针对 types.array，判断下列说法的正确性并选择最合适的选项。
+      options:
+        - 'A: 语法/语义上不正确的陈述'
+        - 'B: 部分正确但不完整的说法'
+        - 'C: 常见误解或反例（容易混淆）'
+        - 'D: 正确：关于array.types的关键点描述（正确选项）'
+      answer: D
+      explanation: 本题考查 types.array 的概念。正确答案为 D。解析：array 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: array
+    - id: type-array-039
+      type: multiple
+      difficulty: hard
+      stem: 【思考题】针对 types.array，判断下列说法的正确性并选择最合适的选项。
+      options:
+        - 'A: 与array.types 相关但不适用的选项'
+        - 'B: 语法/语义上不正确的陈述'
+        - 'C: 正确项（关于array.types的重要结论）'
+        - 'D: 正确项（关于array.types的重要结论）'
+      answer: CD
+      explanation: 本题考查 types.array 的相关知识。正确答案：CD。解析：array 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: array
+    - id: type-array-040
+      type: single
+      difficulty: hard
+      stem: 【思考题】针对 types.array，判断下列说法的正确性并选择最合适的选项。
+      options:
+        - 'A: 常见误解或反例（容易混淆）'
+        - 'B: 与array.types 相关但不适用的选项'
+        - 'C: 与array.types 相关但不适用的选项'
+        - 'D: 正确：关于array.types的关键点描述（正确选项）'
+      answer: D
+      explanation: 本题考查 types.array 的概念。正确答案为 D。解析：array 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: array
+    - id: type-array-041
+      type: multiple
+      difficulty: hard
+      stem: 【思考题】针对 types.array，判断下列说法的正确性并选择最合适的选项。
+      options:
+        - 'A: 正确项（关于array.types的重要结论）'
+        - 'B: 正确项（关于array.types的重要结论）'
+        - 'C: 与array.types 相关但不适用的选项'
+        - 'D: 正确项（关于array.types的重要结论）'
+      answer: ABD
+      explanation: 本题考查 types.array 的相关知识。正确答案：ABD。解析：array 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: array
+    - id: type-array-042
+      type: single
+      difficulty: hard
+      stem: 【思考题】针对 types.array，判断下列说法的正确性并选择最合适的选项。
+      options:
+        - 'A: 与array.types 相关但不适用的选项'
+        - 'B: 部分正确但不完整的说法'
+        - 'C: 正确：关于array.types的关键点描述（正确选项）'
+        - 'D: 语法/语义上不正确的陈述'
+      answer: C
+      explanation: 本题考查 types.array 的概念。正确答案为 C。解析：array 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: array
+    - id: type-array-043
+      type: multiple
+      difficulty: hard
+      stem: 【思考题】针对 types.array，判断下列说法的正确性并选择最合适的选项。
+      options:
+        - 'A: 正确项（关于array.types的重要结论）'
+        - 'B: 语法/语义上不正确的陈述'
+        - 'C: 正确项（关于array.types的重要结论）'
+        - 'D: 正确项（关于array.types的重要结论）'
+      answer: ACD
+      explanation: 本题考查 types.array 的相关知识。正确答案：ACD。解析：array 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: array
+    - id: type-array-044
+      type: single
+      difficulty: hard
+      stem: 【思考题】针对 types.array，判断下列说法的正确性并选择最合适的选项。
+      options:
+        - 'A: 部分正确但不完整的说法'
+        - 'B: 与array.types 相关但不适用的选项'
+        - 'C: 正确：关于array.types的关键点描述（正确选项）'
+        - 'D: 部分正确但不完整的说法'
+      answer: C
+      explanation: 本题考查 types.array 的概念。正确答案为 C。解析：array 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: array
+    - id: type-array-045
+      type: multiple
+      difficulty: hard
+      stem: 【思考题】针对 types.array，判断下列说法的正确性并选择最合适的选项。
+      options:
+        - 'A: 语法/语义上不正确的陈述'
+        - 'B: 正确项（关于array.types的重要结论）'
+        - 'C: 正确项（关于array.types的重要结论）'
+        - 'D: 正确项（关于array.types的重要结论）'
+      answer: BCD
+      explanation: 本题考查 types.array 的相关知识。正确答案：BCD。解析：array 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: array

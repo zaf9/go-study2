@@ -1,0 +1,490 @@
+questions:
+  - id: lexical-comments-001
+    type: single
+    difficulty: easy
+    stem: "在Go语言中，哪种注释方式用于单行注释？"
+    options:
+      - "A: /* 单行注释 */"
+      - "B: // 单行注释"
+      - "C: # 单行注释"
+      - "D: <!-- 单行注释 -->"
+    answer: B
+    explanation: "Go语言使用 // 开始单行注释，/* ... */ 用于多行注释，其他为其他语言的注释格式。"
+    topic: lexical_elements
+    chapter: comments
+
+  - id: lexical-comments-002
+    type: multiple
+    difficulty: easy
+    stem: "关于Go的多行注释，以下说法正确的是哪些？（多选）"
+    options:
+      - "A: 多行注释使用 /* 和 */ 包裹"
+      - "B: 多行注释可以嵌套"
+      - "C: 多行注释会被编译器忽略"
+      - "D: 多行注释可以用于文档注释"
+    answer: AC
+    explanation: "多行注释用 /* */ 包裹，注释内容在编译时被忽略；Go 的多行注释不支持嵌套，文档注释通常使用特定格式出现在宣告前而非任意多行注释。"
+    topic: lexical_elements
+    chapter: comments
+
+  - id: lexical-comments-003
+    type: single
+    difficulty: easy
+    stem: "下面哪一项不是Go语言注释的正确用途？"
+    options:
+      - "A: 解释复杂算法的意图"
+      - "B: 在运行时动态改变程序行为"
+      - "C: 标注待办事项 TODO"
+      - "D: 提供函数的使用说明"
+    answer: B
+    explanation: "注释仅供阅读和文档用途，不会在运行时影响程序行为；要动态改变行为需修改代码或运行时配置。"
+    topic: lexical_elements
+    chapter: comments
+
+  - id: lexical-comments-004
+    type: single
+    difficulty: medium
+    stem: "在Go中，以下关于注释的位置和godoc工具的关系，哪个说法正确？"
+    options:
+      - "A: godoc只识别行内注释，不识别函数前的注释"
+      - "B: godoc会提取包、类型和函数前的注释作为文档"
+      - "C: godoc仅从README.md中生成文档，与注释无关"
+      - "D: godoc需要特殊注释前缀才能识别"
+    answer: B
+    explanation: "godoc 会提取包、类型、函数等前面的注释生成文档，用于 API 文档说明。"
+    topic: lexical_elements
+    chapter: comments
+
+  - id: lexical-comments-005
+    type: multiple
+    difficulty: easy
+    stem: "下面哪些注释风格在Go源文件中是合法的？（多选）"
+    options:
+      - "A: // 单行注释"
+      - "B: /* 多行注释 */"
+      - "C: <!-- HTML注释 -->"
+      - "D: # Shell风格注释"
+    answer: AB
+    explanation: "Go 支持 // 单行注释和 /* */ 多行注释，HTML风格和Shell风格注释在Go源代码中不是注释语法。"
+    topic: lexical_elements
+    chapter: comments
+
+  - id: lexical-comments-006
+    type: single
+    difficulty: medium
+    stem: "对于以下代码，哪种说法是正确的？\n\n/* 注释开始 /* 嵌套注释 */ 继续 */"
+    options:
+      - "A: 代码合法，内部注释会被正确嵌套解析"
+      - "B: 因为嵌套，编译器会报错或解析异常"
+      - "C: 内部嵌套会被忽略，外层注释仍然完整"
+      - "D: Go 会把内部注释当作字符串处理"
+    answer: B
+    explanation: "Go 的多行注释不支持嵌套，第一个 */ 会结束注释，导致剩余部分成为代码或造成语法错误。"
+    topic: lexical_elements
+    chapter: comments
+
+  - id: lexical-comments-007
+    type: multiple
+    difficulty: medium
+    stem: "哪些做法有助于使注释更有价值？（多选）"
+    options:
+      - "A: 解释为什么这样实现，而非逐行翻译代码"
+      - "B: 在注释中写重复的代码逻辑说明"
+      - "C: 提供函数的副作用和性能考虑"
+      - "D: 在注释中记录外部依赖的约束"
+    answer: ACD
+    explanation: "高质量注释应解释设计动机、副作用、性能或约束，而非重复代码实现。"
+    topic: lexical_elements
+    chapter: comments
+
+  - id: lexical-comments-008
+    type: single
+    difficulty: easy
+    stem: "以下哪种注释更适合作为导出函数的文档注释？"
+    options:
+      - "A: // 返回错误"
+      - "B: // DoSomething does X and returns error if ..."
+      - "C: // 这是第一个版本的实现"
+      - "D: // TODO: 优化性能"
+    answer: B
+    explanation: "导出函数（Exported）应使用完整句子描述功能和错误情形，以便 godoc 提取为 API 文档。"
+    topic: lexical_elements
+    chapter: comments
+
+  - id: lexical-comments-009
+    type: multiple
+    difficulty: medium
+    stem: "关于注释中包含的 TODO 或 FIXME 标签，哪些说法是合理的？（多选）"
+    options:
+      - "A: TODO可用于标记未来改进点"
+      - "B: FIXME表示代码当前有严重错误，需尽快修复"
+      - "C: 将大量TODO留在主分支是良好实践"
+      - "D: TODO应尽量包含负责人或上下文说明"
+    answer: ABD
+    explanation: "TODO 表示待办事项，建议包含上下文或负责人；FIXME 通常表示需修复的问题。大量未处理的TODO并非良好实践。"
+    topic: lexical_elements
+    chapter: comments
+
+  - id: lexical-comments-010
+    type: single
+    difficulty: easy
+    stem: "Go 源代码中的注释会在编译后包含在可执行文件中吗？"
+    options:
+      - "A: 会，注释保留在二进制中"
+      - "B: 不会，注释不会包含在编译生成的二进制中"
+      - "C: 仅在调试模式下包含"
+      - "D: 仅函数前注释会包含"
+    answer: B
+    explanation: "注释用于源代码阅读和文档生成，编译器在生成可执行文件时会忽略注释内容。"
+    topic: lexical_elements
+    chapter: comments
+
+  - id: lexical-comments-011
+    type: multiple
+    difficulty: medium
+    stem: "下列哪些属于良好的注释实践？（多选）"
+    options:
+      - "A: 注释说明为什么做出某个设计决策"
+      - "B: 注释详细解释复杂公式的来龙去脉"
+      - "C: 注释重复整段代码的作用"
+      - "D: 注释包含示例用法或边界条件说明"
+    answer: ABD
+    explanation: "重复代码注释不利于维护；良好注释应解释原因、重要细节，并提供示例或边界条件说明。"
+    topic: lexical_elements
+    chapter: comments
+
+  - id: lexical-comments-012
+    type: single
+    difficulty: easy
+    stem: "以下哪种注释最不适合直接出现在生产代码库中？"
+    options:
+      - "A: // FIXME: 临时修复，需重构"
+      - "B: // TODO: 优化此处性能"
+      - "C: // 这段代码不用删，保留用于历史记录"
+      - "D: // 调试用打印，临时打开"
+    answer: D
+    explanation: "调试用打印语句注释往往暴露临时代码或敏感信息，需在合并到生产代码前移除或完善。"
+    topic: lexical_elements
+    chapter: comments
+
+  - id: lexical-comments-013
+    type: multiple
+    difficulty: medium
+    stem: "关于注释国际化（多语言注释），以下哪些说法合理？（多选）"
+    options:
+      - "A: 注释应以团队主要语言为主，便于维护"
+      - "B: 所有注释都应翻译为多种语言"
+      - "C: 公共 API 注释应使用英文以便国际用户阅读"
+      - "D: 内部实现注释可使用中文或团队语言"
+    answer: ACD
+    explanation: "团队内部注释通常使用团队语言；公共 API 建议使用英文以便更广泛交流。全面多语言翻译成本高且常不必要。"
+    topic: lexical_elements
+    chapter: comments
+
+  - id: lexical-comments-014
+    type: single
+    difficulty: medium
+    stem: "哪种注释会提高代码审查（code review）的效率？"
+    options:
+      - "A: 解释设计动机和假设的短段注释"
+      - "B: 把所有实现细节写在注释里以替代文档"
+      - "C: 注释中包含大量无关历史记录"
+      - "D: 注释只写作者姓名"
+    answer: A
+    explanation: "简洁描述设计动机和关键假设有助于审查者快速理解意图，避免重复实现细节或无关信息。"
+    topic: lexical_elements
+    chapter: comments
+
+  - id: lexical-comments-015
+    type: single
+    difficulty: hard
+    stem: "考虑以下代码片段，为什么下列注释可能导致误导（或不正确）？\n\n// increase counter by one\ncount += 2"
+    options:
+      - "A: 注释与代码不一致，注释误导读者"
+      - "B: 注释是多余的，因为代码自说明"
+      - "C: 注释是正确的，代码才是错的"
+      - "D: 注释应该更详细描述变量类型"
+    answer: A
+    explanation: "注释与代码行为不一致会误导维护者，应保证注释与实现同步或删除过时注释。"
+    topic: lexical_elements
+    chapter: comments
+
+  - id: lexical-comments-016
+    type: multiple
+    difficulty: hard
+    stem: "当遇到遗留代码中大量过时注释时，哪些策略合理？（多选）"
+    options:
+      - "A: 更新注释以反映当前实现"
+      - "B: 删除明显错误或误导性的注释"
+      - "C: 保留所有历史注释便于追溯"
+      - "D: 在注释中标注变更原因或参考提交记录"
+    answer: ABD
+    explanation: "应更新或删除误导注释，并在必要时记录变更原因；保留所有历史注释会增加噪音，应使用版本控制追溯历史。"
+    topic: lexical_elements
+    chapter: comments
+
+  - id: lexical-comments-017
+    type: single
+    difficulty: hard
+    stem: "为什么不建议在注释中写敏感信息（如密码或密钥）？"
+    options:
+      - "A: 注释会被自动加密"
+      - "B: 注释会被版本控制保存并可能泄露"
+      - "C: 注释仅本地可见，不会泄露"
+      - "D: 注释会在运行时打印"
+    answer: B
+    explanation: "注释存储在代码仓库中且可能被备份或共享，敏感信息不应出现在注释或代码中，需使用安全配置管理。"
+    topic: lexical_elements
+    chapter: comments
+
+  - id: lexical-comments-018
+    type: multiple
+    difficulty: hard
+    stem: "在代码库中保持注释质量的自动化措施包括哪些？（多选）"
+    options:
+      - "A: 使用 lint 规则检测 TODO/FIXME 超时警告"
+      - "B: 在 CI 中运行注释风格检查和示例提取"
+      - "C: 自动删除所有注释以节省空间"
+      - "D: 为导出 API 强制执行文档注释规则"
+    answer: ABD
+    explanation: "可通过 lint/CI 检查注释质量和 API 文档完整性；自动删除注释是不合理的做法。"
+    topic: lexical_elements
+    chapter: comments
+
+  - id: lexical-comments-019
+    type: single
+    difficulty: easy
+    stem: "在Go文件中，包级别的注释通常写在文件的哪个位置？"
+    options:
+      - "A: 文件末尾"
+      - "B: 包声明之前"
+      - "C: 包声明之后紧接着的导出类型前"
+      - "D: 函数内部"
+    answer: B
+    explanation: "包级别注释通常放在 package 关键字之前，用于描述包的用途，供 godoc 提取。"
+    topic: lexical_elements
+    chapter: comments
+
+  - id: lexical-comments-020
+    type: multiple
+    difficulty: medium
+    stem: "在注释中包含示例代码有何好处？（多选）"
+    options:
+      - "A: 帮助使用者理解API的典型用法"
+      - "B: 提供可执行示例，便于测试和验证"
+      - "C: 会降低文档可读性，应避免"
+      - "D: 有助于在 godoc 中展示用法"
+    answer: ABD
+    explanation: "示例代码能直观展示用法并可作为测试，适当使用有助于文档质量。"
+    topic: lexical_elements
+    chapter: comments
+
+  - id: lexical-comments-021
+    type: single
+    difficulty: medium
+    stem: "哪个注释更适合标注函数的线程安全性？"
+    options:
+      - "A: // This function is thread-safe"
+      - "B: // TODO: optimize"
+      - "C: // 临时实现"
+      - "D: // Deprecated"
+    answer: A
+    explanation: "明确在注释中标注函数的线程安全性（或非线程安全）有助于调用者正确使用。"
+    topic: lexical_elements
+    chapter: comments
+
+  - id: lexical-comments-022
+    type: multiple
+    difficulty: medium
+    stem: "关于注释中的法律或版权信息，哪些做法合适？（多选）"
+    options:
+      - "A: 在文件头部包含必要的版权和许可证说明"
+      - "B: 在每个注释里重复版权声明"
+      - "C: 在 README 或 LICENSE 文件中集中说明许可证"
+      - "D: 不需要任何许可证说明"
+    answer: AC
+    explanation: "许可证信息通常放在 LICENSE 文件或文件头注释中，避免在每个注释重复声明。"
+    topic: lexical_elements
+    chapter: comments
+
+  - id: lexical-comments-023
+    type: single
+    difficulty: hard
+    stem: "在大型代码库中，注释失效（outdated comments）最可能导致的后果是？"
+    options:
+      - "A: 性能提升"
+      - "B: 误导维护者导致错误修改或回归"
+      - "C: 代码自动格式化失败"
+      - "D: 版本控制冲突"
+    answer: B
+    explanation: "过时注释会误导维护者，使其基于错误假设修改代码，从而引入缺陷或回归。"
+    topic: lexical_elements
+    chapter: comments
+
+  - id: lexical-comments-024
+    type: multiple
+    difficulty: hard
+    stem: "哪些策略可以减少注释失效的风险？（多选）"
+    options:
+      - "A: 在变更时同步更新注释"
+      - "B: 用自说明代码减少需要注释的地方"
+      - "C: 定期审查并清理过时注释"
+      - "D: 完全禁止注释"
+    answer: ABC
+    explanation: "更新注释、提高代码可读性并定期审查是减少注释失效的有效策略；禁止注释并不现实。"
+    topic: lexical_elements
+    chapter: comments
+
+  - id: lexical-comments-025
+    type: single
+    difficulty: hard
+    stem: "在Go文档注释中使用示例函数（ExampleXxx）有什么好处？"
+    options:
+      - "A: 示例函数可被 godoc 和测试框架识别并运行"
+      - "B: 示例函数只用于开发环境，不会被测试"
+      - "C: 示例函数会增加二进制大小"
+      - "D: 示例函数替代单元测试"
+    answer: A
+    explanation: "Go 的 Example 函数可以在文档中展示并且作为示例测试运行，帮助维持示例与代码一致性。"
+    topic: lexical_elements
+    chapter: comments
+
+  - id: lexical-comments-026
+    type: multiple
+    difficulty: medium
+    stem: "注释中的格式化约定（如首字母大写、句号结尾）有何作用？（多选）"
+    options:
+      - "A: 提高文档的可读性"
+      - "B: 便于 godoc 生成更规范的输出"
+      - "C: 与编译器行为相关"
+      - "D: 有助于统一团队风格"
+    answer: ABD
+    explanation: "良好的注释格式有助于生成规范文档、提高可读性并统一团队风格，与编译器无关。"
+    topic: lexical_elements
+    chapter: comments
+
+  - id: lexical-comments-027
+    type: single
+    difficulty: easy
+    stem: "下面哪种标签常用于标记需要后续处理的注释？"
+    options:
+      - "A: TODO"
+      - "B: NOTE"
+      - "C: FIXME"
+      - "D: ALL"
+    answer: A
+    explanation: "TODO 常用来标注未来要实现或改进的事项；FIXME 标注需修复的问题；NOTE 用于重要备注。"
+    topic: lexical_elements
+    chapter: comments
+
+  - id: lexical-comments-028
+    type: multiple
+    difficulty: easy
+    stem: "以下哪些注释内容应尽量避免写入源代码？（多选）"
+    options:
+      - "A: 明确的密码或密钥"
+      - "B: 临时调试日志说明"
+      - "C: 设计决策的背景说明"
+      - "D: 外部系统的接入凭证"
+    answer: AD
+    explanation: "敏感信息不应写入代码或注释；设计决策背景是有价值的注释内容。"
+    topic: lexical_elements
+    chapter: comments
+
+  - id: lexical-comments-029
+    type: single
+    difficulty: medium
+    stem: "注释中提到的行为契约（如函数的前置条件或后置条件）有什么价值？"
+    options:
+      - "A: 无价值，可以省略"
+      - "B: 明确调用者和实现者的责任，有助于正确使用和维护"
+      - "C: 仅在测试时有用"
+      - "D: 会降低代码性能"
+    answer: B
+    explanation: "注释中说明契约（前置/后置条件）可帮助调用者正确使用并在修改时避免破坏不变性。"
+    topic: lexical_elements
+    chapter: comments
+
+  - id: lexical-comments-030
+    type: multiple
+    difficulty: hard
+    stem: "在代码审查时应如何处理发现的过时注释？（多选）"
+    options:
+      - "A: 要求作者更新或删除注释"
+      - "B: 忽略，因为注释影响不大"
+      - "C: 要求补充测试或示例以验证注释描述"
+      - "D: 将问题记录为任务并跟踪关闭"
+    answer: ACD
+    explanation: "过时注释应更新或删除；视情况补充测试或示例，并将需要后续工作的项记录在任务系统中。"
+    topic: lexical_elements
+    chapter: comments
+
+  - id: lexical-comments-031
+    type: single
+    difficulty: hard
+    stem: "为什么注释的可信度会随着时间推移而降低？"
+    options:
+      - "A: 因为代码库会不断演进，而注释不一定同步更新"
+      - "B: 注释以二进制形式存储，会被篡改"
+      - "C: 注释内容会自动过期"
+      - "D: 注释会被编译器删除"
+    answer: A
+    explanation: "代码演进可能使注释变得过时，除非在变更时同步维护注释，否则可信度会下降。"
+    topic: lexical_elements
+    chapter: comments
+
+  - id: lexical-comments-032
+    type: multiple
+    difficulty: medium
+    stem: "哪些工具或实践可以帮助维护注释与代码的一致性？（多选）"
+    options:
+      - "A: 在 CI 中运行示例和文档测试"
+      - "B: 使用静态分析检测潜在不一致"
+      - "C: 将注释编译进运行时以便校验"
+      - "D: 代码评审流程中检查注释更新"
+    answer: ABD
+    explanation: "示例测试、静态分析和审查流程有助于保持注释与实现一致；不建议将注释编译到运行时用于校验。"
+    topic: lexical_elements
+    chapter: comments
+
+  - id: lexical-comments-033
+    type: single
+    difficulty: easy
+    stem: "以下哪个符号序列用于开始Go的多行注释？"
+    options:
+      - "A: <!--"
+      - "B: /*"
+      - "C: //"
+      - "D: #"
+    answer: B
+    explanation: "多行注释以 /* 开始，以 */ 结束；// 用于单行注释。"
+    topic: lexical_elements
+    chapter: comments
+
+  - id: lexical-comments-034
+    type: multiple
+    difficulty: easy
+    stem: "注释中包含示例输入输出有什么好处？（多选）"
+    options:
+      - "A: 帮助使用者快速理解函数行为"
+      - "B: 可以作为示例测试来保证示例可运行"
+      - "C: 会泄露实现细节，应避免"
+      - "D: 有助于文档化边界条件"
+    answer: ABD
+    explanation: "示例输入输出能提高理解并可用于测试示例的正确性，同时说明边界条件。"
+    topic: lexical_elements
+    chapter: comments
+
+  - id: lexical-comments-035
+    type: single
+    difficulty: medium
+    stem: "当函数很短且意图清晰时，关于是否需要注释的常见建议是？"
+    options:
+      - "A: 仍然需要大量注释解释每一行"
+      - "B: 可以省略注释，使用有意义的函数名和变量名"
+      - "C: 注释应替代有意义的命名"
+      - "D: 必须在每行添加注释"
+    answer: B
+    explanation: "当代码自说明（self-documenting）时，过多注释可能成为负担，优先使用清晰的命名和简洁实现。"
+    topic: lexical_elements
+    chapter: comments

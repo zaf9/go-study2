@@ -36,6 +36,7 @@ func RegisterRoutes(s *ghttp.Server) {
 
 			// 测验
 			authGroup.GET("/quiz/:topic/:chapter", h.GetQuiz)
+			authGroup.GET("/quiz/:topic/:chapter/stats", h.GetQuizStats)
 			authGroup.POST("/quiz/submit", h.SubmitQuiz)
 			authGroup.GET("/quiz/history", h.GetQuizHistory)
 			authGroup.GET("/quiz/history/:topic", h.GetQuizHistory)

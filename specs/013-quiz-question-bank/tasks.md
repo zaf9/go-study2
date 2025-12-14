@@ -27,10 +27,10 @@
 
 **Purpose**: 创建题库目录结构和配置基础
 
-- [ ] T001 创建题库文件根目录结构：`backend/quiz_data/{lexical_elements,constants,variables,types}/`
-- [ ] T002 创建题库包目录：`backend/internal/domain/quiz/`及README.md
-- [ ] T003 [P] 更新`backend/configs/config.yaml`添加quiz配置项（dataPath, questionCount, difficultyDistribution等）
-- [ ] T004 [P] 添加yaml.v3依赖到`backend/go.mod`：`go get gopkg.in/yaml.v3`
+- [X] T001 创建题库文件根目录结构：`backend/quiz_data/{lexical_elements,constants,variables,types}/`
+- [X] T002 创建题库包目录：`backend/internal/domain/quiz/`及README.md
+- [X] T003 [P] 更新`backend/configs/config.yaml`添加quiz配置项（dataPath, questionCount, difficultyDistribution等）
+- [X] T004 [P] 添加yaml.v3依赖到`backend/go.mod`：`go get gopkg.in/yaml.v3`
 
 ---
 
@@ -40,14 +40,14 @@
 
 **⚠️ CRITICAL**: 此阶段完成前，用户故事无法开始实现
 
-- [ ] T005 定义核心实体：在`backend/internal/domain/quiz/entity.go`实现QuizQuestion, QuizBank, QuizConfig结构体（参考data-model.md）
-- [ ] T006 [P] 实现题库加载器：`backend/internal/domain/quiz/loader.go`（YAML文件解析,按topic/chapter索引）
-- [ ] T007 [P] 实现题库验证器：`backend/internal/domain/quiz/validator.go`（必填字段、枚举值、选项格式、答案格式、路径一致性、ID唯一性验证）
-- [ ] T008 [P] 实现抽题选择器：`backend/internal/domain/quiz/selector.go`（难度分布控制、并发安全的随机数生成、Fisher-Yates洗牌算法）
-- [ ] T009 实现题库仓储：`backend/internal/domain/quiz/repository.go`（内存索引map[topic][chapter][]QuizQuestion）
-- [ ] T010 [P] 单元测试-loader：`backend/internal/domain/quiz/loader_test.go`（测试YAML解析、错误处理）
-- [ ] T011 [P] 单元测试-validator：`backend/internal/domain/quiz/validator_test.go`（测试9个验证规则、边界情况）
-- [ ] T012 [P] 单元测试-selector：`backend/internal/domain/quiz/selector_test.go`（测试难度分布、并发安全、随机性）
+ - [X] T005 定义核心实体：在`backend/internal/domain/quiz/entity.go`实现QuizQuestion, QuizBank, QuizConfig结构体（参考data-model.md）
+ - [X] T006 [P] 实现题库加载器：`backend/internal/domain/quiz/loader.go`（YAML文件解析,按topic/chapter索引）
+ - [X] T007 [P] 实现题库验证器：`backend/internal/domain/quiz/validator.go`（必填字段、枚举值、选项格式、答案格式、路径一致性、ID唯一性验证）
+ - [X] T008 [P] 实现抽题选择器：`backend/internal/domain/quiz/selector.go`（难度分布控制、并发安全的随机数生成、Fisher-Yates洗牌算法）
+ - [X] T009 实现题库仓储：`backend/internal/domain/quiz/repository.go`（内存索引map[topic][chapter][]QuizQuestion）
+ - [X] T010 [P] 单元测试-loader：`backend/internal/domain/quiz/loader_test.go`（测试YAML解析、错误处理）
+ - [X] T011 [P] 单元测试-validator：`backend/internal/domain/quiz/validator_test.go`（测试9个验证规则、边界情况）
+ - [X] T012 [P] 单元测试-selector：`backend/internal/domain/quiz/selector_test.go`（测试难度分布、并发安全、随机性）
 
 **Checkpoint**: 基础设施就绪 - 用户故事实现可以开始
 
@@ -61,15 +61,15 @@
 
 ### Tests for User Story 1 (MANDATORY) ⚠️
 
-- [ ] T013 [P] [US1] 题库文件格式验证测试：`backend/tests/unit/quiz/yaml_format_test.go`（验证41个YAML文件符合schema规范）
-- [ ] T014 [P] [US1] 题目数量分布测试：`backend/tests/integration/quiz/question_distribution_test.go`（验证每章节30-50题，单选/多选各50%±10%）
-- [ ] T015 [P] [US1] 难度分布测试：`backend/tests/integration/quiz/difficulty_distribution_test.go`（验证难度比例40/40/20±10%）
+- [X] T013 [P] [US1] 题库文件格式验证测试：`backend/tests/unit/quiz/yaml_format_test.go`（验证41个YAML文件符合schema规范）
+- [X] T014 [P] [US1] 题目数量分布测试：`backend/tests/integration/quiz/question_distribution_test.go`（验证每章节30-50题，单选/多选各50%±10%）
+- [X] T015 [P] [US1] 难度分布测试：`backend/tests/integration/quiz/difficulty_distribution_test.go`（验证难度比例40/40/20±10%）
 
 ### Implementation for User Story 1
 
 **注意**: 题目内容生成主要是内容创作任务，不是代码开发任务
 
-- [ ] T016 [US1] 为lexical_elements主题生成11个章节YAML文件（comments.yaml到strings.yaml），每章节30-50题（参考research.md知识点提纲）
+- [X] T016 [US1] 为lexical_elements主题生成11个章节YAML文件（comments.yaml到strings.yaml），每章节30-50题（参考research.md知识点提纲）
   - T016.1: [P] [US1] 生成`quiz_data/lexical_elements/comments.yaml`（35题）
   - T016.2: [P] [US1] 生成`quiz_data/lexical_elements/tokens.yaml`（40题）
   - T016.3: [P] [US1] 生成`quiz_data/lexical_elements/semicolons.yaml`（30题）
@@ -82,7 +82,7 @@
   - T016.10: [P] [US1] 生成`quiz_data/lexical_elements/runes.yaml`（40题）
   - T016.11: [P] [US1] 生成`quiz_data/lexical_elements/strings.yaml`（45题）
 
-- [ ] T017 [US1] 为constants主题生成12个章节YAML文件（boolean.yaml到implementation_restrictions.yaml），每章节30-50题
+- [X] T017 [US1] 为constants主题生成12个章节YAML文件（boolean.yaml到implementation_restrictions.yaml），每章节30-50题
   - T017.1: [P] [US1] 生成`quiz_data/constants/boolean.yaml`（30题）
   - T017.2: [P] [US1] 生成`quiz_data/constants/rune.yaml`（35题）
   - T017.3: [P] [US1] 生成`quiz_data/constants/integer.yaml`（40题）
@@ -96,13 +96,13 @@
   - T017.11: [P] [US1] 生成`quiz_data/constants/iota.yaml`（45题）
   - T017.12: [P] [US1] 生成`quiz_data/constants/implementation_restrictions.yaml`（30题）
 
-- [ ] T018 [US1] 为variables主题生成4个章节YAML文件（storage.yaml到zero.yaml），每章节30-50题
+- [X] T018 [US1] 为variables主题生成4个章节YAML文件（storage.yaml到zero.yaml），每章节30-50题
   - T018.1: [P] [US1] 生成`quiz_data/variables/storage.yaml`（40题）
   - T018.2: [P] [US1] 生成`quiz_data/variables/static.yaml`（35题）
   - T018.3: [P] [US1] 生成`quiz_data/variables/dynamic.yaml`（40题）
   - T018.4: [P] [US1] 生成`quiz_data/variables/zero.yaml`（45题）
 
-- [ ] T019 [US1] 为types主题生成14个章节YAML文件（boolean.yaml到channel.yaml），每章节30-50题
+- [X] T019 [US1] 为types主题生成14个章节YAML文件（boolean.yaml到channel.yaml），每章节30-50题
   - T019.1: [P] [US1] 生成`quiz_data/types/boolean.yaml`（30题）
   - T019.2: [P] [US1] 生成`quiz_data/types/numeric.yaml`（50题）
   - T019.3: [P] [US1] 生成`quiz_data/types/string.yaml`（40题）
@@ -118,8 +118,8 @@
   - T019.13: [P] [US1] 生成`quiz_data/types/map.yaml`（45题）
   - T019.14: [P] [US1] 生成`quiz_data/types/channel.yaml`（40题）
 
-- [ ] T020 [US1] 人工审核所有41个YAML文件，修正明显错误（题干语法、答案准确性、解析完整性）
-- [ ] T021 [US1] 创建题库README：`backend/quiz_data/README.md`（说明文件组织、添加题目流程）
+- [X] T020 [US1] 人工审核所有41个YAML文件，修正明显错误（题干语法、答案准确性、解析完整性）
+- [X] T021 [US1] 创建题库README：`backend/quiz_data/README.md`（说明文件组织、添加题目流程）
 
 **Checkpoint**: 此时User Story 1应完全可用且可独立测试（启动服务会加载所有题库并验证）
 
@@ -133,21 +133,21 @@
 
 ### Tests for User Story 2 (MANDATORY) ⚠️
 
-- [ ] T022 [P] [US2] 抽题API契约测试：`backend/tests/contract/quiz/quiz_start_contract_test.go`（验证GET `/api/v1/quiz/:topic/:chapter`返回正确结构）
-- [ ] T023 [P] [US2] 随机性集成测试：`backend/tests/integration/quiz/quiz_randomness_test.go`（100次抽题，验证至少50%题目不同）
-- [ ] T024 [P] [US2] 难度分布集成测试：`backend/tests/integration/quiz/quiz_difficulty_test.go`（1000次抽题，验证难度比例40/40/20±5%）
-- [ ] T025 [P] [US2] 并发抽题测试：`backend/tests/integration/quiz/quiz_concurrency_test.go`（100并发用户同时抽题，无panic，响应<100ms）
+- [X] T022 [P] [US2] 抽题API契约测试：`backend/tests/contract/quiz/quiz_start_contract_test.go`（验证GET `/api/v1/quiz/:topic/:chapter`返回正确结构）
+- [X] T023 [P] [US2] 随机性集成测试：`backend/tests/integration/quiz/quiz_randomness_test.go`（100次抽题，验证至少50%题目不同）
+- [X] T024 [P] [US2] 难度分布集成测试：`backend/tests/integration/quiz/quiz_difficulty_test.go`（1000次抽题，验证难度比例40/40/20±5%）
+- [X] T025 [P] [US2] 并发抽题测试：`backend/tests/integration/quiz/quiz_concurrency_test.go`（100并发用户同时抽题，无panic，响应<100ms）
 
 ### Implementation for User Story 2
 
-- [ ] T026 [US2] 实现抽题服务层：`backend/internal/app/quiz/service.go`（调用selector抽题，返回QuizSelection）
-- [ ] T027 [US2] 实现HTTP handler：`backend/internal/app/http_server/handler/quiz.go`（GET `/quiz/:topic/:chapter`路由，兼容现有API）
-- [ ] T027-A [US2] 实现选项顺序随机打乱：在`selector.go`或`service.go`中实现Fisher-Yates洗牌算法打乱题目选项顺序（FR-010：避免答案位置规律）
-- [ ] T028 [US2] 注册路由：更新`backend/internal/app/http_server/router.go`，添加quiz路由
-- [ ] T029 [US2] 集成启动加载：在`backend/main.go`启动时调用quiz.LoadAllBanks()，Fail-Fast验证
-- [ ] T030 [US2] 添加结构化日志：在loader、validator、selector中记录加载耗时、验证错误、抽题请求（使用现有logger）
-- [ ] T031 [P] [US2] 单元测试-service：`backend/internal/app/quiz/service_test.go`（测试抽题逻辑、错误处理）
-- [ ] T032 [P] [US2] 单元测试-handler：`backend/internal/app/http_server/handler/quiz_test.go`（测试HTTP响应格式、错误码）
+- [X] T026 [US2] 实现抽题服务层：`backend/internal/app/quiz/service.go`（调用selector抽题，返回QuizSelection）
+- [X] T027 [US2] 实现HTTP handler：`backend/internal/app/http_server/handler/quiz.go`（GET `/quiz/:topic/:chapter`路由，兼容现有API）
+- [X] T027-A [US2] 实现选项顺序随机打乱：在`selector.go`或`service.go`中实现Fisher-Yates洗牌算法打乱题目选项顺序（FR-010：避免答案位置规律）
+- [X] T028 [US2] 注册路由：更新`backend/internal/app/http_server/router.go`，添加quiz路由
+- [X] T029 [US2] 集成启动加载：在`backend/main.go`启动时调用quiz.LoadAllBanks()，Fail-Fast验证
+- [X] T030 [US2] 添加结构化日志：在loader、validator、selector中记录加载耗时、验证错误、抽题请求（使用现有logger）
+- [X] T031 [P] [US2] 单元测试-service：`backend/internal/app/quiz/service_test.go`（测试抽题逻辑、错误处理）
+- [X] T032 [P] [US2] 单元测试-handler：`backend/internal/app/http_server/handler/quiz_test.go`（测试HTTP响应格式、错误码）
 
 **Checkpoint**: 此时User Story 1和2应都能独立工作（题库已生成+抽题API可用）
 
@@ -161,16 +161,16 @@
 
 ### Tests for User Story 3 (MANDATORY) ⚠️
 
-- [ ] T033 [P] [US3] 题目结构完整性测试：`backend/tests/unit/quiz/question_completeness_test.go`（验证所有题目包含9个必填字段）
-- [ ] T034 [P] [US3] 答案格式正确性测试：`backend/tests/unit/quiz/answer_format_test.go`（单选题1字母，多选题2-4字母升序）
-- [ ] T034-A [P] [US3] 多选题判分顺序无关测试：`backend/tests/unit/quiz/answer_order_test.go`（验证FR-009：AB与BA、ACD与DCA等视为相同答案）
-- [ ] T035 [P] [US3] 解析中文检测测试：`backend/tests/unit/quiz/explanation_chinese_test.go`（验证所有解析包含中文字符）
+- [X] T033 [P] [US3] 题目结构完整性测试：`backend/tests/unit/quiz/question_completeness_test.go`（验证所有题目包含9个必填字段）
+- [X] T034 [P] [US3] 答案格式正确性测试：`backend/tests/unit/quiz/answer_format_test.go`（单选题1字母，多选题2-4字母升序）
+- [X] T034-A [P] [US3] 多选题判分顺序无关测试：`backend/tests/unit/quiz/answer_order_test.go`（验证FR-009：AB与BA、ACD与DCA等视为相同答案）
+- [X] T035 [P] [US3] 解析中文检测测试：`backend/tests/unit/quiz/explanation_chinese_test.go`（验证所有解析包含中文字符）
 
 ### Implementation for User Story 3
 
-- [ ] T036 [US3] 实现题目质量审核工具（可选）：`backend/scripts/quiz_quality_check.go`（批量检查题目质量、生成报告）
-- [ ] T037 [US3] 第二轮人工审核：复查所有41个YAML文件，重点验证答案准确性和解析详细度
-- [ ] T038 [US3] 完善验证器错误信息：在`validator.go`中添加更详细的中文错误提示（包含文件名、题目ID、错误行号）
+- [X] T036 [US3] 实现题目质量审核工具（可选）：`backend/scripts/quiz_quality_check.go`（批量检查题目质量、生成报告）
+- [X] T037 [US3] 第二轮人工审核：复查所有41个YAML文件，重点验证答案准确性和解析详细度
+- [X] T038 [US3] 完善验证器错误信息：在`validator.go`中添加更详细的中文错误提示（包含文件名、题目ID、错误行号）
 
 **Checkpoint**: 所有用户故事应独立可用且题目质量达标
 
@@ -184,14 +184,15 @@
 
 ### Tests for User Story 4 (MANDATORY) ⚠️
 
-- [ ] T039 [P] [US4] 题库统计API测试：`backend/tests/contract/quiz/quiz_stats_contract_test.go`（验证GET `/api/v1/quiz/:topic/:chapter/stats`返回正确统计）
-- [ ] T040 [P] [US4] 题库重载测试：`backend/tests/integration/quiz/quiz_reload_test.go`（修改YAML文件后重启，验证变更生效）
+- [X] T039 [P] [US4] 题库统计API测试：`backend/tests/contract/quiz/quiz_stats_contract_test.go`（验证GET `/api/v1/quiz/:topic/:chapter/stats`返回正确统计）
+- [X] T040 [P] [US4] 题库重载测试：`backend/tests/integration/quiz/quiz_reload_test.go`（修改YAML文件后重启，验证变更生效）
+
 
 ### Implementation for User Story 4
 
-- [ ] T041 [P] [US4] 实现统计API（可选）：在`handler/quiz.go`添加GET `/quiz/:topic/:chapter/stats`（返回total, byType, byDifficulty）
-- [ ] T042 [P] [US4] 实现题库统计服务：在`service.go`添加GetStats方法（从repository聚合统计）
-- [ ] T043 [US4] 创建题库维护文档：更新`specs/013-quiz-question-bank/quickstart.md`，补充常见问题FAQ
+ - [X] T041 [P] [US4] 实现统计API（可选）：在`handler/quiz.go`添加GET `/quiz/:topic/:chapter/stats`（返回total, byType, byDifficulty）
+ - [X] T042 [P] [US4] 实现题库统计服务：在`service.go`添加GetStats方法（从repository聚合统计）
+ - [X] T043 [US4] 创建题库维护文档：更新`specs/013-quiz-question-bank/quickstart.md`，补充常见问题FAQ
 
 **Checkpoint**: 所有用户故事功能完整且可维护
 
@@ -201,12 +202,12 @@
 
 **Purpose**: 跨用户故事的改进和文档更新
 
-- [ ] T044 [P] 验证所有代码注释和日志为中文（检查entity.go, loader.go, validator.go, selector.go, service.go, handler.go）
-- [ ] T045 [P] 更新项目README：在`backend/README.md`添加测验题库系统说明
-- [ ] T046 [P] 更新API文档：在`docs/API.md`添加quiz相关接口说明
-- [ ] T047 代码重构：优化validator.go的验证逻辑，减少重复代码
-- [ ] T048 性能基准测试：在`backend/tests/benchmark/quiz_benchmark_test.go`添加加载和抽题性能测试
-- [ ] T049 运行quickstart验证：按照`quickstart.md`流程添加一个测试题目，验证完整流程
+- [X] T044 [P] 验证所有代码注释和日志为中文（检查entity.go, loader.go, validator.go, selector.go, service.go, handler.go）
+- [X] T045 [P] 更新项目README：在`backend/README.md`添加测验题库系统说明
+- [X] T046 [P] 更新API文档：在`docs/API.md`添加quiz相关接口说明
+ - [X] T047 代码重构：优化validator.go的验证逻辑，减少重复代码
+ - [X] T048 性能基准测试：在`backend/tests/benchmark/quiz_benchmark_test.go`添加加载和抽题性能测试
+- [X] T049 运行quickstart验证：按照`quickstart.md`流程添加一个测试题目，验证完整流程
 
 ---
 

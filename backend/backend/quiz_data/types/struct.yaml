@@ -1,0 +1,651 @@
+questions:
+    - id: type-struct-001
+      type: multiple
+      difficulty: easy
+      stem: 【单项基础】关于 types.struct，下面哪个选项是正确的？
+      options:
+        - 'A: 语法/语义上不正确的陈述'
+        - 'B: 正确项（关于struct.types的重要结论）'
+        - 'C: 正确项（关于struct.types的重要结论）'
+        - 'D: 正确项（关于struct.types的重要结论）'
+      answer: BCD
+      explanation: 本题考查 types.struct 的相关知识。正确答案：BCD。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: struct
+    - id: type-struct-002
+      type: single
+      difficulty: easy
+      stem: 【单项基础】关于 types.struct，下面哪个选项是正确的？
+      options:
+        - 'A: 正确：关于struct.types的关键点描述（正确选项）'
+        - 'B: 常见误解或反例（容易混淆）'
+        - 'C: 常见误解或反例（容易混淆）'
+        - 'D: 语法/语义上不正确的陈述'
+      answer: A
+      explanation: 本题考查 types.struct 的概念。正确答案为 A。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: struct
+    - id: type-struct-003
+      type: multiple
+      difficulty: easy
+      stem: 【单项基础】关于 types.struct，下面哪个选项是正确的？
+      options:
+        - 'A: 正确项（关于struct.types的重要结论）'
+        - 'B: 正确项（关于struct.types的重要结论）'
+        - 'C: 语法/语义上不正确的陈述'
+        - 'D: 部分正确但不完整的说法'
+      answer: AB
+      explanation: 本题考查 types.struct 的相关知识。正确答案：AB。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: struct
+    - id: type-struct-004
+      type: single
+      difficulty: easy
+      stem: 【单项基础】关于 types.struct，下面哪个选项是正确的？
+      options:
+        - 'A: 与struct.types 相关但不适用的选项'
+        - 'B: 正确：关于struct.types的关键点描述（正确选项）'
+        - 'C: 部分正确但不完整的说法'
+        - 'D: 语法/语义上不正确的陈述'
+      answer: B
+      explanation: 本题考查 types.struct 的概念。正确答案为 B。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: struct
+    - id: type-struct-005
+      type: multiple
+      difficulty: easy
+      stem: 【单项基础】关于 types.struct，下面哪个选项是正确的？
+      options:
+        - 'A: 正确项（关于struct.types的重要结论）'
+        - 'B: 正确项（关于struct.types的重要结论）'
+        - 'C: 正确项（关于struct.types的重要结论）'
+        - 'D: 与struct.types 相关但不适用的选项'
+      answer: ABC
+      explanation: 本题考查 types.struct 的相关知识。正确答案：ABC。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: struct
+    - id: type-struct-006
+      type: single
+      difficulty: easy
+      stem: 【单项基础】关于 types.struct，下面哪个选项是正确的？
+      options:
+        - 'A: 正确：关于struct.types的关键点描述（正确选项）'
+        - 'B: 语法/语义上不正确的陈述'
+        - 'C: 语法/语义上不正确的陈述'
+        - 'D: 与struct.types 相关但不适用的选项'
+      answer: A
+      explanation: 本题考查 types.struct 的概念。正确答案为 A。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: struct
+    - id: type-struct-007
+      type: multiple
+      difficulty: easy
+      stem: 【单项基础】关于 types.struct，下面哪个选项是正确的？
+      options:
+        - 'A: 部分正确但不完整的说法'
+        - 'B: 正确项（关于struct.types的重要结论）'
+        - 'C: 正确项（关于struct.types的重要结论）'
+        - 'D: 正确项（关于struct.types的重要结论）'
+      answer: BCD
+      explanation: 本题考查 types.struct 的相关知识。正确答案：BCD。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: struct
+    - id: type-struct-008
+      type: single
+      difficulty: easy
+      stem: 【单项基础】关于 types.struct，下面哪个选项是正确的？
+      options:
+        - 'A: 正确：关于struct.types的关键点描述（正确选项）'
+        - 'B: 常见误解或反例（容易混淆）'
+        - 'C: 常见误解或反例（容易混淆）'
+        - 'D: 常见误解或反例（容易混淆）'
+      answer: A
+      explanation: 本题考查 types.struct 的概念。正确答案为 A。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: struct
+    - id: type-struct-009
+      type: multiple
+      difficulty: easy
+      stem: 【单项基础】关于 types.struct，下面哪个选项是正确的？
+      options:
+        - 'A: 正确项（关于struct.types的重要结论）'
+        - 'B: 与struct.types 相关但不适用的选项'
+        - 'C: 语法/语义上不正确的陈述'
+        - 'D: 正确项（关于struct.types的重要结论）'
+      answer: AD
+      explanation: 本题考查 types.struct 的相关知识。正确答案：AD。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: struct
+    - id: type-struct-010
+      type: single
+      difficulty: easy
+      stem: 【单项基础】关于 types.struct，下面哪个选项是正确的？
+      options:
+        - 'A: 语法/语义上不正确的陈述'
+        - 'B: 正确：关于struct.types的关键点描述（正确选项）'
+        - 'C: 部分正确但不完整的说法'
+        - 'D: 语法/语义上不正确的陈述'
+      answer: B
+      explanation: 本题考查 types.struct 的概念。正确答案为 B。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: struct
+    - id: type-struct-011
+      type: multiple
+      difficulty: easy
+      stem: 【单项基础】关于 types.struct，下面哪个选项是正确的？
+      options:
+        - 'A: 正确项（关于struct.types的重要结论）'
+        - 'B: 常见误解或反例（容易混淆）'
+        - 'C: 正确项（关于struct.types的重要结论）'
+        - 'D: 正确项（关于struct.types的重要结论）'
+      answer: ACD
+      explanation: 本题考查 types.struct 的相关知识。正确答案：ACD。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: struct
+    - id: type-struct-012
+      type: single
+      difficulty: easy
+      stem: 【单项基础】关于 types.struct，下面哪个选项是正确的？
+      options:
+        - 'A: 语法/语义上不正确的陈述'
+        - 'B: 正确：关于struct.types的关键点描述（正确选项）'
+        - 'C: 语法/语义上不正确的陈述'
+        - 'D: 常见误解或反例（容易混淆）'
+      answer: B
+      explanation: 本题考查 types.struct 的概念。正确答案为 B。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: struct
+    - id: type-struct-013
+      type: multiple
+      difficulty: easy
+      stem: 【单项基础】关于 types.struct，下面哪个选项是正确的？
+      options:
+        - 'A: 正确项（关于struct.types的重要结论）'
+        - 'B: 常见误解或反例（容易混淆）'
+        - 'C: 正确项（关于struct.types的重要结论）'
+        - 'D: 正确项（关于struct.types的重要结论）'
+      answer: ACD
+      explanation: 本题考查 types.struct 的相关知识。正确答案：ACD。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: struct
+    - id: type-struct-014
+      type: single
+      difficulty: easy
+      stem: 【单项基础】关于 types.struct，下面哪个选项是正确的？
+      options:
+        - 'A: 正确：关于struct.types的关键点描述（正确选项）'
+        - 'B: 常见误解或反例（容易混淆）'
+        - 'C: 与struct.types 相关但不适用的选项'
+        - 'D: 常见误解或反例（容易混淆）'
+      answer: A
+      explanation: 本题考查 types.struct 的概念。正确答案为 A。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: struct
+    - id: type-struct-015
+      type: multiple
+      difficulty: easy
+      stem: 【单项基础】关于 types.struct，下面哪个选项是正确的？
+      options:
+        - 'A: 语法/语义上不正确的陈述'
+        - 'B: 正确项（关于struct.types的重要结论）'
+        - 'C: 部分正确但不完整的说法'
+        - 'D: 正确项（关于struct.types的重要结论）'
+      answer: BD
+      explanation: 本题考查 types.struct 的相关知识。正确答案：BD。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: struct
+    - id: type-struct-016
+      type: single
+      difficulty: easy
+      stem: 【单项基础】关于 types.struct，下面哪个选项是正确的？
+      options:
+        - 'A: 正确：关于struct.types的关键点描述（正确选项）'
+        - 'B: 语法/语义上不正确的陈述'
+        - 'C: 常见误解或反例（容易混淆）'
+        - 'D: 与struct.types 相关但不适用的选项'
+      answer: A
+      explanation: 本题考查 types.struct 的概念。正确答案为 A。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: struct
+    - id: type-struct-017
+      type: multiple
+      difficulty: easy
+      stem: 【单项基础】关于 types.struct，下面哪个选项是正确的？
+      options:
+        - 'A: 正确项（关于struct.types的重要结论）'
+        - 'B: 正确项（关于struct.types的重要结论）'
+        - 'C: 常见误解或反例（容易混淆）'
+        - 'D: 正确项（关于struct.types的重要结论）'
+      answer: ABD
+      explanation: 本题考查 types.struct 的相关知识。正确答案：ABD。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: struct
+    - id: type-struct-018
+      type: single
+      difficulty: easy
+      stem: 【单项基础】关于 types.struct，下面哪个选项是正确的？
+      options:
+        - 'A: 正确：关于struct.types的关键点描述（正确选项）'
+        - 'B: 语法/语义上不正确的陈述'
+        - 'C: 语法/语义上不正确的陈述'
+        - 'D: 与struct.types 相关但不适用的选项'
+      answer: A
+      explanation: 本题考查 types.struct 的概念。正确答案为 A。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: struct
+    - id: type-struct-019
+      type: multiple
+      difficulty: easy
+      stem: 【单项基础】关于 types.struct，下面哪个选项是正确的？
+      options:
+        - 'A: 正确项（关于struct.types的重要结论）'
+        - 'B: 正确项（关于struct.types的重要结论）'
+        - 'C: 常见误解或反例（容易混淆）'
+        - 'D: 常见误解或反例（容易混淆）'
+      answer: AB
+      explanation: 本题考查 types.struct 的相关知识。正确答案：AB。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: struct
+    - id: type-struct-020
+      type: single
+      difficulty: easy
+      stem: 【单项基础】关于 types.struct，下面哪个选项是正确的？
+      options:
+        - 'A: 正确：关于struct.types的关键点描述（正确选项）'
+        - 'B: 与struct.types 相关但不适用的选项'
+        - 'C: 与struct.types 相关但不适用的选项'
+        - 'D: 常见误解或反例（容易混淆）'
+      answer: A
+      explanation: 本题考查 types.struct 的概念。正确答案为 A。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: struct
+    - id: type-struct-021
+      type: multiple
+      difficulty: medium
+      stem: 【应用题】在 types.struct 的情境下，哪个说法更合适？
+      options:
+        - 'A: 正确项（关于struct.types的重要结论）'
+        - 'B: 正确项（关于struct.types的重要结论）'
+        - 'C: 正确项（关于struct.types的重要结论）'
+        - 'D: 常见误解或反例（容易混淆）'
+      answer: ABC
+      explanation: 本题考查 types.struct 的相关知识。正确答案：ABC。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: struct
+    - id: type-struct-022
+      type: single
+      difficulty: medium
+      stem: 【应用题】在 types.struct 的情境下，哪个说法更合适？
+      options:
+        - 'A: 与struct.types 相关但不适用的选项'
+        - 'B: 部分正确但不完整的说法'
+        - 'C: 正确：关于struct.types的关键点描述（正确选项）'
+        - 'D: 常见误解或反例（容易混淆）'
+      answer: C
+      explanation: 本题考查 types.struct 的概念。正确答案为 C。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: struct
+    - id: type-struct-023
+      type: multiple
+      difficulty: medium
+      stem: 【应用题】在 types.struct 的情境下，哪个说法更合适？
+      options:
+        - 'A: 正确项（关于struct.types的重要结论）'
+        - 'B: 正确项（关于struct.types的重要结论）'
+        - 'C: 语法/语义上不正确的陈述'
+        - 'D: 正确项（关于struct.types的重要结论）'
+      answer: ABD
+      explanation: 本题考查 types.struct 的相关知识。正确答案：ABD。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: struct
+    - id: type-struct-024
+      type: single
+      difficulty: medium
+      stem: 【应用题】在 types.struct 的情境下，哪个说法更合适？
+      options:
+        - 'A: 语法/语义上不正确的陈述'
+        - 'B: 语法/语义上不正确的陈述'
+        - 'C: 正确：关于struct.types的关键点描述（正确选项）'
+        - 'D: 与struct.types 相关但不适用的选项'
+      answer: C
+      explanation: 本题考查 types.struct 的概念。正确答案为 C。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: struct
+    - id: type-struct-025
+      type: multiple
+      difficulty: medium
+      stem: 【应用题】在 types.struct 的情境下，哪个说法更合适？
+      options:
+        - 'A: 正确项（关于struct.types的重要结论）'
+        - 'B: 正确项（关于struct.types的重要结论）'
+        - 'C: 语法/语义上不正确的陈述'
+        - 'D: 正确项（关于struct.types的重要结论）'
+      answer: ABD
+      explanation: 本题考查 types.struct 的相关知识。正确答案：ABD。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: struct
+    - id: type-struct-026
+      type: single
+      difficulty: medium
+      stem: 【应用题】在 types.struct 的情境下，哪个说法更合适？
+      options:
+        - 'A: 部分正确但不完整的说法'
+        - 'B: 常见误解或反例（容易混淆）'
+        - 'C: 正确：关于struct.types的关键点描述（正确选项）'
+        - 'D: 常见误解或反例（容易混淆）'
+      answer: C
+      explanation: 本题考查 types.struct 的概念。正确答案为 C。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: struct
+    - id: type-struct-027
+      type: multiple
+      difficulty: medium
+      stem: 【应用题】在 types.struct 的情境下，哪个说法更合适？
+      options:
+        - 'A: 正确项（关于struct.types的重要结论）'
+        - 'B: 正确项（关于struct.types的重要结论）'
+        - 'C: 正确项（关于struct.types的重要结论）'
+        - 'D: 与struct.types 相关但不适用的选项'
+      answer: ABC
+      explanation: 本题考查 types.struct 的相关知识。正确答案：ABC。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: struct
+    - id: type-struct-028
+      type: single
+      difficulty: medium
+      stem: 【应用题】在 types.struct 的情境下，哪个说法更合适？
+      options:
+        - 'A: 与struct.types 相关但不适用的选项'
+        - 'B: 语法/语义上不正确的陈述'
+        - 'C: 正确：关于struct.types的关键点描述（正确选项）'
+        - 'D: 部分正确但不完整的说法'
+      answer: C
+      explanation: 本题考查 types.struct 的概念。正确答案为 C。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: struct
+    - id: type-struct-029
+      type: multiple
+      difficulty: medium
+      stem: 【应用题】在 types.struct 的情境下，哪个说法更合适？
+      options:
+        - 'A: 常见误解或反例（容易混淆）'
+        - 'B: 正确项（关于struct.types的重要结论）'
+        - 'C: 正确项（关于struct.types的重要结论）'
+        - 'D: 语法/语义上不正确的陈述'
+      answer: BC
+      explanation: 本题考查 types.struct 的相关知识。正确答案：BC。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: struct
+    - id: type-struct-030
+      type: single
+      difficulty: medium
+      stem: 【应用题】在 types.struct 的情境下，哪个说法更合适？
+      options:
+        - 'A: 与struct.types 相关但不适用的选项'
+        - 'B: 正确：关于struct.types的关键点描述（正确选项）'
+        - 'C: 语法/语义上不正确的陈述'
+        - 'D: 与struct.types 相关但不适用的选项'
+      answer: B
+      explanation: 本题考查 types.struct 的概念。正确答案为 B。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: struct
+    - id: type-struct-031
+      type: multiple
+      difficulty: medium
+      stem: 【应用题】在 types.struct 的情境下，哪个说法更合适？
+      options:
+        - 'A: 与struct.types 相关但不适用的选项'
+        - 'B: 正确项（关于struct.types的重要结论）'
+        - 'C: 正确项（关于struct.types的重要结论）'
+        - 'D: 正确项（关于struct.types的重要结论）'
+      answer: BCD
+      explanation: 本题考查 types.struct 的相关知识。正确答案：BCD。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: struct
+    - id: type-struct-032
+      type: single
+      difficulty: medium
+      stem: 【应用题】在 types.struct 的情境下，哪个说法更合适？
+      options:
+        - 'A: 与struct.types 相关但不适用的选项'
+        - 'B: 与struct.types 相关但不适用的选项'
+        - 'C: 正确：关于struct.types的关键点描述（正确选项）'
+        - 'D: 与struct.types 相关但不适用的选项'
+      answer: C
+      explanation: 本题考查 types.struct 的概念。正确答案为 C。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: struct
+    - id: type-struct-033
+      type: multiple
+      difficulty: medium
+      stem: 【应用题】在 types.struct 的情境下，哪个说法更合适？
+      options:
+        - 'A: 正确项（关于struct.types的重要结论）'
+        - 'B: 正确项（关于struct.types的重要结论）'
+        - 'C: 语法/语义上不正确的陈述'
+        - 'D: 部分正确但不完整的说法'
+      answer: AB
+      explanation: 本题考查 types.struct 的相关知识。正确答案：AB。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: struct
+    - id: type-struct-034
+      type: single
+      difficulty: medium
+      stem: 【应用题】在 types.struct 的情境下，哪个说法更合适？
+      options:
+        - 'A: 语法/语义上不正确的陈述'
+        - 'B: 部分正确但不完整的说法'
+        - 'C: 正确：关于struct.types的关键点描述（正确选项）'
+        - 'D: 常见误解或反例（容易混淆）'
+      answer: C
+      explanation: 本题考查 types.struct 的概念。正确答案为 C。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: struct
+    - id: type-struct-035
+      type: multiple
+      difficulty: medium
+      stem: 【应用题】在 types.struct 的情境下，哪个说法更合适？
+      options:
+        - 'A: 语法/语义上不正确的陈述'
+        - 'B: 正确项（关于struct.types的重要结论）'
+        - 'C: 正确项（关于struct.types的重要结论）'
+        - 'D: 正确项（关于struct.types的重要结论）'
+      answer: BCD
+      explanation: 本题考查 types.struct 的相关知识。正确答案：BCD。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: struct
+    - id: type-struct-036
+      type: single
+      difficulty: medium
+      stem: 【应用题】在 types.struct 的情境下，哪个说法更合适？
+      options:
+        - 'A: 与struct.types 相关但不适用的选项'
+        - 'B: 正确：关于struct.types的关键点描述（正确选项）'
+        - 'C: 与struct.types 相关但不适用的选项'
+        - 'D: 常见误解或反例（容易混淆）'
+      answer: B
+      explanation: 本题考查 types.struct 的概念。正确答案为 B。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: struct
+    - id: type-struct-037
+      type: multiple
+      difficulty: medium
+      stem: 【应用题】在 types.struct 的情境下，哪个说法更合适？
+      options:
+        - 'A: 部分正确但不完整的说法'
+        - 'B: 正确项（关于struct.types的重要结论）'
+        - 'C: 正确项（关于struct.types的重要结论）'
+        - 'D: 部分正确但不完整的说法'
+      answer: BC
+      explanation: 本题考查 types.struct 的相关知识。正确答案：BC。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: struct
+    - id: type-struct-038
+      type: single
+      difficulty: medium
+      stem: 【应用题】在 types.struct 的情境下，哪个说法更合适？
+      options:
+        - 'A: 常见误解或反例（容易混淆）'
+        - 'B: 与struct.types 相关但不适用的选项'
+        - 'C: 正确：关于struct.types的关键点描述（正确选项）'
+        - 'D: 与struct.types 相关但不适用的选项'
+      answer: C
+      explanation: 本题考查 types.struct 的概念。正确答案为 C。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: struct
+    - id: type-struct-039
+      type: multiple
+      difficulty: medium
+      stem: 【应用题】在 types.struct 的情境下，哪个说法更合适？
+      options:
+        - 'A: 正确项（关于struct.types的重要结论）'
+        - 'B: 正确项（关于struct.types的重要结论）'
+        - 'C: 常见误解或反例（容易混淆）'
+        - 'D: 与struct.types 相关但不适用的选项'
+      answer: AB
+      explanation: 本题考查 types.struct 的相关知识。正确答案：AB。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: struct
+    - id: type-struct-040
+      type: single
+      difficulty: medium
+      stem: 【应用题】在 types.struct 的情境下，哪个说法更合适？
+      options:
+        - 'A: 部分正确但不完整的说法'
+        - 'B: 正确：关于struct.types的关键点描述（正确选项）'
+        - 'C: 与struct.types 相关但不适用的选项'
+        - 'D: 部分正确但不完整的说法'
+      answer: B
+      explanation: 本题考查 types.struct 的概念。正确答案为 B。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: struct
+    - id: type-struct-041
+      type: multiple
+      difficulty: hard
+      stem: 【思考题】针对 types.struct，判断下列说法的正确性并选择最合适的选项。
+      options:
+        - 'A: 语法/语义上不正确的陈述'
+        - 'B: 与struct.types 相关但不适用的选项'
+        - 'C: 正确项（关于struct.types的重要结论）'
+        - 'D: 正确项（关于struct.types的重要结论）'
+      answer: CD
+      explanation: 本题考查 types.struct 的相关知识。正确答案：CD。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: struct
+    - id: type-struct-042
+      type: single
+      difficulty: hard
+      stem: 【思考题】针对 types.struct，判断下列说法的正确性并选择最合适的选项。
+      options:
+        - 'A: 常见误解或反例（容易混淆）'
+        - 'B: 语法/语义上不正确的陈述'
+        - 'C: 常见误解或反例（容易混淆）'
+        - 'D: 正确：关于struct.types的关键点描述（正确选项）'
+      answer: D
+      explanation: 本题考查 types.struct 的概念。正确答案为 D。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: struct
+    - id: type-struct-043
+      type: multiple
+      difficulty: hard
+      stem: 【思考题】针对 types.struct，判断下列说法的正确性并选择最合适的选项。
+      options:
+        - 'A: 正确项（关于struct.types的重要结论）'
+        - 'B: 正确项（关于struct.types的重要结论）'
+        - 'C: 部分正确但不完整的说法'
+        - 'D: 正确项（关于struct.types的重要结论）'
+      answer: ABD
+      explanation: 本题考查 types.struct 的相关知识。正确答案：ABD。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: struct
+    - id: type-struct-044
+      type: single
+      difficulty: hard
+      stem: 【思考题】针对 types.struct，判断下列说法的正确性并选择最合适的选项。
+      options:
+        - 'A: 与struct.types 相关但不适用的选项'
+        - 'B: 语法/语义上不正确的陈述'
+        - 'C: 与struct.types 相关但不适用的选项'
+        - 'D: 正确：关于struct.types的关键点描述（正确选项）'
+      answer: D
+      explanation: 本题考查 types.struct 的概念。正确答案为 D。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: struct
+    - id: type-struct-045
+      type: multiple
+      difficulty: hard
+      stem: 【思考题】针对 types.struct，判断下列说法的正确性并选择最合适的选项。
+      options:
+        - 'A: 正确项（关于struct.types的重要结论）'
+        - 'B: 部分正确但不完整的说法'
+        - 'C: 正确项（关于struct.types的重要结论）'
+        - 'D: 正确项（关于struct.types的重要结论）'
+      answer: ACD
+      explanation: 本题考查 types.struct 的相关知识。正确答案：ACD。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: struct
+    - id: type-struct-046
+      type: single
+      difficulty: hard
+      stem: 【思考题】针对 types.struct，判断下列说法的正确性并选择最合适的选项。
+      options:
+        - 'A: 常见误解或反例（容易混淆）'
+        - 'B: 部分正确但不完整的说法'
+        - 'C: 常见误解或反例（容易混淆）'
+        - 'D: 正确：关于struct.types的关键点描述（正确选项）'
+      answer: D
+      explanation: 本题考查 types.struct 的概念。正确答案为 D。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: struct
+    - id: type-struct-047
+      type: multiple
+      difficulty: hard
+      stem: 【思考题】针对 types.struct，判断下列说法的正确性并选择最合适的选项。
+      options:
+        - 'A: 正确项（关于struct.types的重要结论）'
+        - 'B: 与struct.types 相关但不适用的选项'
+        - 'C: 正确项（关于struct.types的重要结论）'
+        - 'D: 正确项（关于struct.types的重要结论）'
+      answer: ACD
+      explanation: 本题考查 types.struct 的相关知识。正确答案：ACD。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: struct
+    - id: type-struct-048
+      type: single
+      difficulty: hard
+      stem: 【思考题】针对 types.struct，判断下列说法的正确性并选择最合适的选项。
+      options:
+        - 'A: 部分正确但不完整的说法'
+        - 'B: 常见误解或反例（容易混淆）'
+        - 'C: 正确：关于struct.types的关键点描述（正确选项）'
+        - 'D: 部分正确但不完整的说法'
+      answer: C
+      explanation: 本题考查 types.struct 的概念。正确答案为 C。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: struct
+    - id: type-struct-049
+      type: multiple
+      difficulty: hard
+      stem: 【思考题】针对 types.struct，判断下列说法的正确性并选择最合适的选项。
+      options:
+        - 'A: 部分正确但不完整的说法'
+        - 'B: 常见误解或反例（容易混淆）'
+        - 'C: 正确项（关于struct.types的重要结论）'
+        - 'D: 正确项（关于struct.types的重要结论）'
+      answer: CD
+      explanation: 本题考查 types.struct 的相关知识。正确答案：CD。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: struct
+    - id: type-struct-050
+      type: single
+      difficulty: hard
+      stem: 【思考题】针对 types.struct，判断下列说法的正确性并选择最合适的选项。
+      options:
+        - 'A: 与struct.types 相关但不适用的选项'
+        - 'B: 语法/语义上不正确的陈述'
+        - 'C: 正确：关于struct.types的关键点描述（正确选项）'
+        - 'D: 与struct.types 相关但不适用的选项'
+      answer: C
+      explanation: 本题考查 types.struct 的概念。正确答案为 C。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: struct

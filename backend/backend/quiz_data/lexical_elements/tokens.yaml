@@ -1,0 +1,521 @@
+questions:
+    - id: lexical-tokens-001
+      type: multiple
+      difficulty: easy
+      stem: 【单项基础】关于 lexical_elements.tokens，下面哪个选项是正确的？
+      options:
+        - 'A: 正确项（关于tokens.lexical_elements的重要结论）'
+        - 'B: 正确项（关于tokens.lexical_elements的重要结论）'
+        - 'C: 部分正确但不完整的说法'
+        - 'D: 正确项（关于tokens.lexical_elements的重要结论）'
+      answer: ABD
+      explanation: 本题考查 lexical_elements.tokens 的相关知识。正确答案：ABD。解析：tokens 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: tokens
+    - id: lexical-tokens-002
+      type: single
+      difficulty: easy
+      stem: 【单项基础】关于 lexical_elements.tokens，下面哪个选项是正确的？
+      options:
+        - 'A: 部分正确但不完整的说法'
+        - 'B: 正确：关于tokens.lexical_elements的关键点描述（正确选项）'
+        - 'C: 常见误解或反例（容易混淆）'
+        - 'D: 与tokens.lexical_elements 相关但不适用的选项'
+      answer: B
+      explanation: 本题考查 lexical_elements.tokens 的概念。正确答案为 B。解析：tokens 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: tokens
+    - id: lexical-tokens-003
+      type: multiple
+      difficulty: easy
+      stem: 【单项基础】关于 lexical_elements.tokens，下面哪个选项是正确的？
+      options:
+        - 'A: 与tokens.lexical_elements 相关但不适用的选项'
+        - 'B: 正确项（关于tokens.lexical_elements的重要结论）'
+        - 'C: 部分正确但不完整的说法'
+        - 'D: 正确项（关于tokens.lexical_elements的重要结论）'
+      answer: BD
+      explanation: 本题考查 lexical_elements.tokens 的相关知识。正确答案：BD。解析：tokens 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: tokens
+    - id: lexical-tokens-004
+      type: single
+      difficulty: easy
+      stem: 【单项基础】关于 lexical_elements.tokens，下面哪个选项是正确的？
+      options:
+        - 'A: 正确：关于tokens.lexical_elements的关键点描述（正确选项）'
+        - 'B: 语法/语义上不正确的陈述'
+        - 'C: 与tokens.lexical_elements 相关但不适用的选项'
+        - 'D: 部分正确但不完整的说法'
+      answer: A
+      explanation: 本题考查 lexical_elements.tokens 的概念。正确答案为 A。解析：tokens 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: tokens
+    - id: lexical-tokens-005
+      type: multiple
+      difficulty: easy
+      stem: 【单项基础】关于 lexical_elements.tokens，下面哪个选项是正确的？
+      options:
+        - 'A: 正确项（关于tokens.lexical_elements的重要结论）'
+        - 'B: 正确项（关于tokens.lexical_elements的重要结论）'
+        - 'C: 正确项（关于tokens.lexical_elements的重要结论）'
+        - 'D: 部分正确但不完整的说法'
+      answer: ABC
+      explanation: 本题考查 lexical_elements.tokens 的相关知识。正确答案：ABC。解析：tokens 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: tokens
+    - id: lexical-tokens-006
+      type: single
+      difficulty: easy
+      stem: 【单项基础】关于 lexical_elements.tokens，下面哪个选项是正确的？
+      options:
+        - 'A: 正确：关于tokens.lexical_elements的关键点描述（正确选项）'
+        - 'B: 语法/语义上不正确的陈述'
+        - 'C: 常见误解或反例（容易混淆）'
+        - 'D: 部分正确但不完整的说法'
+      answer: A
+      explanation: 本题考查 lexical_elements.tokens 的概念。正确答案为 A。解析：tokens 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: tokens
+    - id: lexical-tokens-007
+      type: multiple
+      difficulty: easy
+      stem: 【单项基础】关于 lexical_elements.tokens，下面哪个选项是正确的？
+      options:
+        - 'A: 正确项（关于tokens.lexical_elements的重要结论）'
+        - 'B: 与tokens.lexical_elements 相关但不适用的选项'
+        - 'C: 正确项（关于tokens.lexical_elements的重要结论）'
+        - 'D: 正确项（关于tokens.lexical_elements的重要结论）'
+      answer: ACD
+      explanation: 本题考查 lexical_elements.tokens 的相关知识。正确答案：ACD。解析：tokens 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: tokens
+    - id: lexical-tokens-008
+      type: single
+      difficulty: easy
+      stem: 【单项基础】关于 lexical_elements.tokens，下面哪个选项是正确的？
+      options:
+        - 'A: 正确：关于tokens.lexical_elements的关键点描述（正确选项）'
+        - 'B: 与tokens.lexical_elements 相关但不适用的选项'
+        - 'C: 与tokens.lexical_elements 相关但不适用的选项'
+        - 'D: 部分正确但不完整的说法'
+      answer: A
+      explanation: 本题考查 lexical_elements.tokens 的概念。正确答案为 A。解析：tokens 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: tokens
+    - id: lexical-tokens-009
+      type: multiple
+      difficulty: easy
+      stem: 【单项基础】关于 lexical_elements.tokens，下面哪个选项是正确的？
+      options:
+        - 'A: 正确项（关于tokens.lexical_elements的重要结论）'
+        - 'B: 部分正确但不完整的说法'
+        - 'C: 常见误解或反例（容易混淆）'
+        - 'D: 正确项（关于tokens.lexical_elements的重要结论）'
+      answer: AD
+      explanation: 本题考查 lexical_elements.tokens 的相关知识。正确答案：AD。解析：tokens 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: tokens
+    - id: lexical-tokens-010
+      type: single
+      difficulty: easy
+      stem: 【单项基础】关于 lexical_elements.tokens，下面哪个选项是正确的？
+      options:
+        - 'A: 与tokens.lexical_elements 相关但不适用的选项'
+        - 'B: 正确：关于tokens.lexical_elements的关键点描述（正确选项）'
+        - 'C: 常见误解或反例（容易混淆）'
+        - 'D: 部分正确但不完整的说法'
+      answer: B
+      explanation: 本题考查 lexical_elements.tokens 的概念。正确答案为 B。解析：tokens 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: tokens
+    - id: lexical-tokens-011
+      type: multiple
+      difficulty: easy
+      stem: 【单项基础】关于 lexical_elements.tokens，下面哪个选项是正确的？
+      options:
+        - 'A: 正确项（关于tokens.lexical_elements的重要结论）'
+        - 'B: 正确项（关于tokens.lexical_elements的重要结论）'
+        - 'C: 部分正确但不完整的说法'
+        - 'D: 正确项（关于tokens.lexical_elements的重要结论）'
+      answer: ABD
+      explanation: 本题考查 lexical_elements.tokens 的相关知识。正确答案：ABD。解析：tokens 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: tokens
+    - id: lexical-tokens-012
+      type: single
+      difficulty: easy
+      stem: 【单项基础】关于 lexical_elements.tokens，下面哪个选项是正确的？
+      options:
+        - 'A: 正确：关于tokens.lexical_elements的关键点描述（正确选项）'
+        - 'B: 部分正确但不完整的说法'
+        - 'C: 部分正确但不完整的说法'
+        - 'D: 语法/语义上不正确的陈述'
+      answer: A
+      explanation: 本题考查 lexical_elements.tokens 的概念。正确答案为 A。解析：tokens 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: tokens
+    - id: lexical-tokens-013
+      type: multiple
+      difficulty: easy
+      stem: 【单项基础】关于 lexical_elements.tokens，下面哪个选项是正确的？
+      options:
+        - 'A: 正确项（关于tokens.lexical_elements的重要结论）'
+        - 'B: 语法/语义上不正确的陈述'
+        - 'C: 语法/语义上不正确的陈述'
+        - 'D: 正确项（关于tokens.lexical_elements的重要结论）'
+      answer: AD
+      explanation: 本题考查 lexical_elements.tokens 的相关知识。正确答案：AD。解析：tokens 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: tokens
+    - id: lexical-tokens-014
+      type: single
+      difficulty: easy
+      stem: 【单项基础】关于 lexical_elements.tokens，下面哪个选项是正确的？
+      options:
+        - 'A: 语法/语义上不正确的陈述'
+        - 'B: 正确：关于tokens.lexical_elements的关键点描述（正确选项）'
+        - 'C: 部分正确但不完整的说法'
+        - 'D: 与tokens.lexical_elements 相关但不适用的选项'
+      answer: B
+      explanation: 本题考查 lexical_elements.tokens 的概念。正确答案为 B。解析：tokens 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: tokens
+    - id: lexical-tokens-015
+      type: multiple
+      difficulty: easy
+      stem: 【单项基础】关于 lexical_elements.tokens，下面哪个选项是正确的？
+      options:
+        - 'A: 正确项（关于tokens.lexical_elements的重要结论）'
+        - 'B: 语法/语义上不正确的陈述'
+        - 'C: 正确项（关于tokens.lexical_elements的重要结论）'
+        - 'D: 正确项（关于tokens.lexical_elements的重要结论）'
+      answer: ACD
+      explanation: 本题考查 lexical_elements.tokens 的相关知识。正确答案：ACD。解析：tokens 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: tokens
+    - id: lexical-tokens-016
+      type: single
+      difficulty: easy
+      stem: 【单项基础】关于 lexical_elements.tokens，下面哪个选项是正确的？
+      options:
+        - 'A: 与tokens.lexical_elements 相关但不适用的选项'
+        - 'B: 正确：关于tokens.lexical_elements的关键点描述（正确选项）'
+        - 'C: 与tokens.lexical_elements 相关但不适用的选项'
+        - 'D: 与tokens.lexical_elements 相关但不适用的选项'
+      answer: B
+      explanation: 本题考查 lexical_elements.tokens 的概念。正确答案为 B。解析：tokens 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: tokens
+    - id: lexical-tokens-017
+      type: multiple
+      difficulty: medium
+      stem: 【应用题】在 lexical_elements.tokens 的情境下，哪个说法更合适？
+      options:
+        - 'A: 正确项（关于tokens.lexical_elements的重要结论）'
+        - 'B: 正确项（关于tokens.lexical_elements的重要结论）'
+        - 'C: 部分正确但不完整的说法'
+        - 'D: 正确项（关于tokens.lexical_elements的重要结论）'
+      answer: ABD
+      explanation: 本题考查 lexical_elements.tokens 的相关知识。正确答案：ABD。解析：tokens 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: tokens
+    - id: lexical-tokens-018
+      type: single
+      difficulty: medium
+      stem: 【应用题】在 lexical_elements.tokens 的情境下，哪个说法更合适？
+      options:
+        - 'A: 常见误解或反例（容易混淆）'
+        - 'B: 常见误解或反例（容易混淆）'
+        - 'C: 正确：关于tokens.lexical_elements的关键点描述（正确选项）'
+        - 'D: 部分正确但不完整的说法'
+      answer: C
+      explanation: 本题考查 lexical_elements.tokens 的概念。正确答案为 C。解析：tokens 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: tokens
+    - id: lexical-tokens-019
+      type: multiple
+      difficulty: medium
+      stem: 【应用题】在 lexical_elements.tokens 的情境下，哪个说法更合适？
+      options:
+        - 'A: 正确项（关于tokens.lexical_elements的重要结论）'
+        - 'B: 正确项（关于tokens.lexical_elements的重要结论）'
+        - 'C: 正确项（关于tokens.lexical_elements的重要结论）'
+        - 'D: 部分正确但不完整的说法'
+      answer: ABC
+      explanation: 本题考查 lexical_elements.tokens 的相关知识。正确答案：ABC。解析：tokens 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: tokens
+    - id: lexical-tokens-020
+      type: single
+      difficulty: medium
+      stem: 【应用题】在 lexical_elements.tokens 的情境下，哪个说法更合适？
+      options:
+        - 'A: 与tokens.lexical_elements 相关但不适用的选项'
+        - 'B: 部分正确但不完整的说法'
+        - 'C: 正确：关于tokens.lexical_elements的关键点描述（正确选项）'
+        - 'D: 与tokens.lexical_elements 相关但不适用的选项'
+      answer: C
+      explanation: 本题考查 lexical_elements.tokens 的概念。正确答案为 C。解析：tokens 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: tokens
+    - id: lexical-tokens-021
+      type: multiple
+      difficulty: medium
+      stem: 【应用题】在 lexical_elements.tokens 的情境下，哪个说法更合适？
+      options:
+        - 'A: 正确项（关于tokens.lexical_elements的重要结论）'
+        - 'B: 正确项（关于tokens.lexical_elements的重要结论）'
+        - 'C: 正确项（关于tokens.lexical_elements的重要结论）'
+        - 'D: 常见误解或反例（容易混淆）'
+      answer: ABC
+      explanation: 本题考查 lexical_elements.tokens 的相关知识。正确答案：ABC。解析：tokens 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: tokens
+    - id: lexical-tokens-022
+      type: single
+      difficulty: medium
+      stem: 【应用题】在 lexical_elements.tokens 的情境下，哪个说法更合适？
+      options:
+        - 'A: 语法/语义上不正确的陈述'
+        - 'B: 正确：关于tokens.lexical_elements的关键点描述（正确选项）'
+        - 'C: 部分正确但不完整的说法'
+        - 'D: 常见误解或反例（容易混淆）'
+      answer: B
+      explanation: 本题考查 lexical_elements.tokens 的概念。正确答案为 B。解析：tokens 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: tokens
+    - id: lexical-tokens-023
+      type: multiple
+      difficulty: medium
+      stem: 【应用题】在 lexical_elements.tokens 的情境下，哪个说法更合适？
+      options:
+        - 'A: 正确项（关于tokens.lexical_elements的重要结论）'
+        - 'B: 正确项（关于tokens.lexical_elements的重要结论）'
+        - 'C: 正确项（关于tokens.lexical_elements的重要结论）'
+        - 'D: 常见误解或反例（容易混淆）'
+      answer: ABC
+      explanation: 本题考查 lexical_elements.tokens 的相关知识。正确答案：ABC。解析：tokens 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: tokens
+    - id: lexical-tokens-024
+      type: single
+      difficulty: medium
+      stem: 【应用题】在 lexical_elements.tokens 的情境下，哪个说法更合适？
+      options:
+        - 'A: 部分正确但不完整的说法'
+        - 'B: 常见误解或反例（容易混淆）'
+        - 'C: 正确：关于tokens.lexical_elements的关键点描述（正确选项）'
+        - 'D: 常见误解或反例（容易混淆）'
+      answer: C
+      explanation: 本题考查 lexical_elements.tokens 的概念。正确答案为 C。解析：tokens 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: tokens
+    - id: lexical-tokens-025
+      type: multiple
+      difficulty: medium
+      stem: 【应用题】在 lexical_elements.tokens 的情境下，哪个说法更合适？
+      options:
+        - 'A: 正确项（关于tokens.lexical_elements的重要结论）'
+        - 'B: 正确项（关于tokens.lexical_elements的重要结论）'
+        - 'C: 正确项（关于tokens.lexical_elements的重要结论）'
+        - 'D: 语法/语义上不正确的陈述'
+      answer: ABC
+      explanation: 本题考查 lexical_elements.tokens 的相关知识。正确答案：ABC。解析：tokens 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: tokens
+    - id: lexical-tokens-026
+      type: single
+      difficulty: medium
+      stem: 【应用题】在 lexical_elements.tokens 的情境下，哪个说法更合适？
+      options:
+        - 'A: 常见误解或反例（容易混淆）'
+        - 'B: 常见误解或反例（容易混淆）'
+        - 'C: 正确：关于tokens.lexical_elements的关键点描述（正确选项）'
+        - 'D: 常见误解或反例（容易混淆）'
+      answer: C
+      explanation: 本题考查 lexical_elements.tokens 的概念。正确答案为 C。解析：tokens 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: tokens
+    - id: lexical-tokens-027
+      type: multiple
+      difficulty: medium
+      stem: 【应用题】在 lexical_elements.tokens 的情境下，哪个说法更合适？
+      options:
+        - 'A: 与tokens.lexical_elements 相关但不适用的选项'
+        - 'B: 部分正确但不完整的说法'
+        - 'C: 正确项（关于tokens.lexical_elements的重要结论）'
+        - 'D: 正确项（关于tokens.lexical_elements的重要结论）'
+      answer: CD
+      explanation: 本题考查 lexical_elements.tokens 的相关知识。正确答案：CD。解析：tokens 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: tokens
+    - id: lexical-tokens-028
+      type: single
+      difficulty: medium
+      stem: 【应用题】在 lexical_elements.tokens 的情境下，哪个说法更合适？
+      options:
+        - 'A: 与tokens.lexical_elements 相关但不适用的选项'
+        - 'B: 语法/语义上不正确的陈述'
+        - 'C: 正确：关于tokens.lexical_elements的关键点描述（正确选项）'
+        - 'D: 常见误解或反例（容易混淆）'
+      answer: C
+      explanation: 本题考查 lexical_elements.tokens 的概念。正确答案为 C。解析：tokens 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: tokens
+    - id: lexical-tokens-029
+      type: multiple
+      difficulty: medium
+      stem: 【应用题】在 lexical_elements.tokens 的情境下，哪个说法更合适？
+      options:
+        - 'A: 正确项（关于tokens.lexical_elements的重要结论）'
+        - 'B: 常见误解或反例（容易混淆）'
+        - 'C: 常见误解或反例（容易混淆）'
+        - 'D: 正确项（关于tokens.lexical_elements的重要结论）'
+      answer: AD
+      explanation: 本题考查 lexical_elements.tokens 的相关知识。正确答案：AD。解析：tokens 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: tokens
+    - id: lexical-tokens-030
+      type: single
+      difficulty: medium
+      stem: 【应用题】在 lexical_elements.tokens 的情境下，哪个说法更合适？
+      options:
+        - 'A: 常见误解或反例（容易混淆）'
+        - 'B: 常见误解或反例（容易混淆）'
+        - 'C: 正确：关于tokens.lexical_elements的关键点描述（正确选项）'
+        - 'D: 部分正确但不完整的说法'
+      answer: C
+      explanation: 本题考查 lexical_elements.tokens 的概念。正确答案为 C。解析：tokens 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: tokens
+    - id: lexical-tokens-031
+      type: multiple
+      difficulty: medium
+      stem: 【应用题】在 lexical_elements.tokens 的情境下，哪个说法更合适？
+      options:
+        - 'A: 与tokens.lexical_elements 相关但不适用的选项'
+        - 'B: 正确项（关于tokens.lexical_elements的重要结论）'
+        - 'C: 正确项（关于tokens.lexical_elements的重要结论）'
+        - 'D: 正确项（关于tokens.lexical_elements的重要结论）'
+      answer: BCD
+      explanation: 本题考查 lexical_elements.tokens 的相关知识。正确答案：BCD。解析：tokens 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: tokens
+    - id: lexical-tokens-032
+      type: single
+      difficulty: medium
+      stem: 【应用题】在 lexical_elements.tokens 的情境下，哪个说法更合适？
+      options:
+        - 'A: 常见误解或反例（容易混淆）'
+        - 'B: 部分正确但不完整的说法'
+        - 'C: 正确：关于tokens.lexical_elements的关键点描述（正确选项）'
+        - 'D: 语法/语义上不正确的陈述'
+      answer: C
+      explanation: 本题考查 lexical_elements.tokens 的概念。正确答案为 C。解析：tokens 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: tokens
+    - id: lexical-tokens-033
+      type: multiple
+      difficulty: hard
+      stem: 【思考题】针对 lexical_elements.tokens，判断下列说法的正确性并选择最合适的选项。
+      options:
+        - 'A: 常见误解或反例（容易混淆）'
+        - 'B: 正确项（关于tokens.lexical_elements的重要结论）'
+        - 'C: 正确项（关于tokens.lexical_elements的重要结论）'
+        - 'D: 语法/语义上不正确的陈述'
+      answer: BC
+      explanation: 本题考查 lexical_elements.tokens 的相关知识。正确答案：BC。解析：tokens 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: tokens
+    - id: lexical-tokens-034
+      type: single
+      difficulty: hard
+      stem: 【思考题】针对 lexical_elements.tokens，判断下列说法的正确性并选择最合适的选项。
+      options:
+        - 'A: 与tokens.lexical_elements 相关但不适用的选项'
+        - 'B: 常见误解或反例（容易混淆）'
+        - 'C: 正确：关于tokens.lexical_elements的关键点描述（正确选项）'
+        - 'D: 语法/语义上不正确的陈述'
+      answer: C
+      explanation: 本题考查 lexical_elements.tokens 的概念。正确答案为 C。解析：tokens 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: tokens
+    - id: lexical-tokens-035
+      type: multiple
+      difficulty: hard
+      stem: 【思考题】针对 lexical_elements.tokens，判断下列说法的正确性并选择最合适的选项。
+      options:
+        - 'A: 语法/语义上不正确的陈述'
+        - 'B: 正确项（关于tokens.lexical_elements的重要结论）'
+        - 'C: 正确项（关于tokens.lexical_elements的重要结论）'
+        - 'D: 正确项（关于tokens.lexical_elements的重要结论）'
+      answer: BCD
+      explanation: 本题考查 lexical_elements.tokens 的相关知识。正确答案：BCD。解析：tokens 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: tokens
+    - id: lexical-tokens-036
+      type: single
+      difficulty: hard
+      stem: 【思考题】针对 lexical_elements.tokens，判断下列说法的正确性并选择最合适的选项。
+      options:
+        - 'A: 语法/语义上不正确的陈述'
+        - 'B: 常见误解或反例（容易混淆）'
+        - 'C: 与tokens.lexical_elements 相关但不适用的选项'
+        - 'D: 正确：关于tokens.lexical_elements的关键点描述（正确选项）'
+      answer: D
+      explanation: 本题考查 lexical_elements.tokens 的概念。正确答案为 D。解析：tokens 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: tokens
+    - id: lexical-tokens-037
+      type: multiple
+      difficulty: hard
+      stem: 【思考题】针对 lexical_elements.tokens，判断下列说法的正确性并选择最合适的选项。
+      options:
+        - 'A: 正确项（关于tokens.lexical_elements的重要结论）'
+        - 'B: 部分正确但不完整的说法'
+        - 'C: 常见误解或反例（容易混淆）'
+        - 'D: 正确项（关于tokens.lexical_elements的重要结论）'
+      answer: AD
+      explanation: 本题考查 lexical_elements.tokens 的相关知识。正确答案：AD。解析：tokens 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: tokens
+    - id: lexical-tokens-038
+      type: single
+      difficulty: hard
+      stem: 【思考题】针对 lexical_elements.tokens，判断下列说法的正确性并选择最合适的选项。
+      options:
+        - 'A: 部分正确但不完整的说法'
+        - 'B: 部分正确但不完整的说法'
+        - 'C: 正确：关于tokens.lexical_elements的关键点描述（正确选项）'
+        - 'D: 部分正确但不完整的说法'
+      answer: C
+      explanation: 本题考查 lexical_elements.tokens 的概念。正确答案为 C。解析：tokens 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: tokens
+    - id: lexical-tokens-039
+      type: multiple
+      difficulty: hard
+      stem: 【思考题】针对 lexical_elements.tokens，判断下列说法的正确性并选择最合适的选项。
+      options:
+        - 'A: 常见误解或反例（容易混淆）'
+        - 'B: 与tokens.lexical_elements 相关但不适用的选项'
+        - 'C: 正确项（关于tokens.lexical_elements的重要结论）'
+        - 'D: 正确项（关于tokens.lexical_elements的重要结论）'
+      answer: CD
+      explanation: 本题考查 lexical_elements.tokens 的相关知识。正确答案：CD。解析：tokens 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: tokens
+    - id: lexical-tokens-040
+      type: single
+      difficulty: hard
+      stem: 【思考题】针对 lexical_elements.tokens，判断下列说法的正确性并选择最合适的选项。
+      options:
+        - 'A: 语法/语义上不正确的陈述'
+        - 'B: 部分正确但不完整的说法'
+        - 'C: 正确：关于tokens.lexical_elements的关键点描述（正确选项）'
+        - 'D: 与tokens.lexical_elements 相关但不适用的选项'
+      answer: C
+      explanation: 本题考查 lexical_elements.tokens 的概念。正确答案为 C。解析：tokens 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: tokens

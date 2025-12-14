@@ -1,0 +1,586 @@
+questions:
+    - id: lexical-strings-001
+      type: multiple
+      difficulty: easy
+      stem: 【单项基础】关于 lexical_elements.strings，下面哪个选项是正确的？
+      options:
+        - 'A: 正确项（关于strings.lexical_elements的重要结论）'
+        - 'B: 正确项（关于strings.lexical_elements的重要结论）'
+        - 'C: 正确项（关于strings.lexical_elements的重要结论）'
+        - 'D: 部分正确但不完整的说法'
+      answer: ABC
+      explanation: 本题考查 lexical_elements.strings 的相关知识。正确答案：ABC。解析：strings 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: strings
+    - id: lexical-strings-002
+      type: single
+      difficulty: easy
+      stem: 【单项基础】关于 lexical_elements.strings，下面哪个选项是正确的？
+      options:
+        - 'A: 常见误解或反例（容易混淆）'
+        - 'B: 正确：关于strings.lexical_elements的关键点描述（正确选项）'
+        - 'C: 语法/语义上不正确的陈述'
+        - 'D: 语法/语义上不正确的陈述'
+      answer: B
+      explanation: 本题考查 lexical_elements.strings 的概念。正确答案为 B。解析：strings 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: strings
+    - id: lexical-strings-003
+      type: multiple
+      difficulty: easy
+      stem: 【单项基础】关于 lexical_elements.strings，下面哪个选项是正确的？
+      options:
+        - 'A: 常见误解或反例（容易混淆）'
+        - 'B: 语法/语义上不正确的陈述'
+        - 'C: 正确项（关于strings.lexical_elements的重要结论）'
+        - 'D: 正确项（关于strings.lexical_elements的重要结论）'
+      answer: CD
+      explanation: 本题考查 lexical_elements.strings 的相关知识。正确答案：CD。解析：strings 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: strings
+    - id: lexical-strings-004
+      type: single
+      difficulty: easy
+      stem: 【单项基础】关于 lexical_elements.strings，下面哪个选项是正确的？
+      options:
+        - 'A: 语法/语义上不正确的陈述'
+        - 'B: 正确：关于strings.lexical_elements的关键点描述（正确选项）'
+        - 'C: 部分正确但不完整的说法'
+        - 'D: 部分正确但不完整的说法'
+      answer: B
+      explanation: 本题考查 lexical_elements.strings 的概念。正确答案为 B。解析：strings 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: strings
+    - id: lexical-strings-005
+      type: multiple
+      difficulty: easy
+      stem: 【单项基础】关于 lexical_elements.strings，下面哪个选项是正确的？
+      options:
+        - 'A: 与strings.lexical_elements 相关但不适用的选项'
+        - 'B: 常见误解或反例（容易混淆）'
+        - 'C: 正确项（关于strings.lexical_elements的重要结论）'
+        - 'D: 正确项（关于strings.lexical_elements的重要结论）'
+      answer: CD
+      explanation: 本题考查 lexical_elements.strings 的相关知识。正确答案：CD。解析：strings 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: strings
+    - id: lexical-strings-006
+      type: single
+      difficulty: easy
+      stem: 【单项基础】关于 lexical_elements.strings，下面哪个选项是正确的？
+      options:
+        - 'A: 正确：关于strings.lexical_elements的关键点描述（正确选项）'
+        - 'B: 语法/语义上不正确的陈述'
+        - 'C: 常见误解或反例（容易混淆）'
+        - 'D: 语法/语义上不正确的陈述'
+      answer: A
+      explanation: 本题考查 lexical_elements.strings 的概念。正确答案为 A。解析：strings 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: strings
+    - id: lexical-strings-007
+      type: multiple
+      difficulty: easy
+      stem: 【单项基础】关于 lexical_elements.strings，下面哪个选项是正确的？
+      options:
+        - 'A: 正确项（关于strings.lexical_elements的重要结论）'
+        - 'B: 正确项（关于strings.lexical_elements的重要结论）'
+        - 'C: 常见误解或反例（容易混淆）'
+        - 'D: 正确项（关于strings.lexical_elements的重要结论）'
+      answer: ABD
+      explanation: 本题考查 lexical_elements.strings 的相关知识。正确答案：ABD。解析：strings 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: strings
+    - id: lexical-strings-008
+      type: single
+      difficulty: easy
+      stem: 【单项基础】关于 lexical_elements.strings，下面哪个选项是正确的？
+      options:
+        - 'A: 语法/语义上不正确的陈述'
+        - 'B: 正确：关于strings.lexical_elements的关键点描述（正确选项）'
+        - 'C: 与strings.lexical_elements 相关但不适用的选项'
+        - 'D: 与strings.lexical_elements 相关但不适用的选项'
+      answer: B
+      explanation: 本题考查 lexical_elements.strings 的概念。正确答案为 B。解析：strings 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: strings
+    - id: lexical-strings-009
+      type: multiple
+      difficulty: easy
+      stem: 【单项基础】关于 lexical_elements.strings，下面哪个选项是正确的？
+      options:
+        - 'A: 正确项（关于strings.lexical_elements的重要结论）'
+        - 'B: 正确项（关于strings.lexical_elements的重要结论）'
+        - 'C: 语法/语义上不正确的陈述'
+        - 'D: 正确项（关于strings.lexical_elements的重要结论）'
+      answer: ABD
+      explanation: 本题考查 lexical_elements.strings 的相关知识。正确答案：ABD。解析：strings 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: strings
+    - id: lexical-strings-010
+      type: single
+      difficulty: easy
+      stem: 【单项基础】关于 lexical_elements.strings，下面哪个选项是正确的？
+      options:
+        - 'A: 正确：关于strings.lexical_elements的关键点描述（正确选项）'
+        - 'B: 与strings.lexical_elements 相关但不适用的选项'
+        - 'C: 与strings.lexical_elements 相关但不适用的选项'
+        - 'D: 常见误解或反例（容易混淆）'
+      answer: A
+      explanation: 本题考查 lexical_elements.strings 的概念。正确答案为 A。解析：strings 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: strings
+    - id: lexical-strings-011
+      type: multiple
+      difficulty: easy
+      stem: 【单项基础】关于 lexical_elements.strings，下面哪个选项是正确的？
+      options:
+        - 'A: 正确项（关于strings.lexical_elements的重要结论）'
+        - 'B: 正确项（关于strings.lexical_elements的重要结论）'
+        - 'C: 常见误解或反例（容易混淆）'
+        - 'D: 语法/语义上不正确的陈述'
+      answer: AB
+      explanation: 本题考查 lexical_elements.strings 的相关知识。正确答案：AB。解析：strings 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: strings
+    - id: lexical-strings-012
+      type: single
+      difficulty: easy
+      stem: 【单项基础】关于 lexical_elements.strings，下面哪个选项是正确的？
+      options:
+        - 'A: 部分正确但不完整的说法'
+        - 'B: 正确：关于strings.lexical_elements的关键点描述（正确选项）'
+        - 'C: 语法/语义上不正确的陈述'
+        - 'D: 常见误解或反例（容易混淆）'
+      answer: B
+      explanation: 本题考查 lexical_elements.strings 的概念。正确答案为 B。解析：strings 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: strings
+    - id: lexical-strings-013
+      type: multiple
+      difficulty: easy
+      stem: 【单项基础】关于 lexical_elements.strings，下面哪个选项是正确的？
+      options:
+        - 'A: 正确项（关于strings.lexical_elements的重要结论）'
+        - 'B: 语法/语义上不正确的陈述'
+        - 'C: 正确项（关于strings.lexical_elements的重要结论）'
+        - 'D: 与strings.lexical_elements 相关但不适用的选项'
+      answer: AC
+      explanation: 本题考查 lexical_elements.strings 的相关知识。正确答案：AC。解析：strings 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: strings
+    - id: lexical-strings-014
+      type: single
+      difficulty: easy
+      stem: 【单项基础】关于 lexical_elements.strings，下面哪个选项是正确的？
+      options:
+        - 'A: 语法/语义上不正确的陈述'
+        - 'B: 正确：关于strings.lexical_elements的关键点描述（正确选项）'
+        - 'C: 常见误解或反例（容易混淆）'
+        - 'D: 语法/语义上不正确的陈述'
+      answer: B
+      explanation: 本题考查 lexical_elements.strings 的概念。正确答案为 B。解析：strings 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: strings
+    - id: lexical-strings-015
+      type: multiple
+      difficulty: easy
+      stem: 【单项基础】关于 lexical_elements.strings，下面哪个选项是正确的？
+      options:
+        - 'A: 正确项（关于strings.lexical_elements的重要结论）'
+        - 'B: 正确项（关于strings.lexical_elements的重要结论）'
+        - 'C: 部分正确但不完整的说法'
+        - 'D: 正确项（关于strings.lexical_elements的重要结论）'
+      answer: ABD
+      explanation: 本题考查 lexical_elements.strings 的相关知识。正确答案：ABD。解析：strings 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: strings
+    - id: lexical-strings-016
+      type: single
+      difficulty: easy
+      stem: 【单项基础】关于 lexical_elements.strings，下面哪个选项是正确的？
+      options:
+        - 'A: 正确：关于strings.lexical_elements的关键点描述（正确选项）'
+        - 'B: 部分正确但不完整的说法'
+        - 'C: 语法/语义上不正确的陈述'
+        - 'D: 与strings.lexical_elements 相关但不适用的选项'
+      answer: A
+      explanation: 本题考查 lexical_elements.strings 的概念。正确答案为 A。解析：strings 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: strings
+    - id: lexical-strings-017
+      type: multiple
+      difficulty: easy
+      stem: 【单项基础】关于 lexical_elements.strings，下面哪个选项是正确的？
+      options:
+        - 'A: 语法/语义上不正确的陈述'
+        - 'B: 正确项（关于strings.lexical_elements的重要结论）'
+        - 'C: 正确项（关于strings.lexical_elements的重要结论）'
+        - 'D: 正确项（关于strings.lexical_elements的重要结论）'
+      answer: BCD
+      explanation: 本题考查 lexical_elements.strings 的相关知识。正确答案：BCD。解析：strings 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: strings
+    - id: lexical-strings-018
+      type: single
+      difficulty: easy
+      stem: 【单项基础】关于 lexical_elements.strings，下面哪个选项是正确的？
+      options:
+        - 'A: 语法/语义上不正确的陈述'
+        - 'B: 正确：关于strings.lexical_elements的关键点描述（正确选项）'
+        - 'C: 部分正确但不完整的说法'
+        - 'D: 与strings.lexical_elements 相关但不适用的选项'
+      answer: B
+      explanation: 本题考查 lexical_elements.strings 的概念。正确答案为 B。解析：strings 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: strings
+    - id: lexical-strings-019
+      type: multiple
+      difficulty: medium
+      stem: 【应用题】在 lexical_elements.strings 的情境下，哪个说法更合适？
+      options:
+        - 'A: 正确项（关于strings.lexical_elements的重要结论）'
+        - 'B: 正确项（关于strings.lexical_elements的重要结论）'
+        - 'C: 部分正确但不完整的说法'
+        - 'D: 正确项（关于strings.lexical_elements的重要结论）'
+      answer: ABD
+      explanation: 本题考查 lexical_elements.strings 的相关知识。正确答案：ABD。解析：strings 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: strings
+    - id: lexical-strings-020
+      type: single
+      difficulty: medium
+      stem: 【应用题】在 lexical_elements.strings 的情境下，哪个说法更合适？
+      options:
+        - 'A: 语法/语义上不正确的陈述'
+        - 'B: 正确：关于strings.lexical_elements的关键点描述（正确选项）'
+        - 'C: 部分正确但不完整的说法'
+        - 'D: 常见误解或反例（容易混淆）'
+      answer: B
+      explanation: 本题考查 lexical_elements.strings 的概念。正确答案为 B。解析：strings 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: strings
+    - id: lexical-strings-021
+      type: multiple
+      difficulty: medium
+      stem: 【应用题】在 lexical_elements.strings 的情境下，哪个说法更合适？
+      options:
+        - 'A: 正确项（关于strings.lexical_elements的重要结论）'
+        - 'B: 正确项（关于strings.lexical_elements的重要结论）'
+        - 'C: 与strings.lexical_elements 相关但不适用的选项'
+        - 'D: 语法/语义上不正确的陈述'
+      answer: AB
+      explanation: 本题考查 lexical_elements.strings 的相关知识。正确答案：AB。解析：strings 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: strings
+    - id: lexical-strings-022
+      type: single
+      difficulty: medium
+      stem: 【应用题】在 lexical_elements.strings 的情境下，哪个说法更合适？
+      options:
+        - 'A: 常见误解或反例（容易混淆）'
+        - 'B: 正确：关于strings.lexical_elements的关键点描述（正确选项）'
+        - 'C: 部分正确但不完整的说法'
+        - 'D: 与strings.lexical_elements 相关但不适用的选项'
+      answer: B
+      explanation: 本题考查 lexical_elements.strings 的概念。正确答案为 B。解析：strings 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: strings
+    - id: lexical-strings-023
+      type: multiple
+      difficulty: medium
+      stem: 【应用题】在 lexical_elements.strings 的情境下，哪个说法更合适？
+      options:
+        - 'A: 正确项（关于strings.lexical_elements的重要结论）'
+        - 'B: 正确项（关于strings.lexical_elements的重要结论）'
+        - 'C: 常见误解或反例（容易混淆）'
+        - 'D: 正确项（关于strings.lexical_elements的重要结论）'
+      answer: ABD
+      explanation: 本题考查 lexical_elements.strings 的相关知识。正确答案：ABD。解析：strings 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: strings
+    - id: lexical-strings-024
+      type: single
+      difficulty: medium
+      stem: 【应用题】在 lexical_elements.strings 的情境下，哪个说法更合适？
+      options:
+        - 'A: 常见误解或反例（容易混淆）'
+        - 'B: 与strings.lexical_elements 相关但不适用的选项'
+        - 'C: 正确：关于strings.lexical_elements的关键点描述（正确选项）'
+        - 'D: 与strings.lexical_elements 相关但不适用的选项'
+      answer: C
+      explanation: 本题考查 lexical_elements.strings 的概念。正确答案为 C。解析：strings 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: strings
+    - id: lexical-strings-025
+      type: multiple
+      difficulty: medium
+      stem: 【应用题】在 lexical_elements.strings 的情境下，哪个说法更合适？
+      options:
+        - 'A: 正确项（关于strings.lexical_elements的重要结论）'
+        - 'B: 语法/语义上不正确的陈述'
+        - 'C: 正确项（关于strings.lexical_elements的重要结论）'
+        - 'D: 正确项（关于strings.lexical_elements的重要结论）'
+      answer: ACD
+      explanation: 本题考查 lexical_elements.strings 的相关知识。正确答案：ACD。解析：strings 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: strings
+    - id: lexical-strings-026
+      type: single
+      difficulty: medium
+      stem: 【应用题】在 lexical_elements.strings 的情境下，哪个说法更合适？
+      options:
+        - 'A: 语法/语义上不正确的陈述'
+        - 'B: 正确：关于strings.lexical_elements的关键点描述（正确选项）'
+        - 'C: 常见误解或反例（容易混淆）'
+        - 'D: 与strings.lexical_elements 相关但不适用的选项'
+      answer: B
+      explanation: 本题考查 lexical_elements.strings 的概念。正确答案为 B。解析：strings 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: strings
+    - id: lexical-strings-027
+      type: multiple
+      difficulty: medium
+      stem: 【应用题】在 lexical_elements.strings 的情境下，哪个说法更合适？
+      options:
+        - 'A: 正确项（关于strings.lexical_elements的重要结论）'
+        - 'B: 语法/语义上不正确的陈述'
+        - 'C: 正确项（关于strings.lexical_elements的重要结论）'
+        - 'D: 正确项（关于strings.lexical_elements的重要结论）'
+      answer: ACD
+      explanation: 本题考查 lexical_elements.strings 的相关知识。正确答案：ACD。解析：strings 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: strings
+    - id: lexical-strings-028
+      type: single
+      difficulty: medium
+      stem: 【应用题】在 lexical_elements.strings 的情境下，哪个说法更合适？
+      options:
+        - 'A: 与strings.lexical_elements 相关但不适用的选项'
+        - 'B: 正确：关于strings.lexical_elements的关键点描述（正确选项）'
+        - 'C: 部分正确但不完整的说法'
+        - 'D: 与strings.lexical_elements 相关但不适用的选项'
+      answer: B
+      explanation: 本题考查 lexical_elements.strings 的概念。正确答案为 B。解析：strings 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: strings
+    - id: lexical-strings-029
+      type: multiple
+      difficulty: medium
+      stem: 【应用题】在 lexical_elements.strings 的情境下，哪个说法更合适？
+      options:
+        - 'A: 正确项（关于strings.lexical_elements的重要结论）'
+        - 'B: 正确项（关于strings.lexical_elements的重要结论）'
+        - 'C: 正确项（关于strings.lexical_elements的重要结论）'
+        - 'D: 部分正确但不完整的说法'
+      answer: ABC
+      explanation: 本题考查 lexical_elements.strings 的相关知识。正确答案：ABC。解析：strings 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: strings
+    - id: lexical-strings-030
+      type: single
+      difficulty: medium
+      stem: 【应用题】在 lexical_elements.strings 的情境下，哪个说法更合适？
+      options:
+        - 'A: 常见误解或反例（容易混淆）'
+        - 'B: 部分正确但不完整的说法'
+        - 'C: 正确：关于strings.lexical_elements的关键点描述（正确选项）'
+        - 'D: 部分正确但不完整的说法'
+      answer: C
+      explanation: 本题考查 lexical_elements.strings 的概念。正确答案为 C。解析：strings 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: strings
+    - id: lexical-strings-031
+      type: multiple
+      difficulty: medium
+      stem: 【应用题】在 lexical_elements.strings 的情境下，哪个说法更合适？
+      options:
+        - 'A: 正确项（关于strings.lexical_elements的重要结论）'
+        - 'B: 正确项（关于strings.lexical_elements的重要结论）'
+        - 'C: 正确项（关于strings.lexical_elements的重要结论）'
+        - 'D: 常见误解或反例（容易混淆）'
+      answer: ABC
+      explanation: 本题考查 lexical_elements.strings 的相关知识。正确答案：ABC。解析：strings 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: strings
+    - id: lexical-strings-032
+      type: single
+      difficulty: medium
+      stem: 【应用题】在 lexical_elements.strings 的情境下，哪个说法更合适？
+      options:
+        - 'A: 部分正确但不完整的说法'
+        - 'B: 正确：关于strings.lexical_elements的关键点描述（正确选项）'
+        - 'C: 常见误解或反例（容易混淆）'
+        - 'D: 语法/语义上不正确的陈述'
+      answer: B
+      explanation: 本题考查 lexical_elements.strings 的概念。正确答案为 B。解析：strings 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: strings
+    - id: lexical-strings-033
+      type: multiple
+      difficulty: medium
+      stem: 【应用题】在 lexical_elements.strings 的情境下，哪个说法更合适？
+      options:
+        - 'A: 正确项（关于strings.lexical_elements的重要结论）'
+        - 'B: 语法/语义上不正确的陈述'
+        - 'C: 正确项（关于strings.lexical_elements的重要结论）'
+        - 'D: 正确项（关于strings.lexical_elements的重要结论）'
+      answer: ACD
+      explanation: 本题考查 lexical_elements.strings 的相关知识。正确答案：ACD。解析：strings 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: strings
+    - id: lexical-strings-034
+      type: single
+      difficulty: medium
+      stem: 【应用题】在 lexical_elements.strings 的情境下，哪个说法更合适？
+      options:
+        - 'A: 部分正确但不完整的说法'
+        - 'B: 部分正确但不完整的说法'
+        - 'C: 正确：关于strings.lexical_elements的关键点描述（正确选项）'
+        - 'D: 语法/语义上不正确的陈述'
+      answer: C
+      explanation: 本题考查 lexical_elements.strings 的概念。正确答案为 C。解析：strings 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: strings
+    - id: lexical-strings-035
+      type: multiple
+      difficulty: medium
+      stem: 【应用题】在 lexical_elements.strings 的情境下，哪个说法更合适？
+      options:
+        - 'A: 正确项（关于strings.lexical_elements的重要结论）'
+        - 'B: 语法/语义上不正确的陈述'
+        - 'C: 部分正确但不完整的说法'
+        - 'D: 正确项（关于strings.lexical_elements的重要结论）'
+      answer: AD
+      explanation: 本题考查 lexical_elements.strings 的相关知识。正确答案：AD。解析：strings 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: strings
+    - id: lexical-strings-036
+      type: single
+      difficulty: medium
+      stem: 【应用题】在 lexical_elements.strings 的情境下，哪个说法更合适？
+      options:
+        - 'A: 常见误解或反例（容易混淆）'
+        - 'B: 正确：关于strings.lexical_elements的关键点描述（正确选项）'
+        - 'C: 与strings.lexical_elements 相关但不适用的选项'
+        - 'D: 部分正确但不完整的说法'
+      answer: B
+      explanation: 本题考查 lexical_elements.strings 的概念。正确答案为 B。解析：strings 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: strings
+    - id: lexical-strings-037
+      type: multiple
+      difficulty: hard
+      stem: 【思考题】针对 lexical_elements.strings，判断下列说法的正确性并选择最合适的选项。
+      options:
+        - 'A: 正确项（关于strings.lexical_elements的重要结论）'
+        - 'B: 正确项（关于strings.lexical_elements的重要结论）'
+        - 'C: 部分正确但不完整的说法'
+        - 'D: 正确项（关于strings.lexical_elements的重要结论）'
+      answer: ABD
+      explanation: 本题考查 lexical_elements.strings 的相关知识。正确答案：ABD。解析：strings 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: strings
+    - id: lexical-strings-038
+      type: single
+      difficulty: hard
+      stem: 【思考题】针对 lexical_elements.strings，判断下列说法的正确性并选择最合适的选项。
+      options:
+        - 'A: 与strings.lexical_elements 相关但不适用的选项'
+        - 'B: 常见误解或反例（容易混淆）'
+        - 'C: 正确：关于strings.lexical_elements的关键点描述（正确选项）'
+        - 'D: 与strings.lexical_elements 相关但不适用的选项'
+      answer: C
+      explanation: 本题考查 lexical_elements.strings 的概念。正确答案为 C。解析：strings 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: strings
+    - id: lexical-strings-039
+      type: multiple
+      difficulty: hard
+      stem: 【思考题】针对 lexical_elements.strings，判断下列说法的正确性并选择最合适的选项。
+      options:
+        - 'A: 正确项（关于strings.lexical_elements的重要结论）'
+        - 'B: 部分正确但不完整的说法'
+        - 'C: 常见误解或反例（容易混淆）'
+        - 'D: 正确项（关于strings.lexical_elements的重要结论）'
+      answer: AD
+      explanation: 本题考查 lexical_elements.strings 的相关知识。正确答案：AD。解析：strings 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: strings
+    - id: lexical-strings-040
+      type: single
+      difficulty: hard
+      stem: 【思考题】针对 lexical_elements.strings，判断下列说法的正确性并选择最合适的选项。
+      options:
+        - 'A: 常见误解或反例（容易混淆）'
+        - 'B: 语法/语义上不正确的陈述'
+        - 'C: 语法/语义上不正确的陈述'
+        - 'D: 正确：关于strings.lexical_elements的关键点描述（正确选项）'
+      answer: D
+      explanation: 本题考查 lexical_elements.strings 的概念。正确答案为 D。解析：strings 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: strings
+    - id: lexical-strings-041
+      type: multiple
+      difficulty: hard
+      stem: 【思考题】针对 lexical_elements.strings，判断下列说法的正确性并选择最合适的选项。
+      options:
+        - 'A: 与strings.lexical_elements 相关但不适用的选项'
+        - 'B: 与strings.lexical_elements 相关但不适用的选项'
+        - 'C: 正确项（关于strings.lexical_elements的重要结论）'
+        - 'D: 正确项（关于strings.lexical_elements的重要结论）'
+      answer: CD
+      explanation: 本题考查 lexical_elements.strings 的相关知识。正确答案：CD。解析：strings 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: strings
+    - id: lexical-strings-042
+      type: single
+      difficulty: hard
+      stem: 【思考题】针对 lexical_elements.strings，判断下列说法的正确性并选择最合适的选项。
+      options:
+        - 'A: 与strings.lexical_elements 相关但不适用的选项'
+        - 'B: 常见误解或反例（容易混淆）'
+        - 'C: 语法/语义上不正确的陈述'
+        - 'D: 正确：关于strings.lexical_elements的关键点描述（正确选项）'
+      answer: D
+      explanation: 本题考查 lexical_elements.strings 的概念。正确答案为 D。解析：strings 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: strings
+    - id: lexical-strings-043
+      type: multiple
+      difficulty: hard
+      stem: 【思考题】针对 lexical_elements.strings，判断下列说法的正确性并选择最合适的选项。
+      options:
+        - 'A: 正确项（关于strings.lexical_elements的重要结论）'
+        - 'B: 正确项（关于strings.lexical_elements的重要结论）'
+        - 'C: 语法/语义上不正确的陈述'
+        - 'D: 正确项（关于strings.lexical_elements的重要结论）'
+      answer: ABD
+      explanation: 本题考查 lexical_elements.strings 的相关知识。正确答案：ABD。解析：strings 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: strings
+    - id: lexical-strings-044
+      type: single
+      difficulty: hard
+      stem: 【思考题】针对 lexical_elements.strings，判断下列说法的正确性并选择最合适的选项。
+      options:
+        - 'A: 语法/语义上不正确的陈述'
+        - 'B: 与strings.lexical_elements 相关但不适用的选项'
+        - 'C: 正确：关于strings.lexical_elements的关键点描述（正确选项）'
+        - 'D: 语法/语义上不正确的陈述'
+      answer: C
+      explanation: 本题考查 lexical_elements.strings 的概念。正确答案为 C。解析：strings 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: strings
+    - id: lexical-strings-045
+      type: multiple
+      difficulty: hard
+      stem: 【思考题】针对 lexical_elements.strings，判断下列说法的正确性并选择最合适的选项。
+      options:
+        - 'A: 部分正确但不完整的说法'
+        - 'B: 正确项（关于strings.lexical_elements的重要结论）'
+        - 'C: 正确项（关于strings.lexical_elements的重要结论）'
+        - 'D: 正确项（关于strings.lexical_elements的重要结论）'
+      answer: BCD
+      explanation: 本题考查 lexical_elements.strings 的相关知识。正确答案：BCD。解析：strings 的关键点在于...（请在校稿时补充具体细节）。
+      topic: lexical_elements
+      chapter: strings

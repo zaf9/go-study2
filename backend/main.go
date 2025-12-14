@@ -2,13 +2,16 @@ package main
 
 import (
 	"bufio"
+	"encoding/json"
 	"flag"
 	"fmt"
 	"go-study2/internal/app/constants"
 	"go-study2/internal/app/http_server"
 	"go-study2/internal/app/lexical_elements"
 	"go-study2/internal/config"
+	"go-study2/internal/domain/quiz"
 	"go-study2/internal/infrastructure/database"
+
 	logger "go-study2/internal/infrastructure/logger"
 	appjwt "go-study2/internal/pkg/jwt"
 	typescli "go-study2/src/learning/types/cli"
@@ -18,6 +21,8 @@ import (
 	"sort"
 	"strings"
 	"time"
+
+	"github.com/gogf/gf/v2/database/gdb"
 
 	"github.com/gogf/gf/v2/os/gctx"
 )
@@ -155,6 +160,83 @@ func runHttpServer() {
 	if _, err = database.Init(ctx, cfg.Database); err != nil {
 		fmt.Fprintf(os.Stderr, "Failed to init database: %v\n", err)
 		os.Exit(1)
+	}
+
+	// 尝试从 quiz_data 加载题库并在空表时写入数据库（用于本地/首次启动）
+	// 仅在配置中指定了 quiz.dataPath 时执行
+	if cfg.Progress.Quiz.DataPath != "" {
+		// 从文件系统加载 YAML 题库到临时内存仓储
+		repo := quiz.NewRepository()
+		if err := quiz.LoadAllBanks(cfg.Progress.Quiz.DataPath, repo); err != nil {
+			fmt.Fprintf(os.Stderr, "Failed to load quiz banks: %v\n", err)
+		} else {
+			// 如果数据库中尚无 quiz_questions，则将 YAML 中的题目作为种子插入
+			db := database.Default()
+			if db != nil {
+				// 按 topic/chapter 做增量插入：仅将文件中数据库不存在的题目写入，避免重复导入
+				var seed []gdb.Map
+				for _, topic := range repo.Topics() {
+					for _, ch := range repo.Chapters(topic) {
+						qs, _ := repo.GetBank(topic, ch)
+
+						// 查询已有题干用于去重
+						existing := map[string]struct{}{}
+						if recs, _ := db.Model("quiz_questions").Fields("question").Where("topic", topic).Where("chapter", ch).All(ctx); recs != nil {
+							for _, r := range recs.List() {
+								// recs.List() typically returns []gdb.Map; handle that directly
+								var qtext string
+								if v, found := r["question"]; found {
+									if str, ok := v.(string); ok {
+										qtext = strings.TrimSpace(str)
+									}
+								} else {
+									// fallback: try asserting to an interface with Map() method
+									type hasMap interface{ Map() gdb.Map }
+									if recWithMap, ok2 := any(r).(hasMap); ok2 {
+										if v2, found2 := recWithMap.Map()["question"]; found2 {
+											if str, ok := v2.(string); ok {
+												qtext = strings.TrimSpace(str)
+											}
+										}
+									}
+								}
+								existing[qtext] = struct{}{}
+							}
+						}
+
+						for _, q := range qs {
+							stem := strings.TrimSpace(q.Stem)
+							if stem == "" {
+								continue
+							}
+							if _, ok := existing[stem]; ok {
+								continue
+							}
+							// 将答案字符串拆分为单字母数组并编码为 JSON
+							ansArr := []string{}
+							for _, r := range q.Answer {
+								ansArr = append(ansArr, strings.ToUpper(string(r)))
+							}
+							ansJSON, _ := json.Marshal(ansArr)
+							optionsJSON, _ := json.Marshal(q.Options)
+							seed = append(seed, gdb.Map{
+								"topic":           topic,
+								"chapter":         ch,
+								"type":            q.Type,
+								"difficulty":      q.Difficulty,
+								"question":        stem,
+								"options":         string(optionsJSON),
+								"correct_answers": string(ansJSON),
+								"explanation":     q.Explanation,
+							})
+						}
+					}
+				}
+				if len(seed) > 0 {
+					_, _ = db.Model("quiz_questions").Data(seed).Insert()
+				}
+			}
+		}
 	}
 
 	// 配置 JWT

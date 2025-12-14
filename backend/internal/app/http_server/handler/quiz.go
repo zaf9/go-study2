@@ -100,6 +100,22 @@ func (h *Handler) GetQuizHistory(r *ghttp.Request) {
 	writeSuccess(r, "success", items)
 }
 
+// GetQuizStats 返回章节题库统计信息: total, byType, byDifficulty
+func (h *Handler) GetQuizStats(r *ghttp.Request) {
+	svc, ok := h.getQuizService(r)
+	if !ok {
+		return
+	}
+	topic := r.Get("topic").String()
+	chapter := r.Get("chapter").String()
+	stats, err := svc.GetStats(r.GetCtx(), topic, chapter)
+	if err != nil {
+		h.writeQuizError(r, err)
+		return
+	}
+	writeSuccess(r, "success", stats)
+}
+
 func (h *Handler) getQuizService(r *ghttp.Request) (*appquiz.Service, bool) {
 	if h.quizService != nil {
 		return h.quizService, true

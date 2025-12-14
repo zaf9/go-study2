@@ -429,28 +429,25 @@ quiz:
 
 ### 查看单个章节统计
 
-**方法1：通过API查询**（如果实现了stats接口）
+**方法1：通过API查询（需认证）**
+
+示例（需在请求头带上有效的 access token）：
 
 ```bash
-curl http://localhost:8080/api/v1/quiz/constants/boolean/stats
+curl -H "Authorization: Bearer $ACCESS_TOKEN" \
+  "http://localhost:8080/api/v1/quiz/constants/boolean/stats"
 ```
 
-**响应示例**：
+**响应示例**（统一响应格式，成功 code=20000）：
+
 ```json
 {
-  "code": 0,
+  "code": 20000,
   "message": "success",
   "data": {
     "total": 35,
-    "byType": {
-      "single": 18,
-      "multiple": 17
-    },
-    "byDifficulty": {
-      "easy": 14,
-      "medium": 14,
-      "hard": 7
-    }
+    "byType": { "single": 18, "multiple": 17 },
+    "byDifficulty": { "easy": 14, "medium": 14, "hard": 7 }
   }
 }
 ```

@@ -1,0 +1,521 @@
+questions:
+    - id: type-pointer-001
+      type: multiple
+      difficulty: easy
+      stem: 【单项基础】关于 types.pointer，下面哪个选项是正确的？
+      options:
+        - 'A: 常见误解或反例（容易混淆）'
+        - 'B: 正确项（关于pointer.types的重要结论）'
+        - 'C: 正确项（关于pointer.types的重要结论）'
+        - 'D: 正确项（关于pointer.types的重要结论）'
+      answer: BCD
+      explanation: 本题考查 types.pointer 的相关知识。正确答案：BCD。解析：pointer 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: pointer
+    - id: type-pointer-002
+      type: single
+      difficulty: easy
+      stem: 【单项基础】关于 types.pointer，下面哪个选项是正确的？
+      options:
+        - 'A: 语法/语义上不正确的陈述'
+        - 'B: 正确：关于pointer.types的关键点描述（正确选项）'
+        - 'C: 常见误解或反例（容易混淆）'
+        - 'D: 与pointer.types 相关但不适用的选项'
+      answer: B
+      explanation: 本题考查 types.pointer 的概念。正确答案为 B。解析：pointer 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: pointer
+    - id: type-pointer-003
+      type: multiple
+      difficulty: easy
+      stem: 【单项基础】关于 types.pointer，下面哪个选项是正确的？
+      options:
+        - 'A: 正确项（关于pointer.types的重要结论）'
+        - 'B: 正确项（关于pointer.types的重要结论）'
+        - 'C: 正确项（关于pointer.types的重要结论）'
+        - 'D: 与pointer.types 相关但不适用的选项'
+      answer: ABC
+      explanation: 本题考查 types.pointer 的相关知识。正确答案：ABC。解析：pointer 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: pointer
+    - id: type-pointer-004
+      type: single
+      difficulty: easy
+      stem: 【单项基础】关于 types.pointer，下面哪个选项是正确的？
+      options:
+        - 'A: 正确：关于pointer.types的关键点描述（正确选项）'
+        - 'B: 部分正确但不完整的说法'
+        - 'C: 常见误解或反例（容易混淆）'
+        - 'D: 与pointer.types 相关但不适用的选项'
+      answer: A
+      explanation: 本题考查 types.pointer 的概念。正确答案为 A。解析：pointer 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: pointer
+    - id: type-pointer-005
+      type: multiple
+      difficulty: easy
+      stem: 【单项基础】关于 types.pointer，下面哪个选项是正确的？
+      options:
+        - 'A: 正确项（关于pointer.types的重要结论）'
+        - 'B: 部分正确但不完整的说法'
+        - 'C: 正确项（关于pointer.types的重要结论）'
+        - 'D: 正确项（关于pointer.types的重要结论）'
+      answer: ACD
+      explanation: 本题考查 types.pointer 的相关知识。正确答案：ACD。解析：pointer 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: pointer
+    - id: type-pointer-006
+      type: single
+      difficulty: easy
+      stem: 【单项基础】关于 types.pointer，下面哪个选项是正确的？
+      options:
+        - 'A: 部分正确但不完整的说法'
+        - 'B: 正确：关于pointer.types的关键点描述（正确选项）'
+        - 'C: 常见误解或反例（容易混淆）'
+        - 'D: 部分正确但不完整的说法'
+      answer: B
+      explanation: 本题考查 types.pointer 的概念。正确答案为 B。解析：pointer 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: pointer
+    - id: type-pointer-007
+      type: multiple
+      difficulty: easy
+      stem: 【单项基础】关于 types.pointer，下面哪个选项是正确的？
+      options:
+        - 'A: 正确项（关于pointer.types的重要结论）'
+        - 'B: 常见误解或反例（容易混淆）'
+        - 'C: 正确项（关于pointer.types的重要结论）'
+        - 'D: 语法/语义上不正确的陈述'
+      answer: AC
+      explanation: 本题考查 types.pointer 的相关知识。正确答案：AC。解析：pointer 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: pointer
+    - id: type-pointer-008
+      type: single
+      difficulty: easy
+      stem: 【单项基础】关于 types.pointer，下面哪个选项是正确的？
+      options:
+        - 'A: 正确：关于pointer.types的关键点描述（正确选项）'
+        - 'B: 与pointer.types 相关但不适用的选项'
+        - 'C: 常见误解或反例（容易混淆）'
+        - 'D: 常见误解或反例（容易混淆）'
+      answer: A
+      explanation: 本题考查 types.pointer 的概念。正确答案为 A。解析：pointer 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: pointer
+    - id: type-pointer-009
+      type: multiple
+      difficulty: easy
+      stem: 【单项基础】关于 types.pointer，下面哪个选项是正确的？
+      options:
+        - 'A: 正确项（关于pointer.types的重要结论）'
+        - 'B: 正确项（关于pointer.types的重要结论）'
+        - 'C: 语法/语义上不正确的陈述'
+        - 'D: 正确项（关于pointer.types的重要结论）'
+      answer: ABD
+      explanation: 本题考查 types.pointer 的相关知识。正确答案：ABD。解析：pointer 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: pointer
+    - id: type-pointer-010
+      type: single
+      difficulty: easy
+      stem: 【单项基础】关于 types.pointer，下面哪个选项是正确的？
+      options:
+        - 'A: 常见误解或反例（容易混淆）'
+        - 'B: 正确：关于pointer.types的关键点描述（正确选项）'
+        - 'C: 语法/语义上不正确的陈述'
+        - 'D: 语法/语义上不正确的陈述'
+      answer: B
+      explanation: 本题考查 types.pointer 的概念。正确答案为 B。解析：pointer 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: pointer
+    - id: type-pointer-011
+      type: multiple
+      difficulty: easy
+      stem: 【单项基础】关于 types.pointer，下面哪个选项是正确的？
+      options:
+        - 'A: 正确项（关于pointer.types的重要结论）'
+        - 'B: 正确项（关于pointer.types的重要结论）'
+        - 'C: 语法/语义上不正确的陈述'
+        - 'D: 正确项（关于pointer.types的重要结论）'
+      answer: ABD
+      explanation: 本题考查 types.pointer 的相关知识。正确答案：ABD。解析：pointer 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: pointer
+    - id: type-pointer-012
+      type: single
+      difficulty: easy
+      stem: 【单项基础】关于 types.pointer，下面哪个选项是正确的？
+      options:
+        - 'A: 语法/语义上不正确的陈述'
+        - 'B: 正确：关于pointer.types的关键点描述（正确选项）'
+        - 'C: 语法/语义上不正确的陈述'
+        - 'D: 语法/语义上不正确的陈述'
+      answer: B
+      explanation: 本题考查 types.pointer 的概念。正确答案为 B。解析：pointer 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: pointer
+    - id: type-pointer-013
+      type: multiple
+      difficulty: easy
+      stem: 【单项基础】关于 types.pointer，下面哪个选项是正确的？
+      options:
+        - 'A: 正确项（关于pointer.types的重要结论）'
+        - 'B: 正确项（关于pointer.types的重要结论）'
+        - 'C: 与pointer.types 相关但不适用的选项'
+        - 'D: 正确项（关于pointer.types的重要结论）'
+      answer: ABD
+      explanation: 本题考查 types.pointer 的相关知识。正确答案：ABD。解析：pointer 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: pointer
+    - id: type-pointer-014
+      type: single
+      difficulty: easy
+      stem: 【单项基础】关于 types.pointer，下面哪个选项是正确的？
+      options:
+        - 'A: 语法/语义上不正确的陈述'
+        - 'B: 正确：关于pointer.types的关键点描述（正确选项）'
+        - 'C: 常见误解或反例（容易混淆）'
+        - 'D: 常见误解或反例（容易混淆）'
+      answer: B
+      explanation: 本题考查 types.pointer 的概念。正确答案为 B。解析：pointer 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: pointer
+    - id: type-pointer-015
+      type: multiple
+      difficulty: easy
+      stem: 【单项基础】关于 types.pointer，下面哪个选项是正确的？
+      options:
+        - 'A: 正确项（关于pointer.types的重要结论）'
+        - 'B: 正确项（关于pointer.types的重要结论）'
+        - 'C: 与pointer.types 相关但不适用的选项'
+        - 'D: 正确项（关于pointer.types的重要结论）'
+      answer: ABD
+      explanation: 本题考查 types.pointer 的相关知识。正确答案：ABD。解析：pointer 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: pointer
+    - id: type-pointer-016
+      type: single
+      difficulty: easy
+      stem: 【单项基础】关于 types.pointer，下面哪个选项是正确的？
+      options:
+        - 'A: 部分正确但不完整的说法'
+        - 'B: 正确：关于pointer.types的关键点描述（正确选项）'
+        - 'C: 常见误解或反例（容易混淆）'
+        - 'D: 语法/语义上不正确的陈述'
+      answer: B
+      explanation: 本题考查 types.pointer 的概念。正确答案为 B。解析：pointer 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: pointer
+    - id: type-pointer-017
+      type: multiple
+      difficulty: medium
+      stem: 【应用题】在 types.pointer 的情境下，哪个说法更合适？
+      options:
+        - 'A: 部分正确但不完整的说法'
+        - 'B: 正确项（关于pointer.types的重要结论）'
+        - 'C: 正确项（关于pointer.types的重要结论）'
+        - 'D: 正确项（关于pointer.types的重要结论）'
+      answer: BCD
+      explanation: 本题考查 types.pointer 的相关知识。正确答案：BCD。解析：pointer 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: pointer
+    - id: type-pointer-018
+      type: single
+      difficulty: medium
+      stem: 【应用题】在 types.pointer 的情境下，哪个说法更合适？
+      options:
+        - 'A: 常见误解或反例（容易混淆）'
+        - 'B: 正确：关于pointer.types的关键点描述（正确选项）'
+        - 'C: 部分正确但不完整的说法'
+        - 'D: 语法/语义上不正确的陈述'
+      answer: B
+      explanation: 本题考查 types.pointer 的概念。正确答案为 B。解析：pointer 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: pointer
+    - id: type-pointer-019
+      type: multiple
+      difficulty: medium
+      stem: 【应用题】在 types.pointer 的情境下，哪个说法更合适？
+      options:
+        - 'A: 正确项（关于pointer.types的重要结论）'
+        - 'B: 正确项（关于pointer.types的重要结论）'
+        - 'C: 正确项（关于pointer.types的重要结论）'
+        - 'D: 部分正确但不完整的说法'
+      answer: ABC
+      explanation: 本题考查 types.pointer 的相关知识。正确答案：ABC。解析：pointer 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: pointer
+    - id: type-pointer-020
+      type: single
+      difficulty: medium
+      stem: 【应用题】在 types.pointer 的情境下，哪个说法更合适？
+      options:
+        - 'A: 常见误解或反例（容易混淆）'
+        - 'B: 部分正确但不完整的说法'
+        - 'C: 正确：关于pointer.types的关键点描述（正确选项）'
+        - 'D: 与pointer.types 相关但不适用的选项'
+      answer: C
+      explanation: 本题考查 types.pointer 的概念。正确答案为 C。解析：pointer 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: pointer
+    - id: type-pointer-021
+      type: multiple
+      difficulty: medium
+      stem: 【应用题】在 types.pointer 的情境下，哪个说法更合适？
+      options:
+        - 'A: 正确项（关于pointer.types的重要结论）'
+        - 'B: 语法/语义上不正确的陈述'
+        - 'C: 正确项（关于pointer.types的重要结论）'
+        - 'D: 语法/语义上不正确的陈述'
+      answer: AC
+      explanation: 本题考查 types.pointer 的相关知识。正确答案：AC。解析：pointer 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: pointer
+    - id: type-pointer-022
+      type: single
+      difficulty: medium
+      stem: 【应用题】在 types.pointer 的情境下，哪个说法更合适？
+      options:
+        - 'A: 常见误解或反例（容易混淆）'
+        - 'B: 部分正确但不完整的说法'
+        - 'C: 正确：关于pointer.types的关键点描述（正确选项）'
+        - 'D: 部分正确但不完整的说法'
+      answer: C
+      explanation: 本题考查 types.pointer 的概念。正确答案为 C。解析：pointer 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: pointer
+    - id: type-pointer-023
+      type: multiple
+      difficulty: medium
+      stem: 【应用题】在 types.pointer 的情境下，哪个说法更合适？
+      options:
+        - 'A: 正确项（关于pointer.types的重要结论）'
+        - 'B: 语法/语义上不正确的陈述'
+        - 'C: 与pointer.types 相关但不适用的选项'
+        - 'D: 正确项（关于pointer.types的重要结论）'
+      answer: AD
+      explanation: 本题考查 types.pointer 的相关知识。正确答案：AD。解析：pointer 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: pointer
+    - id: type-pointer-024
+      type: single
+      difficulty: medium
+      stem: 【应用题】在 types.pointer 的情境下，哪个说法更合适？
+      options:
+        - 'A: 常见误解或反例（容易混淆）'
+        - 'B: 正确：关于pointer.types的关键点描述（正确选项）'
+        - 'C: 语法/语义上不正确的陈述'
+        - 'D: 部分正确但不完整的说法'
+      answer: B
+      explanation: 本题考查 types.pointer 的概念。正确答案为 B。解析：pointer 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: pointer
+    - id: type-pointer-025
+      type: multiple
+      difficulty: medium
+      stem: 【应用题】在 types.pointer 的情境下，哪个说法更合适？
+      options:
+        - 'A: 正确项（关于pointer.types的重要结论）'
+        - 'B: 部分正确但不完整的说法'
+        - 'C: 语法/语义上不正确的陈述'
+        - 'D: 正确项（关于pointer.types的重要结论）'
+      answer: AD
+      explanation: 本题考查 types.pointer 的相关知识。正确答案：AD。解析：pointer 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: pointer
+    - id: type-pointer-026
+      type: single
+      difficulty: medium
+      stem: 【应用题】在 types.pointer 的情境下，哪个说法更合适？
+      options:
+        - 'A: 部分正确但不完整的说法'
+        - 'B: 与pointer.types 相关但不适用的选项'
+        - 'C: 正确：关于pointer.types的关键点描述（正确选项）'
+        - 'D: 语法/语义上不正确的陈述'
+      answer: C
+      explanation: 本题考查 types.pointer 的概念。正确答案为 C。解析：pointer 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: pointer
+    - id: type-pointer-027
+      type: multiple
+      difficulty: medium
+      stem: 【应用题】在 types.pointer 的情境下，哪个说法更合适？
+      options:
+        - 'A: 正确项（关于pointer.types的重要结论）'
+        - 'B: 语法/语义上不正确的陈述'
+        - 'C: 正确项（关于pointer.types的重要结论）'
+        - 'D: 正确项（关于pointer.types的重要结论）'
+      answer: ACD
+      explanation: 本题考查 types.pointer 的相关知识。正确答案：ACD。解析：pointer 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: pointer
+    - id: type-pointer-028
+      type: single
+      difficulty: medium
+      stem: 【应用题】在 types.pointer 的情境下，哪个说法更合适？
+      options:
+        - 'A: 语法/语义上不正确的陈述'
+        - 'B: 部分正确但不完整的说法'
+        - 'C: 正确：关于pointer.types的关键点描述（正确选项）'
+        - 'D: 常见误解或反例（容易混淆）'
+      answer: C
+      explanation: 本题考查 types.pointer 的概念。正确答案为 C。解析：pointer 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: pointer
+    - id: type-pointer-029
+      type: multiple
+      difficulty: medium
+      stem: 【应用题】在 types.pointer 的情境下，哪个说法更合适？
+      options:
+        - 'A: 正确项（关于pointer.types的重要结论）'
+        - 'B: 正确项（关于pointer.types的重要结论）'
+        - 'C: 正确项（关于pointer.types的重要结论）'
+        - 'D: 部分正确但不完整的说法'
+      answer: ABC
+      explanation: 本题考查 types.pointer 的相关知识。正确答案：ABC。解析：pointer 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: pointer
+    - id: type-pointer-030
+      type: single
+      difficulty: medium
+      stem: 【应用题】在 types.pointer 的情境下，哪个说法更合适？
+      options:
+        - 'A: 与pointer.types 相关但不适用的选项'
+        - 'B: 正确：关于pointer.types的关键点描述（正确选项）'
+        - 'C: 常见误解或反例（容易混淆）'
+        - 'D: 与pointer.types 相关但不适用的选项'
+      answer: B
+      explanation: 本题考查 types.pointer 的概念。正确答案为 B。解析：pointer 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: pointer
+    - id: type-pointer-031
+      type: multiple
+      difficulty: medium
+      stem: 【应用题】在 types.pointer 的情境下，哪个说法更合适？
+      options:
+        - 'A: 常见误解或反例（容易混淆）'
+        - 'B: 正确项（关于pointer.types的重要结论）'
+        - 'C: 正确项（关于pointer.types的重要结论）'
+        - 'D: 正确项（关于pointer.types的重要结论）'
+      answer: BCD
+      explanation: 本题考查 types.pointer 的相关知识。正确答案：BCD。解析：pointer 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: pointer
+    - id: type-pointer-032
+      type: single
+      difficulty: medium
+      stem: 【应用题】在 types.pointer 的情境下，哪个说法更合适？
+      options:
+        - 'A: 部分正确但不完整的说法'
+        - 'B: 与pointer.types 相关但不适用的选项'
+        - 'C: 正确：关于pointer.types的关键点描述（正确选项）'
+        - 'D: 部分正确但不完整的说法'
+      answer: C
+      explanation: 本题考查 types.pointer 的概念。正确答案为 C。解析：pointer 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: pointer
+    - id: type-pointer-033
+      type: multiple
+      difficulty: hard
+      stem: 【思考题】针对 types.pointer，判断下列说法的正确性并选择最合适的选项。
+      options:
+        - 'A: 部分正确但不完整的说法'
+        - 'B: 正确项（关于pointer.types的重要结论）'
+        - 'C: 正确项（关于pointer.types的重要结论）'
+        - 'D: 与pointer.types 相关但不适用的选项'
+      answer: BC
+      explanation: 本题考查 types.pointer 的相关知识。正确答案：BC。解析：pointer 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: pointer
+    - id: type-pointer-034
+      type: single
+      difficulty: hard
+      stem: 【思考题】针对 types.pointer，判断下列说法的正确性并选择最合适的选项。
+      options:
+        - 'A: 语法/语义上不正确的陈述'
+        - 'B: 常见误解或反例（容易混淆）'
+        - 'C: 语法/语义上不正确的陈述'
+        - 'D: 正确：关于pointer.types的关键点描述（正确选项）'
+      answer: D
+      explanation: 本题考查 types.pointer 的概念。正确答案为 D。解析：pointer 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: pointer
+    - id: type-pointer-035
+      type: multiple
+      difficulty: hard
+      stem: 【思考题】针对 types.pointer，判断下列说法的正确性并选择最合适的选项。
+      options:
+        - 'A: 正确项（关于pointer.types的重要结论）'
+        - 'B: 正确项（关于pointer.types的重要结论）'
+        - 'C: 语法/语义上不正确的陈述'
+        - 'D: 正确项（关于pointer.types的重要结论）'
+      answer: ABD
+      explanation: 本题考查 types.pointer 的相关知识。正确答案：ABD。解析：pointer 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: pointer
+    - id: type-pointer-036
+      type: single
+      difficulty: hard
+      stem: 【思考题】针对 types.pointer，判断下列说法的正确性并选择最合适的选项。
+      options:
+        - 'A: 常见误解或反例（容易混淆）'
+        - 'B: 与pointer.types 相关但不适用的选项'
+        - 'C: 正确：关于pointer.types的关键点描述（正确选项）'
+        - 'D: 语法/语义上不正确的陈述'
+      answer: C
+      explanation: 本题考查 types.pointer 的概念。正确答案为 C。解析：pointer 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: pointer
+    - id: type-pointer-037
+      type: multiple
+      difficulty: hard
+      stem: 【思考题】针对 types.pointer，判断下列说法的正确性并选择最合适的选项。
+      options:
+        - 'A: 正确项（关于pointer.types的重要结论）'
+        - 'B: 与pointer.types 相关但不适用的选项'
+        - 'C: 正确项（关于pointer.types的重要结论）'
+        - 'D: 语法/语义上不正确的陈述'
+      answer: AC
+      explanation: 本题考查 types.pointer 的相关知识。正确答案：AC。解析：pointer 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: pointer
+    - id: type-pointer-038
+      type: single
+      difficulty: hard
+      stem: 【思考题】针对 types.pointer，判断下列说法的正确性并选择最合适的选项。
+      options:
+        - 'A: 常见误解或反例（容易混淆）'
+        - 'B: 语法/语义上不正确的陈述'
+        - 'C: 部分正确但不完整的说法'
+        - 'D: 正确：关于pointer.types的关键点描述（正确选项）'
+      answer: D
+      explanation: 本题考查 types.pointer 的概念。正确答案为 D。解析：pointer 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: pointer
+    - id: type-pointer-039
+      type: multiple
+      difficulty: hard
+      stem: 【思考题】针对 types.pointer，判断下列说法的正确性并选择最合适的选项。
+      options:
+        - 'A: 正确项（关于pointer.types的重要结论）'
+        - 'B: 常见误解或反例（容易混淆）'
+        - 'C: 正确项（关于pointer.types的重要结论）'
+        - 'D: 语法/语义上不正确的陈述'
+      answer: AC
+      explanation: 本题考查 types.pointer 的相关知识。正确答案：AC。解析：pointer 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: pointer
+    - id: type-pointer-040
+      type: single
+      difficulty: hard
+      stem: 【思考题】针对 types.pointer，判断下列说法的正确性并选择最合适的选项。
+      options:
+        - 'A: 部分正确但不完整的说法'
+        - 'B: 常见误解或反例（容易混淆）'
+        - 'C: 正确：关于pointer.types的关键点描述（正确选项）'
+        - 'D: 与pointer.types 相关但不适用的选项'
+      answer: C
+      explanation: 本题考查 types.pointer 的概念。正确答案为 C。解析：pointer 的关键点在于...（请在校稿时补充具体细节）。
+      topic: types
+      chapter: pointer

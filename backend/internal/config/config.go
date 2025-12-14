@@ -33,6 +33,25 @@ type ProgressConfig struct {
 	MinSeconds         int64              `json:"minSeconds"`
 	MaxSeconds         int64              `json:"maxSeconds"`
 	CompletionFraction float64            `json:"completionFraction"`
+	// Quiz 子配置（可选）
+	Quiz QuizConfig `json:"quiz"`
+}
+
+// QuizConfig 表示测验题库相关配置（位于 progress.quiz）
+type QuizConfig struct {
+	DataPath               string         `json:"dataPath"`
+	QuestionCount          QuestionCount  `json:"questionCount"`
+	DifficultyDistribution map[string]int `json:"difficultyDistribution"`
+	LoadTimeout            string         `json:"loadTimeout"`
+	Validation             struct {
+		StrictMode bool `json:"strictMode"`
+		FailFast   bool `json:"failFast"`
+	} `json:"validation"`
+}
+
+type QuestionCount struct {
+	Single   int `json:"single"`
+	Multiple int `json:"multiple"`
 }
 
 // HttpConfig HTTP 配置
