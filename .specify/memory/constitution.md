@@ -1,16 +1,28 @@
 <!--
 Sync Impact Report:
-- Version change: 2.0.0 -> 2.0.0 (无治理变更, 同步更新模板对齐宪章)
-- Added sections: none
+- Version change: 2.0.0 -> 2.1.0 (新增多项治理原则以确保实现一致性)
+- Added sections: 
+  * Principle XIII: Fail-Fast Startup Strategy
+  * Principle XIV: Observability and Structured Logging
+  * Principle XV: Configuration Management
+  * Principle XVI: Asynchronous and Concurrent Processing
+  * Principle XVII: Graceful Shutdown
+  * Principle XXXI: Standardized Learning Content Structure
+  * Principle XXXII: Quiz and Assessment Standards
+  * Principle XXXIII: Learning Progress Tracking
+  * Principle XXXIV: Feature Independence and MVP Thinking
 - Removed sections: none
-- Modified sections: none
+- Modified sections: All subsequent principles renumbered (XIII->XVIII, XIV->XIX, etc.)
 - Templates requiring updates:
   ✅ .specify/templates/plan-template.md
   ✅ .specify/templates/spec-template.md
   ✅ .specify/templates/tasks-template.md
   ✅ .specify/templates/checklist-template.md
   ⚠ .specify/templates/commands/ (目录缺失, 待确认是否需要补充)
-- Follow-up TODOs: 如需 commands 模板请创建目录并补齐相应文件
+- Follow-up TODOs: 
+  * 更新所有现有 spec 文档以引用新的原则编号
+  * 在下一个新 spec 开发时验证新原则的实践效果
+  * 如需 commands 模板请创建目录并补齐相应文件
 -->
 
 # go-study2 Constitution
@@ -30,7 +42,7 @@ All features must be accompanied by tests. Backend unit test coverage must be �
 Each file, function, component, and package must bear a single, clear responsibility. Logic must be split when responsibilities diverge.
 
 ### Principle V: Consistent Documentation Standards
-All code comments and documentation must be clear, organized, and logical. Backend uses Chinese, frontend uses Chinese or English but maintains consistency.
+All code comments and documentation must be clear, organized, and logical. Backend must use Chinese; frontend may use Chinese or English but must maintain consistency within the project.
 
 ### Principle VI: YAGNI (You Ain't Gonna Need It)
 Do not prematurely implement complex design patterns or features. Focus on providing the simplest solution that meets current requirements.
@@ -56,48 +68,93 @@ After completing development of any new specification, the `README.md` file must
   - Types: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`
   - Example: `feat(auth): add login page with form validation`
 
+### Principle XIII: Fail-Fast Startup Strategy
+System must validate critical resources and configurations at startup and refuse to start with clear error messages when issues are detected. This includes:
+* Configuration file missing or invalid: refuse to start with detailed error diagnostics (file path, error location, error reason)
+* Log directory write permissions insufficient: refuse to start with error message containing directory path and permission requirements
+* Required configuration items missing: refuse to start with explanation of missing items
+* Port already in use: detect and output clear error message before starting
+* Avoid degraded silent operation - explicit failure is better than unclear behavior
+
+### Principle XIV: Observability and Structured Logging
+System must implement comprehensive logging infrastructure to support troubleshooting and performance analysis:
+* Structured logging with configurable levels (DEBUG/INFO/WARN/ERROR) using YAML configuration
+* Separate log instances for different concerns (app/access/error/slow query)
+* Full-chain request tracing with TraceID propagation through Context
+* Automatic TraceID generation when missing, with WARNING log indicating broken propagation chain
+* Asynchronous log writing to avoid blocking business logic
+* Log file retention policy (configurable, default 30 days) with automatic cleanup
+* Log rotation by date and size (configurable, default max 100MB per file)
+* Fallback strategy for log write failures (e.g., output to stderr), never silent failure
+* Key operation logging points: content loading, menu navigation, error handling, database operations, slow queries
+
+### Principle XV: Configuration Management
+All system runtime parameters must be managed through configuration files with explicit validation:
+* Use YAML format for configuration files, consistent with framework standards
+* Required configuration items must have no default values (explicit configuration required)
+* Support environment-specific configurations (dev/test/prod)
+* Configuration validation at startup before resource initialization
+* Environment variable support for deployment flexibility
+* Configuration changes require restart (no hot-reload complexity unless explicitly needed)
+
+### Principle XVI: Asynchronous and Concurrent Processing
+System must handle asynchronous operations and concurrent requests appropriately:
+* Asynchronous logging to prevent blocking business logic
+* Thread-safe concurrent request handling for HTTP services
+* Proper use of goroutines with error handling and panic recovery
+* Resource pooling for concurrent operations (database connections, etc.)
+* Performance benchmarks for concurrent scenarios (e.g., 1000 concurrent requests)
+
+### Principle XVII: Graceful Shutdown
+Applications must implement graceful shutdown mechanisms:
+* Respond to system interrupt signals (SIGINT, SIGTERM)
+* Complete in-flight requests before shutdown
+* Clean up resources and close connections properly
+* Timeout control for shutdown operations (max 30 seconds)
+* Log shutdown events and final system state
+
 ---
 
 ## Backend Principles
 
 ### Backend Core Principles
 
-#### Principle XIII: Simplicity for Go Beginners
+#### Principle XVIII: Simplicity for Go Beginners
 Code must be concise and easy to understand, suitable for Go beginners. The primary goal is readability and maintainability.
 
-#### Principle XIV: Clear Layered Comments
+#### Principle XIX: Clear Layered Comments
 Each logical layer of the application (such as controllers, services, repositories) must have clear comments explaining its specific responsibilities and functionality.
 
-#### Principle XV: Chinese Language Documentation
+#### Principle XX: Backend Chinese Documentation Requirement
 All code comments and user-facing documentation must be written in Chinese to ensure consistency and clarity for the target developers.
 
-#### Principle XVI: Shallow Logic
+#### Principle XXI: Shallow Logic
 Deeply nested logic (such as multiple nested if statements or loops) must be avoided. Prioritize guard clauses, early returns, and function decomposition to maintain a flat code structure.
 
-#### Principle XVII: Consistent Developer Experience
+#### Principle XXII: Consistent Developer Experience
 The project must provide a consistent, beginner-friendly environment. Setup steps, development workflows, and documentation must minimize confusion and friction.
 
 ### Backend Project Standards
 
-#### Principle XVIII: Standard Go Project Structure
+#### Principle XXIII: Standard Go Project Structure
 The project must follow standard Go project layout. The root directory must contain `go.mod` and `go.sum`. Subdirectories must not contain `main.go`; only the root directory may define executable entry points.
 
-#### Principle XIX: Package-Level Documentation
+#### Principle XXIV: Package-Level Documentation
 Each package directory must contain a `README.md` describing:
 * The package's purpose and functionality
 * Detailed usage instructions
 
-#### Principle XX: Code Quality Enforcement
+#### Principle XXV: Backend Code Quality Tools
 The following tools must be executed regularly to ensure code quality:
 * `go fmt` for formatting
 * `go vet` for static analysis
 * `golint` for style checking
 * `go mod tidy` for dependency maintenance
 
-#### Principle XXI: Testing Requirements
+#### Principle XXVI: Backend Testing Requirements
 Each package must contain corresponding test files (`*_test.go`). Example functions (`ExampleXxx`) must be provided when appropriate to demonstrate usage.
 
-#### Principle XXII: Hierarchical Menu Navigation
+#### Principle XXVII: Hierarchical Menu Navigation
 Interactive applications must support hierarchical menu structures to improve user experience and content organization. The menu system must:
 * Support multi-level navigation with clear entry and exit points
 * Pass I/O streams to enable interactive submenus
@@ -105,13 +162,13 @@ Interactive applications must support hierarchical menu structures to improve us
 * Gracefully handle invalid input and display clear error messages
 * Maintain consistent numbering schemes (starting from 0) between menu levels
 
-#### Principle XXIII: Dual Learning Mode Support
+#### Principle XXVIII: Dual Learning Mode Support
 All new Go learning chapter specifications must support two learning modes:
 * Command-line interactive mode (CLI) for terminal-based learning
 * HTTP request mode for web-based access
 This ensures consistent accessibility across different user preferences and integration scenarios.
 
-#### Principle XXIV: Hierarchical Chapter Learning Structure
+#### Principle XXIX: Hierarchical Chapter Learning Structure
 Learning content for Go language specification chapters must follow a hierarchical package structure:
 * Each specification chapter must create an independent package (e.g., `constants`, `lexical_elements`)
 * Each subsection must correspond to an independent .go file, named in lowercase with underscores (e.g., `boolean.go`, `integer.go`)
@@ -120,12 +177,48 @@ Learning content for Go language specification chapters must follow a hierarchic
 * Each .go file must contain detailed example code and Chinese explanations to facilitate learner understanding and practice
 * The hierarchical structure must clearly reflect the chapter organization of the Go language specification, facilitating learners to study in specification order
 
-#### Principle XXV: HTTP/CLI Implementation Consistency
+#### Principle XXX: HTTP/CLI Implementation Consistency
 * CLI uniformly adopts `DisplayMenu(stdin, stdout, stderr)` interactive loop, numbering starts from 0 and increments, 'q' returns to parent level, uses mapping to bind numbers to subtopic display/loading functions, signature consistent with `main.App`'s `MenuItem.Action` can be integrated into the main menu
 * CLI and HTTP share the same content source: new chapters refer to Lexical/Constants to reuse their respective `GetXContent`/display function output strings; new chapters must provide reusable content and quiz reading interfaces to avoid bifurcation between the two modes
 * HTTP routes are fixed as `/api/v1/topic/{chapter}` (menu) and `/api/v1/topic/{chapter}/{subtopic}` (content), following `middleware.Format`'s `format=json|html` negotiation; menu responses use `Response{code,message,data.items}` (items structure same as `LexicalMenuItem`), content responses use `Response{code,message,data}` wrapping, HTML output through `getHtmlPage` with return link attached
 * Error handling remains explicit: unknown subtopics return 404 with JSON/HTML prompts; missing content or quizzes refer to Variables' approach to return business error messages while maintaining stable response structure, no silent failures
 * Topic registration consistency: new chapters need to be synchronously added to `/api/v1/topics` list and CLI main menu, path identifiers use English short names (snake_case) consistent with files/directories; if conflicts with existing conventions arise, this principle takes precedence
+
+#### Principle XXXI: Standardized Learning Content Structure
+All learning chapter content must follow a unified, predictable structure to ensure consistent learning experience:
+* Each chapter must contain: Overview, Key Points, Detailed Explanation, Code Examples, Common Pitfalls (optional), Practical Recommendations
+* Each chapter must include at least 2 runnable code examples (15-40 lines each)
+* Code examples must include: title, inline Chinese comments, expected output
+* Examples must follow official Go code style and be verified to compile and run correctly
+* Content must be suitable for Go beginners with clear Chinese explanations
+
+#### Principle XXXII: Quiz and Assessment Standards
+Learning chapters must provide comprehensive assessment mechanisms:
+* Quiz question count based on chapter complexity: basic chapters 5-8 questions, intermediate 8-12 questions, complex 12-15 questions
+* Question types must include: single choice, multiple choice, true/false, code output prediction, error correction
+* Pass threshold standardized at 60% correct rate
+* Each question must provide detailed explanation referencing relevant specification rules
+* Instant grading and feedback upon submission
+* Quiz history tracking for progress monitoring
+* Support for retaking quizzes to reinforce learning
+
+#### Principle XXXIII: Learning Progress Tracking
+System must track and persist learner progress to support continuous learning:
+* Chapter status management: not_started, in_progress, completed, tested
+* Progress metrics: read_duration (seconds, cumulative), scroll_progress (0-100%), last_position (pixels), quiz_score, quiz_passed
+* Completion criteria: reading time ≥80% of estimated, scroll progress ≥90%, quiz passed (≥60% correct)
+* Progress auto-save strategy: debounced updates every 10 seconds during reading, exponential backoff retry on failure (max 5 attempts), final sync before page unload
+* Automatic scroll position restoration on return to chapter
+* Overall progress calculation with topic-weighted formula
+* Support for "Continue Learning" feature to resume at first incomplete chapter
+
+#### Principle XXXIV: Feature Independence and MVP Thinking
+New features must be designed with independent testability and incremental delivery:
+* Each User Story must be independently testable and deliverable as a viable MVP
+* Use P1/P2/P3 priority levels where P1 represents minimum viable functionality
+* Features should be implementable in isolation without requiring other features to be complete
+* Each feature module must have independent verification criteria
+* Support for incremental rollout and testing
 
 ---
 
@@ -133,42 +226,42 @@ Learning content for Go language specification chapters must follow a hierarchic
 
 ### Frontend Core Principles
 
-#### Principle XXVI: Type Safety First
+#### Principle XXXV: Type Safety First
 Prioritize TypeScript type definitions to ensure type safety. Props, State, and API responses must all have explicit type definitions.
 
-#### Principle XXVII: Performance Optimization for Static Export
+#### Principle XXXVI: Performance Optimization for Static Export
 Leverage Next.js static export features to ensure optimal page loading performance. Reasonably use React.memo, useMemo, and useCallback to avoid unnecessary re-renders.
 
-#### Principle XXVIII: Consistent UI/UX Standards
+#### Principle XXXVII: Consistent UI/UX Standards
 Strictly follow Ant Design design specifications to maintain interface consistency. Custom styles must be based on Ant Design's theme system.
 
-#### Principle XXIX: Accessibility Standards
+#### Principle XXXVIII: Accessibility Standards
 Follow WCAG 2.1 AA standards to ensure the application is accessible to all users. Use semantic HTML and appropriate ARIA attributes.
 
-#### Principle XXX: Client-Side Security
+#### Principle XXXIX: Client-Side Security
 All API calls must undergo appropriate error handling and data validation. Sensitive information must not be stored on the client side. Use HttpOnly Cookies to store authentication tokens. Guard against XSS attacks.
 
 ### Frontend Project Standards
 
-#### Principle XXXI: Component Organization
+#### Principle XL: Component Organization
 * Use function components and React Hooks, avoid using Class components
 * Component file structure: `components/[ComponentName]/index.tsx`
 * Each component directory may contain: `index.tsx`, `styles.module.css`, `types.ts`
 * Page components are placed in `app/` or `pages/` directory
 
-#### Principle XXXII: State Management Standards
+#### Principle XLI: State Management Standards
 * Local state prioritizes `useState`
 * Cross-component shared state uses `useContext` + `useReducer`
 * Avoid overuse of global state, maintain state proximity principle
 * Context should be divided by functional domain (e.g., AuthContext, ThemeContext)
 
-#### Principle XXXIII: API Integration Standards
+#### Principle XLII: API Integration Standards
 * All Axios requests must use unified instance configuration
 * Create `lib/api.ts` or `services/` directory to uniformly manage API calls
 * Must implement request/response interceptors to handle common logic (token, error handling)
 * API errors must have user-friendly prompts (using Ant Design's message or notification)
 
-#### Principle XXXIV: Styling Standards
+#### Principle XLIII: Styling Standards
 * Prioritize CSS Modules for component-level style isolation
 * Global styles only for reset, theme variables, and common utility classes
 * Follow BEM naming convention (can be simplified in CSS Modules)
@@ -176,7 +269,7 @@ All API calls must undergo appropriate error handling and data validation. Sensi
 * Configure theme globally through ConfigProvider
 * Do not directly modify internal styles of Ant Design components
 
-#### Principle XXXV: Static Export Optimization
+#### Principle XLIV: Static Export Optimization
 * Ensure all pages support static export, avoid using server-only features
 * Use `next/image` component to optimize image loading
 * Reasonably use `next/link` to implement client-side routing
@@ -185,7 +278,7 @@ All API calls must undergo appropriate error handling and data validation. Sensi
 * Import third-party libraries on-demand (such as Ant Design's tree-shaking)
 * Highlight.js only imports needed language packages, avoid full import
 
-#### Principle XXXVI: Frontend Testing Requirements
+#### Principle XLV: Frontend Testing Requirements
 * Key business components must have unit tests (recommended Jest + React Testing Library)
 * API service layer must have integration tests
 * Test coverage target: core functionality > 80%
@@ -193,10 +286,10 @@ All API calls must undergo appropriate error handling and data validation. Sensi
 * Use `data-testid` rather than CSS selectors to locate elements
 * Mock external dependencies (API calls, third-party libraries)
 
-#### Principle XXXVII: Pull Request Requirements
+#### Principle XLVI: Pull Request Requirements
 * Must pass CI/CD checks (lint, test, build)
 
-#### Principle XXXVIII: Code Review Checklist
+#### Principle XLVII: Code Review Checklist
 - [ ] Code complies with ESLint and Prettier rules
 - [ ] No remaining debug code such as console.log
 - [ ] Component reusability and single responsibility
@@ -206,14 +299,14 @@ All API calls must undergo appropriate error handling and data validation. Sensi
 - [ ] Styles adapted for mobile
 - [ ] No hardcoded strings (use internationalization or constants)
 
-#### Principle XXXIX: Code Quality Enforcement
+#### Principle XLVIII: Frontend Code Quality Tools
 The following tools must be executed regularly to ensure code quality:
 * ESLint: Enforce code style and best practices
 * Prettier: Unify code format
 * TypeScript: Type checking
 * Husky + lint-staged: Git hooks pre-commit checks
 
-#### Principle XL: Frontend Documentation Requirements
+#### Principle XLIX: Frontend Documentation Requirements
 * `README.md`: Project overview, installation, running, deployment guide
 * `CONTRIBUTING.md`: Contribution guide and development process
 * Components with complex logic must have JSDoc comments
@@ -225,23 +318,23 @@ The following tools must be executed regularly to ensure code quality:
 
 ## Frontend-Backend Integration Standards
 
-### Principle XLI: API Contract Consistency
+### Principle L: API Contract Consistency
 Frontend and backend must use unified API contracts. Backend HTTP response format must be consistent with the format expected by frontend Axios interceptors.
 
-### Principle XLII: Development Environment Separation
+### Principle LI: Development Environment Separation
 Separate frontend and backend during development:
 * Backend runs on independent port (e.g., `:8080`)
 * Frontend development server runs on independent port (e.g., `:3000`)
 * Frontend accesses backend API through proxy or CORS configuration
 
-### Principle XLIII: Production Deployment Integration
+### Principle LII: Production Deployment Integration
 Merged deployment in production environment:
 * Next.js static export files (`out/`) must be hosted by the backend server
 * Backend must configure static file service routes
 * API routes must be clearly separated from static file routes (e.g., `/api/*` vs `/*`)
 * Frontend build artifacts must be automatically integrated into the backend deployment package through CI/CD
 
-### Principle XLIV: Shared Configuration Management
+### Principle LIII: Frontend-Backend Configuration Coordination
 * Environment variable configuration must remain consistent between frontend and backend
 * API base URL, ports, and other configurations must be configurable through environment variables
 * Development/production environment configurations must be clearly separated
@@ -252,4 +345,4 @@ Merged deployment in production environment:
 
 Adherence to this constitution is mandatory for all contributions. Pull requests and code reviews must verify that these principles are maintained. Any deviations require explicit justification and approval.
 
-**Version**: 2.0.0 | **Ratified**: 2025-12-10 | **Last Amended**: 2025-12-10
+**Version**: 2.1.0 | **Ratified**: 2025-12-10 | **Last Amended**: 2025-12-14
