@@ -33,8 +33,10 @@ export default function ChapterList({
       bordered
       renderItem={(item) => {
         const prog = progressMap[item.id];
+        // 优先使用后端返回的 percent 字段来判断已完成状态，避免 status 与百分比不一致的展示
+        const percent = typeof prog?.percent === "number" ? prog.percent : prog?.scrollProgress;
         const status = prog?.status;
-        const isCompleted = status === ProgressStatuses.Completed;
+        const isCompleted = (typeof percent === "number" && percent >= 100) || status === ProgressStatuses.Completed;
         const isTested = status === ProgressStatuses.Tested;
         return (
           <List.Item

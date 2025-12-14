@@ -25,14 +25,23 @@ export default function ProgressBar({ status, percent }: ProgressBarProps) {
         : status === "in_progress"
           ? 50
           : 0);
+  // derive display status from percent when percent provided
+  const displayStatus: ProgressStatus =
+    typeof percent === "number"
+      ? value >= 100
+        ? "completed"
+        : value > 0
+          ? "in_progress"
+          : "not_started"
+      : status;
   return (
     <div className="flex items-center gap-3">
-      <Tag color={statusColor[status]}>{statusLabel(status)}</Tag>
+      <Tag color={statusColor[displayStatus]}>{statusLabel(displayStatus)}</Tag>
       <div className="flex-1">
         <Progress
           percent={value}
           size="small"
-          status={status === "completed" ? "success" : "active"}
+          status={displayStatus === "completed" ? "success" : "active"}
         />
       </div>
     </div>

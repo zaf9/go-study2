@@ -32,20 +32,28 @@ export default function ProgressBar({
   label,
 }: ProgressBarProps) {
   const capped = Math.min(100, Math.max(0, Math.round(percent)));
+  // derive display status from percent when there's a mismatch
+  const displayStatus: ProgressStatus =
+    capped >= 100
+      ? ProgressStatuses.Completed
+      : capped > 0
+      ? ProgressStatuses.InProgress
+      : ProgressStatuses.NotStarted;
+  const effectiveStatus = status ?? displayStatus;
   const progress = (
     <Progress
       percent={capped}
       steps={segments > 0 ? segments : undefined}
       showInfo
       size="small"
-      status={status === ProgressStatuses.Completed ? "success" : "active"}
+      status={effectiveStatus === ProgressStatuses.Completed ? "success" : "active"}
     />
   );
 
   return (
     <div className="flex items-center gap-3">
       <Tooltip title={label}>
-        <Tag color={statusColor[status]}>{statusLabel(status)}</Tag>
+        <Tag color={statusColor[effectiveStatus]}>{statusLabel(effectiveStatus)}</Tag>
       </Tooltip>
       <div className="flex-1">{progress}</div>
     </div>

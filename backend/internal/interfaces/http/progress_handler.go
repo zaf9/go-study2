@@ -96,9 +96,11 @@ func (h *ProgressHandler) GetTopicProgress(r *ghttp.Request) {
 		writeError(r, http.StatusBadRequest, 40004, err.Error())
 		return
 	}
+	// 使用服务提供的富化方法以确保返回的章节包含 percent 字段且 status 与 percent 一致
+	enriched := h.Service.EnrichChapters(items)
 	writeSuccess(r, map[string]interface{}{
 		"topic":    summary,
-		"chapters": items,
+		"chapters": enriched,
 	})
 }
 

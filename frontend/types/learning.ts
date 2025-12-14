@@ -35,6 +35,8 @@ export interface ChapterProgress {
   topic: TopicKey;
   chapter: string;
   status: ProgressStatus;
+  // percent: 数值形式的进度（0-100），由后端返回优先使用
+  percent?: number;
   scrollProgress?: number;
   readDuration?: number;
   lastPosition?: string;

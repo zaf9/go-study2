@@ -72,6 +72,61 @@ type Service struct {
 	cache map[int64]map[string][]progressdom.LearningProgress
 }
 
+// ChapterProgressDTO 是用于 HTTP 响应的章节进度表示，包含额外的 percent 字段（数值形式进度）。
+type ChapterProgressDTO struct {
+	progressdom.LearningProgress
+	Percent int `json:"percent"`
+}
+
+// EnrichChapters 将域模型列表转换为包含 percent 的 DTO 列表，且在返回前保证 status 与 percent 一致（不写回数据库，仅用于响应）。
+func (s *Service) EnrichChapters(items []progressdom.LearningProgress) []ChapterProgressDTO {
+	if items == nil {
+		return []ChapterProgressDTO{}
+	}
+	var out []ChapterProgressDTO
+	for _, it := range items {
+		// 复制条目以避免修改源对象
+		copyItem := it
+		est := s.calc.lookupDuration(copyItem.Topic, copyItem.Chapter)
+		// 计算基于阅读时长的进度（保守估算）
+		percentFromRead := 0
+		if est > 0 {
+			percentFromRead = int((copyItem.ReadDuration * 100) / est)
+			if percentFromRead < 0 {
+				percentFromRead = 0
+			}
+			if percentFromRead > 100 {
+				percentFromRead = 100
+			}
+		}
+		// 优先取滚动进度与阅读估算的最大值
+		percent := copyItem.ScrollProgress
+		if percent < percentFromRead {
+			percent = percentFromRead
+		}
+		if percent < 0 {
+			percent = 0
+		}
+		if percent > 100 {
+			percent = 100
+		}
+
+		// 保证状态与 percent 一致（仅响应层面）
+		if percent >= 100 {
+			copyItem.Status = progressdom.StatusCompleted
+		} else {
+			// 以计算器规则为准，但传入估算时长以保证判定一致
+			copyItem.Status = s.calc.CalculateChapterStatus(copyItem, est)
+		}
+
+		out = append(out, ChapterProgressDTO{
+			LearningProgress: copyItem,
+			Percent:          percent,
+		})
+	}
+	return out
+}
+
 // NewService 创建进度服务。
 func NewService(repo progressdom.ProgressRepository, calc *Calculator) *Service {
 	if calc == nil {
