@@ -41,7 +41,18 @@ export default function useQuiz(topic: string, chapter: string) {
         })),
       };
       const res = await submitQuiz(payload);
-      setResult(res);
+      // 后端可能返回整章题目的判分详情；前端只需展示用户实际提交的题目详情，故在此进行过滤
+      if (res && Array.isArray(res.details) && payload.answers.length > 0) {
+        const answeredIds = new Set<number>(
+          payload.answers.map((a: any) => Number(a.questionId)),
+        );
+        const filteredDetails = res.details.filter((d: any) =>
+          answeredIds.has(Number(d.question_id)),
+        );
+        setResult({ ...res, details: filteredDetails });
+      } else {
+        setResult(res);
+      }
       return res;
     } finally {
       setSubmitting(false);

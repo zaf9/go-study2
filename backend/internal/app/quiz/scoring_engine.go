@@ -83,6 +83,65 @@ func (e *ScoringEngine) Evaluate(questions []PreparedQuestion, answers map[int64
 	}
 }
 
+// EvaluateWithTotal 对答题结果进行评分，使用指定的总题数计算得分。
+// 这用于当实际测试的题目数量与传入的题目数量不一致时（例如从session中获取的实际测试题目数）。
+func (e *ScoringEngine) EvaluateWithTotal(questions []PreparedQuestion, answers map[int64][]string, actualTotalQuestions int) ScoringResult {
+	if actualTotalQuestions <= 0 {
+		return ScoringResult{}
+	}
+	var details []AnswerDetail
+	var totalScore float64
+	var correctCount int
+
+	// 只对用户提交答案的题目进行评分
+	for _, q := range questions {
+		userAns, hasAnswer := answers[q.View.ID]
+		if !hasAnswer {
+			// 如果用户没有提交答案，该题得分为0
+			details = append(details, AnswerDetail{
+				QuestionID:     q.View.ID,
+				IsCorrect:      false,
+				CorrectAnswers: q.CorrectAnswer,
+				Explanation:    q.Explanation,
+				ScorePart:      0,
+			})
+			continue
+		}
+
+		userAns = normalizeChoices(userAns)
+		correct := normalizeChoices(q.CorrectAnswer)
+		part := e.scoreByType(q.View.Type, correct, userAns)
+		if part >= 1 {
+			correctCount++
+		}
+		totalScore += part
+		details = append(details, AnswerDetail{
+			QuestionID:     q.View.ID,
+			IsCorrect:      part >= 1,
+			CorrectAnswers: correct,
+			Explanation:    q.Explanation,
+			ScorePart:      part,
+		})
+	}
+
+	// 使用实际测试的题目数量计算得分
+	score := int(math.Round((totalScore / float64(actualTotalQuestions)) * 100))
+	if score < 0 {
+		score = 0
+	}
+	if score > 100 {
+		score = 100
+	}
+
+	return ScoringResult{
+		Score:          score,
+		TotalQuestions: actualTotalQuestions,
+		CorrectAnswers: correctCount,
+		Passed:         score >= 60,
+		Details:        details,
+	}
+}
+
 func (e *ScoringEngine) scoreByType(qType string, correct, given []string) float64 {
 	if len(correct) == 0 {
 		return 0

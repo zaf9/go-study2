@@ -46,7 +46,8 @@ export default function Sidebar({ collapsed, onCollapse }: SidebarProps) {
       key: "/quiz",
       icon: <QuestionCircleOutlined />,
       label: "章节测验",
-      onClick: () => router.push("/quiz/variables"),
+      // 导航到测验总览页，而不是固定到某个 topic（此前误指向 /quiz/variables）
+      onClick: () => router.push("/quiz"),
     },
     {
       key: "/",

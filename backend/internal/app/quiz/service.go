@@ -254,36 +254,161 @@ func shuffleOptionsCrypto(opts *[]OptionDTO) {
 func (s *Service) SubmitQuiz(ctx context.Context, userID int64, sessionID, topic, chapter string, answers []AnswerSubmission) (*SubmitResult, error) {
 	topic = strings.TrimSpace(topic)
 	chapter = strings.TrimSpace(chapter)
-	if userID <= 0 || sessionID == "" || !quizdom.IsSupportedTopic(topic) || chapter == "" || len(answers) == 0 {
+	if userID <= 0 || sessionID == "" || !quizdom.IsSupportedTopic(topic) || chapter == "" {
+		logger.LogWithFields(ctx, "WARNING", "quiz.submit.invalid_input", map[string]interface{}{
+			"user_id":    userID,
+			"session_id": sessionID,
+			"topic":      topic,
+			"chapter":    chapter,
+			"reason":     "参数验证失败",
+		})
 		return nil, ErrInvalidInput
 	}
 
+	// 先检查数据库中的 session 状态，避免内存检查的竞态条件
+	existing, err := s.repo.GetSession(ctx, sessionID)
+	if err != nil {
+		logger.LogWithFields(ctx, "ERROR", "quiz.submit.get_session_failed", map[string]interface{}{
+			"user_id":    userID,
+			"session_id": sessionID,
+			"topic":      topic,
+			"chapter":    chapter,
+			"error":      err.Error(),
+		})
+		return nil, err
+	}
+	if existing == nil {
+		logger.LogWithFields(ctx, "WARNING", "quiz.submit.session_not_found", map[string]interface{}{
+			"user_id":    userID,
+			"session_id": sessionID,
+			"topic":      topic,
+			"chapter":    chapter,
+		})
+		return nil, ErrInvalidInput
+	}
+	// 如果 session 已经完成，直接返回重复提交错误
+	if existing.CompletedAt != nil {
+		logger.LogWithFields(ctx, "WARNING", "quiz.submit.duplicate_submit", map[string]interface{}{
+			"user_id":        userID,
+			"session_id":     sessionID,
+			"topic":          topic,
+			"chapter":        chapter,
+			"completed_at":   existing.CompletedAt.Format(time.RFC3339),
+			"reason":          "session已完成",
+		})
+		return nil, ErrDuplicateSubmit
+	}
+
+	// 使用内存锁防止并发重复提交
 	s.submitLock.Lock()
 	if _, ok := s.submitted[sessionID]; ok {
 		s.submitLock.Unlock()
+		logger.LogWithFields(ctx, "WARNING", "quiz.submit.duplicate_submit", map[string]interface{}{
+			"user_id":    userID,
+			"session_id": sessionID,
+			"topic":      topic,
+			"chapter":    chapter,
+			"reason":     "内存中检测到重复提交",
+		})
 		return nil, ErrDuplicateSubmit
 	}
 	s.submitted[sessionID] = struct{}{}
 	s.submitLock.Unlock()
 
-	if existing, _ := s.repo.GetSession(ctx, sessionID); existing != nil && existing.CompletedAt != nil {
-		return nil, ErrDuplicateSubmit
+	// 获取实际测试的题目数量
+	actualTotalQuestions := existing.TotalQuestions
+	if actualTotalQuestions <= 0 {
+		logger.LogWithFields(ctx, "WARNING", "quiz.submit.invalid_total_questions", map[string]interface{}{
+			"user_id":            userID,
+			"session_id":         sessionID,
+			"topic":              topic,
+			"chapter":            chapter,
+			"total_questions":    actualTotalQuestions,
+		})
+		return nil, ErrInvalidInput
 	}
 
-	records, err := s.repo.GetQuestionsByChapter(ctx, topic, chapter)
-	if err != nil {
-		return nil, err
-	}
-	prepared, _, err := s.manager.Prepare(records)
-	if err != nil {
-		return nil, err
-	}
-
+	// 构建用户答案映射
 	answerMap := map[int64][]string{}
+	questionIDs := make(map[int64]struct{})
 	for _, a := range answers {
 		answerMap[a.QuestionID] = normalizeChoices(a.UserAnswers)
+		questionIDs[a.QuestionID] = struct{}{}
 	}
-	score := s.scorer.Evaluate(prepared, answerMap)
+
+	// 验证提交的答案数量是否与实际测试题目数量一致
+	// 如果不一致，说明有些题目没有提交答案（这些题目将得0分）
+	submittedCount := len(answers)
+	if submittedCount > actualTotalQuestions {
+		logger.LogWithFields(ctx, "WARNING", "quiz.submit.answer_count_mismatch", map[string]interface{}{
+			"user_id":            userID,
+			"session_id":         sessionID,
+			"topic":              topic,
+			"chapter":            chapter,
+			"submitted_count":    submittedCount,
+			"expected_count":     actualTotalQuestions,
+		})
+		return nil, ErrInvalidInput
+	}
+
+	// 只获取用户提交答案对应的题目，而不是章节的所有题目
+	records, err := s.repo.GetQuestionsByChapter(ctx, topic, chapter)
+	if err != nil {
+		logger.LogWithFields(ctx, "ERROR", "quiz.submit.get_questions_failed", map[string]interface{}{
+			"user_id":    userID,
+			"session_id": sessionID,
+			"topic":      topic,
+			"chapter":    chapter,
+			"error":      err.Error(),
+		})
+		return nil, err
+	}
+	// 筛选出实际测试的题目（用户提交答案的题目）
+	var testRecords []quizdom.QuizQuestion
+	for _, r := range records {
+		if _, ok := questionIDs[r.ID]; ok {
+			testRecords = append(testRecords, r)
+		}
+	}
+	if len(testRecords) == 0 {
+		logger.LogWithFields(ctx, "WARNING", "quiz.submit.no_test_records", map[string]interface{}{
+			"user_id":         userID,
+			"session_id":      sessionID,
+			"topic":           topic,
+			"chapter":         chapter,
+			"submitted_count": submittedCount,
+			"total_records":   len(records),
+		})
+		return nil, ErrInvalidInput
+	}
+
+	prepared, _, err := s.manager.Prepare(testRecords)
+	if err != nil {
+		logger.LogWithFields(ctx, "ERROR", "quiz.submit.prepare_questions_failed", map[string]interface{}{
+			"user_id":    userID,
+			"session_id": sessionID,
+			"topic":      topic,
+			"chapter":    chapter,
+			"error":      err.Error(),
+		})
+		return nil, err
+	}
+
+	// 使用实际测试的题目数量进行评分
+	// 如果用户提交的答案数量少于实际测试题目数量，未提交的题目将得0分
+	score := s.scorer.EvaluateWithTotal(prepared, answerMap, actualTotalQuestions)
+	
+	logger.LogWithFields(ctx, "INFO", "quiz.submit.scoring_completed", map[string]interface{}{
+		"user_id":            userID,
+		"session_id":         sessionID,
+		"topic":              topic,
+		"chapter":            chapter,
+		"score":              score.Score,
+		"total_questions":    score.TotalQuestions,
+		"correct_answers":    score.CorrectAnswers,
+		"submitted_count":     submittedCount,
+		"actual_total":       actualTotalQuestions,
+	})
 
 	var attempts []quizdom.QuizAttempt
 	for _, detail := range score.Details {
@@ -300,11 +425,39 @@ func (s *Service) SubmitQuiz(ctx context.Context, userID int64, sessionID, topic
 		})
 	}
 	if err := s.repo.SaveAttempts(ctx, attempts); err != nil {
+		logger.LogWithFields(ctx, "ERROR", "quiz.submit.save_attempts_failed", map[string]interface{}{
+			"user_id":     userID,
+			"session_id":  sessionID,
+			"topic":       topic,
+			"chapter":     chapter,
+			"attempts":    len(attempts),
+			"error":       err.Error(),
+		})
 		return nil, err
 	}
 	if err := s.repo.UpdateSessionResult(ctx, sessionID, score.CorrectAnswers, score.Score, score.Passed); err != nil {
+		logger.LogWithFields(ctx, "ERROR", "quiz.submit.update_session_failed", map[string]interface{}{
+			"user_id":         userID,
+			"session_id":       sessionID,
+			"topic":            topic,
+			"chapter":          chapter,
+			"score":            score.Score,
+			"correct_answers":  score.CorrectAnswers,
+			"error":            err.Error(),
+		})
 		return nil, err
 	}
+	
+	logger.LogWithFields(ctx, "INFO", "quiz.submit.success", map[string]interface{}{
+		"user_id":         userID,
+		"session_id":      sessionID,
+		"topic":           topic,
+		"chapter":         chapter,
+		"score":           score.Score,
+		"total_questions": score.TotalQuestions,
+		"correct_answers": score.CorrectAnswers,
+		"passed":          score.Passed,
+	})
 
 	return &SubmitResult{
 		Score:          score.Score,

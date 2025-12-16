@@ -35,7 +35,12 @@ export default function QuizNavigation({
         <Button onClick={onNext} disabled={current >= total - 1}>
           下一题
         </Button>
-        <Button type="primary" onClick={onSubmit} loading={submitting}>
+        <Button
+          type="primary"
+          onClick={onSubmit}
+          loading={submitting}
+          disabled={answered === 0 || total === 0 || submitting}
+        >
           提交测验
         </Button>
       </Space>

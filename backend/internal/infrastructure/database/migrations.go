@@ -37,6 +37,9 @@ func Migrate(ctx context.Context, db gdb.DB) error {
 	if err := ensureUserColumns(ctx, db); err != nil {
 		return err
 	}
+	if err := ensureLearningProgressColumns(ctx, db); err != nil {
+		return err
+	}
 
 	if err := seedDefaultQuizQuestions(ctx, db); err != nil {
 		return err
@@ -92,6 +95,53 @@ func ensureUserColumns(ctx context.Context, db gdb.DB) error {
 	return nil
 }
 
+func ensureLearningProgressColumns(ctx context.Context, db gdb.DB) error {
+	columns, err := db.GetAll(ctx, "PRAGMA table_info(learning_progress)")
+	if err != nil {
+		return err
+	}
+	has := func(name string) bool {
+		for _, col := range columns {
+			if strings.EqualFold(col["name"].String(), name) {
+				return true
+			}
+		}
+		return false
+	}
+
+	type columnDef struct {
+		name string
+		def  string
+	}
+
+	additions := []columnDef{
+		{name: "read_duration", def: "INTEGER NOT NULL DEFAULT 0"},
+		{name: "scroll_progress", def: "INTEGER NOT NULL DEFAULT 0"},
+		{name: "quiz_score", def: "INTEGER"},
+		{name: "quiz_passed", def: "INTEGER NOT NULL DEFAULT 0"},
+		{name: "first_visit_at", def: "DATETIME DEFAULT '1970-01-01 00:00:00'"},
+		{name: "completed_at", def: "DATETIME"},
+		{name: "updated_at", def: "DATETIME DEFAULT '1970-01-01 00:00:00'"},
+	}
+
+	// Rename last_visit to last_visit_at if exists
+	if has("last_visit") && !has("last_visit_at") {
+		if _, err := db.Exec(ctx, "ALTER TABLE learning_progress RENAME COLUMN last_visit TO last_visit_at"); err != nil {
+			return err
+		}
+	}
+
+	for _, col := range additions {
+		if has(col.name) {
+			continue
+		}
+		if _, err := db.Exec(ctx, fmt.Sprintf("ALTER TABLE learning_progress ADD COLUMN %s %s", col.name, col.def)); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
 func seedDefaultQuizQuestions(ctx context.Context, db gdb.DB) error {
 	count, err := db.Model("quiz_questions").Count(ctx)
 	if err != nil {
@@ -128,11 +178,11 @@ CREATE TABLE IF NOT EXISTS learning_progress (
     last_position INTEGER NOT NULL DEFAULT 0 CHECK(last_position >= 0),
     quiz_score INTEGER,
     quiz_passed INTEGER NOT NULL DEFAULT 0 CHECK(quiz_passed IN (0,1)),
-    first_visit_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    last_visit_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    first_visit_at DATETIME DEFAULT '1970-01-01 00:00:00',
+    last_visit_at DATETIME DEFAULT '1970-01-01 00:00:00',
     completed_at DATETIME,
-    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    created_at DATETIME DEFAULT '1970-01-01 00:00:00',
+    updated_at DATETIME DEFAULT '1970-01-01 00:00:00',
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
     UNIQUE(user_id, topic, chapter)
 );

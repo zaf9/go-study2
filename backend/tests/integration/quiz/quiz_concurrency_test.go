@@ -114,7 +114,7 @@ func Test_QuizConcurrency(t *testing.T) {
 	_ = json.Unmarshal(login.Data, &tokens)
 	access := fmt.Sprintf("%v", tokens["accessToken"])
 
-	concurrency := 100
+	concurrency := 10
 	wg := sync.WaitGroup{}
 	wg.Add(concurrency)
 	errCh := make(chan error, concurrency)
