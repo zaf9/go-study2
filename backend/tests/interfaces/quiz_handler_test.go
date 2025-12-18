@@ -182,7 +182,7 @@ func TestQuizHandler_EndToEnd(t *testing.T) {
 	}
 
 	// 提交测验
-	body := fmt.Sprintf(`{"sessionId":"%s","topic":"variables","chapter":"storage","answers":[{"questionId":101,"userAnswers":["A"]}]}`, sessionID)
+	body := fmt.Sprintf(`{"sessionId":"%s","topic":"variables","chapter":"storage","durationMs":5000,"answers":[{"questionId":101,"userAnswers":["A"]}]}`, sessionID)
 	req2 := httptest.NewRequest(http.MethodPost, "/api/v1/quiz/submit", bytes.NewBufferString(body))
 	req2.Header.Set("Content-Type", "application/json")
 	req2.Header.Set("X-User-ID", "1")

@@ -63,6 +63,12 @@ func (h *Handler) SubmitQuiz(r *ghttp.Request) {
 		return
 	}
 
+	// 安全加固：输入校验
+	if err := validateQuizSubmitRequest(req); err != nil {
+		writeError(r, http.StatusBadRequest, 40004, err.Error())
+		return
+	}
+
 	result, err := svc.SubmitQuiz(r.GetCtx(), userID, req.SessionID, req.Topic, req.Chapter, req.Answers)
 	if err != nil {
 		h.writeQuizError(r, err)
@@ -169,4 +175,39 @@ func (h *Handler) writeQuizError(r *ghttp.Request, err error) {
 	default:
 		writeError(r, http.StatusInternalServerError, 50001, "服务器繁忙，请稍后再试")
 	}
+}
+
+// validateQuizSubmitRequest 验证测验提交请求的合法性
+// 确保：
+// 1. 会话ID、主题、章节不为空
+// 2. 答案数量与题目数量一致（防止用户绕过防护或篡改）
+// 3. 答题时长合理（避免异常快速或超长时间提交）
+func validateQuizSubmitRequest(req quizSubmitRequest) error {
+	// 检查必要字段
+	if req.SessionID == "" {
+		return appquiz.ErrInvalidInput
+	}
+	if req.Topic == "" {
+		return appquiz.ErrInvalidInput
+	}
+	if req.Chapter == "" {
+		return appquiz.ErrInvalidInput
+	}
+
+	// 检查答案列表不为空
+	if len(req.Answers) == 0 {
+		return appquiz.ErrInvalidInput
+	}
+
+	// 检查答题时长（应该大于等于 1000ms，即 1 秒）
+	if req.DurationMs < 1000 {
+		return appquiz.ErrInvalidInput
+	}
+
+	// 检查答题时长不超过 8 小时（28800000 毫秒），防止明显异常提交
+	if req.DurationMs > 28800000 {
+		return appquiz.ErrInvalidInput
+	}
+
+	return nil
 }

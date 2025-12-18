@@ -151,7 +151,7 @@ func TestQuizFlow_EndToEnd(t *testing.T) {
 	}
 	answerChoice := "A"
 
-	submitBody := fmt.Sprintf(`{"sessionId":"%s","topic":"variables","chapter":"storage","answers":[{"questionId":%d,"userAnswers":["%s"]}]}`, quizData.SessionID, qid, answerChoice)
+	submitBody := fmt.Sprintf(`{"sessionId":"%s","topic":"variables","chapter":"storage","durationMs":5000,"answers":[{"questionId":%d,"userAnswers":["%s"]}]}`, quizData.SessionID, qid, answerChoice)
 	submitReq, _ := http.NewRequest(http.MethodPost, baseURL+"/api/v1/quiz/submit", bytes.NewBufferString(submitBody))
 	submitReq.Header.Set("Content-Type", "application/json")
 	submitReq.Header.Set("Authorization", "Bearer "+access)

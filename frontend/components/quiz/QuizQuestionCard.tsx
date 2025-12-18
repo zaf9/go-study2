@@ -45,6 +45,37 @@ const QuizQuestionCard: React.FC<QuizQuestionProps> = ({
     /**
      * 将题目的 options 映射为带有 A, B, C... 标签的布局
      * labels 不受 shuffle 影响，因为 shuffle 是在后端完成且返回给前端时 options 已经是确定顺序的数组
+     * 
+     * 标签生成逻辑：
+     * - 1-26: A-Z（标准字母）
+     * - 27-52: AA-AZ（二字母组合）
+     * - 53-78: BA-BZ（二字母组合）
+     * 等等，支持最多千余个选项
+     */
+    const getOptionLabel = (index: number): string => {
+        if (index < 26) {
+            // A-Z
+            return String.fromCharCode(65 + index);
+        } else {
+            // AA, AB, ... AZ, BA, BB, ... ZZ, AAA, ...
+            let label = '';
+            let num = index - 26;
+            while (num >= 0) {
+                label = String.fromCharCode(65 + (num % 26)) + label;
+                num = Math.floor(num / 26) - 1;
+                if (num < 0) break;
+            }
+            // 确保至少两个字母
+            if (label.length === 1) {
+                label = 'A' + label;
+            }
+            return label;
+        }
+    };
+
+    /**
+     * 将题目的 options 映射为带有 A, B, C... 标签的布局
+     * labels 不受 shuffle 影响，因为 shuffle 是在后端完成且返回给前端时 options 已经是确定顺序的数组
      */
     const renderOptions = () => {
         if (!question.options || question.options.length === 0) return null;
@@ -59,7 +90,7 @@ const QuizQuestionCard: React.FC<QuizQuestionProps> = ({
                 >
                     <Space direction="vertical" style={{ width: "100%" }}>
                         {question.options.map((opt, index) => {
-                            const label = String.fromCharCode(65 + index); // 0 -> A, 1 -> B...
+                            const label = getOptionLabel(index);
                             return (
                                 <div key={opt.id} style={{ display: 'flex', alignItems: 'flex-start', padding: '8px 0' }}>
                                     <Checkbox value={opt.label}>
@@ -84,7 +115,7 @@ const QuizQuestionCard: React.FC<QuizQuestionProps> = ({
                 >
                     <Space direction="vertical" style={{ width: "100%" }}>
                         {question.options.map((opt, index) => {
-                            const label = String.fromCharCode(65 + index);
+                            const label = getOptionLabel(index);
                             return (
                                 <Radio key={opt.id} value={opt.label} style={{ display: 'flex', alignItems: 'flex-start', padding: '8px 0', whiteSpace: 'normal' }}>
                                     <Text strong style={{ marginRight: 8 }}>{label}.</Text>

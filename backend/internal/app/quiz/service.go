@@ -316,6 +316,13 @@ func (s *Service) SubmitQuiz(ctx context.Context, userID int64, sessionID, topic
 	s.submitted[sessionID] = struct{}{}
 	s.submitLock.Unlock()
 
+	// 确保在处理完成后释放内存锁，防止内存泄漏和误判
+	defer func() {
+		s.submitLock.Lock()
+		delete(s.submitted, sessionID)
+		s.submitLock.Unlock()
+	}()
+
 	// 获取实际测试的题目数量
 	actualTotalQuestions := existing.TotalQuestions
 	if actualTotalQuestions <= 0 {
@@ -578,7 +585,7 @@ func (s *Service) GetQuizReview(ctx context.Context, userID int64, sessionID str
 		CompletedAt: session.CompletedAt,
 	}
 
-	var items []QuizReviewItem
+	var items = make([]QuizReviewItem, 0)
 	for _, attempt := range attempts {
 		question, ok := questionMap[attempt.QuestionID]
 		if !ok {

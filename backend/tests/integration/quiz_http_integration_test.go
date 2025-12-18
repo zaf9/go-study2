@@ -141,7 +141,7 @@ func TestQuizHTTP_StartSubmitHistory(t *testing.T) {
 	questionId, _ := firstQuestion["id"].(float64)
 
 	// 提交答案
-	body := fmt.Sprintf(`{"sessionId":"%s","topic":"variables","chapter":"storage","answers":[{"questionId":%d,"userAnswers":["A"]}]}`, sid, int(questionId))
+	body := fmt.Sprintf(`{"sessionId":"%s","topic":"variables","chapter":"storage","durationMs":5000,"answers":[{"questionId":%d,"userAnswers":["A"]}]}`, sid, int(questionId))
 	req2 := httptest.NewRequest(http.MethodPost, "/api/v1/quiz/submit", bytes.NewBufferString(body))
 	req2.Header.Set("Content-Type", "application/json")
 	req2.Header.Set("X-User-ID", "1")

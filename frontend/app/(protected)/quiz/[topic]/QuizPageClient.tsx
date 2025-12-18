@@ -31,7 +31,7 @@ export default function QuizPageClient({
     const [selectedChapter, setSelectedChapter] = useState(params.chapter ?? "");
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isConfirmOpen, setIsConfirmOpen] = useState(false);
-    
+
     // 获取题库统计信息
     const {
         data: stats,
@@ -75,10 +75,23 @@ export default function QuizPageClient({
     };
 
     const handleFinalSubmit = async () => {
-        const res = await submit();
-        if (res) {
-            message.success("提交成功");
-            setIsConfirmOpen(false);
+        try {
+            const res = await submit();
+            if (res) {
+                message.success("提交成功");
+                setIsConfirmOpen(false);
+            }
+        } catch (error: unknown) {
+            console.error(error);
+            if (error && typeof error === 'object' && 'response' in error && 
+                typeof (error as { response?: { status?: number } }).response?.status === 'number' && 
+                (error as { response: { status: number } }).response.status === 409) {
+                message.warning("请勿重复提交");
+                // 发生错误时保留弹窗，允许用户重试（除非是 409，如果不关闭弹窗用户会一直点一直错）
+                setIsConfirmOpen(false);
+            } else {
+                message.error("提交失败，请稍后重试");
+            }
         }
     };
 

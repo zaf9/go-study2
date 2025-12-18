@@ -154,6 +154,13 @@ export default function QuizReviewPageClient() {
                   </Paragraph>
                 </div>
               )}
+              {!item.explanation && (
+                <div className="p-3 bg-gray-50 rounded border border-gray-200">
+                  <Paragraph className="text-gray-500 mb-0">
+                    <span className="font-medium">解析:</span> 暂无解析
+                  </Paragraph>
+                </div>
+              )}
             </Space>
           </Card>
         ))}

@@ -146,7 +146,7 @@ func TestQuizHandlers_Flow(t *testing.T) {
 		t.Fatalf("题目信息缺失")
 	}
 
-	submitBody := fmt.Sprintf(`{"sessionId":"%s","topic":"variables","chapter":"storage","answers":[{"questionId":%d,"userAnswers":["A"]}]}`, quizData.SessionID, qid)
+	submitBody := fmt.Sprintf(`{"sessionId":"%s","topic":"variables","chapter":"storage","durationMs":5000,"answers":[{"questionId":%d,"userAnswers":["A"]}]}`, quizData.SessionID, qid)
 	submitReq, _ := http.NewRequest(http.MethodPost, baseURL+"/api/v1/quiz/submit", bytes.NewBufferString(submitBody))
 	submitReq.Header.Set("Content-Type", "application/json")
 	submitReq.Header.Set("Authorization", "Bearer "+access)

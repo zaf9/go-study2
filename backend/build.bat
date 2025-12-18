@@ -5,6 +5,9 @@ chcp 65001 >nul
 REM ensure running from script dir
 cd /d "%~dp0"
 
+REM set Go module mode explicitly
+set GO111MODULE=on
+
 call :log [backend] start build pipeline...
 
 call :log [backend] cleaning go cache and old artifacts...

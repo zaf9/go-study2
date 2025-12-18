@@ -155,14 +155,14 @@
 
 **Purpose**: 跨用户故事的改进和收尾工作
 
-- [ ] T041 [P] 验证所有代码注释和用户文档为中文
-- [ ] T042 [P] 更新 backend/README.md 添加新 API 文档
-- [ ] T043 [P] 更新 frontend/README.md 添加新组件说明
-- [ ] T044 安全加固：验证 Submit API 输入校验（答案数量匹配题目数量）in `backend/internal/controller/quiz/quiz_submit.go`
-- [ ] T045 [P] 边缘情况处理：解析字段缺失时显示"暂无解析" in `frontend/src/components/quiz/QuizViewer.tsx`
-- [ ] T046 [P] 边缘情况处理：选项超过 26 个时的标签生成逻辑 in `frontend/src/components/quiz/QuizQuestionCard.tsx`
-- [ ] T047 网络超时重试机制 in `frontend/src/services/quizApi.ts`
-- [ ] T048 运行 quickstart.md 验证所有功能
+- [x] T041 [P] 验证所有代码注释和用户文档为中文
+- [x] T042 [P] 更新 backend/README.md 添加新 API 文档
+- [x] T043 [P] 更新 frontend/README.md 添加新组件说明
+- [x] T044 安全加固：验证 Submit API 输入校验（答案数量匹配题目数量）in `backend/internal/controller/quiz/quiz_submit.go`
+- [x] T045 [P] 边缘情况处理：解析字段缺失时显示"暂无解析" in `frontend/src/components/quiz/QuizViewer.tsx`
+- [x] T046 [P] 边缘情况处理：选项超过 26 个时的标签生成逻辑 in `frontend/src/components/quiz/QuizQuestionCard.tsx`
+- [x] T047 网络超时重试机制 in `frontend/src/services/quizApi.ts`
+- [x] T048 运行 quickstart.md 验证所有功能
 
 ---
 

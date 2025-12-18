@@ -40,6 +40,14 @@ func Migrate(ctx context.Context, db gdb.DB) error {
 	if err := ensureLearningProgressColumns(ctx, db); err != nil {
 		return err
 	}
+	if err := ensureQuizAttemptsColumns(ctx, db); err != nil {
+		return err
+	}
+
+	// Create indexes after ensuring columns exist
+	if err := createQuizAttemptsIndexes(ctx, db); err != nil {
+		return err
+	}
 
 	if err := seedDefaultQuizQuestions(ctx, db); err != nil {
 		return err
@@ -136,6 +144,53 @@ func ensureLearningProgressColumns(ctx context.Context, db gdb.DB) error {
 			continue
 		}
 		if _, err := db.Exec(ctx, fmt.Sprintf("ALTER TABLE learning_progress ADD COLUMN %s %s", col.name, col.def)); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+func ensureQuizAttemptsColumns(ctx context.Context, db gdb.DB) error {
+	columns, err := db.GetAll(ctx, "PRAGMA table_info(quiz_attempts)")
+	if err != nil {
+		return err
+	}
+	has := func(name string) bool {
+		for _, col := range columns {
+			if strings.EqualFold(col["name"].String(), name) {
+				return true
+			}
+		}
+		return false
+	}
+
+	// Rename user_choice to user_answers if exists (legacy schema fix)
+	if has("user_choice") && !has("user_answers") {
+		if _, err := db.Exec(ctx, "ALTER TABLE quiz_attempts RENAME COLUMN user_choice TO user_answers"); err != nil {
+			return err
+		}
+		// Refresh columns info after rename
+		columns, err = db.GetAll(ctx, "PRAGMA table_info(quiz_attempts)")
+		if err != nil {
+			return err
+		}
+	}
+
+	type columnDef struct {
+		name string
+		def  string
+	}
+
+	additions := []columnDef{
+		{name: "user_id", def: "INTEGER NOT NULL DEFAULT 0"},
+		{name: "user_answers", def: "TEXT NOT NULL DEFAULT '[]'"},
+	}
+
+	for _, col := range additions {
+		if has(col.name) {
+			continue
+		}
+		if _, err := db.Exec(ctx, fmt.Sprintf("ALTER TABLE quiz_attempts ADD COLUMN %s %s", col.name, col.def)); err != nil {
 			return err
 		}
 	}
@@ -243,9 +298,20 @@ CREATE TABLE IF NOT EXISTS quiz_attempts (
     FOREIGN KEY (session_id) REFERENCES quiz_sessions(session_id) ON DELETE CASCADE,
     FOREIGN KEY (question_id) REFERENCES quiz_questions(id) ON DELETE CASCADE
 );
-CREATE INDEX IF NOT EXISTS idx_quiz_attempts_user ON quiz_attempts(user_id);
-CREATE INDEX IF NOT EXISTS idx_quiz_attempts_question ON quiz_attempts(question_id);
 `
+
+func createQuizAttemptsIndexes(ctx context.Context, db gdb.DB) error {
+	indexes := []string{
+		"CREATE INDEX IF NOT EXISTS idx_quiz_attempts_user ON quiz_attempts(user_id)",
+		"CREATE INDEX IF NOT EXISTS idx_quiz_attempts_question ON quiz_attempts(question_id)",
+	}
+	for _, sql := range indexes {
+		if _, err := db.Exec(ctx, sql); err != nil {
+			return err
+		}
+	}
+	return nil
+}
 
 const createQuizRecordsTableSQL = `
 CREATE TABLE IF NOT EXISTS quiz_records (
