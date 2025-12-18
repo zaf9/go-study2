@@ -2,10 +2,10 @@
 
 import { useEffect, useState } from "react";
 import useSWR from "swr";
-import { Button, Select, Space, Typography, message } from "antd";
+import { Select, Space, Typography, message } from "antd";
 import QuizQuestionCard from "@/components/quiz/QuizQuestionCard";
 import SubmitConfirmModal from "@/components/quiz/SubmitConfirmModal";
-import QuizResultView from "@/components/quiz/QuizResult";
+import QuizResultPage from "@/components/quiz/QuizResultPage";
 import QuizNavigation from "@/components/quiz/QuizNavigation";
 import AnswerExplanation from "@/components/quiz/AnswerExplanation";
 import QuizSkeletonLoader from "@/components/quiz/QuizSkeletonLoader";
@@ -140,16 +140,20 @@ export default function QuizPageClient({
 
                         {result && (
                             <div className="scale-in-center">
-                                <QuizResultView result={result} />
+                                <QuizResultPage
+                                    result={result}
+                                    onRetry={reset}
+                                    onReview={() => {
+                                        const el = document.getElementById('quiz-explanation-section');
+                                        el?.scrollIntoView({ behavior: 'smooth' });
+                                    }}
+                                />
                                 {result.details && result.details.length > 0 && (
-                                    <div style={{ marginTop: 24 }}>
+                                    <div id="quiz-explanation-section" style={{ marginTop: 24 }}>
                                         <Title level={4}>答题详解</Title>
                                         <AnswerExplanation details={result.details} />
                                     </div>
                                 )}
-                                <div className="flex justify-center mt-6">
-                                    <Button type="primary" size="large" onClick={reset}>重新开始</Button>
-                                </div>
                             </div>
                         )}
                     </Space>

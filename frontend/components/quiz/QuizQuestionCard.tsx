@@ -3,6 +3,7 @@
 import React from "react";
 import { Checkbox, Radio, Space, Typography, Tag } from "antd";
 import { QuizQuestion } from "@/types/quiz";
+import QuestionTypeTag from "./QuestionTypeTag";
 
 const { Paragraph, Text, Title } = Typography;
 
@@ -35,9 +36,10 @@ const QuizQuestionCard: React.FC<QuizQuestionProps> = ({
 
     // 根据题型获取引导语
     const getGuidance = () => {
-        if (isMultiple) return "（多选题：请选择一个或多个答案）";
-        if (question.type === "truefalse") return "（判断题）";
-        return "（单选题）";
+        if (isMultiple) return "多选题：请选择一个或多个答案。选中后内容背景将高亮。";
+        if (question.type === "truefalse") return "判断题：选择 T (正确) 或 F (错误)。";
+        if (question.type === "code_output") return "代码输出题：阅读代码并选择正确的输出结果。";
+        return "单选题：请选择一个最合适的答案。";
     };
 
     /**
@@ -103,13 +105,13 @@ const QuizQuestionCard: React.FC<QuizQuestionProps> = ({
             {/* 题干标题与辅助信息 */}
             <div className="mb-4">
                 <Space wrap>
-                    <Tag color="blue">{labelByType(question.type)}</Tag>
+                    <QuestionTypeTag type={question.type} />
                     <Tag color={difficultyColor(question.difficulty)}>{question.difficulty.toUpperCase()}</Tag>
                 </Space>
                 <Title level={4} style={{ marginTop: 16 }}>
                     {question.question}
                 </Title>
-                <Paragraph type="secondary" italic>
+                <Paragraph type="secondary" italic style={{ borderLeft: '3px solid #1890ff', paddingLeft: 12, margin: '12px 0' }}>
                     {getGuidance()}
                 </Paragraph>
             </div>
@@ -131,16 +133,6 @@ const QuizQuestionCard: React.FC<QuizQuestionProps> = ({
     );
 };
 
-// 辅助函数：根据题型返回中文标签
-function labelByType(t: string) {
-    switch (t) {
-        case "multiple": return "多选题";
-        case "truefalse": return "判断题";
-        case "code_output": return "代码输出";
-        case "code_correction": return "程序改错";
-        default: return "单选题";
-    }
-}
 
 // 辅助函数：根据难度返回颜色
 function difficultyColor(d: string) {

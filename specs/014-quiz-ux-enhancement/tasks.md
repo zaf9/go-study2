@@ -85,17 +85,17 @@
 
 ### Tests for User Story 2 (MANDATORY) ⚠️
 
-- [ ] T015 [P] [US2] 创建 QuizResultPage 组件单元测试 in `frontend/src/components/quiz/__tests__/QuizResultPage.test.tsx`
-- [ ] T016 [P] [US2] 创建后端 Submit API 单元测试 in `backend/internal/controller/quiz/quiz_submit_test.go`
+- [x] T015 [P] [US2] 创建 QuizResultPage 组件单元测试 in `frontend/components/quiz/__tests__/QuizResultPage.test.tsx`
+- [x] T016 [P] [US2] 创建后端 Submit API 单元测试 in `backend/internal/app/http_server/handler/quiz_submit_test.go`
 
 ### Implementation for User Story 2
 
-- [ ] T017 [US2] 更新后端 Submit API 返回百分制得分和通过状态 in `backend/internal/controller/quiz/quiz_submit.go`
-- [ ] T018 [US2] 更新后端 Quiz Service 计算百分制得分逻辑 in `backend/internal/service/quiz_service.go`
-- [ ] T019 [P] [US2] 创建 QuizResultPage 组件（百分制得分、颜色区分）in `frontend/src/components/quiz/QuizResultPage.tsx`
-- [ ] T020 [P] [US2] 创建 QuestionTypeTag 组件（单选/多选/改错标签）in `frontend/src/components/quiz/QuestionTypeTag.tsx`
-- [ ] T021 [US2] 集成题型标签到 QuizQuestionCard 组件 in `frontend/src/components/quiz/QuizQuestionCard.tsx`
-- [ ] T022 [US2] 添加多选题操作引导说明 in `frontend/src/components/quiz/QuizQuestionCard.tsx`
+- [x] T017 [US2] 更新后端 Submit API 返回百分制得分和通过状态 in `backend/internal/app/http_server/handler/quiz.go`
+- [x] T018 [US2] 更新后端 Quiz Service 计算百分制得分逻辑 in `backend/internal/app/quiz/scoring_engine.go`
+- [x] T019 [P] [US2] 创建 QuizResultPage 组件（百分制得分、颜色区分）in `frontend/components/quiz/QuizResultPage.tsx`
+- [x] T020 [P] [US2] 创建 QuestionTypeTag 组件（单选/多选/改错标签）in `frontend/components/quiz/QuestionTypeTag.tsx`
+- [x] T021 [US2] 集成题型标签到 QuizQuestionCard 组件 in `frontend/components/quiz/QuizQuestionCard.tsx`
+- [x] T022 [US2] 添加多选题操作引导说明 in `frontend/src/components/quiz/QuizQuestionCard.tsx`
 
 **Checkpoint**: 用户故事 2 完成 - 可独立测试结果页展示和题型标识
 
