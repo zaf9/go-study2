@@ -45,11 +45,11 @@
 
 **⚠️ CRITICAL**: 必须完成本阶段后才能开始任何用户故事的实现
 
-- [ ] T004 创建 QuizSession 实体模型 in `backend/internal/model/entity/quiz_session.go`
-- [ ] T005 [P] 创建 QuizAttempt 实体模型 in `backend/internal/model/entity/quiz_attempt.go`
-- [ ] T006 创建 Quiz 仓储接口定义 in `backend/internal/infra/repository/quiz_repo.go`
-- [ ] T007 实现 Quiz 仓储层（含事务保存会话+答题记录）in `backend/internal/infra/repository/quiz_repo_impl.go`
-- [ ] T008 [P] 创建 QuizSkeletonLoader 骨架屏组件 in `frontend/src/components/quiz/QuizSkeletonLoader.tsx`
+- [x] T004 创建 QuizSession 实体模型 in `backend/internal/model/entity/quiz_session.go`
+- [x] T005 [P] 创建 QuizAttempt 实体模型 in `backend/internal/model/entity/quiz_attempt.go`
+- [x] T006 创建 Quiz 仓储接口定义 in `backend/internal/infra/repository/quiz_repo.go`
+- [x] T007 实现 Quiz 仓储层（含事务保存会话+答题记录）in `backend/internal/infra/repository/quiz_repo_impl.go`
+- [x] T008 [P] 创建 QuizSkeletonLoader 骨架屏组件 in `frontend/components/quiz/QuizSkeletonLoader.tsx`
 
 **Checkpoint**: 基础设施就绪 - 可以开始用户故事的并行实现
 
