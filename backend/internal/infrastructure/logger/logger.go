@@ -3,7 +3,8 @@ package logger
 import (
 	"context"
 	"fmt"
-	"log"
+	"io"
+	"log/slog"
 	"os"
 	"path/filepath"
 	"reflect"
@@ -13,150 +14,54 @@ import (
 	"time"
 
 	"github.com/gogf/gf/v2/frame/g"
-	"github.com/gogf/gf/v2/os/gfpool"
 	"github.com/gogf/gf/v2/os/glog"
+	"github.com/natefinch/lumberjack"
 )
 
 var (
 	instances    = make(map[string]*glog.Logger)
+	writers      = make(map[string]*lumberjack.Logger) // Track writers for cleanup
 	mu           sync.RWMutex
 	initialized  bool
 	globalConfig *LoggerConfig
-	// cleanupStop is used to signal background cleanup goroutines to stop.
-	cleanupStop chan struct{}
 )
 
-// TimeFormat returns the configured time format for logs. If no global
-// configuration is available, it falls back to a Common Log Format-like
-// timestamp used by access logs.
+// Level definitions mapping to slog
+const (
+	LevelCritical = slog.LevelError + 4
+)
+
+// TimeFormat returns the configured time format for logs.
 func TimeFormat() string {
 	if globalConfig != nil && globalConfig.TimeFormat != "" {
 		return globalConfig.TimeFormat
 	}
-	// Preserve legacy access-log format when no configuration is provided.
-	return "02/Jan/2006:15:04:05 -0700"
+	return "2006-01-02T15:04:05.000Z07:00"
 }
 
-// parseSize parses a size string like "100M" into bytes
-func parseSize(s string) (int64, error) {
-	if s == "" {
-		return 0, nil
-	}
-	if strings.HasSuffix(s, "M") {
-		num, err := strconv.ParseInt(strings.TrimSuffix(s, "M"), 10, 64)
-		if err != nil {
-			return 0, err
-		}
-		return num * 1024 * 1024, nil
-	}
-	if strings.HasSuffix(s, "K") {
-		num, err := strconv.ParseInt(strings.TrimSuffix(s, "K"), 10, 64)
-		if err != nil {
-			return 0, err
-		}
-		return num * 1024, nil
-	}
-	// assume bytes if no suffix
-	return strconv.ParseInt(s, 10, 64)
-}
-
-// Reset resets the logger state for testing purposes.
-// This function should only be used in tests.
+// Reset resets the logger state and closes all file handles.
 func Reset() {
 	mu.Lock()
 	defer mu.Unlock()
-	// Signal any background cleanup goroutines to stop first.
-	if cleanupStop != nil {
-		close(cleanupStop)
-		cleanupStop = nil
-	}
 
-	// Attempt to gracefully close existing logger instances if they expose a Close method.
-	for _, l := range instances {
-		if l == nil {
-			continue
-		}
-		// Use reflection to call Close() if available to avoid compile-time
-		// dependency on specific glog API versions.
-		// This is a best-effort cleanup to release file handles on Windows
-		// so that temporary directories can be removed in tests.
-		func() {
-			defer func() {
-				_ = recover()
-			}()
-			rv := reflect.ValueOf(l)
-			// Try a list of common close/release method names used by different versions
-			// of glog or custom wrappers. This is best-effort.
-			methodNames := []string{"Close", "CloseLogger", "CloseFile", "CloseFiles", "CloseAll", "Destroy", "Stop", "Release", "Shutdown"}
-			for _, name := range methodNames {
-				m := rv.MethodByName(name)
-				if m.IsValid() && m.Type().NumIn() == 0 {
-					m.Call(nil)
-					break
-				}
-			}
-		}()
-	}
-
-	// Best-effort: close any file pointers held by gfpool for configured
-	// logger instances. This iterates through configured instance paths and
-	// closes pooled file pointers to help Windows release file handles so
-	// temporary directories can be removed in tests.
-	if globalConfig != nil {
-		for _, ins := range globalConfig.Instances {
-			abs := ins.Path
-			if abs == "" {
-				continue
-			}
-			if !filepath.IsAbs(abs) {
-				wd, _ := os.Getwd()
-				abs = filepath.Join(wd, abs)
-			}
-			_ = filepath.WalkDir(abs, func(path string, d os.DirEntry, err error) error {
-				if err != nil || d.IsDir() {
-					return nil
-				}
-				// Attempt to get pooled file and close underlying file handle.
-				f := gfpool.Get(path, os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0o666)
-				if f != nil {
-					// Close underlying os.File to release handle.
-					_ = f.Close(true)
-				}
-				return nil
-			})
+	// Close all lumberjack writers to release file handles
+	for _, w := range writers {
+		if w != nil {
+			_ = w.Close()
 		}
 	}
 
 	instances = make(map[string]*glog.Logger)
+	writers = make(map[string]*lumberjack.Logger)
 	initialized = false
 	globalConfig = nil
-	glog.SetDefaultLogger(glog.New())
-
-	// Additionally, attempt to close pooled file pointers under the OS temp
-	// directory. This is a broad best-effort sweep to help Windows release
-	// lingering file handles created by gfpool during tests.
-	if tmp := os.TempDir(); tmp != "" {
-		_ = filepath.WalkDir(tmp, func(path string, d os.DirEntry, err error) error {
-			if err != nil || d.IsDir() {
-				return nil
-			}
-			f := gfpool.Get(path, os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0o666)
-			if f != nil {
-				_ = f.Close(true)
-			}
-			return nil
-		})
-	}
 }
 
-// Initialize initializes the logging system with the provided configuration.
-// It creates logger instances for each configured instance and sets up global defaults.
+// Initialize initializes the logging system.
+// It uses slog + lumberjack under the hood to handle rotation stably,
+// while providing glog interfaces for compatibility.
 func Initialize(config *LoggerConfig) error {
 	if initialized {
-		// If the same config is used for initialization again, return an error
-		// to match historical behavior and existing tests that expect a
-		// duplicate-initialization to fail. If a different config is provided,
-		// reset the existing logger state and proceed with new configuration.
 		if reflect.DeepEqual(config, globalConfig) {
 			return fmt.Errorf("logger already initialized")
 		}
@@ -170,56 +75,95 @@ func Initialize(config *LoggerConfig) error {
 	}
 
 	globalConfig = config
-	instances = make(map[string]*glog.Logger)
 
-	// Initialize cleanupStop to control background cleanup goroutines.
-	cleanupStop = make(chan struct{})
-
-	for name, instanceCfg := range config.Instances {
+	for name, instCfg := range config.Instances {
 		logger := glog.New()
 
-		// Configure glog with instance configuration
-		if err := configureGLog(name, &instanceCfg, config.Stdout, logger); err != nil {
-			return fmt.Errorf("failed to configure logger %s: %w", name, err)
+		// 1. Create stable rotation backend with lumberjack
+		lj := &lumberjack.Logger{
+			Filename:   filepath.Join(instCfg.Path, instCfg.File),
+			MaxSize:    parseSizeToMB(instCfg.RotateSize),
+			MaxBackups: instCfg.RotateBackupLimit,
+			MaxAge:     parseAgeToDays(instCfg.RotateExpire),
+			LocalTime:  true,
+			Compress:   true,
 		}
+		// Special handling for GoFrame placeholder filenames: lumberjack doesn't support them.
+		// We use the base name as the primary log file name.
+		if strings.Contains(instCfg.File, "{") {
+			baseName := instCfg.File
+			// Strip common GoFrame placeholders to get a stable base filename for lumberjack
+			baseName = strings.ReplaceAll(baseName, "{Y-m-d}", "")
+			baseName = strings.ReplaceAll(baseName, "{Ymd}", "")
+			baseName = strings.Trim(baseName, "-._")
+			if baseName == "" || baseName == ".log" {
+				baseName = name + ".log"
+			}
+			if !strings.HasSuffix(baseName, ".log") {
+				baseName += ".log"
+			}
+			lj.Filename = filepath.Join(instCfg.Path, baseName)
+		}
+
+		mu.Lock()
+		writers[name] = lj
+		mu.Unlock()
+
+		// 2. Setup slog handler
+		var handler slog.Handler
+		opts := &slog.HandlerOptions{
+			Level: parseSlogLevel(instCfg.Level),
+			ReplaceAttr: func(groups []string, a slog.Attr) slog.Attr {
+				if a.Key == slog.TimeKey {
+					return slog.String(slog.TimeKey, a.Value.Time().Format(TimeFormat()))
+				}
+				return a
+			},
+		}
+
+		var out io.Writer = lj
+		if instCfg.StdoutPrint || config.Stdout {
+			out = io.MultiWriter(lj, os.Stdout)
+		}
+
+		if instCfg.Format == "json" {
+			handler = slog.NewJSONHandler(out, opts)
+		} else {
+			handler = slog.NewTextHandler(out, opts)
+		}
+
+		slogger := slog.New(handler)
+
+		// 3. Configure glog to redirect everything to our slog handler
+		// We disable rotation in glog to avoid the panic bug in v2.9.5/v2.9.6.
+		logger.SetConfig(glog.Config{
+			Level:       glog.LEVEL_ALL, // Ensure all logs pass to our handler
+			Path:        "",             // Disable glog internal file writing
+			StdoutPrint: false,          // Disable glog internal stdout printing
+			RotateSize:  0,              // IMPORTANT: Disable glog rotation to avoid panic
+			HeaderPrint: false,          // Disable glog headers (handled by slog)
+		})
+
+		// Redirection handler
+		logger.SetHandlers(func(ctx context.Context, input *glog.HandlerInput) {
+			level := mapGlogLevelToSlog(input.Level)
+
+			// Use the pre-formatted content if available, otherwise join values
+			msg := input.Content
+			if msg == "" && len(input.Values) > 0 {
+				msg = fmt.Sprint(input.Values...)
+			}
+
+			slogger.Log(ctx, level, msg)
+		})
 
 		mu.Lock()
 		instances[name] = logger
 		mu.Unlock()
 
-		// Start cleanup routine for rotateBackupExpire if configured
-		if instanceCfg.RotateBackupExpire != "" {
-			if d, err := time.ParseDuration(instanceCfg.RotateBackupExpire); err == nil {
-				// use rotate check interval if set
-				interval := 1 * time.Hour
-				if instanceCfg.RotateCheckInterval != "" {
-					if iv, err := time.ParseDuration(instanceCfg.RotateCheckInterval); err == nil {
-						interval = iv
-					}
-				}
-				// launch goroutine to periodically clean old logs
-				go func(p string, expire time.Duration, iv time.Duration) {
-					ticker := time.NewTicker(iv)
-					defer ticker.Stop()
-					for {
-						select {
-						case <-ticker.C:
-							if err := CleanOldLogs(p, expire); err != nil {
-								// don't fail initialization for cleanup errors, just log
-								log.Printf("logger cleanup error for %s: %v", p, err)
-							}
-						case <-cleanupStop:
-							return
-						}
-					}
-				}(instanceCfg.Path, d, interval)
-			}
+		if name == "app" {
+			glog.SetDefaultLogger(logger)
 		}
-	}
-
-	// Set default logger if 'app' instance exists
-	if logger, ok := instances["app"]; ok {
-		glog.SetDefaultLogger(logger)
 	}
 
 	initialized = true
@@ -227,7 +171,6 @@ func Initialize(config *LoggerConfig) error {
 }
 
 // GetInstance returns a logger instance by name.
-// If the instance doesn't exist, it returns the default logger.
 func GetInstance(name string) *glog.Logger {
 	mu.RLock()
 	defer mu.RUnlock()
@@ -238,93 +181,88 @@ func GetInstance(name string) *glog.Logger {
 }
 
 // GetInstanceWithContext returns a logger instance by name with context support.
-// The context is used for TraceID injection if configured.
 func GetInstanceWithContext(name string, ctx context.Context) *glog.Logger {
-	logger := GetInstance(name)
-	// Note: Context is used by the caller when invoking logging methods like logger.InfoCtx(ctx, "message")
-	// The logger instance itself doesn't store context, it's passed per log call
-	return logger
+	return GetInstance(name)
 }
 
-// parseLevel converts string level to glog level
-func parseLevel(level string) int {
+// parseSizeToMB converts size strings like "100M" or "1G" to MB integers for lumberjack.
+func parseSizeToMB(s string) int {
+	if s == "" {
+		return 100 // Default 100MB
+	}
+	s = strings.ToUpper(s)
+	if strings.HasSuffix(s, "M") || strings.HasSuffix(s, "MB") {
+		val, _ := strconv.Atoi(strings.TrimSuffix(strings.TrimSuffix(s, "MB"), "M"))
+		return val
+	}
+	if strings.HasSuffix(s, "G") || strings.HasSuffix(s, "GB") {
+		val, _ := strconv.Atoi(strings.TrimSuffix(strings.TrimSuffix(s, "GB"), "G"))
+		return val * 1024
+	}
+	if strings.HasSuffix(s, "K") || strings.HasSuffix(s, "KB") {
+		val, _ := strconv.Atoi(strings.TrimSuffix(strings.TrimSuffix(s, "KB"), "K"))
+		return val / 1024
+	}
+	val, _ := strconv.Atoi(s)
+	if val > 0 {
+		return val / (1024 * 1024)
+	}
+	return 100
+}
+
+// parseAgeToDays converts duration strings like "30d" to day integers for lumberjack.
+func parseAgeToDays(s string) int {
+	if s == "" {
+		return 30 // Default 30 days
+	}
+	if strings.HasSuffix(s, "d") {
+		val, err := strconv.Atoi(strings.TrimSuffix(s, "d"))
+		if err == nil {
+			return val
+		}
+	}
+	// Fallback to time.Duration for h, m, s
+	d, err := time.ParseDuration(s)
+	if err == nil {
+		return int(d.Hours() / 24)
+	}
+	return 30
+}
+
+func parseSlogLevel(level string) slog.Level {
 	switch strings.ToLower(level) {
-	case "all":
-		return glog.LEVEL_ALL
-	case "dev", "debug":
-		return glog.LEVEL_DEBU
-	case "info":
-		return glog.LEVEL_INFO
-	case "notic", "notice":
-		return glog.LEVEL_NOTI
+	case "all", "debug", "dev":
+		return slog.LevelDebug
+	case "info", "prod":
+		return slog.LevelInfo
+	case "notice":
+		return slog.LevelInfo // Slog doesn't have Notice, map to Info
 	case "warn", "warning":
-		return glog.LEVEL_WARN
+		return slog.LevelWarn
 	case "error", "err":
-		return glog.LEVEL_ERRO
+		return slog.LevelError
 	case "crit", "critical":
-		return glog.LEVEL_CRIT
+		return LevelCritical
 	default:
-		return glog.LEVEL_INFO
+		return slog.LevelInfo
 	}
 }
 
-// configureGLog applies instance configuration to a glog.Logger
-func configureGLog(name string, instanceCfg *InstanceConfig, globalStdout bool, logger *glog.Logger) error {
-	level := parseLevel(instanceCfg.Level)
-
-	rotateSize, err := parseSize(instanceCfg.RotateSize)
-	if err != nil {
-		return fmt.Errorf("invalid rotateSize: %w", err)
+func mapGlogLevelToSlog(glevel int) slog.Level {
+	switch glevel {
+	case glog.LEVEL_DEBU:
+		return slog.LevelDebug
+	case glog.LEVEL_INFO, glog.LEVEL_NOTI:
+		return slog.LevelInfo
+	case glog.LEVEL_WARN:
+		return slog.LevelWarn
+	case glog.LEVEL_ERRO:
+		return slog.LevelError
+	case glog.LEVEL_CRIT:
+		return LevelCritical
+	default:
+		return slog.LevelInfo
 	}
-
-	cfg := glog.Config{
-		Path:                instanceCfg.Path,
-		File:                instanceCfg.File,
-		Level:               level,
-		StdoutPrint:         globalStdout || instanceCfg.StdoutPrint,
-		HeaderPrint:         true,
-		RotateSize:          rotateSize,
-		RotateExpire:        0,
-		RotateBackupLimit:   instanceCfg.RotateBackupLimit,
-		RotateCheckInterval: 60 * time.Second,
-		Flags:               glog.F_TIME_DATE | glog.F_TIME_TIME | glog.F_FILE_LONG,
-	}
-
-	// If stdout is enabled globally or for this instance, avoid opening file handles
-	// by clearing Path/File so that the underlying glog does not create file writers
-	// that can keep temp files locked on Windows during tests.
-	if cfg.StdoutPrint {
-		cfg.Path = ""
-		cfg.File = ""
-	}
-
-	// Note: in the past we forced stdout logging on Windows to avoid file handle
-	// locking during tests. That had the side-effect of preventing integration
-	// tests from validating file-based logging. We now prefer to respect the
-	// provided configuration (instanceCfg.StdoutPrint / globalStdout) and rely
-	// on Reset() to close file handles during tests when needed.
-
-	if instanceCfg.RotateExpire != "" {
-		if d, err := time.ParseDuration(instanceCfg.RotateExpire); err == nil {
-			cfg.RotateExpire = d
-		}
-	}
-
-	if instanceCfg.RotateCheckInterval != "" {
-		if iv, err := time.ParseDuration(instanceCfg.RotateCheckInterval); err == nil {
-			cfg.RotateCheckInterval = iv
-		}
-	}
-
-	if strings.ToLower(instanceCfg.Format) == "json" {
-		cfg.Flags |= glog.F_FILE_SHORT
-	}
-
-	if err := logger.SetConfig(cfg); err != nil {
-		return err
-	}
-	// Note: intentionally not printing per-instance config to avoid noisy test output.
-	return nil
 }
 
 // CleanOldLogs removes files under dir older than expire duration.

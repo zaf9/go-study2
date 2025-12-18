@@ -19,7 +19,61 @@ type LoggerConfig struct {
 	Stdout     bool                      `yaml:"stdout" json:"stdout"`
 	TimeFormat string                    `yaml:"timeFormat" json:"timeFormat"`
 	CtxKeys    []string                  `yaml:"ctxKeys" json:"ctxKeys"`
-	Instances  map[string]InstanceConfig `yaml:",inline" json:",inline"`
+	Instances  map[string]InstanceConfig `yaml:"-" json:"instances"`
+}
+
+// UnmarshalYAML 自定义 YAML 解析，将 app、access、error、slow 等键解析到 Instances map 中
+func (c *LoggerConfig) UnmarshalYAML(unmarshal func(interface{}) error) error {
+	// 定义已知的顶级字段
+	knownFields := map[string]bool{
+		"level":      true,
+		"stdout":     true,
+		"timeFormat": true,
+		"ctxKeys":    true,
+	}
+
+	// 先解析已知字段
+	type loggerConfigAlias struct {
+		Level      string   `yaml:"level"`
+		Stdout     bool     `yaml:"stdout"`
+		TimeFormat string   `yaml:"timeFormat"`
+		CtxKeys    []string `yaml:"ctxKeys"`
+	}
+	var alias loggerConfigAlias
+	if err := unmarshal(&alias); err != nil {
+		return err
+	}
+	c.Level = alias.Level
+	c.Stdout = alias.Stdout
+	c.TimeFormat = alias.TimeFormat
+	c.CtxKeys = alias.CtxKeys
+
+	// 解析所有字段到 map，找出实例配置
+	var raw map[string]interface{}
+	if err := unmarshal(&raw); err != nil {
+		return err
+	}
+
+	// 初始化 Instances map
+	c.Instances = make(map[string]InstanceConfig)
+
+	// 遍历所有字段，将非已知字段作为实例配置
+	for key, value := range raw {
+		if !knownFields[key] {
+			// 将 value 转换为 InstanceConfig
+			var instanceCfg InstanceConfig
+			data, err := yaml.Marshal(value)
+			if err != nil {
+				return fmt.Errorf("解析实例 %s 配置失败: %w", key, err)
+			}
+			if err := yaml.Unmarshal(data, &instanceCfg); err != nil {
+				return fmt.Errorf("解析实例 %s 配置失败: %w", key, err)
+			}
+			c.Instances[key] = instanceCfg
+		}
+	}
+
+	return nil
 }
 
 // InstanceConfig 表示单个日志实例的配置
@@ -40,21 +94,36 @@ var ValidLevels = []string{"all", "dev", "prod", "debug", "info", "notice", "war
 
 // LoadConfig 从 YAML 文件加载 LoggerConfig.
 // 如果没有传入路径,会尝试在若干候选路径中查找配置文件并加载.
+// 优先查找 logger.yaml 文件，如果不存在则从 config.yaml 中的 logger 键读取。
 func LoadConfig(paths ...string) (*LoggerConfig, error) {
 	var target string
 	if len(paths) > 0 && paths[0] != "" {
 		target = paths[0]
 	} else {
-		candidates := []string{
-			"backend/configs/config.yaml",
-			"backend/configs/config.dev.yaml",
-			"configs/config.yaml",
-			"configs/config.dev.yaml",
+		// 优先查找 logger.yaml 文件
+		loggerCandidates := []string{
+			"backend/configs/logger.yaml",
+			"configs/logger.yaml",
 		}
-		for _, p := range candidates {
+		for _, p := range loggerCandidates {
 			if _, err := os.Stat(p); err == nil {
 				target = p
 				break
+			}
+		}
+		// 如果 logger.yaml 不存在，尝试从 config.yaml 中读取
+		if target == "" {
+			candidates := []string{
+				"backend/configs/config.yaml",
+				"backend/configs/config.dev.yaml",
+				"configs/config.yaml",
+				"configs/config.dev.yaml",
+			}
+			for _, p := range candidates {
+				if _, err := os.Stat(p); err == nil {
+					target = p
+					break
+				}
 			}
 		}
 		if target == "" {
@@ -70,7 +139,7 @@ func LoadConfig(paths ...string) (*LoggerConfig, error) {
 				}
 				return &cfg2, nil
 			}
-			return nil, fmt.Errorf("未找到配置文件,请在 backend/configs/config.yaml 中创建")
+			return nil, fmt.Errorf("未找到配置文件,请在 backend/configs/logger.yaml 或 backend/configs/config.yaml 中创建")
 		}
 	}
 
@@ -78,20 +147,24 @@ func LoadConfig(paths ...string) (*LoggerConfig, error) {
 	if err != nil {
 		return nil, fmt.Errorf("读取配置文件失败: %w", err)
 	}
-	var cfg struct {
+
+	// 无论是 logger.yaml 还是 config.yaml，都需要从 logger 键中提取配置
+	var configFile struct {
 		Logger LoggerConfig `yaml:"logger"`
 	}
-	if err := yaml.Unmarshal(b, &cfg); err != nil {
+	if err := yaml.Unmarshal(b, &configFile); err != nil {
 		return nil, fmt.Errorf("解析配置文件失败: %w", err)
 	}
+	cfg := configFile.Logger
+
 	// set defaults
-	if cfg.Logger.TimeFormat == "" {
-		cfg.Logger.TimeFormat = "2006-01-02T15:04:05.000Z07:00"
+	if cfg.TimeFormat == "" {
+		cfg.TimeFormat = "2006-01-02T15:04:05.000Z07:00"
 	}
-	if len(cfg.Logger.CtxKeys) == 0 {
-		cfg.Logger.CtxKeys = []string{"TraceId"}
+	if len(cfg.CtxKeys) == 0 {
+		cfg.CtxKeys = []string{"TraceId"}
 	}
-	return &cfg.Logger, nil
+	return &cfg, nil
 }
 
 // Validate 验证 LoggerConfig

@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"runtime"
 	"time"
+
+	"github.com/gogf/gf/v2/frame/g"
 )
 
 // LogInfo 记录信息级别日志，自动提取TraceID
@@ -113,6 +115,11 @@ func formatLogMessage(ctx context.Context, level, message string, args ...interf
 func LogWithFields(ctx context.Context, level string, message string, fields map[string]interface{}) {
 	logger := GetInstance("app")
 	if logger == nil {
+		// 如果获取不到 logger，使用默认 logger
+		logger = g.Log()
+	}
+	if logger == nil {
+		// 如果默认 logger 也为 nil，直接返回
 		return
 	}
 

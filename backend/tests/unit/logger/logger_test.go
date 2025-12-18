@@ -16,6 +16,7 @@ func TestInitializeLogger(t *testing.T) {
 		t.Fatalf("failed to create temp dir: %v", err)
 	}
 	defer os.RemoveAll(tmpDir)
+	defer logger.Reset()
 
 	cfg := &logger.LoggerConfig{
 		Level: "all",
@@ -53,6 +54,7 @@ func TestMultiInstanceInitialization(t *testing.T) {
 	tmpDir2, _ := os.MkdirTemp("", "glog_test2_")
 	defer os.RemoveAll(tmpDir1)
 	defer os.RemoveAll(tmpDir2)
+	defer logger.Reset()
 
 	cfg := &logger.LoggerConfig{
 		Level: "all",

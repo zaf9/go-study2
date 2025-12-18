@@ -289,12 +289,12 @@ func (s *Service) SubmitQuiz(ctx context.Context, userID int64, sessionID, topic
 	// 如果 session 已经完成，直接返回重复提交错误
 	if existing.CompletedAt != nil {
 		logger.LogWithFields(ctx, "WARNING", "quiz.submit.duplicate_submit", map[string]interface{}{
-			"user_id":        userID,
-			"session_id":     sessionID,
-			"topic":          topic,
-			"chapter":        chapter,
-			"completed_at":   existing.CompletedAt.Format(time.RFC3339),
-			"reason":          "session已完成",
+			"user_id":      userID,
+			"session_id":   sessionID,
+			"topic":        topic,
+			"chapter":      chapter,
+			"completed_at": existing.CompletedAt.Format(time.RFC3339),
+			"reason":       "session已完成",
 		})
 		return nil, ErrDuplicateSubmit
 	}
@@ -319,11 +319,11 @@ func (s *Service) SubmitQuiz(ctx context.Context, userID int64, sessionID, topic
 	actualTotalQuestions := existing.TotalQuestions
 	if actualTotalQuestions <= 0 {
 		logger.LogWithFields(ctx, "WARNING", "quiz.submit.invalid_total_questions", map[string]interface{}{
-			"user_id":            userID,
-			"session_id":         sessionID,
-			"topic":              topic,
-			"chapter":            chapter,
-			"total_questions":    actualTotalQuestions,
+			"user_id":         userID,
+			"session_id":      sessionID,
+			"topic":           topic,
+			"chapter":         chapter,
+			"total_questions": actualTotalQuestions,
 		})
 		return nil, ErrInvalidInput
 	}
@@ -341,12 +341,12 @@ func (s *Service) SubmitQuiz(ctx context.Context, userID int64, sessionID, topic
 	submittedCount := len(answers)
 	if submittedCount > actualTotalQuestions {
 		logger.LogWithFields(ctx, "WARNING", "quiz.submit.answer_count_mismatch", map[string]interface{}{
-			"user_id":            userID,
-			"session_id":         sessionID,
-			"topic":              topic,
-			"chapter":            chapter,
-			"submitted_count":    submittedCount,
-			"expected_count":     actualTotalQuestions,
+			"user_id":         userID,
+			"session_id":      sessionID,
+			"topic":           topic,
+			"chapter":         chapter,
+			"submitted_count": submittedCount,
+			"expected_count":  actualTotalQuestions,
 		})
 		return nil, ErrInvalidInput
 	}
@@ -397,17 +397,17 @@ func (s *Service) SubmitQuiz(ctx context.Context, userID int64, sessionID, topic
 	// 使用实际测试的题目数量进行评分
 	// 如果用户提交的答案数量少于实际测试题目数量，未提交的题目将得0分
 	score := s.scorer.EvaluateWithTotal(prepared, answerMap, actualTotalQuestions)
-	
+
 	logger.LogWithFields(ctx, "INFO", "quiz.submit.scoring_completed", map[string]interface{}{
-		"user_id":            userID,
-		"session_id":         sessionID,
-		"topic":              topic,
-		"chapter":            chapter,
-		"score":              score.Score,
-		"total_questions":    score.TotalQuestions,
-		"correct_answers":    score.CorrectAnswers,
-		"submitted_count":     submittedCount,
-		"actual_total":       actualTotalQuestions,
+		"user_id":         userID,
+		"session_id":      sessionID,
+		"topic":           topic,
+		"chapter":         chapter,
+		"score":           score.Score,
+		"total_questions": score.TotalQuestions,
+		"correct_answers": score.CorrectAnswers,
+		"submitted_count": submittedCount,
+		"actual_total":    actualTotalQuestions,
 	})
 
 	var attempts []quizdom.QuizAttempt
@@ -426,28 +426,28 @@ func (s *Service) SubmitQuiz(ctx context.Context, userID int64, sessionID, topic
 	}
 	if err := s.repo.SaveAttempts(ctx, attempts); err != nil {
 		logger.LogWithFields(ctx, "ERROR", "quiz.submit.save_attempts_failed", map[string]interface{}{
-			"user_id":     userID,
-			"session_id":  sessionID,
-			"topic":       topic,
-			"chapter":     chapter,
-			"attempts":    len(attempts),
-			"error":       err.Error(),
+			"user_id":    userID,
+			"session_id": sessionID,
+			"topic":      topic,
+			"chapter":    chapter,
+			"attempts":   len(attempts),
+			"error":      err.Error(),
 		})
 		return nil, err
 	}
 	if err := s.repo.UpdateSessionResult(ctx, sessionID, score.CorrectAnswers, score.Score, score.Passed); err != nil {
 		logger.LogWithFields(ctx, "ERROR", "quiz.submit.update_session_failed", map[string]interface{}{
 			"user_id":         userID,
-			"session_id":       sessionID,
-			"topic":            topic,
-			"chapter":          chapter,
-			"score":            score.Score,
-			"correct_answers":  score.CorrectAnswers,
-			"error":            err.Error(),
+			"session_id":      sessionID,
+			"topic":           topic,
+			"chapter":         chapter,
+			"score":           score.Score,
+			"correct_answers": score.CorrectAnswers,
+			"error":           err.Error(),
 		})
 		return nil, err
 	}
-	
+
 	logger.LogWithFields(ctx, "INFO", "quiz.submit.success", map[string]interface{}{
 		"user_id":         userID,
 		"session_id":      sessionID,

@@ -67,6 +67,7 @@ func TestLogError(t *testing.T) {
 	// Setup test logger
 	logger.Reset()
 	dir := t.TempDir()
+	defer logger.Reset()
 	cfg := &logger.LoggerConfig{
 		Level: "info",
 		// Use stdout in unit tests to avoid file handle pooling issues on Windows.
@@ -109,6 +110,7 @@ func TestLogSlow(t *testing.T) {
 	// Setup test logger
 	logger.Reset()
 	dir := t.TempDir()
+	defer logger.Reset()
 	cfg := &logger.LoggerConfig{
 		Level: "info",
 		// Use stdout to avoid file locking in unit tests on Windows.
@@ -219,6 +221,7 @@ func TestLogWithFields(t *testing.T) {
 	// Setup test logger
 	logger.Reset()
 	dir := t.TempDir()
+	defer logger.Reset()
 	cfg := &logger.LoggerConfig{
 		Level:  "info",
 		Stdout: true,

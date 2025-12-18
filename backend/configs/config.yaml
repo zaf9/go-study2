@@ -1,107 +1,139 @@
-# HTTP 配置：本地开发默认开启，便于直接通过 http://127.0.0.1 访问
+# Go-Study2 核心配置文件
+# 此文件包含 Web 服务、数据库、安全及业务逻辑的基础配置
+
+# ==========================================
+# 网络协议配置 (HTTP/HTTPS)
+# ==========================================
+
+# HTTP 配置：常规明文传输配置
 http:
-  # HTTP 监听端口，生产若启用 HTTPS 可关闭 HTTP 监听
+  # 服务监听端口 (int)。本地开发环境默认 8080
   port: 8080
 
-# HTTPS 配置：启用后建议关闭 HTTP 监听并正确配置证书
+# HTTPS 配置：加密传输配置。生产环境强烈建议开启
 https:
-  # 是否启用 HTTPS；开启需提供证书与私钥
+  # 是否开启 HTTPS (bool)。若为 true，需确保 certFile 和 keyFile 路径正确且有效
   enabled: false
-  # HTTPS 监听端口，通常使用 443 或 8443
+  # HTTPS 监听端口 (int)。标准端口为 443
   port: 8443
-  # 服务端证书路径，支持相对或绝对路径
+  # 服务端公钥证书路径 (string)。支持绝对路径或相对于 backend 目录的相对路径
   certFile: "./configs/certs/server.crt"
-  # 服务端私钥路径，需与证书匹配
+  # 服务端私钥文件路径 (string)。务必妥善保管，权限建议设为 600
   keyFile: "./configs/certs/server.key"
-  # 是否跳过客户端证书校验，仅限测试/开发使用
+  # 是否跳过 TLS 客户端校验 (bool)。仅用于开发环境下忽略自签名证书警告
   insecureSkipVerify: false
-  # 可选 CA 证书路径，自签名证书时用于建立信任链
+  # CA 根证书路径 (string)。用于验证客户端证书或建立自签名证书信任链
   caFile: ""
 
-# 服务基础配置
+# 服务基础通用设置
 server:
-  # 服务监听地址，生产建议绑定 0.0.0.0 或具体内网地址
+  # 绑定监听地址 (string)。"127.0.0.1" 仅限本地访问，"0.0.0.0" 允许外部所有来源访问
   host: "127.0.0.1"
-  # 优雅停机等待时间（秒），用于处理中的请求
+  # 优雅停机超时时间 (int, 单位:秒)。接收停机信号后，等待存量请求处理完成的最长时间
   shutdownTimeout: 10
 
-# 数据库配置（默认使用 SQLite3）
+# ==========================================
+# 存储层配置 (Database)
+# ==========================================
+
+# 数据库配置：当前默认采用高性能嵌入式数据库 SQLite3
 database:
-  # 数据库类型，当前支持 sqlite3
+  # 驱动类型 (string)。目前程序适配 sqlite3
   type: "sqlite3"
-  # 数据文件路径，确保目录可写
+  # 数据库文件保存路径 (string)。确保运行账号对该目录有读写权限
   path: "./data/gostudy.db"
-  # 最大打开连接数，SQLite 一般保持较小值
+  # 连接池最大打开连接数 (int)。SQLite 建议设为 1 或较小值以减少文件锁竞争
   maxOpenConns: 10
-  # 最大空闲连接数，避免频繁创建连接
+  # 连接池最大空闲连接数 (int)
   maxIdleConns: 5
-  # 连接最大生命周期（秒），0 表示无限制
+  # 连接最大存活时间 (int, 单位:秒)。过期连接将被重连，防止网络僵死
   connMaxLifetime: 3600
-  # 慢查询阈值（毫秒），超过此时间的查询将被记录为慢查询
+  # 慢查询记录阈值 (int, 单位:毫秒)。SQL 执行耗时超过此值将记录到 slow 日志
   slowThreshold: 100
-  # SQLite PRAGMA 配置列表，可按需调整
+  # SQLite 特有的 PRAGMA 运行时参数优化
   pragmas:
-    # 采用 WAL 模式提升并发读性能
+    # 开启 WAL (Write-Ahead Logging) 模式，极大提升并发读写性能
     - "journal_mode=WAL"
-    # 设置数据库忙等待时间（毫秒）
+    # 设置数据库 busy 时的重试等待超时 (单位:毫秒)
     - "busy_timeout=5000"
-    # 同步策略 NORMAL 在可靠性与性能间平衡
+    # 设置同步级别。NORMAL 在保证数据库损坏风险极低的前提下，写入性能优于 FULL
     - "synchronous=NORMAL"
-    # 负值表示以 KiB 为单位的缓存大小
+    # 设置页面缓存大小 (int)。负值表示 KiB，此处为约 64MiB
     - "cache_size=-64000"
-    # 开启外键约束校验
+    # 强制开启外键约束检查
     - "foreign_keys=ON"
 
-# JWT 配置
+# ==========================================
+# 安全与认证配置 (Security)
+# ==========================================
+
+# JWT (JSON Web Token) 用户登录态校验配置
 jwt:
-  # 签名密钥，强烈建议通过环境变量注入
-  # secret: "${JWT_SECRET}"
+  # 签名秘钥 (string)。生产环境建议通过环境变量注入，切勿泄露
   secret: "S3cureTestKey_987!"
-  # 访问令牌过期时间（秒）
+  # Access Token 有效期 (int, 单位:秒)。过期需调用 refresh 接口
   accessTokenExpiry: 604800
-  # 刷新令牌过期时间（秒）
+  # Refresh Token 有效期 (int, 单位:秒)。用于获取新的 Access Token
   refreshTokenExpiry: 604800
-  # JWT 发行方标识
+  # Token 签名发行者标识
   issuer: "go-study2"
 
-# 静态资源配置
+# ==========================================
+# 业务功能配置
+# ==========================================
+
+# 静态资源托管配置
 static:
-  # 是否启用静态资源托管
+  # 是否开启前端静态资源服务 (bool)
   enabled: true
-  # 静态资源目录，默认指向前端构建产物
+  # 前端编译产物 (dist/out) 的存放目录路径
   path: "../frontend/out"
-  # SPA 路由回退到 index.html
+  # 开启单页应用 (SPA) 路由支持。若路径不存在则自动返回 index.html
   spaFallback: true
 
-# 学习进度估算与完成判定配置
+# 学习进度算法机制配置
 progress:
-  # 每秒可读字符数（字符/秒），默认 5（约 300 字/分钟）
+  # 阅读速度基准 (float, 字符/秒)。用于预估章节平均阅读耗时
   readCharsPerSec: 5.0
-  # 主题难度系数（可覆盖默认），示例：lexical_elements:1.0，constants:1.1
+  # 不同学习主题的难度权重系数 (float)。系数越高，预估耗时越长
   difficulty:
+    # 词法元素
     lexical_elements: 1.0
+    # 常量
     constants: 1.1
+    # 变量
     variables: 1.0
+    # 数据类型
     types: 1.2
-  # 估算的最小/最大秒数边界
+  # 章节预估有效时间的强制上下界 (int, 单位:秒)
   minSeconds: 60
   maxSeconds: 3600
-  # 完成判定所需的停留时间比例（0-1），例如 0.5 表示需停留 >= 50% 的预计时长
+  # 学习完成度触发阈值 (float, 0-1)。用户停留时长达到 (预估时长 * completionFraction) 即标记为已完成
   completionFraction: 0.5
 
-  # Quiz 题库配置
-  quiz:
-    dataPath: quiz_data"           # 题库文件根目录
-    questionCount:
-      single: 4                              # 单选题数量
-      multiple: 4                            # 多选题数量
-    difficultyDistribution:
-      easy: 40                               # 简单题占比%
-      medium: 40                             # 中等题占比%
-      hard: 20                               # 困难题占比%
-    loadTimeout: 5s                          # 题库加载超时（秒）
-    validation:
-      strictMode: true                       # 严格验证模式
-      failFast: true                         # 首个错误即停止
-
-
+# Quiz 题库与测验逻辑配置
+quiz:
+  # 题库 Markdown 文件所在的根目录
+  dataPath: quiz_data
+  # 每次小测验生成的题目数量配额
+  questionCount:
+    # 单选题个数
+    single: 4
+    # 多选题个数
+    multiple: 4
+  # 题目难度随机生成的占比分布 (百分比)
+  difficultyDistribution:
+    # 简单题 (40%)
+    easy: 40
+    # 中等题 (40%)
+    medium: 40
+    # 困难题 (20%)
+    hard: 20
+  # 从文件系统异步加载题库的超时限制 (duration)
+  loadTimeout: 5s
+  # 题库内容校验逻辑
+  validation:
+    # 严格模式：格式校验失败将抛出错误
+    strictMode: true
+    # 快速失败：发现首个格式错误立即中断加载
+    failFast: true

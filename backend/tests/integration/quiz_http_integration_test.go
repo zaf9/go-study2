@@ -133,9 +133,15 @@ func TestQuizHTTP_StartSubmitHistory(t *testing.T) {
 	if sid == "" {
 		t.Fatalf("missing sessionId in response: %v", resp)
 	}
+	questions, _ := data["questions"].([]interface{})
+	if len(questions) == 0 {
+		t.Fatalf("no questions in response: %v", resp)
+	}
+	firstQuestion, _ := questions[0].(map[string]interface{})
+	questionId, _ := firstQuestion["id"].(float64)
 
 	// 提交答案
-	body := fmt.Sprintf(`{"sessionId":"%s","topic":"variables","chapter":"storage","answers":[{"questionId":1,"userAnswers":["A"]}]}`, sid)
+	body := fmt.Sprintf(`{"sessionId":"%s","topic":"variables","chapter":"storage","answers":[{"questionId":%d,"userAnswers":["A"]}]}`, sid, int(questionId))
 	req2 := httptest.NewRequest(http.MethodPost, "/api/v1/quiz/submit", bytes.NewBufferString(body))
 	req2.Header.Set("Content-Type", "application/json")
 	req2.Header.Set("X-User-ID", "1")
