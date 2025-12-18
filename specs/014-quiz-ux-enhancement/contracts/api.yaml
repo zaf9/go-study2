@@ -1,0 +1,102 @@
+openapi: 3.0.0
+info:
+  title: Quiz API
+  version: 1.0.0
+paths:
+  /api/v1/quiz/history:
+    get:
+      summary: Get quiz history list
+      parameters:
+        - name: topic
+          in: query
+          schema:
+            type: string
+        - name: chapter
+          in: query
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  data:
+                    type: object
+                    properties:
+                      list:
+                        type: array
+                        items:
+                          $ref: "#/components/schemas/QuizSessionSummary"
+
+  /api/v1/quiz/history/{sessionId}:
+    get:
+      summary: Get detailed quiz review
+      parameters:
+        - name: sessionId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  data:
+                    $ref: "#/components/schemas/QuizReviewDetail"
+
+components:
+  schemas:
+    QuizSessionSummary:
+      type: object
+      properties:
+        sessionId:
+          type: string
+        topic:
+          type: string
+        chapter:
+          type: string
+        score:
+          type: integer
+        passed:
+          type: boolean
+        completedAt:
+          type: string
+          format: date-time
+
+    QuizReviewDetail:
+      type: object
+      properties:
+        meta:
+          $ref: "#/components/schemas/QuizSessionSummary"
+        items:
+          type: array
+          items:
+            type: object
+            properties:
+              questionId:
+                type: string
+              stem:
+                type: string
+              options:
+                type: array
+                items:
+                  type: string
+              userChoice:
+                type: string
+              correctChoice:
+                type: string
+              isCorrect:
+                type: boolean
+              explanation:
+                type: string

@@ -32,7 +32,6 @@ cd src; pytest; ruff check .
 ## Recent Changes
 - 012-logging-system: Added Go 1.24.5 + GoFrame v2.9.5 (glog, ghttp, gdb, gtrace, gerror)
 - 003-http-learning-mode: Added Go 1.24.5 + GoFrame v2.9.5 (HTTP服务框架)
-- 002-lexical-menu-structure: Added Go 1.24.5 + GoFrame v2.9.5 (already in project, minimal usage)
 
 
 <!-- MANUAL ADDITIONS START -->
