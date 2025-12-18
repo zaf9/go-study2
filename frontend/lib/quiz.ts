@@ -3,6 +3,7 @@ import { API_PATHS } from "./constants";
 import {
   QuizHistoryItem,
   QuizItem,
+  QuizReviewDetail,
   QuizSubmitRequest,
   QuizSubmitResult,
 } from "@/types/quiz";
@@ -45,4 +46,13 @@ export async function fetchQuizHistory(
   return Array.isArray((resp as { items?: QuizHistoryItem[] })?.items)
     ? (resp as { items?: QuizHistoryItem[] }).items || []
     : [];
+}
+
+export async function fetchQuizReview(
+  sessionId: string,
+): Promise<QuizReviewDetail> {
+  const resp = await api.get<QuizReviewDetail>(
+    API_PATHS.quizReview(sessionId),
+  );
+  return resp;
 }

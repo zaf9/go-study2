@@ -44,3 +44,4 @@ coverage/
 *.db
 *.db-wal
 *.db-shm
+backend/coverage

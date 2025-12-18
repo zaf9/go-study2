@@ -37,6 +37,7 @@ type QuizRepository interface {
 	GetHistory(ctx context.Context, userID int64, topic string, limit int) ([]quizdom.QuizSession, error)
 	GetSession(ctx context.Context, sessionID string) (*quizdom.QuizSession, error)
 	UpdateSessionResult(ctx context.Context, sessionID string, correct int, score int, passed bool) error
+	GetAttemptsBySession(ctx context.Context, sessionID string) ([]quizdom.QuizAttempt, error)
 }
 
 // Service 提供测验题目获取与提交判分。
@@ -500,6 +501,153 @@ func (s *Service) GetStats(ctx context.Context, topic, chapter string) (*QuizSta
 		stats.ByDifficulty[r.Difficulty]++
 	}
 	return stats, nil
+}
+
+// QuizReviewDetail 表示测验回顾详情。
+type QuizReviewDetail struct {
+	Meta  *QuizReviewMeta  `json:"meta"`
+	Items []QuizReviewItem `json:"items"`
+}
+
+// QuizReviewMeta 表示回顾的会话元信息。
+type QuizReviewMeta struct {
+	SessionID   string     `json:"sessionId"`
+	Topic       string     `json:"topic"`
+	Chapter     string     `json:"chapter"`
+	Score       int        `json:"score"`
+	Passed      bool       `json:"passed"`
+	CompletedAt *time.Time `json:"completedAt"`
+}
+
+// QuizReviewItem 表示回顾中的单题详情。
+type QuizReviewItem struct {
+	QuestionID    int64    `json:"questionId"`
+	Stem          string   `json:"stem"`
+	Options       []string `json:"options"`
+	UserChoice    string   `json:"userChoice"`
+	CorrectChoice string   `json:"correctChoice"`
+	IsCorrect     bool     `json:"isCorrect"`
+	Explanation   string   `json:"explanation"`
+}
+
+// GetQuizReview 获取指定会话的回顾详情。
+func (s *Service) GetQuizReview(ctx context.Context, userID int64, sessionID string) (*QuizReviewDetail, error) {
+	if userID <= 0 || sessionID == "" {
+		return nil, ErrInvalidInput
+	}
+
+	// 获取会话信息
+	session, err := s.repo.GetSession(ctx, sessionID)
+	if err != nil {
+		return nil, err
+	}
+	if session == nil {
+		return nil, ErrInvalidInput
+	}
+
+	// 验证会话属于当前用户
+	if session.UserID != userID {
+		return nil, ErrInvalidInput
+	}
+
+	// 获取答题记录
+	attempts, err := s.repo.GetAttemptsBySession(ctx, sessionID)
+	if err != nil {
+		return nil, err
+	}
+
+	// 获取题目信息
+	records, err := s.repo.GetQuestionsByChapter(ctx, session.Topic, session.Chapter)
+	if err != nil {
+		return nil, err
+	}
+
+	// 构建题目映射
+	questionMap := make(map[int64]quizdom.QuizQuestion)
+	for _, r := range records {
+		questionMap[r.ID] = r
+	}
+
+	// 构建回顾详情
+	meta := &QuizReviewMeta{
+		SessionID:   session.SessionID,
+		Topic:       session.Topic,
+		Chapter:     session.Chapter,
+		Score:       session.Score,
+		Passed:      session.Passed,
+		CompletedAt: session.CompletedAt,
+	}
+
+	var items []QuizReviewItem
+	for _, attempt := range attempts {
+		question, ok := questionMap[attempt.QuestionID]
+		if !ok {
+			continue
+		}
+
+		// 解析选项
+		var options []string
+		if err := json.Unmarshal([]byte(question.Options), &options); err != nil {
+			continue
+		}
+
+		// 解析正确答案
+		var correctAnswers []string
+		if err := json.Unmarshal([]byte(question.CorrectAnswers), &correctAnswers); err != nil {
+			continue
+		}
+
+		// 解析用户答案
+		var userAnswers []string
+		if err := json.Unmarshal([]byte(attempt.UserAnswers), &userAnswers); err != nil {
+			continue
+		}
+
+		// 将答案标签转换为选项内容
+		userChoice := ""
+		if len(userAnswers) > 0 {
+			userChoiceContents := make([]string, 0, len(userAnswers))
+			for _, ans := range userAnswers {
+				ans = strings.ToUpper(strings.TrimSpace(ans))
+				// 尝试将标签（如 "A", "B"）转换为选项内容
+				if idx := strings.Index("ABCDEFGHIJKLMNOPQRSTUVWXYZ", ans); idx >= 0 && idx < len(options) {
+					userChoiceContents = append(userChoiceContents, options[idx])
+				} else {
+					// 如果已经是内容，直接使用
+					userChoiceContents = append(userChoiceContents, ans)
+				}
+			}
+			userChoice = strings.Join(userChoiceContents, ",")
+		}
+
+		correctChoice := ""
+		if len(correctAnswers) > 0 {
+			// correctAnswers 存储的是选项标签（如 "A", "B"）
+			correctContents := make([]string, 0, len(correctAnswers))
+			for _, ans := range correctAnswers {
+				ans = strings.ToUpper(strings.TrimSpace(ans))
+				if idx := strings.Index("ABCDEFGHIJKLMNOPQRSTUVWXYZ", ans); idx >= 0 && idx < len(options) {
+					correctContents = append(correctContents, options[idx])
+				}
+			}
+			correctChoice = strings.Join(correctContents, ",")
+		}
+
+		items = append(items, QuizReviewItem{
+			QuestionID:    question.ID,
+			Stem:          question.Question,
+			Options:       options,
+			UserChoice:    userChoice,
+			CorrectChoice: correctChoice,
+			IsCorrect:     attempt.IsCorrect,
+			Explanation:   question.Explanation,
+		})
+	}
+
+	return &QuizReviewDetail{
+		Meta:  meta,
+		Items: items,
+	}, nil
 }
 
 // ConvertProgressStatus 返回测验通过后的进度状态，供后续拓展。

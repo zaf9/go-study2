@@ -39,7 +39,7 @@ func RegisterRoutes(s *ghttp.Server) {
 			authGroup.GET("/quiz/:topic/:chapter/stats", h.GetQuizStats)
 			authGroup.POST("/quiz/submit", h.SubmitQuiz)
 			authGroup.GET("/quiz/history", h.GetQuizHistory)
-			authGroup.GET("/quiz/history/:topic", h.GetQuizHistory)
+			authGroup.GET("/quiz/history/:sessionId", h.GetQuizReview)
 		})
 
 		// 主题列表

@@ -3,9 +3,7 @@ package contract
 import (
 	"context"
 	"fmt"
-	"reflect"
 	"testing"
-	"unsafe"
 
 	"go-study2/internal/app/http_server/handler"
 	appquiz "go-study2/internal/app/quiz"
@@ -102,9 +100,6 @@ func (m *quizMemoryRepo) UpdateSessionResult(_ context.Context, sessionID string
 	return nil
 }
 
-// setQuizService 使用反射注入测验服务，便于测试。
-func setQuizService(h *handler.Handler, svc *appquiz.Service) {
-	val := reflect.ValueOf(h).Elem().FieldByName("quizService")
-	ptr := unsafe.Pointer(val.UnsafeAddr())
-	reflect.NewAt(val.Type(), ptr).Elem().Set(reflect.ValueOf(svc))
+func (m *quizMemoryRepo) GetAttemptsBySession(_ context.Context, sessionID string) ([]quizdom.QuizAttempt, error) {
+	return nil, nil
 }

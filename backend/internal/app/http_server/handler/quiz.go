@@ -100,6 +100,32 @@ func (h *Handler) GetQuizHistory(r *ghttp.Request) {
 	writeSuccess(r, "success", items)
 }
 
+// GetQuizReview 返回指定会话的回顾详情。
+func (h *Handler) GetQuizReview(r *ghttp.Request) {
+	svc, ok := h.getQuizService(r)
+	if !ok {
+		return
+	}
+	userID := r.GetCtxVar("user_id").Int64()
+	if userID <= 0 {
+		writeError(r, http.StatusUnauthorized, 40001, "认证信息缺失")
+		return
+	}
+	sessionID := r.Get("sessionId").String()
+	if sessionID == "" {
+		writeError(r, http.StatusBadRequest, 40004, "会话ID不能为空")
+		return
+	}
+
+	detail, err := svc.GetQuizReview(r.GetCtx(), userID, sessionID)
+	if err != nil {
+		h.writeQuizError(r, err)
+		return
+	}
+
+	writeSuccess(r, "success", detail)
+}
+
 // GetQuizStats 返回章节题库统计信息: total, byType, byDifficulty
 func (h *Handler) GetQuizStats(r *ghttp.Request) {
 	svc, ok := h.getQuizService(r)

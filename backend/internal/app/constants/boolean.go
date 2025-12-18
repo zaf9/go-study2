@@ -1,7 +1,3 @@
-// Package constants - 布尔常量学习模块
-//
-// 本文件介绍 Go 语言中的布尔常量(Boolean Constants)。
-// 布尔常量是最简单的常量类型,只有两个预定义值: true 和 false。
 package constants
 
 import (

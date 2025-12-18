@@ -1,6 +1,7 @@
 "use client";
 
-import { Table, Tag } from "antd";
+import { Table, Tag, Button } from "antd";
+import { useRouter } from "next/navigation";
 import { QuizHistoryItem } from "@/types/quiz";
 
 interface QuizHistoryProps {
@@ -9,6 +10,8 @@ interface QuizHistoryProps {
 }
 
 export default function QuizHistory({ items, loading }: QuizHistoryProps) {
+  const router = useRouter();
+
   const columns = [
     { title: "主题", dataIndex: "topic", key: "topic" },
     {
@@ -41,11 +44,26 @@ export default function QuizHistory({ items, loading }: QuizHistoryProps) {
         </Tag>
       ),
     },
+    {
+      title: "操作",
+      key: "action",
+      render: (_: unknown, row: QuizHistoryItem) => {
+        const sessionId = row.sessionId || String(row.id);
+        return (
+          <Button
+            type="link"
+            onClick={() => router.push(`/quiz/history/${sessionId}`)}
+          >
+            查看详情
+          </Button>
+        );
+      },
+    },
   ];
 
   return (
     <Table
-      rowKey="id"
+      rowKey={(record) => record.sessionId || String(record.id)}
       columns={columns}
       dataSource={items}
       loading={loading}

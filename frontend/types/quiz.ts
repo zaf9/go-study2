@@ -77,3 +77,27 @@ export interface QuizHistoryItem {
   passed?: boolean;
   completedAt?: string | null;
 }
+
+export interface QuizReviewMeta {
+  sessionId: string;
+  topic: string;
+  chapter: string;
+  score: number;
+  passed: boolean;
+  completedAt?: string | null;
+}
+
+export interface QuizReviewItem {
+  questionId: number;
+  stem: string;
+  options: string[];
+  userChoice: string;
+  correctChoice: string;
+  isCorrect: boolean;
+  explanation: string;
+}
+
+export interface QuizReviewDetail {
+  meta: QuizReviewMeta;
+  items: QuizReviewItem[];
+}

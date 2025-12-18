@@ -109,21 +109,21 @@
 
 ### Tests for User Story 3 (MANDATORY) ⚠️
 
-- [ ] T023 [P] [US3] 创建 GET /quiz/history API 契约测试 in `backend/internal/controller/quiz/quiz_history_test.go`
-- [ ] T024 [P] [US3] 创建 GET /quiz/history/{sessionId} API 契约测试 in `backend/internal/controller/quiz/quiz_review_test.go`
-- [ ] T025 [P] [US3] 创建 QuizHistoryPage 组件单元测试 in `frontend/src/components/quiz/__tests__/QuizHistoryPage.test.tsx`
-- [ ] T026 [P] [US3] 创建 QuizReviewPage 组件单元测试 in `frontend/src/components/quiz/__tests__/QuizReviewPage.test.tsx`
+- [x] T023 [P] [US3] 创建 GET /quiz/history API 契约测试 in `backend/tests/contract/quiz/quiz_history_test.go`
+- [x] T024 [P] [US3] 创建 GET /quiz/history/{sessionId} API 契约测试 in `backend/tests/contract/quiz/quiz_review_test.go`
+- [x] T025 [P] [US3] 创建 QuizHistoryPage 组件单元测试 in `frontend/components/quiz/__tests__/QuizHistoryPage.test.tsx`
+- [x] T026 [P] [US3] 创建 QuizReviewPage 组件单元测试 in `frontend/components/quiz/__tests__/QuizReviewPage.test.tsx`
 
 ### Implementation for User Story 3
 
-- [ ] T027 [US3] 实现 GET /quiz/history API 端点 in `backend/internal/controller/quiz/quiz_history.go`
-- [ ] T028 [US3] 实现 GET /quiz/history/{sessionId} API 端点 in `backend/internal/controller/quiz/quiz_review.go`
-- [ ] T029 [US3] 添加历史查询和详情查询服务方法 in `backend/internal/service/quiz_service.go`
-- [ ] T030 [US3] 注册新 API 路由 in `backend/internal/router/router.go`
-- [ ] T031 [P] [US3] 创建 QuizHistoryPage 页面组件 in `frontend/src/pages/quiz/history/index.tsx`
-- [ ] T032 [P] [US3] 创建 QuizReviewPage 页面组件 in `frontend/src/pages/quiz/history/[sessionId].tsx`
-- [ ] T033 [US3] 更新 QuizViewer 支持 review 模式（禁用选择、显示解析）in `frontend/src/components/quiz/QuizViewer.tsx`
-- [ ] T034 [US3] 创建 AnswerIndicator 组件（显示用户答案 vs 正确答案）in `frontend/src/components/quiz/AnswerIndicator.tsx`
+- [x] T027 [US3] 实现 GET /quiz/history API 端点 in `backend/internal/app/http_server/handler/quiz.go`
+- [x] T028 [US3] 实现 GET /quiz/history/{sessionId} API 端点 in `backend/internal/app/http_server/handler/quiz.go`
+- [x] T029 [US3] 添加历史查询和详情查询服务方法 in `backend/internal/app/quiz/service.go`
+- [x] T030 [US3] 注册新 API 路由 in `backend/internal/app/http_server/router.go`
+- [x] T031 [P] [US3] 创建 QuizHistoryPage 页面组件 in `frontend/app/(protected)/quiz/history/page.tsx`
+- [x] T032 [P] [US3] 创建 QuizReviewPage 页面组件 in `frontend/app/(protected)/quiz/history/[sessionId]/page.tsx`
+- [x] T033 [US3] 更新 QuizViewer 支持 review 模式（禁用选择、显示解析）in `frontend/app/(protected)/quiz/history/[sessionId]/page.tsx`
+- [x] T034 [US3] 创建 AnswerIndicator 组件（显示用户答案 vs 正确答案）in `frontend/components/quiz/AnswerIndicator.tsx`
 
 **Checkpoint**: 用户故事 3 完成 - 可独立测试历史列表和回顾功能
 

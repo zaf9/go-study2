@@ -118,6 +118,18 @@ func (m *quizMemoryRepo) UpdateSessionResult(_ context.Context, sessionID string
 	return nil
 }
 
+func (m *quizMemoryRepo) GetAttemptsBySession(_ context.Context, sessionID string) ([]quizdom.QuizAttempt, error) {
+	m.mu.Lock()
+	defer m.mu.Unlock()
+	var results []quizdom.QuizAttempt
+	for _, a := range m.attempts {
+		if a.SessionID == sessionID {
+			results = append(results, a)
+		}
+	}
+	return results, nil
+}
+
 func TestQuizHandler_EndToEnd(t *testing.T) {
 	defer func() {
 		if r := recover(); r != nil {

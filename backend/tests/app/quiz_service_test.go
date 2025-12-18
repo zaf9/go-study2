@@ -70,6 +70,16 @@ func (m *memoryQuizRepo) UpdateSessionResult(ctx context.Context, sessionID stri
 	return nil
 }
 
+func (m *memoryQuizRepo) GetAttemptsBySession(ctx context.Context, sessionID string) ([]quizdom.QuizAttempt, error) {
+	var results []quizdom.QuizAttempt
+	for _, a := range m.attempts {
+		if a.SessionID == sessionID {
+			results = append(results, a)
+		}
+	}
+	return results, nil
+}
+
 func TestQuizService_FlowAndIdempotency(t *testing.T) {
 	repo := newMemoryQuizRepo()
 	repo.questions = []quizdom.QuizQuestion{
