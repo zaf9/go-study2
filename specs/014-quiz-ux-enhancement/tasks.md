@@ -137,15 +137,15 @@
 
 ### Tests for User Story 4 (MANDATORY) ⚠️
 
-- [ ] T035 [P] [US4] 创建 QuizMetaInfo 组件单元测试 in `frontend/src/components/quiz/__tests__/QuizMetaInfo.test.tsx`
-- [ ] T036 [P] [US4] 创建导航栏测验入口单元测试 in `frontend/src/components/layout/__tests__/Sidebar.test.tsx`
+- [x] T035 [P] [US4] 创建 QuizMetaInfo 组件单元测试 in `frontend/components/quiz/__tests__/QuizMetaInfo.test.tsx`
+- [x] T036 [P] [US4] 创建导航栏测验入口单元测试 in `frontend/components/layout/__tests__/Sidebar.test.tsx`
 
 ### Implementation for User Story 4
 
-- [ ] T037 [P] [US4] 创建 QuizMetaInfo 组件（总题量、预计用时、难度）in `frontend/src/components/quiz/QuizMetaInfo.tsx`
-- [ ] T038 [US4] 更新测验开始页集成 QuizMetaInfo 组件 in `frontend/src/pages/quiz/[topic]/[chapter].tsx`
-- [ ] T039 [US4] 添加侧边栏/导航栏测验快速入口 in `frontend/src/components/layout/Sidebar.tsx`
-- [ ] T040 [US4] 集成骨架屏到测验加载过程 in `frontend/src/components/quiz/QuizViewer.tsx`
+- [x] T037 [P] [US4] 创建 QuizMetaInfo 组件（总题量、预计用时、难度）in `frontend/components/quiz/QuizMetaInfo.tsx`
+- [x] T038 [US4] 更新测验开始页集成 QuizMetaInfo 组件 in `frontend/app/(protected)/quiz/[topic]/QuizPageClient.tsx`
+- [x] T039 [US4] 添加侧边栏/导航栏测验快速入口 in `frontend/components/layout/Sidebar.tsx`
+- [x] T040 [US4] 集成骨架屏到测验加载过程 in `frontend/app/(protected)/quiz/[topic]/QuizPageClient.tsx`
 
 **Checkpoint**: 用户故事 4 完成 - 可独立测试导航入口和元数据展示
 

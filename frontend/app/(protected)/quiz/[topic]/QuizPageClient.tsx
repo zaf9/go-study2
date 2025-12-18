@@ -9,8 +9,10 @@ import QuizResultPage from "@/components/quiz/QuizResultPage";
 import QuizNavigation from "@/components/quiz/QuizNavigation";
 import AnswerExplanation from "@/components/quiz/AnswerExplanation";
 import QuizSkeletonLoader from "@/components/quiz/QuizSkeletonLoader";
+import QuizMetaInfo from "@/components/quiz/QuizMetaInfo";
 import ErrorMessage from "@/components/common/ErrorMessage";
 import { fetchChapters } from "@/lib/learning";
+import { fetchQuizStats } from "@/lib/quiz";
 import useQuiz from "@/hooks/useQuiz";
 
 const { Title, Paragraph, Text } = Typography;
@@ -29,6 +31,15 @@ export default function QuizPageClient({
     const [selectedChapter, setSelectedChapter] = useState(params.chapter ?? "");
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isConfirmOpen, setIsConfirmOpen] = useState(false);
+    
+    // 获取题库统计信息
+    const {
+        data: stats,
+        isLoading: statsLoading,
+    } = useSWR(
+        selectedChapter ? ["quiz-stats", topic, selectedChapter] : null,
+        () => fetchQuizStats(topic, selectedChapter),
+    );
 
     useEffect(() => {
         if (params.chapter) {
@@ -99,6 +110,11 @@ export default function QuizPageClient({
                         />
                     )}
                 </div>
+
+                {/* 显示题库元数据信息 */}
+                {selectedChapter && (
+                    <QuizMetaInfo stats={stats || null} loading={statsLoading} />
+                )}
 
                 {quizLoading ? (
                     <QuizSkeletonLoader />

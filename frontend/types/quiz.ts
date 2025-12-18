@@ -101,3 +101,9 @@ export interface QuizReviewDetail {
   meta: QuizReviewMeta;
   items: QuizReviewItem[];
 }
+
+export interface QuizStats {
+  total: number;
+  byType: Record<string, number>;
+  byDifficulty: Record<string, number>;
+}

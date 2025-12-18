@@ -39,4 +39,5 @@ export const API_PATHS = {
   quizHistory: "/quiz/history",
   quizHistoryByTopic: (topic: string) => `/quiz/history/${topic}`,
   quizReview: (sessionId: string) => `/quiz/history/${sessionId}`,
+  quizStats: (topic: string, chapter: string) => `/quiz/${topic}/${chapter}/stats`,
 };

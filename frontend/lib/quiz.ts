@@ -4,6 +4,7 @@ import {
   QuizHistoryItem,
   QuizItem,
   QuizReviewDetail,
+  QuizStats,
   QuizSubmitRequest,
   QuizSubmitResult,
 } from "@/types/quiz";
@@ -51,8 +52,18 @@ export async function fetchQuizHistory(
 export async function fetchQuizReview(
   sessionId: string,
 ): Promise<QuizReviewDetail> {
-  const resp = await api.get<QuizReviewDetail>(
+  const resp = (await api.get<QuizReviewDetail>(
     API_PATHS.quizReview(sessionId),
-  );
+  )) as unknown as QuizReviewDetail;
+  return resp;
+}
+
+export async function fetchQuizStats(
+  topic: string,
+  chapter: string,
+): Promise<QuizStats> {
+  const resp = (await api.get<QuizStats>(
+    API_PATHS.quizStats(topic, chapter),
+  )) as unknown as QuizStats;
   return resp;
 }
