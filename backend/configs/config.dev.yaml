@@ -1,9 +1,0 @@
-logger:
-  level: "dev"
-  stdout: true
-  ctxKeys: ["TraceId", "UserId"]
-  default:
-    path: "backend/logs"
-    file: "app-{Y-m-d}.log"
-    format: "json"
-    level: "dev"

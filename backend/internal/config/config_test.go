@@ -24,7 +24,7 @@ func TestLoad(t *testing.T) {
 		t.AssertNE(cfg, nil)
 		t.Assert(cfg.Server.Host, "127.0.0.1")
 		t.Assert(cfg.Http.Port, 8080)
-		t.Assert(cfg.Logger.Level, "INFO")
+		t.Assert(cfg.Logger.Level, "")
 		t.Assert(cfg.Https.Enabled, false)
 	})
 }
@@ -172,7 +172,6 @@ func TestLoadWithValidConfig(t *testing.T) {
 		// 验证配置结构完整性
 		t.AssertNE(cfg.Server.Host, "")
 		t.Assert(cfg.Http.Port > 0, true)
-		t.AssertNE(cfg.Logger.Level, "")
 	})
 }
 

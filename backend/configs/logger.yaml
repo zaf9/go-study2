@@ -1,0 +1,137 @@
+# 日志系统配置
+# 本文件包含所有日志相关的配置项，包括全局日志设置和各个日志实例的配置
+logger:
+  # 全局日志级别
+  # 可选值: all, dev, prod, debug, info, notice, warning, error, critical
+  # 此级别作为所有日志实例的默认级别，但可以被实例级别的 level 配置覆盖
+  level: "all"
+
+  # 是否将日志输出到标准输出（控制台）
+  # true: 所有日志实例默认输出到控制台（除非实例显式设置 stdoutPrint: false）
+  # false: 所有日志实例默认不输出到控制台（除非实例显式设置 stdoutPrint: true）
+  stdout: true
+
+  # 日志时间戳格式
+  # 使用 Go 时间格式字符串，例如: "2006-01-02T15:04:05.000Z07:00"
+  # 此格式将应用于所有日志记录的时间戳字段
+  timeFormat: "2006-01-02T15:04:05.000Z07:00"
+
+  # 从 Context 中提取的键名列表
+  # 这些键的值将被自动注入到日志记录中，用于追踪和关联请求
+  # 例如: ["TraceId", "UserId"] 会从 Context 中提取 TraceId 和 UserId 的值
+  ctxKeys: ["TraceId", "UserId"]
+
+  # 应用日志实例配置（默认日志实例）
+  # 用于记录应用程序的一般日志信息
+  # 注意：代码中使用 GetInstance("app") 获取此实例
+  app:
+    # 日志文件存储目录路径（相对路径或绝对路径）
+    # 相对路径基于应用程序的工作目录
+    path: "logs"
+
+    # 日志文件名模板
+    # 支持日期占位符: {Y-m-d} 表示年-月-日，例如: app-2025-12-16.log
+    # 日志文件将按日期自动分割
+    file: "app-{Y-m-d}.log"
+
+    # 日志格式类型
+    # json: 结构化 JSON 格式，便于日志分析和处理
+    # text: 纯文本格式，便于人类阅读
+    format: "json"
+
+    # 日志级别（覆盖全局 level）
+    # all: 记录所有级别的日志
+    # 可选值: all, dev, prod, debug, info, notice, warning, error, critical
+    level: "all"
+
+    # 日志文件大小分割阈值
+    # 当日志文件达到此大小时，将自动创建新的日志文件
+    # 支持单位: M (MB), K (KB)，例如: "100M" 表示 100MB
+    rotateSize: "100M"
+
+    # 日志文件过期时间
+    # 超过此时间的日志文件将被自动删除
+    # 支持单位: d (天), h (小时), m (分钟)，例如: "30d" 表示 30 天
+    rotateExpire: "30d"
+
+    # 备份文件数量限制
+    # 保留的备份日志文件数量上限，0 表示不限制
+    # 当达到此限制时，最旧的备份文件将被删除
+    rotateBackupLimit: 10
+
+    # 备份文件过期时间
+    # 超过此时间的备份文件将被自动删除
+    # 支持单位: d (天), h (小时), m (分钟)，例如: "30d" 表示 30 天
+    rotateBackupExpire: "30d"
+
+    # 是否同时输出到标准输出（控制台）
+    # false: 仅写入文件，不输出到控制台
+    # true: 同时写入文件和输出到控制台
+    # 如果未设置此选项，将使用全局 stdout 配置
+    stdoutPrint: false
+
+  # 访问日志实例配置
+  # 用于记录 HTTP 请求的访问日志，包括请求方法、路径、状态码、响应时间等信息
+  access:
+    # 访问日志文件存储目录路径
+    path: "logs/access"
+
+    # 访问日志文件名模板
+    # 支持日期占位符: {Y-m-d}，例如: access-2025-12-16.log
+    file: "access-{Y-m-d}.log"
+
+    # 日志格式类型
+    # json: 结构化 JSON 格式
+    format: "json"
+
+    # 日志级别
+    # info: 记录信息级别的日志（包括正常请求和错误请求）
+    level: "info"
+
+    # 是否同时输出到标准输出（控制台）
+    # false: 仅写入文件，不输出到控制台
+    stdoutPrint: false
+
+  # 错误日志实例配置
+  # 用于记录应用程序的错误日志，包括异常、错误信息等
+  error:
+    # 错误日志文件存储目录路径
+    path: "logs/error"
+
+    # 错误日志文件名模板
+    # 支持日期占位符: {Y-m-d}，例如: error-2025-12-16.log
+    file: "error-{Y-m-d}.log"
+
+    # 日志格式类型
+    # json: 结构化 JSON 格式
+    format: "json"
+
+    # 日志级别
+    # error: 仅记录错误级别的日志
+    level: "error"
+
+    # 是否同时输出到标准输出（控制台）
+    # false: 仅写入文件，不输出到控制台
+    stdoutPrint: false
+
+  # 慢查询日志实例配置
+  # 用于记录数据库慢查询日志，帮助识别性能瓶颈
+  slow:
+    # 慢查询日志文件存储目录路径
+    path: "logs/slow"
+
+    # 慢查询日志文件名模板
+    # 支持日期占位符: {Y-m-d}，例如: slow-2025-12-16.log
+    file: "slow-{Y-m-d}.log"
+
+    # 日志格式类型
+    # json: 结构化 JSON 格式
+    format: "json"
+
+    # 日志级别
+    # warning: 记录警告级别的日志（慢查询通常被视为警告）
+    level: "warning"
+
+    # 是否同时输出到标准输出（控制台）
+    # false: 仅写入文件，不输出到控制台
+    stdoutPrint: false

@@ -1,37 +1,3 @@
-logger:
-  level: "INFO"
-  stdout: true
-  timeFormat: "2006-01-02T15:04:05.000Z07:00"
-  ctxKeys: ["TraceId", "UserId"]
-
-  default:
-    path: "backend/logs"
-    file: "app-{Y-m-d}.log"
-    format: "json"
-    level: "all"
-    rotateSize: "100M"
-    rotateExpire: "30d"
-    rotateBackupLimit: 10
-    rotateBackupExpire: "30d"
-    stdoutPrint: false
-
-  access:
-    path: "backend/logs/access"
-    file: "access-{Y-m-d}.log"
-    format: "json"
-    level: "info"
-
-  error:
-    path: "backend/logs/error"
-    file: "error-{Y-m-d}.log"
-    format: "json"
-    level: "error"
-
-  slow:
-    path: "backend/logs/slow"
-    file: "slow-{Y-m-d}.log"
-    format: "json"
-    level: "warning"
 # HTTP 配置：本地开发默认开启，便于直接通过 http://127.0.0.1 访问
 http:
   # HTTP 监听端口，生产若启用 HTTPS 可关闭 HTTP 监听
@@ -125,7 +91,7 @@ progress:
 
   # Quiz 题库配置
   quiz:
-    dataPath: "backend/quiz_data"           # 题库文件根目录
+    dataPath: quiz_data"           # 题库文件根目录
     questionCount:
       single: 4                              # 单选题数量
       multiple: 4                            # 多选题数量
