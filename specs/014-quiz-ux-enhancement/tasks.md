@@ -63,15 +63,15 @@
 
 ### Tests for User Story 1 (MANDATORY) ⚠️
 
-- [ ] T009 [P] [US1] 创建 QuizQuestionCard 组件单元测试 in `frontend/src/components/quiz/__tests__/QuizQuestionCard.test.tsx`
-- [ ] T010 [P] [US1] 创建 SubmitConfirmModal 组件单元测试 in `frontend/src/components/quiz/__tests__/SubmitConfirmModal.test.tsx`
+- [x] T009 [P] [US1] 创建 QuizQuestionCard 组件单元测试 in `frontend/components/quiz/__tests__/QuizQuestionCard.test.tsx`
+- [x] T010 [P] [US1] 创建 SubmitConfirmModal 组件单元测试 in `frontend/components/quiz/__tests__/SubmitConfirmModal.test.tsx`
 
 ### Implementation for User Story 1
 
-- [ ] T011 [P] [US1] 创建 QuizQuestionCard 组件（含有序标签 A-D 渲染）in `frontend/src/components/quiz/QuizQuestionCard.tsx`
-- [ ] T012 [P] [US1] 创建 SubmitConfirmModal 组件（显示已答/未答统计）in `frontend/src/components/quiz/SubmitConfirmModal.tsx`
-- [ ] T013 [US1] 更新 QuizViewer 组件集成 QuizQuestionCard 和 SubmitConfirmModal in `frontend/src/components/quiz/QuizViewer.tsx`
-- [ ] T014 [US1] 添加前端提交拦截逻辑和答题状态管理 in `frontend/src/components/quiz/QuizViewer.tsx`
+- [x] T011 [P] [US1] 创建 QuizQuestionCard 组件（含有序标签 A-D 渲染）in `frontend/components/quiz/QuizQuestionCard.tsx`
+- [x] T012 [P] [US1] 创建 SubmitConfirmModal 组件（显示已答/未答统计）in `frontend/components/quiz/SubmitConfirmModal.tsx`
+- [x] T013 [US1] 更新 QuizViewer 组件集成 QuizQuestionCard 和 SubmitConfirmModal in `frontend/app/(protected)/quiz/[topic]/QuizPageClient.tsx`
+- [x] T014 [US1] 添加前端提交拦截逻辑和答题状态管理 in `frontend/app/(protected)/quiz/[topic]/QuizPageClient.tsx`
 
 **Checkpoint**: 用户故事 1 完成 - 可独立测试防误触和标签稳定性
 
