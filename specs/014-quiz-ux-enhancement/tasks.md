@@ -33,9 +33,9 @@
 
 **Purpose**: 项目初始化和数据库结构准备
 
-- [ ] T001 创建 QuizSession 数据库表迁移文件 in `backend/internal/infra/migrations/`
-- [ ] T002 创建 QuizAttempt 数据库表迁移文件 in `backend/internal/infra/migrations/`
-- [ ] T003 [P] 执行数据库迁移并验证表结构
+- [x] T001 创建 QuizSession 数据库表迁移文件 in `backend/internal/infra/migrations/`
+- [x] T002 创建 QuizAttempt 数据库表迁移文件 in `backend/internal/infra/migrations/`
+- [x] T003 [P] 执行数据库迁移并验证表结构
 
 ---
 
