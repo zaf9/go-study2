@@ -85,16 +85,16 @@
 
 ### Implementation for User Story 1
 
-- [ ] T025 [P] [US1] Implement学习天数计算逻辑 in backend/internal/service/progress_service.go
-- [ ] T026 [P] [US1] Implement Dashboard stats calculation in backend/internal/service/progress_service.go
-- [ ] T027 [P] [US1] Create WelcomeHeader component in frontend/app/(protected)/dashboard/components/WelcomeHeader.tsx
-- [ ] T028 [P] [US1] Create StatsCards component in frontend/app/(protected)/dashboard/components/StatsCards.tsx
-- [ ] T029 [US1] Create Dashboard main page with SSR data fetching in frontend/app/(protected)/dashboard/page.tsx
-- [ ] T030 [US1] Add loading state in frontend/app/(protected)/dashboard/loading.tsx
-- [ ] T031 [US1] Add error boundary in frontend/app/(protected)/dashboard/error.tsx with retry button (implements FR-021)
+- [X] T025 [P] [US1] Implement学习天数计算逻辑 in backend/internal/service/progress_service.go
+- [X] T026 [P] [US1] Implement Dashboard stats calculation in backend/internal/service/progress_service.go
+- [X] T027 [P] [US1] Create WelcomeHeader component in frontend/app/(protected)/dashboard/components/WelcomeHeader.tsx
+- [X] T028 [P] [US1] Create StatsCards component in frontend/app/(protected)/dashboard/components/StatsCards.tsx
+- [X] T029 [US1] Create Dashboard main page with SSR data fetching in frontend/app/(protected)/dashboard/page.tsx
+- [X] T030 [US1] Add loading state in frontend/app/(protected)/dashboard/loading.tsx
+- [X] T031 [US1] Add error boundary in frontend/app/(protected)/dashboard/error.tsx with retry button (implements FR-021)
 - [ ] T031-Test [US1] Test error handling: simulate API failure, verify error message display, verify retry button triggers re-fetch
-- [ ] T032 [US1] Integrate WelcomeHeader and StatsCards into Dashboard page
-- [ ] T033 [US1] Add WebSocket event handling for progress updates in Dashboard page
+- [X] T032 [US1] Integrate WelcomeHeader and StatsCards into Dashboard page
+- [X] T033 [US1] Add WebSocket event handling for progress updates in Dashboard page
 
 **Checkpoint**: At this point, User Story 1 should be fully functional and testable independently
 
