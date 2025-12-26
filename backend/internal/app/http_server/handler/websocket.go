@@ -4,18 +4,17 @@ import (
 	"log"
 	"net/http"
 
-	"go-study2/internal/app/http_server/middleware"
 	"go-study2/internal/websocket"
 
-	"github.com/gogf/gf/v2/frame/g"
-	"github.com/gorilla/websocket"
+	"github.com/gogf/gf/v2/net/ghttp"
+	gorillawebsocket "github.com/gorilla/websocket"
 )
 
 /**
  * WebSocket 升级器
  * 将 HTTP 连接升级为 WebSocket 连接
  */
-var upgrader = websocket.Upgrader{
+var upgrader = gorillawebsocket.Upgrader{
 	// 检查请求来源，生产环境应该验证 Origin
 	CheckOrigin: func(r *http.Request) bool {
 		// 开发环境允许所有来源
@@ -60,12 +59,13 @@ func GetWebSocketHub() *websocket.Hub {
  */
 func (h *Handler) HandleWebSocket(r *ghttp.Request) {
 	// 从上下文中获取用户 ID（由 Auth 中间件设置）
-	userID, exists := r.GetCtxVar("user_id").(uint)
-	if !exists {
+	userIDInt64 := r.GetCtxVar("user_id").Int64()
+	if userIDInt64 <= 0 {
 		log.Println("[WebSocket] 未认证的连接请求")
 		r.Response.WriteStatus(http.StatusUnauthorized)
 		return
 	}
+	userID := uint(userIDInt64)
 
 	// 清除响应缓冲区（防止 Upgrade 失败时发送 JSON 响应）
 	r.Response.ClearBuffer()
@@ -90,4 +90,3 @@ func (h *Handler) HandleWebSocket(r *ghttp.Request) {
 
 	log.Printf("[WebSocket] 新连接已建立: 用户ID=%d", userID)
 }
-

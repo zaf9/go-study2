@@ -8,6 +8,7 @@ import (
 	"path/filepath"
 	"strings"
 
+	"go-study2/internal/app/http_server/handler"
 	"go-study2/internal/app/http_server/middleware"
 	"go-study2/internal/config"
 	"go-study2/internal/domain/user"
@@ -43,7 +44,7 @@ func NewServer(cfg *config.Config, names ...string) (*ghttp.Server, error) {
 	RegisterRoutes(s)
 
 	// 初始化 WebSocket Hub
-	InitWebSocketHub()
+	handler.InitWebSocketHub()
 
 	// 启动前确保默认管理员存在（幂等）
 	if err := ensureDefaultAdmin(cfg); err != nil {

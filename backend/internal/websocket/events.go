@@ -87,4 +87,3 @@ func NewQuizCompletedMessage(data QuizCompletedEventData) WebSocketMessage {
 		Data:  data,
 	}
 }
-

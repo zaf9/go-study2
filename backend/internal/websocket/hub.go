@@ -207,4 +207,3 @@ func (h *Hub) GetConnectionCount(userID uint) int {
 	defer h.mu.RUnlock()
 	return len(h.clients[userID])
 }
-

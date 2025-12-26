@@ -59,9 +59,9 @@ const maxMessageSize = 512
 func NewClient(hub *Hub, userID uint, conn *websocket.Conn) *Client {
 	return &Client{
 		hub:    hub,
-		UserID:  userID,
-		conn:    conn,
-		send:    make(chan []byte, 256),
+		UserID: userID,
+		conn:   conn,
+		send:   make(chan []byte, 256),
 	}
 }
 
@@ -193,4 +193,3 @@ func UnmarshalWebSocketMessage(data []byte) (WebSocketMessage, error) {
 	err := json.Unmarshal(data, &message)
 	return message, err
 }
-

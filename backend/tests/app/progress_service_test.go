@@ -97,6 +97,102 @@ func TestCalculator_StatusAndOverall(t *testing.T) {
 	}
 }
 
+// TestProgressService_StudyDaysCalculation 测试学习天数计算逻辑
+// 验证不同日期的学习记录能正确去重计算学习天数
+func TestProgressService_StudyDaysCalculation(t *testing.T) {
+	repo := newMemoryProgressRepo()
+	calc := progapp.NewCalculator(map[string]int{"variables": 30, "constants": 20}, nil)
+	service := progapp.NewService(repo, calc)
+
+	// 准备不同日期的学习记录
+	now := time.Now()
+	day1 := now.AddDate(0, 0, -5) // 5天前
+	day2 := now.AddDate(0, 0, -3) // 3天前
+	day3 := now.AddDate(0, 0, -1) // 1天前
+	day4 := now                    // 今天
+
+	// 同一天的多条记录应只计算为1天
+	if err := repo.CreateOrUpdate(ctx(), &progressdom.LearningProgress{
+		UserID:       1,
+		Topic:         "variables",
+		Chapter:       "storage",
+		Status:        progressdom.StatusInProgress,
+		ReadDuration:  120,
+		LastVisitAt:   day1,
+	}); err != nil {
+		t.Fatalf("准备第1天记录1失败: %v", err)
+	}
+	if err := repo.CreateOrUpdate(ctx(), &progressdom.LearningProgress{
+		UserID:       1,
+		Topic:         "variables",
+		Chapter:       "pointer",
+		Status:        progressdom.StatusInProgress,
+		ReadDuration:  60,
+		LastVisitAt:   day1.Add(2 * time.Hour), // 同一天的不同时间
+	}); err != nil {
+		t.Fatalf("准备第1天记录2失败: %v", err)
+	}
+
+	// 第2天的记录
+	if err := repo.CreateOrUpdate(ctx(), &progressdom.LearningProgress{
+		UserID:       1,
+		Topic:         "constants",
+		Chapter:       "iota",
+		Status:        progressdom.StatusInProgress,
+		ReadDuration:  90,
+		LastVisitAt:   day2,
+	}); err != nil {
+		t.Fatalf("准备第2天记录失败: %v", err)
+	}
+
+	// 第3天的记录
+	if err := repo.CreateOrUpdate(ctx(), &progressdom.LearningProgress{
+		UserID:       1,
+		Topic:         "variables",
+		Chapter:       "static",
+		Status:        progressdom.StatusCompleted,
+		ReadDuration:  300,
+		LastVisitAt:   day3,
+	}); err != nil {
+		t.Fatalf("准备第3天记录失败: %v", err)
+	}
+
+	// 第4天的记录
+	if err := repo.CreateOrUpdate(ctx(), &progressdom.LearningProgress{
+		UserID:       1,
+		Topic:         "constants",
+		Chapter:       "untyped",
+		Status:        progressdom.StatusInProgress,
+		ReadDuration:  150,
+		LastVisitAt:   day4,
+	}); err != nil {
+		t.Fatalf("准备第4天记录失败: %v", err)
+	}
+
+	// 获取整体进度并验证学习天数
+	overall, _, err := service.GetOverallProgress(ctx(), 1)
+	if err != nil {
+		t.Fatalf("获取汇总失败: %v", err)
+	}
+
+	// 应该有4个不同的学习天数（day1算1天，day2、day3、day4各1天）
+	expectedDays := 4
+	if overall.StudyDays != expectedDays {
+		t.Fatalf("学习天数应为 %d，得到 %d。记录日期: day1=%v, day2=%v, day3=%v, day4=%v",
+			expectedDays, overall.StudyDays, day1.Format("2006-01-02"), day2.Format("2006-01-02"),
+			day3.Format("2006-01-02"), day4.Format("2006-01-02"))
+	}
+
+	// 验证无学习记录时学习天数为0
+	overallEmpty, _, err := service.GetOverallProgress(ctx(), 999)
+	if err != nil {
+		t.Fatalf("获取空用户汇总失败: %v", err)
+	}
+	if overallEmpty.StudyDays != 0 {
+		t.Fatalf("无学习记录时学习天数应为 0，得到 %d", overallEmpty.StudyDays)
+	}
+}
+
 func TestProgressService_OverallAndNext(t *testing.T) {
 	repo := newMemoryProgressRepo()
 	calc := progapp.NewCalculator(map[string]int{"variables": 40, "constants": 20}, nil)
