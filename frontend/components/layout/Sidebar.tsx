@@ -23,6 +23,7 @@ export default function Sidebar({ collapsed, onCollapse }: SidebarProps) {
 
   const selectedKeys = useMemo(() => {
     if (!pathname) return [];
+    if (pathname.startsWith("/dashboard")) return ["/dashboard"];
     if (pathname.startsWith("/topics")) return ["/topics"];
     if (pathname.startsWith("/progress")) return ["/progress"];
     if (pathname.startsWith("/quiz")) return ["/quiz"];
@@ -30,6 +31,12 @@ export default function Sidebar({ collapsed, onCollapse }: SidebarProps) {
   }, [pathname]);
 
   const items = [
+    {
+      key: "/dashboard",
+      icon: <HomeOutlined />,
+      label: "首页",
+      onClick: () => router.push("/dashboard"),
+    },
     {
       key: "/topics",
       icon: <BookOutlined />,
@@ -48,12 +55,6 @@ export default function Sidebar({ collapsed, onCollapse }: SidebarProps) {
       label: "章节测验",
       // 导航到测验总览页，而不是固定到某个 topic（此前误指向 /quiz/variables）
       onClick: () => router.push("/quiz"),
-    },
-    {
-      key: "/",
-      icon: <HomeOutlined />,
-      label: "首页",
-      onClick: () => router.push("/topics"),
     },
   ];
 

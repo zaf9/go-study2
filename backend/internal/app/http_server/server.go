@@ -42,6 +42,9 @@ func NewServer(cfg *config.Config, names ...string) (*ghttp.Server, error) {
 	// 注册路由
 	RegisterRoutes(s)
 
+	// 初始化 WebSocket Hub
+	InitWebSocketHub()
+
 	// 启动前确保默认管理员存在（幂等）
 	if err := ensureDefaultAdmin(cfg); err != nil {
 		return nil, err

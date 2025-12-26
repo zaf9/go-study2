@@ -52,17 +52,17 @@
 
 **⚠️ CRITICAL**: No user story work can begin until this phase is complete
 
-- [ ] T010 Implement WebSocket Hub in backend/internal/websocket/hub.go (manages user connection pool, supports broadcasting by user_id, handles connection lifecycle)
-- [ ] T011 Implement WebSocket Client in backend/internal/websocket/client.go (handles individual client connection, message read/write, ping/pong heartbeat)
-- [ ] T012 Implement WebSocket events definition in backend/internal/websocket/events.go (defines progress_updated and quiz_completed event structures, see contracts/websocket-events.md)
-- [ ] T013 Add WebSocket route in backend/api/v1/websocket.go (handles WebSocket upgrade, authentication verification, client registration)
-- [ ] T014 [P] Implement WebSocket Provider in frontend/components/providers/WebSocketProvider.tsx
-- [ ] T015 [P] Add TypeScript types for Dashboard data in frontend/types/dashboard.ts
-- [ ] T016 [P] Implement time formatting utility in frontend/lib/utils/time.ts
-- [ ] T017 [P] Implement progress calculation utility in frontend/lib/utils/progress.ts
-- [ ] T018 [P] Implement WebSocket client wrapper in frontend/lib/websocket.ts
-- [ ] T019 Update root page to redirect to /dashboard in frontend/app/page.tsx
-- [ ] T020 Update Sidebar component to link "首页" to /dashboard in frontend/components/layout/Sidebar.tsx
+- [X] T010 Implement WebSocket Hub in backend/internal/websocket/hub.go (manages user connection pool, supports broadcasting by user_id, handles connection lifecycle)
+- [X] T011 Implement WebSocket Client in backend/internal/websocket/client.go (handles individual client connection, message read/write, ping/pong heartbeat)
+- [X] T012 Implement WebSocket events definition in backend/internal/websocket/events.go (defines progress_updated and quiz_completed event structures, see contracts/websocket-events.md)
+- [X] T013 Add WebSocket route in backend/api/v1/websocket.go (handles WebSocket upgrade, authentication verification, client registration)
+- [X] T014 [P] Implement WebSocket Provider in frontend/components/providers/WebSocketProvider.tsx
+- [X] T015 [P] Add TypeScript types for Dashboard data in frontend/types/dashboard.ts
+- [X] T016 [P] Implement time formatting utility in frontend/lib/utils/time.ts
+- [X] T017 [P] Implement progress calculation utility in frontend/lib/utils/progress.ts
+- [X] T018 [P] Implement WebSocket client wrapper in frontend/lib/websocket.ts
+- [X] T019 Update root page to redirect to /dashboard in frontend/app/page.tsx
+- [X] T020 Update Sidebar component to link "首页" to /dashboard in frontend/components/layout/Sidebar.tsx
 
 **Checkpoint**: Foundation ready - user story implementation can now begin in parallel
 

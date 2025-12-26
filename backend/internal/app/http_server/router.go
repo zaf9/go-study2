@@ -40,6 +40,9 @@ func RegisterRoutes(s *ghttp.Server) {
 			authGroup.POST("/quiz/submit", h.SubmitQuiz)
 			authGroup.GET("/quiz/history", h.GetQuizHistory)
 			authGroup.GET("/quiz/history/:sessionId", h.GetQuizReview)
+
+			// WebSocket
+			authGroup.GET("/ws/dashboard", h.HandleWebSocket)
 		})
 
 		// 主题列表

@@ -14,8 +14,20 @@ import (
 
 // Auth 验证 Bearer Token 的中间件。
 func Auth(r *ghttp.Request) {
+	// 优先从 Authorization header 获取 token
+	tokenString := ""
+
 	authHeader := r.Header.Get("Authorization")
-	if authHeader == "" || !strings.HasPrefix(authHeader, "Bearer ") {
+	if authHeader != "" && strings.HasPrefix(authHeader, "Bearer ") {
+		tokenString = strings.TrimPrefix(authHeader, "Bearer ")
+	}
+
+	// 如果 header 中没有 token，尝试从 URL 参数获取（用于 WebSocket）
+	if tokenString == "" {
+		tokenString = r.Get("token").String()
+	}
+
+	if tokenString == "" {
 		r.Response.WriteStatus(http.StatusUnauthorized)
 		r.Response.ClearBuffer()
 		r.Response.WriteJson(g.Map{
@@ -27,7 +39,6 @@ func Auth(r *ghttp.Request) {
 		return
 	}
 
-	tokenString := strings.TrimPrefix(authHeader, "Bearer ")
 	claims, err := appjwt.VerifyToken(tokenString)
 	if err != nil {
 		r.Response.WriteStatus(http.StatusUnauthorized)
