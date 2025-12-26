@@ -33,16 +33,16 @@
 
 **Purpose**: Project initialization and basic structure
 
-- [ ] T000 Confirm GoFrame v2.9.5 WebSocket support - check documentation and test basic WebSocket endpoint; if not available, proceed with T001
-- [ ] T001 [Conditional] Add gorilla/websocket dependency in backend/go.mod (only if T000 confirms GoFrame lacks WebSocket support)
-- [ ] T002 [P] Create frontend Dashboard directory structure: frontend/app/(protected)/dashboard/
-- [ ] T003 [P] Create frontend Dashboard components directory: frontend/app/(protected)/dashboard/components/
-- [ ] T004 [P] Create frontend types file: frontend/types/dashboard.ts
-- [ ] T005 [P] Create frontend WebSocket utilities: frontend/lib/websocket.ts
-- [ ] T006 [P] Create frontend time formatting utilities: frontend/lib/utils/time.ts
-- [ ] T007 [P] Create frontend progress calculation utilities: frontend/lib/utils/progress.ts
-- [ ] T008 [P] Create backend WebSocket directory: backend/internal/websocket/
-- [ ] T009 [P] Create backend test directories: backend/tests/controller/, backend/tests/websocket/
+- [X] T000 Confirm GoFrame v2.9.5 WebSocket support - check documentation and test basic WebSocket endpoint; if not available, proceed with T001
+- [X] T001 [Conditional] Add gorilla/websocket dependency in backend/go.mod (only if T000 confirms GoFrame lacks WebSocket support)
+- [X] T002 [P] Create frontend Dashboard directory structure: frontend/app/(protected)/dashboard/
+- [X] T003 [P] Create frontend Dashboard components directory: frontend/app/(protected)/dashboard/components/
+- [X] T004 [P] Create frontend types file: frontend/types/dashboard.ts
+- [X] T005 [P] Create frontend WebSocket utilities: frontend/lib/websocket.ts
+- [X] T006 [P] Create frontend time formatting utilities: frontend/lib/utils/time.ts
+- [X] T007 [P] Create frontend progress calculation utilities: frontend/lib/utils/progress.ts
+- [X] T008 [P] Create backend WebSocket directory: backend/internal/websocket/
+- [X] T009 [P] Create backend test directories: backend/tests/controller/, backend/tests/websocket/
 
 ---
 
