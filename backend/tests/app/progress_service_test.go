@@ -339,6 +339,124 @@ func TestProgressService_GetLastLearningRecord(t *testing.T) {
 	}
 }
 
+// TestProgressService_GetTopicProgressSummary 测试获取主题进度汇总功能
+func TestProgressService_GetTopicProgressSummary(t *testing.T) {
+	repo := newMemoryProgressRepo()
+	calc := progapp.NewCalculator(
+		map[string]int{"variables": 30, "constants": 20, "lexical_elements": 25, "types": 25},
+		map[string]int{"variables": 2, "constants": 3},
+	)
+	service := progapp.NewService(repo, calc)
+
+	// 准备测试数据：不同主题的学习记录
+	now := time.Now()
+
+	// 主题1：variables - 完成1个章节，总共2个章节（50%）
+	if err := repo.CreateOrUpdate(ctx(), &progressdom.LearningProgress{
+		UserID:       1,
+		Topic:         "variables",
+		Chapter:       "storage",
+		Status:       progressdom.StatusCompleted,
+		ReadDuration:  600,
+		ScrollProgress: 100,
+		QuizPassed:    true,
+		LastVisitAt:   now,
+	}); err != nil {
+		t.Fatalf("准备 variables 记录失败: %v", err)
+	}
+
+	// 主题2：constants - 完成2个章节，总共3个章节（66.7%）
+	if err := repo.CreateOrUpdate(ctx(), &progressdom.LearningProgress{
+		UserID:       1,
+		Topic:         "constants",
+		Chapter:       "iota",
+		Status:       progressdom.StatusCompleted,
+		ReadDuration:  300,
+		ScrollProgress: 100,
+		QuizPassed:    true,
+		LastVisitAt:   now,
+	}); err != nil {
+		t.Fatalf("准备 constants 记录1失败: %v", err)
+	}
+	if err := repo.CreateOrUpdate(ctx(), &progressdom.LearningProgress{
+		UserID:       1,
+		Topic:         "constants",
+		Chapter:       "boolean",
+		Status:       progressdom.StatusCompleted,
+		ReadDuration:  200,
+		ScrollProgress: 100,
+		QuizPassed:    true,
+		LastVisitAt:   now,
+	}); err != nil {
+		t.Fatalf("准备 constants 记录2失败: %v", err)
+	}
+
+	// 主题3：lexical_elements - 未开始（0%）
+
+	// 获取主题进度汇总
+	summaries, err := service.GetTopicProgressSummary(ctx(), 1)
+	if err != nil {
+		t.Fatalf("获取主题进度汇总失败: %v", err)
+	}
+
+	if len(summaries) == 0 {
+		t.Fatalf("应返回至少一个主题的进度汇总")
+	}
+
+	// 验证 variables 主题的进度
+	var variablesSummary *progapp.TopicProgressSummary
+	for i := range summaries {
+		if summaries[i].TopicID == "variables" {
+			variablesSummary = &summaries[i]
+			break
+		}
+	}
+	if variablesSummary == nil {
+		t.Fatalf("应包含 variables 主题的进度汇总")
+	}
+	if variablesSummary.CompletedChapters != 1 {
+		t.Fatalf("variables 主题完成章节数应为 1，得到 %d", variablesSummary.CompletedChapters)
+	}
+	if variablesSummary.TotalChapters != 2 {
+		t.Fatalf("variables 主题总章节数应为 2，得到 %d", variablesSummary.TotalChapters)
+	}
+	if variablesSummary.Percentage != 50.0 {
+		t.Fatalf("variables 主题完成百分比应为 50.0，得到 %.1f", variablesSummary.Percentage)
+	}
+
+	// 验证 constants 主题的进度
+	var constantsSummary *progapp.TopicProgressSummary
+	for i := range summaries {
+		if summaries[i].TopicID == "constants" {
+			constantsSummary = &summaries[i]
+			break
+		}
+	}
+	if constantsSummary == nil {
+		t.Fatalf("应包含 constants 主题的进度汇总")
+	}
+	if constantsSummary.CompletedChapters != 2 {
+		t.Fatalf("constants 主题完成章节数应为 2，得到 %d", constantsSummary.CompletedChapters)
+	}
+	if constantsSummary.TotalChapters != 3 {
+		t.Fatalf("constants 主题总章节数应为 3，得到 %d", constantsSummary.TotalChapters)
+	}
+	// 验证百分比（66.7% 四舍五入到一位小数）
+	expectedPercentage := 66.7
+	if constantsSummary.Percentage < expectedPercentage-0.1 || constantsSummary.Percentage > expectedPercentage+0.1 {
+		t.Fatalf("constants 主题完成百分比应为约 %.1f，得到 %.1f", expectedPercentage, constantsSummary.Percentage)
+	}
+
+	// 验证无学习记录时也返回所有主题（进度为0）
+	summariesEmpty, err := service.GetTopicProgressSummary(ctx(), 999)
+	if err != nil {
+		t.Fatalf("无学习记录时不应返回错误: %v", err)
+	}
+	if len(summariesEmpty) == 0 {
+		t.Fatalf("无学习记录时也应返回所有主题的进度汇总（进度为0）")
+	}
+}
+
 // ctx 返回带超时的上下文，避免测试泄漏。
 func ctx() context.Context {
 	return context.Background()

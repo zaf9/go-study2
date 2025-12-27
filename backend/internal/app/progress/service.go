@@ -56,6 +56,16 @@ type TopicProgress struct {
 	LastVisitAt       time.Time `json:"lastVisitAt"`
 }
 
+// TopicProgressSummary 表示主题进度汇总（用于 Dashboard）。
+type TopicProgressSummary struct {
+	TopicID           string  `json:"topic_id"`
+	TopicName         string  `json:"topic_name"`
+	DisplayName       string  `json:"display_name"`
+	CompletedChapters int     `json:"completed_chapters"`
+	TotalChapters     int     `json:"total_chapters"`
+	Percentage        float64 `json:"percentage"`
+}
+
 // NextChapter 表示推荐继续学习的章节。
 type NextChapter struct {
 	Topic    string `json:"topic"`
@@ -433,6 +443,61 @@ func (s *Service) sortedTopicIDs() []string {
 		return wi > wj
 	})
 	return ids
+}
+
+// GetTopicProgressSummary 返回所有主题的进度汇总列表。
+func (s *Service) GetTopicProgressSummary(ctx context.Context, userID int64) ([]TopicProgressSummary, error) {
+	if userID <= 0 {
+		return nil, errors.New("用户信息缺失")
+	}
+
+	// 获取用户的整体进度（包含所有主题的进度信息）
+	_, topics, err := s.GetOverallProgress(ctx, userID)
+	if err != nil {
+		return nil, err
+	}
+
+	// 获取所有支持的主题 ID（确保即使没有学习记录的主题也显示）
+	allTopicIDs := s.sortedTopicIDs()
+	topicMap := make(map[string]TopicProgress)
+	for _, tp := range topics {
+		topicMap[tp.ID] = tp
+	}
+
+	// 构建主题进度汇总列表
+	summaries := make([]TopicProgressSummary, 0, len(allTopicIDs))
+	for _, topicID := range allTopicIDs {
+		tp, exists := topicMap[topicID]
+		if !exists {
+			// 如果主题没有学习记录，创建默认的汇总
+			tp = TopicProgress{
+				Name:          topicName(topicID),
+				ID:            topicID,
+				Weight:        s.calc.topicWeight(topicID),
+				TotalChapters: s.calc.topicTotal(topicID),
+				Progress:      0,
+				CompletedChapters: 0,
+			}
+		}
+
+		// 计算百分比（保留一位小数）
+		percentage := 0.0
+		if tp.TotalChapters > 0 {
+			percentage = float64(tp.CompletedChapters) / float64(tp.TotalChapters) * 100
+			percentage = float64(int(percentage*10+0.5)) / 10 // 四舍五入到一位小数
+		}
+
+		summaries = append(summaries, TopicProgressSummary{
+			TopicID:           tp.ID,
+			TopicName:         tp.Name,
+			DisplayName:       tp.Name,
+			CompletedChapters: tp.CompletedChapters,
+			TotalChapters:     tp.TotalChapters,
+			Percentage:        percentage,
+		})
+	}
+
+	return summaries, nil
 }
 
 // GetLastLearningRecord 返回用户最后一次学习的记录。

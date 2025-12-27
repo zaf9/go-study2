@@ -5,8 +5,9 @@ import { Result } from 'antd'
 import { WelcomeHeader } from './components/WelcomeHeader'
 import { StatsCards } from './components/StatsCards'
 import { QuickContinue } from './components/QuickContinue'
-import { fetchDashboardStats, fetchLastLearning } from '@/lib/dashboard'
-import type { DashboardStats, ProgressUpdatedEventData, LastLearningRecord } from '@/types/dashboard'
+import { TopicProgress } from './components/TopicProgress'
+import { fetchDashboardStats, fetchLastLearning, fetchTopicProgress } from '@/lib/dashboard'
+import type { DashboardStats, ProgressUpdatedEventData, LastLearningRecord, TopicProgressSummary } from '@/types/dashboard'
 import { useAuth } from '@/hooks/useAuth'
 import { useWebSocket } from '@/components/providers/WebSocketProvider'
 
@@ -15,6 +16,7 @@ export default function DashboardPage() {
 	const { isConnected: wsConnected } = useWebSocket()
 	const [stats, setStats] = useState<DashboardStats | null>(null)
 	const [lastLearning, setLastLearning] = useState<LastLearningRecord | null>(null)
+	const [topicProgress, setTopicProgress] = useState<TopicProgressSummary[]>([])
 	const [loading, setLoading] = useState(true)
 	const [error, setError] = useState<Error | null>(null)
 
@@ -23,38 +25,43 @@ export default function DashboardPage() {
 			return
 		}
 
-		async function loadData() {
+		async function loadData(skipLoading = false) {
 			try {
-				setLoading(true)
+				if (!skipLoading) {
+					setLoading(true)
+				}
 				setError(null)
 
-				// 并行加载统计数据和最后学习记录
-				const [statsData, lastLearningData] = await Promise.all([
+				// 并行加载统计数据、最后学习记录和主题进度
+				const [statsData, lastLearningData, topicProgressData] = await Promise.all([
 					fetchDashboardStats(),
 					fetchLastLearning().catch(() => null), // 如果获取失败，返回 null
+					fetchTopicProgress().catch(() => []), // 如果获取失败，返回空数组
 				])
 
 				setStats(statsData)
 				setLastLearning(lastLearningData)
+				setTopicProgress(topicProgressData)
 			} catch (err) {
 				console.error('加载 Dashboard 数据失败:', err)
 				setError(err as Error)
 			} finally {
-				setLoading(false)
+				if (!skipLoading) {
+					setLoading(false)
+				}
 			}
 		}
 
 		loadData()
-	}, [user?.id])
 
-	useEffect(() => {
 		const handleMessage = (event: MessageEvent) => {
 			try {
 				const message = JSON.parse(event.data) as { event: string; data: ProgressUpdatedEventData }
 				
-				if (message.event === 'progress_updated' && stats) {
+				if (message.event === 'progress_updated') {
 					console.log('[Dashboard] 收到进度更新:', message.data)
-					loadStats()
+					// 重新加载所有数据以更新主题进度（跳过 loading 状态）
+					loadData(true)
 				}
 			} catch (err) {
 				console.error('[Dashboard] 解析 WebSocket 消息失败:', err)
@@ -66,7 +73,7 @@ export default function DashboardPage() {
 		return () => {
 			window.removeEventListener('websocket-message', handleMessage as EventListener)
 		}
-	}, [stats])
+	}, [user?.id])
 
 	if (loading) {
 		return (
@@ -129,6 +136,7 @@ export default function DashboardPage() {
 					weeklyActivity={stats.weeklyActivity}
 				/>
 			)}
+			<TopicProgress topics={topicProgress} />
 		</div>
 	)
 }

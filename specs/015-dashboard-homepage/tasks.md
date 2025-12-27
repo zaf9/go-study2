@@ -134,16 +134,16 @@
 
 ### Tests for User Story 3 (MANDATORY) ⚠️
 
-- [ ] T044 [P] [US3] Unit test for TopicProgress component in frontend/__tests__/dashboard/TopicProgress.test.tsx
-- [ ] T045 [P] [US3] Backend unit test for GetTopicProgressSummary in backend/tests/service/progress_service_test.go
+- [X] T044 [P] [US3] Unit test for TopicProgress component in frontend/__tests__/dashboard/TopicProgress.test.tsx
+- [X] T045 [P] [US3] Backend unit test for GetTopicProgressSummary in backend/tests/service/progress_service_test.go
 
 ### Implementation for User Story 3
 
-- [ ] T046 [P] [US3] Implement GetTopicProgressSummary method in backend/internal/service/progress_service.go
-- [ ] T047 [P] [US3] Create TopicProgress component in frontend/app/(protected)/dashboard/components/TopicProgress.tsx
-- [ ] T048 [US3] Integrate TopicProgress component into Dashboard page
-- [ ] T049 [US3] Add click handler to navigate to topic detail page
-- [ ] T050 [US3] Handle WebSocket progress_updated event to update topic progress
+- [X] T046 [P] [US3] Implement GetTopicProgressSummary method in backend/internal/service/progress_service.go
+- [X] T047 [P] [US3] Create TopicProgress component in frontend/app/(protected)/dashboard/components/TopicProgress.tsx
+- [X] T048 [US3] Integrate TopicProgress component into Dashboard page
+- [X] T049 [US3] Add click handler to navigate to topic detail page
+- [X] T050 [US3] Handle WebSocket progress_updated event to update topic progress
 
 **Checkpoint**: User Stories 1, 2, AND 3 should all work independently
 
