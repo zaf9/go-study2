@@ -119,3 +119,26 @@ func (r *ProgressRepository) GetByTopic(ctx context.Context, userID int64, topic
 	}
 	return items, nil
 }
+
+// GetLastLearning 返回用户最后一次学习的记录（按 last_visit_at 降序排序的第一条）。
+func (r *ProgressRepository) GetLastLearning(ctx context.Context, userID int64) (*progress.LearningProgress, error) {
+	one, err := r.db.Model("learning_progress").
+		Where("user_id", userID).
+		Where("last_visit_at IS NOT NULL").
+		OrderDesc("last_visit_at").
+		One(ctx)
+	if err != nil {
+		if errors.Is(err, sql.ErrNoRows) {
+			return nil, nil
+		}
+		return nil, err
+	}
+	if one.IsEmpty() {
+		return nil, nil
+	}
+	var item progress.LearningProgress
+	if err := one.Struct(&item); err != nil {
+		return nil, err
+	}
+	return &item, nil
+}

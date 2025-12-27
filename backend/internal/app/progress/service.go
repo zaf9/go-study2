@@ -64,6 +64,17 @@ type NextChapter struct {
 	Progress int    `json:"progress"`
 }
 
+// LastLearningRecord 表示用户最后一次学习的记录。
+type LastLearningRecord struct {
+	TopicID           string `json:"topic_id"`
+	TopicName         string `json:"topic_name"`
+	TopicDisplayName  string `json:"topic_display_name"`
+	ChapterID         string `json:"chapter_id"`
+	ChapterName       string `json:"chapter_name"`
+	ChapterDisplayName string `json:"chapter_display_name"`
+	LastVisitedAt     string `json:"last_visited_at"`
+}
+
 // Service 提供进度写入与查询。
 type Service struct {
 	repo progressdom.ProgressRepository
@@ -422,6 +433,48 @@ func (s *Service) sortedTopicIDs() []string {
 		return wi > wj
 	})
 	return ids
+}
+
+// GetLastLearningRecord 返回用户最后一次学习的记录。
+func (s *Service) GetLastLearningRecord(ctx context.Context, userID int64) (*LastLearningRecord, error) {
+	if userID <= 0 {
+		return nil, errors.New("用户信息缺失")
+	}
+
+	progress, err := s.repo.GetLastLearning(ctx, userID)
+	if err != nil {
+		return nil, err
+	}
+	if progress == nil {
+		return nil, nil
+	}
+
+	// 获取主题显示名称
+	topicDisplayName := topicName(progress.Topic)
+	topicNameEn := topicDisplayName
+	if progress.Topic == "lexical_elements" {
+		topicNameEn = "Lexical Elements"
+	} else if progress.Topic == "constants" {
+		topicNameEn = "Constants"
+	} else if progress.Topic == "variables" {
+		topicNameEn = "Variables"
+	} else if progress.Topic == "types" {
+		topicNameEn = "Types"
+	}
+
+	// 获取章节显示名称
+	chapterDisplayName := chapterDisplayName(progress.Chapter)
+	chapterNameEn := chapterDisplayName
+
+	return &LastLearningRecord{
+		TopicID:           progress.Topic,
+		TopicName:         topicNameEn,
+		TopicDisplayName:  topicDisplayName,
+		ChapterID:         progress.Chapter,
+		ChapterName:       chapterNameEn,
+		ChapterDisplayName: chapterDisplayName,
+		LastVisitedAt:     progress.LastVisitAt.Format(time.RFC3339),
+	}, nil
 }
 
 // topicOrderIndex 返回主题在默认顺序中的索引，未命中时追加在末尾。

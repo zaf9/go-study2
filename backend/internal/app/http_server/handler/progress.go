@@ -71,6 +71,27 @@ func (h *Handler) GetTopicProgress(r *ghttp.Request) {
 	})
 }
 
+// GetLastLearning 返回用户最后一次学习的记录。
+func (h *Handler) GetLastLearning(r *ghttp.Request) {
+	svc, ok := h.getProgressService(r)
+	if !ok {
+		return
+	}
+	userID := r.GetCtxVar("user_id").Int64()
+	if userID <= 0 {
+		writeError(r, http.StatusUnauthorized, 40001, "认证信息缺失")
+		return
+	}
+
+	lastLearning, err := svc.GetLastLearningRecord(r.GetCtx(), userID)
+	if err != nil {
+		writeError(r, http.StatusInternalServerError, 50000, "服务器内部错误")
+		return
+	}
+
+	writeSuccess(r, "success", lastLearning)
+}
+
 // SaveProgress 记录或更新学习进度。
 func (h *Handler) SaveProgress(r *ghttp.Request) {
 	svc, ok := h.getProgressService(r)

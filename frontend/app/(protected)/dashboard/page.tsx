@@ -4,8 +4,9 @@ import { useEffect, useState } from 'react'
 import { Result } from 'antd'
 import { WelcomeHeader } from './components/WelcomeHeader'
 import { StatsCards } from './components/StatsCards'
-import { fetchDashboardStats } from '@/lib/dashboard'
-import type { DashboardStats, ProgressUpdatedEventData } from '@/types/dashboard'
+import { QuickContinue } from './components/QuickContinue'
+import { fetchDashboardStats, fetchLastLearning } from '@/lib/dashboard'
+import type { DashboardStats, ProgressUpdatedEventData, LastLearningRecord } from '@/types/dashboard'
 import { useAuth } from '@/hooks/useAuth'
 import { useWebSocket } from '@/components/providers/WebSocketProvider'
 
@@ -13,6 +14,7 @@ export default function DashboardPage() {
 	const { user } = useAuth()
 	const { isConnected: wsConnected } = useWebSocket()
 	const [stats, setStats] = useState<DashboardStats | null>(null)
+	const [lastLearning, setLastLearning] = useState<LastLearningRecord | null>(null)
 	const [loading, setLoading] = useState(true)
 	const [error, setError] = useState<Error | null>(null)
 
@@ -21,13 +23,19 @@ export default function DashboardPage() {
 			return
 		}
 
-		async function loadStats() {
+		async function loadData() {
 			try {
 				setLoading(true)
 				setError(null)
 
-				const data = await fetchDashboardStats()
-				setStats(data)
+				// 并行加载统计数据和最后学习记录
+				const [statsData, lastLearningData] = await Promise.all([
+					fetchDashboardStats(),
+					fetchLastLearning().catch(() => null), // 如果获取失败，返回 null
+				])
+
+				setStats(statsData)
+				setLastLearning(lastLearningData)
 			} catch (err) {
 				console.error('加载 Dashboard 数据失败:', err)
 				setError(err as Error)
@@ -36,7 +44,7 @@ export default function DashboardPage() {
 			}
 		}
 
-		loadStats()
+		loadData()
 	}, [user?.id])
 
 	useEffect(() => {
@@ -109,16 +117,17 @@ export default function DashboardPage() {
 	return (
 		<div className="p-6">
 			<WelcomeHeader
-						username={user.username || '用户'}
-						studyDays={stats?.studyDays || 0}
-				/>
+				username={user.username || '用户'}
+				studyDays={stats?.studyDays || 0}
+			/>
+			<QuickContinue lastLearning={lastLearning} />
 			{stats && (
-					<StatsCards
-							overallProgress={stats.progressPercentage}
-							completedChapters={stats.completedChapters}
-							totalChapters={stats.totalChapters}
-							weeklyActivity={stats.weeklyActivity}
-					/>
+				<StatsCards
+					overallProgress={stats.progressPercentage}
+					completedChapters={stats.completedChapters}
+					totalChapters={stats.totalChapters}
+					weeklyActivity={stats.weeklyActivity}
+				/>
 			)}
 		</div>
 	)

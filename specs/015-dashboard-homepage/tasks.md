@@ -108,19 +108,19 @@
 
 ### Tests for User Story 2 (MANDATORY) ⚠️
 
-- [ ] T034 [P] [US2] Unit test for QuickContinue component in frontend/__tests__/dashboard/QuickContinue.test.tsx
-- [ ] T035 [P] [US2] Backend unit test for /api/v1/progress/last endpoint in backend/tests/controller/progress_controller_test.go
-- [ ] T036 [P] [US2] Backend integration test for GetLastLearningRecord in backend/tests/service/progress_service_test.go
+- [X] T034 [P] [US2] Unit test for QuickContinue component in frontend/__tests__/dashboard/QuickContinue.test.tsx
+- [X] T035 [P] [US2] Backend unit test for /api/v1/progress/last endpoint in backend/tests/controller/progress_controller_test.go
+- [X] T036 [P] [US2] Backend integration test for GetLastLearningRecord in backend/tests/service/progress_service_test.go
 
 ### Implementation for User Story 2
 
-- [ ] T037 [P] [US2] Implement GetLastLearningRecord method in backend/internal/service/progress_service.go
-- [ ] T038 [P] [US2] Implement GetLastLearning controller method in backend/internal/controller/progress_controller.go
-- [ ] T039 [US2] Add /api/v1/progress/last route in backend/api/v1/progress.go
-- [ ] T040 [P] [US2] Add getLastLearning API function in frontend/lib/api.ts
-- [ ] T041 [P] [US2] Create QuickContinue component in frontend/app/(protected)/dashboard/components/QuickContinue.tsx
-- [ ] T042 [US2] Integrate QuickContinue component into Dashboard page
-- [ ] T043 [US2] Handle empty state (no learning record) in QuickContinue component
+- [X] T037 [P] [US2] Implement GetLastLearningRecord method in backend/internal/service/progress_service.go
+- [X] T038 [P] [US2] Implement GetLastLearning controller method in backend/internal/controller/progress_controller.go
+- [X] T039 [US2] Add /api/v1/progress/last route in backend/api/v1/progress.go
+- [X] T040 [P] [US2] Add getLastLearning API function in frontend/lib/api.ts
+- [X] T041 [P] [US2] Create QuickContinue component in frontend/app/(protected)/dashboard/components/QuickContinue.tsx
+- [X] T042 [US2] Integrate QuickContinue component into Dashboard page
+- [X] T043 [US2] Handle empty state (no learning record) in QuickContinue component
 
 **Checkpoint**: At this point, User Stories 1 AND 2 should both work independently
 

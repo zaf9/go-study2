@@ -1,6 +1,8 @@
 package progress
 
-// topicChapterOrder 定义主题内章节的固定顺序，确保进度计算与“继续学习”提示一致。
+import "strings"
+
+// topicChapterOrder 定义主题内章节的固定顺序，确保进度计算与"继续学习"提示一致。
 var topicChapterOrder = map[string][]string{
 	"lexical_elements": {
 		"comments",
@@ -84,4 +86,17 @@ func topicName(topic string) string {
 		return name
 	}
 	return topic
+}
+
+// chapterDisplayName 返回章节的显示名称，将章节 ID 格式化为可读名称。
+// 例如 "storage" -> "Storage", "floating_point" -> "Floating Point"
+func chapterDisplayName(chapter string) string {
+	// 简单的格式化：将下划线替换为空格，并首字母大写
+	parts := strings.Split(chapter, "_")
+	for i, part := range parts {
+		if len(part) > 0 {
+			parts[i] = strings.ToUpper(part[:1]) + strings.ToLower(part[1:])
+		}
+	}
+	return strings.Join(parts, " ")
 }

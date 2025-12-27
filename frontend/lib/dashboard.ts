@@ -5,7 +5,7 @@
  */
 
 import api from './api'
-import { DashboardStats } from '@/types/dashboard'
+import { DashboardStats, LastLearningRecord } from '@/types/dashboard'
 
 /**
  * 获取 Dashboard 统计数据
@@ -30,6 +30,29 @@ export async function fetchDashboardStats(): Promise<DashboardStats> {
 		}
 	} catch (error) {
 		console.error('获取 Dashboard 统计数据失败:', error)
+		throw error
+	}
+}
+
+/**
+ * 获取最后学习记录
+ * 从 /api/v1/progress/last 端点获取用户最后一次学习的主题和章节信息
+ */
+export async function fetchLastLearning(): Promise<LastLearningRecord | null> {
+	try {
+		const response = await api.get<{
+			code: number
+			message: string
+			data: LastLearningRecord | null
+		}>('/api/v1/progress/last')
+
+		if (response.code !== 0) {
+			throw new Error(response.message || '获取最后学习记录失败')
+		}
+
+		return response.data || null
+	} catch (error) {
+		console.error('获取最后学习记录失败:', error)
 		throw error
 	}
 }

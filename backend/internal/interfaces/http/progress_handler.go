@@ -22,6 +22,7 @@ func RegisterProgressRoutes(s *ghttp.Server, handler *ProgressHandler) {
 	group.POST("/progress", handler.PostProgress)
 	group.GET("/progress", handler.GetProgress)
 	group.GET("/progress/{topic}", handler.GetTopicProgress)
+	group.GET("/progress/last", handler.GetLastLearning)
 }
 
 // PostProgress 处理进度上报。
@@ -81,6 +82,21 @@ func (h *ProgressHandler) GetProgress(r *ghttp.Request) {
 		"topics":  topics,
 		"next":    next,
 	})
+}
+
+// GetLastLearning 返回用户最后一次学习的记录。
+func (h *ProgressHandler) GetLastLearning(r *ghttp.Request) {
+	userID, ok := parseUserID(r)
+	if !ok {
+		writeError(r, http.StatusUnauthorized, 40001, "认证信息缺失")
+		return
+	}
+	lastLearning, err := h.Service.GetLastLearningRecord(r.GetCtx(), userID)
+	if err != nil {
+		writeError(r, http.StatusInternalServerError, 50000, "服务器内部错误")
+		return
+	}
+	writeSuccess(r, lastLearning)
 }
 
 // GetTopicProgress 返回指定主题的章节进度列表。

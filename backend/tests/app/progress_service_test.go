@@ -249,8 +249,93 @@ func TestProgressService_OverallAndNext(t *testing.T) {
 	if err != nil {
 		t.Fatalf("获取下一章节失败: %v", err)
 	}
-	if next == nil || next.Chapter != "static" {
+		if next == nil || next.Chapter != "static" {
 		t.Fatalf("下一章节应为 static，得到 %+v", next)
+	}
+}
+
+// TestProgressService_GetLastLearningRecord 测试获取最后学习记录功能
+func TestProgressService_GetLastLearningRecord(t *testing.T) {
+	repo := newMemoryProgressRepo()
+	calc := progapp.NewCalculator(map[string]int{"variables": 30, "constants": 20}, nil)
+	service := progapp.NewService(repo, calc)
+
+	// 准备测试数据：不同时间的学习记录
+	now := time.Now()
+	day1 := now.AddDate(0, 0, -5)
+	day2 := now.AddDate(0, 0, -3)
+	day3 := now.AddDate(0, 0, -1)
+
+	// 创建较早的学习记录
+	if err := repo.CreateOrUpdate(ctx(), &progressdom.LearningProgress{
+		UserID:       1,
+		Topic:         "variables",
+		Chapter:       "storage",
+		Status:       progressdom.StatusInProgress,
+		ReadDuration:  120,
+		LastVisitAt:   day1,
+	}); err != nil {
+		t.Fatalf("准备第1条记录失败: %v", err)
+	}
+
+	// 创建中间的学习记录
+	if err := repo.CreateOrUpdate(ctx(), &progressdom.LearningProgress{
+		UserID:       1,
+		Topic:         "constants",
+		Chapter:       "iota",
+		Status:       progressdom.StatusInProgress,
+		ReadDuration:  90,
+		LastVisitAt:   day2,
+	}); err != nil {
+		t.Fatalf("准备第2条记录失败: %v", err)
+	}
+
+	// 创建最新的学习记录
+	if err := repo.CreateOrUpdate(ctx(), &progressdom.LearningProgress{
+		UserID:       1,
+		Topic:         "variables",
+		Chapter:       "static",
+		Status:       progressdom.StatusCompleted,
+		ReadDuration:  300,
+		LastVisitAt:   day3,
+	}); err != nil {
+		t.Fatalf("准备第3条记录失败: %v", err)
+	}
+
+	// 获取最后学习记录
+	lastLearning, err := service.GetLastLearningRecord(ctx(), 1)
+	if err != nil {
+		t.Fatalf("获取最后学习记录失败: %v", err)
+	}
+
+	if lastLearning == nil {
+		t.Fatalf("应返回最后学习记录，得到 nil")
+	}
+
+	// 验证返回的是最新的记录（day3 的 static 章节）
+	if lastLearning.TopicID != "variables" {
+		t.Fatalf("主题 ID 应为 variables，得到 %s", lastLearning.TopicID)
+	}
+	if lastLearning.ChapterID != "static" {
+		t.Fatalf("章节 ID 应为 static，得到 %s", lastLearning.ChapterID)
+	}
+	if lastLearning.TopicDisplayName == "" {
+		t.Fatalf("主题显示名称不应为空")
+	}
+	if lastLearning.ChapterDisplayName == "" {
+		t.Fatalf("章节显示名称不应为空")
+	}
+	if lastLearning.LastVisitedAt == "" {
+		t.Fatalf("最后访问时间不应为空")
+	}
+
+	// 验证无学习记录时返回 nil
+	lastLearningEmpty, err := service.GetLastLearningRecord(ctx(), 999)
+	if err != nil {
+		t.Fatalf("无学习记录时不应返回错误: %v", err)
+	}
+	if lastLearningEmpty != nil {
+		t.Fatalf("无学习记录时应返回 nil，得到 %+v", lastLearningEmpty)
 	}
 }
 
@@ -319,4 +404,17 @@ func (m *memoryProgressRepo) GetByTopic(ctx context.Context, userID int64, topic
 		}
 	}
 	return list, nil
+}
+
+func (m *memoryProgressRepo) GetLastLearning(ctx context.Context, userID int64) (*progressdom.LearningProgress, error) {
+	var last *progressdom.LearningProgress
+	for _, v := range m.data {
+		if v.UserID == userID && v.LastVisitAt.After(time.Time{}) {
+			if last == nil || v.LastVisitAt.After(last.LastVisitAt) {
+				cp := v
+				last = &cp
+			}
+		}
+	}
+	return last, nil
 }

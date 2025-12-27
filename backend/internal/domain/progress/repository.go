@@ -8,6 +8,7 @@ type ProgressRepository interface {
 	Get(ctx context.Context, userID int64, topic, chapter string) (*LearningProgress, error)
 	GetByUser(ctx context.Context, userID int64) ([]LearningProgress, error)
 	GetByTopic(ctx context.Context, userID int64, topic string) ([]LearningProgress, error)
+	GetLastLearning(ctx context.Context, userID int64) (*LearningProgress, error)
 }
 
 // Repository 为兼容旧逻辑保留的接口，后续将迁移到 ProgressRepository。

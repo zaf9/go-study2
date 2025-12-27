@@ -235,6 +235,110 @@ func TestProgressHandler_DashboardStats(t *testing.T) {
 	}
 }
 
+// TestProgressHandler_GetLastLearning 测试获取最后学习记录 API
+func TestProgressHandler_GetLastLearning(t *testing.T) {
+	repo := newMemoryRepo()
+	calc := progapp.NewCalculator(map[string]int{"variables": 30, "constants": 20}, nil)
+	service := progapp.NewService(repo, calc)
+	handler := &httpif.ProgressHandler{Service: service}
+
+	s := ghttp.GetServer(fmt.Sprintf("get-last-learning-%d", time.Now().UnixNano()))
+	RegisterTestRoutes(s, handler)
+	defer s.Shutdown()
+
+	// 准备测试数据：不同时间的学习记录
+	now := time.Now()
+	day1 := now.AddDate(0, 0, -5)
+	day2 := now.AddDate(0, 0, -3)
+	day3 := now.AddDate(0, 0, -1)
+
+	// 创建较早的学习记录
+	repo.CreateOrUpdate(ctx(), &progressdom.LearningProgress{
+		UserID:       1,
+		Topic:         "variables",
+		Chapter:       "storage",
+		Status:       progressdom.StatusInProgress,
+		ReadDuration:  120,
+		LastVisitAt:   day1,
+	})
+
+	// 创建中间的学习记录
+	repo.CreateOrUpdate(ctx(), &progressdom.LearningProgress{
+		UserID:       1,
+		Topic:         "constants",
+		Chapter:       "iota",
+		Status:       progressdom.StatusInProgress,
+		ReadDuration:  90,
+		LastVisitAt:   day2,
+	})
+
+	// 创建最新的学习记录
+	repo.CreateOrUpdate(ctx(), &progressdom.LearningProgress{
+		UserID:       1,
+		Topic:         "variables",
+		Chapter:       "static",
+		Status:       progressdom.StatusCompleted,
+		ReadDuration:  300,
+		LastVisitAt:   day3,
+	})
+
+	// 调用 GET /api/v1/progress/last API
+	w := doRequest(t, s, "GET", "/api/v1/progress/last", nil)
+	if w.Code != http.StatusOK {
+		t.Fatalf("API 返回状态码异常: %d, body: %s", w.Code, w.Body.String())
+	}
+
+	var resp apiResp
+	unmarshalBody(t, w, &resp)
+	if resp.Code != 0 {
+		t.Fatalf("API 返回错误: code=%d, message=%s", resp.Code, resp.Message)
+	}
+
+	// 验证返回的数据（resp.Data 已经是 map[string]interface{} 类型）
+	data := resp.Data
+	if data == nil {
+		t.Fatalf("返回数据不应为 nil")
+	}
+
+	// 验证返回的是最新的记录（day3 的 static 章节）
+	if data["topic_id"] != "variables" {
+		t.Fatalf("主题 ID 应为 variables，得到 %v", data["topic_id"])
+	}
+	if data["chapter_id"] != "static" {
+		t.Fatalf("章节 ID 应为 static，得到 %v", data["chapter_id"])
+	}
+	if data["topic_display_name"] == nil || data["topic_display_name"] == "" {
+		t.Fatalf("主题显示名称不应为空")
+	}
+	if data["chapter_display_name"] == nil || data["chapter_display_name"] == "" {
+		t.Fatalf("章节显示名称不应为空")
+	}
+	if data["last_visited_at"] == nil || data["last_visited_at"] == "" {
+		t.Fatalf("最后访问时间不应为空")
+	}
+
+	// 验证无学习记录时的响应
+	emptyRepo := newMemoryRepo()
+	emptyService := progapp.NewService(emptyRepo, calc)
+	emptyHandler := &httpif.ProgressHandler{Service: emptyService}
+	emptyS := ghttp.GetServer(fmt.Sprintf("get-last-learning-empty-%d", time.Now().UnixNano()))
+	RegisterTestRoutes(emptyS, emptyHandler)
+	defer emptyS.Shutdown()
+
+	wEmpty := doRequest(t, emptyS, "GET", "/api/v1/progress/last", nil)
+	if wEmpty.Code != http.StatusOK {
+		t.Fatalf("无学习记录时 API 应返回成功: code=%d", wEmpty.Code)
+	}
+	var respEmpty apiResp
+	unmarshalBody(t, wEmpty, &respEmpty)
+	if respEmpty.Code != 0 {
+		t.Fatalf("无学习记录时 API 应返回成功: code=%d", respEmpty.Code)
+	}
+	if respEmpty.Data != nil {
+		t.Fatalf("无学习记录时 data 应为 nil，得到 %+v", respEmpty.Data)
+	}
+}
+
 func RegisterTestRoutes(s *ghttp.Server, handler *httpif.ProgressHandler) {
 	sessionStore := gsession.NewStorageMemory()
 	s.SetConfig(ghttp.ServerConfig{
@@ -343,4 +447,21 @@ func (m *memoryRepo) GetByTopic(ctx context.Context, userID int64, topic string)
 		}
 	}
 	return list, nil
+}
+
+func (m *memoryRepo) GetLastLearning(ctx context.Context, userID int64) (*progressdom.LearningProgress, error) {
+	var last *progressdom.LearningProgress
+	for _, v := range m.data {
+		if v.UserID == userID && !v.LastVisitAt.IsZero() {
+			if last == nil || v.LastVisitAt.After(last.LastVisitAt) {
+				cp := v
+				last = &cp
+			}
+		}
+	}
+	return last, nil
+}
+
+func ctx() context.Context {
+	return context.Background()
 }
