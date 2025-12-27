@@ -157,18 +157,18 @@
 
 ### Tests for User Story 4 (MANDATORY) ⚠️
 
-- [ ] T051 [P] [US4] Unit test for RecentQuizzes component in frontend/__tests__/dashboard/RecentQuizzes.test.tsx
-- [ ] T052 [P] [US4] Backend unit test for GetRecentQuizzes in backend/tests/service/quiz_service_test.go
+- [X] T051 [P] [US4] Unit test for RecentQuizzes component in frontend/__tests__/dashboard/RecentQuizzes.test.tsx
+- [X] T052 [P] [US4] Backend unit test for GetRecentQuizzes in backend/tests/service/quiz_service_test.go
 
 ### Implementation for User Story 4
 
-- [ ] T053 [P] [US4] Implement GetRecentQuizzes method in backend/internal/service/quiz_service.go
-- [ ] T054 [P] [US4] Create RecentQuizzes component in frontend/app/(protected)/dashboard/components/RecentQuizzes.tsx
-- [ ] T055 [US4] Integrate RecentQuizzes component into Dashboard page
-- [ ] T056 [US4] Implement time formatting (relative/absolute) in RecentQuizzes
-- [ ] T057 [US4] Handle empty state (no quiz records) in RecentQuizzes component
-- [ ] T058 [US4] Add click handler to navigate to quiz detail page (if exists)
-- [ ] T059 [US4] Handle WebSocket quiz_completed event to update recent quizzes
+- [X] T053 [P] [US4] Implement GetRecentQuizzes method in backend/internal/service/quiz_service.go
+- [X] T054 [P] [US4] Create RecentQuizzes component in frontend/app/(protected)/dashboard/components/RecentQuizzes.tsx
+- [X] T055 [US4] Integrate RecentQuizzes component into Dashboard page
+- [X] T056 [US4] Implement time formatting (relative/absolute) in RecentQuizzes
+- [X] T057 [US4] Handle empty state (no quiz records) in RecentQuizzes component
+- [X] T058 [US4] Add click handler to navigate to quiz detail page (if exists)
+- [X] T059 [US4] Handle WebSocket quiz_completed event to update recent quizzes
 
 **Checkpoint**: All primary user stories (1-4) should now be independently functional
 

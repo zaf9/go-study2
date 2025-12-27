@@ -6,8 +6,9 @@ import { WelcomeHeader } from './components/WelcomeHeader'
 import { StatsCards } from './components/StatsCards'
 import { QuickContinue } from './components/QuickContinue'
 import { TopicProgress } from './components/TopicProgress'
-import { fetchDashboardStats, fetchLastLearning, fetchTopicProgress } from '@/lib/dashboard'
-import type { DashboardStats, ProgressUpdatedEventData, LastLearningRecord, TopicProgressSummary } from '@/types/dashboard'
+import { RecentQuizzes } from './components/RecentQuizzes'
+import { fetchDashboardStats, fetchLastLearning, fetchTopicProgress, fetchRecentQuizzes } from '@/lib/dashboard'
+import type { DashboardStats, ProgressUpdatedEventData, QuizCompletedEventData, LastLearningRecord, TopicProgressSummary, RecentQuizSummary } from '@/types/dashboard'
 import { useAuth } from '@/hooks/useAuth'
 import { useWebSocket } from '@/components/providers/WebSocketProvider'
 
@@ -17,6 +18,7 @@ export default function DashboardPage() {
 	const [stats, setStats] = useState<DashboardStats | null>(null)
 	const [lastLearning, setLastLearning] = useState<LastLearningRecord | null>(null)
 	const [topicProgress, setTopicProgress] = useState<TopicProgressSummary[]>([])
+	const [recentQuizzes, setRecentQuizzes] = useState<RecentQuizSummary[]>([])
 	const [loading, setLoading] = useState(true)
 	const [error, setError] = useState<Error | null>(null)
 
@@ -32,16 +34,18 @@ export default function DashboardPage() {
 				}
 				setError(null)
 
-				// 并行加载统计数据、最后学习记录和主题进度
-				const [statsData, lastLearningData, topicProgressData] = await Promise.all([
+				// 并行加载统计数据、最后学习记录、主题进度和最近测验
+				const [statsData, lastLearningData, topicProgressData, recentQuizzesData] = await Promise.all([
 					fetchDashboardStats(),
 					fetchLastLearning().catch(() => null), // 如果获取失败，返回 null
 					fetchTopicProgress().catch(() => []), // 如果获取失败，返回空数组
+					fetchRecentQuizzes(5).catch(() => []), // 如果获取失败，返回空数组
 				])
 
 				setStats(statsData)
 				setLastLearning(lastLearningData)
 				setTopicProgress(topicProgressData)
+				setRecentQuizzes(recentQuizzesData)
 			} catch (err) {
 				console.error('加载 Dashboard 数据失败:', err)
 				setError(err as Error)
@@ -56,12 +60,22 @@ export default function DashboardPage() {
 
 		const handleMessage = (event: MessageEvent) => {
 			try {
-				const message = JSON.parse(event.data) as { event: string; data: ProgressUpdatedEventData }
+				const message = JSON.parse(event.data) as { event: string; data: ProgressUpdatedEventData | QuizCompletedEventData }
 				
 				if (message.event === 'progress_updated') {
 					console.log('[Dashboard] 收到进度更新:', message.data)
 					// 重新加载所有数据以更新主题进度（跳过 loading 状态）
 					loadData(true)
+				} else if (message.event === 'quiz_completed') {
+					console.log('[Dashboard] 收到测验完成事件:', message.data)
+					// 重新加载最近测验数据（跳过 loading 状态）
+					fetchRecentQuizzes(5)
+						.then((quizzes) => {
+							setRecentQuizzes(quizzes)
+						})
+						.catch((err) => {
+							console.error('[Dashboard] 刷新最近测验失败:', err)
+						})
 				}
 			} catch (err) {
 				console.error('[Dashboard] 解析 WebSocket 消息失败:', err)
@@ -137,6 +151,7 @@ export default function DashboardPage() {
 				/>
 			)}
 			<TopicProgress topics={topicProgress} />
+			<RecentQuizzes quizzes={recentQuizzes} />
 		</div>
 	)
 }

@@ -5,7 +5,7 @@
  */
 
 import api from './api'
-import { DashboardStats, LastLearningRecord, TopicProgressSummary } from '@/types/dashboard'
+import { DashboardStats, LastLearningRecord, TopicProgressSummary, RecentQuizSummary } from '@/types/dashboard'
 
 /**
  * 获取 Dashboard 统计数据
@@ -100,6 +100,46 @@ export async function fetchTopicProgress(): Promise<TopicProgressSummary[]> {
 		})
 	} catch (error) {
 		console.error('获取主题进度汇总失败:', error)
+		throw error
+	}
+}
+
+/**
+ * 获取最近测验记录
+ * 从 /api/v1/quiz/recent 端点获取用户最近的测验记录
+ */
+export async function fetchRecentQuizzes(limit: number = 5): Promise<RecentQuizSummary[]> {
+	try {
+		const response = await api.get<{
+			code: number
+			message: string
+			data: Array<{
+				id: number
+				topic_name: string
+				chapter_name: string
+				score: number
+				total_questions: number
+				passed: boolean
+				completed_at: string
+			}>
+		}>('/api/v1/quiz/recent', { params: { limit } })
+
+		if (response.code !== 0) {
+			throw new Error(response.message || '获取最近测验记录失败')
+		}
+
+		// 转换为前端类型格式
+		return (response.data || []).map((item) => ({
+			id: item.id,
+			topicName: item.topic_name,
+			chapterName: item.chapter_name,
+			score: item.score,
+			totalQuestions: item.total_questions,
+			passed: item.passed,
+			completedAt: item.completed_at,
+		}))
+	} catch (error) {
+		console.error('获取最近测验记录失败:', error)
 		throw error
 	}
 }

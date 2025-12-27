@@ -537,6 +537,103 @@ type QuizReviewItem struct {
 	Explanation   string   `json:"explanation"`
 }
 
+// RecentQuizSummary 表示最近测验记录的汇总信息（用于 Dashboard）。
+type RecentQuizSummary struct {
+	ID             int64  `json:"id"`
+	TopicName      string `json:"topic_name"`
+	ChapterName    string `json:"chapter_name"`
+	Score          int    `json:"score"`
+	TotalQuestions int    `json:"total_questions"`
+	Passed         bool   `json:"passed"`
+	CompletedAt    string `json:"completed_at"`
+}
+
+// GetRecentQuizzes 返回用户最近的测验记录（最多 limit 条，默认 5 条）。
+func (s *Service) GetRecentQuizzes(ctx context.Context, userID int64, limit int) ([]RecentQuizSummary, error) {
+	if userID <= 0 {
+		return nil, ErrInvalidInput
+	}
+	if limit <= 0 {
+		limit = 5
+	}
+	if limit > 20 {
+		limit = 20 // 限制最大数量
+	}
+
+	// 获取测验历史（只获取已完成的）
+	sessions, err := s.repo.GetHistory(ctx, userID, "", limit*2) // 获取更多，然后过滤已完成的
+	if err != nil {
+		return nil, err
+	}
+
+	// 过滤出已完成的测验并按完成时间排序
+	var completed []quizdom.QuizSession
+	for _, session := range sessions {
+		if session.CompletedAt != nil {
+			completed = append(completed, session)
+		}
+	}
+
+	// 按完成时间倒序排序
+	for i := 0; i < len(completed)-1; i++ {
+		for j := i + 1; j < len(completed); j++ {
+			if completed[i].CompletedAt.Before(*completed[j].CompletedAt) {
+				completed[i], completed[j] = completed[j], completed[i]
+			}
+		}
+	}
+
+	// 限制返回数量
+	if len(completed) > limit {
+		completed = completed[:limit]
+	}
+
+	// 转换为 RecentQuizSummary 格式
+	summaries := make([]RecentQuizSummary, 0, len(completed))
+	for _, session := range completed {
+		// 格式化主题和章节名称
+		topicDispName := formatTopicName(session.Topic)
+		chapterDispName := formatChapterName(session.Chapter)
+
+		summaries = append(summaries, RecentQuizSummary{
+			ID:             session.ID,
+			TopicName:      topicDispName,
+			ChapterName:    chapterDispName,
+			Score:          session.Score,
+			TotalQuestions: session.TotalQuestions,
+			Passed:         session.Passed,
+			CompletedAt:    session.CompletedAt.Format(time.RFC3339),
+		})
+	}
+
+	return summaries, nil
+}
+
+// formatTopicName 格式化主题名称。
+func formatTopicName(topic string) string {
+	topicNames := map[string]string{
+		"lexical_elements": "Lexical Elements",
+		"constants":        "Constants",
+		"variables":        "Variables",
+		"types":            "Types",
+	}
+	if name, ok := topicNames[topic]; ok {
+		return name
+	}
+	return topic
+}
+
+// formatChapterName 格式化章节名称。
+func formatChapterName(chapter string) string {
+	parts := strings.Split(chapter, "_")
+	for i, part := range parts {
+		if len(part) > 0 {
+			parts[i] = strings.ToUpper(part[:1]) + strings.ToLower(part[1:])
+		}
+	}
+	return strings.Join(parts, " ")
+}
+
 // GetQuizReview 获取指定会话的回顾详情。
 func (s *Service) GetQuizReview(ctx context.Context, userID int64, sessionID string) (*QuizReviewDetail, error) {
 	if userID <= 0 || sessionID == "" {

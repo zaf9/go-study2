@@ -85,6 +85,32 @@ func (h *Handler) SubmitQuiz(r *ghttp.Request) {
 	})
 }
 
+// GetRecentQuizzes 返回用户最近的测验记录（用于 Dashboard）。
+func (h *Handler) GetRecentQuizzes(r *ghttp.Request) {
+	svc, ok := h.getQuizService(r)
+	if !ok {
+		return
+	}
+	userID := r.GetCtxVar("user_id").Int64()
+	if userID <= 0 {
+		writeError(r, http.StatusUnauthorized, 40001, "认证信息缺失")
+		return
+	}
+
+	limit := r.Get("limit").Int()
+	if limit <= 0 {
+		limit = 5 // 默认 5 条
+	}
+
+	recent, err := svc.GetRecentQuizzes(r.GetCtx(), userID, limit)
+	if err != nil {
+		writeError(r, http.StatusInternalServerError, 50000, "服务器内部错误")
+		return
+	}
+
+	writeSuccess(r, "success", recent)
+}
+
 // GetQuizHistory 返回当前用户的测验历史。
 func (h *Handler) GetQuizHistory(r *ghttp.Request) {
 	svc, ok := h.getQuizService(r)
