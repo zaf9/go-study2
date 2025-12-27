@@ -109,26 +109,26 @@ func TestProgressService_StudyDaysCalculation(t *testing.T) {
 	day1 := now.AddDate(0, 0, -5) // 5天前
 	day2 := now.AddDate(0, 0, -3) // 3天前
 	day3 := now.AddDate(0, 0, -1) // 1天前
-	day4 := now                    // 今天
+	day4 := now                   // 今天
 
 	// 同一天的多条记录应只计算为1天
 	if err := repo.CreateOrUpdate(ctx(), &progressdom.LearningProgress{
 		UserID:       1,
-		Topic:         "variables",
-		Chapter:       "storage",
-		Status:        progressdom.StatusInProgress,
-		ReadDuration:  120,
-		LastVisitAt:   day1,
+		Topic:        "variables",
+		Chapter:      "storage",
+		Status:       progressdom.StatusInProgress,
+		ReadDuration: 120,
+		LastVisitAt:  day1,
 	}); err != nil {
 		t.Fatalf("准备第1天记录1失败: %v", err)
 	}
 	if err := repo.CreateOrUpdate(ctx(), &progressdom.LearningProgress{
 		UserID:       1,
-		Topic:         "variables",
-		Chapter:       "pointer",
-		Status:        progressdom.StatusInProgress,
-		ReadDuration:  60,
-		LastVisitAt:   day1.Add(2 * time.Hour), // 同一天的不同时间
+		Topic:        "variables",
+		Chapter:      "pointer",
+		Status:       progressdom.StatusInProgress,
+		ReadDuration: 60,
+		LastVisitAt:  day1.Add(2 * time.Hour), // 同一天的不同时间
 	}); err != nil {
 		t.Fatalf("准备第1天记录2失败: %v", err)
 	}
@@ -136,11 +136,11 @@ func TestProgressService_StudyDaysCalculation(t *testing.T) {
 	// 第2天的记录
 	if err := repo.CreateOrUpdate(ctx(), &progressdom.LearningProgress{
 		UserID:       1,
-		Topic:         "constants",
-		Chapter:       "iota",
-		Status:        progressdom.StatusInProgress,
-		ReadDuration:  90,
-		LastVisitAt:   day2,
+		Topic:        "constants",
+		Chapter:      "iota",
+		Status:       progressdom.StatusInProgress,
+		ReadDuration: 90,
+		LastVisitAt:  day2,
 	}); err != nil {
 		t.Fatalf("准备第2天记录失败: %v", err)
 	}
@@ -148,11 +148,11 @@ func TestProgressService_StudyDaysCalculation(t *testing.T) {
 	// 第3天的记录
 	if err := repo.CreateOrUpdate(ctx(), &progressdom.LearningProgress{
 		UserID:       1,
-		Topic:         "variables",
-		Chapter:       "static",
-		Status:        progressdom.StatusCompleted,
-		ReadDuration:  300,
-		LastVisitAt:   day3,
+		Topic:        "variables",
+		Chapter:      "static",
+		Status:       progressdom.StatusCompleted,
+		ReadDuration: 300,
+		LastVisitAt:  day3,
 	}); err != nil {
 		t.Fatalf("准备第3天记录失败: %v", err)
 	}
@@ -160,11 +160,11 @@ func TestProgressService_StudyDaysCalculation(t *testing.T) {
 	// 第4天的记录
 	if err := repo.CreateOrUpdate(ctx(), &progressdom.LearningProgress{
 		UserID:       1,
-		Topic:         "constants",
-		Chapter:       "untyped",
-		Status:        progressdom.StatusInProgress,
-		ReadDuration:  150,
-		LastVisitAt:   day4,
+		Topic:        "constants",
+		Chapter:      "untyped",
+		Status:       progressdom.StatusInProgress,
+		ReadDuration: 150,
+		LastVisitAt:  day4,
 	}); err != nil {
 		t.Fatalf("准备第4天记录失败: %v", err)
 	}
@@ -249,7 +249,7 @@ func TestProgressService_OverallAndNext(t *testing.T) {
 	if err != nil {
 		t.Fatalf("获取下一章节失败: %v", err)
 	}
-		if next == nil || next.Chapter != "static" {
+	if next == nil || next.Chapter != "static" {
 		t.Fatalf("下一章节应为 static，得到 %+v", next)
 	}
 }
@@ -269,11 +269,11 @@ func TestProgressService_GetLastLearningRecord(t *testing.T) {
 	// 创建较早的学习记录
 	if err := repo.CreateOrUpdate(ctx(), &progressdom.LearningProgress{
 		UserID:       1,
-		Topic:         "variables",
-		Chapter:       "storage",
+		Topic:        "variables",
+		Chapter:      "storage",
 		Status:       progressdom.StatusInProgress,
-		ReadDuration:  120,
-		LastVisitAt:   day1,
+		ReadDuration: 120,
+		LastVisitAt:  day1,
 	}); err != nil {
 		t.Fatalf("准备第1条记录失败: %v", err)
 	}
@@ -281,11 +281,11 @@ func TestProgressService_GetLastLearningRecord(t *testing.T) {
 	// 创建中间的学习记录
 	if err := repo.CreateOrUpdate(ctx(), &progressdom.LearningProgress{
 		UserID:       1,
-		Topic:         "constants",
-		Chapter:       "iota",
+		Topic:        "constants",
+		Chapter:      "iota",
 		Status:       progressdom.StatusInProgress,
-		ReadDuration:  90,
-		LastVisitAt:   day2,
+		ReadDuration: 90,
+		LastVisitAt:  day2,
 	}); err != nil {
 		t.Fatalf("准备第2条记录失败: %v", err)
 	}
@@ -293,11 +293,11 @@ func TestProgressService_GetLastLearningRecord(t *testing.T) {
 	// 创建最新的学习记录
 	if err := repo.CreateOrUpdate(ctx(), &progressdom.LearningProgress{
 		UserID:       1,
-		Topic:         "variables",
-		Chapter:       "static",
+		Topic:        "variables",
+		Chapter:      "static",
 		Status:       progressdom.StatusCompleted,
-		ReadDuration:  300,
-		LastVisitAt:   day3,
+		ReadDuration: 300,
+		LastVisitAt:  day3,
 	}); err != nil {
 		t.Fatalf("准备第3条记录失败: %v", err)
 	}
@@ -353,40 +353,40 @@ func TestProgressService_GetTopicProgressSummary(t *testing.T) {
 
 	// 主题1：variables - 完成1个章节，总共2个章节（50%）
 	if err := repo.CreateOrUpdate(ctx(), &progressdom.LearningProgress{
-		UserID:       1,
-		Topic:         "variables",
-		Chapter:       "storage",
-		Status:       progressdom.StatusCompleted,
-		ReadDuration:  600,
+		UserID:         1,
+		Topic:          "variables",
+		Chapter:        "storage",
+		Status:         progressdom.StatusCompleted,
+		ReadDuration:   600,
 		ScrollProgress: 100,
-		QuizPassed:    true,
-		LastVisitAt:   now,
+		QuizPassed:     true,
+		LastVisitAt:    now,
 	}); err != nil {
 		t.Fatalf("准备 variables 记录失败: %v", err)
 	}
 
 	// 主题2：constants - 完成2个章节，总共3个章节（66.7%）
 	if err := repo.CreateOrUpdate(ctx(), &progressdom.LearningProgress{
-		UserID:       1,
-		Topic:         "constants",
-		Chapter:       "iota",
-		Status:       progressdom.StatusCompleted,
-		ReadDuration:  300,
+		UserID:         1,
+		Topic:          "constants",
+		Chapter:        "iota",
+		Status:         progressdom.StatusCompleted,
+		ReadDuration:   300,
 		ScrollProgress: 100,
-		QuizPassed:    true,
-		LastVisitAt:   now,
+		QuizPassed:     true,
+		LastVisitAt:    now,
 	}); err != nil {
 		t.Fatalf("准备 constants 记录1失败: %v", err)
 	}
 	if err := repo.CreateOrUpdate(ctx(), &progressdom.LearningProgress{
-		UserID:       1,
-		Topic:         "constants",
-		Chapter:       "boolean",
-		Status:       progressdom.StatusCompleted,
-		ReadDuration:  200,
+		UserID:         1,
+		Topic:          "constants",
+		Chapter:        "boolean",
+		Status:         progressdom.StatusCompleted,
+		ReadDuration:   200,
 		ScrollProgress: 100,
-		QuizPassed:    true,
-		LastVisitAt:   now,
+		QuizPassed:     true,
+		LastVisitAt:    now,
 	}); err != nil {
 		t.Fatalf("准备 constants 记录2失败: %v", err)
 	}

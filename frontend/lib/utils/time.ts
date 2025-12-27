@@ -37,8 +37,6 @@ export function formatTime(
 
   const diffHours = diffMinutes / 60
 
-  const diffDays = diffMinutes / (60 * 24)
-
   // 24 小时内，使用相对时间
   if (diffHours < 24) {
     if (diffMinutes < 1) {

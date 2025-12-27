@@ -13,20 +13,31 @@ import { DashboardStats, LastLearningRecord, TopicProgressSummary, RecentQuizSum
  */
 export async function fetchDashboardStats(): Promise<DashboardStats> {
 	try {
-		const response = await api.get<any>('/api/v1/progress')
+		const response = await api.get<{
+			code: number
+			message: string
+			data: {
+				overall: {
+					progress: number
+					completedChapters: number
+					totalChapters: number
+					studyDays: number
+				}
+			}
+		}>('/api/v1/progress')
 
-		if (response.code !== 0 || !response.data) {
-			throw new Error(response.message || '获取进度数据失败')
+		if (response.data.code !== 0 || !response.data.data) {
+			throw new Error(response.data.message || '获取进度数据失败')
 		}
 
-		const { overall } = response.data as { overall: { Progress: number; CompletedChapters: number; TotalChapters: number; StudyDays: number } }
+		const { overall } = response.data.data
 
 		return {
-			studyDays: overall.StudyDays || 0,
-			totalChapters: overall.TotalChapters || 0,
-			completedChapters: overall.CompletedChapters || 0,
-			progressPercentage: overall.Progress || 0,
-			weeklyActivity: 0, // 暂时设置为 0，后续可以添加专门的 API
+			studyDays: overall.studyDays || 0,
+			totalChapters: overall.totalChapters || 0,
+			completedChapters: overall.completedChapters || 0,
+			progressPercentage: overall.progress || 0,
+			weeklyActivity: 0, // 暂时设置为 0,后续可以添加专门的 API
 		}
 	} catch (error) {
 		console.error('获取 Dashboard 统计数据失败:', error)
@@ -46,11 +57,11 @@ export async function fetchLastLearning(): Promise<LastLearningRecord | null> {
 			data: LastLearningRecord | null
 		}>('/api/v1/progress/last')
 
-		if (response.code !== 0) {
-			throw new Error(response.message || '获取最后学习记录失败')
+		if (response.data.code !== 0) {
+			throw new Error(response.data.message || '获取最后学习记录失败')
 		}
 
-		return response.data || null
+		return response.data.data || null
 	} catch (error) {
 		console.error('获取最后学习记录失败:', error)
 		throw error
@@ -63,21 +74,25 @@ export async function fetchLastLearning(): Promise<LastLearningRecord | null> {
  */
 export async function fetchTopicProgress(): Promise<TopicProgressSummary[]> {
 	try {
-		const response = await api.get<any>('/api/v1/progress')
+		const response = await api.get<{
+			code: number
+			message: string
+			data: {
+				topics: Array<{
+					id: string
+					name: string
+					completedChapters: number
+					totalChapters: number
+					progress: number
+				}>
+			}
+		}>('/api/v1/progress')
 
-		if (response.code !== 0 || !response.data) {
-			throw new Error(response.message || '获取进度数据失败')
+		if (response.data.code !== 0 || !response.data.data) {
+			throw new Error(response.data.message || '获取进度数据失败')
 		}
 
-		const { topics } = response.data as {
-			topics: Array<{
-				id: string
-				name: string
-				completedChapters: number
-				totalChapters: number
-				progress: number
-			}>
-		}
+		const { topics } = response.data.data
 
 		// 转换为 TopicProgressSummary 格式
 		// 注意：后端的 progress 是 0-100 的整数，需要转换为浮点数并保留一位小数
@@ -124,12 +139,12 @@ export async function fetchRecentQuizzes(limit: number = 5): Promise<RecentQuizS
 			}>
 		}>('/api/v1/quiz/recent', { params: { limit } })
 
-		if (response.code !== 0) {
-			throw new Error(response.message || '获取最近测验记录失败')
+		if (response.data.code !== 0) {
+			throw new Error(response.data.message || '获取最近测验记录失败')
 		}
 
 		// 转换为前端类型格式
-		return (response.data || []).map((item) => ({
+		return (response.data.data || []).map((item) => ({
 			id: item.id,
 			topicName: item.topic_name,
 			chapterName: item.chapter_name,

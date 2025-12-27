@@ -184,10 +184,10 @@
 
 > **NOTE**: This story has no separate implementation as it's already covered by Foundational phase (T019-T020). Tasks below are verification only.
 
-- [ ] T060 [US5] **[Verification]** Verify root page redirect to /dashboard in frontend/app/page.tsx (depends on T019)
-- [ ] T061 [US5] **[Verification]** Verify Sidebar "首页" link points to /dashboard (depends on T020)
-- [ ] T062 [US5] **[Integration Test]** Test login flow redirects to /dashboard
-- [ ] T063 [US5] **[Integration Test]** Test navigation from other pages to Dashboard via Sidebar and verify data refresh
+- [X] T060 [US5] **[Verification]** Verify root page redirect to /dashboard in frontend/app/page.tsx (depends on T019)
+- [X] T061 [US5] **[Verification]** Verify Sidebar "首页" link points to /dashboard (depends on T020)
+- [X] T062 [US5] **[Integration Test]** Test login flow redirects to /dashboard
+- [X] T063 [US5] **[Integration Test]** Test navigation from other pages to Dashboard via Sidebar and verify data refresh
 
 **Checkpoint**: All user stories should now be independently functional with proper navigation
 

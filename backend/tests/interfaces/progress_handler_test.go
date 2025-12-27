@@ -114,35 +114,35 @@ func TestProgressHandler_DashboardStats(t *testing.T) {
 
 	// 创建不同日期的学习进度记录
 	repo.CreateOrUpdate(ctx(), &progressdom.LearningProgress{
-		UserID:       1,
-		Topic:         "variables",
-		Chapter:       "storage",
-		Status:        progressdom.StatusCompleted,
-		ReadDuration:  600,
+		UserID:         1,
+		Topic:          "variables",
+		Chapter:        "storage",
+		Status:         progressdom.StatusCompleted,
+		ReadDuration:   600,
 		ScrollProgress: 100,
-		QuizPassed:    true,
-		QuizScore:     90,
-		LastVisitAt:   day1,
+		QuizPassed:     true,
+		QuizScore:      90,
+		LastVisitAt:    day1,
 	})
 	repo.CreateOrUpdate(ctx(), &progressdom.LearningProgress{
-		UserID:       1,
-		Topic:         "variables",
-		Chapter:       "pointer",
-		Status:        progressdom.StatusInProgress,
-		ReadDuration:  120,
+		UserID:         1,
+		Topic:          "variables",
+		Chapter:        "pointer",
+		Status:         progressdom.StatusInProgress,
+		ReadDuration:   120,
 		ScrollProgress: 50,
-		LastVisitAt:   day2,
+		LastVisitAt:    day2,
 	})
 	repo.CreateOrUpdate(ctx(), &progressdom.LearningProgress{
-		UserID:       1,
-		Topic:         "constants",
-		Chapter:       "iota",
-		Status:        progressdom.StatusCompleted,
-		ReadDuration:  300,
+		UserID:         1,
+		Topic:          "constants",
+		Chapter:        "iota",
+		Status:         progressdom.StatusCompleted,
+		ReadDuration:   300,
 		ScrollProgress: 100,
-		QuizPassed:    true,
-		QuizScore:     85,
-		LastVisitAt:   day3,
+		QuizPassed:     true,
+		QuizScore:      85,
+		LastVisitAt:    day3,
 	})
 
 	// 调用 GET /api/v1/progress API
@@ -255,31 +255,31 @@ func TestProgressHandler_GetLastLearning(t *testing.T) {
 	// 创建较早的学习记录
 	repo.CreateOrUpdate(ctx(), &progressdom.LearningProgress{
 		UserID:       1,
-		Topic:         "variables",
-		Chapter:       "storage",
+		Topic:        "variables",
+		Chapter:      "storage",
 		Status:       progressdom.StatusInProgress,
-		ReadDuration:  120,
-		LastVisitAt:   day1,
+		ReadDuration: 120,
+		LastVisitAt:  day1,
 	})
 
 	// 创建中间的学习记录
 	repo.CreateOrUpdate(ctx(), &progressdom.LearningProgress{
 		UserID:       1,
-		Topic:         "constants",
-		Chapter:       "iota",
+		Topic:        "constants",
+		Chapter:      "iota",
 		Status:       progressdom.StatusInProgress,
-		ReadDuration:  90,
-		LastVisitAt:   day2,
+		ReadDuration: 90,
+		LastVisitAt:  day2,
 	})
 
 	// 创建最新的学习记录
 	repo.CreateOrUpdate(ctx(), &progressdom.LearningProgress{
 		UserID:       1,
-		Topic:         "variables",
-		Chapter:       "static",
+		Topic:        "variables",
+		Chapter:      "static",
 		Status:       progressdom.StatusCompleted,
-		ReadDuration:  300,
-		LastVisitAt:   day3,
+		ReadDuration: 300,
+		LastVisitAt:  day3,
 	})
 
 	// 调用 GET /api/v1/progress/last API

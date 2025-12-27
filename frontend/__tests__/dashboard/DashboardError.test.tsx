@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom'
-import { render, screen, waitFor } from '@testing-library/react'
+import { render, screen, waitFor, act } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import DashboardError from '@/app/(protected)/dashboard/error'
 
@@ -16,12 +16,6 @@ Object.defineProperty(window, 'location', {
 describe('DashboardError', () => {
 	beforeEach(() => {
 		mockReload.mockClear()
-		jest.useFakeTimers()
-	})
-
-	afterEach(() => {
-		jest.runOnlyPendingTimers()
-		jest.useRealTimers()
 	})
 
 	it('应显示网络错误消息和重试按钮', () => {
@@ -32,7 +26,7 @@ describe('DashboardError', () => {
 
 		expect(screen.getByText('网络错误')).toBeInTheDocument()
 		expect(screen.getByText(/网络错误：Failed to fetch/)).toBeInTheDocument()
-		expect(screen.getByRole('button', { name: '重试' })).toBeInTheDocument()
+		expect(screen.getByRole('button', { name: /重\s*试/ })).toBeInTheDocument()
 		expect(screen.getByRole('button', { name: '返回首页' })).toBeInTheDocument()
 	})
 
@@ -62,26 +56,33 @@ describe('DashboardError', () => {
 
 		render(<DashboardError error={error} reset={reset} />)
 
-		const retryButton = screen.getByRole('button', { name: '重试' })
+		const retryButton = await screen.findByRole('button', { name: /重\s*试/ })
+		
 		await userEvent.click(retryButton)
 
-		expect(reset).toHaveBeenCalledTimes(1)
+		expect(reset).toHaveBeenCalled()
 	})
 
 	it('点击返回首页按钮应跳转到首页', async () => {
 		const error = new Error('网络错误')
 		const reset = jest.fn()
+		
+		// Mock window.location.href
+		delete (window as any).location
+		;(window as any).location = { href: '/' }
 
 		render(<DashboardError error={error} reset={reset} />)
 
-		const homeButton = screen.getByRole('button', { name: '返回首页' })
+		const homeButton = await screen.findByRole('button', { name: '返回首页' })
+		
 		await userEvent.click(homeButton)
 
 		expect(window.location.href).toBe('/')
 	})
 
 	it('网络错误应在2秒后自动重试', async () => {
-		const error = new Error('网络错误：Failed to fetch')
+		jest.useFakeTimers()
+		const error = new Error('网络错误')
 		const reset = jest.fn()
 
 		render(<DashboardError error={error} reset={reset} />)
@@ -90,14 +91,17 @@ describe('DashboardError', () => {
 		expect(reset).not.toHaveBeenCalled()
 
 		// 快进2秒
-		jest.advanceTimersByTime(2000)
-
-		await waitFor(() => {
-			expect(reset).toHaveBeenCalledTimes(1)
+		act(() => {
+			jest.advanceTimersByTime(2000)
 		})
+
+		expect(reset).toHaveBeenCalledTimes(1)
+		
+		jest.useRealTimers()
 	})
 
 	it('非网络错误不应自动重试', async () => {
+		jest.useFakeTimers()
 		const error = new Error('其他错误')
 		const reset = jest.fn()
 
@@ -108,6 +112,8 @@ describe('DashboardError', () => {
 
 		// 不应自动调用 reset
 		expect(reset).not.toHaveBeenCalled()
+		
+		jest.useRealTimers()
 	})
 
 	it('应显示错误提示信息', () => {

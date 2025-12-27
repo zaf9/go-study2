@@ -76,13 +76,13 @@ type NextChapter struct {
 
 // LastLearningRecord 表示用户最后一次学习的记录。
 type LastLearningRecord struct {
-	TopicID           string `json:"topic_id"`
-	TopicName         string `json:"topic_name"`
-	TopicDisplayName  string `json:"topic_display_name"`
-	ChapterID         string `json:"chapter_id"`
-	ChapterName       string `json:"chapter_name"`
+	TopicID            string `json:"topic_id"`
+	TopicName          string `json:"topic_name"`
+	TopicDisplayName   string `json:"topic_display_name"`
+	ChapterID          string `json:"chapter_id"`
+	ChapterName        string `json:"chapter_name"`
 	ChapterDisplayName string `json:"chapter_display_name"`
-	LastVisitedAt     string `json:"last_visited_at"`
+	LastVisitedAt      string `json:"last_visited_at"`
 }
 
 // Service 提供进度写入与查询。
@@ -471,11 +471,11 @@ func (s *Service) GetTopicProgressSummary(ctx context.Context, userID int64) ([]
 		if !exists {
 			// 如果主题没有学习记录，创建默认的汇总
 			tp = TopicProgress{
-				Name:          topicName(topicID),
-				ID:            topicID,
-				Weight:        s.calc.topicWeight(topicID),
-				TotalChapters: s.calc.topicTotal(topicID),
-				Progress:      0,
+				Name:              topicName(topicID),
+				ID:                topicID,
+				Weight:            s.calc.topicWeight(topicID),
+				TotalChapters:     s.calc.topicTotal(topicID),
+				Progress:          0,
 				CompletedChapters: 0,
 			}
 		}
@@ -532,13 +532,13 @@ func (s *Service) GetLastLearningRecord(ctx context.Context, userID int64) (*Las
 	chapterNameEn := chapterDisplayName
 
 	return &LastLearningRecord{
-		TopicID:           progress.Topic,
-		TopicName:         topicNameEn,
-		TopicDisplayName:  topicDisplayName,
-		ChapterID:         progress.Chapter,
-		ChapterName:       chapterNameEn,
+		TopicID:            progress.Topic,
+		TopicName:          topicNameEn,
+		TopicDisplayName:   topicDisplayName,
+		ChapterID:          progress.Chapter,
+		ChapterName:        chapterNameEn,
 		ChapterDisplayName: chapterDisplayName,
-		LastVisitedAt:     progress.LastVisitAt.Format(time.RFC3339),
+		LastVisitedAt:      progress.LastVisitAt.Format(time.RFC3339),
 	}, nil
 }
 

@@ -51,7 +51,7 @@ export interface WebSocketClientOptions {
 export class WebSocketClient {
   private ws: WebSocket | null = null
 
-  private options: Required<WebSocketClientOptions>
+  private options: Omit<Required<WebSocketClientOptions>, 'token'> & { token?: string }
 
   private reconnectAttempts = 0
 
@@ -130,7 +130,7 @@ export class WebSocketClient {
   /**
    * 发送消息
    */
-  public send(data: any): void {
+  public send(data: string | object): void {
     if (!this.ws || this.ws.readyState !== WebSocket.OPEN) {
       console.warn('WebSocket 未连接，无法发送消息')
       return
@@ -278,7 +278,7 @@ export function createDashboardWebSocket(
           }
           break
         default:
-          console.warn('未知的 WebSocket 事件类型:', (message as any).event)
+          console.warn('未知的 WebSocket 事件类型:', (message as { event?: string }).event)
       }
     },
   })

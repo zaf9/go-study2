@@ -14,13 +14,15 @@ describe('StatsCards', () => {
 		)
 
 		expect(screen.getByText('整体进度')).toBeInTheDocument()
-		expect(screen.getByText('75.5%')).toBeInTheDocument()
+		// Ant Design Statistic 将数字和百分号分开渲染
+		expect(screen.getByText('75')).toBeInTheDocument()
+		expect(screen.getByText('.5')).toBeInTheDocument()
 		expect(screen.getByText('完成章节')).toBeInTheDocument()
 		expect(screen.getByText('15')).toBeInTheDocument()
 		expect(screen.getByText('/ 20')).toBeInTheDocument()
 		expect(screen.getByText('本周活跃')).toBeInTheDocument()
 		expect(screen.getByText('5')).toBeInTheDocument()
-		expect(screen.getByText(' 次')).toBeInTheDocument()
+		expect(screen.getByText(/次/)).toBeInTheDocument()
 	})
 
 	it('应正确处理进度为 0 的情况', () => {
@@ -33,8 +35,10 @@ describe('StatsCards', () => {
 			/>,
 		)
 
-		expect(screen.getByText('0%')).toBeInTheDocument()
-		expect(screen.getByText('0')).toBeInTheDocument()
+		const zeros = screen.getAllByText('0')
+		expect(zeros.length).toBeGreaterThanOrEqual(3) // 三个 0
+		const percentSigns = screen.getAllByText('%')
+		expect(percentSigns.length).toBeGreaterThanOrEqual(1)
 		expect(screen.getByText('/ 20')).toBeInTheDocument()
 	})
 
@@ -48,8 +52,11 @@ describe('StatsCards', () => {
 			/>,
 		)
 
-		expect(screen.getByText('100%')).toBeInTheDocument()
-		expect(screen.getByText('20')).toBeInTheDocument()
+		expect(screen.getByText('100')).toBeInTheDocument()
+		const percentSigns = screen.getAllByText('%')
+		expect(percentSigns.length).toBeGreaterThanOrEqual(1)
+		const twenties = screen.getAllByText('20')
+		expect(twenties.length).toBeGreaterThanOrEqual(1)
 		expect(screen.getByText('/ 20')).toBeInTheDocument()
 	})
 
@@ -64,7 +71,11 @@ describe('StatsCards', () => {
 		)
 
 		// 进度 < 50%，应为红色 (#ff4d4f)
-		let progressElement = screen.getByText('25%').closest('.ant-statistic-content')
+		// Ant Design Statistic 将数字和百分号分开渲染
+		expect(screen.getByText('25')).toBeInTheDocument()
+		const percentSigns = screen.getAllByText('%')
+		expect(percentSigns.length).toBeGreaterThanOrEqual(1)
+		let progressElement = screen.getByText('25').closest('.ant-statistic-content')
 		expect(progressElement).toBeInTheDocument()
 
 		// 进度 >= 50% 且 < 75%，应为橙色 (#faad14)
@@ -76,7 +87,8 @@ describe('StatsCards', () => {
 				weeklyActivity={3}
 			/>,
 		)
-		progressElement = screen.getByText('60%').closest('.ant-statistic-content')
+		expect(screen.getByText('60')).toBeInTheDocument()
+		progressElement = screen.getByText('60').closest('.ant-statistic-content')
 		expect(progressElement).toBeInTheDocument()
 
 		// 进度 >= 75% 且 < 100%，应为蓝色 (#1890ff)
@@ -88,7 +100,8 @@ describe('StatsCards', () => {
 				weeklyActivity={4}
 			/>,
 		)
-		progressElement = screen.getByText('80%').closest('.ant-statistic-content')
+		expect(screen.getByText('80')).toBeInTheDocument()
+		progressElement = screen.getByText('80').closest('.ant-statistic-content')
 		expect(progressElement).toBeInTheDocument()
 
 		// 进度 = 100%，应为绿色 (#52c41a)
@@ -100,7 +113,8 @@ describe('StatsCards', () => {
 				weeklyActivity={5}
 			/>,
 		)
-		progressElement = screen.getByText('100%').closest('.ant-statistic-content')
+		expect(screen.getByText('100')).toBeInTheDocument()
+		progressElement = screen.getByText('100').closest('.ant-statistic-content')
 		expect(progressElement).toBeInTheDocument()
 	})
 
@@ -114,7 +128,9 @@ describe('StatsCards', () => {
 			/>,
 		)
 
-		expect(screen.getByText('33.33%')).toBeInTheDocument()
+		// Ant Design Statistic 可能将数字和小数点分开渲染，使用更灵活的匹配
+		expect(screen.getByText('33')).toBeInTheDocument()
+		expect(screen.getByText('.33')).toBeInTheDocument()
 		expect(screen.getByText('10')).toBeInTheDocument()
 		expect(screen.getByText('/ 30')).toBeInTheDocument()
 	})

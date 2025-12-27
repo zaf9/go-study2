@@ -13,11 +13,8 @@ import React, {
 	useCallback,
 	type ReactNode,
 } from 'react'
-import {
-	WebSocketClient,
-	type ProgressUpdatedEventData,
-	type QuizCompletedEventData,
-} from '@/lib/websocket'
+import { WebSocketClient } from '@/lib/websocket'
+import type { ProgressUpdatedEventData, QuizCompletedEventData } from '@/types/dashboard'
 
 /**
  * WebSocket 上下文类型
@@ -95,7 +92,7 @@ export const WebSocketProvider: React.FC<WebSocketProviderProps> = ({ children }
 			onClose: (event) => {
 				console.log('[WebSocket] 连接已关闭:', event)
 				setIsConnected(false)
-				if (event.code !== 1000 && client?.isConnected()) {
+				if (event.code !== 1000 && wsClient.isConnected()) {
 					// 非正常关闭，可能是重连中
 					setIsReconnecting(true)
 				}
@@ -183,15 +180,14 @@ export const useProgressUpdated = (
 			return
 		}
 
-		// 监听进度更新事件
-		const handler = (message: any) => {
-			if (message.event === 'progress_updated') {
-				callback(message.data as ProgressUpdatedEventData)
-			}
-		}
-
 		// 这里需要扩展 WebSocketClient 来支持添加事件监听器
 		// 暂时留空，后续完善
+		// TODO: 实现进度更新事件监听
+		// const handler = (message: { event: string; data: ProgressUpdatedEventData }) => {
+		//   if (message.event === 'progress_updated') {
+		//     callback(message.data)
+		//   }
+		// }
 
 		return () => {
 			// 清理监听器
@@ -212,15 +208,14 @@ export const useQuizCompleted = (
 			return
 		}
 
-		// 监听测验完成事件
-		const handler = (message: any) => {
-			if (message.event === 'quiz_completed') {
-				callback(message.data as QuizCompletedEventData)
-			}
-		}
-
 		// 这里需要扩展 WebSocketClient 来支持添加事件监听器
 		// 暂时留空，后续完善
+		// TODO: 实现测验完成事件监听
+		// const handler = (message: { event: string; data: QuizCompletedEventData }) => {
+		//   if (message.event === 'quiz_completed') {
+		//     callback(message.data)
+		//   }
+		// }
 
 		return () => {
 			// 清理监听器

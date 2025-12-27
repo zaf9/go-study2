@@ -40,7 +40,7 @@ describe("LoginForm", () => {
     await waitFor(() => {
       expect(loginMock).toHaveBeenCalledWith("tester", "Password123!", true);
     });
-    expect(pushMock).toHaveBeenCalledWith("/topics");
+    expect(pushMock).toHaveBeenCalledWith("/dashboard");
   });
 
   it("弱口令时展示校验提示并不触发登录", async () => {

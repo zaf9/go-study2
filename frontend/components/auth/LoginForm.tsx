@@ -36,7 +36,7 @@ export default function LoginForm() {
         router.push("/change-password");
         return;
       }
-      router.push("/topics");
+      router.push("/dashboard");
     } catch (error) {
       const reason =
         error instanceof Error ? error.message : "登录失败，请重试";

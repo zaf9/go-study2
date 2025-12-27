@@ -9,12 +9,10 @@ import { TopicProgress } from './components/TopicProgress'
 import { RecentQuizzes } from './components/RecentQuizzes'
 import { fetchDashboardStats, fetchLastLearning, fetchTopicProgress, fetchRecentQuizzes } from '@/lib/dashboard'
 import type { DashboardStats, ProgressUpdatedEventData, QuizCompletedEventData, LastLearningRecord, TopicProgressSummary, RecentQuizSummary } from '@/types/dashboard'
-import { useAuth } from '@/hooks/useAuth'
-import { useWebSocket } from '@/components/providers/WebSocketProvider'
+import useAuth from '@/hooks/useAuth'
 
 export default function DashboardPage() {
 	const { user } = useAuth()
-	const { isConnected: wsConnected } = useWebSocket()
 	const [stats, setStats] = useState<DashboardStats | null>(null)
 	const [lastLearning, setLastLearning] = useState<LastLearningRecord | null>(null)
 	const [topicProgress, setTopicProgress] = useState<TopicProgressSummary[]>([])
@@ -93,8 +91,7 @@ export default function DashboardPage() {
 		return (
 			<div className="flex items-center justify-center min-h-screen">
 				<div className="text-center">
-						<div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-gray-300 border-t-blue-500" />
-					</div>
+					<div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-gray-300 border-t-blue-500" />
 					<p className="mt-4 text-gray-500">加载中...</p>
 				</div>
 			</div>

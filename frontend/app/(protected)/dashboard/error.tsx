@@ -48,13 +48,13 @@ export default function DashboardError({ error, reset }: ErrorProps) {
 		error.message?.includes('服务器') ||
 		error.message?.includes('Internal Server Error')
 
-	const status = isServerError ? '500' : isNetworkError ? 'error' : 'warning'
+	const status: 'success' | 'error' | 'info' | 'warning' | '404' | '403' | '500' = isServerError ? '500' : isNetworkError ? 'error' : 'warning'
 	const title = isServerError ? '服务器错误' : isNetworkError ? '网络错误' : '加载失败'
 
 	return (
 		<div className="flex min-h-screen items-center justify-center bg-gray-50 p-4">
 				<Result
-						status={status as any}
+						status={status}
 						title={title}
 						subTitle={
 								<div className="max-w-md text-center">
