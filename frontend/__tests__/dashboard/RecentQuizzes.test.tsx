@@ -42,6 +42,7 @@ describe('RecentQuizzes', () => {
 		const quizzes: RecentQuizSummary[] = [
 			{
 				id: 1,
+				sessionId: 'session-uuid-1',
 				topicName: 'Variables',
 				chapterName: 'Storage',
 				score: 4,
@@ -51,6 +52,7 @@ describe('RecentQuizzes', () => {
 			},
 			{
 				id: 2,
+				sessionId: 'session-uuid-2',
 				topicName: 'Constants',
 				chapterName: 'Boolean',
 				score: 2,
@@ -63,8 +65,8 @@ describe('RecentQuizzes', () => {
 		render(<RecentQuizzes quizzes={quizzes} />)
 
 		expect(screen.getByText('最近测验')).toBeInTheDocument()
-		expect(screen.getByText(/Variables - Storage/)).toBeInTheDocument()
-		expect(screen.getByText(/Constants - Boolean/)).toBeInTheDocument()
+		expect(screen.getAllByText((content, element) => element?.textContent === 'Variables - Storage')[0]).toBeInTheDocument()
+		expect(screen.getAllByText((content, element) => element?.textContent === 'Constants - Boolean')[0]).toBeInTheDocument()
 		expect(screen.getByText('通过')).toBeInTheDocument()
 		expect(screen.getByText('未通过')).toBeInTheDocument()
 		expect(screen.getByText(/4 \/ 5/)).toBeInTheDocument()
@@ -75,6 +77,7 @@ describe('RecentQuizzes', () => {
 		const quizzes: RecentQuizSummary[] = [
 			{
 				id: 1,
+				sessionId: 'session-uuid-1',
 				topicName: 'Variables',
 				chapterName: 'Storage',
 				score: 4,
@@ -86,10 +89,10 @@ describe('RecentQuizzes', () => {
 
 		render(<RecentQuizzes quizzes={quizzes} />)
 
-		const quizItem = screen.getByText(/Variables - Storage/).closest('.ant-list-item')
+		const quizItem = screen.getAllByText((content, element) => element?.textContent === 'Variables - Storage')[0].closest('.ant-list-item')
 		if (quizItem) {
 			await userEvent.click(quizItem)
-			expect(mockPush).toHaveBeenCalledWith('/quiz/history/1')
+			expect(mockPush).toHaveBeenCalledWith('/quiz/review?sessionId=session-uuid-1')
 		}
 	})
 
@@ -104,6 +107,7 @@ describe('RecentQuizzes', () => {
 		const quizzes: RecentQuizSummary[] = [
 			{
 				id: 1,
+				sessionId: 'session-uuid-1',
 				topicName: 'Variables',
 				chapterName: 'Storage',
 				score: 3,
@@ -123,6 +127,7 @@ describe('RecentQuizzes', () => {
 		const quizzes: RecentQuizSummary[] = [
 			{
 				id: 1,
+				sessionId: 'session-uuid-1',
 				topicName: 'High Score',
 				chapterName: 'Chapter',
 				score: 9,
@@ -132,6 +137,7 @@ describe('RecentQuizzes', () => {
 			},
 			{
 				id: 2,
+				sessionId: 'session-uuid-2',
 				topicName: 'Medium Score',
 				chapterName: 'Chapter',
 				score: 6,
@@ -141,6 +147,7 @@ describe('RecentQuizzes', () => {
 			},
 			{
 				id: 3,
+				sessionId: 'session-uuid-3',
 				topicName: 'Low Score',
 				chapterName: 'Chapter',
 				score: 3,

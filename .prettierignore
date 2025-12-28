@@ -1,0 +1,15 @@
+# Files to ignore for Prettier
+node_modules/
+dist/
+build/
+.next/
+out/
+*.tsbuildinfo
+coverage/
+*.log
+.env
+.env.*
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

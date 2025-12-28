@@ -57,6 +57,7 @@
 
 - 🎯 **双模式运行** - 支持命令行交互模式和HTTP服务模式
 - 🖥️ **现代Web界面** 🆕 - Next.js + Ant Design 响应式 UI，桌面/移动端适配
+- 🏠 **Dashboard 首页** 🆕 - 学习状态快速概览、一键继续学习、主题进度可视化、测验记录展示，支持 WebSocket 实时更新
 - 🔐 **用户认证** 🆕 - 注册/登录/记住我，JWT 访问令牌 + HttpOnly 刷新令牌，过期自动刷新
 - 📍 **学习进度** 🆕 - 记录章节状态与滚动位置，支持“继续上次学习”
 - 📝 **主题测验** 🆕 - 单选/多选测验与历史记录，提交即时评分
@@ -85,6 +86,8 @@
 ### 前端 UI 特性 🆕
 
 - 📱 **响应式布局** - Mobile <768px / Tablet 768-1024px / Desktop >1024px
+- 🏠 **Dashboard 首页** - 学习状态快速概览（欢迎信息、学习天数、完成进度）、一键继续学习、主题进度可视化、最近测验记录展示
+- 🔌 **WebSocket 实时推送** - 学习进度与测验记录实时更新，支持断线自动重连（指数退避策略）
 - 🧭 **学习导航** - 主题列表、章节锚点、代码高亮与分段呈现
 - 🔖 **进度续学** - 展示百分比、最近访问时间、滚动位置恢复
 - 🧪 **测验体验** - 题目来源说明、防重复提交、历史筛选
@@ -194,6 +197,7 @@ npm run dev
 
 **主要页面与路由：**
 
+- Dashboard 首页：`/dashboard`（学习状态概览、一键继续学习、主题进度、最近测验）
 - 学习进度页：`/progress`（整体进度、继续学习）
 - 主题/章节详情：`/topics/[topic]/[chapter]`（阅读恢复与测验入口）
 - 测验：`/quiz/[topic]/[chapter]`，历史记录：`/quiz`
@@ -519,6 +523,10 @@ go-study2/
 │   │   │   ├── lexical_elements/    # 词法元素内容
 │   │   │   ├── constants/           # 常量模块内容
 │   │   │   └── ...                  # 其他学习主题
+│   │   ├── websocket/               # WebSocket 连接管理
+│   │   │   ├── hub.go               # 连接池管理
+│   │   │   ├── client.go            # 客户端连接处理
+│   │   │   └── events.go            # 事件定义
 │   │   ├── domain/                  # 领域层（user/progress/quiz 实体与服务）
 │   │   ├── infrastructure/          # 基础设施层（database、repository 实现）
 │   │   ├── pkg/                     # 共享工具（jwt、password）
@@ -527,13 +535,38 @@ go-study2/
 │   ├── docs/                        # 后端文档 materials
 │   └── scripts/                     # 工具脚本（check-go.ps1）
 ├── frontend/                        # 前端主目录（Next.js 14）
-│   ├── app/                         # 路由：auth、topics、quiz、progress、profile
+│   ├── app/                         # 路由：auth、dashboard、topics、quiz、progress、profile
+│   │   ├── (auth)/                  # 公开路由（登录、注册）
+│   │   └── (protected)/             # 受保护路由
+│   │       ├── dashboard/           # Dashboard 首页
+│   │       │   ├── page.tsx         # Dashboard 主页面
+│   │       │   ├── loading.tsx      # 加载状态
+│   │       │   ├── error.tsx        # 错误边界
+│   │       │   └── components/      # Dashboard 专用组件
+│   │       │       ├── WelcomeHeader.tsx    # 欢迎信息
+│   │       │       ├── QuickContinue.tsx    # 快速继续学习
+│   │       │       ├── StatsCards.tsx       # 统计卡片
+│   │       │       ├── TopicProgress.tsx    # 主题进度
+│   │       │       └── RecentQuizzes.tsx    # 最近测验
+│   │       ├── topics/              # 主题与章节
+│   │       ├── quiz/                # 测验相关
+│   │       ├── progress/            # 学习进度
+│   │       └── profile/             # 用户资料
 │   ├── components/                  # UI 组件：auth/layout/learning/quiz/common
+│   │   ├── providers/               # Context 提供者
+│   │   │   └── WebSocketProvider.tsx  # WebSocket 连接管理
+│   │   └── ...                      # 其他组件
 │   ├── hooks/                       # 自定义 Hooks（useAuth/useProgress/useQuiz 等）
 │   ├── lib/                         # Axios 实例、auth 工具、常量
+│   │   ├── websocket.ts             # WebSocket 客户端封装
+│   │   └── utils/                   # 工具函数
+│   │       ├── time.ts              # 时间格式化
+│   │       └── progress.ts          # 进度计算
 │   ├── types/                       # TypeScript 类型定义
+│   │   └── dashboard.ts             # Dashboard 数据类型
 │   ├── styles/                      # 全局样式与 Tailwind
 │   ├── tests/                       # 前端单元与集成测试
+│   │   └── dashboard/               # Dashboard 组件测试
 │   ├── public/                      # 静态资源
 │   └── out/                         # 静态导出产物（构建后生成）
 ├── specs/                           # 功能规格、计划、任务（含 009-frontend-ui）
@@ -546,14 +579,21 @@ go-study2/
 **目录说明：**
 
 - `backend/internal/app/http_server/`：API 入口与路由、中间件、认证/进度/测验 handler
+- `backend/internal/websocket/`：WebSocket 连接管理（Hub、Client、Events）
 - `backend/internal/domain/`：用户、进度、测验的实体、仓储接口与服务
 - `backend/internal/infrastructure/`：SQLite 连接、迁移与仓储实现
 - `backend/internal/pkg/`：JWT、密码工具等复用模块
 - `backend/tests/`：单元、集成、契约测试，覆盖认证/进度/测验/学习内容
-- `frontend/app/`：登录注册路由 `(auth)`、受保护路由 `(protected)`（topics/progress/quiz/profile）
+- `frontend/app/(protected)/dashboard/`：Dashboard 首页及其专用组件
+- `frontend/app/`：登录注册路由 `(auth)`、受保护路由 `(protected)`（dashboard/topics/progress/quiz/profile）
+- `frontend/components/providers/`：WebSocketProvider 等 Context 提供者
 - `frontend/components/`：AuthGuard、LoginForm、ChapterContent、QuizItem 等核心组件
 - `frontend/hooks/`：`useAuth`、`useProgress`、`useQuiz` 管理跨页面状态
+- `frontend/lib/websocket.ts`：WebSocket 客户端封装与重连逻辑
+- `frontend/lib/utils/`：时间格式化、进度计算等工具函数
 - `frontend/lib/`：Axios 实例与 token 管理，统一错误处理
+- `frontend/types/dashboard.ts`：Dashboard 相关 TypeScript 类型定义
+- `frontend/__tests__/dashboard/`：Dashboard 组件单元测试
 - `frontend/tests/`：Jest + RTL 测试，覆盖核心组件与 API 层
 
 ---
@@ -702,11 +742,13 @@ static:
 | `/topic/types/search` | GET/POST | Types 搜索 |
 | `/topic/types/quiz/submit` | GET/POST | Types 综合测验提交 |
 | `/progress` | GET | 获取当前用户全部学习进度（需登录） |
+| `/progress/last` | GET | 获取最后学习章节信息（需登录，Dashboard 专用） |
 | `/progress/{topic}` | GET | 获取指定主题进度（需登录） |
 | `/progress` | POST | 保存/更新章节进度（需登录） |
 | `/quiz/{topic}/{chapter}` | GET | 获取测验题目（需登录） |
 | `/quiz/submit` | POST | 提交测验并评分（需登录） |
 | `/quiz/history` | GET | 查看历史测验记录，可按主题过滤（需登录） |
+| `/ws` | WebSocket | WebSocket 连接（需登录，实时推送学习进度与测验更新） |
 
 **响应格式**：`{code, message, data}`；学习内容接口支持 `?format=json|html`。默认管理员首登时 `login`/`register` 响应将返回 `needPasswordChange=true`，此时除改密/资料/退出外的请求会被 403 并写入审计。
 
@@ -836,9 +878,18 @@ go tool cover -html=coverage.out
   - [x] CLI和HTTP双模式支持
   - [x] 99%测试覆盖率
 
+- [x] **v0.6** - Dashboard 首页功能 🆕
+  - [x] 学习状态快速概览（欢迎信息、学习天数、完成进度）
+  - [x] 一键继续学习（最后学习章节快速跳转）
+  - [x] 主题进度可视化（所有主题进度条展示）
+  - [x] 最近测验记录展示（最近5条测验历史）
+  - [x] WebSocket 实时推送（学习进度与测验记录实时更新）
+  - [x] 响应式设计（移动端、平板、桌面适配）
+  - [x] 路由与导航调整（登录后默认跳转 Dashboard）
+
 ### 进行中 🚧
 
-- [ ] **v0.6** - 文档完善
+- [ ] **v0.7** - 文档完善
   - [x] README.md更新
   - [ ] 贡献指南
   - [ ] 使用教程视频

@@ -8,6 +8,7 @@
 import { Card, Progress, Typography, List } from 'antd'
 import { useRouter } from 'next/navigation'
 import type { TopicProgressSummary } from '@/types/dashboard'
+import { TruncatedText } from './TruncatedText'
 
 const { Title, Text } = Typography
 
@@ -65,15 +66,15 @@ export const TopicProgress: React.FC<TopicProgressProps> = ({ topics }) => {
 						className="cursor-pointer hover:bg-gray-50 transition-colors"
 						onClick={() => handleTopicClick(topic.topicId)}
 					>
-						<div className="w-full">
-							<div className="flex items-center justify-between mb-2">
-								<Text strong className="text-base">
-									{topic.displayName}
-								</Text>
-								<Text type="secondary" className="text-sm">
-									{topic.completedChapters} / {topic.totalChapters} 章节
-								</Text>
-							</div>
+					<div className="w-full">
+						<div className="flex items-center justify-between mb-2 gap-2">
+							<Text strong className="text-base flex-1 min-w-0">
+								<TruncatedText text={topic.displayName} maxLength={20} />
+							</Text>
+							<Text type="secondary" className="text-sm flex-shrink-0">
+								{topic.completedChapters} / {topic.totalChapters} 章节
+							</Text>
+						</div>
 							<Progress
 								percent={topic.percentage}
 								strokeColor={getProgressColor(topic.percentage)}

@@ -197,27 +197,31 @@
 
 **Purpose**: Improvements that affect multiple user stories
 
-- [ ] T064 [P] Add responsive design styles for mobile/tablet in frontend/app/(protected)/dashboard/page.tsx
-- [ ] T064-A [P] Implement long text truncation with Ant Design Tooltip (implements FR-023): apply to topic names, chapter names in all Dashboard components
+- [X] T064 [P] Add responsive design styles for mobile/tablet in frontend/app/(protected)/dashboard/page.tsx
+- [X] T064-A [P] Implement long text truncation with Ant Design Tooltip (implements FR-023): apply to topic names, chapter names in all Dashboard components
 - [ ] T064-A-Test [P] Test tooltip behavior: verify text truncates after N characters, verify tooltip shows on hover (300ms delay), verify full text in tooltip
-- [ ] T065 [P] Optimize Dashboard page performance (code splitting, lazy loading)
+- [X] T065 [P] Optimize Dashboard page performance (code splitting, lazy loading)
 - [ ] T066 [P] Add error handling for WebSocket connection failures
 - [ ] T067 [P] Implement WebSocket reconnection with exponential backoff in frontend/lib/websocket.ts
 - [ ] T067-Test [P] Unit test for WebSocket reconnection logic: simulate disconnection, verify exponential backoff intervals (1s, 2s, 4s...), verify max 5 retries, verify error display after failure
 - [ ] T068 [P] Add loading skeletons for Dashboard components
-- [ ] T069 [P] Verify all code comments and user-facing documentation are in Chinese
-- [ ] T070 [P] Add database indexes for performance: learning_progress(user_id, last_visited_at)
-- [ ] T071 [P] Add database indexes for performance: quiz_records(user_id, completed_at)
-- [ ] T072 [P] Security review: Verify authentication on all Dashboard APIs
-- [ ] T073 [P] Security review: Verify WebSocket connection authentication
+ - [X] T066 [P] Add error handling for WebSocket connection failures
+ - [X] T067 [P] Implement WebSocket reconnection with exponential backoff in frontend/lib/websocket.ts
+ - [X] T067-Test [P] Unit test for WebSocket reconnection logic: simulate disconnection, verify exponential backoff intervals (1s, 2s, 4s...), verify max 5 retries, verify error display after failure
+ - [X] T068 [P] Add loading skeletons for Dashboard components
+- [X] T069 [P] Verify all code comments and user-facing documentation are in Chinese
+- [X] T070 [P] Add database indexes for performance: learning_progress(user_id, last_visited_at)
+- [X] T071 [P] Add database indexes for performance: quiz_records(user_id, completed_at)
+- [X] T072 [P] Security review: Verify authentication on all Dashboard APIs
+- [X] T073 [P] Security review: Verify WebSocket connection authentication
 - [ ] T074 [P] Performance testing: Verify Dashboard loads in < 2 seconds
 - [ ] T075 [P] Performance testing: Verify WebSocket message latency < 500ms
 - [ ] T076 [P] Accessibility review: Verify WCAG 2.1 AA compliance
 - [ ] T077 [P] Cross-browser testing: Chrome, Firefox, Safari, Edge
 - [ ] T077-A [P] Edge case testing: test all 6 edge cases from spec.md (incomplete data, no topics/chapters, version changes, API timeout, multi-device sync, long names)
-- [ ] T078 [P] Update README.md with Dashboard feature documentation
-- [ ] T079 [P] Update project structure documentation
-- [ ] T080 Run quickstart.md validation and fix any issues
+- [X] T078 [P] Update README.md with Dashboard feature documentation
+- [X] T079 [P] Update project structure documentation
+- [X] T080 Run quickstart.md validation and fix any issues
 
 ---
 

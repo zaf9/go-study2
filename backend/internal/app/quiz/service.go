@@ -540,6 +540,7 @@ type QuizReviewItem struct {
 // RecentQuizSummary 表示最近测验记录的汇总信息（用于 Dashboard）。
 type RecentQuizSummary struct {
 	ID             int64  `json:"id"`
+	SessionID      string `json:"sessionId"`
 	TopicName      string `json:"topic_name"`
 	ChapterName    string `json:"chapter_name"`
 	Score          int    `json:"score"`
@@ -597,6 +598,7 @@ func (s *Service) GetRecentQuizzes(ctx context.Context, userID int64, limit int)
 
 		summaries = append(summaries, RecentQuizSummary{
 			ID:             session.ID,
+			SessionID:      session.SessionID,
 			TopicName:      topicDispName,
 			ChapterName:    chapterDispName,
 			Score:          session.Score,

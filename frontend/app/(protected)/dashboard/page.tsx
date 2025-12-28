@@ -1,15 +1,17 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-import { Result } from 'antd'
+import { useEffect, useState, lazy, Suspense } from 'react'
+import { Result, Spin } from 'antd'
 import { WelcomeHeader } from './components/WelcomeHeader'
 import { StatsCards } from './components/StatsCards'
 import { QuickContinue } from './components/QuickContinue'
-import { TopicProgress } from './components/TopicProgress'
-import { RecentQuizzes } from './components/RecentQuizzes'
 import { fetchDashboardStats, fetchLastLearning, fetchTopicProgress, fetchRecentQuizzes } from '@/lib/dashboard'
 import type { DashboardStats, ProgressUpdatedEventData, QuizCompletedEventData, LastLearningRecord, TopicProgressSummary, RecentQuizSummary } from '@/types/dashboard'
 import useAuth from '@/hooks/useAuth'
+
+// 懒加载非关键组件以实现代码分割
+const TopicProgress = lazy(() => import('./components/TopicProgress').then(module => ({ default: module.TopicProgress })))
+const RecentQuizzes = lazy(() => import('./components/RecentQuizzes').then(module => ({ default: module.RecentQuizzes })))
 
 export default function DashboardPage() {
 	const { user } = useAuth()
@@ -133,7 +135,7 @@ export default function DashboardPage() {
 	}
 
 	return (
-		<div className="p-6">
+		<div className="p-3 sm:p-4 md:p-6 max-w-7xl mx-auto">
 			<WelcomeHeader
 				username={user.username || '用户'}
 				studyDays={stats?.studyDays || 0}
@@ -147,8 +149,12 @@ export default function DashboardPage() {
 					weeklyActivity={stats.weeklyActivity}
 				/>
 			)}
-			<TopicProgress topics={topicProgress} />
-			<RecentQuizzes quizzes={recentQuizzes} />
+			<Suspense fallback={<div className="mb-6"><Spin size="large" /></div>}>
+				<TopicProgress topics={topicProgress} />
+			</Suspense>
+			<Suspense fallback={<div className="mb-6"><Spin size="large" /></div>}>
+				<RecentQuizzes quizzes={recentQuizzes} />
+			</Suspense>
 		</div>
 	)
 }

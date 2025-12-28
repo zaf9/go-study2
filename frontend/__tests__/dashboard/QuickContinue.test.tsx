@@ -32,7 +32,7 @@ describe('QuickContinue', () => {
 
 		// 有多个"继续学习"文本（标题和按钮），使用 getAllByText
 		expect(screen.getAllByText('继续学习').length).toBeGreaterThan(0)
-		expect(screen.getByText(/变量 - 存储/)).toBeInTheDocument()
+		expect(screen.getAllByText((content, element) => element?.textContent === '变量 - 存储')[0]).toBeInTheDocument()
 		expect(screen.getByText(/最后访问：/)).toBeInTheDocument()
 		// 按钮的可访问名称包含图标，所以使用包含匹配
 		expect(screen.getByRole('button', { name: /继续学习/ })).toBeInTheDocument()

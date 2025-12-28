@@ -9,6 +9,7 @@ import { Card, Button, Typography, Space } from 'antd'
 import { RightOutlined } from '@ant-design/icons'
 import { useRouter } from 'next/navigation'
 import type { LastLearningRecord } from '@/types/dashboard'
+import { TruncatedText } from './TruncatedText'
 
 const { Title, Text } = Typography
 
@@ -57,7 +58,7 @@ export const QuickContinue: React.FC<QuickContinueProps> = ({ lastLearning }) =>
 				</Title>
 				<Space direction="vertical" size={4} className="w-full">
 					<Text strong className="text-base">
-						{lastLearning.topicDisplayName} - {lastLearning.chapterDisplayName}
+						<TruncatedText text={lastLearning.topicDisplayName} maxLength={15} /> - <TruncatedText text={lastLearning.chapterDisplayName} maxLength={15} />
 					</Text>
 					<Text type="secondary" className="text-sm">
 						最后访问：{new Date(lastLearning.lastVisitedAt).toLocaleString('zh-CN')}
