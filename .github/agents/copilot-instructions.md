@@ -9,6 +9,8 @@ Auto-generated from all feature plans. Last updated: 2025-12-14
 - 题库管理：随机抽题、难度分级（easy/medium/hard）、题型分类（single/multiple） (013-quiz-question-bank)
 - 深度验证 + Fail-Fast启动策略（题库结构完整性检查） (013-quiz-question-bank)
 - Go 1.24.5 + github.com/gogf/gf/v2 (GoFrame 框架) (005-https-protocol-support)
+- Go 1.24 (backend), TypeScript 5.x / Node.js (frontend) (016-progress-quiz-ux)
+- SQLite with GoFrame gdb ORM (tables: learning_progress, quiz_sessions, quiz_attempts) (016-progress-quiz-ux)
 
 ## Project Structure
 
@@ -26,6 +28,7 @@ tests/
 Go 1.24.5: Follow standard conventions
 
 ## Recent Changes
+- 016-progress-quiz-ux: Added Go 1.24 (backend), TypeScript 5.x / Node.js (frontend)
 - 013-quiz-question-bank: Added Go 1.21+
 
 - 005-https-protocol-support: Added Go 1.24.5 + github.com/gogf/gf/v2 (GoFrame 框架)
