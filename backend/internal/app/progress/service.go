@@ -379,7 +379,7 @@ func (s *Service) GetNextUnfinishedChapter(ctx context.Context, userID int64) (*
 		progressMap[item.Topic][item.Chapter] = item
 	}
 	for _, topic := range s.sortedTopicIDs() {
-		chapters := topicChapterOrder[topic]
+		chapters := TopicChapterOrder[topic]
 		if len(chapters) == 0 {
 			continue
 		}

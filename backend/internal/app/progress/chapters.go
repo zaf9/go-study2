@@ -2,8 +2,8 @@ package progress
 
 import "strings"
 
-// topicChapterOrder 定义主题内章节的固定顺序，确保进度计算与"继续学习"提示一致。
-var topicChapterOrder = map[string][]string{
+// TopicChapterOrder 导出主题内章节的固定顺序，确保进度计算与"继续学习"提示一致。
+var TopicChapterOrder = map[string][]string{
 	"lexical_elements": {
 		"comments",
 		"tokens",
@@ -74,7 +74,7 @@ var defaultTopicOrder = []string{
 // defaultChapterTotals 返回主题章节总数，供进度汇总计算。
 func defaultChapterTotals() map[string]int {
 	result := map[string]int{}
-	for topic, chapters := range topicChapterOrder {
+	for topic, chapters := range TopicChapterOrder {
 		result[topic] = len(chapters)
 	}
 	return result
@@ -99,4 +99,9 @@ func chapterDisplayName(chapter string) string {
 		}
 	}
 	return strings.Join(parts, " ")
+}
+
+// ChapterDisplayName 导出版本，供其他包使用
+func ChapterDisplayName(chapter string) string {
+	return chapterDisplayName(chapter)
 }

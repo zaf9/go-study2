@@ -536,3 +536,85 @@ func (m *memoryProgressRepo) GetLastLearning(ctx context.Context, userID int64) 
 	}
 	return last, nil
 }
+
+func (m *memoryProgressRepo) GetOverview(ctx context.Context, userID int64) (*progressdom.ProgressOverview, error) {
+	// 获取用户所有记录
+	allRecords, err := m.GetByUser(ctx, userID)
+	if err != nil {
+		return nil, err
+	}
+
+	// 按主题和章节构建进度映射
+	progressMap := make(map[string]map[string]*progressdom.LearningProgress)
+	for i := range allRecords {
+		if _, ok := progressMap[allRecords[i].Topic]; !ok {
+			progressMap[allRecords[i].Topic] = make(map[string]*progressdom.LearningProgress)
+		}
+		progressMap[allRecords[i].Topic][allRecords[i].Chapter] = &allRecords[i]
+	}
+
+	// 计算各主题的统计信息
+	topicSummaries := make([]progressdom.TopicProgressSummary, 0)
+	totalCompleted := 0
+	totalInProgress := 0
+	totalChapters := 0
+
+	for topic, chapters := range progressdom.TopicChapterOrder {
+		topicTotal := len(chapters)
+		completed := 0
+		inProgress := 0
+
+		topicProgress, ok := progressMap[topic]
+		if !ok {
+			topicProgress = make(map[string]*progressdom.LearningProgress)
+		}
+
+		for _, chapter := range chapters {
+			record, exists := topicProgress[chapter]
+			if exists {
+				if record.Status == progressdom.StatusCompleted && record.QuizPassed {
+					completed++
+				} else if record.Status == progressdom.StatusInProgress {
+					inProgress++
+				}
+			}
+		}
+
+		topicSummaries = append(topicSummaries, progressdom.TopicProgressSummary{
+			Topic:              topic,
+			TotalChapters:      topicTotal,
+			CompletedChapters:  completed,
+			InProgressChapters: inProgress,
+		})
+
+		totalChapters += topicTotal
+		totalCompleted += completed
+		totalInProgress += inProgress
+	}
+
+	// 计算完成率
+	completionRate := 0.0
+	if totalChapters > 0 {
+		completionRate = float64(totalCompleted) / float64(totalChapters) * 100
+	}
+
+	// 查找下一个建议学习的章节
+	var nextChapter *progressdom.NextChapterHint
+	lastLearning, err := m.GetLastLearning(ctx, userID)
+	if err == nil && lastLearning != nil {
+		nextChapter = &progressdom.NextChapterHint{
+			Topic:   lastLearning.Topic,
+			Chapter: lastLearning.Chapter,
+			Title:   progressdom.ChapterDisplayName(lastLearning.Chapter),
+		}
+	}
+
+	return &progressdom.ProgressOverview{
+		TotalChapters:      totalChapters,
+		CompletedChapters:  totalCompleted,
+		InProgressChapters: totalInProgress,
+		CompletionRate:     completionRate,
+		Topics:             topicSummaries,
+		NextChapter:        nextChapter,
+	}, nil
+}

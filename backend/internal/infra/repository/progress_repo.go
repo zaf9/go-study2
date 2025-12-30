@@ -4,7 +4,9 @@ import (
 	"context"
 	"database/sql"
 	"errors"
+	"fmt"
 	"strconv"
+	"time"
 
 	"go-study2/internal/domain/progress"
 
@@ -141,4 +143,150 @@ func (r *ProgressRepository) GetLastLearning(ctx context.Context, userID int64) 
 		return nil, err
 	}
 	return &item, nil
+}
+
+// GetOverview 计算用户的全局学习进度概览
+func (r *ProgressRepository) GetOverview(ctx context.Context, userID int64) (*progress.ProgressOverview, error) {
+	// 获取用户所有学习记录
+	allRecords, err := r.GetByUser(ctx, userID)
+	if err != nil {
+		return nil, err
+	}
+
+	// 按主题和章节构建进度映射
+	progressMap := make(map[string]map[string]*progress.LearningProgress) // topic -> chapter -> record
+	for _, record := range allRecords {
+		if _, ok := progressMap[record.Topic]; !ok {
+			progressMap[record.Topic] = make(map[string]*progress.LearningProgress)
+		}
+		progressMap[record.Topic][record.Chapter] = &record
+	}
+
+	// 计算各主题的统计信息
+	topicSummaries := make([]progress.TopicProgressSummary, 0)
+	totalCompleted := 0
+	totalInProgress := 0
+	totalChapters := 0
+
+	for topic, chapters := range progress.TopicChapterOrder {
+		topicTotal := len(chapters)
+		completed := 0
+		inProgress := 0
+
+		topicProgress, ok := progressMap[topic]
+		if !ok {
+			topicProgress = make(map[string]*progress.LearningProgress)
+		}
+
+		for _, chapter := range chapters {
+			record, exists := topicProgress[chapter]
+			if exists {
+				if record.Status == progress.StatusCompleted && record.QuizPassed {
+					completed++
+				} else if record.Status == progress.StatusInProgress {
+					inProgress++
+				}
+			}
+		}
+
+		topicSummaries = append(topicSummaries, progress.TopicProgressSummary{
+			Topic:              topic,
+			TotalChapters:      topicTotal,
+			CompletedChapters:  completed,
+			InProgressChapters: inProgress,
+		})
+
+		totalChapters += topicTotal
+		totalCompleted += completed
+		totalInProgress += inProgress
+	}
+
+	// 计算完成率
+	completionRate := 0.0
+	if totalChapters > 0 {
+		completionRate = float64(totalCompleted) / float64(totalChapters) * 100
+	}
+
+	// 查找下一个建议学习的章节
+	var nextChapter *progress.NextChapterHint
+	lastLearning, err := r.GetLastLearning(ctx, userID)
+	if err == nil && lastLearning != nil {
+		// 简单逻辑：返回最后学习的章节
+		nextChapter = &progress.NextChapterHint{
+			Topic:   lastLearning.Topic,
+			Chapter: lastLearning.Chapter,
+			Title:   progress.ChapterDisplayName(lastLearning.Chapter),
+		}
+	}
+
+	return &progress.ProgressOverview{
+		TotalChapters:      totalChapters,
+		CompletedChapters:  totalCompleted,
+		InProgressChapters: totalInProgress,
+		CompletionRate:     completionRate,
+		Topics:             topicSummaries,
+		NextChapter:        nextChapter,
+	}, nil
+}
+
+// GetByUserAndTopic 获取用户在指定主题的所有章节进度，包含未开始的章节
+func (r *ProgressRepository) GetByUserAndTopic(ctx context.Context, userID int64, topic string) (*progress.TopicProgressDetail, error) {
+	// 获取该主题的所有学习记录
+	records, err := r.GetByTopic(ctx, userID, topic)
+	if err != nil {
+		return nil, err
+	}
+
+	// 构建章节进度映射
+	progressMap := make(map[string]*progress.LearningProgress)
+	for i := range records {
+		progressMap[records[i].Chapter] = &records[i]
+	}
+
+	// 获取该主题的所有章节定义
+	chapters, ok := progress.TopicChapterOrder[topic]
+	if !ok {
+		return nil, fmt.Errorf("不支持的主题: %s", topic)
+	}
+
+	// 构建章节状态列表
+	chapterInfos := make([]progress.ChapterStatusInfo, 0, len(chapters))
+	for _, chapter := range chapters {
+		record, exists := progressMap[chapter]
+		if exists {
+			// 有学习记录
+			var lastVisitAt, completedAt *time.Time
+			if !record.LastVisitAt.IsZero() {
+				lastVisitAt = &record.LastVisitAt
+			}
+			if record.CompletedAt != nil && !record.CompletedAt.IsZero() {
+				completedAt = record.CompletedAt
+			}
+
+			chapterInfos = append(chapterInfos, progress.ChapterStatusInfo{
+				Chapter:     chapter,
+				Status:      record.Status,
+				QuizScore:   record.QuizScore,
+				QuizPassed:  record.QuizPassed,
+				LastVisitAt: lastVisitAt,
+				CompletedAt: completedAt,
+			})
+		} else {
+			// 无学习记录，默认为未开始
+			chapterInfos = append(chapterInfos, progress.ChapterStatusInfo{
+				Chapter:     chapter,
+				Status:      progress.StatusNotStarted,
+				QuizScore:   0,
+				QuizPassed:  false,
+				LastVisitAt: nil,
+				CompletedAt: nil,
+			})
+		}
+	}
+
+	return &progress.TopicProgressDetail{
+		Topic:         topic,
+		TotalChapters: len(chapters),
+		Chapters:      chapterInfos,
+	}, nil
 }

@@ -83,3 +83,45 @@ func (lp *LearningProgress) Complete() {
 	lp.CompletedAt = &now
 	lp.LastVisitAt = now
 }
+
+// ChapterStatusInfo 章节状态信息
+type ChapterStatusInfo struct {
+	Chapter     string     `json:"chapter"`
+	Status      string     `json:"status"`
+	QuizScore   int        `json:"quizScore"`
+	QuizPassed  bool       `json:"quizPassed"`
+	LastVisitAt *time.Time `json:"lastVisitAt"`
+	CompletedAt *time.Time `json:"completedAt"`
+}
+
+// TopicProgressSummary 主题进度汇总
+type TopicProgressSummary struct {
+	Topic              string `json:"topic"`
+	TotalChapters      int    `json:"totalChapters"`
+	CompletedChapters  int    `json:"completedChapters"`
+	InProgressChapters int    `json:"inProgressChapters"`
+}
+
+// ProgressOverview 进度概览
+type ProgressOverview struct {
+	TotalChapters      int                    `json:"totalChapters"`
+	CompletedChapters  int                    `json:"completedChapters"`
+	InProgressChapters int                    `json:"inProgressChapters"`
+	CompletionRate     float64                `json:"completionRate"`
+	Topics             []TopicProgressSummary `json:"topics"`
+	NextChapter        *NextChapterHint       `json:"next,omitempty"`
+}
+
+// NextChapterHint 下一个建议学习的章节
+type NextChapterHint struct {
+	Topic   string `json:"topic"`
+	Chapter string `json:"chapter"`
+	Title   string `json:"title"`
+}
+
+// TopicProgressDetail 主题进度详情
+type TopicProgressDetail struct {
+	Topic         string              `json:"topic"`
+	TotalChapters int                 `json:"totalChapters"`
+	Chapters      []ChapterStatusInfo `json:"chapters"`
+}

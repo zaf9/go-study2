@@ -139,44 +139,44 @@
 
 #### 后端测试
 
-- [ ] T029 [P] [US2] 创建backend/tests/repository/progress_repo_test.go,测试CreateOrUpdate()方法
-- [ ] T030 [P] [US2] 在progress_repo_test.go中测试GetByUserAndTopic()返回主题的所有章节记录
-- [ ] T031 [P] [US2] 在progress_repo_test.go中测试GetOverview()聚合统计功能
-- [ ] T032 [P] [US2] 创建backend/tests/domain/progress_service_test.go,测试UpdateChapterStatus()创建学习记录
-- [ ] T033 [P] [US2] 在progress_service_test.go中测试CompleteChapter()更新状态为completed
+- [X] T029 [P] [US2] 创建backend/tests/repository/progress_repo_test.go,测试CreateOrUpdate()方法
+- [X] T030 [P] [US2] 在progress_repo_test.go中测试GetByUserAndTopic()返回主题的所有章节记录
+- [X] T031 [P] [US2] 在progress_repo_test.go中测试GetOverview()聚合统计功能
+- [X] T032 [P] [US2] 创建backend/tests/domain/progress_service_test.go,测试UpdateChapterStatus()创建学习记录
+- [X] T033 [P] [US2] 在progress_service_test.go中测试CompleteChapter()更新状态为completed
 
 #### 前端测试
 
-- [ ] T034 [P] [US2] 创建frontend/__tests__/lib/chapter-status.test.ts,测试getChapterStatus()状态计算逻辑
-- [ ] T035 [P] [US2] 创建frontend/__tests__/components/ChapterStatusBadge.test.tsx,测试状态徽章组件渲染
-- [ ] T036 [P] [US2] 创建frontend/__tests__/components/ChapterList.test.tsx,测试章节列表显示三种状态
+- [X] T034 [P] [US2] 创建frontend/__tests__/lib/chapter-status.test.ts,测试getChapterStatus()状态计算逻辑
+- [X] T035 [P] [US2] 创建frontend/__tests__/components/ChapterStatusBadge.test.tsx,测试状态徽章组件渲染
+- [X] T036 [P] [US2] 创建frontend/__tests__/components/ChapterList.test.tsx,测试章节列表显示三种状态
 
 ### 实现 - User Story 2
 
 #### 后端实现
 
-- [ ] T037 [P] [US2] 在backend/internal/infra/repository/progress_repo.go中实现CreateOrUpdate()方法
-- [ ] T038 [P] [US2] 在backend/internal/infra/repository/progress_repo.go中实现GetByUserAndTopic()方法
-- [ ] T039 [P] [US2] 在backend/internal/infra/repository/progress_repo.go中实现GetOverview()方法
-- [ ] T040 [US2] 在backend/internal/domain/progress/service.go中实现UpdateChapterStatus()业务逻辑
-- [ ] T041 [US2] 在backend/internal/domain/progress/service.go中实现CompleteChapter()业务逻辑
-- [ ] T042 [US2] 在backend/internal/domain/progress/service.go中实现GetTopicProgressWithStatus()填充所有章节状态
-- [ ] T043 [US2] 在backend/internal/interfaces/progress_handler.go中添加GET /api/v1/progress/topic/:topic端点
-- [ ] T044 [US2] 运行go test ./internal/domain/progress/...确保后端测试通过
+- [X] T037 [P] [US2] 在backend/internal/infra/repository/progress_repo.go中实现CreateOrUpdate()方法
+- [X] T038 [P] [US2] 在backend/internal/infra/repository/progress_repo.go中实现GetByUserAndTopic()方法
+- [X] T039 [P] [US2] 在backend/internal/infra/repository/progress_repo.go中实现GetOverview()方法
+- [X] T040 [US2] 在backend/internal/domain/progress/service.go中实现UpdateChapterStatus()业务逻辑
+- [X] T041 [US2] 在backend/internal/domain/progress/service.go中实现CompleteChapter()业务逻辑
+- [X] T042 [US2] 在backend/internal/domain/progress/service.go中实现GetTopicProgressWithStatus()填充所有章节状态
+- [X] T043 [US2] 在backend/internal/interfaces/progress_handler.go中添加GET /api/v1/progress/topic/:topic端点
+- [X] T044 [US2] 运行go test ./internal/domain/progress/...确保后端测试通过
 
 #### 前端实现
 
-- [ ] T045 [P] [US2] 创建frontend/components/learning/ChapterStatusBadge.tsx,实现状态徽章(未开始🔘/学习中📖/已完成✅)
-- [ ] T046 [US2] 修改frontend/components/learning/ChapterList.tsx,为每个章节显示ChapterStatusBadge
-- [ ] T047 [US2] 修改frontend/app/(protected)/topics/[topic]/page.tsx,调用/api/v1/progress/topic/:topic获取章节状态
-- [ ] T048 [P] [US2] 在frontend/services/progressService.ts中添加getTopicProgress()方法
-- [ ] T049 [US2] 创建frontend/hooks/useChapterStatus.ts,封装章节状态计算逻辑
-- [ ] T050 [US2] 运行npm test确保前端测试通过
+- [X] T045 [P] [US2] 创建frontend/components/learning/ChapterStatusBadge.tsx,实现状态徽章(未开始🔘/学习中📖/已完成✅)
+- [X] T046 [US2] 修改frontend/components/learning/ChapterList.tsx,为每个章节显示ChapterStatusBadge
+- [X] T047 [US2] 修改frontend/app/(protected)/topics/[topic]/page.tsx,调用/api/v1/progress/topic/:topic获取章节状态
+- [X] T048 [P] [US2] 在frontend/services/progressService.ts中添加getTopicProgress()方法
+- [X] T049 [US2] 创建frontend/hooks/useChapterStatus.ts,封装章节状态计算逻辑
+- [X] T050 [US2] 运行npm test确保前端测试通过
 
 ### 集成测试 - User Story 2
 
-- [ ] T051 [US2] 创建backend/tests/interfaces/progress_handler_test.go,测试GET /progress/topic/:topic端点完整流程
-- [ ] T052 [US2] 创建frontend/__tests__/integration/chapter-status.integration.test.tsx,测试章节状态显示和更新
+- [X] T051 [US2] 创建backend/tests/interfaces/progress_handler_test.go,测试GET /progress/topic/:topic端点完整流程
+- [X] T052 [US2] 创建frontend/__tests__/integration/chapter-status.integration.test.tsx,测试章节状态显示和更新
 
 **User Story 2 验收**:
 - ✅ 章节列表清晰显示三种状态

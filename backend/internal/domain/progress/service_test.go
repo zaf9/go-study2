@@ -23,6 +23,17 @@ func (m *mockRepo) Upsert(_ context.Context, record *Progress) error {
 	return nil
 }
 
+func (m *mockRepo) CreateOrUpdate(_ context.Context, record *LearningProgress) error {
+	if m.err != nil {
+		return m.err
+	}
+	record.ID = int64(len(m.items) + 1)
+	record.CreatedAt = time.Now()
+	record.UpdatedAt = time.Now()
+	m.items = append(m.items, *record)
+	return nil
+}
+
 func (m *mockRepo) ListByUser(_ context.Context, userID int64) ([]Progress, error) {
 	if m.err != nil {
 		return nil, m.err

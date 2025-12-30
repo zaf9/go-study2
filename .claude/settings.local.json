@@ -4,7 +4,15 @@
       "Bash(.specify/scripts/powershell/check-prerequisites.ps1 -Json -RequireTasks -IncludeTasks)",
       "Bash(powershell.exe:*)",
       "Bash(git rev-parse:*)",
-      "Bash(mkdir:*)"
+      "Bash(mkdir:*)",
+      "Bash(test:*)",
+      "Bash(go test:*)",
+      "Bash(ls:*)",
+      "Bash(./build.bat)",
+      "Bash(git restore:*)",
+      "Bash(bash -c:*)",
+      "Bash(npm run build:*)",
+      "Bash(npm test:*)"
     ]
   }
 }

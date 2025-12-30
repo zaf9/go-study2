@@ -2,6 +2,7 @@ package testutil
 
 import (
 	"context"
+	"strings"
 	"testing"
 	"time"
 
@@ -21,7 +22,7 @@ func CreateTestUser(t *testing.T, db gdb.DB, userID int64) {
 	})
 
 	// 忽略主键冲突错误(用户可能已存在)
-	if err != nil && !gdb.IsError(err, "UNIQUE constraint failed") {
+	if err != nil && !strings.Contains(err.Error(), "UNIQUE constraint failed") {
 		t.Logf("创建测试用户失败(可忽略): %v", err)
 	}
 }
