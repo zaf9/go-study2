@@ -46,9 +46,11 @@ export const RecentQuizzes: React.FC<RecentQuizzesProps> = ({ quizzes }) => {
     if (quizzes.length === 0) {
         return (
             <Card bordered={false} className="mb-6">
-                <Title level={4} className="mb-4">
-                    最近测验
-                </Title>
+                <div className="flex justify-between items-center mb-4">
+                    <Title level={4} className="mb-0">
+                        最近测验
+                    </Title>
+                </div>
                 <Empty description="暂无测验记录" />
             </Card>
         )
@@ -56,9 +58,17 @@ export const RecentQuizzes: React.FC<RecentQuizzesProps> = ({ quizzes }) => {
 
     return (
         <Card bordered={false} className="mb-6">
-            <Title level={4} className="mb-4">
-                最近测验
-            </Title>
+            <div className="flex justify-between items-center mb-4">
+                <Title level={4} className="mb-0">
+                    最近测验
+                </Title>
+                <a 
+                    onClick={() => router.push('/quiz-center')}
+                    className="text-blue-500 hover:text-blue-700 cursor-pointer"
+                >
+                    查看全部 →
+                </a>
+            </div>
             <List
                 dataSource={quizzes}
                 renderItem={(quiz) => (

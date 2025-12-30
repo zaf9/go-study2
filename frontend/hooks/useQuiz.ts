@@ -7,7 +7,7 @@ import {
     useQuizSession,
 } from "@/services/quizService";
 import { QuizItem, QuizSubmitResult } from "@/types/quiz";
-import { mutate } from "swr";
+import { mutate as globalMutate } from "swr";
 import { progressKeys } from "@/services/progressService";
 
 export default function useQuiz(topic: string, chapter: string) {
@@ -64,8 +64,8 @@ export default function useQuiz(topic: string, chapter: string) {
             }
             
             // User Story 4: 提交成功后刷新进度数据,确保所有页面显示一致
-            void mutate(progressKeys.overview);
-            void mutate(progressKeys.topic(topic));
+            void globalMutate(progressKeys.overview);
+            void globalMutate(progressKeys.topic(topic));
             
             return res;
         } catch (e: any) {

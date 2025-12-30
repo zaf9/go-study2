@@ -77,3 +77,12 @@ export function useQuizHistory(topic?: string) {
   );
 }
 
+// T121: 添加getQuizHistory方法用于命令式调用
+export const quizService = {
+  getQuizHistory: async (topic?: string): Promise<QuizHistoryItem[]> => {
+    return fetchHistoryLegacy(topic);
+  },
+  getQuizReview: async (sessionId: string): Promise<any> => {
+    return api.get(API_PATHS.quizReview(sessionId));
+  },
+};
