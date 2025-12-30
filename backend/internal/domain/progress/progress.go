@@ -58,3 +58,28 @@ func IsValidStatus(status string) bool {
 	_, ok := ValidStatuses[status]
 	return ok
 }
+
+// IsCompleted 判断章节是否已完成学习
+func (lp *LearningProgress) IsCompleted() bool {
+	return lp.Status == StatusCompleted && lp.CompletedAt != nil
+}
+
+// MarkAsInProgress 标记章节为学习中状态
+func (lp *LearningProgress) MarkAsInProgress() {
+	if lp.Status == StatusNotStarted {
+		lp.Status = StatusInProgress
+		now := time.Now()
+		if lp.FirstVisitAt.IsZero() {
+			lp.FirstVisitAt = now
+		}
+		lp.LastVisitAt = now
+	}
+}
+
+// Complete 标记章节为已完成状态
+func (lp *LearningProgress) Complete() {
+	lp.Status = StatusCompleted
+	now := time.Now()
+	lp.CompletedAt = &now
+	lp.LastVisitAt = now
+}

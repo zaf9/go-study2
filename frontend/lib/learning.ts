@@ -1,6 +1,8 @@
 import api from "./api";
 import { API_PATHS } from "./constants";
 import { ChapterContent, ChapterSummary, TopicSummary } from "@/types/learning";
+import { getChapterCount } from "./chapter-count";
+import { TopicKey } from "@/types/learning";
 
 type TypesTopicContent = {
   concept?: {
@@ -91,7 +93,7 @@ export async function fetchTopics(): Promise<TopicSummary[]> {
     key: item.id as TopicSummary["key"],
     title: item.title,
     summary: item.description ?? "",
-    chapterCount: 0,
+    chapterCount: getChapterCount(item.id as TopicKey),
   }));
 }
 

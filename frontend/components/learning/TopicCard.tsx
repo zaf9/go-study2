@@ -31,7 +31,11 @@ export default function TopicCard({ topic }: TopicCardProps) {
         <Paragraph ellipsis={{ rows: 2 }}>
           {topic.summary || "快速开始该主题的学习。"}
         </Paragraph>
-        <Text type="secondary">章节数：{topic.chapterCount ?? 0}</Text>
+        <Text type="secondary">
+          {topic.chapterCount > 0
+            ? `章节数：${topic.chapterCount}`
+            : "暂无章节"}
+        </Text>
       </Space>
     </Card>
   );
