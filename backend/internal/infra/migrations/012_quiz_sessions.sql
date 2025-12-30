@@ -15,6 +15,7 @@ CREATE TABLE quiz_sessions (
     passed INTEGER NOT NULL DEFAULT 0,     -- 是否通过 (0, 1)
     started_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, -- 开始时间
     completed_at DATETIME,                 -- 完成时间
+    submitted_at DATETIME,                 -- 提交时间（用于防止重复提交）
     created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );

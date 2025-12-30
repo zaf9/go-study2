@@ -1,10 +1,9 @@
 "use client";
 
-import { List, Button, Space, Typography, Tag } from "antd";
+import { List, Button, Space, Typography } from "antd";
 import { useRouter } from "next/navigation";
 import { ChapterSummary } from "@/types/learning";
 import { ChapterProgress } from "@/types/learning";
-import ProgressStatuses from "@/lib/progressStatus";
 import ChapterStatusBadge from "./ChapterStatusBadge";
 
 interface ChapterListProps {

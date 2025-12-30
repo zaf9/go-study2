@@ -27,4 +27,10 @@ type IQuizRepository interface {
 
 	// GetAttemptsBySession 获取指定会话的所有答题详情。
 	GetAttemptsBySession(ctx context.Context, sessionID string) ([]quizdom.QuizAttempt, error)
+
+	// GetActiveSession 获取24小时内未提交的活跃会话。
+	GetActiveSession(ctx context.Context, userID int64, topic, chapter string) (*quizdom.QuizSession, error)
+
+	// MarkAsSubmitted 标记会话为已提交。
+	MarkAsSubmitted(ctx context.Context, sessionID string) error
 }

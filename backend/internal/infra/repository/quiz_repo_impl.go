@@ -120,3 +120,34 @@ func (r *quizRepository) GetAttemptsBySession(ctx context.Context, sessionID str
 		Scan(&items)
 	return items, err
 }
+
+// GetActiveSession 获取24小时内未提交的活跃会话。
+func (r *quizRepository) GetActiveSession(ctx context.Context, userID int64, topic, chapter string) (*quizdom.QuizSession, error) {
+	var sess *quizdom.QuizSession
+	// 查找24小时内、未提交的、匹配topic和chapter的最新会话
+	err := r.db.Model("quiz_sessions").
+		Fields("id,session_id,user_id,topic,chapter,total_questions,correct_answers,score,passed,started_at,completed_at,submitted_at,created_at").
+		Where("user_id", userID).
+		Where("topic", topic).
+		Where("chapter", chapter).
+		Where("submitted_at IS NULL").
+		Where("started_at >= ?", time.Now().Add(-24*time.Hour)).
+		OrderDesc("started_at").
+		Limit(1).
+		Scan(&sess)
+	if err != nil {
+		return nil, err
+	}
+	return sess, nil
+}
+
+// MarkAsSubmitted 标记会话为已提交。
+func (r *quizRepository) MarkAsSubmitted(ctx context.Context, sessionID string) error {
+	now := time.Now()
+	_, err := r.db.Model("quiz_sessions").
+		Where("session_id", sessionID).
+		Where("submitted_at IS NULL"). // 仅更新未提交的会话（幂等性）
+		Data(gdb.Map{"submitted_at": now}).
+		Update()
+	return err
+}

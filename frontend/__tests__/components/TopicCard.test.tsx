@@ -58,8 +58,10 @@ describe('TopicCard', () => {
 
     render(<TopicCard topic={topic} />);
 
-    const card = screen.getByRole('button', { name: /常量/ });
-    fireEvent.click(card);
+    const card = screen.getByText('常量').closest('.ant-card');
+    if (card) {
+      fireEvent.click(card);
+    }
 
     expect(mockPush).toHaveBeenCalledWith('/topics/constants');
   });

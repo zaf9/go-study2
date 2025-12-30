@@ -31,6 +31,7 @@ type QuizSession struct {
 	Passed         bool       `json:"passed" orm:"passed"`
 	StartedAt      time.Time  `json:"startedAt" orm:"started_at"`
 	CompletedAt    *time.Time `json:"completedAt" orm:"completed_at"`
+	SubmittedAt    *time.Time `json:"submittedAt" orm:"submitted_at"`
 	CreatedAt      time.Time  `json:"createdAt" orm:"created_at"`
 }
 

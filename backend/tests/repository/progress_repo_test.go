@@ -178,6 +178,7 @@ func runFeatureMigrations(t *testing.T, db gdb.DB) {
     passed INTEGER NOT NULL DEFAULT 0 CHECK(passed IN (0,1)),
     started_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     completed_at DATETIME,
+    submitted_at DATETIME,
     created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
 );`,
 		`CREATE INDEX IF NOT EXISTS idx_quiz_sessions_user_completed ON quiz_sessions(user_id, completed_at DESC);`,

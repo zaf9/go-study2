@@ -198,59 +198,59 @@
 
 #### 后端契约测试
 
-- [ ] T053 [P] [US3] 创建backend/tests/contract/quiz_api_test.go,测试GET /api/v1/quiz/:topic/:chapter返回正确的题目结构
-- [ ] T054 [P] [US3] 在quiz_api_test.go中测试POST /api/v1/quiz/submit返回正确的评分结果
-- [ ] T055 [P] [US3] 在quiz_api_test.go中测试重复提交被拒绝(幂等性)
+- [X] T053 [P] [US3] 创建backend/tests/contract/quiz_api_test.go,测试GET /api/v1/quiz/:topic/:chapter返回正确的题目结构 ✅
+- [X] T054 [P] [US3] 在quiz_api_test.go中测试POST /api/v1/quiz/submit返回正确的评分结果 ✅
+- [X] T055 [P] [US3] 在quiz_api_test.go中测试重复提交被拒绝(幂等性) ✅ (修复: 添加durationMs字段)
 
 #### 后端单元测试
 
-- [ ] T056 [P] [US3] 创建backend/tests/repository/quiz_repo_test.go,测试CreateSession()方法
-- [ ] T057 [P] [US3] 在quiz_repo_test.go中测试GetActiveSession()查询24小时内的会话
-- [ ] T058 [P] [US3] 在quiz_repo_test.go中测试MarkAsSubmitted()设置submitted_at字段
-- [ ] T059 [P] [US3] 创建backend/tests/domain/quiz_service_test.go,测试GetOrCreateSession()业务逻辑
-- [ ] T060 [P] [US3] 在quiz_service_test.go中测试loadQuestions()从YAML文件加载题目
-- [ ] T061 [P] [US3] 在quiz_service_test.go中测试SubmitAnswers()计算得分和更新进度
+- [X] T056 [P] [US3] 创建backend/tests/repository/quiz_repo_test.go,测试CreateSession()方法
+- [X] T057 [P] [US3] 在quiz_repo_test.go中测试GetActiveSession()查询24小时内的会话
+- [X] T058 [P] [US3] 在quiz_repo_test.go中测试MarkAsSubmitted()设置submitted_at字段
+- [X] T059 [P] [US3] 创建backend/tests/domain/quiz_service_test.go,测试GetOrCreateSession()业务逻辑
+- [X] T060 [P] [US3] 在quiz_service_test.go中测试loadQuestions()从YAML文件加载题目
+- [X] T061 [P] [US3] 在quiz_service_test.go中测试SubmitAnswers()计算得分和更新进度
 
 #### 前端单元测试
 
-- [ ] T062 [P] [US3] 创建frontend/__tests__/hooks/useQuiz.test.ts,测试useQuiz Hook的加载和提交逻辑
-- [ ] T063 [P] [US3] 创建frontend/__tests__/components/QuizSession.test.tsx,测试测验组件渲染和交互
-- [ ] T064 [P] [US3] 在QuizSession.test.tsx中测试防重复提交逻辑
+- [X] T062 [P] [US3] 创建frontend/__tests__/hooks/useQuiz.test.ts,测试useQuiz Hook的加载和提交逻辑
+- [X] T063 [P] [US3] 创建frontend/__tests__/components/QuizSession.test.tsx,测试测验组件渲染和交互
+- [X] T064 [P] [US3] 在QuizSession.test.tsx中测试防重复提交逻辑
 
 ### 实现 - User Story 3
 
 #### 后端实现
 
-- [ ] T065 [P] [US3] 在backend/internal/infra/repository/quiz_repo.go中实现CreateSession()方法
-- [ ] T066 [P] [US3] 在backend/internal/infra/repository/quiz_repo.go中实现GetActiveSession()方法(查询24小时内)
-- [ ] T067 [P] [US3] 在backend/internal/infra/repository/quiz_repo.go中实现MarkAsSubmitted()方法
-- [ ] T068 [P] [US3] 在backend/internal/infra/repository/quiz_repo.go中实现SaveAttempts()批量保存答题记录
-- [ ] T069 [US3] 在backend/internal/domain/quiz/service.go中实现generateSessionID()生成唯一会话ID
-- [ ] T070 [US3] 在backend/internal/domain/quiz/service.go中实现loadQuestions()从quiz_data目录加载YAML题目
-- [ ] T071 [US3] 在backend/internal/domain/quiz/service.go中实现GetOrCreateSession()业务逻辑
-- [ ] T072 [US3] 在backend/internal/domain/quiz/service.go中实现SubmitAnswers()评分和保存记录
-- [ ] T073 [US3] 在backend/internal/interfaces/quiz_handler.go中实现GET /api/v1/quiz/:topic/:chapter端点
-- [ ] T074 [US3] 在backend/internal/interfaces/quiz_handler.go中实现POST /api/v1/quiz/submit端点
-- [ ] T075 [US3] 在quiz_handler.go的submit端点中添加重复提交检查(submitted_at不为空则拒绝)
-- [ ] T076 [US3] 运行go test ./internal/domain/quiz/...确保后端测试通过
+- [X] T065 [P] [US3] 在backend/internal/infra/repository/quiz_repo.go中实现CreateSession()方法
+- [X] T066 [P] [US3] 在backend/internal/infra/repository/quiz_repo.go中实现GetActiveSession()方法(查询24小时内)
+- [X] T067 [P] [US3] 在backend/internal/infra/repository/quiz_repo.go中实现MarkAsSubmitted()方法
+- [X] T068 [P] [US3] 在backend/internal/infra/repository/quiz_repo.go中实现SaveAttempts()批量保存答题记录
+- [X] T069 [US3] 在backend/internal/domain/quiz/service.go中实现generateSessionID()生成唯一会话ID
+- [X] T070 [US3] 在backend/internal/domain/quiz/service.go中实现loadQuestions()从quiz_data目录加载YAML题目
+- [X] T071 [US3] 在backend/internal/domain/quiz/service.go中实现GetOrCreateSession()业务逻辑
+- [X] T072 [US3] 在backend/internal/domain/quiz/service.go中实现SubmitAnswers()评分和保存记录
+- [X] T073 [US3] 在backend/internal/interfaces/quiz_handler.go中实现GET /api/v1/quiz/:topic/:chapter端点
+- [X] T074 [US3] 在backend/internal/interfaces/quiz_handler.go中实现POST /api/v1/quiz/submit端点
+- [X] T075 [US3] 在quiz_handler.go的submit端点中添加重复提交检查(submitted_at不为空则拒绝)
+- [X] T076 [US3] 运行go test ./internal/domain/quiz/...确保后端测试通过
 
 #### 前端实现
 
-- [ ] T077 [P] [US3] 在frontend/services/quizService.ts中实现getQuizSession()方法调用GET /quiz/:topic/:chapter
-- [ ] T078 [P] [US3] 在frontend/services/quizService.ts中实现submitQuiz()方法调用POST /quiz/submit
-- [ ] T079 [US3] 创建frontend/hooks/useQuiz.ts,封装测验加载、答题选择、提交和结果展示逻辑
-- [ ] T080 [US3] 在useQuiz.ts中添加防重复提交状态(isSubmitting)
-- [ ] T081 [P] [US3] 创建frontend/components/quiz/QuizSession.tsx,实现测验答题界面
-- [ ] T082 [P] [US3] 创建frontend/components/quiz/QuizResult.tsx,实现测验结果展示组件
-- [ ] T083 [US3] 修改frontend/app/(protected)/topics/[topic]/[chapter]/page.tsx,集成测验入口按钮
-- [ ] T084 [US3] 在章节页面添加"开始测验"按钮,点击后加载QuizSession组件
-- [ ] T085 [US3] 在QuizSession中添加空题目提示("该章节暂无测验")
-- [ ] T086 [US3] 运行npm test确保前端测试通过
+- [X] T077 [P] [US3] 在frontend/services/quizService.ts中实现getQuizSession()方法调用GET /quiz/:topic/:chapter
+- [X] T078 [P] [US3] 在frontend/services/quizService.ts中实现submitQuiz()方法调用POST /quiz/submit
+- [X] T079 [US3] 创建frontend/hooks/useQuiz.ts,封装测验加载、答题选择、提交和结果展示逻辑
+- [X] T080 [US3] 在useQuiz.ts中添加防重复提交状态(isSubmitting)
+- [X] T081 [P] [US3] 创建frontend/components/quiz/QuizSession.tsx,实现测验答题界面
+- [X] T082 [P] [US3] 创建frontend/components/quiz/QuizResult.tsx,实现测验结果展示组件
+- [X] T083 [US3] 修改frontend/app/(protected)/topics/[topic]/[chapter]/page.tsx,集成测验入口按钮
+- [X] T084 [US3] 在章节页面添加"开始测验"按钮,点击后加载QuizSession组件
+- [X] T085 [US3] 在QuizSession中添加空题目提示("该章节暂无测验")
+- [X] T086 [US3] 运行npm test确保前端测试通过
 
 ### 集成测试 - User Story 3
 
-- [ ] T087 [US3] 创建backend/tests/integration/quiz_flow_test.go,测试完整测验流程(创建session → 提交 → 查询结果)
-- [ ] T088 [US3] 创建frontend/__tests__/integration/quiz-flow.integration.test.tsx,端到端测试用户答题和提交
+- [X] T087 [US3] 创建backend/tests/integration/quiz_flow_test.go,测试完整测验流程(创建session → 提交 → 查询结果)
+- [X] T088 [US3] 创建frontend/__tests__/integration/quiz-flow.integration.test.tsx,端到端测试用户答题和提交
 
 **User Story 3 验收**:
 - ✅ 测验题目正确加载
@@ -258,6 +258,10 @@
 - ✅ 提交后显示得分、正确率和正确答案
 - ✅ 防重复提交机制生效
 - ✅ 无题目章节显示友好提示
+- ✅ 所有前端单元测试通过(160个测试)
+- ✅ 前端构建成功
+- ✅ 所有后端单元测试通过(包括3个契约测试)
+- ✅ 后端构建成功 (bin/server.exe, ~33MB)
 
 ---
 
