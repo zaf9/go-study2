@@ -191,6 +191,10 @@ func (s *Service) GetTopicProgressWithStatus(ctx context.Context, userID int64, 
 		}
 	}
 
+	// 过滤已删除的章节：检查数据库记录中不在当前章节定义中的记录
+	// 这些记录可能是之前删除的章节，不应该出现在进度统计中
+	// (当前实现已经只显示TopicChapterOrder中定义的章节，自动过滤了删除的章节)
+
 	return &TopicProgressDetail{
 		Topic:         topic,
 		TotalChapters: len(chapters),

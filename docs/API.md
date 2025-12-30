@@ -31,19 +31,175 @@
 
 ## 学习进度（需认证）
 
+### 获取进度概览
+
+- `GET /api/v1/progress/overview` — 获取全局学习进度概览
+  - **响应**:
+    ```json
+    {
+      "code": 20000,
+      "message": "success",
+      "data": {
+        "totalChapters": 100,
+        "completedChapters": 25,
+        "completionRate": 25.0,
+        "topics": [
+          {
+            "topic": "lexical_elements",
+            "totalChapters": 11,
+            "completedChapters": 5
+          }
+        ],
+        "next": {
+          "topic": "constants",
+          "chapter": "boolean",
+          "title": "布尔常量"
+        }
+      }
+    }
+    ```
+
+### 获取主题进度
+
+- `GET /api/v1/progress/topic/{topic}` — 获取指定主题的章节进度详情
+  - **响应**:
+    ```json
+    {
+      "code": 20000,
+      "message": "success",
+      "data": {
+        "topic": "lexical_elements",
+        "totalChapters": 11,
+        "chapters": [
+          {
+            "chapter": "comments",
+            "status": "completed",
+            "quizScore": 90,
+            "quizPassed": true,
+            "lastVisitAt": "2025-12-30T10:00:00Z",
+            "completedAt": "2025-12-30T10:15:00Z"
+          },
+          {
+            "chapter": "tokens",
+            "status": "in_progress",
+            "lastVisitAt": "2025-12-30T14:00:00Z"
+          },
+          {
+            "chapter": "semicolons",
+            "status": "not_started"
+          }
+        ]
+      }
+    }
+    ```
+
+### 获取全部进度（旧版，兼容保留）
+
 - `GET /api/v1/progress` — 全量进度列表
 - `GET /api/v1/progress/{topic}` — 指定主题进度
+
+### 更新进度
+
 - `POST /api/v1/progress` — body: `{topic, chapter, status, position?}`，幂等覆盖
 
 ## 测验（需认证）
 
-- `GET /api/v1/quiz/{topic}/{chapter}` — 返回题目列表
-- `POST /api/v1/quiz/submit` — body: `{topic, chapter, answers:[{id,choices[]}]}`
-- `GET /api/v1/quiz/history` / `quiz/history/{topic}` — 历史记录列表
+### 获取测验题目
 
-## 测验题库（需认证）
+- `GET /api/v1/quiz/{topic}/{chapter}` — 获取或创建测验会话
+  - **描述**: 从指定主题章节的题库中随机抽取题目并创建测验 session
+  - **参数**: 
+    - `topic`: 主题ID（如 lexical_elements, constants, variables, types）
+    - `chapter`: 章节ID（如 comments, boolean, declarations）
+  - **响应**:
+    ```json
+    {
+      "code": 20000,
+      "message": "success",
+      "data": {
+        "sessionId": "uuid-session-id",
+        "topic": "lexical_elements",
+        "chapter": "comments",
+        "questions": [
+          {
+            "id": 1,
+            "question": "Go语言支持哪些注释方式？",
+            "options": ["A. 单行注释", "B. 多行注释", "C. 文档注释"],
+            "type": "multiple",
+            "difficulty": "easy"
+          }
+        ]
+      }
+    }
+    ```
 
-### 随机抽题
+### 提交测验
+
+- `POST /api/v1/quiz/submit` — 提交测验答案并评分
+  - **请求体**:
+    ```json
+    {
+      "sessionId": "uuid-session-id",
+      "topic": "lexical_elements",
+      "chapter": "comments",
+      "durationMs": 120000,
+      "answers": [
+        {
+          "questionId": 1,
+          "userAnswers": ["A", "B"]
+        }
+      ]
+    }
+    ```
+  - **响应**:
+    ```json
+    {
+      "code": 20000,
+      "message": "success",
+      "data": {
+        "score": 80,
+        "totalQuestions": 10,
+        "correctAnswers": 8,
+        "details": [
+          {
+            "question_id": 1,
+            "is_correct": true,
+            "user_answers": ["A", "B"],
+            "correct_answers": ["A", "B"]
+          }
+        ]
+      }
+    }
+    ```
+  - **幂等性**: 重复提交同一 sessionId 会返回 409 Conflict
+
+### 获取测验历史
+
+- `GET /api/v1/quiz/history` — 获取所有测验记录
+  - **查询参数**:
+    - `topic` (可选): 按主题过滤
+  - **响应**:
+    ```json
+    {
+      "code": 20000,
+      "message": "success",
+      "data": [
+        {
+          "sessionId": "uuid-session-id",
+          "topic": "lexical_elements",
+          "chapter": "comments",
+          "score": 80,
+          "totalQuestions": 10,
+          "correctAnswers": 8,
+          "createdAt": "2025-12-30T10:00:00Z",
+          "submittedAt": "2025-12-30T10:15:00Z"
+        }
+      ]
+    }
+    ```
+
+- `GET /api/v1/quiz/history/{sessionId}` — 获取特定测验详情
+  - **响应**: 包含完整的题目、用户答案和正确答案对比
 
 - **接口**: `GET /api/v1/quiz/{topic}/{chapter}`
 - **描述**: 从指定主题章节的题库中随机抽取题目并创建测验 session（注意：该接口需认证）

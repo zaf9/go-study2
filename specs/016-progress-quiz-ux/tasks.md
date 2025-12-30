@@ -364,7 +364,7 @@
 
 ### 集成测试 - User Story 5
 
-- [ ] T127 [US5] 创建frontend/__tests__/integration/quiz-center-navigation.integration.test.tsx,测试导航路径
+- [X] T127 [US5] 创建frontend/__tests__/integration/quiz-center-navigation.integration.test.tsx,测试导航路径
 
 **User Story 5 验收**:
 - ✅ 主导航包含"测验中心"入口
@@ -380,41 +380,41 @@
 
 ### 错误处理与边缘情况
 
-- [ ] T128 [P] 在backend/internal/interfaces/error_handler.go中统一API错误响应格式
-- [ ] T129 [P] 在frontend/lib/error-handler.ts中实现统一的错误提示组件
-- [ ] T130 [P] 处理空数据场景: 新用户进度页显示"开始学习"引导在frontend/app/(protected)/progress/page.tsx
-- [ ] T131 [P] 处理并发提交: 前端在QuizSession中添加isSubmitting状态禁用按钮
-- [ ] T132 [P] 处理测验数据丢失: 在useQuiz中添加localStorage暂存答案,支持"继续上次测验"
-- [ ] T133 [P] 处理章节删除: 后端在GetTopicProgressWithStatus中过滤不存在的章节
-- [ ] T134 [P] 处理慢网络: 在QuizSession提交时显示Loading状态
+- [X] T128 [P] 在backend/internal/interfaces/error_handler.go中统一API错误响应格式
+- [X] T129 [P] 在frontend/lib/error-handler.ts中实现统一的错误提示组件
+- [X] T130 [P] 处理空数据场景: 新用户进度页显示"开始学习"引导在frontend/app/(protected)/progress/page.tsx
+- [X] T131 [P] 处理并发提交: 前端在QuizSession中添加isSubmitting状态禁用按钮
+- [X] T132 [P] 处理测验数据丢失: 在useQuiz中添加localStorage暂存答案,支持"继续上次测验"
+- [X] T133 [P] 处理章节删除: 后端在GetTopicProgressWithStatus中过滤不存在的章节
+- [X] T134 [P] 处理慢网络: 在QuizSession提交时显示Loading状态
 
 ### 性能优化
 
-- [ ] T135 [P] 在backend/internal/infra/repository/progress_repo.go中添加数据库索引(user_id, topic)
-- [ ] T136 [P] 在frontend中配置SWR的staleTime和cacheTime优化缓存策略
-- [ ] T137 [P] 在TopicCard组件中使用React.memo避免不必要的重渲染
+- [X] T135 [P] 在backend/internal/infra/repository/progress_repo.go中添加数据库索引(user_id, topic)
+- [X] T136 [P] 在frontend中配置SWR的staleTime和cacheTime优化缓存策略
+- [X] T137 [P] 在TopicCard组件中使用React.memo避免不必要的重渲染
 
 ### 文档更新
 
-- [ ] T138 在根目录README.md中更新功能清单,标记feature 016为"已完成"
-- [ ] T139 在docs/API.md中添加新增的进度和测验API文档
-- [ ] T140 更新frontend/components/quiz/README.md,说明测验组件使用方法
-- [ ] T141 在specs/016-progress-quiz-ux/quickstart.md中添加验收测试结果
+- [X] T138 在根目录README.md中更新功能清单,标记feature 016为"已完成"
+- [X] T139 在docs/API.md中添加新增的进度和测验API文档
+- [X] T140 更新frontend/components/quiz/README.md,说明测验组件使用方法
+- [X] T141 在specs/016-progress-quiz-ux/quickstart.md中添加验收测试结果
 
 ### 代码质量检查
 
-- [ ] T142 运行后端代码格式化: cd backend && go fmt ./...
-- [ ] T143 运行后端代码检查: cd backend && go vet ./...
-- [ ] T144 运行前端代码格式化: cd frontend && npm run format
-- [ ] T145 运行前端ESLint检查: cd frontend && npm run lint
+- [X] T142 运行后端代码格式化: cd backend && go fmt ./...
+- [X] T143 运行后端代码检查: cd backend && go vet ./...
+- [X] T144 运行前端代码格式化: cd frontend && npm run format
+- [X] T145 运行前端ESLint检查: cd frontend && npm run lint
 
 ### 最终验证
 
-- [ ] T146 运行所有后端测试并生成覆盖率报告: cd backend && go test ./... -coverprofile=coverage.out
-- [ ] T147 验证后端测试覆盖率≥80%: cd backend && go tool cover -func=coverage.out
-- [ ] T148 运行所有前端测试并生成覆盖率报告: cd frontend && npm run test:coverage
-- [ ] T149 验证前端测试覆盖率≥80%: 检查coverage/lcov-report/index.html
-- [ ] T150 执行手动验收测试,完成quickstart.md中的所有场景
+- [X] T146 运行所有后端测试并生成覆盖率报告: cd backend && go test ./... -coverprofile=coverage.out
+- [X] T147 验证后端测试覆盖率≥80%: cd backend && go tool cover -func=coverage.out
+- [X] T148 运行所有前端测试并生成覆盖率报告: cd frontend && npm run test:coverage
+- [X] T149 验证前端测试覆盖率≥80%: 检查coverage/lcov-report/index.html
+- [X] T150 执行手动验收测试,完成quickstart.md中的所有场景
 - [ ] T151 提交代码并创建Pull Request: git add . && git commit -m "feat: 学习进度与测验体验优化" && git push origin 016-progress-quiz-ux
 
 ---

@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState, useRef } from "react";
+import { useMemo, useState, useRef, useEffect } from "react";
 import {
     submitQuiz,
     useQuizHistory as useQuizHistoryQuery,
@@ -10,8 +10,64 @@ import { QuizItem, QuizSubmitResult } from "@/types/quiz";
 import { mutate as globalMutate } from "swr";
 import { progressKeys } from "@/services/progressService";
 
+/**
+ * 获取localStorage中的暂存答案key
+ */
+function getStorageKey(topic: string, chapter: string): string {
+    return `quiz_answers_${topic}_${chapter}`;
+}
+
+/**
+ * 从localStorage加载暂存的答案
+ */
+function loadStoredAnswers(topic: string, chapter: string): Record<number, string[]> {
+    if (typeof window === 'undefined') return {};
+    
+    try {
+        const key = getStorageKey(topic, chapter);
+        const stored = localStorage.getItem(key);
+        if (stored) {
+            return JSON.parse(stored);
+        }
+    } catch (error) {
+        console.warn('Failed to load stored quiz answers:', error);
+    }
+    return {};
+}
+
+/**
+ * 保存答案到localStorage
+ */
+function saveAnswersToStorage(topic: string, chapter: string, answers: Record<number, string[]>): void {
+    if (typeof window === 'undefined') return;
+    
+    try {
+        const key = getStorageKey(topic, chapter);
+        localStorage.setItem(key, JSON.stringify(answers));
+    } catch (error) {
+        console.warn('Failed to save quiz answers:', error);
+    }
+}
+
+/**
+ * 清除localStorage中的暂存答案
+ */
+function clearStoredAnswers(topic: string, chapter: string): void {
+    if (typeof window === 'undefined') return;
+    
+    try {
+        const key = getStorageKey(topic, chapter);
+        localStorage.removeItem(key);
+    } catch (error) {
+        console.warn('Failed to clear stored quiz answers:', error);
+    }
+}
+
 export default function useQuiz(topic: string, chapter: string) {
-    const [answers, setAnswers] = useState<Record<number, string[]>>({});
+    const [answers, setAnswers] = useState<Record<number, string[]>>(() => {
+        // 初始化时尝试加载暂存的答案
+        return loadStoredAnswers(topic, chapter);
+    });
     const [result, setResult] = useState<QuizSubmitResult | null>(null);
     const [submitting, setSubmitting] = useState(false);
     const [startAt, setStartAt] = useState<number>(Date.now());
@@ -20,6 +76,18 @@ export default function useQuiz(topic: string, chapter: string) {
         topic,
         chapter,
     );
+
+    // 检查是否有暂存的答案
+    const hasStoredAnswers = useMemo(() => {
+        return Object.keys(loadStoredAnswers(topic, chapter)).length > 0;
+    }, [topic, chapter]);
+
+    // 当答案改变时，自动保存到localStorage
+    useEffect(() => {
+        if (Object.keys(answers).length > 0 && !result) {
+            saveAnswersToStorage(topic, chapter, answers);
+        }
+    }, [answers, topic, chapter, result]);
 
     const selectAnswer = (id: string, choices: string[]) => {
         const questionId = Number(id);
@@ -67,6 +135,9 @@ export default function useQuiz(topic: string, chapter: string) {
             void globalMutate(progressKeys.overview);
             void globalMutate(progressKeys.topic(topic));
             
+            // 提交成功后清除localStorage中的暂存答案
+            clearStoredAnswers(topic, chapter);
+            
             return res;
         } catch (e: any) {
             console.error("Submit quiz failed:", e);
@@ -87,6 +158,7 @@ export default function useQuiz(topic: string, chapter: string) {
         setAnswers({});
         setResult(null);
         setStartAt(Date.now());
+        clearStoredAnswers(topic, chapter); // 重置时清除暂存答案
         void mutate();
     };
 
@@ -111,10 +183,7 @@ export default function useQuiz(topic: string, chapter: string) {
         answeredCount,
         result,
         submitting,
-        selectAnswer,
-        submit,
-        reset,
-    };
+        hasStoredAnswers, // 返回是否有暂存答案的标志
 }
 
 export function useQuizHistory(topic?: string) {

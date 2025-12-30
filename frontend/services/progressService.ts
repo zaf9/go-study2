@@ -207,8 +207,14 @@ export function useProgressOverview() {
     progressKeys.overview,
     getProgressOverview,
     {
-      revalidateOnFocus: false,
-      dedupingInterval: 5000,
+      // 性能优化配置 (T136)
+      revalidateOnFocus: false,        // 不在窗口聚焦时自动重新验证
+      revalidateOnReconnect: true,     // 重新连接时验证数据
+      dedupingInterval: 5000,          // 5秒内的重复请求去重
+      focusThrottleInterval: 10000,    // 聚焦验证节流10秒
+      errorRetryInterval: 5000,        // 错误重试间隔5秒
+      errorRetryCount: 3,              // 最多重试3次
+      keepPreviousData: true,          // 保留旧数据直到新数据加载完成
     },
   );
 
@@ -230,7 +236,14 @@ export function useTopicProgress(topic?: string) {
   return useSWR<TopicProgressDetail | null>(
     key,
     () => (topic ? getTopicProgress(topic) : Promise.resolve(null)),
-    { revalidateOnFocus: false },
+    {
+      // 性能优化配置 (T136)
+      revalidateOnFocus: false,        // 不在窗口聚焦时自动重新验证
+      revalidateOnReconnect: true,     // 重新连接时验证数据
+      dedupingInterval: 5000,          // 5秒内的重复请求去重
+      focusThrottleInterval: 10000,    // 聚焦验证节流10秒
+      keepPreviousData: true,          // 保留旧数据直到新数据加载完成
+    },
   );
 }
 

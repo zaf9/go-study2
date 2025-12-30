@@ -39,6 +39,30 @@ export default function ProgressPage() {
     return <ErrorMessage message="加载进度失败" description={error.message} />;
   if (!overview) return null;
 
+  // 处理新用户空数据场景
+  const hasNoProgress = !overview.topics || overview.topics.length === 0;
+  const isNewUser = hasNoProgress && overview.overall.completedChapters === 0;
+
+  if (isNewUser) {
+    return (
+      <Space direction="vertical" className="w-full items-center justify-center min-h-[400px]">
+        <div className="text-center">
+          <div className="text-6xl mb-4">📚</div>
+          <Title level={3}>欢迎开始学习之旅！</Title>
+          <p className="text-gray-600 mb-6">
+            您还没有任何学习记录，从主题列表选择感兴趣的内容开始学习吧
+          </p>
+          <button
+            onClick={() => router.push('/topics')}
+            className="px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
+          >
+            开始学习
+          </button>
+        </div>
+      </Space>
+    );
+  }
+
   return (
     <Space direction="vertical" className="w-full">
       <Title level={3}>学习进度</Title>

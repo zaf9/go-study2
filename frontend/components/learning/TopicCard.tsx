@@ -3,6 +3,7 @@
 import { Card, Space, Tag, Typography } from "antd";
 import { useRouter } from "next/navigation";
 import { TopicSummary } from "@/types/learning";
+import { memo } from "react";
 
 interface TopicCardProps {
   topic: TopicSummary;
@@ -10,7 +11,13 @@ interface TopicCardProps {
 
 const { Title, Paragraph, Text } = Typography;
 
-export default function TopicCard({ topic }: TopicCardProps) {
+/**
+ * TopicCard 组件
+ * 
+ * 使用 React.memo 优化渲染性能 (T137)
+ * 仅在 topic 数据变化时重新渲染
+ */
+const TopicCard = memo(function TopicCard({ topic }: TopicCardProps) {
   const router = useRouter();
 
   return (
@@ -39,4 +46,6 @@ export default function TopicCard({ topic }: TopicCardProps) {
       </Space>
     </Card>
   );
-}
+});
+
+export default TopicCard;
