@@ -21,6 +21,7 @@ func RegisterProgressRoutes(s *ghttp.Server, handler *ProgressHandler) {
 	group := s.Group("/api/v1")
 	group.POST("/progress", handler.PostProgress)
 	group.GET("/progress", handler.GetProgress)
+	group.GET("/progress/overview", handler.GetOverview) // User Story 4
 	group.GET("/progress/{topic}", handler.GetTopicProgress)
 	group.GET("/progress/last", handler.GetLastLearning)
 }
@@ -97,6 +98,26 @@ func (h *ProgressHandler) GetLastLearning(r *ghttp.Request) {
 		return
 	}
 	writeSuccess(r, lastLearning)
+}
+
+// GetOverview 返回用户的全局学习进度概览 (User Story 4)
+// GET /api/v1/progress/overview
+func (h *ProgressHandler) GetOverview(r *ghttp.Request) {
+	userID, ok := parseUserID(r)
+	if !ok {
+		writeError(r, http.StatusUnauthorized, 40001, "认证信息缺失")
+		return
+	}
+
+	// 调用 progressService.GetOverview()
+	overview, err := h.Service.GetOverview(r.GetCtx(), userID)
+	if err != nil {
+		writeError(r, http.StatusInternalServerError, 50000, "获取进度概览失败")
+		return
+	}
+
+	// 返回完整的统计数据
+	writeSuccess(r, overview)
 }
 
 // GetTopicProgress 返回指定主题的章节进度列表。

@@ -33,6 +33,7 @@ export const API_PATHS = {
   chapterContent: (topic: string, chapter: string) =>
     `/topic/${topic}/${chapter}`,
   progress: "/progress",
+  progressOverview: "/progress/overview",
   progressByTopic: (topic: string) => `/progress/${topic}`,
   quiz: (topic: string, chapter: string) => `/quiz/${topic}/${chapter}`,
   quizSubmit: "/quiz/submit",

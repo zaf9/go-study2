@@ -7,6 +7,8 @@ import {
     useQuizSession,
 } from "@/services/quizService";
 import { QuizItem, QuizSubmitResult } from "@/types/quiz";
+import { mutate } from "swr";
+import { progressKeys } from "@/services/progressService";
 
 export default function useQuiz(topic: string, chapter: string) {
     const [answers, setAnswers] = useState<Record<number, string[]>>({});
@@ -60,6 +62,11 @@ export default function useQuiz(topic: string, chapter: string) {
             } else {
                 setResult(res);
             }
+            
+            // User Story 4: 提交成功后刷新进度数据,确保所有页面显示一致
+            void mutate(progressKeys.overview);
+            void mutate(progressKeys.topic(topic));
+            
             return res;
         } catch (e: any) {
             console.error("Submit quiz failed:", e);

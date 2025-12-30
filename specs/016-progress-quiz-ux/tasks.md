@@ -277,38 +277,38 @@
 
 #### 后端测试
 
-- [ ] T089 [P] [US4] 在backend/tests/interfaces/progress_handler_test.go中测试GET /api/v1/progress/overview返回完整统计
-- [ ] T090 [P] [US4] 测试overview接口计算的completionRate = (completedChapters / totalChapters) * 100
+- [X] T089 [P] [US4] 在backend/tests/interfaces/progress_handler_test.go中测试GET /api/v1/progress/overview返回完整统计
+- [X] T090 [P] [US4] 测试overview接口计算的completionRate = (completedChapters / totalChapters) * 100
 
 #### 前端测试
 
-- [ ] T091 [P] [US4] 创建frontend/__tests__/hooks/useProgress.test.ts,测试useProgress Hook缓存和刷新逻辑
-- [ ] T092 [P] [US4] 测试useProgress在不同组件中返回相同的数据(SWR缓存生效)
-- [ ] T093 [P] [US4] 创建frontend/__tests__/components/ProgressDashboard.test.tsx,测试进度页面数据展示
+- [X] T091 [P] [US4] 创建frontend/__tests__/hooks/useProgress.test.ts,测试useProgress Hook缓存和刷新逻辑
+- [X] T092 [P] [US4] 测试useProgress在不同组件中返回相同的数据(SWR缓存生效)
+- [X] T093 [P] [US4] 创建frontend/__tests__/app/progress/page.test.tsx,测试进度页面数据展示
 
 ### 实现 - User Story 4
 
 #### 后端实现
 
-- [ ] T094 [US4] 在backend/internal/interfaces/progress_handler.go中实现GET /api/v1/progress/overview端点
-- [ ] T095 [US4] 在progress_handler.go中调用progressService.GetOverview()获取全局统计
-- [ ] T096 [US4] 在overview响应中包含totalChapters(从static-routes.ts同步计算),completedChapters和completionRate
-- [ ] T097 [US4] 运行go test ./internal/interfaces/...确保测试通过
+- [X] T094 [US4] 在backend/internal/interfaces/progress_handler.go中实现GET /api/v1/progress/overview端点
+- [X] T095 [US4] 在progress_handler.go中调用progressService.GetOverview()获取全局统计
+- [X] T096 [US4] 在overview响应中包含totalChapters(从static-routes.ts同步计算),completedChapters和completionRate
+- [X] T097 [US4] 运行go test ./internal/interfaces/...确保测试通过
 
 #### 前端实现
 
-- [ ] T098 [P] [US4] 在frontend/services/progressService.ts中实现getProgressOverview()方法
-- [ ] T099 [US4] 修改frontend/hooks/useProgress.ts,使用SWR统一管理进度数据缓存
-- [ ] T100 [US4] 在useProgress中配置SWR的revalidateOnFocus和dedupingInterval确保数据新鲜度
-- [ ] T101 [US4] 修改frontend/app/(protected)/progress/page.tsx,使用useProgress Hook获取数据
-- [ ] T102 [US4] 修改frontend/components/learning/TopicCard.tsx,同样使用useProgress Hook
-- [ ] T103 [US4] 在frontend/contexts/AuthContext.tsx中添加mutateProgress()方法,用于手动刷新进度
-- [ ] T104 [US4] 在QuizResult组件提交成功后调用mutateProgress()刷新所有页面进度
-- [ ] T105 [US4] 运行npm test确保测试通过
+- [X] T098 [P] [US4] 在frontend/services/progressService.ts中实现getProgressOverview()方法
+- [X] T099 [US4] 修改frontend/hooks/useProgress.ts,使用SWR统一管理进度数据缓存
+- [X] T100 [US4] 在useProgress中配置SWR的revalidateOnFocus和dedupingInterval确保数据新鲜度
+- [X] T101 [US4] 修改frontend/app/(protected)/progress/page.tsx,使用useProgress Hook获取数据
+- [X] T102 [US4] 修改frontend/components/learning/TopicCard.tsx,同样使用useProgress Hook
+- [X] T103 [US4] 在frontend/contexts/AuthContext.tsx中添加mutateProgress()方法,用于手动刷新进度
+- [X] T104 [US4] 在QuizResult组件提交成功后调用mutateProgress()刷新所有页面进度
+- [X] T105 [US4] 运行npm test确保测试通过
 
 ### 集成测试 - User Story 4
 
-- [ ] T106 [US4] 创建frontend/__tests__/integration/progress-consistency.integration.test.tsx,测试跨页面数据一致性
+- [X] T106 [US4] 创建frontend/__tests__/integration/progress-consistency.integration.test.tsx,测试跨页面数据一致性
 
 **User Story 4 验收**:
 - ✅ 所有页面显示相同的进度统计

@@ -72,6 +72,7 @@ export interface NextChapterHint {
   chapter: string;
   status: ProgressStatus;
   progress: number;
+  title?: string; // 后端可能返回 title
 }
 
 export interface ProgressSnapshot {
@@ -79,3 +80,23 @@ export interface ProgressSnapshot {
   topics: TopicProgressSummary[];
   next?: NextChapterHint | null;
 }
+
+// User Story 4: 进度概览响应结构 (与 GET /api/v1/progress/overview 契约一致)
+export interface ProgressOverview {
+  totalChapters: number;
+  completedChapters: number;
+  inProgressChapters: number;
+  completionRate: number;
+  topics: Array<{
+    topic: string;
+    totalChapters: number;
+    completedChapters: number;
+    inProgressChapters: number;
+  }>;
+  next?: {
+    topic: string;
+    chapter: string;
+    title: string;
+  } | null;
+}
+

@@ -106,10 +106,11 @@ func TestProgressService_StudyDaysCalculation(t *testing.T) {
 
 	// 准备不同日期的学习记录
 	now := time.Now()
-	day1 := now.AddDate(0, 0, -5) // 5天前
-	day2 := now.AddDate(0, 0, -3) // 3天前
-	day3 := now.AddDate(0, 0, -1) // 1天前
-	day4 := now                   // 今天
+	// 使用每天的中午时间，避免时间加减导致跨天
+	day1 := time.Date(now.Year(), now.Month(), now.Day()-5, 12, 0, 0, 0, now.Location()) // 5天前中午
+	day2 := time.Date(now.Year(), now.Month(), now.Day()-3, 12, 0, 0, 0, now.Location()) // 3天前中午
+	day3 := time.Date(now.Year(), now.Month(), now.Day()-1, 12, 0, 0, 0, now.Location()) // 1天前中午
+	day4 := time.Date(now.Year(), now.Month(), now.Day(), 12, 0, 0, 0, now.Location())   // 今天中午
 
 	// 同一天的多条记录应只计算为1天
 	if err := repo.CreateOrUpdate(ctx(), &progressdom.LearningProgress{
@@ -128,7 +129,7 @@ func TestProgressService_StudyDaysCalculation(t *testing.T) {
 		Chapter:      "pointer",
 		Status:       progressdom.StatusInProgress,
 		ReadDuration: 60,
-		LastVisitAt:  day1.Add(2 * time.Hour), // 同一天的不同时间
+		LastVisitAt:  day1.Add(30 * time.Minute), // 同一天的不同时间（不会跨天）
 	}); err != nil {
 		t.Fatalf("准备第1天记录2失败: %v", err)
 	}

@@ -4,6 +4,7 @@ import { API_BASE_URL, API_PATHS } from "@/lib/constants";
 import {
   ChapterProgress,
   NextChapterHint,
+  ProgressOverview,
   ProgressSnapshot,
   TopicProgressDetail,
 } from "@/types/learning";
@@ -134,6 +135,48 @@ export async function getProgress(): Promise<ProgressSnapshot> {
   };
 }
 
+// User Story 4: 获取进度概览 (统一数据源)
+export async function getProgressOverview(): Promise<ProgressOverview> {
+  const data = (await api.get<ProgressOverview>(
+    API_PATHS.progressOverview,
+  )) as unknown as ProgressOverview;
+  
+  // 返回原始的 API 响应结构
+  return data;
+}
+
+// 将 ProgressOverview 转换为 ProgressSnapshot (用于兼容现有代码)
+function convertToSnapshot(overview: ProgressOverview): ProgressSnapshot {
+  return {
+    overall: {
+      progress: overview.completionRate,
+      completedChapters: overview.completedChapters,
+      totalChapters: overview.totalChapters,
+      studyDays: 0, // API 不返回此字段
+      totalStudyTime: 0, // API 不返回此字段
+    },
+    topics: overview.topics.map((t) => ({
+      id: t.topic as any,
+      name: t.topic,
+      weight: 0, // API 不返回权重
+      progress: t.totalChapters > 0 
+        ? (t.completedChapters / t.totalChapters) * 100 
+        : 0,
+      completedChapters: t.completedChapters,
+      totalChapters: t.totalChapters,
+    })),
+    next: overview.next
+      ? {
+          topic: overview.next.topic as any,
+          chapter: overview.next.chapter,
+          status: "in_progress" as const,
+          progress: 0,
+          title: overview.next.title,
+        }
+      : null,
+  };
+}
+
 export async function getTopicProgress(
   topic: string,
 ): Promise<TopicProgressDetail> {
@@ -160,9 +203,26 @@ export async function getTopicProgress(
 }
 
 export function useProgressOverview() {
-  return useSWR<ProgressSnapshot>(progressKeys.overview, getProgress, {
-    revalidateOnFocus: false,
-  });
+  const { data, error, isLoading, mutate } = useSWR<ProgressOverview>(
+    progressKeys.overview,
+    getProgressOverview,
+    {
+      revalidateOnFocus: false,
+      dedupingInterval: 5000,
+    },
+  );
+
+  // 转换为 ProgressSnapshot 格式以保持向后兼容
+  const snapshot: ProgressSnapshot | undefined = data
+    ? convertToSnapshot(data)
+    : undefined;
+
+  return {
+    data: snapshot,
+    error,
+    isLoading,
+    mutate,
+  };
 }
 
 export function useTopicProgress(topic?: string) {

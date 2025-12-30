@@ -18,6 +18,8 @@ import {
   registerAccount,
 } from "@/lib/auth";
 import { Profile } from "@/types/auth";
+import { mutate } from "swr";
+import { progressKeys } from "@/services/progressService";
 
 export interface AuthContextValue {
   user: Profile | null;
@@ -35,6 +37,7 @@ export interface AuthContextValue {
   changePassword: (oldPassword: string, newPassword: string) => Promise<void>;
   logout: () => Promise<void>;
   refreshProfile: () => Promise<Profile | null>;
+  mutateProgress: () => Promise<void>; // User Story 4: 手动刷新进度数据
 }
 
 export const AuthContext = createContext<AuthContextValue | undefined>(
@@ -130,6 +133,11 @@ export function AuthProvider({ children }: React.PropsWithChildren) {
     }
   }, []);
 
+  // User Story 4: 手动刷新进度数据,用于测验完成后更新所有页面的进度显示
+  const mutateProgress = useCallback(async () => {
+    await mutate(progressKeys.overview);
+  }, []);
+
   const value = useMemo<AuthContextValue>(
     () => ({
       user,
@@ -139,8 +147,9 @@ export function AuthProvider({ children }: React.PropsWithChildren) {
       changePassword,
       logout,
       refreshProfile,
+      mutateProgress,
     }),
-    [user, loading, login, register, changePassword, logout, refreshProfile],
+    [user, loading, login, register, changePassword, logout, refreshProfile, mutateProgress],
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

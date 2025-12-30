@@ -542,6 +542,22 @@ func (s *Service) GetLastLearningRecord(ctx context.Context, userID int64) (*Las
 	}, nil
 }
 
+// GetOverview 返回用户的全局学习进度概览 (User Story 4)
+// 统一数据源,确保所有页面显示一致的进度统计
+func (s *Service) GetOverview(ctx context.Context, userID int64) (*progressdom.ProgressOverview, error) {
+	if userID <= 0 {
+		return nil, errors.New("用户信息缺失")
+	}
+
+	// 调用 repository 的 GetOverview 方法
+	overview, err := s.repo.GetOverview(ctx, userID)
+	if err != nil {
+		return nil, err
+	}
+
+	return overview, nil
+}
+
 // topicOrderIndex 返回主题在默认顺序中的索引，未命中时追加在末尾。
 func topicOrderIndex(topic string) int {
 	for idx, t := range defaultTopicOrder {
