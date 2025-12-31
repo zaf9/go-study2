@@ -1,0 +1,702 @@
+# Go 变量声明测验题库
+# 章节: variables/variable_declarations
+# 符合 Go 1.24 语言规范
+
+metadata:
+  topic: variables
+  chapter: variable_declarations
+  total_questions: 40
+  last_updated: "2025-01-01"
+  difficulty_distribution:
+    easy: 24      # 60%
+    medium: 12    # 30%
+    hard: 4       # 10%
+  type_distribution:
+    single: 17
+    multiple: 10
+    code_output: 8
+    code_fix: 5
+
+questions:
+  # ========== 简单题 (Easy) - 24道 ==========
+  
+  - id: var-decl-001
+    type: single
+    difficulty: easy
+    stem: "Go语言中使用什么关键字声明变量?"
+    options:
+      - "A: let"
+      - "B: var"
+      - "C: dim"
+      - "D: define"
+    answer: B
+    explanation: "Go使用var关键字声明变量。let、dim、define不是Go关键字。参见 Go 规范 Variable declarations 章节。"
+    topic: variables
+    chapter: variable_declarations
+
+  - id: var-decl-002
+    type: single
+    difficulty: easy
+    stem: "var x int声明后x的值是什么?"
+    options:
+      - "A: nil"
+      - "B: undefined"
+      - "C: 0"
+      - "D: 随机值"
+    answer: C
+    explanation: "Go变量自动初始化为零值。int的零值是0。Go不存在未定义的变量。参见 Go 规范 The zero value 章节。"
+    topic: variables
+    chapter: variable_declarations
+
+  - id: var-decl-003
+    type: single
+    difficulty: easy
+    stem: "以下哪个是正确的变量声明?"
+    options:
+      - "A: var x = int 10"
+      - "B: var x int = 10"
+      - "C: int x = 10"
+      - "D: x int = 10"
+    answer: B
+    explanation: "Go变量声明格式是var name type = value。类型在变量名后面。参见 Go 规范 Variable declarations 章节。"
+    topic: variables
+    chapter: variable_declarations
+
+  - id: var-decl-004
+    type: single
+    difficulty: easy
+    stem: "var x = 10声明的x是什么类型?"
+    options:
+      - "A: float64"
+      - "B: int"
+      - "C: int64"
+      - "D: uint"
+    answer: B
+    explanation: "不带类型的var声明,根据初始值推断类型。10是无类型整数常量,默认类型int。参见 Go 规范 Variable declarations 章节。"
+    topic: variables
+    chapter: variable_declarations
+
+  - id: var-decl-005
+    type: multiple
+    difficulty: easy
+    stem: "以下哪些是有效的变量声明?(多选)"
+    options:
+      - "A: var x int"
+      - "B: var x = 10"
+      - "C: var x int = 10"
+      - "D: var x"
+    answer: ABC
+    explanation: "可以只指定类型(用零值)、只给初始值(推断类型)、或两者都有。var x缺少类型或初始值,无效。参见 Go 规范 Variable declarations 章节。"
+    topic: variables
+    chapter: variable_declarations
+
+  - id: var-decl-006
+    type: single
+    difficulty: easy
+    stem: "如何同时声明多个同类型变量?"
+    options:
+      - "A: var x, y, z int"
+      - "B: var int x, y, z"
+      - "C: int var x, y, z"
+      - "D: var x int, y int, z int"
+    answer: A
+    explanation: "同类型变量可以用var x, y, z int一次声明。类型写在变量名列表后面。参见 Go 规范 Variable declarations 章节。"
+    topic: variables
+    chapter: variable_declarations
+
+  - id: var-decl-007
+    type: single
+    difficulty: easy
+    stem: "如何同时声明并初始化多个变量?"
+    options:
+      - "A: var x, y = 1, 2"
+      - "B: var x = 1, y = 2"
+      - "C: var (x = 1, y = 2)"
+      - "D: A和C都可以"
+    answer: A
+    explanation: "var x, y = 1, 2正确。值与变量一一对应。var()块中每行一个声明。参见 Go 规范 Variable declarations 章节。"
+    topic: variables
+    chapter: variable_declarations
+
+  - id: var-decl-008
+    type: single
+    difficulty: easy
+    stem: "var块(var (...))的作用是什么?"
+    options:
+      - "A: 声明数组"
+      - "B: 组织多个变量声明"
+      - "C: 声明常量"
+      - "D: 创建作用域"
+    answer: B
+    explanation: "var (...)块用于组织多个变量声明,提高代码可读性。每行可以是独立的声明。参见 Go 规范 Variable declarations 章节。"
+    topic: variables
+    chapter: variable_declarations
+
+  - id: var-decl-009
+    type: single
+    difficulty: easy
+    stem: "包级变量在哪里声明?"
+    options:
+      - "A: 只能在main函数内"
+      - "B: 在任何函数内"
+      - "C: 在函数外部,包内"
+      - "D: 只能在init函数内"
+    answer: C
+    explanation: "包级变量在函数外部声明,属于包作用域。在包内任何地方都可以访问。参见 Go 规范 Declarations and scope 章节。"
+    topic: variables
+    chapter: variable_declarations
+
+  - id: var-decl-010
+    type: single
+    difficulty: easy
+    stem: "局部变量在哪里声明?"
+    options:
+      - "A: 在函数或代码块内"
+      - "B: 只能在函数开头"
+      - "C: 只能在包级别"
+      - "D: 任何位置"
+    answer: A
+    explanation: "局部变量在函数或代码块内声明。Go允许在函数内任意位置声明变量,不必在开头。参见 Go 规范 Declarations and scope 章节。"
+    topic: variables
+    chapter: variable_declarations
+
+  - id: var-decl-011
+    type: single
+    difficulty: easy
+    stem: "声明但未使用的局部变量会怎样?"
+    options:
+      - "A: 运行时警告"
+      - "B: 编译错误"
+      - "C: 正常编译"
+      - "D: 自动删除"
+    answer: B
+    explanation: "Go不允许声明未使用的局部变量,会编译错误。这是Go强制代码整洁的设计。参见 Go 规范 Declarations and scope 章节。"
+    topic: variables
+    chapter: variable_declarations
+
+  - id: var-decl-012
+    type: single
+    difficulty: easy
+    stem: "声明但未使用的包级变量会怎样?"
+    options:
+      - "A: 编译错误"
+      - "B: 正常编译"
+      - "C: 运行时警告"
+      - "D: 自动删除"
+    answer: B
+    explanation: "包级变量即使未使用也不会报错。只有局部变量未使用才报错。参见 Go 规范 Declarations and scope 章节。"
+    topic: variables
+    chapter: variable_declarations
+
+  - id: var-decl-013
+    type: single
+    difficulty: easy
+    stem: "变量名的命名规则是什么?"
+    options:
+      - "A: 只能字母开头"
+      - "B: 字母或下划线开头"
+      - "C: 可以数字开头"
+      - "D: 必须大写开头"
+    answer: B
+    explanation: "Go标识符以字母或下划线开头,后可跟字母、数字、下划线。Unicode字母也可以。参见 Go 规范 Identifiers 章节。"
+    topic: variables
+    chapter: variable_declarations
+
+  - id: var-decl-014
+    type: single
+    difficulty: easy
+    stem: "变量名大小写有什么特殊含义?"
+    options:
+      - "A: 没有特殊含义"
+      - "B: 大写开头表示导出"
+      - "C: 大写开头表示常量"
+      - "D: 小写开头表示私有"
+    answer: B
+    explanation: "Go中大写字母开头的标识符是导出的(可被其他包访问),小写开头是未导出的。参见 Go 规范 Exported identifiers 章节。"
+    topic: variables
+    chapter: variable_declarations
+
+  - id: var-decl-015
+    type: multiple
+    difficulty: easy
+    stem: "以下哪些是有效的变量名?(多选)"
+    options:
+      - "A: _name"
+      - "B: name1"
+      - "C: 1name"
+      - "D: 名字"
+    answer: ABD
+    explanation: "_name、name1有效。1name以数字开头无效。'名字'是有效的Unicode标识符(Go支持)。参见 Go 规范 Identifiers 章节。"
+    topic: variables
+    chapter: variable_declarations
+
+  - id: var-decl-016
+    type: single
+    difficulty: easy
+    stem: "以下哪个不能作为变量名?"
+    options:
+      - "A: type"
+      - "B: Type"
+      - "C: TYPE"
+      - "D: _type"
+    answer: A
+    explanation: "type是Go关键字,不能作为标识符。Type、TYPE、_type都可以(区分大小写)。参见 Go 规范 Keywords 章节。"
+    topic: variables
+    chapter: variable_declarations
+
+  - id: var-decl-017
+    type: single
+    difficulty: easy
+    stem: "变量的作用域由什么决定?"
+    options:
+      - "A: 变量类型"
+      - "B: 声明位置"
+      - "C: 变量名"
+      - "D: 初始值"
+    answer: B
+    explanation: "变量作用域由声明位置决定:包级声明→包作用域,函数内声明→块作用域。参见 Go 规范 Declarations and scope 章节。"
+    topic: variables
+    chapter: variable_declarations
+
+  - id: var-decl-018
+    type: single
+    difficulty: easy
+    stem: "内层作用域的同名变量会怎样?"
+    options:
+      - "A: 编译错误"
+      - "B: 遮蔽外层变量"
+      - "C: 合并为一个"
+      - "D: 运行时错误"
+    answer: B
+    explanation: "内层作用域可以声明与外层同名的变量,会遮蔽(shadow)外层变量。参见 Go 规范 Declarations and scope 章节。"
+    topic: variables
+    chapter: variable_declarations
+
+  - id: var-decl-019
+    type: single
+    difficulty: easy
+    stem: "var x, y int = 1的问题是什么?"
+    options:
+      - "A: 类型不对"
+      - "B: 值数量与变量不匹配"
+      - "C: 语法正确"
+      - "D: 缺少分号"
+    answer: B
+    explanation: "两个变量只有一个初始值。应该是var x, y int = 1, 2或var x, y int。参见 Go 规范 Variable declarations 章节。"
+    topic: variables
+    chapter: variable_declarations
+
+  - id: var-decl-020
+    type: single
+    difficulty: easy
+    stem: "var s string声明后s的值是什么?"
+    options:
+      - "A: nil"
+      - "B: \"null\""
+      - "C: \"\"(空字符串)"
+      - "D: undefined"
+    answer: C
+    explanation: "string的零值是空字符串\"\",不是nil。Go中所有类型都有零值。参见 Go 规范 The zero value 章节。"
+    topic: variables
+    chapter: variable_declarations
+
+  - id: var-decl-021
+    type: single
+    difficulty: easy
+    stem: "var p *int声明后p的值是什么?"
+    options:
+      - "A: 0"
+      - "B: nil"
+      - "C: &0"
+      - "D: undefined"
+    answer: B
+    explanation: "指针类型的零值是nil。var p *int声明一个nil指针。参见 Go 规范 The zero value 章节。"
+    topic: variables
+    chapter: variable_declarations
+
+  - id: var-decl-022
+    type: single
+    difficulty: easy
+    stem: "以下哪个声明创建切片?"
+    options:
+      - "A: var s [10]int"
+      - "B: var s []int"
+      - "C: var s [...]int"
+      - "D: var s array[int]"
+    answer: B
+    explanation: "[]int是切片类型。[10]int是数组。[...]int用于数组字面量推断长度。参见 Go 规范 Slice types 章节。"
+    topic: variables
+    chapter: variable_declarations
+
+  - id: var-decl-023
+    type: single
+    difficulty: easy
+    stem: "var a [5]int声明后a[0]的值是什么?"
+    options:
+      - "A: nil"
+      - "B: undefined"
+      - "C: 0"
+      - "D: 随机"
+    answer: C
+    explanation: "数组元素自动初始化为元素类型的零值。int的零值是0。参见 Go 规范 The zero value 章节。"
+    topic: variables
+    chapter: variable_declarations
+
+  - id: var-decl-024
+    type: multiple
+    difficulty: easy
+    stem: "关于var声明,以下说法正确的是?(多选)"
+    options:
+      - "A: 可以在包级使用"
+      - "B: 可以在函数内使用"
+      - "C: 必须指定类型或初始值"
+      - "D: 可以同时声明多个变量"
+    answer: ABCD
+    explanation: "var可以在包级和函数内使用。必须有类型或初始值来确定类型。可以同时声明多个。参见 Go 规范 Variable declarations 章节。"
+    topic: variables
+    chapter: variable_declarations
+
+  # ========== 中等题 (Medium) - 12道 ==========
+
+  - id: var-decl-025
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      var x = 10
+      func main() {
+          var x = 20
+          fmt.Println(x)
+      }
+    options:
+      - "A: 10"
+      - "B: 20"
+      - "C: 编译错误"
+      - "D: 运行时错误"
+    answer: B
+    explanation: "函数内的x遮蔽包级x。输出局部变量值20。参见 Go 规范 Declarations and scope 章节。"
+    topic: variables
+    chapter: variable_declarations
+
+  - id: var-decl-026
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          var x int
+          var y = x
+          fmt.Printf("%T %v\n", y, y)
+      }
+    options:
+      - "A: int 0"
+      - "B: int nil"
+      - "C: int64 0"
+      - "D: 编译错误"
+    answer: A
+    explanation: "y的类型从x推断为int,值从x复制为0(int零值)。参见 Go 规范 Variable declarations 章节。"
+    topic: variables
+    chapter: variable_declarations
+
+  - id: var-decl-027
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          var a, b, c = 1, 2.0, "three"
+          fmt.Printf("%T %T %T\n", a, b, c)
+      }
+    options:
+      - "A: int float64 string"
+      - "B: int64 float64 string"
+      - "C: int float32 string"
+      - "D: 编译错误"
+    answer: A
+    explanation: "类型分别从各自初始值推断:1→int,2.0→float64,\"three\"→string。参见 Go 规范 Variable declarations 章节。"
+    topic: variables
+    chapter: variable_declarations
+
+  - id: var-decl-028
+    type: code_fix
+    difficulty: medium
+    stem: "以下代码有编译错误,正确的修正方案是?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          var x int
+          fmt.Println("hello")
+      }
+    options:
+      - "A: 删除var x int"
+      - "B: 添加_ = x"
+      - "C: 将x改为_"
+      - "D: 以上都可以"
+    answer: D
+    explanation: "x声明未使用。可以删除、用_丢弃、或改名为_。参见 Go 规范 Declarations and scope 章节。"
+    topic: variables
+    chapter: variable_declarations
+
+  - id: var-decl-029
+    type: multiple
+    difficulty: medium
+    stem: "关于变量遮蔽(shadowing),以下说法正确的是?(多选)"
+    options:
+      - "A: 内层同名变量遮蔽外层"
+      - "B: 外层变量仍然存在"
+      - "C: 离开作用域后恢复外层"
+      - "D: 可能导致难以发现的bug"
+    answer: ABCD
+    explanation: "遮蔽只是在当前作用域内隐藏外层变量,离开后恢复。这可能导致错误的使用预期变量。参见 Go 规范 Declarations and scope 章节。"
+    topic: variables
+    chapter: variable_declarations
+
+  - id: var-decl-030
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          x := 10
+          {
+              var x = 20
+              fmt.Print(x, " ")
+          }
+          fmt.Println(x)
+      }
+    options:
+      - "A: 20 10"
+      - "B: 20 20"
+      - "C: 10 10"
+      - "D: 编译错误"
+    answer: A
+    explanation: "块内var x遮蔽外层x。块内输出20,块外输出原来的10。参见 Go 规范 Declarations and scope 章节。"
+    topic: variables
+    chapter: variable_declarations
+
+  - id: var-decl-031
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      var (
+          a = b + 1
+          b = 1
+      )
+      func main() {
+          fmt.Println(a, b)
+      }
+    options:
+      - "A: 2 1"
+      - "B: 1 1"
+      - "C: 编译错误:循环依赖"
+      - "D: 0 1"
+    answer: A
+    explanation: "包级变量按依赖顺序初始化。b先初始化为1,然后a=b+1=2。参见 Go 规范 Package initialization 章节。"
+    topic: variables
+    chapter: variable_declarations
+
+  - id: var-decl-032
+    type: code_fix
+    difficulty: medium
+    stem: "以下代码有问题,正确的修正方案是?"
+    code: |
+      package main
+      import "fmt"
+      var (
+          a = b
+          b = a
+      )
+      func main() {
+          fmt.Println(a, b)
+      }
+    options:
+      - "A: 去掉一个变量"
+      - "B: 给一个变量直接赋值"
+      - "C: 代码正确"
+      - "D: 使用init函数"
+    answer: B
+    explanation: "a和b相互依赖形成循环,编译错误。需要打破循环,如b = 0。参见 Go 规范 Package initialization 章节。"
+    topic: variables
+    chapter: variable_declarations
+
+  - id: var-decl-033
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          var x, y = func() (int, int) {
+              return 1, 2
+          }()
+          fmt.Println(x, y)
+      }
+    options:
+      - "A: 1 2"
+      - "B: 0 0"
+      - "C: 编译错误"
+      - "D: func func"
+    answer: A
+    explanation: "函数调用返回多值可以直接初始化多个变量。函数返回1,2赋给x,y。参见 Go 规范 Variable declarations 章节。"
+    topic: variables
+    chapter: variable_declarations
+
+  - id: var-decl-034
+    type: multiple
+    difficulty: medium
+    stem: "关于包级变量初始化顺序,以下说法正确的是?(多选)"
+    options:
+      - "A: 按依赖关系排序"
+      - "B: 没有依赖则按声明顺序"
+      - "C: 可以调用函数初始化"
+      - "D: init函数最后执行"
+    answer: ABCD
+    explanation: "包级变量按依赖拓扑排序初始化。无依赖按声明顺序。可以调用函数。init在变量初始化后执行。参见 Go 规范 Package initialization 章节。"
+    topic: variables
+    chapter: variable_declarations
+
+  - id: var-decl-035
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func f() int {
+          fmt.Print("f ")
+          return 1
+      }
+      var x = f()
+      func main() {
+          fmt.Print("main ")
+          fmt.Println(x)
+      }
+    options:
+      - "A: main f 1"
+      - "B: f main 1"
+      - "C: main 1 f"
+      - "D: 编译错误"
+    answer: B
+    explanation: "包级变量初始化在main之前。先调用f()输出\"f \",再执行main输出\"main 1\"。参见 Go 规范 Package initialization 章节。"
+    topic: variables
+    chapter: variable_declarations
+
+  - id: var-decl-036
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          var m map[string]int
+          fmt.Println(m == nil, len(m))
+      }
+    options:
+      - "A: true 0"
+      - "B: false 0"
+      - "C: true nil"
+      - "D: panic"
+    answer: A
+    explanation: "map的零值是nil。nil map可以读取(返回零值)和获取长度(0)。参见 Go 规范 The zero value 章节。"
+    topic: variables
+    chapter: variable_declarations
+
+  # ========== 困难题 (Hard) - 4道 ==========
+
+  - id: var-decl-037
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      var x = y
+      var y = 1
+      func main() {
+          var a = b
+          b := 2
+          fmt.Println(x, a, b)
+      }
+    options:
+      - "A: 1 0 2"
+      - "B: 1 2 2"
+      - "C: 0 2 2"
+      - "D: 编译错误"
+    answer: D
+    explanation: "包级x=y有效(依赖排序)。但函数内var a = b引用未声明的b,编译错误。短声明b := 2在后面。参见 Go 规范 Declarations and scope 章节。"
+    topic: variables
+    chapter: variable_declarations
+
+  - id: var-decl-038
+    type: multiple
+    difficulty: hard
+    stem: "关于变量的内存分配,以下说法正确的是?(多选)"
+    options:
+      - "A: 编译器决定栈或堆分配"
+      - "B: 逃逸分析影响分配位置"
+      - "C: 取地址可能导致逃逸"
+      - "D: 程序员不能直接控制"
+    answer: ABCD
+    explanation: "Go编译器通过逃逸分析决定变量分配位置。取地址、闭包捕获等可能导致堆分配。程序员无法直接指定。参见 Go 编译器逃逸分析。"
+    topic: variables
+    chapter: variable_declarations
+
+  - id: var-decl-039
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          var a []int
+          var b = []int{}
+          var c = make([]int, 0)
+          fmt.Println(a == nil, b == nil, c == nil)
+      }
+    options:
+      - "A: true true true"
+      - "B: true false false"
+      - "C: false false false"
+      - "D: true false true"
+    answer: B
+    explanation: "var a []int是nil切片。[]int{}和make([]int,0)是非nil空切片(有底层数组)。参见 Go 规范 Making slices 章节。"
+    topic: variables
+    chapter: variable_declarations
+
+  - id: var-decl-040
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          var f func()
+          var c chan int
+          var i interface{}
+          fmt.Println(f == nil, c == nil, i == nil)
+      }
+    options:
+      - "A: true true true"
+      - "B: true true false"
+      - "C: false false false"
+      - "D: true false true"
+    answer: A
+    explanation: "func、chan、interface的零值都是nil。var声明不初始化时都是nil。参见 Go 规范 The zero value 章节。"
+    topic: variables
+    chapter: variable_declarations

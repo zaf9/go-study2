@@ -1,521 +1,662 @@
+# Go 标识符测验题库
+# 章节: lexical_elements/identifiers
+# 符合 Go 1.24 语言规范
+
+metadata:
+  topic: lexical_elements
+  chapter: identifiers
+  total_questions: 40
+  last_updated: "2025-01-01"
+  difficulty_distribution:
+    easy: 24      # 60%
+    medium: 12    # 30%
+    hard: 4       # 10%
+  type_distribution:
+    single: 18
+    multiple: 12
+    code_output: 6
+    code_fix: 4
+
 questions:
-    - id: lexical-identifiers-001
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 lexical_elements.identifiers，下面哪个选项是正确的？
-      options:
-        - 'A: 常见误解或反例（容易混淆）'
-        - 'B: 与identifiers.lexical_elements 相关但不适用的选项'
-        - 'C: 正确项（关于identifiers.lexical_elements的重要结论）'
-        - 'D: 正确项（关于identifiers.lexical_elements的重要结论）'
-      answer: CD
-      explanation: 本题考查 lexical_elements.identifiers 的相关知识。正确答案：CD。解析：identifiers 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: identifiers
-    - id: lexical-identifiers-002
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 lexical_elements.identifiers，下面哪个选项是正确的？
-      options:
-        - 'A: 部分正确但不完整的说法'
-        - 'B: 正确：关于identifiers.lexical_elements的关键点描述（正确选项）'
-        - 'C: 语法/语义上不正确的陈述'
-        - 'D: 与identifiers.lexical_elements 相关但不适用的选项'
-      answer: B
-      explanation: 本题考查 lexical_elements.identifiers 的概念。正确答案为 B。解析：identifiers 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: identifiers
-    - id: lexical-identifiers-003
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 lexical_elements.identifiers，下面哪个选项是正确的？
-      options:
-        - 'A: 正确项（关于identifiers.lexical_elements的重要结论）'
-        - 'B: 正确项（关于identifiers.lexical_elements的重要结论）'
-        - 'C: 语法/语义上不正确的陈述'
-        - 'D: 与identifiers.lexical_elements 相关但不适用的选项'
-      answer: AB
-      explanation: 本题考查 lexical_elements.identifiers 的相关知识。正确答案：AB。解析：identifiers 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: identifiers
-    - id: lexical-identifiers-004
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 lexical_elements.identifiers，下面哪个选项是正确的？
-      options:
-        - 'A: 语法/语义上不正确的陈述'
-        - 'B: 正确：关于identifiers.lexical_elements的关键点描述（正确选项）'
-        - 'C: 与identifiers.lexical_elements 相关但不适用的选项'
-        - 'D: 部分正确但不完整的说法'
-      answer: B
-      explanation: 本题考查 lexical_elements.identifiers 的概念。正确答案为 B。解析：identifiers 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: identifiers
-    - id: lexical-identifiers-005
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 lexical_elements.identifiers，下面哪个选项是正确的？
-      options:
-        - 'A: 正确项（关于identifiers.lexical_elements的重要结论）'
-        - 'B: 正确项（关于identifiers.lexical_elements的重要结论）'
-        - 'C: 语法/语义上不正确的陈述'
-        - 'D: 正确项（关于identifiers.lexical_elements的重要结论）'
-      answer: ABD
-      explanation: 本题考查 lexical_elements.identifiers 的相关知识。正确答案：ABD。解析：identifiers 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: identifiers
-    - id: lexical-identifiers-006
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 lexical_elements.identifiers，下面哪个选项是正确的？
-      options:
-        - 'A: 语法/语义上不正确的陈述'
-        - 'B: 正确：关于identifiers.lexical_elements的关键点描述（正确选项）'
-        - 'C: 与identifiers.lexical_elements 相关但不适用的选项'
-        - 'D: 部分正确但不完整的说法'
-      answer: B
-      explanation: 本题考查 lexical_elements.identifiers 的概念。正确答案为 B。解析：identifiers 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: identifiers
-    - id: lexical-identifiers-007
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 lexical_elements.identifiers，下面哪个选项是正确的？
-      options:
-        - 'A: 正确项（关于identifiers.lexical_elements的重要结论）'
-        - 'B: 与identifiers.lexical_elements 相关但不适用的选项'
-        - 'C: 与identifiers.lexical_elements 相关但不适用的选项'
-        - 'D: 正确项（关于identifiers.lexical_elements的重要结论）'
-      answer: AD
-      explanation: 本题考查 lexical_elements.identifiers 的相关知识。正确答案：AD。解析：identifiers 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: identifiers
-    - id: lexical-identifiers-008
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 lexical_elements.identifiers，下面哪个选项是正确的？
-      options:
-        - 'A: 正确：关于identifiers.lexical_elements的关键点描述（正确选项）'
-        - 'B: 常见误解或反例（容易混淆）'
-        - 'C: 与identifiers.lexical_elements 相关但不适用的选项'
-        - 'D: 与identifiers.lexical_elements 相关但不适用的选项'
-      answer: A
-      explanation: 本题考查 lexical_elements.identifiers 的概念。正确答案为 A。解析：identifiers 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: identifiers
-    - id: lexical-identifiers-009
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 lexical_elements.identifiers，下面哪个选项是正确的？
-      options:
-        - 'A: 正确项（关于identifiers.lexical_elements的重要结论）'
-        - 'B: 语法/语义上不正确的陈述'
-        - 'C: 正确项（关于identifiers.lexical_elements的重要结论）'
-        - 'D: 正确项（关于identifiers.lexical_elements的重要结论）'
-      answer: ACD
-      explanation: 本题考查 lexical_elements.identifiers 的相关知识。正确答案：ACD。解析：identifiers 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: identifiers
-    - id: lexical-identifiers-010
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 lexical_elements.identifiers，下面哪个选项是正确的？
-      options:
-        - 'A: 正确：关于identifiers.lexical_elements的关键点描述（正确选项）'
-        - 'B: 语法/语义上不正确的陈述'
-        - 'C: 语法/语义上不正确的陈述'
-        - 'D: 常见误解或反例（容易混淆）'
-      answer: A
-      explanation: 本题考查 lexical_elements.identifiers 的概念。正确答案为 A。解析：identifiers 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: identifiers
-    - id: lexical-identifiers-011
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 lexical_elements.identifiers，下面哪个选项是正确的？
-      options:
-        - 'A: 与identifiers.lexical_elements 相关但不适用的选项'
-        - 'B: 正确项（关于identifiers.lexical_elements的重要结论）'
-        - 'C: 正确项（关于identifiers.lexical_elements的重要结论）'
-        - 'D: 正确项（关于identifiers.lexical_elements的重要结论）'
-      answer: BCD
-      explanation: 本题考查 lexical_elements.identifiers 的相关知识。正确答案：BCD。解析：identifiers 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: identifiers
-    - id: lexical-identifiers-012
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 lexical_elements.identifiers，下面哪个选项是正确的？
-      options:
-        - 'A: 正确：关于identifiers.lexical_elements的关键点描述（正确选项）'
-        - 'B: 部分正确但不完整的说法'
-        - 'C: 常见误解或反例（容易混淆）'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: A
-      explanation: 本题考查 lexical_elements.identifiers 的概念。正确答案为 A。解析：identifiers 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: identifiers
-    - id: lexical-identifiers-013
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 lexical_elements.identifiers，下面哪个选项是正确的？
-      options:
-        - 'A: 语法/语义上不正确的陈述'
-        - 'B: 正确项（关于identifiers.lexical_elements的重要结论）'
-        - 'C: 正确项（关于identifiers.lexical_elements的重要结论）'
-        - 'D: 正确项（关于identifiers.lexical_elements的重要结论）'
-      answer: BCD
-      explanation: 本题考查 lexical_elements.identifiers 的相关知识。正确答案：BCD。解析：identifiers 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: identifiers
-    - id: lexical-identifiers-014
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 lexical_elements.identifiers，下面哪个选项是正确的？
-      options:
-        - 'A: 与identifiers.lexical_elements 相关但不适用的选项'
-        - 'B: 正确：关于identifiers.lexical_elements的关键点描述（正确选项）'
-        - 'C: 与identifiers.lexical_elements 相关但不适用的选项'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: B
-      explanation: 本题考查 lexical_elements.identifiers 的概念。正确答案为 B。解析：identifiers 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: identifiers
-    - id: lexical-identifiers-015
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 lexical_elements.identifiers，下面哪个选项是正确的？
-      options:
-        - 'A: 与identifiers.lexical_elements 相关但不适用的选项'
-        - 'B: 与identifiers.lexical_elements 相关但不适用的选项'
-        - 'C: 正确项（关于identifiers.lexical_elements的重要结论）'
-        - 'D: 正确项（关于identifiers.lexical_elements的重要结论）'
-      answer: CD
-      explanation: 本题考查 lexical_elements.identifiers 的相关知识。正确答案：CD。解析：identifiers 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: identifiers
-    - id: lexical-identifiers-016
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 lexical_elements.identifiers，下面哪个选项是正确的？
-      options:
-        - 'A: 常见误解或反例（容易混淆）'
-        - 'B: 正确：关于identifiers.lexical_elements的关键点描述（正确选项）'
-        - 'C: 部分正确但不完整的说法'
-        - 'D: 与identifiers.lexical_elements 相关但不适用的选项'
-      answer: B
-      explanation: 本题考查 lexical_elements.identifiers 的概念。正确答案为 B。解析：identifiers 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: identifiers
-    - id: lexical-identifiers-017
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 lexical_elements.identifiers 的情境下，哪个说法更合适？
-      options:
-        - 'A: 与identifiers.lexical_elements 相关但不适用的选项'
-        - 'B: 正确项（关于identifiers.lexical_elements的重要结论）'
-        - 'C: 与identifiers.lexical_elements 相关但不适用的选项'
-        - 'D: 正确项（关于identifiers.lexical_elements的重要结论）'
-      answer: BD
-      explanation: 本题考查 lexical_elements.identifiers 的相关知识。正确答案：BD。解析：identifiers 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: identifiers
-    - id: lexical-identifiers-018
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 lexical_elements.identifiers 的情境下，哪个说法更合适？
-      options:
-        - 'A: 常见误解或反例（容易混淆）'
-        - 'B: 部分正确但不完整的说法'
-        - 'C: 正确：关于identifiers.lexical_elements的关键点描述（正确选项）'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: C
-      explanation: 本题考查 lexical_elements.identifiers 的概念。正确答案为 C。解析：identifiers 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: identifiers
-    - id: lexical-identifiers-019
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 lexical_elements.identifiers 的情境下，哪个说法更合适？
-      options:
-        - 'A: 常见误解或反例（容易混淆）'
-        - 'B: 正确项（关于identifiers.lexical_elements的重要结论）'
-        - 'C: 正确项（关于identifiers.lexical_elements的重要结论）'
-        - 'D: 正确项（关于identifiers.lexical_elements的重要结论）'
-      answer: BCD
-      explanation: 本题考查 lexical_elements.identifiers 的相关知识。正确答案：BCD。解析：identifiers 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: identifiers
-    - id: lexical-identifiers-020
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 lexical_elements.identifiers 的情境下，哪个说法更合适？
-      options:
-        - 'A: 部分正确但不完整的说法'
-        - 'B: 常见误解或反例（容易混淆）'
-        - 'C: 正确：关于identifiers.lexical_elements的关键点描述（正确选项）'
-        - 'D: 与identifiers.lexical_elements 相关但不适用的选项'
-      answer: C
-      explanation: 本题考查 lexical_elements.identifiers 的概念。正确答案为 C。解析：identifiers 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: identifiers
-    - id: lexical-identifiers-021
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 lexical_elements.identifiers 的情境下，哪个说法更合适？
-      options:
-        - 'A: 正确项（关于identifiers.lexical_elements的重要结论）'
-        - 'B: 正确项（关于identifiers.lexical_elements的重要结论）'
-        - 'C: 部分正确但不完整的说法'
-        - 'D: 正确项（关于identifiers.lexical_elements的重要结论）'
-      answer: ABD
-      explanation: 本题考查 lexical_elements.identifiers 的相关知识。正确答案：ABD。解析：identifiers 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: identifiers
-    - id: lexical-identifiers-022
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 lexical_elements.identifiers 的情境下，哪个说法更合适？
-      options:
-        - 'A: 常见误解或反例（容易混淆）'
-        - 'B: 正确：关于identifiers.lexical_elements的关键点描述（正确选项）'
-        - 'C: 与identifiers.lexical_elements 相关但不适用的选项'
-        - 'D: 常见误解或反例（容易混淆）'
-      answer: B
-      explanation: 本题考查 lexical_elements.identifiers 的概念。正确答案为 B。解析：identifiers 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: identifiers
-    - id: lexical-identifiers-023
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 lexical_elements.identifiers 的情境下，哪个说法更合适？
-      options:
-        - 'A: 正确项（关于identifiers.lexical_elements的重要结论）'
-        - 'B: 正确项（关于identifiers.lexical_elements的重要结论）'
-        - 'C: 常见误解或反例（容易混淆）'
-        - 'D: 正确项（关于identifiers.lexical_elements的重要结论）'
-      answer: ABD
-      explanation: 本题考查 lexical_elements.identifiers 的相关知识。正确答案：ABD。解析：identifiers 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: identifiers
-    - id: lexical-identifiers-024
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 lexical_elements.identifiers 的情境下，哪个说法更合适？
-      options:
-        - 'A: 与identifiers.lexical_elements 相关但不适用的选项'
-        - 'B: 常见误解或反例（容易混淆）'
-        - 'C: 正确：关于identifiers.lexical_elements的关键点描述（正确选项）'
-        - 'D: 部分正确但不完整的说法'
-      answer: C
-      explanation: 本题考查 lexical_elements.identifiers 的概念。正确答案为 C。解析：identifiers 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: identifiers
-    - id: lexical-identifiers-025
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 lexical_elements.identifiers 的情境下，哪个说法更合适？
-      options:
-        - 'A: 正确项（关于identifiers.lexical_elements的重要结论）'
-        - 'B: 正确项（关于identifiers.lexical_elements的重要结论）'
-        - 'C: 语法/语义上不正确的陈述'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: AB
-      explanation: 本题考查 lexical_elements.identifiers 的相关知识。正确答案：AB。解析：identifiers 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: identifiers
-    - id: lexical-identifiers-026
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 lexical_elements.identifiers 的情境下，哪个说法更合适？
-      options:
-        - 'A: 语法/语义上不正确的陈述'
-        - 'B: 正确：关于identifiers.lexical_elements的关键点描述（正确选项）'
-        - 'C: 常见误解或反例（容易混淆）'
-        - 'D: 常见误解或反例（容易混淆）'
-      answer: B
-      explanation: 本题考查 lexical_elements.identifiers 的概念。正确答案为 B。解析：identifiers 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: identifiers
-    - id: lexical-identifiers-027
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 lexical_elements.identifiers 的情境下，哪个说法更合适？
-      options:
-        - 'A: 与identifiers.lexical_elements 相关但不适用的选项'
-        - 'B: 正确项（关于identifiers.lexical_elements的重要结论）'
-        - 'C: 正确项（关于identifiers.lexical_elements的重要结论）'
-        - 'D: 与identifiers.lexical_elements 相关但不适用的选项'
-      answer: BC
-      explanation: 本题考查 lexical_elements.identifiers 的相关知识。正确答案：BC。解析：identifiers 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: identifiers
-    - id: lexical-identifiers-028
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 lexical_elements.identifiers 的情境下，哪个说法更合适？
-      options:
-        - 'A: 常见误解或反例（容易混淆）'
-        - 'B: 正确：关于identifiers.lexical_elements的关键点描述（正确选项）'
-        - 'C: 常见误解或反例（容易混淆）'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: B
-      explanation: 本题考查 lexical_elements.identifiers 的概念。正确答案为 B。解析：identifiers 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: identifiers
-    - id: lexical-identifiers-029
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 lexical_elements.identifiers 的情境下，哪个说法更合适？
-      options:
-        - 'A: 正确项（关于identifiers.lexical_elements的重要结论）'
-        - 'B: 语法/语义上不正确的陈述'
-        - 'C: 常见误解或反例（容易混淆）'
-        - 'D: 正确项（关于identifiers.lexical_elements的重要结论）'
-      answer: AD
-      explanation: 本题考查 lexical_elements.identifiers 的相关知识。正确答案：AD。解析：identifiers 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: identifiers
-    - id: lexical-identifiers-030
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 lexical_elements.identifiers 的情境下，哪个说法更合适？
-      options:
-        - 'A: 语法/语义上不正确的陈述'
-        - 'B: 正确：关于identifiers.lexical_elements的关键点描述（正确选项）'
-        - 'C: 与identifiers.lexical_elements 相关但不适用的选项'
-        - 'D: 与identifiers.lexical_elements 相关但不适用的选项'
-      answer: B
-      explanation: 本题考查 lexical_elements.identifiers 的概念。正确答案为 B。解析：identifiers 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: identifiers
-    - id: lexical-identifiers-031
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 lexical_elements.identifiers 的情境下，哪个说法更合适？
-      options:
-        - 'A: 正确项（关于identifiers.lexical_elements的重要结论）'
-        - 'B: 常见误解或反例（容易混淆）'
-        - 'C: 正确项（关于identifiers.lexical_elements的重要结论）'
-        - 'D: 正确项（关于identifiers.lexical_elements的重要结论）'
-      answer: ACD
-      explanation: 本题考查 lexical_elements.identifiers 的相关知识。正确答案：ACD。解析：identifiers 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: identifiers
-    - id: lexical-identifiers-032
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 lexical_elements.identifiers 的情境下，哪个说法更合适？
-      options:
-        - 'A: 与identifiers.lexical_elements 相关但不适用的选项'
-        - 'B: 正确：关于identifiers.lexical_elements的关键点描述（正确选项）'
-        - 'C: 语法/语义上不正确的陈述'
-        - 'D: 与identifiers.lexical_elements 相关但不适用的选项'
-      answer: B
-      explanation: 本题考查 lexical_elements.identifiers 的概念。正确答案为 B。解析：identifiers 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: identifiers
-    - id: lexical-identifiers-033
-      type: multiple
-      difficulty: hard
-      stem: 【思考题】针对 lexical_elements.identifiers，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 正确项（关于identifiers.lexical_elements的重要结论）'
-        - 'B: 正确项（关于identifiers.lexical_elements的重要结论）'
-        - 'C: 部分正确但不完整的说法'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: AB
-      explanation: 本题考查 lexical_elements.identifiers 的相关知识。正确答案：AB。解析：identifiers 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: identifiers
-    - id: lexical-identifiers-034
-      type: single
-      difficulty: hard
-      stem: 【思考题】针对 lexical_elements.identifiers，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 部分正确但不完整的说法'
-        - 'B: 与identifiers.lexical_elements 相关但不适用的选项'
-        - 'C: 正确：关于identifiers.lexical_elements的关键点描述（正确选项）'
-        - 'D: 与identifiers.lexical_elements 相关但不适用的选项'
-      answer: C
-      explanation: 本题考查 lexical_elements.identifiers 的概念。正确答案为 C。解析：identifiers 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: identifiers
-    - id: lexical-identifiers-035
-      type: multiple
-      difficulty: hard
-      stem: 【思考题】针对 lexical_elements.identifiers，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 正确项（关于identifiers.lexical_elements的重要结论）'
-        - 'B: 语法/语义上不正确的陈述'
-        - 'C: 正确项（关于identifiers.lexical_elements的重要结论）'
-        - 'D: 正确项（关于identifiers.lexical_elements的重要结论）'
-      answer: ACD
-      explanation: 本题考查 lexical_elements.identifiers 的相关知识。正确答案：ACD。解析：identifiers 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: identifiers
-    - id: lexical-identifiers-036
-      type: single
-      difficulty: hard
-      stem: 【思考题】针对 lexical_elements.identifiers，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 常见误解或反例（容易混淆）'
-        - 'B: 语法/语义上不正确的陈述'
-        - 'C: 正确：关于identifiers.lexical_elements的关键点描述（正确选项）'
-        - 'D: 常见误解或反例（容易混淆）'
-      answer: C
-      explanation: 本题考查 lexical_elements.identifiers 的概念。正确答案为 C。解析：identifiers 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: identifiers
-    - id: lexical-identifiers-037
-      type: multiple
-      difficulty: hard
-      stem: 【思考题】针对 lexical_elements.identifiers，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 部分正确但不完整的说法'
-        - 'B: 正确项（关于identifiers.lexical_elements的重要结论）'
-        - 'C: 正确项（关于identifiers.lexical_elements的重要结论）'
-        - 'D: 正确项（关于identifiers.lexical_elements的重要结论）'
-      answer: BCD
-      explanation: 本题考查 lexical_elements.identifiers 的相关知识。正确答案：BCD。解析：identifiers 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: identifiers
-    - id: lexical-identifiers-038
-      type: single
-      difficulty: hard
-      stem: 【思考题】针对 lexical_elements.identifiers，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 语法/语义上不正确的陈述'
-        - 'B: 与identifiers.lexical_elements 相关但不适用的选项'
-        - 'C: 常见误解或反例（容易混淆）'
-        - 'D: 正确：关于identifiers.lexical_elements的关键点描述（正确选项）'
-      answer: D
-      explanation: 本题考查 lexical_elements.identifiers 的概念。正确答案为 D。解析：identifiers 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: identifiers
-    - id: lexical-identifiers-039
-      type: multiple
-      difficulty: hard
-      stem: 【思考题】针对 lexical_elements.identifiers，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 正确项（关于identifiers.lexical_elements的重要结论）'
-        - 'B: 部分正确但不完整的说法'
-        - 'C: 正确项（关于identifiers.lexical_elements的重要结论）'
-        - 'D: 常见误解或反例（容易混淆）'
-      answer: AC
-      explanation: 本题考查 lexical_elements.identifiers 的相关知识。正确答案：AC。解析：identifiers 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: identifiers
-    - id: lexical-identifiers-040
-      type: single
-      difficulty: hard
-      stem: 【思考题】针对 lexical_elements.identifiers，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 部分正确但不完整的说法'
-        - 'B: 语法/语义上不正确的陈述'
-        - 'C: 常见误解或反例（容易混淆）'
-        - 'D: 正确：关于identifiers.lexical_elements的关键点描述（正确选项）'
-      answer: D
-      explanation: 本题考查 lexical_elements.identifiers 的概念。正确答案为 D。解析：identifiers 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: identifiers
+  # ========== 简单题 (Easy) - 24道 ==========
+  
+  - id: lexical-identifiers-001
+    type: single
+    difficulty: easy
+    stem: "Go语言中,标识符的第一个字符必须是?"
+    options:
+      - "A: 数字或字母"
+      - "B: 字母或下划线"
+      - "C: 仅字母"
+      - "D: 任意字符"
+    answer: B
+    explanation: "Go标识符必须以字母(Unicode字母)或下划线(_)开头,后续可以是字母、数字或下划线。数字不能作为首字符。参见 Go 规范 Identifiers 章节。"
+    topic: lexical_elements
+    chapter: identifiers
+
+  - id: lexical-identifiers-002
+    type: single
+    difficulty: easy
+    stem: "以下哪个是合法的Go标识符?"
+    options:
+      - "A: 123abc"
+      - "B: _abc"
+      - "C: if"
+      - "D: a-b"
+    answer: B
+    explanation: "_abc是合法标识符,以下划线开头。123abc以数字开头非法,if是关键字,a-b包含连字符非法。参见 Go 规范 Identifiers 章节。"
+    topic: lexical_elements
+    chapter: identifiers
+
+  - id: lexical-identifiers-003
+    type: single
+    difficulty: easy
+    stem: "Go语言中,空白标识符是?"
+    options:
+      - "A: blank"
+      - "B: null"
+      - "C: _"
+      - "D: void"
+    answer: C
+    explanation: "Go使用单个下划线_作为空白标识符,用于忽略不需要的值。这是Go语言的特殊设计。参见 Go 规范 Blank identifier 章节。"
+    topic: lexical_elements
+    chapter: identifiers
+
+  - id: lexical-identifiers-004
+    type: single
+    difficulty: easy
+    stem: "以下哪个标识符在Go中是导出的(public)?"
+    options:
+      - "A: myFunc"
+      - "B: MyFunc"
+      - "C: _myFunc"
+      - "D: my_func"
+    answer: B
+    explanation: "Go使用首字母大写表示导出(public)。MyFunc首字母大写,可以被其他包访问。小写开头的标识符只能在包内使用。参见 Go 规范 Exported identifiers 章节。"
+    topic: lexical_elements
+    chapter: identifiers
+
+  - id: lexical-identifiers-005
+    type: single
+    difficulty: easy
+    stem: "Go语言中,以下哪个不是预声明标识符?"
+    options:
+      - "A: true"
+      - "B: false"
+      - "C: nil"
+      - "D: null"
+    answer: D
+    explanation: "Go的预声明标识符包括true、false、nil等。null不是Go的预声明标识符,Go使用nil表示空值。参见 Go 规范 Predeclared identifiers 章节。"
+    topic: lexical_elements
+    chapter: identifiers
+
+  - id: lexical-identifiers-006
+    type: single
+    difficulty: easy
+    stem: "Go语言标识符是否区分大小写?"
+    options:
+      - "A: 不区分"
+      - "B: 区分"
+      - "C: 仅关键字区分"
+      - "D: 仅变量名区分"
+    answer: B
+    explanation: "Go语言是大小写敏感的,myVar和MyVar是两个不同的标识符。这也是导出规则的基础。参见 Go 规范 Identifiers 章节。"
+    topic: lexical_elements
+    chapter: identifiers
+
+  - id: lexical-identifiers-007
+    type: multiple
+    difficulty: easy
+    stem: "以下哪些是合法的Go标识符?(多选)"
+    options:
+      - "A: abc"
+      - "B: _"
+      - "C: a1"
+      - "D: 1a"
+    answer: ABC
+    explanation: "abc、_(空白标识符)、a1都是合法标识符。1a以数字开头,不合法。参见 Go 规范 Identifiers 章节。"
+    topic: lexical_elements
+    chapter: identifiers
+
+  - id: lexical-identifiers-008
+    type: single
+    difficulty: easy
+    stem: "Go语言中,空白标识符_的主要用途是?"
+    options:
+      - "A: 声明空变量"
+      - "B: 忽略不需要的返回值"
+      - "C: 表示空字符串"
+      - "D: 定义私有变量"
+    answer: B
+    explanation: "空白标识符_用于忽略不需要的值,如函数返回的多个值中某个不需要的值。这不是一个真正的变量。参见 Go 规范 Blank identifier 章节。"
+    topic: lexical_elements
+    chapter: identifiers
+
+  - id: lexical-identifiers-009
+    type: single
+    difficulty: easy
+    stem: "以下哪个是Go的预声明类型标识符?"
+    options:
+      - "A: integer"
+      - "B: int"
+      - "C: Integer"
+      - "D: INT"
+    answer: B
+    explanation: "int是Go的预声明类型标识符。integer、Integer、INT都不是Go的预声明标识符。参见 Go 规范 Predeclared identifiers 章节。"
+    topic: lexical_elements
+    chapter: identifiers
+
+  - id: lexical-identifiers-010
+    type: multiple
+    difficulty: easy
+    stem: "以下哪些是Go的预声明常量?(多选)"
+    options:
+      - "A: true"
+      - "B: false"
+      - "C: iota"
+      - "D: null"
+    answer: ABC
+    explanation: "true、false是布尔常量,iota是常量计数器,都是预声明标识符。null不是Go的预声明标识符。参见 Go 规范 Predeclared identifiers 章节。"
+    topic: lexical_elements
+    chapter: identifiers
+
+  - id: lexical-identifiers-011
+    type: single
+    difficulty: easy
+    stem: "Go语言中,包名通常使用什么命名规范?"
+    options:
+      - "A: PascalCase"
+      - "B: camelCase"
+      - "C: snake_case"
+      - "D: 全小写单词"
+    answer: D
+    explanation: "Go包名惯例使用全小写单词,如fmt、http、json。避免使用下划线或驼峰命名。参见 Go 官方文档 Effective Go。"
+    topic: lexical_elements
+    chapter: identifiers
+
+  - id: lexical-identifiers-012
+    type: single
+    difficulty: easy
+    stem: "以下哪个是合法的Unicode标识符?"
+    options:
+      - "A: 变量"
+      - "B: 123变量"
+      - "C: @变量"
+      - "D: 变量-1"
+    answer: A
+    explanation: "Go支持Unicode字母作为标识符,变量是合法的。123变量以数字开头非法,@和-不是合法的标识符字符。参见 Go 规范 Identifiers 章节。"
+    topic: lexical_elements
+    chapter: identifiers
+
+  - id: lexical-identifiers-013
+    type: multiple
+    difficulty: easy
+    stem: "以下哪些是Go的预声明函数?(多选)"
+    options:
+      - "A: print"
+      - "B: println"
+      - "C: printf"
+      - "D: len"
+    answer: ABD
+    explanation: "print、println、len都是Go的预声明函数(内建函数)。printf不是预声明函数,需要从fmt包导入。参见 Go 规范 Predeclared identifiers 章节。"
+    topic: lexical_elements
+    chapter: identifiers
+
+  - id: lexical-identifiers-014
+    type: single
+    difficulty: easy
+    stem: "在Go中,以下哪种命名约定表示未导出(私有)?"
+    options:
+      - "A: 首字母大写"
+      - "B: 首字母小写"
+      - "C: 下划线开头"
+      - "D: 全大写"
+    answer: B
+    explanation: "Go使用首字母小写表示未导出(包私有)。首字母大写表示导出。下划线开头是合法标识符但不是私有约定。参见 Go 规范 Exported identifiers 章节。"
+    topic: lexical_elements
+    chapter: identifiers
+
+  - id: lexical-identifiers-015
+    type: single
+    difficulty: easy
+    stem: "Go语言中,哪个预声明标识符表示空值?"
+    options:
+      - "A: null"
+      - "B: None"
+      - "C: nil"
+      - "D: void"
+    answer: C
+    explanation: "Go使用nil表示指针、通道、函数、接口、映射、切片的零值。null是其他语言的写法。参见 Go 规范 Predeclared identifiers 章节。"
+    topic: lexical_elements
+    chapter: identifiers
+
+  - id: lexical-identifiers-016
+    type: multiple
+    difficulty: easy
+    stem: "以下哪些预声明标识符是类型?(多选)"
+    options:
+      - "A: bool"
+      - "B: string"
+      - "C: error"
+      - "D: true"
+    answer: ABC
+    explanation: "bool、string、error都是预声明类型。true是预声明常量,不是类型。参见 Go 规范 Predeclared identifiers 章节。"
+    topic: lexical_elements
+    chapter: identifiers
+
+  - id: lexical-identifiers-017
+    type: single
+    difficulty: easy
+    stem: "Go中可以重新声明预声明标识符吗?"
+    options:
+      - "A: 不可以,会编译错误"
+      - "B: 可以,但会遮蔽原标识符"
+      - "C: 只有类型可以"
+      - "D: 只有函数可以"
+    answer: B
+    explanation: "预声明标识符不是保留字,可以被重新声明,但会遮蔽原有定义。例如可以声明var true = false,但不推荐。参见 Go 规范 Predeclared identifiers 章节。"
+    topic: lexical_elements
+    chapter: identifiers
+
+  - id: lexical-identifiers-018
+    type: single
+    difficulty: easy
+    stem: "以下哪个不是合法的Go标识符?"
+    options:
+      - "A: x"
+      - "B: X"
+      - "C: _x"
+      - "D: x-y"
+    answer: D
+    explanation: "x-y包含连字符(-),不是合法的标识符字符。Go标识符只能包含字母、数字和下划线。参见 Go 规范 Identifiers 章节。"
+    topic: lexical_elements
+    chapter: identifiers
+
+  - id: lexical-identifiers-019
+    type: multiple
+    difficulty: easy
+    stem: "以下哪些是Go的预声明类型?(多选)"
+    options:
+      - "A: int8"
+      - "B: float32"
+      - "C: complex128"
+      - "D: char"
+    answer: ABC
+    explanation: "int8、float32、complex128都是Go的预声明数值类型。Go没有char类型,使用rune或byte。参见 Go 规范 Predeclared identifiers 章节。"
+    topic: lexical_elements
+    chapter: identifiers
+
+  - id: lexical-identifiers-020
+    type: single
+    difficulty: easy
+    stem: "Go语言中,接口命名的惯例是?"
+    options:
+      - "A: 以I开头如IReader"
+      - "B: 以-er或-able结尾如Reader"
+      - "C: 全小写"
+      - "D: 全大写"
+    answer: B
+    explanation: "Go接口命名惯例是使用-er后缀,如Reader、Writer、Stringer。不使用I前缀(那是C#/Java的风格)。参见 Go 官方文档 Effective Go。"
+    topic: lexical_elements
+    chapter: identifiers
+
+  - id: lexical-identifiers-021
+    type: single
+    difficulty: easy
+    stem: "Go语言中,哪个内建函数用于获取切片长度?"
+    options:
+      - "A: size()"
+      - "B: length()"
+      - "C: len()"
+      - "D: count()"
+    answer: C
+    explanation: "Go使用预声明函数len()获取切片、数组、映射、字符串、通道的长度。这是Go的内建函数。参见 Go 规范 Length and capacity 章节。"
+    topic: lexical_elements
+    chapter: identifiers
+
+  - id: lexical-identifiers-022
+    type: multiple
+    difficulty: easy
+    stem: "关于Go标识符的作用域,以下说法正确的是?(多选)"
+    options:
+      - "A: 大写开头可跨包访问"
+      - "B: 小写开头仅包内可见"
+      - "C: 空白标识符没有作用域"
+      - "D: 预声明标识符在全局作用域"
+    answer: ABD
+    explanation: "大写开头导出可跨包,小写包内可见,预声明标识符在universe块(全局)作用域。空白标识符特殊,不引入绑定。参见 Go 规范 Declarations and scope 章节。"
+    topic: lexical_elements
+    chapter: identifiers
+
+  - id: lexical-identifiers-023
+    type: single
+    difficulty: easy
+    stem: "Go的预声明函数make用于创建什么?"
+    options:
+      - "A: 任意类型"
+      - "B: 结构体"
+      - "C: 切片、映射、通道"
+      - "D: 数组"
+    answer: C
+    explanation: "make是预声明函数,只能用于创建切片(slice)、映射(map)和通道(channel)。数组和结构体不使用make。参见 Go 规范 Making slices, maps and channels 章节。"
+    topic: lexical_elements
+    chapter: identifiers
+
+  - id: lexical-identifiers-024
+    type: single
+    difficulty: easy
+    stem: "以下哪个是合法的Go常量名?"
+    options:
+      - "A: const"
+      - "B: CONST"
+      - "C: _const"
+      - "D: const_"
+    answer: C
+    explanation: "const是关键字不能用作标识符。CONST、_const、const_都是合法标识符,但Go惯例不使用全大写(那是C的风格)。参见 Go 规范 Identifiers 章节。"
+    topic: lexical_elements
+    chapter: identifiers
+
+  # ========== 中等题 (Medium) - 12道 ==========
+
+  - id: lexical-identifiers-025
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          true := false
+          fmt.Println(true)
+      }
+    options:
+      - "A: true"
+      - "B: false"
+      - "C: 编译错误"
+      - "D: 运行时错误"
+    answer: B
+    explanation: "true是预声明标识符而非关键字,可以被重新声明。这里true被重新声明为false,所以输出false。虽然合法但不推荐这样做。参见 Go 规范 Predeclared identifiers 章节。"
+    topic: lexical_elements
+    chapter: identifiers
+
+  - id: lexical-identifiers-026
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          a, _ := 1, 2
+          fmt.Println(a)
+      }
+    options:
+      - "A: 1"
+      - "B: 2"
+      - "C: 1 2"
+      - "D: 编译错误"
+    answer: A
+    explanation: "空白标识符_用于忽略第二个值2。变量a被赋值为1,所以输出1。这是Go中处理多返回值的常见模式。参见 Go 规范 Blank identifier 章节。"
+    topic: lexical_elements
+    chapter: identifiers
+
+  - id: lexical-identifiers-027
+    type: multiple
+    difficulty: medium
+    stem: "关于空白标识符_,以下说法正确的是?(多选)"
+    options:
+      - "A: 可以用于忽略返回值"
+      - "B: 可以用于导入包的副作用"
+      - "C: 可以被读取其值"
+      - "D: 可以用于接口实现检查"
+    answer: ABD
+    explanation: "空白标识符可以忽略返回值、导入包副作用(import _ \"pkg\")、接口实现检查(var _ Interface = (*Type)(nil))。但不能读取其值。参见 Go 规范 Blank identifier 章节。"
+    topic: lexical_elements
+    chapter: identifiers
+
+  - id: lexical-identifiers-028
+    type: code_fix
+    difficulty: medium
+    stem: "以下代码有语法错误,正确的修正方案是?"
+    code: |
+      package main
+      func main() {
+          var 2x = 10
+          println(2x)
+      }
+    options:
+      - "A: 将2x改为x2"
+      - "B: 将var改为const"
+      - "C: 删除var关键字"
+      - "D: 将2x改为_2x"
+    answer: A
+    explanation: "Go标识符不能以数字开头,2x是非法标识符。正确做法是改为x2或其他以字母/下划线开头的标识符。参见 Go 规范 Identifiers 章节。"
+    topic: lexical_elements
+    chapter: identifiers
+
+  - id: lexical-identifiers-029
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          len := 10
+          fmt.Println(len)
+      }
+    options:
+      - "A: 10"
+      - "B: 编译错误"
+      - "C: 0"
+      - "D: 运行时错误"
+    answer: A
+    explanation: "len是预声明函数而非关键字,可以被遮蔽。这里len被声明为变量值为10。但这样做会导致无法使用内建的len函数。参见 Go 规范 Predeclared identifiers 章节。"
+    topic: lexical_elements
+    chapter: identifiers
+
+  - id: lexical-identifiers-030
+    type: multiple
+    difficulty: medium
+    stem: "以下哪些标识符遵循Go的导出命名惯例?(多选)"
+    options:
+      - "A: HandleRequest"
+      - "B: handleRequest"
+      - "C: HANDLE_REQUEST"
+      - "D: Handle_Request"
+    answer: A
+    explanation: "Go使用PascalCase(大驼峰)表示导出标识符。HandleRequest是标准写法。全大写下划线分隔是C风格,不是Go惯例。参见 Go 官方文档 Effective Go。"
+    topic: lexical_elements
+    chapter: identifiers
+
+  - id: lexical-identifiers-031
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          var nil = "hello"
+          fmt.Println(nil)
+      }
+    options:
+      - "A: nil"
+      - "B: hello"
+      - "C: 编译错误"
+      - "D: <nil>"
+    answer: B
+    explanation: "nil是预声明标识符而非关键字,可以被重新声明。这里nil被声明为字符串\"hello\",所以输出hello。参见 Go 规范 Predeclared identifiers 章节。"
+    topic: lexical_elements
+    chapter: identifiers
+
+  - id: lexical-identifiers-032
+    type: code_fix
+    difficulty: medium
+    stem: "以下代码存在问题,最佳修正方案是?"
+    code: |
+      package main
+      func main() {
+          my-var := 10
+          println(my-var)
+      }
+    options:
+      - "A: 将my-var改为my_var"
+      - "B: 将my-var改为myVar"
+      - "C: 删除:="
+      - "D: A或B都可以"
+    answer: D
+    explanation: "连字符-不能出现在标识符中。可以改为下划线分隔my_var或驼峰命名myVar。Go惯例更推荐驼峰命名。参见 Go 规范 Identifiers 章节。"
+    topic: lexical_elements
+    chapter: identifiers
+
+  - id: lexical-identifiers-033
+    type: multiple
+    difficulty: medium
+    stem: "以下哪些是Go语言的预声明零值函数?(多选)"
+    options:
+      - "A: new"
+      - "B: make"
+      - "C: append"
+      - "D: delete"
+    answer: AB
+    explanation: "new分配零值内存返回指针,make创建并初始化切片/映射/通道。append追加元素,delete删除映射元素,都是预声明函数但不是零值函数。参见 Go 规范 Allocation 章节。"
+    topic: lexical_elements
+    chapter: identifiers
+
+  - id: lexical-identifiers-034
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          iota := 100
+          fmt.Println(iota)
+      }
+    options:
+      - "A: 0"
+      - "B: 100"
+      - "C: 编译错误"
+      - "D: 运行时错误"
+    answer: B
+    explanation: "iota是预声明标识符,在const声明中自增。但它可以被遮蔽为普通变量。这里iota被赋值为100,输出100。参见 Go 规范 Iota 章节。"
+    topic: lexical_elements
+    chapter: identifiers
+
+  - id: lexical-identifiers-035
+    type: multiple
+    difficulty: medium
+    stem: "关于Go标识符的Unicode支持,以下说法正确的是?(多选)"
+    options:
+      - "A: 可以使用中文作为变量名"
+      - "B: 可以使用日文作为函数名"
+      - "C: Unicode字母的首字母大写规则同样适用"
+      - "D: 表情符号可以作为标识符"
+    answer: ABC
+    explanation: "Go支持Unicode字母作为标识符,包括中文、日文等。导出规则适用于Unicode大写字母。表情符号不是Unicode字母,不能用作标识符。参见 Go 规范 Identifiers 章节。"
+    topic: lexical_elements
+    chapter: identifiers
+
+  - id: lexical-identifiers-036
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          _, b := 1, 2
+          _, b = 3, 4
+          fmt.Println(b)
+      }
+    options:
+      - "A: 2"
+      - "B: 4"
+      - "C: 编译错误"
+      - "D: 1"
+    answer: B
+    explanation: "第一行声明b=2,第二行重新赋值b=4(空白标识符忽略3)。最终b的值是4。参见 Go 规范 Blank identifier 章节。"
+    topic: lexical_elements
+    chapter: identifiers
+
+  # ========== 困难题 (Hard) - 4道 ==========
+
+  - id: lexical-identifiers-037
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      var print = fmt.Println
+      func main() {
+          print("hello")
+      }
+    options:
+      - "A: hello"
+      - "B: 编译错误:print是预声明函数"
+      - "C: 运行时panic"
+      - "D: 无输出"
+    answer: A
+    explanation: "print是预声明函数,但可以被遮蔽。这里全局变量print被赋值为fmt.Println,所以调用print(\"hello\")实际调用fmt.Println,输出hello。参见 Go 规范 Predeclared identifiers 章节。"
+    topic: lexical_elements
+    chapter: identifiers
+
+  - id: lexical-identifiers-038
+    type: code_fix
+    difficulty: hard
+    stem: "以下代码存在潜在问题,最佳修正方案是?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          error := fmt.Errorf("test error")
+          fmt.Println(error)
+      }
+    options:
+      - "A: 将error改为err"
+      - "B: 将error改为Error"
+      - "C: 代码没有问题"
+      - "D: 删除fmt.Errorf"
+    answer: A
+    explanation: "error是预声明接口类型,将其作为变量名会遮蔽该类型,可能导致后续代码无法使用error类型。Go惯例使用err作为错误变量名。参见 Go 规范和 Effective Go。"
+    topic: lexical_elements
+    chapter: identifiers
+
+  - id: lexical-identifiers-039
+    type: multiple
+    difficulty: hard
+    stem: "关于Go的universe块(全局作用域),以下说法正确的是?(多选)"
+    options:
+      - "A: 包含所有预声明标识符"
+      - "B: 预声明标识符可以被任何块遮蔽"
+      - "C: 关键字也在universe块中"
+      - "D: 是所有源文件共享的最外层作用域"
+    answer: ABD
+    explanation: "universe块包含所有预声明标识符,可以被遮蔽,是最外层作用域。关键字不在universe块中,它们是词法元素,不是标识符。参见 Go 规范 Blocks 章节。"
+    topic: lexical_elements
+    chapter: identifiers
+
+  - id: lexical-identifiers-040
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          type int = string
+          var x int = "hello"
+          fmt.Printf("%T: %v", x, x)
+      }
+    options:
+      - "A: int: hello"
+      - "B: string: hello"
+      - "C: 编译错误"
+      - "D: main.int: hello"
+    answer: B
+    explanation: "int是预声明类型但可以被遮蔽。这里int被定义为string的别名,x的底层类型是string。%T显示底层类型string。参见 Go 规范 Type definitions 章节。"
+    topic: lexical_elements
+    chapter: identifiers

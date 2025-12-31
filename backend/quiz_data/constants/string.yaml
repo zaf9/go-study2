@@ -1,456 +1,691 @@
+# Go 字符串常量测验题库
+# 章节: constants/string
+# 符合 Go 1.24 语言规范
+
+metadata:
+  topic: constants
+  chapter: string
+  total_questions: 40
+  last_updated: "2025-01-01"
+  difficulty_distribution:
+    easy: 24      # 60%
+    medium: 12    # 30%
+    hard: 4       # 10%
+  type_distribution:
+    single: 17
+    multiple: 10
+    code_output: 8
+    code_fix: 5
+
 questions:
-    - id: const-string-001
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 constants.string，下面哪个选项是正确的？
-      options:
-        - 'A: 正确项（关于string.constants的重要结论）'
-        - 'B: 语法/语义上不正确的陈述'
-        - 'C: 常见误解或反例（容易混淆）'
-        - 'D: 正确项（关于string.constants的重要结论）'
-      answer: AD
-      explanation: 本题考查 constants.string 的相关知识。正确答案：AD。解析：string 的关键点在于...（请在校稿时补充具体细节）。
-      topic: constants
-      chapter: string
-    - id: const-string-002
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 constants.string，下面哪个选项是正确的？
-      options:
-        - 'A: 正确：关于string.constants的关键点描述（正确选项）'
-        - 'B: 语法/语义上不正确的陈述'
-        - 'C: 常见误解或反例（容易混淆）'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: A
-      explanation: 本题考查 constants.string 的概念。正确答案为 A。解析：string 的关键点在于...（请在校稿时补充具体细节）。
-      topic: constants
-      chapter: string
-    - id: const-string-003
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 constants.string，下面哪个选项是正确的？
-      options:
-        - 'A: 正确项（关于string.constants的重要结论）'
-        - 'B: 正确项（关于string.constants的重要结论）'
-        - 'C: 正确项（关于string.constants的重要结论）'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: ABC
-      explanation: 本题考查 constants.string 的相关知识。正确答案：ABC。解析：string 的关键点在于...（请在校稿时补充具体细节）。
-      topic: constants
-      chapter: string
-    - id: const-string-004
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 constants.string，下面哪个选项是正确的？
-      options:
-        - 'A: 正确：关于string.constants的关键点描述（正确选项）'
-        - 'B: 与string.constants 相关但不适用的选项'
-        - 'C: 与string.constants 相关但不适用的选项'
-        - 'D: 常见误解或反例（容易混淆）'
-      answer: A
-      explanation: 本题考查 constants.string 的概念。正确答案为 A。解析：string 的关键点在于...（请在校稿时补充具体细节）。
-      topic: constants
-      chapter: string
-    - id: const-string-005
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 constants.string，下面哪个选项是正确的？
-      options:
-        - 'A: 正确项（关于string.constants的重要结论）'
-        - 'B: 正确项（关于string.constants的重要结论）'
-        - 'C: 语法/语义上不正确的陈述'
-        - 'D: 常见误解或反例（容易混淆）'
-      answer: AB
-      explanation: 本题考查 constants.string 的相关知识。正确答案：AB。解析：string 的关键点在于...（请在校稿时补充具体细节）。
-      topic: constants
-      chapter: string
-    - id: const-string-006
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 constants.string，下面哪个选项是正确的？
-      options:
-        - 'A: 正确：关于string.constants的关键点描述（正确选项）'
-        - 'B: 语法/语义上不正确的陈述'
-        - 'C: 语法/语义上不正确的陈述'
-        - 'D: 常见误解或反例（容易混淆）'
-      answer: A
-      explanation: 本题考查 constants.string 的概念。正确答案为 A。解析：string 的关键点在于...（请在校稿时补充具体细节）。
-      topic: constants
-      chapter: string
-    - id: const-string-007
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 constants.string，下面哪个选项是正确的？
-      options:
-        - 'A: 与string.constants 相关但不适用的选项'
-        - 'B: 正确项（关于string.constants的重要结论）'
-        - 'C: 正确项（关于string.constants的重要结论）'
-        - 'D: 正确项（关于string.constants的重要结论）'
-      answer: BCD
-      explanation: 本题考查 constants.string 的相关知识。正确答案：BCD。解析：string 的关键点在于...（请在校稿时补充具体细节）。
-      topic: constants
-      chapter: string
-    - id: const-string-008
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 constants.string，下面哪个选项是正确的？
-      options:
-        - 'A: 与string.constants 相关但不适用的选项'
-        - 'B: 正确：关于string.constants的关键点描述（正确选项）'
-        - 'C: 语法/语义上不正确的陈述'
-        - 'D: 部分正确但不完整的说法'
-      answer: B
-      explanation: 本题考查 constants.string 的概念。正确答案为 B。解析：string 的关键点在于...（请在校稿时补充具体细节）。
-      topic: constants
-      chapter: string
-    - id: const-string-009
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 constants.string，下面哪个选项是正确的？
-      options:
-        - 'A: 与string.constants 相关但不适用的选项'
-        - 'B: 正确项（关于string.constants的重要结论）'
-        - 'C: 语法/语义上不正确的陈述'
-        - 'D: 正确项（关于string.constants的重要结论）'
-      answer: BD
-      explanation: 本题考查 constants.string 的相关知识。正确答案：BD。解析：string 的关键点在于...（请在校稿时补充具体细节）。
-      topic: constants
-      chapter: string
-    - id: const-string-010
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 constants.string，下面哪个选项是正确的？
-      options:
-        - 'A: 正确：关于string.constants的关键点描述（正确选项）'
-        - 'B: 与string.constants 相关但不适用的选项'
-        - 'C: 部分正确但不完整的说法'
-        - 'D: 与string.constants 相关但不适用的选项'
-      answer: A
-      explanation: 本题考查 constants.string 的概念。正确答案为 A。解析：string 的关键点在于...（请在校稿时补充具体细节）。
-      topic: constants
-      chapter: string
-    - id: const-string-011
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 constants.string，下面哪个选项是正确的？
-      options:
-        - 'A: 正确项（关于string.constants的重要结论）'
-        - 'B: 部分正确但不完整的说法'
-        - 'C: 正确项（关于string.constants的重要结论）'
-        - 'D: 正确项（关于string.constants的重要结论）'
-      answer: ACD
-      explanation: 本题考查 constants.string 的相关知识。正确答案：ACD。解析：string 的关键点在于...（请在校稿时补充具体细节）。
-      topic: constants
-      chapter: string
-    - id: const-string-012
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 constants.string，下面哪个选项是正确的？
-      options:
-        - 'A: 部分正确但不完整的说法'
-        - 'B: 正确：关于string.constants的关键点描述（正确选项）'
-        - 'C: 常见误解或反例（容易混淆）'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: B
-      explanation: 本题考查 constants.string 的概念。正确答案为 B。解析：string 的关键点在于...（请在校稿时补充具体细节）。
-      topic: constants
-      chapter: string
-    - id: const-string-013
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 constants.string，下面哪个选项是正确的？
-      options:
-        - 'A: 正确项（关于string.constants的重要结论）'
-        - 'B: 部分正确但不完整的说法'
-        - 'C: 正确项（关于string.constants的重要结论）'
-        - 'D: 正确项（关于string.constants的重要结论）'
-      answer: ACD
-      explanation: 本题考查 constants.string 的相关知识。正确答案：ACD。解析：string 的关键点在于...（请在校稿时补充具体细节）。
-      topic: constants
-      chapter: string
-    - id: const-string-014
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 constants.string，下面哪个选项是正确的？
-      options:
-        - 'A: 正确：关于string.constants的关键点描述（正确选项）'
-        - 'B: 部分正确但不完整的说法'
-        - 'C: 语法/语义上不正确的陈述'
-        - 'D: 常见误解或反例（容易混淆）'
-      answer: A
-      explanation: 本题考查 constants.string 的概念。正确答案为 A。解析：string 的关键点在于...（请在校稿时补充具体细节）。
-      topic: constants
-      chapter: string
-    - id: const-string-015
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 constants.string 的情境下，哪个说法更合适？
-      options:
-        - 'A: 正确项（关于string.constants的重要结论）'
-        - 'B: 部分正确但不完整的说法'
-        - 'C: 正确项（关于string.constants的重要结论）'
-        - 'D: 正确项（关于string.constants的重要结论）'
-      answer: ACD
-      explanation: 本题考查 constants.string 的相关知识。正确答案：ACD。解析：string 的关键点在于...（请在校稿时补充具体细节）。
-      topic: constants
-      chapter: string
-    - id: const-string-016
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 constants.string 的情境下，哪个说法更合适？
-      options:
-        - 'A: 常见误解或反例（容易混淆）'
-        - 'B: 部分正确但不完整的说法'
-        - 'C: 正确：关于string.constants的关键点描述（正确选项）'
-        - 'D: 常见误解或反例（容易混淆）'
-      answer: C
-      explanation: 本题考查 constants.string 的概念。正确答案为 C。解析：string 的关键点在于...（请在校稿时补充具体细节）。
-      topic: constants
-      chapter: string
-    - id: const-string-017
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 constants.string 的情境下，哪个说法更合适？
-      options:
-        - 'A: 正确项（关于string.constants的重要结论）'
-        - 'B: 与string.constants 相关但不适用的选项'
-        - 'C: 正确项（关于string.constants的重要结论）'
-        - 'D: 正确项（关于string.constants的重要结论）'
-      answer: ACD
-      explanation: 本题考查 constants.string 的相关知识。正确答案：ACD。解析：string 的关键点在于...（请在校稿时补充具体细节）。
-      topic: constants
-      chapter: string
-    - id: const-string-018
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 constants.string 的情境下，哪个说法更合适？
-      options:
-        - 'A: 常见误解或反例（容易混淆）'
-        - 'B: 与string.constants 相关但不适用的选项'
-        - 'C: 正确：关于string.constants的关键点描述（正确选项）'
-        - 'D: 常见误解或反例（容易混淆）'
-      answer: C
-      explanation: 本题考查 constants.string 的概念。正确答案为 C。解析：string 的关键点在于...（请在校稿时补充具体细节）。
-      topic: constants
-      chapter: string
-    - id: const-string-019
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 constants.string 的情境下，哪个说法更合适？
-      options:
-        - 'A: 正确项（关于string.constants的重要结论）'
-        - 'B: 与string.constants 相关但不适用的选项'
-        - 'C: 部分正确但不完整的说法'
-        - 'D: 正确项（关于string.constants的重要结论）'
-      answer: AD
-      explanation: 本题考查 constants.string 的相关知识。正确答案：AD。解析：string 的关键点在于...（请在校稿时补充具体细节）。
-      topic: constants
-      chapter: string
-    - id: const-string-020
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 constants.string 的情境下，哪个说法更合适？
-      options:
-        - 'A: 常见误解或反例（容易混淆）'
-        - 'B: 语法/语义上不正确的陈述'
-        - 'C: 正确：关于string.constants的关键点描述（正确选项）'
-        - 'D: 部分正确但不完整的说法'
-      answer: C
-      explanation: 本题考查 constants.string 的概念。正确答案为 C。解析：string 的关键点在于...（请在校稿时补充具体细节）。
-      topic: constants
-      chapter: string
-    - id: const-string-021
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 constants.string 的情境下，哪个说法更合适？
-      options:
-        - 'A: 正确项（关于string.constants的重要结论）'
-        - 'B: 部分正确但不完整的说法'
-        - 'C: 与string.constants 相关但不适用的选项'
-        - 'D: 正确项（关于string.constants的重要结论）'
-      answer: AD
-      explanation: 本题考查 constants.string 的相关知识。正确答案：AD。解析：string 的关键点在于...（请在校稿时补充具体细节）。
-      topic: constants
-      chapter: string
-    - id: const-string-022
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 constants.string 的情境下，哪个说法更合适？
-      options:
-        - 'A: 部分正确但不完整的说法'
-        - 'B: 正确：关于string.constants的关键点描述（正确选项）'
-        - 'C: 部分正确但不完整的说法'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: B
-      explanation: 本题考查 constants.string 的概念。正确答案为 B。解析：string 的关键点在于...（请在校稿时补充具体细节）。
-      topic: constants
-      chapter: string
-    - id: const-string-023
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 constants.string 的情境下，哪个说法更合适？
-      options:
-        - 'A: 与string.constants 相关但不适用的选项'
-        - 'B: 正确项（关于string.constants的重要结论）'
-        - 'C: 部分正确但不完整的说法'
-        - 'D: 正确项（关于string.constants的重要结论）'
-      answer: BD
-      explanation: 本题考查 constants.string 的相关知识。正确答案：BD。解析：string 的关键点在于...（请在校稿时补充具体细节）。
-      topic: constants
-      chapter: string
-    - id: const-string-024
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 constants.string 的情境下，哪个说法更合适？
-      options:
-        - 'A: 部分正确但不完整的说法'
-        - 'B: 语法/语义上不正确的陈述'
-        - 'C: 正确：关于string.constants的关键点描述（正确选项）'
-        - 'D: 部分正确但不完整的说法'
-      answer: C
-      explanation: 本题考查 constants.string 的概念。正确答案为 C。解析：string 的关键点在于...（请在校稿时补充具体细节）。
-      topic: constants
-      chapter: string
-    - id: const-string-025
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 constants.string 的情境下，哪个说法更合适？
-      options:
-        - 'A: 部分正确但不完整的说法'
-        - 'B: 与string.constants 相关但不适用的选项'
-        - 'C: 正确项（关于string.constants的重要结论）'
-        - 'D: 正确项（关于string.constants的重要结论）'
-      answer: CD
-      explanation: 本题考查 constants.string 的相关知识。正确答案：CD。解析：string 的关键点在于...（请在校稿时补充具体细节）。
-      topic: constants
-      chapter: string
-    - id: const-string-026
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 constants.string 的情境下，哪个说法更合适？
-      options:
-        - 'A: 语法/语义上不正确的陈述'
-        - 'B: 正确：关于string.constants的关键点描述（正确选项）'
-        - 'C: 语法/语义上不正确的陈述'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: B
-      explanation: 本题考查 constants.string 的概念。正确答案为 B。解析：string 的关键点在于...（请在校稿时补充具体细节）。
-      topic: constants
-      chapter: string
-    - id: const-string-027
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 constants.string 的情境下，哪个说法更合适？
-      options:
-        - 'A: 正确项（关于string.constants的重要结论）'
-        - 'B: 常见误解或反例（容易混淆）'
-        - 'C: 正确项（关于string.constants的重要结论）'
-        - 'D: 正确项（关于string.constants的重要结论）'
-      answer: ACD
-      explanation: 本题考查 constants.string 的相关知识。正确答案：ACD。解析：string 的关键点在于...（请在校稿时补充具体细节）。
-      topic: constants
-      chapter: string
-    - id: const-string-028
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 constants.string 的情境下，哪个说法更合适？
-      options:
-        - 'A: 常见误解或反例（容易混淆）'
-        - 'B: 正确：关于string.constants的关键点描述（正确选项）'
-        - 'C: 部分正确但不完整的说法'
-        - 'D: 常见误解或反例（容易混淆）'
-      answer: B
-      explanation: 本题考查 constants.string 的概念。正确答案为 B。解析：string 的关键点在于...（请在校稿时补充具体细节）。
-      topic: constants
-      chapter: string
-    - id: const-string-029
-      type: multiple
-      difficulty: hard
-      stem: 【思考题】针对 constants.string，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 部分正确但不完整的说法'
-        - 'B: 正确项（关于string.constants的重要结论）'
-        - 'C: 正确项（关于string.constants的重要结论）'
-        - 'D: 部分正确但不完整的说法'
-      answer: BC
-      explanation: 本题考查 constants.string 的相关知识。正确答案：BC。解析：string 的关键点在于...（请在校稿时补充具体细节）。
-      topic: constants
-      chapter: string
-    - id: const-string-030
-      type: single
-      difficulty: hard
-      stem: 【思考题】针对 constants.string，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 部分正确但不完整的说法'
-        - 'B: 常见误解或反例（容易混淆）'
-        - 'C: 正确：关于string.constants的关键点描述（正确选项）'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: C
-      explanation: 本题考查 constants.string 的概念。正确答案为 C。解析：string 的关键点在于...（请在校稿时补充具体细节）。
-      topic: constants
-      chapter: string
-    - id: const-string-031
-      type: multiple
-      difficulty: hard
-      stem: 【思考题】针对 constants.string，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 正确项（关于string.constants的重要结论）'
-        - 'B: 正确项（关于string.constants的重要结论）'
-        - 'C: 常见误解或反例（容易混淆）'
-        - 'D: 正确项（关于string.constants的重要结论）'
-      answer: ABD
-      explanation: 本题考查 constants.string 的相关知识。正确答案：ABD。解析：string 的关键点在于...（请在校稿时补充具体细节）。
-      topic: constants
-      chapter: string
-    - id: const-string-032
-      type: single
-      difficulty: hard
-      stem: 【思考题】针对 constants.string，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 语法/语义上不正确的陈述'
-        - 'B: 部分正确但不完整的说法'
-        - 'C: 正确：关于string.constants的关键点描述（正确选项）'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: C
-      explanation: 本题考查 constants.string 的概念。正确答案为 C。解析：string 的关键点在于...（请在校稿时补充具体细节）。
-      topic: constants
-      chapter: string
-    - id: const-string-033
-      type: multiple
-      difficulty: hard
-      stem: 【思考题】针对 constants.string，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 正确项（关于string.constants的重要结论）'
-        - 'B: 正确项（关于string.constants的重要结论）'
-        - 'C: 正确项（关于string.constants的重要结论）'
-        - 'D: 部分正确但不完整的说法'
-      answer: ABC
-      explanation: 本题考查 constants.string 的相关知识。正确答案：ABC。解析：string 的关键点在于...（请在校稿时补充具体细节）。
-      topic: constants
-      chapter: string
-    - id: const-string-034
-      type: single
-      difficulty: hard
-      stem: 【思考题】针对 constants.string，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 部分正确但不完整的说法'
-        - 'B: 部分正确但不完整的说法'
-        - 'C: 与string.constants 相关但不适用的选项'
-        - 'D: 正确：关于string.constants的关键点描述（正确选项）'
-      answer: D
-      explanation: 本题考查 constants.string 的概念。正确答案为 D。解析：string 的关键点在于...（请在校稿时补充具体细节）。
-      topic: constants
-      chapter: string
-    - id: const-string-035
-      type: multiple
-      difficulty: hard
-      stem: 【思考题】针对 constants.string，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 正确项（关于string.constants的重要结论）'
-        - 'B: 正确项（关于string.constants的重要结论）'
-        - 'C: 与string.constants 相关但不适用的选项'
-        - 'D: 正确项（关于string.constants的重要结论）'
-      answer: ABD
-      explanation: 本题考查 constants.string 的相关知识。正确答案：ABD。解析：string 的关键点在于...（请在校稿时补充具体细节）。
-      topic: constants
-      chapter: string
+  # ========== 简单题 (Easy) - 24道 ==========
+  
+  - id: const-string-001
+    type: single
+    difficulty: easy
+    stem: "Go语言中const s = \"hello\"声明的s是什么类型?"
+    options:
+      - "A: string"
+      - "B: []byte"
+      - "C: 无类型字符串常量"
+      - "D: char*"
+    answer: C
+    explanation: "没有显式类型的常量是无类型常量。const s = \"hello\"是无类型字符串常量。参见 Go 规范 Constants 章节。"
+    topic: constants
+    chapter: string
+
+  - id: const-string-002
+    type: single
+    difficulty: easy
+    stem: "无类型字符串常量的默认类型是什么?"
+    options:
+      - "A: []byte"
+      - "B: []rune"
+      - "C: string"
+      - "D: *string"
+    answer: C
+    explanation: "无类型字符串常量在需要具体类型时默认为string。参见 Go 规范 Constants 章节。"
+    topic: constants
+    chapter: string
+
+  - id: const-string-003
+    type: single
+    difficulty: easy
+    stem: "Go中字符串字面量使用什么符号定义?"
+    options:
+      - "A: 只能用双引号"
+      - "B: 只能用单引号"
+      - "C: 双引号或反引号"
+      - "D: 单引号或双引号"
+    answer: C
+    explanation: "双引号定义解释型字符串(支持转义),反引号定义原始字符串(不解释转义)。单引号用于rune。参见 Go 规范 String literals 章节。"
+    topic: constants
+    chapter: string
+
+  - id: const-string-004
+    type: single
+    difficulty: easy
+    stem: "原始字符串字面量中\\n表示什么?"
+    options:
+      - "A: 换行符"
+      - "B: 两个字符\\和n"
+      - "C: 编译错误"
+      - "D: 空字符"
+    answer: B
+    explanation: "反引号的原始字符串不解释转义序列,\\n就是字面的两个字符。参见 Go 规范 String literals 章节。"
+    topic: constants
+    chapter: string
+
+  - id: const-string-005
+    type: single
+    difficulty: easy
+    stem: "解释型字符串中\\n表示什么?"
+    options:
+      - "A: 换行符"
+      - "B: 两个字符"
+      - "C: 编译错误"
+      - "D: 空字符"
+    answer: A
+    explanation: "双引号的解释型字符串中,\\n是换行符转义。参见 Go 规范 String literals 章节。"
+    topic: constants
+    chapter: string
+
+  - id: const-string-006
+    type: multiple
+    difficulty: easy
+    stem: "以下哪些是有效的转义序列?(多选)"
+    options:
+      - "A: \\n"
+      - "B: \\t"
+      - "C: \\\""
+      - "D: \\\\"
+    answer: ABCD
+    explanation: "\\n(换行)、\\t(制表符)、\\\"(双引号)、\\\\(反斜杠)都是有效的转义序列。参见 Go 规范 String literals 章节。"
+    topic: constants
+    chapter: string
+
+  - id: const-string-007
+    type: single
+    difficulty: easy
+    stem: "const s = \"hello\" + \"world\"的值是?"
+    options:
+      - "A: \"hello world\""
+      - "B: \"helloworld\""
+      - "C: 编译错误"
+      - "D: 运行时拼接"
+    answer: B
+    explanation: "字符串常量可以用+连接。编译时直接连接为\"helloworld\"。参见 Go 规范 String concatenation 章节。"
+    topic: constants
+    chapter: string
+
+  - id: const-string-008
+    type: single
+    difficulty: easy
+    stem: "字符串的零值是什么?"
+    options:
+      - "A: nil"
+      - "B: null"
+      - "C: \"\" (空字符串)"
+      - "D: \" \" (空格)"
+    answer: C
+    explanation: "string类型的零值是空字符串\"\"。Go字符串不是指针类型,不能为nil。参见 Go 规范 The zero value 章节。"
+    topic: constants
+    chapter: string
+
+  - id: const-string-009
+    type: single
+    difficulty: easy
+    stem: "Go字符串使用什么编码?"
+    options:
+      - "A: ASCII"
+      - "B: UTF-16"
+      - "C: UTF-8"
+      - "D: GB2312"
+    answer: C
+    explanation: "Go源文件和字符串默认使用UTF-8编码。这是Go的设计决策。参见 Go 规范 Source code representation 章节。"
+    topic: constants
+    chapter: string
+
+  - id: const-string-010
+    type: single
+    difficulty: easy
+    stem: "len(\"hello\")的结果是?"
+    options:
+      - "A: 5"
+      - "B: 6"
+      - "C: 4"
+      - "D: 编译错误"
+    answer: A
+    explanation: "len()返回字符串的字节数。\"hello\"有5个ASCII字符,各占1字节。参见 Go 规范 Length and capacity 章节。"
+    topic: constants
+    chapter: string
+
+  - id: const-string-011
+    type: single
+    difficulty: easy
+    stem: "len(\"中文\")的结果是?"
+    options:
+      - "A: 2"
+      - "B: 4"
+      - "C: 6"
+      - "D: 8"
+    answer: C
+    explanation: "len()返回字节数。每个中文字符UTF-8编码3字节,\"中文\"=6字节。参见 Go 规范 Length and capacity 章节。"
+    topic: constants
+    chapter: string
+
+  - id: const-string-012
+    type: single
+    difficulty: easy
+    stem: "如何获取字符串\"中文\"的字符数?"
+    options:
+      - "A: len(\"中文\")"
+      - "B: len([]rune(\"中文\"))"
+      - "C: size(\"中文\")"
+      - "D: chars(\"中文\")"
+    answer: B
+    explanation: "转为[]rune后用len获取字符数(Unicode码点数)。utf8.RuneCountInString也可以。参见 Go 规范 Conversions 章节。"
+    topic: constants
+    chapter: string
+
+  - id: const-string-013
+    type: single
+    difficulty: easy
+    stem: "s[0]获取字符串s的什么?"
+    options:
+      - "A: 第一个字符(rune)"
+      - "B: 第一个字节(byte)"
+      - "C: 第一个字符串"
+      - "D: 编译错误"
+    answer: B
+    explanation: "字符串索引返回byte(uint8),不是rune。要获取字符需要转[]rune或用for range。参见 Go 规范 Index expressions 章节。"
+    topic: constants
+    chapter: string
+
+  - id: const-string-014
+    type: single
+    difficulty: easy
+    stem: "Go字符串是否可变?"
+    options:
+      - "A: 可变"
+      - "B: 不可变"
+      - "C: 取决于声明方式"
+      - "D: 取决于运行时"
+    answer: B
+    explanation: "Go字符串是不可变的。不能通过s[0]='x'修改。需要转为[]byte修改后再转回。参见 Go 规范 String types 章节。"
+    topic: constants
+    chapter: string
+
+  - id: const-string-015
+    type: multiple
+    difficulty: easy
+    stem: "字符串可以转换为哪些类型?(多选)"
+    options:
+      - "A: []byte"
+      - "B: []rune"
+      - "C: []int"
+      - "D: []uint8"
+    answer: ABD
+    explanation: "string可以转为[]byte(UTF-8字节)、[]rune(Unicode码点)。[]uint8等价于[]byte。[]int不行。参见 Go 规范 Conversions 章节。"
+    topic: constants
+    chapter: string
+
+  - id: const-string-016
+    type: single
+    difficulty: easy
+    stem: "原始字符串可以包含换行吗?"
+    options:
+      - "A: 不可以"
+      - "B: 可以,直接包含"
+      - "C: 可以,用\\n"
+      - "D: 编译错误"
+    answer: B
+    explanation: "反引号的原始字符串可以跨行,直接包含字面换行符。这是与解释型字符串的主要区别之一。参见 Go 规范 String literals 章节。"
+    topic: constants
+    chapter: string
+
+  - id: const-string-017
+    type: single
+    difficulty: easy
+    stem: "原始字符串可以包含反引号吗?"
+    options:
+      - "A: 可以,用\\`"
+      - "B: 不可以"
+      - "C: 可以,用双反引号"
+      - "D: 可以,用转义"
+    answer: B
+    explanation: "原始字符串不能包含反引号(结束符)。无法转义。需要用解释型字符串或字符串连接。参见 Go 规范 String literals 章节。"
+    topic: constants
+    chapter: string
+
+  - id: const-string-018
+    type: single
+    difficulty: easy
+    stem: "字符串比较使用什么规则?"
+    options:
+      - "A: 指针比较"
+      - "B: 字典序(逐字节)"
+      - "C: 长度比较"
+      - "D: 哈希比较"
+    answer: B
+    explanation: "字符串用==、<、>等比较时按字典序(lexicographic order)逐字节比较。参见 Go 规范 Comparison operators 章节。"
+    topic: constants
+    chapter: string
+
+  - id: const-string-019
+    type: single
+    difficulty: easy
+    stem: "\"abc\" < \"abd\"的结果是?"
+    options:
+      - "A: true"
+      - "B: false"
+      - "C: 编译错误"
+      - "D: panic"
+    answer: A
+    explanation: "字典序比较:前两字符相同,'c'<'d',所以\"abc\"<\"abd\"为true。参见 Go 规范 Comparison operators 章节。"
+    topic: constants
+    chapter: string
+
+  - id: const-string-020
+    type: single
+    difficulty: easy
+    stem: "如何在解释型字符串中包含双引号?"
+    options:
+      - "A: \"\"\""
+      - "B: \\\""
+      - "C: '\"'"
+      - "D: 不可能"
+    answer: B
+    explanation: "在解释型字符串中用\\\"转义双引号。例如\"say \\\"hello\\\"\"。参见 Go 规范 String literals 章节。"
+    topic: constants
+    chapter: string
+
+  - id: const-string-021
+    type: single
+    difficulty: easy
+    stem: "const s = `hello\\nworld`的长度是?"
+    options:
+      - "A: 11"
+      - "B: 12"
+      - "C: 10"
+      - "D: 13"
+    answer: B
+    explanation: "原始字符串不解释\\n,它是两个字符。hello(5)+\\n(2)+world(5)=12字节。参见 Go 规范 String literals 章节。"
+    topic: constants
+    chapter: string
+
+  - id: const-string-022
+    type: single
+    difficulty: easy
+    stem: "const s = \"hello\\nworld\"的长度是?"
+    options:
+      - "A: 11"
+      - "B: 12"
+      - "C: 10"
+      - "D: 13"
+    answer: A
+    explanation: "解释型字符串中\\n是1个换行符。hello(5)+\\n(1)+world(5)=11字节。参见 Go 规范 String literals 章节。"
+    topic: constants
+    chapter: string
+
+  - id: const-string-023
+    type: multiple
+    difficulty: easy
+    stem: "关于字符串常量的拼接,以下说法正确的是?(多选)"
+    options:
+      - "A: 编译时完成"
+      - "B: 不消耗运行时资源"
+      - "C: 结果是新的无类型常量"
+      - "D: 可以跨行拼接"
+    answer: ABCD
+    explanation: "字符串常量拼接在编译时完成,生成单一常量。可以用+跨行连接多个字符串。参见 Go 规范 Constant expressions 章节。"
+    topic: constants
+    chapter: string
+
+  - id: const-string-024
+    type: single
+    difficulty: easy
+    stem: "字符串s的子串s[1:3]包含哪些索引的字节?"
+    options:
+      - "A: 1, 2"
+      - "B: 1, 2, 3"
+      - "C: 0, 1, 2"
+      - "D: 2, 3"
+    answer: A
+    explanation: "切片s[low:high]包含索引low到high-1。s[1:3]包含s[1]和s[2]。参见 Go 规范 Slice expressions 章节。"
+    topic: constants
+    chapter: string
+
+  # ========== 中等题 (Medium) - 12道 ==========
+
+  - id: const-string-025
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          const s = "hello"
+          fmt.Println(s[0], string(s[0]))
+      }
+    options:
+      - "A: h h"
+      - "B: 104 h"
+      - "C: 0 h"
+      - "D: h 104"
+    answer: B
+    explanation: "s[0]是byte(104,即'h'的ASCII值)。string(104)转换码点104为字符串\"h\"。参见 Go 规范 Conversions 章节。"
+    topic: constants
+    chapter: string
+
+  - id: const-string-026
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          s := "中文"
+          for i, r := range s {
+              fmt.Print(i, " ")
+          }
+      }
+    options:
+      - "A: 0 1"
+      - "B: 0 1 2 3 4 5"
+      - "C: 0 3"
+      - "D: 0 2 4"
+    answer: C
+    explanation: "for range按Unicode码点遍历。'中'占3字节(索引0),'文'从索引3开始。输出0 3。参见 Go 规范 For statements 章节。"
+    topic: constants
+    chapter: string
+
+  - id: const-string-027
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          const s1, s2 = "hello", "hello"
+          fmt.Println(s1 == s2, &s1 == &s2)
+      }
+    options:
+      - "A: true true"
+      - "B: true false"
+      - "C: false false"
+      - "D: 编译错误"
+    answer: D
+    explanation: "常量没有地址,不能取&s1。编译错误:cannot take the address of s1。参见 Go 规范 Address operators 章节。"
+    topic: constants
+    chapter: string
+
+  - id: const-string-028
+    type: code_fix
+    difficulty: medium
+    stem: "以下代码有编译错误,正确的修正方案是?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          var s = "hello"
+          s[0] = 'H'
+          fmt.Println(s)
+      }
+    options:
+      - "A: 使用strings.Replace"
+      - "B: 转为[]byte修改后转回string"
+      - "C: 使用s = \"H\" + s[1:]"
+      - "D: B或C"
+    answer: D
+    explanation: "字符串不可变。可以转[]byte修改后转回,或用切片拼接新字符串。参见 Go 规范 String types 章节。"
+    topic: constants
+    chapter: string
+
+  - id: const-string-029
+    type: multiple
+    difficulty: medium
+    stem: "关于字符串与[]byte转换,以下说法正确的是?(多选)"
+    options:
+      - "A: 转换会复制底层数据"
+      - "B: 可能触发内存分配"
+      - "C: 修改[]byte不影响原字符串"
+      - "D: 某些情况编译器会优化避免复制"
+    answer: ABCD
+    explanation: "字符串不可变,转[]byte必须复制。修改[]byte不影响原字符串。编译器可能优化只读场景。参见 Go 规范 Conversions 章节。"
+    topic: constants
+    chapter: string
+
+  - id: const-string-030
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          s := "abc"
+          b := []byte(s)
+          b[0] = 'x'
+          fmt.Println(s, string(b))
+      }
+    options:
+      - "A: xbc xbc"
+      - "B: abc xbc"
+      - "C: abc abc"
+      - "D: 编译错误"
+    answer: B
+    explanation: "[]byte(s)复制数据。修改b不影响s。s仍是\"abc\",b转回是\"xbc\"。参见 Go 规范 Conversions 章节。"
+    topic: constants
+    chapter: string
+
+  - id: const-string-031
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          const (
+              a = "hello"
+              b = a + " world"
+          )
+          fmt.Println(len(b))
+      }
+    options:
+      - "A: 11"
+      - "B: 10"
+      - "C: 12"
+      - "D: 编译错误"
+    answer: A
+    explanation: "常量b = \"hello\" + \" world\" = \"hello world\",长度11(含空格)。参见 Go 规范 String concatenation 章节。"
+    topic: constants
+    chapter: string
+
+  - id: const-string-032
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          s := "hello"
+          s += " world"
+          fmt.Println(s)
+      }
+    options:
+      - "A: hello world"
+      - "B: helloworld"
+      - "C: 编译错误"
+      - "D: hello"
+    answer: A
+    explanation: "s += \" world\"等于s = s + \" world\"。字符串变量可以重新赋值(创建新字符串)。参见 Go 规范 Assignments 章节。"
+    topic: constants
+    chapter: string
+
+  - id: const-string-033
+    type: multiple
+    difficulty: medium
+    stem: "关于字符串的内部结构,以下说法正确的是?(多选)"
+    options:
+      - "A: 包含指向字节数组的指针"
+      - "B: 包含长度信息"
+      - "C: 不以null结尾"
+      - "D: 可以包含任意字节包括0"
+    answer: ABCD
+    explanation: "Go字符串是(pointer, length)结构。不需要null结尾,可以包含任意字节(包括\\x00)。参见 Go 运行时实现。"
+    topic: constants
+    chapter: string
+
+  - id: const-string-034
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          s := "hello\x00world"
+          fmt.Println(len(s))
+      }
+    options:
+      - "A: 5"
+      - "B: 11"
+      - "C: 10"
+      - "D: 编译错误"
+    answer: B
+    explanation: "Go字符串可以包含null字节。\\x00是1字节。hello(5)+\\x00(1)+world(5)=11字节。参见 Go 规范 String types 章节。"
+    topic: constants
+    chapter: string
+
+  - id: const-string-035
+    type: code_fix
+    difficulty: medium
+    stem: "以下代码循环效率低,正确的优化方案是?"
+    code: |
+      package main
+      func main() {
+          var s string
+          for i := 0; i < 10000; i++ {
+              s += "x"
+          }
+          _ = s
+      }
+    options:
+      - "A: 使用strings.Builder"
+      - "B: 使用bytes.Buffer"
+      - "C: 预分配[]byte后转string"
+      - "D: 以上都是可行方案"
+    answer: D
+    explanation: "字符串不可变,+=每次创建新字符串,O(n²)复杂度。Builder/Buffer/[]byte都是O(n)方案。参见strings.Builder文档。"
+    topic: constants
+    chapter: string
+
+  - id: const-string-036
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          s := `line1
+      line2`
+          fmt.Println(len(s))
+      }
+    options:
+      - "A: 10"
+      - "B: 11"
+      - "C: 12"
+      - "D: 9"
+    answer: B
+    explanation: "原始字符串包含字面换行。line1(5)+\\n(1)+line2(5)=11字节。参见 Go 规范 String literals 章节。"
+    topic: constants
+    chapter: string
+
+  # ========== 困难题 (Hard) - 4道 ==========
+
+  - id: const-string-037
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          s := "中"
+          fmt.Printf("%x %d\n", s[0], len(s))
+      }
+    options:
+      - "A: 4e2d 2"
+      - "B: e4 3"
+      - "C: e4b8ad 3"
+      - "D: 中 1"
+    answer: B
+    explanation: "'中'的UTF-8编码是[0xe4, 0xb8, 0xad]。s[0]是第一个字节0xe4=228。长度是3字节。参见UTF-8编码规则。"
+    topic: constants
+    chapter: string
+
+  - id: const-string-038
+    type: multiple
+    difficulty: hard
+    stem: "关于字符串常量的底层表示,以下说法正确的是?(多选)"
+    options:
+      - "A: 存储在只读数据段"
+      - "B: 相同常量可能共享存储"
+      - "C: 运行时不能被修改"
+      - "D: 取决于编译器优化"
+    answer: ABCD
+    explanation: "字符串常量通常存储在只读段。编译器可能合并相同字符串。运行时修改会导致panic。具体取决于编译器。参见 Go 编译器实现。"
+    topic: constants
+    chapter: string
+
+  - id: const-string-039
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import (
+          "fmt"
+          "unsafe"
+      )
+      func main() {
+          s := "hello"
+          fmt.Println(unsafe.Sizeof(s))
+      }
+    options:
+      - "A: 5"
+      - "B: 8"
+      - "C: 16"
+      - "D: 取决于平台"
+    answer: C
+    explanation: "string是(pointer, length)结构。64位平台指针8字节+长度int8字节=16字节(string header大小)。参见 Go 运行时实现。"
+    topic: constants
+    chapter: string
+
+  - id: const-string-040
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          const s = "\xe4\xb8\xad"
+          fmt.Print(s, " ", len(s))
+      }
+    options:
+      - "A: 中 3"
+      - "B: \\xe4\\xb8\\xad 12"
+      - "C: 乱码 3"
+      - "D: 编译错误"
+    answer: A
+    explanation: "[0xe4,0xb8,0xad]是'中'的UTF-8编码。字符串字面量中十六进制转义直接嵌入字节。输出中 3。参见UTF-8编码规则。"
+    topic: constants
+    chapter: string

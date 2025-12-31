@@ -1,651 +1,785 @@
+# Go 结构体类型测验题库
+# 章节: types/struct
+# 符合 Go 1.24 语言规范
+
+metadata:
+  topic: types
+  chapter: struct
+  total_questions: 42
+  last_updated: "2025-01-01"
+  difficulty_distribution:
+    easy: 24      # 57%
+    medium: 13    # 31%
+    hard: 5       # 12%
+  type_distribution:
+    single: 18
+    multiple: 10
+    code_output: 9
+    code_fix: 5
+
 questions:
-    - id: type-struct-001
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 types.struct，下面哪个选项是正确的？
-      options:
-        - 'A: 语法/语义上不正确的陈述'
-        - 'B: 正确项（关于struct.types的重要结论）'
-        - 'C: 正确项（关于struct.types的重要结论）'
-        - 'D: 正确项（关于struct.types的重要结论）'
-      answer: BCD
-      explanation: 本题考查 types.struct 的相关知识。正确答案：BCD。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: struct
-    - id: type-struct-002
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 types.struct，下面哪个选项是正确的？
-      options:
-        - 'A: 正确：关于struct.types的关键点描述（正确选项）'
-        - 'B: 常见误解或反例（容易混淆）'
-        - 'C: 常见误解或反例（容易混淆）'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: A
-      explanation: 本题考查 types.struct 的概念。正确答案为 A。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: struct
-    - id: type-struct-003
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 types.struct，下面哪个选项是正确的？
-      options:
-        - 'A: 正确项（关于struct.types的重要结论）'
-        - 'B: 正确项（关于struct.types的重要结论）'
-        - 'C: 语法/语义上不正确的陈述'
-        - 'D: 部分正确但不完整的说法'
-      answer: AB
-      explanation: 本题考查 types.struct 的相关知识。正确答案：AB。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: struct
-    - id: type-struct-004
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 types.struct，下面哪个选项是正确的？
-      options:
-        - 'A: 与struct.types 相关但不适用的选项'
-        - 'B: 正确：关于struct.types的关键点描述（正确选项）'
-        - 'C: 部分正确但不完整的说法'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: B
-      explanation: 本题考查 types.struct 的概念。正确答案为 B。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: struct
-    - id: type-struct-005
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 types.struct，下面哪个选项是正确的？
-      options:
-        - 'A: 正确项（关于struct.types的重要结论）'
-        - 'B: 正确项（关于struct.types的重要结论）'
-        - 'C: 正确项（关于struct.types的重要结论）'
-        - 'D: 与struct.types 相关但不适用的选项'
-      answer: ABC
-      explanation: 本题考查 types.struct 的相关知识。正确答案：ABC。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: struct
-    - id: type-struct-006
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 types.struct，下面哪个选项是正确的？
-      options:
-        - 'A: 正确：关于struct.types的关键点描述（正确选项）'
-        - 'B: 语法/语义上不正确的陈述'
-        - 'C: 语法/语义上不正确的陈述'
-        - 'D: 与struct.types 相关但不适用的选项'
-      answer: A
-      explanation: 本题考查 types.struct 的概念。正确答案为 A。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: struct
-    - id: type-struct-007
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 types.struct，下面哪个选项是正确的？
-      options:
-        - 'A: 部分正确但不完整的说法'
-        - 'B: 正确项（关于struct.types的重要结论）'
-        - 'C: 正确项（关于struct.types的重要结论）'
-        - 'D: 正确项（关于struct.types的重要结论）'
-      answer: BCD
-      explanation: 本题考查 types.struct 的相关知识。正确答案：BCD。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: struct
-    - id: type-struct-008
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 types.struct，下面哪个选项是正确的？
-      options:
-        - 'A: 正确：关于struct.types的关键点描述（正确选项）'
-        - 'B: 常见误解或反例（容易混淆）'
-        - 'C: 常见误解或反例（容易混淆）'
-        - 'D: 常见误解或反例（容易混淆）'
-      answer: A
-      explanation: 本题考查 types.struct 的概念。正确答案为 A。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: struct
-    - id: type-struct-009
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 types.struct，下面哪个选项是正确的？
-      options:
-        - 'A: 正确项（关于struct.types的重要结论）'
-        - 'B: 与struct.types 相关但不适用的选项'
-        - 'C: 语法/语义上不正确的陈述'
-        - 'D: 正确项（关于struct.types的重要结论）'
-      answer: AD
-      explanation: 本题考查 types.struct 的相关知识。正确答案：AD。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: struct
-    - id: type-struct-010
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 types.struct，下面哪个选项是正确的？
-      options:
-        - 'A: 语法/语义上不正确的陈述'
-        - 'B: 正确：关于struct.types的关键点描述（正确选项）'
-        - 'C: 部分正确但不完整的说法'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: B
-      explanation: 本题考查 types.struct 的概念。正确答案为 B。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: struct
-    - id: type-struct-011
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 types.struct，下面哪个选项是正确的？
-      options:
-        - 'A: 正确项（关于struct.types的重要结论）'
-        - 'B: 常见误解或反例（容易混淆）'
-        - 'C: 正确项（关于struct.types的重要结论）'
-        - 'D: 正确项（关于struct.types的重要结论）'
-      answer: ACD
-      explanation: 本题考查 types.struct 的相关知识。正确答案：ACD。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: struct
-    - id: type-struct-012
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 types.struct，下面哪个选项是正确的？
-      options:
-        - 'A: 语法/语义上不正确的陈述'
-        - 'B: 正确：关于struct.types的关键点描述（正确选项）'
-        - 'C: 语法/语义上不正确的陈述'
-        - 'D: 常见误解或反例（容易混淆）'
-      answer: B
-      explanation: 本题考查 types.struct 的概念。正确答案为 B。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: struct
-    - id: type-struct-013
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 types.struct，下面哪个选项是正确的？
-      options:
-        - 'A: 正确项（关于struct.types的重要结论）'
-        - 'B: 常见误解或反例（容易混淆）'
-        - 'C: 正确项（关于struct.types的重要结论）'
-        - 'D: 正确项（关于struct.types的重要结论）'
-      answer: ACD
-      explanation: 本题考查 types.struct 的相关知识。正确答案：ACD。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: struct
-    - id: type-struct-014
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 types.struct，下面哪个选项是正确的？
-      options:
-        - 'A: 正确：关于struct.types的关键点描述（正确选项）'
-        - 'B: 常见误解或反例（容易混淆）'
-        - 'C: 与struct.types 相关但不适用的选项'
-        - 'D: 常见误解或反例（容易混淆）'
-      answer: A
-      explanation: 本题考查 types.struct 的概念。正确答案为 A。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: struct
-    - id: type-struct-015
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 types.struct，下面哪个选项是正确的？
-      options:
-        - 'A: 语法/语义上不正确的陈述'
-        - 'B: 正确项（关于struct.types的重要结论）'
-        - 'C: 部分正确但不完整的说法'
-        - 'D: 正确项（关于struct.types的重要结论）'
-      answer: BD
-      explanation: 本题考查 types.struct 的相关知识。正确答案：BD。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: struct
-    - id: type-struct-016
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 types.struct，下面哪个选项是正确的？
-      options:
-        - 'A: 正确：关于struct.types的关键点描述（正确选项）'
-        - 'B: 语法/语义上不正确的陈述'
-        - 'C: 常见误解或反例（容易混淆）'
-        - 'D: 与struct.types 相关但不适用的选项'
-      answer: A
-      explanation: 本题考查 types.struct 的概念。正确答案为 A。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: struct
-    - id: type-struct-017
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 types.struct，下面哪个选项是正确的？
-      options:
-        - 'A: 正确项（关于struct.types的重要结论）'
-        - 'B: 正确项（关于struct.types的重要结论）'
-        - 'C: 常见误解或反例（容易混淆）'
-        - 'D: 正确项（关于struct.types的重要结论）'
-      answer: ABD
-      explanation: 本题考查 types.struct 的相关知识。正确答案：ABD。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: struct
-    - id: type-struct-018
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 types.struct，下面哪个选项是正确的？
-      options:
-        - 'A: 正确：关于struct.types的关键点描述（正确选项）'
-        - 'B: 语法/语义上不正确的陈述'
-        - 'C: 语法/语义上不正确的陈述'
-        - 'D: 与struct.types 相关但不适用的选项'
-      answer: A
-      explanation: 本题考查 types.struct 的概念。正确答案为 A。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: struct
-    - id: type-struct-019
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 types.struct，下面哪个选项是正确的？
-      options:
-        - 'A: 正确项（关于struct.types的重要结论）'
-        - 'B: 正确项（关于struct.types的重要结论）'
-        - 'C: 常见误解或反例（容易混淆）'
-        - 'D: 常见误解或反例（容易混淆）'
-      answer: AB
-      explanation: 本题考查 types.struct 的相关知识。正确答案：AB。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: struct
-    - id: type-struct-020
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 types.struct，下面哪个选项是正确的？
-      options:
-        - 'A: 正确：关于struct.types的关键点描述（正确选项）'
-        - 'B: 与struct.types 相关但不适用的选项'
-        - 'C: 与struct.types 相关但不适用的选项'
-        - 'D: 常见误解或反例（容易混淆）'
-      answer: A
-      explanation: 本题考查 types.struct 的概念。正确答案为 A。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: struct
-    - id: type-struct-021
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 types.struct 的情境下，哪个说法更合适？
-      options:
-        - 'A: 正确项（关于struct.types的重要结论）'
-        - 'B: 正确项（关于struct.types的重要结论）'
-        - 'C: 正确项（关于struct.types的重要结论）'
-        - 'D: 常见误解或反例（容易混淆）'
-      answer: ABC
-      explanation: 本题考查 types.struct 的相关知识。正确答案：ABC。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: struct
-    - id: type-struct-022
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 types.struct 的情境下，哪个说法更合适？
-      options:
-        - 'A: 与struct.types 相关但不适用的选项'
-        - 'B: 部分正确但不完整的说法'
-        - 'C: 正确：关于struct.types的关键点描述（正确选项）'
-        - 'D: 常见误解或反例（容易混淆）'
-      answer: C
-      explanation: 本题考查 types.struct 的概念。正确答案为 C。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: struct
-    - id: type-struct-023
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 types.struct 的情境下，哪个说法更合适？
-      options:
-        - 'A: 正确项（关于struct.types的重要结论）'
-        - 'B: 正确项（关于struct.types的重要结论）'
-        - 'C: 语法/语义上不正确的陈述'
-        - 'D: 正确项（关于struct.types的重要结论）'
-      answer: ABD
-      explanation: 本题考查 types.struct 的相关知识。正确答案：ABD。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: struct
-    - id: type-struct-024
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 types.struct 的情境下，哪个说法更合适？
-      options:
-        - 'A: 语法/语义上不正确的陈述'
-        - 'B: 语法/语义上不正确的陈述'
-        - 'C: 正确：关于struct.types的关键点描述（正确选项）'
-        - 'D: 与struct.types 相关但不适用的选项'
-      answer: C
-      explanation: 本题考查 types.struct 的概念。正确答案为 C。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: struct
-    - id: type-struct-025
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 types.struct 的情境下，哪个说法更合适？
-      options:
-        - 'A: 正确项（关于struct.types的重要结论）'
-        - 'B: 正确项（关于struct.types的重要结论）'
-        - 'C: 语法/语义上不正确的陈述'
-        - 'D: 正确项（关于struct.types的重要结论）'
-      answer: ABD
-      explanation: 本题考查 types.struct 的相关知识。正确答案：ABD。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: struct
-    - id: type-struct-026
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 types.struct 的情境下，哪个说法更合适？
-      options:
-        - 'A: 部分正确但不完整的说法'
-        - 'B: 常见误解或反例（容易混淆）'
-        - 'C: 正确：关于struct.types的关键点描述（正确选项）'
-        - 'D: 常见误解或反例（容易混淆）'
-      answer: C
-      explanation: 本题考查 types.struct 的概念。正确答案为 C。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: struct
-    - id: type-struct-027
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 types.struct 的情境下，哪个说法更合适？
-      options:
-        - 'A: 正确项（关于struct.types的重要结论）'
-        - 'B: 正确项（关于struct.types的重要结论）'
-        - 'C: 正确项（关于struct.types的重要结论）'
-        - 'D: 与struct.types 相关但不适用的选项'
-      answer: ABC
-      explanation: 本题考查 types.struct 的相关知识。正确答案：ABC。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: struct
-    - id: type-struct-028
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 types.struct 的情境下，哪个说法更合适？
-      options:
-        - 'A: 与struct.types 相关但不适用的选项'
-        - 'B: 语法/语义上不正确的陈述'
-        - 'C: 正确：关于struct.types的关键点描述（正确选项）'
-        - 'D: 部分正确但不完整的说法'
-      answer: C
-      explanation: 本题考查 types.struct 的概念。正确答案为 C。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: struct
-    - id: type-struct-029
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 types.struct 的情境下，哪个说法更合适？
-      options:
-        - 'A: 常见误解或反例（容易混淆）'
-        - 'B: 正确项（关于struct.types的重要结论）'
-        - 'C: 正确项（关于struct.types的重要结论）'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: BC
-      explanation: 本题考查 types.struct 的相关知识。正确答案：BC。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: struct
-    - id: type-struct-030
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 types.struct 的情境下，哪个说法更合适？
-      options:
-        - 'A: 与struct.types 相关但不适用的选项'
-        - 'B: 正确：关于struct.types的关键点描述（正确选项）'
-        - 'C: 语法/语义上不正确的陈述'
-        - 'D: 与struct.types 相关但不适用的选项'
-      answer: B
-      explanation: 本题考查 types.struct 的概念。正确答案为 B。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: struct
-    - id: type-struct-031
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 types.struct 的情境下，哪个说法更合适？
-      options:
-        - 'A: 与struct.types 相关但不适用的选项'
-        - 'B: 正确项（关于struct.types的重要结论）'
-        - 'C: 正确项（关于struct.types的重要结论）'
-        - 'D: 正确项（关于struct.types的重要结论）'
-      answer: BCD
-      explanation: 本题考查 types.struct 的相关知识。正确答案：BCD。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: struct
-    - id: type-struct-032
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 types.struct 的情境下，哪个说法更合适？
-      options:
-        - 'A: 与struct.types 相关但不适用的选项'
-        - 'B: 与struct.types 相关但不适用的选项'
-        - 'C: 正确：关于struct.types的关键点描述（正确选项）'
-        - 'D: 与struct.types 相关但不适用的选项'
-      answer: C
-      explanation: 本题考查 types.struct 的概念。正确答案为 C。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: struct
-    - id: type-struct-033
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 types.struct 的情境下，哪个说法更合适？
-      options:
-        - 'A: 正确项（关于struct.types的重要结论）'
-        - 'B: 正确项（关于struct.types的重要结论）'
-        - 'C: 语法/语义上不正确的陈述'
-        - 'D: 部分正确但不完整的说法'
-      answer: AB
-      explanation: 本题考查 types.struct 的相关知识。正确答案：AB。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: struct
-    - id: type-struct-034
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 types.struct 的情境下，哪个说法更合适？
-      options:
-        - 'A: 语法/语义上不正确的陈述'
-        - 'B: 部分正确但不完整的说法'
-        - 'C: 正确：关于struct.types的关键点描述（正确选项）'
-        - 'D: 常见误解或反例（容易混淆）'
-      answer: C
-      explanation: 本题考查 types.struct 的概念。正确答案为 C。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: struct
-    - id: type-struct-035
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 types.struct 的情境下，哪个说法更合适？
-      options:
-        - 'A: 语法/语义上不正确的陈述'
-        - 'B: 正确项（关于struct.types的重要结论）'
-        - 'C: 正确项（关于struct.types的重要结论）'
-        - 'D: 正确项（关于struct.types的重要结论）'
-      answer: BCD
-      explanation: 本题考查 types.struct 的相关知识。正确答案：BCD。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: struct
-    - id: type-struct-036
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 types.struct 的情境下，哪个说法更合适？
-      options:
-        - 'A: 与struct.types 相关但不适用的选项'
-        - 'B: 正确：关于struct.types的关键点描述（正确选项）'
-        - 'C: 与struct.types 相关但不适用的选项'
-        - 'D: 常见误解或反例（容易混淆）'
-      answer: B
-      explanation: 本题考查 types.struct 的概念。正确答案为 B。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: struct
-    - id: type-struct-037
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 types.struct 的情境下，哪个说法更合适？
-      options:
-        - 'A: 部分正确但不完整的说法'
-        - 'B: 正确项（关于struct.types的重要结论）'
-        - 'C: 正确项（关于struct.types的重要结论）'
-        - 'D: 部分正确但不完整的说法'
-      answer: BC
-      explanation: 本题考查 types.struct 的相关知识。正确答案：BC。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: struct
-    - id: type-struct-038
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 types.struct 的情境下，哪个说法更合适？
-      options:
-        - 'A: 常见误解或反例（容易混淆）'
-        - 'B: 与struct.types 相关但不适用的选项'
-        - 'C: 正确：关于struct.types的关键点描述（正确选项）'
-        - 'D: 与struct.types 相关但不适用的选项'
-      answer: C
-      explanation: 本题考查 types.struct 的概念。正确答案为 C。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: struct
-    - id: type-struct-039
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 types.struct 的情境下，哪个说法更合适？
-      options:
-        - 'A: 正确项（关于struct.types的重要结论）'
-        - 'B: 正确项（关于struct.types的重要结论）'
-        - 'C: 常见误解或反例（容易混淆）'
-        - 'D: 与struct.types 相关但不适用的选项'
-      answer: AB
-      explanation: 本题考查 types.struct 的相关知识。正确答案：AB。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: struct
-    - id: type-struct-040
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 types.struct 的情境下，哪个说法更合适？
-      options:
-        - 'A: 部分正确但不完整的说法'
-        - 'B: 正确：关于struct.types的关键点描述（正确选项）'
-        - 'C: 与struct.types 相关但不适用的选项'
-        - 'D: 部分正确但不完整的说法'
-      answer: B
-      explanation: 本题考查 types.struct 的概念。正确答案为 B。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: struct
-    - id: type-struct-041
-      type: multiple
-      difficulty: hard
-      stem: 【思考题】针对 types.struct，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 语法/语义上不正确的陈述'
-        - 'B: 与struct.types 相关但不适用的选项'
-        - 'C: 正确项（关于struct.types的重要结论）'
-        - 'D: 正确项（关于struct.types的重要结论）'
-      answer: CD
-      explanation: 本题考查 types.struct 的相关知识。正确答案：CD。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: struct
-    - id: type-struct-042
-      type: single
-      difficulty: hard
-      stem: 【思考题】针对 types.struct，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 常见误解或反例（容易混淆）'
-        - 'B: 语法/语义上不正确的陈述'
-        - 'C: 常见误解或反例（容易混淆）'
-        - 'D: 正确：关于struct.types的关键点描述（正确选项）'
-      answer: D
-      explanation: 本题考查 types.struct 的概念。正确答案为 D。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: struct
-    - id: type-struct-043
-      type: multiple
-      difficulty: hard
-      stem: 【思考题】针对 types.struct，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 正确项（关于struct.types的重要结论）'
-        - 'B: 正确项（关于struct.types的重要结论）'
-        - 'C: 部分正确但不完整的说法'
-        - 'D: 正确项（关于struct.types的重要结论）'
-      answer: ABD
-      explanation: 本题考查 types.struct 的相关知识。正确答案：ABD。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: struct
-    - id: type-struct-044
-      type: single
-      difficulty: hard
-      stem: 【思考题】针对 types.struct，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 与struct.types 相关但不适用的选项'
-        - 'B: 语法/语义上不正确的陈述'
-        - 'C: 与struct.types 相关但不适用的选项'
-        - 'D: 正确：关于struct.types的关键点描述（正确选项）'
-      answer: D
-      explanation: 本题考查 types.struct 的概念。正确答案为 D。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: struct
-    - id: type-struct-045
-      type: multiple
-      difficulty: hard
-      stem: 【思考题】针对 types.struct，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 正确项（关于struct.types的重要结论）'
-        - 'B: 部分正确但不完整的说法'
-        - 'C: 正确项（关于struct.types的重要结论）'
-        - 'D: 正确项（关于struct.types的重要结论）'
-      answer: ACD
-      explanation: 本题考查 types.struct 的相关知识。正确答案：ACD。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: struct
-    - id: type-struct-046
-      type: single
-      difficulty: hard
-      stem: 【思考题】针对 types.struct，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 常见误解或反例（容易混淆）'
-        - 'B: 部分正确但不完整的说法'
-        - 'C: 常见误解或反例（容易混淆）'
-        - 'D: 正确：关于struct.types的关键点描述（正确选项）'
-      answer: D
-      explanation: 本题考查 types.struct 的概念。正确答案为 D。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: struct
-    - id: type-struct-047
-      type: multiple
-      difficulty: hard
-      stem: 【思考题】针对 types.struct，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 正确项（关于struct.types的重要结论）'
-        - 'B: 与struct.types 相关但不适用的选项'
-        - 'C: 正确项（关于struct.types的重要结论）'
-        - 'D: 正确项（关于struct.types的重要结论）'
-      answer: ACD
-      explanation: 本题考查 types.struct 的相关知识。正确答案：ACD。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: struct
-    - id: type-struct-048
-      type: single
-      difficulty: hard
-      stem: 【思考题】针对 types.struct，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 部分正确但不完整的说法'
-        - 'B: 常见误解或反例（容易混淆）'
-        - 'C: 正确：关于struct.types的关键点描述（正确选项）'
-        - 'D: 部分正确但不完整的说法'
-      answer: C
-      explanation: 本题考查 types.struct 的概念。正确答案为 C。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: struct
-    - id: type-struct-049
-      type: multiple
-      difficulty: hard
-      stem: 【思考题】针对 types.struct，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 部分正确但不完整的说法'
-        - 'B: 常见误解或反例（容易混淆）'
-        - 'C: 正确项（关于struct.types的重要结论）'
-        - 'D: 正确项（关于struct.types的重要结论）'
-      answer: CD
-      explanation: 本题考查 types.struct 的相关知识。正确答案：CD。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: struct
-    - id: type-struct-050
-      type: single
-      difficulty: hard
-      stem: 【思考题】针对 types.struct，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 与struct.types 相关但不适用的选项'
-        - 'B: 语法/语义上不正确的陈述'
-        - 'C: 正确：关于struct.types的关键点描述（正确选项）'
-        - 'D: 与struct.types 相关但不适用的选项'
-      answer: C
-      explanation: 本题考查 types.struct 的概念。正确答案为 C。解析：struct 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: struct
+  # ========== 简单题 (Easy) - 24道 ==========
+  
+  - id: type-struct-001
+    type: single
+    difficulty: easy
+    stem: "Go中定义结构体的关键字是什么?"
+    options:
+      - "A: class"
+      - "B: struct"
+      - "C: type"
+      - "D: object"
+    answer: B
+    explanation: "Go使用struct关键字定义结构体。没有class。type用于类型定义。参见 Go 规范 Struct types 章节。"
+    topic: types
+    chapter: struct
+
+  - id: type-struct-002
+    type: single
+    difficulty: easy
+    stem: "结构体是值类型还是引用类型?"
+    options:
+      - "A: 值类型"
+      - "B: 引用类型"
+      - "C: 取决于字段"
+      - "D: 取决于大小"
+    answer: A
+    explanation: "结构体是值类型。赋值和传参会复制整个结构体。参见 Go 规范 Struct types 章节。"
+    topic: types
+    chapter: struct
+
+  - id: type-struct-003
+    type: single
+    difficulty: easy
+    stem: "如何访问结构体字段?"
+    options:
+      - "A: s->field"
+      - "B: s.field"
+      - "C: s[field]"
+      - "D: s::field"
+    answer: B
+    explanation: "Go使用点号.访问结构体字段。s.field。没有->运算符。参见 Go 规范 Selectors 章节。"
+    topic: types
+    chapter: struct
+
+  - id: type-struct-004
+    type: single
+    difficulty: easy
+    stem: "结构体字段的零值是什么?"
+    options:
+      - "A: nil"
+      - "B: 各字段类型的零值"
+      - "C: undefined"
+      - "D: 空结构体"
+    answer: B
+    explanation: "结构体零值是所有字段都是其类型零值。int是0,string是\"\",指针是nil等。参见 Go 规范 The zero value 章节。"
+    topic: types
+    chapter: struct
+
+  - id: type-struct-005
+    type: single
+    difficulty: easy
+    stem: "空结构体struct{}占多少内存?"
+    options:
+      - "A: 1字节"
+      - "B: 8字节"
+      - "C: 0字节"
+      - "D: 取决于平台"
+    answer: C
+    explanation: "空结构体struct{}大小为0字节。常用于channel信号或map的值。参见 Go 规范 Size and alignment guarantees 章节。"
+    topic: types
+    chapter: struct
+
+  - id: type-struct-006
+    type: single
+    difficulty: easy
+    stem: "结构体字面量中字段名可以省略吗?"
+    options:
+      - "A: 可以,按顺序赋值"
+      - "B: 不可以"
+      - "C: 只能在同包内省略"
+      - "D: A和C"
+    answer: D
+    explanation: "结构体字面量可按顺序省略字段名,但必须提供所有字段。跨包必须用字段名。参见 Go 规范 Composite literals 章节。"
+    topic: types
+    chapter: struct
+
+  - id: type-struct-007
+    type: single
+    difficulty: easy
+    stem: "以下哪个是有效的结构体字面量?"
+    options:
+      - "A: Point{1, 2}"
+      - "B: Point{X: 1, Y: 2}"
+      - "C: Point{X: 1}"
+      - "D: 以上都是"
+    answer: D
+    explanation: "三种都有效:按序、命名、部分命名(其他取零值)。参见 Go 规范 Composite literals 章节。"
+    topic: types
+    chapter: struct
+
+  - id: type-struct-008
+    type: single
+    difficulty: easy
+    stem: "如何获取结构体的指针?"
+    options:
+      - "A: &Point{}"
+      - "B: new(Point)"
+      - "C: *Point{}"
+      - "D: A或B"
+    answer: D
+    explanation: "&T{}和new(T)都返回*T。&T{}可初始化,new(T)返回零值。参见 Go 规范 Composite literals 章节。"
+    topic: types
+    chapter: struct
+
+  - id: type-struct-009
+    type: single
+    difficulty: easy
+    stem: "通过指针访问结构体字段用什么?"
+    options:
+      - "A: p->field"
+      - "B: (*p).field"
+      - "C: p.field"
+      - "D: B或C"
+    answer: D
+    explanation: "Go自动解引用指针。p.field等于(*p).field。没有->运算符。参见 Go 规范 Selectors 章节。"
+    topic: types
+    chapter: struct
+
+  - id: type-struct-010
+    type: single
+    difficulty: easy
+    stem: "结构体可以比较吗?"
+    options:
+      - "A: 所有结构体都可以"
+      - "B: 所有结构体都不可以"
+      - "C: 取决于字段类型"
+      - "D: 只能与nil比较"
+    answer: C
+    explanation: "如果所有字段都可比较,结构体可比较。包含切片/map/函数的结构体不可比较。参见 Go 规范 Comparison operators 章节。"
+    topic: types
+    chapter: struct
+
+  - id: type-struct-011
+    type: single
+    difficulty: easy
+    stem: "什么是匿名字段(嵌入字段)?"
+    options:
+      - "A: 没有名字的字段"
+      - "B: 只有类型的字段"
+      - "C: 用于组合的字段"
+      - "D: 以上都是"
+    answer: D
+    explanation: "匿名字段只有类型名,用于结构体组合。类型名作为字段名。参见 Go 规范 Struct types 章节。"
+    topic: types
+    chapter: struct
+
+  - id: type-struct-012
+    type: single
+    difficulty: easy
+    stem: "嵌入字段的方法能被提升吗?"
+    options:
+      - "A: 能"
+      - "B: 不能"
+      - "C: 只有导出方法"
+      - "D: 只有值接收者方法"
+    answer: A
+    explanation: "嵌入字段的方法会提升到外层结构体。可以直接调用。参见 Go 规范 Struct types 章节。"
+    topic: types
+    chapter: struct
+
+  - id: type-struct-013
+    type: single
+    difficulty: easy
+    stem: "结构体标签(tag)的作用是什么?"
+    options:
+      - "A: 注释"
+      - "B: 元数据(反射读取)"
+      - "C: 字段别名"
+      - "D: 类型约束"
+    answer: B
+    explanation: "结构体标签是元数据,通过反射读取。常用于JSON/数据库映射。参见 Go 规范 Struct types 章节。"
+    topic: types
+    chapter: struct
+
+  - id: type-struct-014
+    type: single
+    difficulty: easy
+    stem: "以下标签格式正确的是?"
+    options:
+      - "A: json:\"name\""
+      - "B: `json:\"name\"`"
+      - "C: 'json:\"name\"'"
+      - "D: (json:\"name\")"
+    answer: B
+    explanation: "结构体标签使用反引号包裹原始字符串。格式为`key:\"value\"`。参见 Go 规范 Struct types 章节。"
+    topic: types
+    chapter: struct
+
+  - id: type-struct-015
+    type: single
+    difficulty: easy
+    stem: "导出结构体字段首字母要怎样?"
+    options:
+      - "A: 小写"
+      - "B: 大写"
+      - "C: 下划线开头"
+      - "D: 都可以"
+    answer: B
+    explanation: "Go中大写字母开头的标识符是导出的(public)。小写是非导出的(private)。参见 Go 规范 Exported identifiers 章节。"
+    topic: types
+    chapter: struct
+
+  - id: type-struct-016
+    type: multiple
+    difficulty: easy
+    stem: "关于结构体,以下说法正确的是?(多选)"
+    options:
+      - "A: 是值类型"
+      - "B: 可以有方法"
+      - "C: 支持嵌入组合"
+      - "D: 支持继承"
+    answer: ABC
+    explanation: "结构体是值类型,可定义方法,支持嵌入组合。Go没有继承。参见 Go 规范 Struct types 章节。"
+    topic: types
+    chapter: struct
+
+  - id: type-struct-017
+    type: single
+    difficulty: easy
+    stem: "匿名结构体可以在哪里定义?"
+    options:
+      - "A: 只能在函数内"
+      - "B: 只能在包级别"
+      - "C: 任何地方"
+      - "D: 只能作为字段类型"
+    answer: C
+    explanation: "匿名结构体可以在任何需要类型的地方定义和使用。参见 Go 规范 Struct types 章节。"
+    topic: types
+    chapter: struct
+
+  - id: type-struct-018
+    type: single
+    difficulty: easy
+    stem: "结构体可以自引用吗?"
+    options:
+      - "A: 直接包含自己"
+      - "B: 通过指针"
+      - "C: 通过接口"
+      - "D: B或C"
+    answer: D
+    explanation: "结构体不能直接包含自己(无限大小)。可以包含指向自己的指针或接口。参见 Go 规范 Struct types 章节。"
+    topic: types
+    chapter: struct
+
+  - id: type-struct-019
+    type: single
+    difficulty: easy
+    stem: "结构体字段对齐(alignment)的目的是什么?"
+    options:
+      - "A: 美观"
+      - "B: 提高访问效率"
+      - "C: 减少内存"
+      - "D: 安全性"
+    answer: B
+    explanation: "字段对齐使CPU访问更高效。Go编译器自动处理对齐。参见 Go 规范 Size and alignment guarantees 章节。"
+    topic: types
+    chapter: struct
+
+  - id: type-struct-020
+    type: single
+    difficulty: easy
+    stem: "json:\"-\"标签的作用是什么?"
+    options:
+      - "A: 字段名为-"
+      - "B: 忽略此字段"
+      - "C: 必填字段"
+      - "D: 默认值"
+    answer: B
+    explanation: "json:\"-\"表示JSON编解码时忽略此字段。参见 Go encoding/json包文档。"
+    topic: types
+    chapter: struct
+
+  - id: type-struct-021
+    type: single
+    difficulty: easy
+    stem: "json:\"name,omitempty\"中omitempty的作用是?"
+    options:
+      - "A: 字段必填"
+      - "B: 零值时省略"
+      - "C: 总是输出"
+      - "D: 忽略字段"
+    answer: B
+    explanation: "omitempty表示字段为零值时,JSON输出中省略该字段。参见 Go encoding/json包文档。"
+    topic: types
+    chapter: struct
+
+  - id: type-struct-022
+    type: single
+    difficulty: easy
+    stem: "new(T)和&T{}的区别是什么?"
+    options:
+      - "A: new返回值,&返回指针"
+      - "B: new只能零值,&可初始化"
+      - "C: new更高效"
+      - "D: 没有区别"
+    answer: B
+    explanation: "new(T)返回零值的指针。&T{}可以在字面量中初始化字段。参见 Go 规范 Allocation 章节。"
+    topic: types
+    chapter: struct
+
+  - id: type-struct-023
+    type: multiple
+    difficulty: easy
+    stem: "以下哪些是合法的嵌入字段?(多选)"
+    options:
+      - "A: int"
+      - "B: *int"
+      - "C: User"
+      - "D: *User"
+    answer: CD
+    explanation: "嵌入字段必须是类型名或指向类型名的指针。不能是预声明类型如int。参见 Go 规范 Struct types 章节。"
+    topic: types
+    chapter: struct
+
+  - id: type-struct-024
+    type: single
+    difficulty: easy
+    stem: "结构体方法的接收者可以是什么?"
+    options:
+      - "A: 值接收者T"
+      - "B: 指针接收者*T"
+      - "C: A或B"
+      - "D: 只能是指针"
+    answer: C
+    explanation: "方法接收者可以是值类型T或指针类型*T。选择取决于是否需要修改或大小。参见 Go 规范 Method declarations 章节。"
+    topic: types
+    chapter: struct
+
+  # ========== 中等题 (Medium) - 13道 ==========
+
+  - id: type-struct-025
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type Point struct{ X, Y int }
+      func main() {
+          p := Point{1, 2}
+          q := p
+          q.X = 100
+          fmt.Println(p.X)
+      }
+    options:
+      - "A: 1"
+      - "B: 100"
+      - "C: 0"
+      - "D: 编译错误"
+    answer: A
+    explanation: "结构体是值类型。q:=p复制整个结构体。修改q不影响p。p.X仍是1。参见 Go 规范 Struct types 章节。"
+    topic: types
+    chapter: struct
+
+  - id: type-struct-026
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type Point struct{ X, Y int }
+      func main() {
+          p := &Point{1, 2}
+          q := p
+          q.X = 100
+          fmt.Println(p.X)
+      }
+    options:
+      - "A: 1"
+      - "B: 100"
+      - "C: 0"
+      - "D: 编译错误"
+    answer: B
+    explanation: "p是指针。q:=p复制指针,指向同一结构体。修改q.X也修改了p指向的值。参见 Go 规范 Selectors 章节。"
+    topic: types
+    chapter: struct
+
+  - id: type-struct-027
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type Inner struct{ V int }
+      type Outer struct{ Inner }
+      func main() {
+          o := Outer{Inner{10}}
+          fmt.Println(o.V)
+      }
+    options:
+      - "A: 10"
+      - "B: {10}"
+      - "C: 编译错误"
+      - "D: 0"
+    answer: A
+    explanation: "Inner是嵌入字段,其字段V被提升。o.V等于o.Inner.V。输出10。参见 Go 规范 Struct types 章节。"
+    topic: types
+    chapter: struct
+
+  - id: type-struct-028
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      import "unsafe"
+      type S struct{ a bool; b int64; c bool }
+      func main() {
+          fmt.Println(unsafe.Sizeof(S{}))
+      }
+    options:
+      - "A: 10"
+      - "B: 24"
+      - "C: 16"
+      - "D: 取决于平台"
+    answer: B
+    explanation: "字段对齐:bool(1)+padding(7)+int64(8)+bool(1)+padding(7)=24字节(64位)。参见 Go 规范 Size and alignment guarantees 章节。"
+    topic: types
+    chapter: struct
+
+  - id: type-struct-029
+    type: code_fix
+    difficulty: medium
+    stem: "以下代码有问题,正确的修正是?"
+    code: |
+      package main
+      type Node struct {
+          Value int
+          Next  Node
+      }
+    options:
+      - "A: Next *Node"
+      - "B: Next interface{}"
+      - "C: A或B"
+      - "D: 代码正确"
+    answer: A
+    explanation: "结构体不能直接包含自己(无限大小)。应使用指针*Node。参见 Go 规范 Struct types 章节。"
+    topic: types
+    chapter: struct
+
+  - id: type-struct-030
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type A struct{ V int }
+      type B struct{ V int }
+      type C struct{ A; B }
+      func main() {
+          c := C{A{1}, B{2}}
+          fmt.Println(c.A.V, c.B.V)
+      }
+    options:
+      - "A: 1 2"
+      - "B: 1 1"
+      - "C: 2 2"
+      - "D: 编译错误"
+    answer: A
+    explanation: "A和B都有V字段,访问c.V会歧义。但c.A.V和c.B.V明确。输出1 2。参见 Go 规范 Selectors 章节。"
+    topic: types
+    chapter: struct
+
+  - id: type-struct-031
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type Point struct{ X, Y int }
+      func (p Point) Move(dx, dy int) {
+          p.X += dx
+          p.Y += dy
+      }
+      func main() {
+          p := Point{1, 2}
+          p.Move(10, 20)
+          fmt.Println(p)
+      }
+    options:
+      - "A: {11 22}"
+      - "B: {1 2}"
+      - "C: {10 20}"
+      - "D: 编译错误"
+    answer: B
+    explanation: "值接收者方法操作副本。p.Move修改的是副本,原p不变。输出{1 2}。参见 Go 规范 Method declarations 章节。"
+    topic: types
+    chapter: struct
+
+  - id: type-struct-032
+    type: code_fix
+    difficulty: medium
+    stem: "让Move方法能修改p,正确的修正是?"
+    code: |
+      type Point struct{ X, Y int }
+      func (p Point) Move(dx, dy int) {
+          p.X += dx
+          p.Y += dy
+      }
+    options:
+      - "A: func (p *Point) Move"
+      - "B: 返回新Point"
+      - "C: A更直接"
+      - "D: B更函数式"
+    answer: C
+    explanation: "使用指针接收者*Point可以修改原值。返回新值是函数式风格。A更符合Go习惯。参见 Go 规范 Method declarations 章节。"
+    topic: types
+    chapter: struct
+
+  - id: type-struct-033
+    type: multiple
+    difficulty: medium
+    stem: "关于结构体内存布局,以下说法正确的是?(多选)"
+    options:
+      - "A: 字段顺序影响大小"
+      - "B: 编译器可能添加填充"
+      - "C: 可用unsafe.Offsetof获取偏移"
+      - "D: 字段总是紧密排列"
+    answer: ABC
+    explanation: "字段顺序影响对齐填充,从而影响大小。编译器添加填充对齐。D错误,不是紧密排列。参见 Go 规范 Size and alignment guarantees 章节。"
+    topic: types
+    chapter: struct
+
+  - id: type-struct-034
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          type Point struct{ X, Y int }
+          p1 := Point{1, 2}
+          p2 := Point{1, 2}
+          fmt.Println(p1 == p2)
+      }
+    options:
+      - "A: true"
+      - "B: false"
+      - "C: 编译错误"
+      - "D: panic"
+    answer: A
+    explanation: "所有字段可比较的结构体可比较。p1和p2字段值相等。输出true。参见 Go 规范 Comparison operators 章节。"
+    topic: types
+    chapter: struct
+
+  - id: type-struct-035
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type S struct {
+          A int
+          B []int
+      }
+      func main() {
+          s1 := S{1, []int{2}}
+          s2 := S{1, []int{2}}
+          fmt.Println(s1 == s2)
+      }
+    options:
+      - "A: true"
+      - "B: false"
+      - "C: 编译错误"
+      - "D: panic"
+    answer: C
+    explanation: "包含切片的结构体不可比较。切片不支持==。编译错误。参见 Go 规范 Comparison operators 章节。"
+    topic: types
+    chapter: struct
+
+  - id: type-struct-036
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type T struct{}
+      func main() {
+          a := T{}
+          b := T{}
+          fmt.Println(&a == &b)
+      }
+    options:
+      - "A: true"
+      - "B: false"
+      - "C: 编译错误"
+      - "D: 取决于编译器"
+    answer: D
+    explanation: "空结构体大小为0。编译器可能让多个空结构体共享地址,也可能不。行为未定义。参见 Go 规范 Size and alignment guarantees 章节。"
+    topic: types
+    chapter: struct
+
+  - id: type-struct-037
+    type: code_fix
+    difficulty: medium
+    stem: "以下代码JSON序列化时Name字段不输出,为什么?"
+    code: |
+      package main
+      import "encoding/json"
+      type User struct {
+          name string
+          Age  int
+      }
+    options:
+      - "A: name小写,不导出"
+      - "B: 缺少json标签"
+      - "C: A是根本原因"
+      - "D: 代码正确"
+    answer: C
+    explanation: "小写name是非导出字段,json包无法访问。必须大写Name才能序列化。参见 Go encoding/json包文档。"
+    topic: types
+    chapter: struct
+
+  # ========== 困难题 (Hard) - 5道 ==========
+
+  - id: type-struct-038
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type A struct{}
+      func (A) Foo() { fmt.Print("A") }
+      type B struct{ A }
+      func (B) Foo() { fmt.Print("B") }
+      func main() {
+          b := B{}
+          b.Foo()
+          b.A.Foo()
+      }
+    options:
+      - "A: AA"
+      - "B: BB"
+      - "C: BA"
+      - "D: AB"
+    answer: C
+    explanation: "B定义了自己的Foo,覆盖了A的。b.Foo()调用B的(输出B)。b.A.Foo()显式调用A的(输出A)。参见 Go 规范 Selectors 章节。"
+    topic: types
+    chapter: struct
+
+  - id: type-struct-039
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type S struct{ *S }
+      func main() {
+          var s S
+          fmt.Println(s.S == nil)
+      }
+    options:
+      - "A: true"
+      - "B: false"
+      - "C: 编译错误"
+      - "D: panic"
+    answer: A
+    explanation: "结构体可以包含指向自己的指针。零值时s.S是nil。输出true。参见 Go 规范 Struct types 章节。"
+    topic: types
+    chapter: struct
+
+  - id: type-struct-040
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import (
+          "fmt"
+          "unsafe"
+      )
+      type S struct {
+          b1 bool
+          i  int64
+          b2 bool
+      }
+      type T struct {
+          b1 bool
+          b2 bool
+          i  int64
+      }
+      func main() {
+          fmt.Println(unsafe.Sizeof(S{}), unsafe.Sizeof(T{}))
+      }
+    options:
+      - "A: 24 24"
+      - "B: 24 16"
+      - "C: 16 16"
+      - "D: 10 10"
+    answer: B
+    explanation: "S:bool(1)+pad(7)+int64(8)+bool(1)+pad(7)=24。T:bool(1)+bool(1)+pad(6)+int64(8)=16。字段顺序影响大小。参见 Go 规范 Size and alignment guarantees 章节。"
+    topic: types
+    chapter: struct
+
+  - id: type-struct-041
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type I interface{ M() }
+      type S struct{ I }
+      func (S) M() { fmt.Print("S") }
+      type T struct{}
+      func (T) M() { fmt.Print("T") }
+      func main() {
+          s := S{I: T{}}
+          s.M()
+          s.I.M()
+      }
+    options:
+      - "A: SS"
+      - "B: ST"
+      - "C: TT"
+      - "D: TS"
+    answer: B
+    explanation: "S有自己的M方法,s.M()调用S的(输出S)。s.I是T,s.I.M()调用T的(输出T)。参见 Go 规范 Method sets 章节。"
+    topic: types
+    chapter: struct
+
+  - id: type-struct-042
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type S struct {
+          _ int
+          X int
+      }
+      func main() {
+          s := S{X: 10}
+          fmt.Println(s)
+      }
+    options:
+      - "A: {10}"
+      - "B: {0 10}"
+      - "C: 编译错误"
+      - "D: panic"
+    answer: B
+    explanation: "空白标识符_可作为字段名,占位但不可访问。s有两个字段。输出{0 10}。参见 Go 规范 Blank identifier 章节。"
+    topic: types
+    chapter: struct

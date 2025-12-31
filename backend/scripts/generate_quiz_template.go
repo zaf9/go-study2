@@ -95,14 +95,14 @@ func main() {
 	// 难度分布: 60% easy, 30% medium, 10% hard
 	typeDistribution := []string{
 		"single_choice", "single_choice", "single_choice", "single_choice", // 40%
-		"multiple_choice", "multiple_choice", "multiple_choice",            // 30%
-		"code_output", "code_output",                                       // 20%
+		"multiple_choice", "multiple_choice", "multiple_choice", // 30%
+		"code_output", "code_output", // 20%
 		"code_fix", // 10%
 	}
 
 	difficultyDistribution := []string{
 		"easy", "easy", "easy", "easy", "easy", "easy", // 60%
-		"medium", "medium", "medium",                   // 30%
+		"medium", "medium", "medium", // 30%
 		"hard", // 10%
 	}
 

@@ -1,521 +1,689 @@
+# Go 字符字面量(Rune)测验题库
+# 章节: lexical_elements/runes
+# 符合 Go 1.24 语言规范
+
+metadata:
+  topic: lexical_elements
+  chapter: runes
+  total_questions: 40
+  last_updated: "2025-01-01"
+  difficulty_distribution:
+    easy: 24      # 60%
+    medium: 12    # 30%
+    hard: 4       # 10%
+  type_distribution:
+    single: 17
+    multiple: 10
+    code_output: 8
+    code_fix: 5
+
 questions:
-    - id: lexical-runes-001
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 lexical_elements.runes，下面哪个选项是正确的？
-      options:
-        - 'A: 正确项（关于runes.lexical_elements的重要结论）'
-        - 'B: 正确项（关于runes.lexical_elements的重要结论）'
-        - 'C: 部分正确但不完整的说法'
-        - 'D: 正确项（关于runes.lexical_elements的重要结论）'
-      answer: ABD
-      explanation: 本题考查 lexical_elements.runes 的相关知识。正确答案：ABD。解析：runes 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: runes
-    - id: lexical-runes-002
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 lexical_elements.runes，下面哪个选项是正确的？
-      options:
-        - 'A: 语法/语义上不正确的陈述'
-        - 'B: 正确：关于runes.lexical_elements的关键点描述（正确选项）'
-        - 'C: 常见误解或反例（容易混淆）'
-        - 'D: 部分正确但不完整的说法'
-      answer: B
-      explanation: 本题考查 lexical_elements.runes 的概念。正确答案为 B。解析：runes 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: runes
-    - id: lexical-runes-003
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 lexical_elements.runes，下面哪个选项是正确的？
-      options:
-        - 'A: 正确项（关于runes.lexical_elements的重要结论）'
-        - 'B: 正确项（关于runes.lexical_elements的重要结论）'
-        - 'C: 与runes.lexical_elements 相关但不适用的选项'
-        - 'D: 常见误解或反例（容易混淆）'
-      answer: AB
-      explanation: 本题考查 lexical_elements.runes 的相关知识。正确答案：AB。解析：runes 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: runes
-    - id: lexical-runes-004
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 lexical_elements.runes，下面哪个选项是正确的？
-      options:
-        - 'A: 常见误解或反例（容易混淆）'
-        - 'B: 正确：关于runes.lexical_elements的关键点描述（正确选项）'
-        - 'C: 部分正确但不完整的说法'
-        - 'D: 部分正确但不完整的说法'
-      answer: B
-      explanation: 本题考查 lexical_elements.runes 的概念。正确答案为 B。解析：runes 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: runes
-    - id: lexical-runes-005
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 lexical_elements.runes，下面哪个选项是正确的？
-      options:
-        - 'A: 正确项（关于runes.lexical_elements的重要结论）'
-        - 'B: 正确项（关于runes.lexical_elements的重要结论）'
-        - 'C: 部分正确但不完整的说法'
-        - 'D: 正确项（关于runes.lexical_elements的重要结论）'
-      answer: ABD
-      explanation: 本题考查 lexical_elements.runes 的相关知识。正确答案：ABD。解析：runes 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: runes
-    - id: lexical-runes-006
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 lexical_elements.runes，下面哪个选项是正确的？
-      options:
-        - 'A: 正确：关于runes.lexical_elements的关键点描述（正确选项）'
-        - 'B: 部分正确但不完整的说法'
-        - 'C: 与runes.lexical_elements 相关但不适用的选项'
-        - 'D: 部分正确但不完整的说法'
-      answer: A
-      explanation: 本题考查 lexical_elements.runes 的概念。正确答案为 A。解析：runes 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: runes
-    - id: lexical-runes-007
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 lexical_elements.runes，下面哪个选项是正确的？
-      options:
-        - 'A: 正确项（关于runes.lexical_elements的重要结论）'
-        - 'B: 与runes.lexical_elements 相关但不适用的选项'
-        - 'C: 正确项（关于runes.lexical_elements的重要结论）'
-        - 'D: 正确项（关于runes.lexical_elements的重要结论）'
-      answer: ACD
-      explanation: 本题考查 lexical_elements.runes 的相关知识。正确答案：ACD。解析：runes 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: runes
-    - id: lexical-runes-008
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 lexical_elements.runes，下面哪个选项是正确的？
-      options:
-        - 'A: 常见误解或反例（容易混淆）'
-        - 'B: 正确：关于runes.lexical_elements的关键点描述（正确选项）'
-        - 'C: 语法/语义上不正确的陈述'
-        - 'D: 常见误解或反例（容易混淆）'
-      answer: B
-      explanation: 本题考查 lexical_elements.runes 的概念。正确答案为 B。解析：runes 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: runes
-    - id: lexical-runes-009
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 lexical_elements.runes，下面哪个选项是正确的？
-      options:
-        - 'A: 常见误解或反例（容易混淆）'
-        - 'B: 正确项（关于runes.lexical_elements的重要结论）'
-        - 'C: 正确项（关于runes.lexical_elements的重要结论）'
-        - 'D: 正确项（关于runes.lexical_elements的重要结论）'
-      answer: BCD
-      explanation: 本题考查 lexical_elements.runes 的相关知识。正确答案：BCD。解析：runes 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: runes
-    - id: lexical-runes-010
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 lexical_elements.runes，下面哪个选项是正确的？
-      options:
-        - 'A: 正确：关于runes.lexical_elements的关键点描述（正确选项）'
-        - 'B: 语法/语义上不正确的陈述'
-        - 'C: 与runes.lexical_elements 相关但不适用的选项'
-        - 'D: 与runes.lexical_elements 相关但不适用的选项'
-      answer: A
-      explanation: 本题考查 lexical_elements.runes 的概念。正确答案为 A。解析：runes 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: runes
-    - id: lexical-runes-011
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 lexical_elements.runes，下面哪个选项是正确的？
-      options:
-        - 'A: 正确项（关于runes.lexical_elements的重要结论）'
-        - 'B: 正确项（关于runes.lexical_elements的重要结论）'
-        - 'C: 正确项（关于runes.lexical_elements的重要结论）'
-        - 'D: 常见误解或反例（容易混淆）'
-      answer: ABC
-      explanation: 本题考查 lexical_elements.runes 的相关知识。正确答案：ABC。解析：runes 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: runes
-    - id: lexical-runes-012
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 lexical_elements.runes，下面哪个选项是正确的？
-      options:
-        - 'A: 与runes.lexical_elements 相关但不适用的选项'
-        - 'B: 正确：关于runes.lexical_elements的关键点描述（正确选项）'
-        - 'C: 与runes.lexical_elements 相关但不适用的选项'
-        - 'D: 与runes.lexical_elements 相关但不适用的选项'
-      answer: B
-      explanation: 本题考查 lexical_elements.runes 的概念。正确答案为 B。解析：runes 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: runes
-    - id: lexical-runes-013
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 lexical_elements.runes，下面哪个选项是正确的？
-      options:
-        - 'A: 常见误解或反例（容易混淆）'
-        - 'B: 正确项（关于runes.lexical_elements的重要结论）'
-        - 'C: 语法/语义上不正确的陈述'
-        - 'D: 正确项（关于runes.lexical_elements的重要结论）'
-      answer: BD
-      explanation: 本题考查 lexical_elements.runes 的相关知识。正确答案：BD。解析：runes 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: runes
-    - id: lexical-runes-014
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 lexical_elements.runes，下面哪个选项是正确的？
-      options:
-        - 'A: 正确：关于runes.lexical_elements的关键点描述（正确选项）'
-        - 'B: 部分正确但不完整的说法'
-        - 'C: 与runes.lexical_elements 相关但不适用的选项'
-        - 'D: 与runes.lexical_elements 相关但不适用的选项'
-      answer: A
-      explanation: 本题考查 lexical_elements.runes 的概念。正确答案为 A。解析：runes 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: runes
-    - id: lexical-runes-015
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 lexical_elements.runes，下面哪个选项是正确的？
-      options:
-        - 'A: 正确项（关于runes.lexical_elements的重要结论）'
-        - 'B: 与runes.lexical_elements 相关但不适用的选项'
-        - 'C: 正确项（关于runes.lexical_elements的重要结论）'
-        - 'D: 与runes.lexical_elements 相关但不适用的选项'
-      answer: AC
-      explanation: 本题考查 lexical_elements.runes 的相关知识。正确答案：AC。解析：runes 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: runes
-    - id: lexical-runes-016
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 lexical_elements.runes，下面哪个选项是正确的？
-      options:
-        - 'A: 语法/语义上不正确的陈述'
-        - 'B: 正确：关于runes.lexical_elements的关键点描述（正确选项）'
-        - 'C: 常见误解或反例（容易混淆）'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: B
-      explanation: 本题考查 lexical_elements.runes 的概念。正确答案为 B。解析：runes 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: runes
-    - id: lexical-runes-017
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 lexical_elements.runes 的情境下，哪个说法更合适？
-      options:
-        - 'A: 部分正确但不完整的说法'
-        - 'B: 部分正确但不完整的说法'
-        - 'C: 正确项（关于runes.lexical_elements的重要结论）'
-        - 'D: 正确项（关于runes.lexical_elements的重要结论）'
-      answer: CD
-      explanation: 本题考查 lexical_elements.runes 的相关知识。正确答案：CD。解析：runes 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: runes
-    - id: lexical-runes-018
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 lexical_elements.runes 的情境下，哪个说法更合适？
-      options:
-        - 'A: 语法/语义上不正确的陈述'
-        - 'B: 正确：关于runes.lexical_elements的关键点描述（正确选项）'
-        - 'C: 语法/语义上不正确的陈述'
-        - 'D: 部分正确但不完整的说法'
-      answer: B
-      explanation: 本题考查 lexical_elements.runes 的概念。正确答案为 B。解析：runes 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: runes
-    - id: lexical-runes-019
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 lexical_elements.runes 的情境下，哪个说法更合适？
-      options:
-        - 'A: 与runes.lexical_elements 相关但不适用的选项'
-        - 'B: 正确项（关于runes.lexical_elements的重要结论）'
-        - 'C: 常见误解或反例（容易混淆）'
-        - 'D: 正确项（关于runes.lexical_elements的重要结论）'
-      answer: BD
-      explanation: 本题考查 lexical_elements.runes 的相关知识。正确答案：BD。解析：runes 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: runes
-    - id: lexical-runes-020
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 lexical_elements.runes 的情境下，哪个说法更合适？
-      options:
-        - 'A: 部分正确但不完整的说法'
-        - 'B: 正确：关于runes.lexical_elements的关键点描述（正确选项）'
-        - 'C: 部分正确但不完整的说法'
-        - 'D: 与runes.lexical_elements 相关但不适用的选项'
-      answer: B
-      explanation: 本题考查 lexical_elements.runes 的概念。正确答案为 B。解析：runes 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: runes
-    - id: lexical-runes-021
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 lexical_elements.runes 的情境下，哪个说法更合适？
-      options:
-        - 'A: 正确项（关于runes.lexical_elements的重要结论）'
-        - 'B: 正确项（关于runes.lexical_elements的重要结论）'
-        - 'C: 正确项（关于runes.lexical_elements的重要结论）'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: ABC
-      explanation: 本题考查 lexical_elements.runes 的相关知识。正确答案：ABC。解析：runes 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: runes
-    - id: lexical-runes-022
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 lexical_elements.runes 的情境下，哪个说法更合适？
-      options:
-        - 'A: 与runes.lexical_elements 相关但不适用的选项'
-        - 'B: 语法/语义上不正确的陈述'
-        - 'C: 正确：关于runes.lexical_elements的关键点描述（正确选项）'
-        - 'D: 部分正确但不完整的说法'
-      answer: C
-      explanation: 本题考查 lexical_elements.runes 的概念。正确答案为 C。解析：runes 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: runes
-    - id: lexical-runes-023
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 lexical_elements.runes 的情境下，哪个说法更合适？
-      options:
-        - 'A: 正确项（关于runes.lexical_elements的重要结论）'
-        - 'B: 正确项（关于runes.lexical_elements的重要结论）'
-        - 'C: 正确项（关于runes.lexical_elements的重要结论）'
-        - 'D: 与runes.lexical_elements 相关但不适用的选项'
-      answer: ABC
-      explanation: 本题考查 lexical_elements.runes 的相关知识。正确答案：ABC。解析：runes 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: runes
-    - id: lexical-runes-024
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 lexical_elements.runes 的情境下，哪个说法更合适？
-      options:
-        - 'A: 与runes.lexical_elements 相关但不适用的选项'
-        - 'B: 常见误解或反例（容易混淆）'
-        - 'C: 正确：关于runes.lexical_elements的关键点描述（正确选项）'
-        - 'D: 常见误解或反例（容易混淆）'
-      answer: C
-      explanation: 本题考查 lexical_elements.runes 的概念。正确答案为 C。解析：runes 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: runes
-    - id: lexical-runes-025
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 lexical_elements.runes 的情境下，哪个说法更合适？
-      options:
-        - 'A: 常见误解或反例（容易混淆）'
-        - 'B: 正确项（关于runes.lexical_elements的重要结论）'
-        - 'C: 常见误解或反例（容易混淆）'
-        - 'D: 正确项（关于runes.lexical_elements的重要结论）'
-      answer: BD
-      explanation: 本题考查 lexical_elements.runes 的相关知识。正确答案：BD。解析：runes 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: runes
-    - id: lexical-runes-026
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 lexical_elements.runes 的情境下，哪个说法更合适？
-      options:
-        - 'A: 部分正确但不完整的说法'
-        - 'B: 正确：关于runes.lexical_elements的关键点描述（正确选项）'
-        - 'C: 部分正确但不完整的说法'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: B
-      explanation: 本题考查 lexical_elements.runes 的概念。正确答案为 B。解析：runes 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: runes
-    - id: lexical-runes-027
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 lexical_elements.runes 的情境下，哪个说法更合适？
-      options:
-        - 'A: 与runes.lexical_elements 相关但不适用的选项'
-        - 'B: 正确项（关于runes.lexical_elements的重要结论）'
-        - 'C: 正确项（关于runes.lexical_elements的重要结论）'
-        - 'D: 正确项（关于runes.lexical_elements的重要结论）'
-      answer: BCD
-      explanation: 本题考查 lexical_elements.runes 的相关知识。正确答案：BCD。解析：runes 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: runes
-    - id: lexical-runes-028
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 lexical_elements.runes 的情境下，哪个说法更合适？
-      options:
-        - 'A: 常见误解或反例（容易混淆）'
-        - 'B: 正确：关于runes.lexical_elements的关键点描述（正确选项）'
-        - 'C: 与runes.lexical_elements 相关但不适用的选项'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: B
-      explanation: 本题考查 lexical_elements.runes 的概念。正确答案为 B。解析：runes 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: runes
-    - id: lexical-runes-029
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 lexical_elements.runes 的情境下，哪个说法更合适？
-      options:
-        - 'A: 正确项（关于runes.lexical_elements的重要结论）'
-        - 'B: 正确项（关于runes.lexical_elements的重要结论）'
-        - 'C: 正确项（关于runes.lexical_elements的重要结论）'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: ABC
-      explanation: 本题考查 lexical_elements.runes 的相关知识。正确答案：ABC。解析：runes 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: runes
-    - id: lexical-runes-030
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 lexical_elements.runes 的情境下，哪个说法更合适？
-      options:
-        - 'A: 语法/语义上不正确的陈述'
-        - 'B: 语法/语义上不正确的陈述'
-        - 'C: 正确：关于runes.lexical_elements的关键点描述（正确选项）'
-        - 'D: 常见误解或反例（容易混淆）'
-      answer: C
-      explanation: 本题考查 lexical_elements.runes 的概念。正确答案为 C。解析：runes 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: runes
-    - id: lexical-runes-031
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 lexical_elements.runes 的情境下，哪个说法更合适？
-      options:
-        - 'A: 正确项（关于runes.lexical_elements的重要结论）'
-        - 'B: 常见误解或反例（容易混淆）'
-        - 'C: 语法/语义上不正确的陈述'
-        - 'D: 正确项（关于runes.lexical_elements的重要结论）'
-      answer: AD
-      explanation: 本题考查 lexical_elements.runes 的相关知识。正确答案：AD。解析：runes 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: runes
-    - id: lexical-runes-032
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 lexical_elements.runes 的情境下，哪个说法更合适？
-      options:
-        - 'A: 部分正确但不完整的说法'
-        - 'B: 与runes.lexical_elements 相关但不适用的选项'
-        - 'C: 正确：关于runes.lexical_elements的关键点描述（正确选项）'
-        - 'D: 常见误解或反例（容易混淆）'
-      answer: C
-      explanation: 本题考查 lexical_elements.runes 的概念。正确答案为 C。解析：runes 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: runes
-    - id: lexical-runes-033
-      type: multiple
-      difficulty: hard
-      stem: 【思考题】针对 lexical_elements.runes，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 部分正确但不完整的说法'
-        - 'B: 正确项（关于runes.lexical_elements的重要结论）'
-        - 'C: 正确项（关于runes.lexical_elements的重要结论）'
-        - 'D: 正确项（关于runes.lexical_elements的重要结论）'
-      answer: BCD
-      explanation: 本题考查 lexical_elements.runes 的相关知识。正确答案：BCD。解析：runes 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: runes
-    - id: lexical-runes-034
-      type: single
-      difficulty: hard
-      stem: 【思考题】针对 lexical_elements.runes，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 语法/语义上不正确的陈述'
-        - 'B: 部分正确但不完整的说法'
-        - 'C: 正确：关于runes.lexical_elements的关键点描述（正确选项）'
-        - 'D: 常见误解或反例（容易混淆）'
-      answer: C
-      explanation: 本题考查 lexical_elements.runes 的概念。正确答案为 C。解析：runes 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: runes
-    - id: lexical-runes-035
-      type: multiple
-      difficulty: hard
-      stem: 【思考题】针对 lexical_elements.runes，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 正确项（关于runes.lexical_elements的重要结论）'
-        - 'B: 部分正确但不完整的说法'
-        - 'C: 正确项（关于runes.lexical_elements的重要结论）'
-        - 'D: 常见误解或反例（容易混淆）'
-      answer: AC
-      explanation: 本题考查 lexical_elements.runes 的相关知识。正确答案：AC。解析：runes 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: runes
-    - id: lexical-runes-036
-      type: single
-      difficulty: hard
-      stem: 【思考题】针对 lexical_elements.runes，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 部分正确但不完整的说法'
-        - 'B: 语法/语义上不正确的陈述'
-        - 'C: 部分正确但不完整的说法'
-        - 'D: 正确：关于runes.lexical_elements的关键点描述（正确选项）'
-      answer: D
-      explanation: 本题考查 lexical_elements.runes 的概念。正确答案为 D。解析：runes 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: runes
-    - id: lexical-runes-037
-      type: multiple
-      difficulty: hard
-      stem: 【思考题】针对 lexical_elements.runes，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 正确项（关于runes.lexical_elements的重要结论）'
-        - 'B: 常见误解或反例（容易混淆）'
-        - 'C: 与runes.lexical_elements 相关但不适用的选项'
-        - 'D: 正确项（关于runes.lexical_elements的重要结论）'
-      answer: AD
-      explanation: 本题考查 lexical_elements.runes 的相关知识。正确答案：AD。解析：runes 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: runes
-    - id: lexical-runes-038
-      type: single
-      difficulty: hard
-      stem: 【思考题】针对 lexical_elements.runes，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 语法/语义上不正确的陈述'
-        - 'B: 部分正确但不完整的说法'
-        - 'C: 正确：关于runes.lexical_elements的关键点描述（正确选项）'
-        - 'D: 常见误解或反例（容易混淆）'
-      answer: C
-      explanation: 本题考查 lexical_elements.runes 的概念。正确答案为 C。解析：runes 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: runes
-    - id: lexical-runes-039
-      type: multiple
-      difficulty: hard
-      stem: 【思考题】针对 lexical_elements.runes，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 正确项（关于runes.lexical_elements的重要结论）'
-        - 'B: 正确项（关于runes.lexical_elements的重要结论）'
-        - 'C: 部分正确但不完整的说法'
-        - 'D: 正确项（关于runes.lexical_elements的重要结论）'
-      answer: ABD
-      explanation: 本题考查 lexical_elements.runes 的相关知识。正确答案：ABD。解析：runes 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: runes
-    - id: lexical-runes-040
-      type: single
-      difficulty: hard
-      stem: 【思考题】针对 lexical_elements.runes，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 与runes.lexical_elements 相关但不适用的选项'
-        - 'B: 语法/语义上不正确的陈述'
-        - 'C: 正确：关于runes.lexical_elements的关键点描述（正确选项）'
-        - 'D: 常见误解或反例（容易混淆）'
-      answer: C
-      explanation: 本题考查 lexical_elements.runes 的概念。正确答案为 C。解析：runes 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: runes
+  # ========== 简单题 (Easy) - 24道 ==========
+  
+  - id: lexical-runes-001
+    type: single
+    difficulty: easy
+    stem: "Go语言中,rune是什么类型的别名?"
+    options:
+      - "A: int"
+      - "B: int32"
+      - "C: uint32"
+      - "D: byte"
+    answer: B
+    explanation: "rune是int32的别名,用于表示Unicode码点。byte是uint8的别名。参见 Go 规范 Numeric types 章节。"
+    topic: lexical_elements
+    chapter: runes
+
+  - id: lexical-runes-002
+    type: single
+    difficulty: easy
+    stem: "Go的字符字面量使用什么符号包围?"
+    options:
+      - "A: 双引号 \"\""
+      - "B: 单引号 ''"
+      - "C: 反引号 ``"
+      - "D: 都可以"
+    answer: B
+    explanation: "Go使用单引号包围字符(rune)字面量,如'a'。双引号用于字符串,反引号用于原始字符串。参见 Go 规范 Rune literals 章节。"
+    topic: lexical_elements
+    chapter: runes
+
+  - id: lexical-runes-003
+    type: single
+    difficulty: easy
+    stem: "'A'的类型是什么?"
+    options:
+      - "A: char"
+      - "B: byte"
+      - "C: rune"
+      - "D: string"
+    answer: C
+    explanation: "Go中单引号字符字面量的类型是rune(int32别名)。Go没有char类型。参见 Go 规范 Rune literals 章节。"
+    topic: lexical_elements
+    chapter: runes
+
+  - id: lexical-runes-004
+    type: single
+    difficulty: easy
+    stem: "rune类型可以存储的最大值是?"
+    options:
+      - "A: 127"
+      - "B: 255"
+      - "C: 65535"
+      - "D: 2147483647"
+    answer: D
+    explanation: "rune是int32别名,最大值是2^31-1=2147483647。但有效Unicode码点最大是0x10FFFF。参见 Go 规范 Numeric types 章节。"
+    topic: lexical_elements
+    chapter: runes
+
+  - id: lexical-runes-005
+    type: single
+    difficulty: easy
+    stem: "表达式'\\n'表示什么?"
+    options:
+      - "A: 两个字符\\和n"
+      - "B: 换行符"
+      - "C: 字符串"
+      - "D: 空字符"
+    answer: B
+    explanation: "'\\n'是转义序列,表示换行符(newline)。这是单个rune值。参见 Go 规范 Rune literals 章节。"
+    topic: lexical_elements
+    chapter: runes
+
+  - id: lexical-runes-006
+    type: multiple
+    difficulty: easy
+    stem: "以下哪些是有效的转义序列?(多选)"
+    options:
+      - "A: \\n"
+      - "B: \\t"
+      - "C: \\r"
+      - "D: \\0"
+    answer: ABC
+    explanation: "\\n换行、\\t制表符、\\r回车是有效转义。Go不支持\\0,要用\\x00或\\000(八进制)。参见 Go 规范 Rune literals 章节。"
+    topic: lexical_elements
+    chapter: runes
+
+  - id: lexical-runes-007
+    type: single
+    difficulty: easy
+    stem: "如何表示Unicode码点U+0041(字母A)?"
+    options:
+      - "A: '\\u0041'"
+      - "B: '\\U00000041'"
+      - "C: 'A'"
+      - "D: 以上都可以"
+    answer: D
+    explanation: "可以直接写'A',或用\\u0041(4位十六进制),或\\U00000041(8位十六进制)。参见 Go 规范 Rune literals 章节。"
+    topic: lexical_elements
+    chapter: runes
+
+  - id: lexical-runes-008
+    type: single
+    difficulty: easy
+    stem: "'\\x41'表示什么字符?"
+    options:
+      - "A: 数字41"
+      - "B: 字母A"
+      - "C: 字母x"
+      - "D: 编译错误"
+    answer: B
+    explanation: "'\\x41'是十六进制转义,0x41=65,对应ASCII字母'A'。参见 Go 规范 Rune literals 章节。"
+    topic: lexical_elements
+    chapter: runes
+
+  - id: lexical-runes-009
+    type: single
+    difficulty: easy
+    stem: "表达式len(\"中\")的结果是?"
+    options:
+      - "A: 1"
+      - "B: 2"
+      - "C: 3"
+      - "D: 4"
+    answer: C
+    explanation: "len返回字节数。中文字符'中'的UTF-8编码是3个字节(0xE4 0xB8 0xAD)。参见 Go 规范 Length and capacity 章节。"
+    topic: lexical_elements
+    chapter: runes
+
+  - id: lexical-runes-010
+    type: single
+    difficulty: easy
+    stem: "表达式len([]rune(\"中\"))的结果是?"
+    options:
+      - "A: 1"
+      - "B: 2"
+      - "C: 3"
+      - "D: 4"
+    answer: A
+    explanation: "[]rune转换将字符串按Unicode码点拆分。\"中\"只有一个字符,长度是1。参见 Go 规范 Conversions 章节。"
+    topic: lexical_elements
+    chapter: runes
+
+  - id: lexical-runes-011
+    type: single
+    difficulty: easy
+    stem: "八进制转义\\101表示什么字符?"
+    options:
+      - "A: 数字101"
+      - "B: 字母A"
+      - "C: 字母e"
+      - "D: 编译错误"
+    answer: B
+    explanation: "\\101是八进制转义。八进制101 = 64+1 = 65(十进制),对应ASCII字母'A'。参见 Go 规范 Rune literals 章节。"
+    topic: lexical_elements
+    chapter: runes
+
+  - id: lexical-runes-012
+    type: single
+    difficulty: easy
+    stem: "表达式'中'的数值是什么?"
+    options:
+      - "A: 20013"
+      - "B: 0x4E2D"
+      - "C: A和B都对"
+      - "D: 无法确定"
+    answer: C
+    explanation: "'中'的Unicode码点是U+4E2D,十进制20013,十六进制0x4E2D。A和B是同一个值的不同表示。参见Unicode编码表。"
+    topic: lexical_elements
+    chapter: runes
+
+  - id: lexical-runes-013
+    type: multiple
+    difficulty: easy
+    stem: "关于rune和byte的区别,以下说法正确的是?(多选)"
+    options:
+      - "A: rune是int32,byte是uint8"
+      - "B: rune表示Unicode码点"
+      - "C: byte表示单个字节"
+      - "D: 两者都可以用单引号字面量"
+    answer: ABCD
+    explanation: "rune(int32)表示Unicode码点,byte(uint8)表示字节。单引号字面量根据上下文可以赋给两者。参见 Go 规范 Numeric types 章节。"
+    topic: lexical_elements
+    chapter: runes
+
+  - id: lexical-runes-014
+    type: single
+    difficulty: easy
+    stem: "转义序列\\\\表示什么?"
+    options:
+      - "A: 两个反斜杠"
+      - "B: 一个反斜杠"
+      - "C: 换行符"
+      - "D: 空字符"
+    answer: B
+    explanation: "\\\\是反斜杠的转义,表示单个反斜杠字符'\\'。参见 Go 规范 Rune literals 章节。"
+    topic: lexical_elements
+    chapter: runes
+
+  - id: lexical-runes-015
+    type: single
+    difficulty: easy
+    stem: "转义序列\\'表示什么?"
+    options:
+      - "A: 两个字符\\和'"
+      - "B: 单引号字符"
+      - "C: 字符串定界符"
+      - "D: 编译错误"
+    answer: B
+    explanation: "\\'是单引号的转义,表示单引号字符'本身。在字符字面量中必须转义。参见 Go 规范 Rune literals 章节。"
+    topic: lexical_elements
+    chapter: runes
+
+  - id: lexical-runes-016
+    type: single
+    difficulty: easy
+    stem: "表达式string('A')的结果是?"
+    options:
+      - "A: \"65\""
+      - "B: \"A\""
+      - "C: \"'A'\""
+      - "D: 编译错误"
+    answer: B
+    explanation: "string(rune)将rune转换为包含该字符的字符串。string('A')=\"A\"。参见 Go 规范 Conversions 章节。"
+    topic: lexical_elements
+    chapter: runes
+
+  - id: lexical-runes-017
+    type: single
+    difficulty: easy
+    stem: "for range遍历字符串时,每次迭代得到什么类型?"
+    options:
+      - "A: byte"
+      - "B: rune"
+      - "C: string"
+      - "D: int"
+    answer: B
+    explanation: "for i, r := range str中,r是rune类型(Unicode码点)。这与str[i]返回byte不同。参见 Go 规范 For statements 章节。"
+    topic: lexical_elements
+    chapter: runes
+
+  - id: lexical-runes-018
+    type: single
+    difficulty: easy
+    stem: "'\\a'表示什么?"
+    options:
+      - "A: 字母a"
+      - "B: 响铃符(BEL)"
+      - "C: 转义错误"
+      - "D: 空字符"
+    answer: B
+    explanation: "'\\a'是响铃符(alert/bell,ASCII 7)。这是传统终端的响铃控制字符。参见 Go 规范 Rune literals 章节。"
+    topic: lexical_elements
+    chapter: runes
+
+  - id: lexical-runes-019
+    type: single
+    difficulty: easy
+    stem: "'\\b'表示什么?"
+    options:
+      - "A: 字母b"
+      - "B: 退格符"
+      - "C: 空格"
+      - "D: 换行符"
+    answer: B
+    explanation: "'\\b'是退格符(backspace,ASCII 8)。注意与正则表达式中\\b(单词边界)不同。参见 Go 规范 Rune literals 章节。"
+    topic: lexical_elements
+    chapter: runes
+
+  - id: lexical-runes-020
+    type: single
+    difficulty: easy
+    stem: "'\\f'表示什么?"
+    options:
+      - "A: 字母f"
+      - "B: 换页符"
+      - "C: 换行符"
+      - "D: 制表符"
+    answer: B
+    explanation: "'\\f'是换页符(form feed,ASCII 12)。这是传统打印机的控制字符。参见 Go 规范 Rune literals 章节。"
+    topic: lexical_elements
+    chapter: runes
+
+  - id: lexical-runes-021
+    type: single
+    difficulty: easy
+    stem: "'\\v'表示什么?"
+    options:
+      - "A: 字母v"
+      - "B: 垂直制表符"
+      - "C: 换行符"
+      - "D: 空格"
+    answer: B
+    explanation: "'\\v'是垂直制表符(vertical tab,ASCII 11)。与\\t(水平制表符)相对。参见 Go 规范 Rune literals 章节。"
+    topic: lexical_elements
+    chapter: runes
+
+  - id: lexical-runes-022
+    type: single
+    difficulty: easy
+    stem: "有效的Unicode码点范围是?"
+    options:
+      - "A: 0x0000 - 0xFFFF"
+      - "B: 0x0000 - 0x10FFFF"
+      - "C: 0x0000 - 0x7FFFFFFF"
+      - "D: 任意int32值"
+    answer: B
+    explanation: "Unicode码点范围是U+0000到U+10FFFF。虽然rune是int32,但有效码点只到0x10FFFF。参见Unicode标准。"
+    topic: lexical_elements
+    chapter: runes
+
+  - id: lexical-runes-023
+    type: multiple
+    difficulty: easy
+    stem: "以下哪些是Go支持的rune转义格式?(多选)"
+    options:
+      - "A: \\xNN (2位十六进制)"
+      - "B: \\uNNNN (4位十六进制)"
+      - "C: \\UNNNNNNNN (8位十六进制)"
+      - "D: \\NNN (3位八进制)"
+    answer: ABCD
+    explanation: "Go支持\\xNN(字节值)、\\uNNNN(BMP码点)、\\UNNNNNNNN(任意码点)、\\NNN(八进制)。参见 Go 规范 Rune literals 章节。"
+    topic: lexical_elements
+    chapter: runes
+
+  - id: lexical-runes-024
+    type: single
+    difficulty: easy
+    stem: "以下哪个不是有效的rune字面量?"
+    options:
+      - "A: 'a'"
+      - "B: '\\n'"
+      - "C: 'ab'"
+      - "D: '\\u0041'"
+    answer: C
+    explanation: "rune字面量只能包含单个字符。'ab'包含两个字符,是无效的rune字面量。参见 Go 规范 Rune literals 章节。"
+    topic: lexical_elements
+    chapter: runes
+
+  # ========== 中等题 (Medium) - 12道 ==========
+
+  - id: lexical-runes-025
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          r := '中'
+          fmt.Printf("%T %d %c\n", r, r, r)
+      }
+    options:
+      - "A: int32 20013 中"
+      - "B: rune 20013 中"
+      - "C: int32 3 中"
+      - "D: byte 228 中"
+    answer: A
+    explanation: "%T显示实际类型int32(rune是别名),%d显示码点值20013,%c显示字符'中'。参见 Go 规范 Rune literals 章节。"
+    topic: lexical_elements
+    chapter: runes
+
+  - id: lexical-runes-026
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          s := "Go语言"
+          fmt.Println(len(s), len([]rune(s)))
+      }
+    options:
+      - "A: 4 4"
+      - "B: 8 4"
+      - "C: 4 2"
+      - "D: 8 2"
+    answer: B
+    explanation: "\"Go语言\"含2个ASCII(各1字节)+2个中文(各3字节)=8字节。转为[]rune有4个码点。参见 Go 规范 Length and capacity 章节。"
+    topic: lexical_elements
+    chapter: runes
+
+  - id: lexical-runes-027
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          s := "Hello"
+          for i, r := range s {
+              if i == 2 {
+                  fmt.Printf("%c", r)
+              }
+          }
+      }
+    options:
+      - "A: H"
+      - "B: e"
+      - "C: l"
+      - "D: o"
+    answer: C
+    explanation: "range遍历字符串按Unicode码点。索引2对应'l'(H=0,e=1,l=2)。参见 Go 规范 For statements 章节。"
+    topic: lexical_elements
+    chapter: runes
+
+  - id: lexical-runes-028
+    type: code_fix
+    difficulty: medium
+    stem: "以下代码无法编译,正确的修正方案是?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          r := '\\u4e2d'
+          fmt.Println(r)
+      }
+    options:
+      - "A: 去掉一个反斜杠,改为'\\u4e2d'"
+      - "B: 改为\"\\u4e2d\""
+      - "C: 字面量应该是'中'"
+      - "D: 代码正确,无需修改"
+    answer: D
+    explanation: "实际上'\\u4e2d'是正确的Unicode转义语法,会编译成功输出20013('中'的码点)。此题考查转义语法。参见 Go 规范 Rune literals 章节。"
+    topic: lexical_elements
+    chapter: runes
+
+  - id: lexical-runes-029
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          var r rune = 0x10000
+          fmt.Println(len(string(r)))
+      }
+    options:
+      - "A: 1"
+      - "B: 2"
+      - "C: 3"
+      - "D: 4"
+    answer: D
+    explanation: "码点0x10000超出BMP范围(>0xFFFF),UTF-8编码需要4个字节。string(r)长度是4。参见UTF-8编码规则。"
+    topic: lexical_elements
+    chapter: runes
+
+  - id: lexical-runes-030
+    type: multiple
+    difficulty: medium
+    stem: "关于代理对(surrogate pairs),以下说法正确的是?(多选)"
+    options:
+      - "A: 范围是U+D800到U+DFFF"
+      - "B: Go不允许代理对作为有效rune"
+      - "C: UTF-16使用代理对表示BMP外字符"
+      - "D: UTF-8不需要代理对"
+    answer: ABCD
+    explanation: "代理对(U+D800-U+DFFF)是UTF-16专用,Go的\\u不允许此范围。UTF-8直接编码所有码点。参见 Go 规范 Rune literals 章节。"
+    topic: lexical_elements
+    chapter: runes
+
+  - id: lexical-runes-031
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          s := "a中b"
+          for i := 0; i < len(s); i++ {
+              fmt.Printf("%d ", s[i])
+          }
+      }
+    options:
+      - "A: 97 20013 98"
+      - "B: 97 228 184 173 98"
+      - "C: 97 中 98"
+      - "D: a 中 b"
+    answer: B
+    explanation: "s[i]返回字节。'a'=97,'中'的UTF-8是[228,184,173],'b'=98,共5个字节值。参见UTF-8编码。"
+    topic: lexical_elements
+    chapter: runes
+
+  - id: lexical-runes-032
+    type: code_fix
+    difficulty: medium
+    stem: "以下代码统计字符数有误,正确的修正方案是?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          s := "Hello世界"
+          count := len(s)
+          fmt.Println("字符数:", count)
+      }
+    options:
+      - "A: count := len([]rune(s))"
+      - "B: count := utf8.RuneCountInString(s)"
+      - "C: A和B都可以"
+      - "D: 原代码正确"
+    answer: C
+    explanation: "len(s)返回字节数(11),不是字符数(7)。用[]rune转换或unicode/utf8包的函数获取正确字符数。参见 Go 规范 Conversions 章节。"
+    topic: lexical_elements
+    chapter: runes
+
+  - id: lexical-runes-033
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          r := '😀'
+          fmt.Printf("%x\n", r)
+      }
+    options:
+      - "A: d83d de00"
+      - "B: 1f600"
+      - "C: f09f9880"
+      - "D: 编译错误"
+    answer: B
+    explanation: "😀的Unicode码点是U+1F600,十六进制1f600。%x输出十六进制数值。参见Unicode码点表。"
+    topic: lexical_elements
+    chapter: runes
+
+  - id: lexical-runes-034
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          r := '\x80'
+          fmt.Println(r)
+      }
+    options:
+      - "A: 128"
+      - "B: -128"
+      - "C: 编译错误"
+      - "D: 0"
+    answer: A
+    explanation: "\\x80表示字节值128。作为rune,它是正整数128(rune是int32)。参见 Go 规范 Rune literals 章节。"
+    topic: lexical_elements
+    chapter: runes
+
+  - id: lexical-runes-035
+    type: multiple
+    difficulty: medium
+    stem: "关于无效UTF-8序列的处理,以下说法正确的是?(多选)"
+    options:
+      - "A: for range会用U+FFFD替代"
+      - "B: string转换会保留原字节"
+      - "C: []rune转换会产生U+FFFD"
+      - "D: Go不允许无效UTF-8"
+    answer: ABC
+    explanation: "Go允许字符串包含任意字节。range和[]rune会把无效序列转为U+FFFD(替换字符)。参见 Go 规范 For statements 章节。"
+    topic: lexical_elements
+    chapter: runes
+
+  - id: lexical-runes-036
+    type: code_fix
+    difficulty: medium
+    stem: "以下代码有错误,正确的修正方案是?"
+    code: |
+      package main
+      func main() {
+          r := '\uD800'
+          println(r)
+      }
+    options:
+      - "A: 改为'\\U0000D800'"
+      - "B: 改为0xD800直接赋值"
+      - "C: 不能使用代理对范围的码点"
+      - "D: 代码正确,可以编译"
+    answer: C
+    explanation: "U+D800是代理对范围(U+D800-U+DFFF),Go的\\u和\\U转义不允许此范围。会编译错误。参见 Go 规范 Rune literals 章节。"
+    topic: lexical_elements
+    chapter: runes
+
+  # ========== 困难题 (Hard) - 4道 ==========
+
+  - id: lexical-runes-037
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          s := "a\xc0b"
+          count := 0
+          for range s {
+              count++
+          }
+          fmt.Println(count)
+      }
+    options:
+      - "A: 3"
+      - "B: 4"
+      - "C: 2"
+      - "D: 编译错误"
+    answer: A
+    explanation: "'a'(1个)、\\xc0(无效UTF-8,算1个U+FFFD)、'b'(1个)共3个码点。range把无效字节转为单个替换字符。参见UTF-8解码规则。"
+    topic: lexical_elements
+    chapter: runes
+
+  - id: lexical-runes-038
+    type: multiple
+    difficulty: hard
+    stem: "关于Go的rune与其他语言字符类型的比较,以下说法正确的是?(多选)"
+    options:
+      - "A: Java的char是UTF-16编码单元,不是完整码点"
+      - "B: Go的rune可以表示任何Unicode码点"
+      - "C: C的char通常只有8位"
+      - "D: Python3的字符也是完整码点"
+    answer: ABCD
+    explanation: "Java char是16位(无法存BMP外字符),C char通常8位,Go rune和Python3字符都是完整Unicode码点。参见各语言规范。"
+    topic: lexical_elements
+    chapter: runes
+
+  - id: lexical-runes-039
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import (
+          "fmt"
+          "unicode/utf8"
+      )
+      func main() {
+          s := "é"  // e + combining acute
+          fmt.Println(len(s), utf8.RuneCountInString(s))
+      }
+    options:
+      - "A: 2 1"
+      - "B: 2 2"
+      - "C: 3 2"
+      - "D: 取决于源文件编码"
+    answer: C
+    explanation: "如果é是e(1字节)+组合重音符(2字节),共3字节2个码点。单个é字符(U+00E9)则是2字节1码点。题目标注是组合形式。"
+    topic: lexical_elements
+    chapter: runes
+
+  - id: lexical-runes-040
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          const r = '中' + 1
+          fmt.Printf("%c %d\n", r, r)
+      }
+    options:
+      - "A: 丮 20014"
+      - "B: 中1 200131"
+      - "C: 编译错误"
+      - "D: 丯 20014"
+    answer: A
+    explanation: "'中'的码点是20013,加1得20014(U+4E2E='丮')。rune常量可以做算术运算。参见 Go 规范 Constants 章节。"
+    topic: lexical_elements
+    chapter: runes

@@ -119,11 +119,15 @@ func validateFile(path string) (bool, string) {
 				ids[q.ID] = idx
 			}
 		}
-		if q.Type != "single" && q.Type != "multiple" {
+		// 支持四种题型: single, multiple, code_output, code_fix
+		validTypes := map[string]bool{"single": true, "multiple": true, "code_output": true, "code_fix": true}
+		if !validTypes[q.Type] {
 			errorsList = append(errorsList, fmt.Sprintf("#%d: 无效题型: %s", idx, q.Type))
-		} else if q.Type == "single" {
+		}
+		// 统计单选/多选(包括code_output/code_fix作为单选)
+		if q.Type == "single" || q.Type == "code_output" || q.Type == "code_fix" {
 			single++
-		} else {
+		} else if q.Type == "multiple" {
 			multi++
 		}
 		if q.Difficulty == "easy" {
@@ -152,8 +156,8 @@ func validateFile(path string) (bool, string) {
 			labels[label] = true
 			optionLabels[label] = struct{}{}
 		}
-		// answer format
-		if q.Type == "single" {
+		// answer format - single, code_output, code_fix 都是单选
+		if q.Type == "single" || q.Type == "code_output" || q.Type == "code_fix" {
 			if len(q.Answer) != 1 {
 				errorsList = append(errorsList, fmt.Sprintf("#%d: 单选题答案应为单个字母: %s", idx, q.Answer))
 			} else {

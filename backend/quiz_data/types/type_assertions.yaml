@@ -1,0 +1,778 @@
+# Go 类型断言测验题库
+# 章节: types/type_assertions
+# 符合 Go 1.24 语言规范
+
+metadata:
+  topic: types
+  chapter: type_assertions
+  total_questions: 40
+  last_updated: "2025-01-01"
+  difficulty_distribution:
+    easy: 22      # 55%
+    medium: 13    # 33%
+    hard: 5       # 12%
+  type_distribution:
+    single: 18
+    multiple: 10
+    code_output: 9
+    code_fix: 3
+
+questions:
+  # ========== 简单题 (Easy) - 22道 ==========
+  
+  - id: type-assert-001
+    type: single
+    difficulty: easy
+    stem: "Go中类型断言的语法是什么?"
+    options:
+      - "A: x.(T)"
+      - "B: x as T"
+      - "C: (T)x"
+      - "D: T(x)"
+    answer: A
+    explanation: "类型断言使用x.(T)语法,x必须是接口类型。参见 Go 规范 Type assertions 章节。"
+    topic: types
+    chapter: type_assertions
+
+  - id: type-assert-002
+    type: single
+    difficulty: easy
+    stem: "类型断言用于什么类型的变量?"
+    options:
+      - "A: 任何类型"
+      - "B: 接口类型"
+      - "C: 结构体类型"
+      - "D: 指针类型"
+    answer: B
+    explanation: "类型断言只能用于接口类型变量。用于获取具体类型值。参见 Go 规范 Type assertions 章节。"
+    topic: types
+    chapter: type_assertions
+
+  - id: type-assert-003
+    type: single
+    difficulty: easy
+    stem: "类型断言失败时会发生什么?"
+    options:
+      - "A: 返回nil"
+      - "B: panic"
+      - "C: 返回零值"
+      - "D: 编译错误"
+    answer: B
+    explanation: "单值类型断言失败会panic。可以用双值形式避免。参见 Go 规范 Type assertions 章节。"
+    topic: types
+    chapter: type_assertions
+
+  - id: type-assert-004
+    type: single
+    difficulty: easy
+    stem: "v, ok := x.(T)中ok表示什么?"
+    options:
+      - "A: 是否为nil"
+      - "B: 断言是否成功"
+      - "C: 是否可转换"
+      - "D: 是否是指针"
+    answer: B
+    explanation: "ok表示断言是否成功。成功为true,失败为false(不panic)。参见 Go 规范 Type assertions 章节。"
+    topic: types
+    chapter: type_assertions
+
+  - id: type-assert-005
+    type: single
+    difficulty: easy
+    stem: "双值形式断言失败时v的值是什么?"
+    options:
+      - "A: nil"
+      - "B: T的零值"
+      - "C: 原值"
+      - "D: 未定义"
+    answer: B
+    explanation: "断言失败时,v是T类型的零值,ok为false。参见 Go 规范 Type assertions 章节。"
+    topic: types
+    chapter: type_assertions
+
+  - id: type-assert-006
+    type: single
+    difficulty: easy
+    stem: "type switch的语法是什么?"
+    options:
+      - "A: switch x.(type)"
+      - "B: switch type(x)"
+      - "C: switch x.(T)"
+      - "D: typeswitch x"
+    answer: A
+    explanation: "type switch使用switch x.(type)语法。参见 Go 规范 Type switches 章节。"
+    topic: types
+    chapter: type_assertions
+
+  - id: type-assert-007
+    type: single
+    difficulty: easy
+    stem: "type switch中v := x.(type),v的类型是什么?"
+    options:
+      - "A: 固定为interface{}"
+      - "B: 在每个case中不同"
+      - "C: x的类型"
+      - "D: any"
+    answer: B
+    explanation: "v在每个case中是该case的类型。如case int: v是int。参见 Go 规范 Type switches 章节。"
+    topic: types
+    chapter: type_assertions
+
+  - id: type-assert-008
+    type: single
+    difficulty: easy
+    stem: "可以对非接口类型使用类型断言吗?"
+    options:
+      - "A: 可以"
+      - "B: 不可以"
+      - "C: 只有结构体"
+      - "D: 需要先转接口"
+    answer: B
+    explanation: "类型断言只能用于接口类型。非接口类型编译错误。参见 Go 规范 Type assertions 章节。"
+    topic: types
+    chapter: type_assertions
+
+  - id: type-assert-009
+    type: single
+    difficulty: easy
+    stem: "断言为接口类型时检查什么?"
+    options:
+      - "A: 底层类型"
+      - "B: 是否实现该接口"
+      - "C: 类型名"
+      - "D: 内存布局"
+    answer: B
+    explanation: "断言为接口类型时,检查动态类型是否实现目标接口。参见 Go 规范 Type assertions 章节。"
+    topic: types
+    chapter: type_assertions
+
+  - id: type-assert-010
+    type: single
+    difficulty: easy
+    stem: "x.(interface{})断言总是成功吗?"
+    options:
+      - "A: 是"
+      - "B: 否"
+      - "C: 取决于x"
+      - "D: 编译错误"
+    answer: A
+    explanation: "任何类型都实现空接口。x.(interface{})总是成功。参见 Go 规范 Type assertions 章节。"
+    topic: types
+    chapter: type_assertions
+
+  - id: type-assert-011
+    type: single
+    difficulty: easy
+    stem: "type switch的default分支中v的类型是什么?"
+    options:
+      - "A: interface{}"
+      - "B: x的静态类型"
+      - "C: any"
+      - "D: 未定义"
+    answer: B
+    explanation: "default分支中v的类型是x的静态类型(通常是接口)。参见 Go 规范 Type switches 章节。"
+    topic: types
+    chapter: type_assertions
+
+  - id: type-assert-012
+    type: single
+    difficulty: easy
+    stem: "type switch中可以有多个类型在一个case吗?"
+    options:
+      - "A: 不可以"
+      - "B: 可以,用逗号分隔"
+      - "C: 可以,用|分隔"
+      - "D: 需要特殊语法"
+    answer: B
+    explanation: "case可以列出多个类型,用逗号分隔。如case int, int64:。参见 Go 规范 Type switches 章节。"
+    topic: types
+    chapter: type_assertions
+
+  - id: type-assert-013
+    type: single
+    difficulty: easy
+    stem: "多类型case中v的类型是什么?"
+    options:
+      - "A: 第一个类型"
+      - "B: 最后一个类型"
+      - "C: x的静态类型"
+      - "D: 公共类型"
+    answer: C
+    explanation: "多类型case中无法确定具体类型,v是x的静态类型(接口)。参见 Go 规范 Type switches 章节。"
+    topic: types
+    chapter: type_assertions
+
+  - id: type-assert-014
+    type: single
+    difficulty: easy
+    stem: "类型断言和类型转换的区别是什么?"
+    options:
+      - "A: 没有区别"
+      - "B: 断言用于接口,转换用于兼容类型"
+      - "C: 断言更快"
+      - "D: 转换更安全"
+    answer: B
+    explanation: "断言从接口获取具体类型。转换在兼容类型间进行。参见 Go 规范 Type assertions/Conversions 章节。"
+    topic: types
+    chapter: type_assertions
+
+  - id: type-assert-015
+    type: multiple
+    difficulty: easy
+    stem: "关于类型断言,以下说法正确的是?(多选)"
+    options:
+      - "A: 只用于接口"
+      - "B: 可以断言为接口"
+      - "C: 失败可能panic"
+      - "D: 运行时检查"
+    answer: ABCD
+    explanation: "断言用于接口,可断言为接口或具体类型,失败可能panic,是运行时检查。参见 Go 规范 Type assertions 章节。"
+    topic: types
+    chapter: type_assertions
+
+  - id: type-assert-016
+    type: single
+    difficulty: easy
+    stem: "nil接口值断言会怎样?"
+    options:
+      - "A: 返回nil"
+      - "B: panic"
+      - "C: 返回零值"
+      - "D: 编译错误"
+    answer: B
+    explanation: "nil接口没有动态类型,任何断言都失败。单值形式panic。参见 Go 规范 Type assertions 章节。"
+    topic: types
+    chapter: type_assertions
+
+  - id: type-assert-017
+    type: single
+    difficulty: easy
+    stem: "type switch可以有fallthrough吗?"
+    options:
+      - "A: 可以"
+      - "B: 不可以"
+      - "C: 只在default"
+      - "D: 需要显式声明"
+    answer: B
+    explanation: "type switch中不允许fallthrough。每个case独立。参见 Go 规范 Type switches 章节。"
+    topic: types
+    chapter: type_assertions
+
+  - id: type-assert-018
+    type: single
+    difficulty: easy
+    stem: "类型断言是编译时还是运行时检查?"
+    options:
+      - "A: 编译时"
+      - "B: 运行时"
+      - "C: 两者都有"
+      - "D: 取决于类型"
+    answer: C
+    explanation: "编译时检查语法和可能性。运行时检查实际类型。参见 Go 规范 Type assertions 章节。"
+    topic: types
+    chapter: type_assertions
+
+  - id: type-assert-019
+    type: single
+    difficulty: easy
+    stem: "断言为不可能的类型会怎样?"
+    options:
+      - "A: 运行时panic"
+      - "B: 编译错误"
+      - "C: 返回nil"
+      - "D: 忽略"
+    answer: B
+    explanation: "如果编译器能确定断言不可能成功(如不实现接口),编译错误。参见 Go 规范 Type assertions 章节。"
+    topic: types
+    chapter: type_assertions
+
+  - id: type-assert-020
+    type: single
+    difficulty: easy
+    stem: "x.(type)可以在type switch外使用吗?"
+    options:
+      - "A: 可以"
+      - "B: 不可以"
+      - "C: 只在函数内"
+      - "D: 需要赋值"
+    answer: B
+    explanation: "x.(type)只能在type switch语句中使用。参见 Go 规范 Type switches 章节。"
+    topic: types
+    chapter: type_assertions
+
+  - id: type-assert-021
+    type: multiple
+    difficulty: easy
+    stem: "关于type switch,以下说法正确的是?(多选)"
+    options:
+      - "A: 可以多类型case"
+      - "B: 不能fallthrough"
+      - "C: 可以有default"
+      - "D: v类型随case变化"
+    answer: ABCD
+    explanation: "支持多类型case、default,禁止fallthrough,v类型在每个case中不同。参见 Go 规范 Type switches 章节。"
+    topic: types
+    chapter: type_assertions
+
+  - id: type-assert-022
+    type: single
+    difficulty: easy
+    stem: "fmt.Println(x)内部使用类型断言吗?"
+    options:
+      - "A: 不使用"
+      - "B: 使用type switch"
+      - "C: 使用反射"
+      - "D: B和C"
+    answer: D
+    explanation: "fmt包使用type switch处理常见类型,使用反射处理其他类型。参见 Go fmt包源码。"
+    topic: types
+    chapter: type_assertions
+
+  # ========== 中等题 (Medium) - 13道 ==========
+
+  - id: type-assert-023
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          var x interface{} = "hello"
+          s := x.(string)
+          fmt.Println(s)
+      }
+    options:
+      - "A: hello"
+      - "B: interface{}"
+      - "C: panic"
+      - "D: 编译错误"
+    answer: A
+    explanation: "x的动态类型是string。断言成功,s=hello。参见 Go 规范 Type assertions 章节。"
+    topic: types
+    chapter: type_assertions
+
+  - id: type-assert-024
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          var x interface{} = 10
+          s, ok := x.(string)
+          fmt.Println(s, ok)
+      }
+    options:
+      - "A:  false"
+      - "B: 10 false"
+      - "C: panic"
+      - "D: 编译错误"
+    answer: A
+    explanation: "x是int不是string。双值断言:s是string零值(空串),ok=false。参见 Go 规范 Type assertions 章节。"
+    topic: types
+    chapter: type_assertions
+
+  - id: type-assert-025
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          var x interface{} = 10
+          switch v := x.(type) {
+          case int:
+              fmt.Printf("%T %v", v, v)
+          case string:
+              fmt.Printf("%T %v", v, v)
+          }
+      }
+    options:
+      - "A: int 10"
+      - "B: interface{} 10"
+      - "C: 编译错误"
+      - "D: string 10"
+    answer: A
+    explanation: "x动态类型是int。匹配case int,v是int类型。输出int 10。参见 Go 规范 Type switches 章节。"
+    topic: types
+    chapter: type_assertions
+
+  - id: type-assert-026
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          var x interface{} = nil
+          _, ok := x.(int)
+          fmt.Println(ok)
+      }
+    options:
+      - "A: true"
+      - "B: false"
+      - "C: panic"
+      - "D: 编译错误"
+    answer: B
+    explanation: "nil接口没有动态类型。任何断言都失败。双值形式ok=false。参见 Go 规范 Type assertions 章节。"
+    topic: types
+    chapter: type_assertions
+
+  - id: type-assert-027
+    type: code_fix
+    difficulty: medium
+    stem: "以下代码运行时panic,如何修正?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          var x interface{} = 10
+          s := x.(string)
+          fmt.Println(s)
+      }
+    options:
+      - "A: 使用双值形式"
+      - "B: 使用type switch"
+      - "C: A或B"
+      - "D: 改为int断言"
+    answer: C
+    explanation: "可以用双值形式避免panic,或用type switch处理多种类型。参见 Go 规范 Type assertions 章节。"
+    topic: types
+    chapter: type_assertions
+
+  - id: type-assert-028
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type I interface{ M() }
+      type T struct{}
+      func (T) M() {}
+      func main() {
+          var i I = T{}
+          t := i.(T)
+          fmt.Printf("%T", t)
+      }
+    options:
+      - "A: main.T"
+      - "B: I"
+      - "C: panic"
+      - "D: 编译错误"
+    answer: A
+    explanation: "i的动态类型是T。断言成功,t是T类型。%T打印main.T。参见 Go 规范 Type assertions 章节。"
+    topic: types
+    chapter: type_assertions
+
+  - id: type-assert-029
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func describe(x interface{}) {
+          switch x.(type) {
+          case int, int64:
+              fmt.Print("integer")
+          case string:
+              fmt.Print("string")
+          default:
+              fmt.Print("unknown")
+          }
+      }
+      func main() {
+          describe(int64(10))
+      }
+    options:
+      - "A: integer"
+      - "B: int64"
+      - "C: unknown"
+      - "D: 编译错误"
+    answer: A
+    explanation: "int64匹配case int,int64。输出integer。参见 Go 规范 Type switches 章节。"
+    topic: types
+    chapter: type_assertions
+
+  - id: type-assert-030
+    type: multiple
+    difficulty: medium
+    stem: "以下哪些断言会成功?(x是interface{}存储int值)(多选)"
+    options:
+      - "A: x.(int)"
+      - "B: x.(interface{})"
+      - "C: x.(fmt.Stringer)"
+      - "D: x.(int64)"
+    answer: AB
+    explanation: "x是int。int断言成功,interface{}总成功。int不是Stringer,不是int64。参见 Go 规范 Type assertions 章节。"
+    topic: types
+    chapter: type_assertions
+
+  - id: type-assert-031
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          var x interface{} = (*int)(nil)
+          _, ok := x.(*int)
+          fmt.Println(ok)
+      }
+    options:
+      - "A: true"
+      - "B: false"
+      - "C: panic"
+      - "D: 编译错误"
+    answer: A
+    explanation: "x存储*int类型(值为nil)。动态类型是*int,断言成功。ok=true。参见 Go 规范 Type assertions 章节。"
+    topic: types
+    chapter: type_assertions
+
+  - id: type-assert-032
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type Reader interface{ Read() }
+      type Writer interface{ Write() }
+      type ReadWriter interface{ Reader; Writer }
+      type T struct{}
+      func (T) Read() {}
+      func (T) Write() {}
+      func main() {
+          var rw ReadWriter = T{}
+          var r Reader = rw.(Reader)
+          fmt.Printf("%T", r)
+      }
+    options:
+      - "A: main.T"
+      - "B: Reader"
+      - "C: ReadWriter"
+      - "D: 编译错误"
+    answer: A
+    explanation: "rw动态类型T实现Reader。断言成功,r的动态类型仍是T。%T打印main.T。参见 Go 规范 Type assertions 章节。"
+    topic: types
+    chapter: type_assertions
+
+  - id: type-assert-033
+    type: code_fix
+    difficulty: medium
+    stem: "以下代码编译错误,如何修正?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          var x int = 10
+          fmt.Println(x.(interface{}))
+      }
+    options:
+      - "A: var x interface{} = 10"
+      - "B: fmt.Println(interface{}(x))"
+      - "C: A或B"
+      - "D: 代码正确"
+    answer: C
+    explanation: "类型断言只用于接口。要么x声明为接口,要么使用类型转换。参见 Go 规范 Type assertions 章节。"
+    topic: types
+    chapter: type_assertions
+
+  - id: type-assert-034
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          var x interface{} = []int{1, 2, 3}
+          switch v := x.(type) {
+          case []int:
+              fmt.Println(len(v))
+          case []interface{}:
+              fmt.Println("interface slice")
+          }
+      }
+    options:
+      - "A: 3"
+      - "B: interface slice"
+      - "C: 编译错误"
+      - "D: panic"
+    answer: A
+    explanation: "x动态类型是[]int。匹配case []int,v是[]int。len(v)=3。参见 Go 规范 Type switches 章节。"
+    topic: types
+    chapter: type_assertions
+
+  - id: type-assert-035
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          var x interface{} = 10
+          switch x.(type) {
+          case int:
+              fmt.Print("int")
+              fallthrough
+          case string:
+              fmt.Print("string")
+          }
+      }
+    options:
+      - "A: int"
+      - "B: intstring"
+      - "C: 编译错误"
+      - "D: string"
+    answer: C
+    explanation: "type switch不允许fallthrough。编译错误。参见 Go 规范 Type switches 章节。"
+    topic: types
+    chapter: type_assertions
+
+  # ========== 困难题 (Hard) - 5道 ==========
+
+  - id: type-assert-036
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          var x interface{} = (*int)(nil)
+          if x == nil {
+              fmt.Println("nil")
+          } else {
+              fmt.Println("not nil")
+          }
+      }
+    options:
+      - "A: nil"
+      - "B: not nil"
+      - "C: panic"
+      - "D: 编译错误"
+    answer: B
+    explanation: "x存储类型*int和值nil。接口不为nil(有类型信息)。输出not nil。参见 Go 规范 Interface types 章节。"
+    topic: types
+    chapter: type_assertions
+
+  - id: type-assert-037
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type I interface{ M() }
+      type T1 struct{}
+      func (T1) M() {}
+      type T2 struct{ T1 }
+      func main() {
+          var i I = T2{}
+          switch i.(type) {
+          case T1:
+              fmt.Print("T1")
+          case T2:
+              fmt.Print("T2")
+          }
+      }
+    options:
+      - "A: T1"
+      - "B: T2"
+      - "C: T1T2"
+      - "D: 编译错误"
+    answer: B
+    explanation: "i的动态类型是T2(不是T1)。匹配case T2。输出T2。参见 Go 规范 Type switches 章节。"
+    topic: types
+    chapter: type_assertions
+
+  - id: type-assert-038
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          var x interface{} = func() {}
+          switch v := x.(type) {
+          case func():
+              v()
+              fmt.Print("ok")
+          default:
+              fmt.Print("no")
+          }
+      }
+    options:
+      - "A: ok"
+      - "B: no"
+      - "C: panic"
+      - "D: 编译错误"
+    answer: A
+    explanation: "x动态类型是func()。匹配case func(),v是该函数。v()执行,输出ok。参见 Go 规范 Type switches 章节。"
+    topic: types
+    chapter: type_assertions
+
+  - id: type-assert-039
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type E interface{ error }
+      func main() {
+          var x interface{} = fmt.Errorf("test")
+          if _, ok := x.(E); ok {
+              fmt.Print("E")
+          }
+          if _, ok := x.(error); ok {
+              fmt.Print("error")
+          }
+      }
+    options:
+      - "A: Eerror"
+      - "B: error"
+      - "C: E"
+      - "D: 编译错误"
+    answer: A
+    explanation: "fmt.Errorf返回error。E嵌入error方法集相同。两个断言都成功。输出Eerror。参见 Go 规范 Type assertions 章节。"
+    topic: types
+    chapter: type_assertions
+
+  - id: type-assert-040
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func f(x interface{}) {
+          switch x := x.(type) {
+          case nil:
+              fmt.Printf("nil:%T", x)
+          case int:
+              fmt.Printf("int:%T", x)
+          }
+      }
+      func main() {
+          f(nil)
+          f(10)
+      }
+    options:
+      - "A: nil:<nil>int:int"
+      - "B: nil:interface{}int:int"
+      - "C: panic"
+      - "D: 编译错误"
+    answer: A
+    explanation: "case nil匹配nil接口,x类型是<nil>。case int匹配int,x类型是int。参见 Go 规范 Type switches 章节。"
+    topic: types
+    chapter: type_assertions

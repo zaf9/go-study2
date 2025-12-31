@@ -1,586 +1,752 @@
+# Go 函数类型测验题库
+# 章节: types/function
+# 符合 Go 1.24 语言规范
+
+metadata:
+  topic: types
+  chapter: function
+  total_questions: 40
+  last_updated: "2025-01-01"
+  difficulty_distribution:
+    easy: 24      # 60%
+    medium: 12    # 30%
+    hard: 4       # 10%
+  type_distribution:
+    single: 18
+    multiple: 10
+    code_output: 8
+    code_fix: 4
+
 questions:
-    - id: type-function-001
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 types.function，下面哪个选项是正确的？
-      options:
-        - 'A: 正确项（关于function.types的重要结论）'
-        - 'B: 正确项（关于function.types的重要结论）'
-        - 'C: 部分正确但不完整的说法'
-        - 'D: 与function.types 相关但不适用的选项'
-      answer: AB
-      explanation: 本题考查 types.function 的相关知识。正确答案：AB。解析：function 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: function
-    - id: type-function-002
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 types.function，下面哪个选项是正确的？
-      options:
-        - 'A: 正确：关于function.types的关键点描述（正确选项）'
-        - 'B: 常见误解或反例（容易混淆）'
-        - 'C: 语法/语义上不正确的陈述'
-        - 'D: 与function.types 相关但不适用的选项'
-      answer: A
-      explanation: 本题考查 types.function 的概念。正确答案为 A。解析：function 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: function
-    - id: type-function-003
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 types.function，下面哪个选项是正确的？
-      options:
-        - 'A: 正确项（关于function.types的重要结论）'
-        - 'B: 正确项（关于function.types的重要结论）'
-        - 'C: 语法/语义上不正确的陈述'
-        - 'D: 正确项（关于function.types的重要结论）'
-      answer: ABD
-      explanation: 本题考查 types.function 的相关知识。正确答案：ABD。解析：function 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: function
-    - id: type-function-004
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 types.function，下面哪个选项是正确的？
-      options:
-        - 'A: 部分正确但不完整的说法'
-        - 'B: 正确：关于function.types的关键点描述（正确选项）'
-        - 'C: 部分正确但不完整的说法'
-        - 'D: 常见误解或反例（容易混淆）'
-      answer: B
-      explanation: 本题考查 types.function 的概念。正确答案为 B。解析：function 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: function
-    - id: type-function-005
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 types.function，下面哪个选项是正确的？
-      options:
-        - 'A: 正确项（关于function.types的重要结论）'
-        - 'B: 正确项（关于function.types的重要结论）'
-        - 'C: 正确项（关于function.types的重要结论）'
-        - 'D: 部分正确但不完整的说法'
-      answer: ABC
-      explanation: 本题考查 types.function 的相关知识。正确答案：ABC。解析：function 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: function
-    - id: type-function-006
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 types.function，下面哪个选项是正确的？
-      options:
-        - 'A: 正确：关于function.types的关键点描述（正确选项）'
-        - 'B: 与function.types 相关但不适用的选项'
-        - 'C: 常见误解或反例（容易混淆）'
-        - 'D: 常见误解或反例（容易混淆）'
-      answer: A
-      explanation: 本题考查 types.function 的概念。正确答案为 A。解析：function 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: function
-    - id: type-function-007
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 types.function，下面哪个选项是正确的？
-      options:
-        - 'A: 部分正确但不完整的说法'
-        - 'B: 正确项（关于function.types的重要结论）'
-        - 'C: 正确项（关于function.types的重要结论）'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: BC
-      explanation: 本题考查 types.function 的相关知识。正确答案：BC。解析：function 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: function
-    - id: type-function-008
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 types.function，下面哪个选项是正确的？
-      options:
-        - 'A: 正确：关于function.types的关键点描述（正确选项）'
-        - 'B: 常见误解或反例（容易混淆）'
-        - 'C: 常见误解或反例（容易混淆）'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: A
-      explanation: 本题考查 types.function 的概念。正确答案为 A。解析：function 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: function
-    - id: type-function-009
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 types.function，下面哪个选项是正确的？
-      options:
-        - 'A: 正确项（关于function.types的重要结论）'
-        - 'B: 常见误解或反例（容易混淆）'
-        - 'C: 正确项（关于function.types的重要结论）'
-        - 'D: 常见误解或反例（容易混淆）'
-      answer: AC
-      explanation: 本题考查 types.function 的相关知识。正确答案：AC。解析：function 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: function
-    - id: type-function-010
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 types.function，下面哪个选项是正确的？
-      options:
-        - 'A: 与function.types 相关但不适用的选项'
-        - 'B: 正确：关于function.types的关键点描述（正确选项）'
-        - 'C: 常见误解或反例（容易混淆）'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: B
-      explanation: 本题考查 types.function 的概念。正确答案为 B。解析：function 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: function
-    - id: type-function-011
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 types.function，下面哪个选项是正确的？
-      options:
-        - 'A: 正确项（关于function.types的重要结论）'
-        - 'B: 常见误解或反例（容易混淆）'
-        - 'C: 部分正确但不完整的说法'
-        - 'D: 正确项（关于function.types的重要结论）'
-      answer: AD
-      explanation: 本题考查 types.function 的相关知识。正确答案：AD。解析：function 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: function
-    - id: type-function-012
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 types.function，下面哪个选项是正确的？
-      options:
-        - 'A: 常见误解或反例（容易混淆）'
-        - 'B: 正确：关于function.types的关键点描述（正确选项）'
-        - 'C: 常见误解或反例（容易混淆）'
-        - 'D: 部分正确但不完整的说法'
-      answer: B
-      explanation: 本题考查 types.function 的概念。正确答案为 B。解析：function 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: function
-    - id: type-function-013
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 types.function，下面哪个选项是正确的？
-      options:
-        - 'A: 正确项（关于function.types的重要结论）'
-        - 'B: 正确项（关于function.types的重要结论）'
-        - 'C: 语法/语义上不正确的陈述'
-        - 'D: 正确项（关于function.types的重要结论）'
-      answer: ABD
-      explanation: 本题考查 types.function 的相关知识。正确答案：ABD。解析：function 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: function
-    - id: type-function-014
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 types.function，下面哪个选项是正确的？
-      options:
-        - 'A: 正确：关于function.types的关键点描述（正确选项）'
-        - 'B: 常见误解或反例（容易混淆）'
-        - 'C: 常见误解或反例（容易混淆）'
-        - 'D: 常见误解或反例（容易混淆）'
-      answer: A
-      explanation: 本题考查 types.function 的概念。正确答案为 A。解析：function 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: function
-    - id: type-function-015
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 types.function，下面哪个选项是正确的？
-      options:
-        - 'A: 正确项（关于function.types的重要结论）'
-        - 'B: 与function.types 相关但不适用的选项'
-        - 'C: 部分正确但不完整的说法'
-        - 'D: 正确项（关于function.types的重要结论）'
-      answer: AD
-      explanation: 本题考查 types.function 的相关知识。正确答案：AD。解析：function 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: function
-    - id: type-function-016
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 types.function，下面哪个选项是正确的？
-      options:
-        - 'A: 正确：关于function.types的关键点描述（正确选项）'
-        - 'B: 语法/语义上不正确的陈述'
-        - 'C: 常见误解或反例（容易混淆）'
-        - 'D: 部分正确但不完整的说法'
-      answer: A
-      explanation: 本题考查 types.function 的概念。正确答案为 A。解析：function 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: function
-    - id: type-function-017
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 types.function，下面哪个选项是正确的？
-      options:
-        - 'A: 正确项（关于function.types的重要结论）'
-        - 'B: 常见误解或反例（容易混淆）'
-        - 'C: 正确项（关于function.types的重要结论）'
-        - 'D: 与function.types 相关但不适用的选项'
-      answer: AC
-      explanation: 本题考查 types.function 的相关知识。正确答案：AC。解析：function 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: function
-    - id: type-function-018
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 types.function，下面哪个选项是正确的？
-      options:
-        - 'A: 正确：关于function.types的关键点描述（正确选项）'
-        - 'B: 常见误解或反例（容易混淆）'
-        - 'C: 与function.types 相关但不适用的选项'
-        - 'D: 常见误解或反例（容易混淆）'
-      answer: A
-      explanation: 本题考查 types.function 的概念。正确答案为 A。解析：function 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: function
-    - id: type-function-019
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 types.function 的情境下，哪个说法更合适？
-      options:
-        - 'A: 正确项（关于function.types的重要结论）'
-        - 'B: 常见误解或反例（容易混淆）'
-        - 'C: 正确项（关于function.types的重要结论）'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: AC
-      explanation: 本题考查 types.function 的相关知识。正确答案：AC。解析：function 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: function
-    - id: type-function-020
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 types.function 的情境下，哪个说法更合适？
-      options:
-        - 'A: 常见误解或反例（容易混淆）'
-        - 'B: 正确：关于function.types的关键点描述（正确选项）'
-        - 'C: 与function.types 相关但不适用的选项'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: B
-      explanation: 本题考查 types.function 的概念。正确答案为 B。解析：function 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: function
-    - id: type-function-021
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 types.function 的情境下，哪个说法更合适？
-      options:
-        - 'A: 正确项（关于function.types的重要结论）'
-        - 'B: 语法/语义上不正确的陈述'
-        - 'C: 部分正确但不完整的说法'
-        - 'D: 正确项（关于function.types的重要结论）'
-      answer: AD
-      explanation: 本题考查 types.function 的相关知识。正确答案：AD。解析：function 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: function
-    - id: type-function-022
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 types.function 的情境下，哪个说法更合适？
-      options:
-        - 'A: 部分正确但不完整的说法'
-        - 'B: 正确：关于function.types的关键点描述（正确选项）'
-        - 'C: 常见误解或反例（容易混淆）'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: B
-      explanation: 本题考查 types.function 的概念。正确答案为 B。解析：function 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: function
-    - id: type-function-023
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 types.function 的情境下，哪个说法更合适？
-      options:
-        - 'A: 正确项（关于function.types的重要结论）'
-        - 'B: 正确项（关于function.types的重要结论）'
-        - 'C: 语法/语义上不正确的陈述'
-        - 'D: 正确项（关于function.types的重要结论）'
-      answer: ABD
-      explanation: 本题考查 types.function 的相关知识。正确答案：ABD。解析：function 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: function
-    - id: type-function-024
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 types.function 的情境下，哪个说法更合适？
-      options:
-        - 'A: 常见误解或反例（容易混淆）'
-        - 'B: 正确：关于function.types的关键点描述（正确选项）'
-        - 'C: 语法/语义上不正确的陈述'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: B
-      explanation: 本题考查 types.function 的概念。正确答案为 B。解析：function 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: function
-    - id: type-function-025
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 types.function 的情境下，哪个说法更合适？
-      options:
-        - 'A: 正确项（关于function.types的重要结论）'
-        - 'B: 部分正确但不完整的说法'
-        - 'C: 常见误解或反例（容易混淆）'
-        - 'D: 正确项（关于function.types的重要结论）'
-      answer: AD
-      explanation: 本题考查 types.function 的相关知识。正确答案：AD。解析：function 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: function
-    - id: type-function-026
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 types.function 的情境下，哪个说法更合适？
-      options:
-        - 'A: 常见误解或反例（容易混淆）'
-        - 'B: 语法/语义上不正确的陈述'
-        - 'C: 正确：关于function.types的关键点描述（正确选项）'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: C
-      explanation: 本题考查 types.function 的概念。正确答案为 C。解析：function 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: function
-    - id: type-function-027
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 types.function 的情境下，哪个说法更合适？
-      options:
-        - 'A: 正确项（关于function.types的重要结论）'
-        - 'B: 常见误解或反例（容易混淆）'
-        - 'C: 常见误解或反例（容易混淆）'
-        - 'D: 正确项（关于function.types的重要结论）'
-      answer: AD
-      explanation: 本题考查 types.function 的相关知识。正确答案：AD。解析：function 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: function
-    - id: type-function-028
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 types.function 的情境下，哪个说法更合适？
-      options:
-        - 'A: 部分正确但不完整的说法'
-        - 'B: 正确：关于function.types的关键点描述（正确选项）'
-        - 'C: 与function.types 相关但不适用的选项'
-        - 'D: 常见误解或反例（容易混淆）'
-      answer: B
-      explanation: 本题考查 types.function 的概念。正确答案为 B。解析：function 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: function
-    - id: type-function-029
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 types.function 的情境下，哪个说法更合适？
-      options:
-        - 'A: 正确项（关于function.types的重要结论）'
-        - 'B: 正确项（关于function.types的重要结论）'
-        - 'C: 常见误解或反例（容易混淆）'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: AB
-      explanation: 本题考查 types.function 的相关知识。正确答案：AB。解析：function 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: function
-    - id: type-function-030
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 types.function 的情境下，哪个说法更合适？
-      options:
-        - 'A: 与function.types 相关但不适用的选项'
-        - 'B: 语法/语义上不正确的陈述'
-        - 'C: 正确：关于function.types的关键点描述（正确选项）'
-        - 'D: 常见误解或反例（容易混淆）'
-      answer: C
-      explanation: 本题考查 types.function 的概念。正确答案为 C。解析：function 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: function
-    - id: type-function-031
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 types.function 的情境下，哪个说法更合适？
-      options:
-        - 'A: 语法/语义上不正确的陈述'
-        - 'B: 部分正确但不完整的说法'
-        - 'C: 正确项（关于function.types的重要结论）'
-        - 'D: 正确项（关于function.types的重要结论）'
-      answer: CD
-      explanation: 本题考查 types.function 的相关知识。正确答案：CD。解析：function 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: function
-    - id: type-function-032
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 types.function 的情境下，哪个说法更合适？
-      options:
-        - 'A: 与function.types 相关但不适用的选项'
-        - 'B: 语法/语义上不正确的陈述'
-        - 'C: 正确：关于function.types的关键点描述（正确选项）'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: C
-      explanation: 本题考查 types.function 的概念。正确答案为 C。解析：function 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: function
-    - id: type-function-033
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 types.function 的情境下，哪个说法更合适？
-      options:
-        - 'A: 部分正确但不完整的说法'
-        - 'B: 正确项（关于function.types的重要结论）'
-        - 'C: 与function.types 相关但不适用的选项'
-        - 'D: 正确项（关于function.types的重要结论）'
-      answer: BD
-      explanation: 本题考查 types.function 的相关知识。正确答案：BD。解析：function 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: function
-    - id: type-function-034
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 types.function 的情境下，哪个说法更合适？
-      options:
-        - 'A: 常见误解或反例（容易混淆）'
-        - 'B: 正确：关于function.types的关键点描述（正确选项）'
-        - 'C: 与function.types 相关但不适用的选项'
-        - 'D: 与function.types 相关但不适用的选项'
-      answer: B
-      explanation: 本题考查 types.function 的概念。正确答案为 B。解析：function 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: function
-    - id: type-function-035
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 types.function 的情境下，哪个说法更合适？
-      options:
-        - 'A: 常见误解或反例（容易混淆）'
-        - 'B: 正确项（关于function.types的重要结论）'
-        - 'C: 正确项（关于function.types的重要结论）'
-        - 'D: 部分正确但不完整的说法'
-      answer: BC
-      explanation: 本题考查 types.function 的相关知识。正确答案：BC。解析：function 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: function
-    - id: type-function-036
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 types.function 的情境下，哪个说法更合适？
-      options:
-        - 'A: 与function.types 相关但不适用的选项'
-        - 'B: 部分正确但不完整的说法'
-        - 'C: 正确：关于function.types的关键点描述（正确选项）'
-        - 'D: 部分正确但不完整的说法'
-      answer: C
-      explanation: 本题考查 types.function 的概念。正确答案为 C。解析：function 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: function
-    - id: type-function-037
-      type: multiple
-      difficulty: hard
-      stem: 【思考题】针对 types.function，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 正确项（关于function.types的重要结论）'
-        - 'B: 正确项（关于function.types的重要结论）'
-        - 'C: 常见误解或反例（容易混淆）'
-        - 'D: 正确项（关于function.types的重要结论）'
-      answer: ABD
-      explanation: 本题考查 types.function 的相关知识。正确答案：ABD。解析：function 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: function
-    - id: type-function-038
-      type: single
-      difficulty: hard
-      stem: 【思考题】针对 types.function，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 语法/语义上不正确的陈述'
-        - 'B: 部分正确但不完整的说法'
-        - 'C: 常见误解或反例（容易混淆）'
-        - 'D: 正确：关于function.types的关键点描述（正确选项）'
-      answer: D
-      explanation: 本题考查 types.function 的概念。正确答案为 D。解析：function 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: function
-    - id: type-function-039
-      type: multiple
-      difficulty: hard
-      stem: 【思考题】针对 types.function，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 正确项（关于function.types的重要结论）'
-        - 'B: 正确项（关于function.types的重要结论）'
-        - 'C: 语法/语义上不正确的陈述'
-        - 'D: 正确项（关于function.types的重要结论）'
-      answer: ABD
-      explanation: 本题考查 types.function 的相关知识。正确答案：ABD。解析：function 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: function
-    - id: type-function-040
-      type: single
-      difficulty: hard
-      stem: 【思考题】针对 types.function，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 部分正确但不完整的说法'
-        - 'B: 语法/语义上不正确的陈述'
-        - 'C: 常见误解或反例（容易混淆）'
-        - 'D: 正确：关于function.types的关键点描述（正确选项）'
-      answer: D
-      explanation: 本题考查 types.function 的概念。正确答案为 D。解析：function 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: function
-    - id: type-function-041
-      type: multiple
-      difficulty: hard
-      stem: 【思考题】针对 types.function，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 正确项（关于function.types的重要结论）'
-        - 'B: 正确项（关于function.types的重要结论）'
-        - 'C: 部分正确但不完整的说法'
-        - 'D: 常见误解或反例（容易混淆）'
-      answer: AB
-      explanation: 本题考查 types.function 的相关知识。正确答案：AB。解析：function 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: function
-    - id: type-function-042
-      type: single
-      difficulty: hard
-      stem: 【思考题】针对 types.function，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 与function.types 相关但不适用的选项'
-        - 'B: 语法/语义上不正确的陈述'
-        - 'C: 常见误解或反例（容易混淆）'
-        - 'D: 正确：关于function.types的关键点描述（正确选项）'
-      answer: D
-      explanation: 本题考查 types.function 的概念。正确答案为 D。解析：function 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: function
-    - id: type-function-043
-      type: multiple
-      difficulty: hard
-      stem: 【思考题】针对 types.function，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 正确项（关于function.types的重要结论）'
-        - 'B: 语法/语义上不正确的陈述'
-        - 'C: 正确项（关于function.types的重要结论）'
-        - 'D: 部分正确但不完整的说法'
-      answer: AC
-      explanation: 本题考查 types.function 的相关知识。正确答案：AC。解析：function 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: function
-    - id: type-function-044
-      type: single
-      difficulty: hard
-      stem: 【思考题】针对 types.function，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 与function.types 相关但不适用的选项'
-        - 'B: 与function.types 相关但不适用的选项'
-        - 'C: 语法/语义上不正确的陈述'
-        - 'D: 正确：关于function.types的关键点描述（正确选项）'
-      answer: D
-      explanation: 本题考查 types.function 的概念。正确答案为 D。解析：function 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: function
-    - id: type-function-045
-      type: multiple
-      difficulty: hard
-      stem: 【思考题】针对 types.function，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 正确项（关于function.types的重要结论）'
-        - 'B: 常见误解或反例（容易混淆）'
-        - 'C: 常见误解或反例（容易混淆）'
-        - 'D: 正确项（关于function.types的重要结论）'
-      answer: AD
-      explanation: 本题考查 types.function 的相关知识。正确答案：AD。解析：function 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: function
+  # ========== 简单题 (Easy) - 24道 ==========
+  
+  - id: type-func-001
+    type: single
+    difficulty: easy
+    stem: "Go中函数类型的表示格式是什么?"
+    options:
+      - "A: function(params) returns"
+      - "B: func(params) returns"
+      - "C: def(params) returns"
+      - "D: fn(params) returns"
+    answer: B
+    explanation: "Go函数类型格式是func(参数类型) 返回类型。如func(int, int) int。参见 Go 规范 Function types 章节。"
+    topic: types
+    chapter: function
+
+  - id: type-func-002
+    type: single
+    difficulty: easy
+    stem: "函数是第一类值吗?"
+    options:
+      - "A: 不是"
+      - "B: 是"
+      - "C: 部分是"
+      - "D: 取决于返回值"
+    answer: B
+    explanation: "Go中函数是第一类值,可以赋值、传参、返回。参见 Go 规范 Function types 章节。"
+    topic: types
+    chapter: function
+
+  - id: type-func-003
+    type: single
+    difficulty: easy
+    stem: "函数变量的零值是什么?"
+    options:
+      - "A: 空函数"
+      - "B: panic"
+      - "C: nil"
+      - "D: undefined"
+    answer: C
+    explanation: "函数类型的零值是nil。调用nil函数会panic。参见 Go 规范 The zero value 章节。"
+    topic: types
+    chapter: function
+
+  - id: type-func-004
+    type: single
+    difficulty: easy
+    stem: "调用nil函数会怎样?"
+    options:
+      - "A: 返回零值"
+      - "B: 什么都不做"
+      - "C: 编译错误"
+      - "D: 运行时panic"
+    answer: D
+    explanation: "调用nil函数会导致运行时panic。必须检查函数是否为nil。参见 Go 规范 Calls 章节。"
+    topic: types
+    chapter: function
+
+  - id: type-func-005
+    type: single
+    difficulty: easy
+    stem: "什么是可变参数函数?"
+    options:
+      - "A: 参数类型可变"
+      - "B: 参数个数可变"
+      - "C: 返回值可变"
+      - "D: 函数名可变"
+    answer: B
+    explanation: "可变参数函数接受任意个数的某类型参数。用...T表示。参见 Go 规范 Passing arguments 章节。"
+    topic: types
+    chapter: function
+
+  - id: type-func-006
+    type: single
+    difficulty: easy
+    stem: "可变参数在函数内是什么类型?"
+    options:
+      - "A: 数组"
+      - "B: 切片"
+      - "C: 指针"
+      - "D: 列表"
+    answer: B
+    explanation: "func f(args ...int)中args是[]int切片。参见 Go 规范 Passing arguments 章节。"
+    topic: types
+    chapter: function
+
+  - id: type-func-007
+    type: single
+    difficulty: easy
+    stem: "如何将切片展开传给可变参数函数?"
+    options:
+      - "A: f(s)"
+      - "B: f(*s)"
+      - "C: f(s...)"
+      - "D: f(&s)"
+    answer: C
+    explanation: "s...展开切片元素传给可变参数。如f([]int{1,2,3}...)。参见 Go 规范 Passing arguments 章节。"
+    topic: types
+    chapter: function
+
+  - id: type-func-008
+    type: single
+    difficulty: easy
+    stem: "Go函数可以返回多个值吗?"
+    options:
+      - "A: 不可以"
+      - "B: 可以"
+      - "C: 最多2个"
+      - "D: 只能返回error"
+    answer: B
+    explanation: "Go函数可以返回任意多个值。常用于返回值和错误。参见 Go 规范 Function types 章节。"
+    topic: types
+    chapter: function
+
+  - id: type-func-009
+    type: single
+    difficulty: easy
+    stem: "什么是命名返回值?"
+    options:
+      - "A: 给函数命名"
+      - "B: 给返回值命名"
+      - "C: 类型别名"
+      - "D: 参数别名"
+    answer: B
+    explanation: "命名返回值在函数签名中声明返回值变量名。如func f() (result int)。参见 Go 规范 Function types 章节。"
+    topic: types
+    chapter: function
+
+  - id: type-func-010
+    type: single
+    difficulty: easy
+    stem: "空返回(naked return)是什么?"
+    options:
+      - "A: 不返回值"
+      - "B: 返回零值"
+      - "C: 返回命名返回值"
+      - "D: 编译错误"
+    answer: C
+    explanation: "空return返回当前的命名返回值。需要先有命名返回值声明。参见 Go 规范 Return statements 章节。"
+    topic: types
+    chapter: function
+
+  - id: type-func-011
+    type: single
+    difficulty: easy
+    stem: "什么是闭包?"
+    options:
+      - "A: 嵌套函数"
+      - "B: 捕获外部变量的函数"
+      - "C: 匿名函数"
+      - "D: 以上都是"
+    answer: D
+    explanation: "闭包是捕获外部变量的函数字面量(匿名函数)。可以嵌套定义。参见 Go 规范 Function literals 章节。"
+    topic: types
+    chapter: function
+
+  - id: type-func-012
+    type: single
+    difficulty: easy
+    stem: "匿名函数如何立即调用?"
+    options:
+      - "A: func(){}()"
+      - "B: call(func(){})"
+      - "C: func(){}.call()"
+      - "D: invoke(func(){})"
+    answer: A
+    explanation: "匿名函数后加()立即调用。如func(){fmt.Println(\"hi\")}()。参见 Go 规范 Function literals 章节。"
+    topic: types
+    chapter: function
+
+  - id: type-func-013
+    type: single
+    difficulty: easy
+    stem: "Go支持函数重载吗?"
+    options:
+      - "A: 支持"
+      - "B: 不支持"
+      - "C: 只支持方法"
+      - "D: 通过泛型支持"
+    answer: B
+    explanation: "Go不支持函数重载。同一作用域不能有同名函数。参见 Go 规范 Declarations and scope 章节。"
+    topic: types
+    chapter: function
+
+  - id: type-func-014
+    type: single
+    difficulty: easy
+    stem: "Go支持默认参数吗?"
+    options:
+      - "A: 支持"
+      - "B: 不支持"
+      - "C: 只支持nil"
+      - "D: 只支持零值"
+    answer: B
+    explanation: "Go不支持默认参数值。可以用可变参数或选项模式模拟。参见 Go 规范 Function types 章节。"
+    topic: types
+    chapter: function
+
+  - id: type-func-015
+    type: single
+    difficulty: easy
+    stem: "defer语句的执行时机是?"
+    options:
+      - "A: 立即执行"
+      - "B: 函数返回前"
+      - "C: 函数开始时"
+      - "D: goroutine结束时"
+    answer: B
+    explanation: "defer的函数在包含它的函数返回前执行。常用于清理资源。参见 Go 规范 Defer statements 章节。"
+    topic: types
+    chapter: function
+
+  - id: type-func-016
+    type: single
+    difficulty: easy
+    stem: "多个defer的执行顺序是?"
+    options:
+      - "A: 先进先出(FIFO)"
+      - "B: 后进先出(LIFO)"
+      - "C: 随机"
+      - "D: 并行"
+    answer: B
+    explanation: "defer按LIFO(栈)顺序执行。最后的defer最先执行。参见 Go 规范 Defer statements 章节。"
+    topic: types
+    chapter: function
+
+  - id: type-func-017
+    type: single
+    difficulty: easy
+    stem: "函数参数传递方式是?"
+    options:
+      - "A: 按引用"
+      - "B: 按值"
+      - "C: 取决于类型"
+      - "D: 可选择"
+    answer: B
+    explanation: "Go总是按值传递。传递的是参数的副本。引用类型传递的是引用的副本。参见 Go 规范 Calls 章节。"
+    topic: types
+    chapter: function
+
+  - id: type-func-018
+    type: multiple
+    difficulty: easy
+    stem: "以下哪些是函数类型的特性?(多选)"
+    options:
+      - "A: 可以赋值给变量"
+      - "B: 可以作为参数"
+      - "C: 可以作为返回值"
+      - "D: 可以比较"
+    answer: ABC
+    explanation: "函数可以赋值、传参、返回(第一类值),但不能比较(只能与nil比较)。参见 Go 规范 Function types 章节。"
+    topic: types
+    chapter: function
+
+  - id: type-func-019
+    type: single
+    difficulty: easy
+    stem: "init函数有什么特点?"
+    options:
+      - "A: 无参数无返回值"
+      - "B: 自动调用"
+      - "C: 可以有多个"
+      - "D: 以上都是"
+    answer: D
+    explanation: "init函数无参无返回,包初始化时自动调用,一个文件可有多个。参见 Go 规范 Package initialization 章节。"
+    topic: types
+    chapter: function
+
+  - id: type-func-020
+    type: single
+    difficulty: easy
+    stem: "main函数的签名是什么?"
+    options:
+      - "A: func main()"
+      - "B: func main() int"
+      - "C: func main(args []string)"
+      - "D: func main() error"
+    answer: A
+    explanation: "main函数无参数无返回值。命令行参数通过os.Args获取。参见 Go 规范 Program initialization 章节。"
+    topic: types
+    chapter: function
+
+  - id: type-func-021
+    type: single
+    difficulty: easy
+    stem: "函数可以声明在另一个函数内部吗?"
+    options:
+      - "A: 可以,命名函数"
+      - "B: 可以,只能匿名函数"
+      - "C: 不可以"
+      - "D: 取决于返回值"
+    answer: B
+    explanation: "Go只支持在函数内定义匿名函数,不能定义命名函数。参见 Go 规范 Function declarations 章节。"
+    topic: types
+    chapter: function
+
+  - id: type-func-022
+    type: single
+    difficulty: easy
+    stem: "递归函数是什么?"
+    options:
+      - "A: 调用自己的函数"
+      - "B: 循环函数"
+      - "C: 嵌套函数"
+      - "D: 并行函数"
+    answer: A
+    explanation: "递归函数直接或间接调用自己。需要有终止条件。参见 Go 规范 Function declarations 章节。"
+    topic: types
+    chapter: function
+
+  - id: type-func-023
+    type: multiple
+    difficulty: easy
+    stem: "关于defer,以下说法正确的是?(多选)"
+    options:
+      - "A: 参数立即求值"
+      - "B: LIFO顺序执行"
+      - "C: 可以修改命名返回值"
+      - "D: panic时也执行"
+    answer: ABCD
+    explanation: "defer参数立即求值,LIFO执行,可修改命名返回值,panic时也执行。参见 Go 规范 Defer statements 章节。"
+    topic: types
+    chapter: function
+
+  - id: type-func-024
+    type: single
+    difficulty: easy
+    stem: "高阶函数是什么?"
+    options:
+      - "A: 复杂的函数"
+      - "B: 接受/返回函数的函数"
+      - "C: 递归函数"
+      - "D: 并发函数"
+    answer: B
+    explanation: "高阶函数是接受函数作为参数或返回函数的函数。参见 Go 函数式编程模式。"
+    topic: types
+    chapter: function
+
+  # ========== 中等题 (Medium) - 12道 ==========
+
+  - id: type-func-025
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          add := func(a, b int) int { return a + b }
+          fmt.Println(add(1, 2))
+      }
+    options:
+      - "A: 3"
+      - "B: 12"
+      - "C: 编译错误"
+      - "D: nil"
+    answer: A
+    explanation: "add是匿名函数,接受两个int返回int。add(1,2)=3。参见 Go 规范 Function literals 章节。"
+    topic: types
+    chapter: function
+
+  - id: type-func-026
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          x := 1
+          inc := func() { x++ }
+          inc()
+          inc()
+          fmt.Println(x)
+      }
+    options:
+      - "A: 1"
+      - "B: 2"
+      - "C: 3"
+      - "D: 编译错误"
+    answer: C
+    explanation: "闭包捕获外部变量x。两次inc()使x增加2次。x=1+2=3。参见 Go 规范 Function literals 章节。"
+    topic: types
+    chapter: function
+
+  - id: type-func-027
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func f() (result int) {
+          defer func() { result++ }()
+          return 0
+      }
+      func main() {
+          fmt.Println(f())
+      }
+    options:
+      - "A: 0"
+      - "B: 1"
+      - "C: 编译错误"
+      - "D: panic"
+    answer: B
+    explanation: "return 0设置result=0。defer在返回前执行,result++。最终返回1。参见 Go 规范 Defer statements 章节。"
+    topic: types
+    chapter: function
+
+  - id: type-func-028
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          for i := 0; i < 3; i++ {
+              defer fmt.Print(i)
+          }
+      }
+    options:
+      - "A: 012"
+      - "B: 210"
+      - "C: 222"
+      - "D: 000"
+    answer: B
+    explanation: "defer参数立即求值(0,1,2)。LIFO执行顺序。输出210。参见 Go 规范 Defer statements 章节。"
+    topic: types
+    chapter: function
+
+  - id: type-func-029
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func sum(nums ...int) int {
+          total := 0
+          for _, n := range nums {
+              total += n
+          }
+          return total
+      }
+      func main() {
+          fmt.Println(sum(1, 2, 3))
+      }
+    options:
+      - "A: 6"
+      - "B: [1 2 3]"
+      - "C: 123"
+      - "D: 编译错误"
+    answer: A
+    explanation: "sum接受可变参数nums(切片)。1+2+3=6。参见 Go 规范 Passing arguments 章节。"
+    topic: types
+    chapter: function
+
+  - id: type-func-030
+    type: code_fix
+    difficulty: medium
+    stem: "以下代码有bug,正确的修正是?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          funcs := make([]func(), 3)
+          for i := 0; i < 3; i++ {
+              funcs[i] = func() { fmt.Print(i) }
+          }
+          for _, f := range funcs {
+              f()
+          }
+      }
+    options:
+      - "A: 输出012"
+      - "B: 输出333"
+      - "C: 捕获i的副本"
+      - "D: B是bug,C是修正"
+    answer: D
+    explanation: "闭包捕获变量i的引用。循环结束i=3,都打印3。修正:在循环内i:=i创建副本。参见 Go 规范 Function literals 章节。"
+    topic: types
+    chapter: function
+
+  - id: type-func-031
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func apply(f func(int) int, x int) int {
+          return f(x)
+      }
+      func main() {
+          double := func(n int) int { return n * 2 }
+          fmt.Println(apply(double, 5))
+      }
+    options:
+      - "A: 5"
+      - "B: 10"
+      - "C: 25"
+      - "D: 编译错误"
+    answer: B
+    explanation: "apply是高阶函数,接受函数f和参数x。double(5)=10。参见 Go 函数式编程模式。"
+    topic: types
+    chapter: function
+
+  - id: type-func-032
+    type: multiple
+    difficulty: medium
+    stem: "关于命名返回值,以下说法正确的是?(多选)"
+    options:
+      - "A: 初始化为零值"
+      - "B: 可以空return"
+      - "C: defer可修改"
+      - "D: 必须使用"
+    answer: ABC
+    explanation: "命名返回值初始化为零值,支持空return,defer可修改。不强制使用。参见 Go 规范 Function types 章节。"
+    topic: types
+    chapter: function
+
+  - id: type-func-033
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func makeAdder(x int) func(int) int {
+          return func(y int) int { return x + y }
+      }
+      func main() {
+          add5 := makeAdder(5)
+          add10 := makeAdder(10)
+          fmt.Println(add5(3), add10(3))
+      }
+    options:
+      - "A: 8 13"
+      - "B: 15 15"
+      - "C: 3 3"
+      - "D: 5 10"
+    answer: A
+    explanation: "makeAdder返回闭包,捕获x。add5(3)=5+3=8。add10(3)=10+3=13。参见 Go 规范 Function literals 章节。"
+    topic: types
+    chapter: function
+
+  - id: type-func-034
+    type: code_fix
+    difficulty: medium
+    stem: "以下代码panic,正确的修正是?"
+    code: |
+      package main
+      func main() {
+          var f func()
+          f()
+      }
+    options:
+      - "A: 检查f != nil"
+      - "B: 赋值f = func(){}"
+      - "C: A或B"
+      - "D: 代码正确"
+    answer: C
+    explanation: "f是nil函数,调用会panic。应检查nil或赋值非nil函数。参见 Go 规范 The zero value 章节。"
+    topic: types
+    chapter: function
+
+  - id: type-func-035
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func f(a, b int) (sum, diff int) {
+          sum = a + b
+          diff = a - b
+          return
+      }
+      func main() {
+          s, d := f(10, 3)
+          fmt.Println(s, d)
+      }
+    options:
+      - "A: 13 7"
+      - "B: 7 13"
+      - "C: 10 3"
+      - "D: 编译错误"
+    answer: A
+    explanation: "命名返回值sum和diff。sum=10+3=13,diff=10-3=7。空return返回它们。参见 Go 规范 Return statements 章节。"
+    topic: types
+    chapter: function
+
+  - id: type-func-036
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          s := []int{1, 2, 3}
+          fmt.Println(sum(s...))
+      }
+      func sum(nums ...int) int {
+          total := 0
+          for _, n := range nums {
+              total += n
+          }
+          return total
+      }
+    options:
+      - "A: 6"
+      - "B: [1 2 3]"
+      - "C: 编译错误"
+      - "D: 123"
+    answer: A
+    explanation: "s...展开切片传给可变参数。sum(1,2,3)=6。参见 Go 规范 Passing arguments 章节。"
+    topic: types
+    chapter: function
+
+  # ========== 困难题 (Hard) - 4道 ==========
+
+  - id: type-func-037
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func f() (r int) {
+          t := 5
+          defer func() {
+              t = t + 5
+          }()
+          return t
+      }
+      func main() {
+          fmt.Println(f())
+      }
+    options:
+      - "A: 5"
+      - "B: 10"
+      - "C: 0"
+      - "D: 15"
+    answer: A
+    explanation: "return t设置r=5。defer修改的是t不是r。返回5。参见 Go 规范 Defer statements 章节。"
+    topic: types
+    chapter: function
+
+  - id: type-func-038
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func f() (r int) {
+          defer func(r int) {
+              r = r + 5
+          }(r)
+          return 1
+      }
+      func main() {
+          fmt.Println(f())
+      }
+    options:
+      - "A: 1"
+      - "B: 5"
+      - "C: 6"
+      - "D: 0"
+    answer: A
+    explanation: "defer参数r立即求值(0)。defer内r是参数副本,修改不影响命名返回值r。返回1。参见 Go 规范 Defer statements 章节。"
+    topic: types
+    chapter: function
+
+  - id: type-func-039
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          defer func() {
+              if r := recover(); r != nil {
+                  fmt.Print("recovered ")
+              }
+          }()
+          defer func() {
+              panic("second")
+          }()
+          panic("first")
+      }
+    options:
+      - "A: recovered"
+      - "B: recovered first"
+      - "C: recovered second"
+      - "D: panic: first"
+    answer: C
+    explanation: "first panic触发defer。第二个defer再次panic(second)覆盖first。第一个defer recover得到second。参见 Go 规范 Handling panics 章节。"
+    topic: types
+    chapter: function
+
+  - id: type-func-040
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type F func() F
+      func main() {
+          var f F
+          f = func() F {
+              fmt.Print("a")
+              return func() F {
+                  fmt.Print("b")
+                  return nil
+              }
+          }
+          f()()
+      }
+    options:
+      - "A: a"
+      - "B: ab"
+      - "C: ba"
+      - "D: 编译错误"
+    answer: B
+    explanation: "F是返回F的函数类型(递归类型)。f()打印a返回内层函数。再()打印b。输出ab。参见 Go 规范 Function types 章节。"
+    topic: types
+    chapter: function

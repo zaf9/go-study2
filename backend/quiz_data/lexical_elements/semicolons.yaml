@@ -1,391 +1,604 @@
+# Go 分号规则测验题库
+# 章节: lexical_elements/semicolons
+# 符合 Go 1.24 语言规范
+
+metadata:
+  topic: lexical_elements
+  chapter: semicolons
+  total_questions: 35
+  last_updated: "2025-01-01"
+  difficulty_distribution:
+    easy: 21      # 60%
+    medium: 11    # 31%
+    hard: 3       # 9%
+  type_distribution:
+    single: 15
+    multiple: 10
+    code_output: 6
+    code_fix: 4
+
 questions:
-    - id: lexical-semicolons-001
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 lexical_elements.semicolons，下面哪个选项是正确的？
-      options:
-        - 'A: 语法/语义上不正确的陈述'
-        - 'B: 正确项（关于semicolons.lexical_elements的重要结论）'
-        - 'C: 正确项（关于semicolons.lexical_elements的重要结论）'
-        - 'D: 正确项（关于semicolons.lexical_elements的重要结论）'
-      answer: BCD
-      explanation: 本题考查 lexical_elements.semicolons 的相关知识。正确答案：BCD。解析：semicolons 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: semicolons
-    - id: lexical-semicolons-002
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 lexical_elements.semicolons，下面哪个选项是正确的？
-      options:
-        - 'A: 正确：关于semicolons.lexical_elements的关键点描述（正确选项）'
-        - 'B: 与semicolons.lexical_elements 相关但不适用的选项'
-        - 'C: 与semicolons.lexical_elements 相关但不适用的选项'
-        - 'D: 部分正确但不完整的说法'
-      answer: A
-      explanation: 本题考查 lexical_elements.semicolons 的概念。正确答案为 A。解析：semicolons 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: semicolons
-    - id: lexical-semicolons-003
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 lexical_elements.semicolons，下面哪个选项是正确的？
-      options:
-        - 'A: 正确项（关于semicolons.lexical_elements的重要结论）'
-        - 'B: 常见误解或反例（容易混淆）'
-        - 'C: 正确项（关于semicolons.lexical_elements的重要结论）'
-        - 'D: 正确项（关于semicolons.lexical_elements的重要结论）'
-      answer: ACD
-      explanation: 本题考查 lexical_elements.semicolons 的相关知识。正确答案：ACD。解析：semicolons 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: semicolons
-    - id: lexical-semicolons-004
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 lexical_elements.semicolons，下面哪个选项是正确的？
-      options:
-        - 'A: 与semicolons.lexical_elements 相关但不适用的选项'
-        - 'B: 正确：关于semicolons.lexical_elements的关键点描述（正确选项）'
-        - 'C: 常见误解或反例（容易混淆）'
-        - 'D: 部分正确但不完整的说法'
-      answer: B
-      explanation: 本题考查 lexical_elements.semicolons 的概念。正确答案为 B。解析：semicolons 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: semicolons
-    - id: lexical-semicolons-005
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 lexical_elements.semicolons，下面哪个选项是正确的？
-      options:
-        - 'A: 语法/语义上不正确的陈述'
-        - 'B: 正确项（关于semicolons.lexical_elements的重要结论）'
-        - 'C: 正确项（关于semicolons.lexical_elements的重要结论）'
-        - 'D: 正确项（关于semicolons.lexical_elements的重要结论）'
-      answer: BCD
-      explanation: 本题考查 lexical_elements.semicolons 的相关知识。正确答案：BCD。解析：semicolons 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: semicolons
-    - id: lexical-semicolons-006
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 lexical_elements.semicolons，下面哪个选项是正确的？
-      options:
-        - 'A: 正确：关于semicolons.lexical_elements的关键点描述（正确选项）'
-        - 'B: 与semicolons.lexical_elements 相关但不适用的选项'
-        - 'C: 语法/语义上不正确的陈述'
-        - 'D: 部分正确但不完整的说法'
-      answer: A
-      explanation: 本题考查 lexical_elements.semicolons 的概念。正确答案为 A。解析：semicolons 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: semicolons
-    - id: lexical-semicolons-007
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 lexical_elements.semicolons，下面哪个选项是正确的？
-      options:
-        - 'A: 正确项（关于semicolons.lexical_elements的重要结论）'
-        - 'B: 语法/语义上不正确的陈述'
-        - 'C: 正确项（关于semicolons.lexical_elements的重要结论）'
-        - 'D: 正确项（关于semicolons.lexical_elements的重要结论）'
-      answer: ACD
-      explanation: 本题考查 lexical_elements.semicolons 的相关知识。正确答案：ACD。解析：semicolons 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: semicolons
-    - id: lexical-semicolons-008
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 lexical_elements.semicolons，下面哪个选项是正确的？
-      options:
-        - 'A: 部分正确但不完整的说法'
-        - 'B: 正确：关于semicolons.lexical_elements的关键点描述（正确选项）'
-        - 'C: 部分正确但不完整的说法'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: B
-      explanation: 本题考查 lexical_elements.semicolons 的概念。正确答案为 B。解析：semicolons 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: semicolons
-    - id: lexical-semicolons-009
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 lexical_elements.semicolons，下面哪个选项是正确的？
-      options:
-        - 'A: 正确项（关于semicolons.lexical_elements的重要结论）'
-        - 'B: 与semicolons.lexical_elements 相关但不适用的选项'
-        - 'C: 正确项（关于semicolons.lexical_elements的重要结论）'
-        - 'D: 部分正确但不完整的说法'
-      answer: AC
-      explanation: 本题考查 lexical_elements.semicolons 的相关知识。正确答案：AC。解析：semicolons 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: semicolons
-    - id: lexical-semicolons-010
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 lexical_elements.semicolons，下面哪个选项是正确的？
-      options:
-        - 'A: 正确：关于semicolons.lexical_elements的关键点描述（正确选项）'
-        - 'B: 部分正确但不完整的说法'
-        - 'C: 与semicolons.lexical_elements 相关但不适用的选项'
-        - 'D: 部分正确但不完整的说法'
-      answer: A
-      explanation: 本题考查 lexical_elements.semicolons 的概念。正确答案为 A。解析：semicolons 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: semicolons
-    - id: lexical-semicolons-011
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 lexical_elements.semicolons，下面哪个选项是正确的？
-      options:
-        - 'A: 正确项（关于semicolons.lexical_elements的重要结论）'
-        - 'B: 正确项（关于semicolons.lexical_elements的重要结论）'
-        - 'C: 正确项（关于semicolons.lexical_elements的重要结论）'
-        - 'D: 常见误解或反例（容易混淆）'
-      answer: ABC
-      explanation: 本题考查 lexical_elements.semicolons 的相关知识。正确答案：ABC。解析：semicolons 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: semicolons
-    - id: lexical-semicolons-012
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 lexical_elements.semicolons，下面哪个选项是正确的？
-      options:
-        - 'A: 与semicolons.lexical_elements 相关但不适用的选项'
-        - 'B: 正确：关于semicolons.lexical_elements的关键点描述（正确选项）'
-        - 'C: 与semicolons.lexical_elements 相关但不适用的选项'
-        - 'D: 部分正确但不完整的说法'
-      answer: B
-      explanation: 本题考查 lexical_elements.semicolons 的概念。正确答案为 B。解析：semicolons 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: semicolons
-    - id: lexical-semicolons-013
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 lexical_elements.semicolons 的情境下，哪个说法更合适？
-      options:
-        - 'A: 与semicolons.lexical_elements 相关但不适用的选项'
-        - 'B: 正确项（关于semicolons.lexical_elements的重要结论）'
-        - 'C: 正确项（关于semicolons.lexical_elements的重要结论）'
-        - 'D: 正确项（关于semicolons.lexical_elements的重要结论）'
-      answer: BCD
-      explanation: 本题考查 lexical_elements.semicolons 的相关知识。正确答案：BCD。解析：semicolons 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: semicolons
-    - id: lexical-semicolons-014
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 lexical_elements.semicolons 的情境下，哪个说法更合适？
-      options:
-        - 'A: 常见误解或反例（容易混淆）'
-        - 'B: 正确：关于semicolons.lexical_elements的关键点描述（正确选项）'
-        - 'C: 部分正确但不完整的说法'
-        - 'D: 与semicolons.lexical_elements 相关但不适用的选项'
-      answer: B
-      explanation: 本题考查 lexical_elements.semicolons 的概念。正确答案为 B。解析：semicolons 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: semicolons
-    - id: lexical-semicolons-015
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 lexical_elements.semicolons 的情境下，哪个说法更合适？
-      options:
-        - 'A: 正确项（关于semicolons.lexical_elements的重要结论）'
-        - 'B: 正确项（关于semicolons.lexical_elements的重要结论）'
-        - 'C: 与semicolons.lexical_elements 相关但不适用的选项'
-        - 'D: 正确项（关于semicolons.lexical_elements的重要结论）'
-      answer: ABD
-      explanation: 本题考查 lexical_elements.semicolons 的相关知识。正确答案：ABD。解析：semicolons 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: semicolons
-    - id: lexical-semicolons-016
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 lexical_elements.semicolons 的情境下，哪个说法更合适？
-      options:
-        - 'A: 语法/语义上不正确的陈述'
-        - 'B: 正确：关于semicolons.lexical_elements的关键点描述（正确选项）'
-        - 'C: 部分正确但不完整的说法'
-        - 'D: 部分正确但不完整的说法'
-      answer: B
-      explanation: 本题考查 lexical_elements.semicolons 的概念。正确答案为 B。解析：semicolons 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: semicolons
-    - id: lexical-semicolons-017
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 lexical_elements.semicolons 的情境下，哪个说法更合适？
-      options:
-        - 'A: 常见误解或反例（容易混淆）'
-        - 'B: 正确项（关于semicolons.lexical_elements的重要结论）'
-        - 'C: 语法/语义上不正确的陈述'
-        - 'D: 正确项（关于semicolons.lexical_elements的重要结论）'
-      answer: BD
-      explanation: 本题考查 lexical_elements.semicolons 的相关知识。正确答案：BD。解析：semicolons 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: semicolons
-    - id: lexical-semicolons-018
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 lexical_elements.semicolons 的情境下，哪个说法更合适？
-      options:
-        - 'A: 常见误解或反例（容易混淆）'
-        - 'B: 语法/语义上不正确的陈述'
-        - 'C: 正确：关于semicolons.lexical_elements的关键点描述（正确选项）'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: C
-      explanation: 本题考查 lexical_elements.semicolons 的概念。正确答案为 C。解析：semicolons 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: semicolons
-    - id: lexical-semicolons-019
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 lexical_elements.semicolons 的情境下，哪个说法更合适？
-      options:
-        - 'A: 部分正确但不完整的说法'
-        - 'B: 正确项（关于semicolons.lexical_elements的重要结论）'
-        - 'C: 正确项（关于semicolons.lexical_elements的重要结论）'
-        - 'D: 部分正确但不完整的说法'
-      answer: BC
-      explanation: 本题考查 lexical_elements.semicolons 的相关知识。正确答案：BC。解析：semicolons 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: semicolons
-    - id: lexical-semicolons-020
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 lexical_elements.semicolons 的情境下，哪个说法更合适？
-      options:
-        - 'A: 语法/语义上不正确的陈述'
-        - 'B: 与semicolons.lexical_elements 相关但不适用的选项'
-        - 'C: 正确：关于semicolons.lexical_elements的关键点描述（正确选项）'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: C
-      explanation: 本题考查 lexical_elements.semicolons 的概念。正确答案为 C。解析：semicolons 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: semicolons
-    - id: lexical-semicolons-021
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 lexical_elements.semicolons 的情境下，哪个说法更合适？
-      options:
-        - 'A: 正确项（关于semicolons.lexical_elements的重要结论）'
-        - 'B: 正确项（关于semicolons.lexical_elements的重要结论）'
-        - 'C: 与semicolons.lexical_elements 相关但不适用的选项'
-        - 'D: 正确项（关于semicolons.lexical_elements的重要结论）'
-      answer: ABD
-      explanation: 本题考查 lexical_elements.semicolons 的相关知识。正确答案：ABD。解析：semicolons 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: semicolons
-    - id: lexical-semicolons-022
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 lexical_elements.semicolons 的情境下，哪个说法更合适？
-      options:
-        - 'A: 常见误解或反例（容易混淆）'
-        - 'B: 常见误解或反例（容易混淆）'
-        - 'C: 正确：关于semicolons.lexical_elements的关键点描述（正确选项）'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: C
-      explanation: 本题考查 lexical_elements.semicolons 的概念。正确答案为 C。解析：semicolons 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: semicolons
-    - id: lexical-semicolons-023
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 lexical_elements.semicolons 的情境下，哪个说法更合适？
-      options:
-        - 'A: 正确项（关于semicolons.lexical_elements的重要结论）'
-        - 'B: 正确项（关于semicolons.lexical_elements的重要结论）'
-        - 'C: 常见误解或反例（容易混淆）'
-        - 'D: 正确项（关于semicolons.lexical_elements的重要结论）'
-      answer: ABD
-      explanation: 本题考查 lexical_elements.semicolons 的相关知识。正确答案：ABD。解析：semicolons 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: semicolons
-    - id: lexical-semicolons-024
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 lexical_elements.semicolons 的情境下，哪个说法更合适？
-      options:
-        - 'A: 语法/语义上不正确的陈述'
-        - 'B: 常见误解或反例（容易混淆）'
-        - 'C: 正确：关于semicolons.lexical_elements的关键点描述（正确选项）'
-        - 'D: 常见误解或反例（容易混淆）'
-      answer: C
-      explanation: 本题考查 lexical_elements.semicolons 的概念。正确答案为 C。解析：semicolons 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: semicolons
-    - id: lexical-semicolons-025
-      type: multiple
-      difficulty: hard
-      stem: 【思考题】针对 lexical_elements.semicolons，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 正确项（关于semicolons.lexical_elements的重要结论）'
-        - 'B: 常见误解或反例（容易混淆）'
-        - 'C: 正确项（关于semicolons.lexical_elements的重要结论）'
-        - 'D: 正确项（关于semicolons.lexical_elements的重要结论）'
-      answer: ACD
-      explanation: 本题考查 lexical_elements.semicolons 的相关知识。正确答案：ACD。解析：semicolons 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: semicolons
-    - id: lexical-semicolons-026
-      type: single
-      difficulty: hard
-      stem: 【思考题】针对 lexical_elements.semicolons，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 部分正确但不完整的说法'
-        - 'B: 部分正确但不完整的说法'
-        - 'C: 正确：关于semicolons.lexical_elements的关键点描述（正确选项）'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: C
-      explanation: 本题考查 lexical_elements.semicolons 的概念。正确答案为 C。解析：semicolons 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: semicolons
-    - id: lexical-semicolons-027
-      type: multiple
-      difficulty: hard
-      stem: 【思考题】针对 lexical_elements.semicolons，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 常见误解或反例（容易混淆）'
-        - 'B: 与semicolons.lexical_elements 相关但不适用的选项'
-        - 'C: 正确项（关于semicolons.lexical_elements的重要结论）'
-        - 'D: 正确项（关于semicolons.lexical_elements的重要结论）'
-      answer: CD
-      explanation: 本题考查 lexical_elements.semicolons 的相关知识。正确答案：CD。解析：semicolons 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: semicolons
-    - id: lexical-semicolons-028
-      type: single
-      difficulty: hard
-      stem: 【思考题】针对 lexical_elements.semicolons，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 与semicolons.lexical_elements 相关但不适用的选项'
-        - 'B: 与semicolons.lexical_elements 相关但不适用的选项'
-        - 'C: 语法/语义上不正确的陈述'
-        - 'D: 正确：关于semicolons.lexical_elements的关键点描述（正确选项）'
-      answer: D
-      explanation: 本题考查 lexical_elements.semicolons 的概念。正确答案为 D。解析：semicolons 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: semicolons
-    - id: lexical-semicolons-029
-      type: multiple
-      difficulty: hard
-      stem: 【思考题】针对 lexical_elements.semicolons，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 常见误解或反例（容易混淆）'
-        - 'B: 正确项（关于semicolons.lexical_elements的重要结论）'
-        - 'C: 正确项（关于semicolons.lexical_elements的重要结论）'
-        - 'D: 正确项（关于semicolons.lexical_elements的重要结论）'
-      answer: BCD
-      explanation: 本题考查 lexical_elements.semicolons 的相关知识。正确答案：BCD。解析：semicolons 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: semicolons
-    - id: lexical-semicolons-030
-      type: single
-      difficulty: hard
-      stem: 【思考题】针对 lexical_elements.semicolons，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 部分正确但不完整的说法'
-        - 'B: 部分正确但不完整的说法'
-        - 'C: 正确：关于semicolons.lexical_elements的关键点描述（正确选项）'
-        - 'D: 常见误解或反例（容易混淆）'
-      answer: C
-      explanation: 本题考查 lexical_elements.semicolons 的概念。正确答案为 C。解析：semicolons 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: semicolons
+  # ========== 简单题 (Easy) - 21道 ==========
+  
+  - id: lexical-semicolons-001
+    type: single
+    difficulty: easy
+    stem: "Go语言中,语句结束时是否需要手动写分号?"
+    options:
+      - "A: 必须写分号"
+      - "B: 大多数情况不需要,词法分析器自动插入"
+      - "C: 只在循环中需要"
+      - "D: 从不需要分号"
+    answer: B
+    explanation: "Go的词法分析器会根据规则自动插入分号,所以大多数情况下程序员不需要手动写分号。参见 Go 规范 Semicolons 章节。"
+    topic: lexical_elements
+    chapter: semicolons
+
+  - id: lexical-semicolons-002
+    type: single
+    difficulty: easy
+    stem: "Go在什么情况下会自动插入分号?"
+    options:
+      - "A: 每行末尾"
+      - "B: 特定token后的换行处"
+      - "C: 只在函数末尾"
+      - "D: 只在return语句后"
+    answer: B
+    explanation: "Go在特定token(如标识符、字面量、某些关键字、)]}等)后遇到换行时自动插入分号。参见 Go 规范 Semicolons 章节。"
+    topic: lexical_elements
+    chapter: semicolons
+
+  - id: lexical-semicolons-003
+    type: single
+    difficulty: easy
+    stem: "以下哪个位置Go会自动插入分号?"
+    options:
+      - "A: {之前"
+      - "B: 标识符之后的换行处"
+      - "C: (之后"
+      - "D: ,之后"
+    answer: B
+    explanation: "标识符后遇到换行会自动插入分号。{前不会插入分号(这就是为什么{必须与前面语句同一行)。参见 Go 规范 Semicolons 章节。"
+    topic: lexical_elements
+    chapter: semicolons
+
+  - id: lexical-semicolons-004
+    type: multiple
+    difficulty: easy
+    stem: "以下哪些token之后换行时Go会自动插入分号?(多选)"
+    options:
+      - "A: 标识符"
+      - "B: 整数字面量"
+      - "C: 字符串字面量"
+      - "D: 左括号("
+    answer: ABC
+    explanation: "标识符、字面量(整数、浮点、字符串等)之后换行会插入分号。左括号(之后不会。参见 Go 规范 Semicolons 章节。"
+    topic: lexical_elements
+    chapter: semicolons
+
+  - id: lexical-semicolons-005
+    type: single
+    difficulty: easy
+    stem: "为什么Go的{必须与if/for/func等关键字在同一行?"
+    options:
+      - "A: 代码风格规定"
+      - "B: 因为自动分号插入规则"
+      - "C: 编译器限制"
+      - "D: 性能原因"
+    answer: B
+    explanation: "如果{另起一行,在关键字或)后会自动插入分号,导致语法错误。这是自动分号插入规则的直接后果。参见 Go 规范 Semicolons 章节。"
+    topic: lexical_elements
+    chapter: semicolons
+
+  - id: lexical-semicolons-006
+    type: multiple
+    difficulty: easy
+    stem: "以下哪些关键字之后换行时会自动插入分号?(多选)"
+    options:
+      - "A: break"
+      - "B: continue"
+      - "C: return"
+      - "D: if"
+    answer: ABC
+    explanation: "break、continue、return、fallthrough后换行会插入分号。if后不会(因为后面需要条件表达式)。参见 Go 规范 Semicolons 章节。"
+    topic: lexical_elements
+    chapter: semicolons
+
+  - id: lexical-semicolons-007
+    type: single
+    difficulty: easy
+    stem: "以下哪个符号之后换行时会自动插入分号?"
+    options:
+      - "A: ("
+      - "B: {"
+      - "C: )"
+      - "D: ,"
+    answer: C
+    explanation: ")、]、}之后换行会插入分号。(、{、,之后不会。参见 Go 规范 Semicolons 章节。"
+    topic: lexical_elements
+    chapter: semicolons
+
+  - id: lexical-semicolons-008
+    type: single
+    difficulty: easy
+    stem: "Go代码中什么时候必须手动写分号?"
+    options:
+      - "A: 每行末尾"
+      - "B: for循环的初始化和条件部分"
+      - "C: 函数声明后"
+      - "D: 从不需要"
+    answer: B
+    explanation: "for循环中需要用分号分隔初始化语句、条件和后置语句,如for i := 0; i < 10; i++。这是少数需要手动写分号的场景。参见 Go 规范 For statements 章节。"
+    topic: lexical_elements
+    chapter: semicolons
+
+  - id: lexical-semicolons-009
+    type: single
+    difficulty: easy
+    stem: "以下哪种写法是Go的标准风格?"
+    options:
+      - "A: if x > 0\\n{"
+      - "B: if x > 0 {"
+      - "C: if (x > 0) {"
+      - "D: if x > 0\\n  {"
+    answer: B
+    explanation: "Go标准风格要求{与if在同一行。如果{另起一行会因自动分号导致编译错误。参见 Go 规范 Semicolons 章节。"
+    topic: lexical_elements
+    chapter: semicolons
+
+  - id: lexical-semicolons-010
+    type: single
+    difficulty: easy
+    stem: "以下哪个++后面的换行会自动插入分号?"
+    options:
+      - "A: i++后"
+      - "B: ++i后"
+      - "C: 两者都会"
+      - "D: 两者都不会"
+    answer: A
+    explanation: "Go只有后缀++/--,i++后换行会插入分号。Go没有前缀++i语法。参见 Go 规范 Semicolons 章节。"
+    topic: lexical_elements
+    chapter: semicolons
+
+  - id: lexical-semicolons-011
+    type: single
+    difficulty: easy
+    stem: "gofmt工具如何处理分号?"
+    options:
+      - "A: 添加所有需要的分号"
+      - "B: 移除不必要的分号"
+      - "C: 不处理分号"
+      - "D: 将所有分号改为换行"
+    answer: B
+    explanation: "gofmt会移除不必要的显式分号,保持代码整洁。自动分号插入使得大多数显式分号是多余的。参见 gofmt文档。"
+    topic: lexical_elements
+    chapter: semicolons
+
+  - id: lexical-semicolons-012
+    type: multiple
+    difficulty: easy
+    stem: "关于Go分号规则,以下说法正确的是?(多选)"
+    options:
+      - "A: 分号用于终止语句"
+      - "B: 词法分析器自动插入分号"
+      - "C: 程序员可以手动添加分号"
+      - "D: 分号在源码中几乎不可见"
+    answer: ABCD
+    explanation: "Go使用分号终止语句,但词法分析器自动插入使得源码中很少看到分号。程序员仍可以手动写分号。参见 Go 规范 Semicolons 章节。"
+    topic: lexical_elements
+    chapter: semicolons
+
+  - id: lexical-semicolons-013
+    type: single
+    difficulty: easy
+    stem: "在一行写多个语句时如何分隔?"
+    options:
+      - "A: 用逗号,"
+      - "B: 用分号;"
+      - "C: 用冒号:"
+      - "D: 不能在一行写多个语句"
+    answer: B
+    explanation: "如果要在一行写多个语句,需要用分号分隔,如x := 1; y := 2。但这不是推荐的风格。参见 Go 规范 Semicolons 章节。"
+    topic: lexical_elements
+    chapter: semicolons
+
+  - id: lexical-semicolons-014
+    type: single
+    difficulty: easy
+    stem: "fallthrough关键字后换行会发生什么?"
+    options:
+      - "A: 无影响"
+      - "B: 自动插入分号"
+      - "C: 编译错误"
+      - "D: 运行时错误"
+    answer: B
+    explanation: "fallthrough是会触发自动分号插入的关键字之一。这意味着fallthrough必须是case语句块的最后一条语句。参见 Go 规范 Semicolons 章节。"
+    topic: lexical_elements
+    chapter: semicolons
+
+  - id: lexical-semicolons-015
+    type: single
+    difficulty: easy
+    stem: "字符串字面量之后换行会发生什么?"
+    options:
+      - "A: 字符串连接"
+      - "B: 自动插入分号"
+      - "C: 编译错误"
+      - "D: 无影响"
+    answer: B
+    explanation: "字符串字面量属于会触发自动分号插入的token。所以\"hello\"后换行会插入分号,不会自动连接下一行的字符串。参见 Go 规范 Semicolons 章节。"
+    topic: lexical_elements
+    chapter: semicolons
+
+  - id: lexical-semicolons-016
+    type: single
+    difficulty: easy
+    stem: "以下哪种写法可以跨多行?"
+    options:
+      - "A: 字符串字面量"
+      - "B: 复合字面量(如切片初始化)"
+      - "C: 单行注释"
+      - "D: 变量名"
+    answer: B
+    explanation: "复合字面量(如[]int{1, 2, 3})可以跨多行,因为{之后和,之后不会插入分号。字符串字面量用反引号可跨行。参见 Go 规范 Semicolons 章节。"
+    topic: lexical_elements
+    chapter: semicolons
+
+  - id: lexical-semicolons-017
+    type: single
+    difficulty: easy
+    stem: "Go的自动分号插入在哪个阶段进行?"
+    options:
+      - "A: 预处理"
+      - "B: 词法分析"
+      - "C: 语法分析"
+      - "D: 语义分析"
+    answer: B
+    explanation: "自动分号插入在词法分析阶段进行,将换行转换为分号token。参见 Go 规范 Semicolons 章节。"
+    topic: lexical_elements
+    chapter: semicolons
+
+  - id: lexical-semicolons-018
+    type: multiple
+    difficulty: easy
+    stem: "以下哪些场景中Go不会自动插入分号?(多选)"
+    options:
+      - "A: {之后换行"
+      - "B: (之后换行"
+      - "C: ,之后换行"
+      - "D: .之后换行"
+    answer: ABCD
+    explanation: "{、(、,、.之后换行都不会插入分号,允许代码跨行。这是Go支持链式调用和复合字面量跨行的基础。参见 Go 规范 Semicolons 章节。"
+    topic: lexical_elements
+    chapter: semicolons
+
+  - id: lexical-semicolons-019
+    type: single
+    difficulty: easy
+    stem: "方法链式调用如何处理换行?"
+    options:
+      - "A: 每行末尾加分号"
+      - "B: 在.前换行"
+      - "C: 在.后换行"
+      - "D: 不能换行"
+    answer: B
+    explanation: "链式调用应在.前换行,因为表达式末尾会插入分号,.放在下一行不会。如obj\\n.Method()而非obj.\\nMethod()。参见 Go 代码风格。"
+    topic: lexical_elements
+    chapter: semicolons
+
+  - id: lexical-semicolons-020
+    type: single
+    difficulty: easy
+    stem: "以下哪个是正确的函数参数换行方式?"
+    options:
+      - "A: func(a int\\n    b int)"
+      - "B: func(a int,\\n    b int)"
+      - "C: func(a int\\n    ,b int)"
+      - "D: 函数参数不能换行"
+    answer: B
+    explanation: "参数列表应在逗号后换行,因为,后不会插入分号。逗号放在行首是Go不推荐的风格。参见 Go 代码风格。"
+    topic: lexical_elements
+    chapter: semicolons
+
+  - id: lexical-semicolons-021
+    type: single
+    difficulty: easy
+    stem: "Go为什么设计自动分号插入?"
+    options:
+      - "A: 为了与C兼容"
+      - "B: 为了简化代码编写"
+      - "C: 为了提高性能"
+      - "D: 为了支持泛型"
+    answer: B
+    explanation: "自动分号插入简化了代码编写,减少了噪音,使Go代码更清晰。Go从JavaScript吸取教训,制定了明确的规则避免歧义。参见 Go 设计文档。"
+    topic: lexical_elements
+    chapter: semicolons
+
+  # ========== 中等题 (Medium) - 11道 ==========
+
+  - id: lexical-semicolons-022
+    type: code_output
+    difficulty: medium
+    stem: "以下代码能否编译通过?"
+    code: |
+      package main
+      func main() {
+          if true
+          {
+              println("hello")
+          }
+      }
+    options:
+      - "A: 可以,输出hello"
+      - "B: 编译错误:缺少{之前的语句"
+      - "C: 编译错误:意外的换行"
+      - "D: 运行时错误"
+    answer: B
+    explanation: "if true后换行会插入分号,{另起一行导致语法错误。正确写法是{与if同行。参见 Go 规范 Semicolons 章节。"
+    topic: lexical_elements
+    chapter: semicolons
+
+  - id: lexical-semicolons-023
+    type: code_fix
+    difficulty: medium
+    stem: "以下代码有语法错误,正确的修正方案是?"
+    code: |
+      package main
+      func main() {
+          return
+              1
+      }
+    options:
+      - "A: 将return和1放在同一行"
+      - "B: 将main改为有返回值的函数"
+      - "C: 删除1"
+      - "D: A和B都需要"
+    answer: D
+    explanation: "return后换行会插入分号,变成return;和悬空的1。需要同行写return 1,且main要有返回类型。参见 Go 规范 Semicolons 章节。"
+    topic: lexical_elements
+    chapter: semicolons
+
+  - id: lexical-semicolons-024
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的结果是什么?"
+    code: |
+      package main
+      func f() int {
+          return 
+              1
+      }
+      func main() {
+          println(f())
+      }
+    options:
+      - "A: 1"
+      - "B: 0"
+      - "C: 编译错误"
+      - "D: 运行时panic"
+    answer: C
+    explanation: "return后换行插入分号,return;没有返回值但函数声明返回int,编译错误。1变成无法到达的悬空表达式。参见 Go 规范 Semicolons 章节。"
+    topic: lexical_elements
+    chapter: semicolons
+
+  - id: lexical-semicolons-025
+    type: code_fix
+    difficulty: medium
+    stem: "以下代码风格不好,最佳修正方案是?"
+    code: |
+      package main
+      func main() {
+          x := 1;
+          y := 2;
+          println(x + y)
+      }
+    options:
+      - "A: 删除所有分号"
+      - "B: 添加更多分号"
+      - "C: 保持原样"
+      - "D: 将语句合并为一行"
+    answer: A
+    explanation: "行末的分号是多余的,会被gofmt移除。Go风格是每行一个语句,不需要显式分号。参见 Go 代码风格指南。"
+    topic: lexical_elements
+    chapter: semicolons
+
+  - id: lexical-semicolons-026
+    type: code_output
+    difficulty: medium
+    stem: "以下代码能否正确编译?"
+    code: |
+      package main
+      func main() {
+          x := []int{
+              1,
+              2,
+              3,
+          }
+          println(len(x))
+      }
+    options:
+      - "A: 可以,输出3"
+      - "B: 编译错误:多余的逗号"
+      - "C: 编译错误:缺少分号"
+      - "D: 运行时错误"
+    answer: A
+    explanation: "Go允许复合字面量最后一个元素后面有逗号(trailing comma),这便于添加删除元素。,后不会插入分号。参见 Go 规范 Composite literals 章节。"
+    topic: lexical_elements
+    chapter: semicolons
+
+  - id: lexical-semicolons-027
+    type: multiple
+    difficulty: medium
+    stem: "关于Go的分号规则与其他语言的比较,以下说法正确的是?(多选)"
+    options:
+      - "A: 比C语言更灵活"
+      - "B: 比JavaScript规则更明确"
+      - "C: 与Python一样不需要分号"
+      - "D: 分号仍然是语法的一部分"
+    answer: ABD
+    explanation: "Go比C更灵活(不需手动写分号),比JS规则更明确(减少歧义)。但分号仍是语法的一部分,只是自动插入,与Python的无分号设计不同。参见 Go 规范设计文档。"
+    topic: lexical_elements
+    chapter: semicolons
+
+  - id: lexical-semicolons-028
+    type: code_output
+    difficulty: medium
+    stem: "以下代码能否编译通过?"
+    code: |
+      package main
+      func main() {
+          x := 1 +
+              2
+          println(x)
+      }
+    options:
+      - "A: 可以,输出3"
+      - "B: 编译错误:+后不能换行"
+      - "C: 编译错误:悬空的2"
+      - "D: 输出1"
+    answer: A
+    explanation: "+是二元运算符,后面需要操作数,+后换行不会插入分号,可以继续到下一行。参见 Go 规范 Semicolons 章节。"
+    topic: lexical_elements
+    chapter: semicolons
+
+  - id: lexical-semicolons-029
+    type: code_fix
+    difficulty: medium
+    stem: "以下代码有错误,正确的修正方案是?"
+    code: |
+      package main
+      func main() {
+          x := 1
+              + 2
+          println(x)
+      }
+    options:
+      - "A: 将+移到第一行末尾"
+      - "B: 删除换行"
+      - "C: 添加分号"
+      - "D: A或B"
+    answer: D
+    explanation: "1后换行会插入分号,+ 2变成悬空表达式。正确做法是把+放在1后面(x := 1 +),或全部放一行。参见 Go 规范 Semicolons 章节。"
+    topic: lexical_elements
+    chapter: semicolons
+
+  - id: lexical-semicolons-030
+    type: code_output
+    difficulty: medium
+    stem: "以下for循环能否正确运行?"
+    code: |
+      package main
+      func main() {
+          for i := 0
+              i < 3
+              i++ {
+              println(i)
+          }
+      }
+    options:
+      - "A: 输出0 1 2"
+      - "B: 编译错误"
+      - "C: 无限循环"
+      - "D: 输出0"
+    answer: B
+    explanation: "for的三个部分必须用分号分隔且在特定结构内。换行会插入分号导致语法错误。正确写法是一行或用分号。参见 Go 规范 For statements 章节。"
+    topic: lexical_elements
+    chapter: semicolons
+
+  - id: lexical-semicolons-031
+    type: multiple
+    difficulty: medium
+    stem: "关于在复合字面量中使用逗号,以下说法正确的是?(多选)"
+    options:
+      - "A: 最后一个元素可以有trailing comma"
+      - "B: 有trailing comma时可以把}放在新行"
+      - "C: 没有trailing comma时}必须与最后元素同行"
+      - "D: trailing comma是可选的"
+    answer: ABCD
+    explanation: "trailing comma允许}独立成行,便于版本控制。如果没有trailing comma,}必须与最后元素同行,否则会插入分号导致错误。参见 Go 代码风格。"
+    topic: lexical_elements
+    chapter: semicolons
+
+  - id: lexical-semicolons-032
+    type: code_output
+    difficulty: medium
+    stem: "以下代码能否编译?"
+    code: |
+      package main
+      func main() {
+          x := map[string]int{
+              "a": 1,
+              "b": 2
+          }
+          println(x["a"])
+      }
+    options:
+      - "A: 可以,输出1"
+      - "B: 编译错误:缺少逗号"
+      - "C: 编译错误:缺少分号"
+      - "D: 运行时错误"
+    answer: B
+    explanation: "2后面没有逗号,}另起一行时2后会插入分号,导致语法错误。要么加trailing comma,要么}与2同行。参见 Go 规范 Semicolons 章节。"
+    topic: lexical_elements
+    chapter: semicolons
+
+  # ========== 困难题 (Hard) - 3道 ==========
+
+  - id: lexical-semicolons-033
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的行为是什么?"
+    code: |
+      package main
+      func main() {
+          defer func() { println("defer") }()
+          return
+          println("unreachable")
+      }
+    options:
+      - "A: 只输出defer"
+      - "B: 输出defer和unreachable"
+      - "C: 编译错误:unreachable code"
+      - "D: 无输出"
+    answer: A
+    explanation: "return后插入分号,函数返回。defer正常执行输出defer。println(\"unreachable\")是死代码但Go编译器不报错(只是警告)。参见 Go 规范 Defer statements 章节。"
+    topic: lexical_elements
+    chapter: semicolons
+
+  - id: lexical-semicolons-034
+    type: multiple
+    difficulty: hard
+    stem: "关于Go自动分号插入的设计考虑,以下说法正确的是?(多选)"
+    options:
+      - "A: 避免了JavaScript的歧义问题"
+      - "B: 强制统一的代码风格"
+      - "C: 规则是确定性的,不依赖语义"
+      - "D: 简化了解析器实现"
+    answer: ABC
+    explanation: "Go的规则是确定性的(仅基于词法),避免JS的歧义,强制{同行风格。但实际上增加了词法分析器复杂度,而非简化。参见 Go 语言设计文档。"
+    topic: lexical_elements
+    chapter: semicolons
+
+  - id: lexical-semicolons-035
+    type: code_fix
+    difficulty: hard
+    stem: "以下代码可能在不同Go版本有不同行为,最佳修正方案是?"
+    code: |
+      package main
+      func f() (int, error) {
+          return 1,
+              nil
+      }
+      func main() {
+          x, _ := f()
+          println(x)
+      }
+    options:
+      - "A: 代码正确,不需修改"
+      - "B: 将返回值放在同一行"
+      - "C: 在1后添加显式分号"
+      - "D: 使用命名返回值"
+    answer: A
+    explanation: "return后跟表达式时,如果表达式未完结(如1,),不会插入分号。这段代码是正确的。逗号后可以换行。参见 Go 规范 Semicolons 章节。"
+    topic: lexical_elements
+    chapter: semicolons

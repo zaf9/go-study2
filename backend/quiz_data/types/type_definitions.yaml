@@ -1,0 +1,703 @@
+# Go 类型定义测验题库
+# 章节: types/type_definitions
+# 符合 Go 1.24 语言规范
+
+metadata:
+  topic: types
+  chapter: type_definitions
+  total_questions: 38
+  last_updated: "2025-01-01"
+  difficulty_distribution:
+    easy: 22      # 58%
+    medium: 12    # 32%
+    hard: 4       # 10%
+  type_distribution:
+    single: 17
+    multiple: 9
+    code_output: 8
+    code_fix: 4
+
+questions:
+  # ========== 简单题 (Easy) - 22道 ==========
+  
+  - id: type-def-001
+    type: single
+    difficulty: easy
+    stem: "Go中定义新类型的关键字是什么?"
+    options:
+      - "A: typedef"
+      - "B: type"
+      - "C: define"
+      - "D: class"
+    answer: B
+    explanation: "Go使用type关键字定义新类型。如type MyInt int。参见 Go 规范 Type definitions 章节。"
+    topic: types
+    chapter: type_definitions
+
+  - id: type-def-002
+    type: single
+    difficulty: easy
+    stem: "type MyInt int创建的是什么?"
+    options:
+      - "A: 别名"
+      - "B: 新类型"
+      - "C: 常量"
+      - "D: 变量"
+    answer: B
+    explanation: "type MyInt int创建新类型MyInt。MyInt和int是不同类型。参见 Go 规范 Type definitions 章节。"
+    topic: types
+    chapter: type_definitions
+
+  - id: type-def-003
+    type: single
+    difficulty: easy
+    stem: "新定义的类型和底层类型可以直接赋值吗?"
+    options:
+      - "A: 可以"
+      - "B: 不可以"
+      - "C: 需要显式转换"
+      - "D: 取决于类型"
+    answer: C
+    explanation: "新类型和底层类型不能直接赋值,需要显式类型转换。参见 Go 规范 Conversions 章节。"
+    topic: types
+    chapter: type_definitions
+
+  - id: type-def-004
+    type: single
+    difficulty: easy
+    stem: "新类型是否继承底层类型的方法?"
+    options:
+      - "A: 继承所有方法"
+      - "B: 不继承方法"
+      - "C: 只继承导出方法"
+      - "D: 只继承值方法"
+    answer: B
+    explanation: "新定义的类型不继承底层类型的方法。方法集是空的。参见 Go 规范 Type definitions 章节。"
+    topic: types
+    chapter: type_definitions
+
+  - id: type-def-005
+    type: single
+    difficulty: easy
+    stem: "什么是类型的底层类型(underlying type)?"
+    options:
+      - "A: 定义时指定的类型"
+      - "B: 递归展开到预声明类型"
+      - "C: 基类"
+      - "D: 接口类型"
+    answer: B
+    explanation: "底层类型递归展开直到预声明类型或类型字面量。参见 Go 规范 Underlying types 章节。"
+    topic: types
+    chapter: type_definitions
+
+  - id: type-def-006
+    type: single
+    difficulty: easy
+    stem: "type A int; type B A,B的底层类型是什么?"
+    options:
+      - "A: A"
+      - "B: B"
+      - "C: int"
+      - "D: 无底层类型"
+    answer: C
+    explanation: "B的底层类型递归展开:B->A->int。最终是int。参见 Go 规范 Underlying types 章节。"
+    topic: types
+    chapter: type_definitions
+
+  - id: type-def-007
+    type: single
+    difficulty: easy
+    stem: "新类型可以定义自己的方法吗?"
+    options:
+      - "A: 不可以"
+      - "B: 可以"
+      - "C: 只能定义在包内"
+      - "D: 取决于底层类型"
+    answer: B
+    explanation: "新类型可以定义自己的方法。必须在同一个包内定义。参见 Go 规范 Method declarations 章节。"
+    topic: types
+    chapter: type_definitions
+
+  - id: type-def-008
+    type: single
+    difficulty: easy
+    stem: "以下哪个是合法的类型定义?"
+    options:
+      - "A: type S struct{ Name string }"
+      - "B: type I interface{ M() }"
+      - "C: type F func(int) int"
+      - "D: 以上都是"
+    answer: D
+    explanation: "可以定义结构体、接口、函数等各种类型。参见 Go 规范 Type definitions 章节。"
+    topic: types
+    chapter: type_definitions
+
+  - id: type-def-009
+    type: single
+    difficulty: easy
+    stem: "类型定义可以递归吗?"
+    options:
+      - "A: 可以(通过指针)"
+      - "B: 完全不可以"
+      - "C: 可以直接递归"
+      - "D: 只有接口可以"
+    answer: A
+    explanation: "结构体不能直接包含自己,但可以通过指针或接口递归。参见 Go 规范 Type definitions 章节。"
+    topic: types
+    chapter: type_definitions
+
+  - id: type-def-010
+    type: single
+    difficulty: easy
+    stem: "预声明类型有哪些?"
+    options:
+      - "A: int, string, bool等"
+      - "B: 用户定义的类型"
+      - "C: 只有struct"
+      - "D: 只有interface"
+    answer: A
+    explanation: "预声明类型包括bool、int、string等基本类型,以及error接口等。参见 Go 规范 Predeclared identifiers 章节。"
+    topic: types
+    chapter: type_definitions
+
+  - id: type-def-011
+    type: single
+    difficulty: easy
+    stem: "定义类型的目的是什么?"
+    options:
+      - "A: 类型安全"
+      - "B: 语义清晰"
+      - "C: 添加方法"
+      - "D: 以上都是"
+    answer: D
+    explanation: "定义类型提供类型安全,语义清晰,并可以为类型添加方法。参见 Go 规范 Type definitions 章节。"
+    topic: types
+    chapter: type_definitions
+
+  - id: type-def-012
+    type: single
+    difficulty: easy
+    stem: "type Celsius float64和type Fahrenheit float64可以比较吗?"
+    options:
+      - "A: 可以"
+      - "B: 不可以"
+      - "C: 转换后可以"
+      - "D: 取决于值"
+    answer: C
+    explanation: "Celsius和Fahrenheit是不同类型,不能直接比较。需要转换为同一类型。参见 Go 规范 Comparison operators 章节。"
+    topic: types
+    chapter: type_definitions
+
+  - id: type-def-013
+    type: single
+    difficulty: easy
+    stem: "可以为预声明类型添加方法吗?"
+    options:
+      - "A: 可以"
+      - "B: 不可以"
+      - "C: 需要类型定义"
+      - "D: 只能在builtin包"
+    answer: C
+    explanation: "不能为预声明类型(如int)直接添加方法。需要先定义新类型。参见 Go 规范 Method declarations 章节。"
+    topic: types
+    chapter: type_definitions
+
+  - id: type-def-014
+    type: single
+    difficulty: easy
+    stem: "type关键字可以一次定义多个类型吗?"
+    options:
+      - "A: 不可以"
+      - "B: 可以,用括号"
+      - "C: 可以,用逗号"
+      - "D: 可以,用分号"
+    answer: B
+    explanation: "type可以用括号一次定义多个类型。如type (A int; B string)。参见 Go 规范 Type definitions 章节。"
+    topic: types
+    chapter: type_definitions
+
+  - id: type-def-015
+    type: single
+    difficulty: easy
+    stem: "结构体类型的底层类型是什么?"
+    options:
+      - "A: struct"
+      - "B: 结构体字面量本身"
+      - "C: 第一个字段类型"
+      - "D: interface{}"
+    answer: B
+    explanation: "struct{...}类型字面量的底层类型就是它自己。参见 Go 规范 Underlying types 章节。"
+    topic: types
+    chapter: type_definitions
+
+  - id: type-def-016
+    type: multiple
+    difficulty: easy
+    stem: "关于类型定义,以下说法正确的是?(多选)"
+    options:
+      - "A: 创建新类型"
+      - "B: 需要显式转换"
+      - "C: 不继承方法"
+      - "D: 可定义方法"
+    answer: ABCD
+    explanation: "类型定义创建新类型,需显式转换,不继承方法,可定义自己的方法。参见 Go 规范 Type definitions 章节。"
+    topic: types
+    chapter: type_definitions
+
+  - id: type-def-017
+    type: single
+    difficulty: easy
+    stem: "类型字面量是什么?"
+    options:
+      - "A: 类型的字符串表示"
+      - "B: 直接写出的类型结构"
+      - "C: 类型常量"
+      - "D: 类型变量"
+    answer: B
+    explanation: "类型字面量如[]int、map[string]int、struct{X int}直接描述类型结构。参见 Go 规范 Types 章节。"
+    topic: types
+    chapter: type_definitions
+
+  - id: type-def-018
+    type: single
+    difficulty: easy
+    stem: "哪种类型不能作为方法接收者?"
+    options:
+      - "A: 结构体"
+      - "B: 指针"
+      - "C: 接口"
+      - "D: 定义的基本类型"
+    answer: C
+    explanation: "不能为接口类型定义方法。其他命名类型(包括定义的基本类型)可以。参见 Go 规范 Method declarations 章节。"
+    topic: types
+    chapter: type_definitions
+
+  - id: type-def-019
+    type: single
+    difficulty: easy
+    stem: "type _ int是什么?"
+    options:
+      - "A: 无名类型"
+      - "B: 空白类型"
+      - "C: 编译错误"
+      - "D: 别名"
+    answer: C
+    explanation: "类型名不能是空白标识符_。会编译错误。参见 Go 规范 Type definitions 章节。"
+    topic: types
+    chapter: type_definitions
+
+  - id: type-def-020
+    type: single
+    difficulty: easy
+    stem: "定义类型后,是否可以在其他包使用?"
+    options:
+      - "A: 总是可以"
+      - "B: 大写开头可以"
+      - "C: 不可以"
+      - "D: 需要导出"
+    answer: B
+    explanation: "大写开头的类型名是导出的,其他包可以使用。小写不导出。参见 Go 规范 Exported identifiers 章节。"
+    topic: types
+    chapter: type_definitions
+
+  - id: type-def-021
+    type: single
+    difficulty: easy
+    stem: "类型声明和类型别名的区别是什么?"
+    options:
+      - "A: 没有区别"
+      - "B: 声明创建新类型,别名不创建"
+      - "C: 别名创建新类型"
+      - "D: 取决于用法"
+    answer: B
+    explanation: "type T U是类型定义(新类型)。type T = U是类型别名(同一类型)。参见 Go 规范 Type definitions 章节。"
+    topic: types
+    chapter: type_definitions
+
+  - id: type-def-022
+    type: single
+    difficulty: easy
+    stem: "新类型的零值是什么?"
+    options:
+      - "A: nil"
+      - "B: 底层类型的零值"
+      - "C: undefined"
+      - "D: 0"
+    answer: B
+    explanation: "新类型的零值与底层类型的零值相同。参见 Go 规范 The zero value 章节。"
+    topic: types
+    chapter: type_definitions
+
+  # ========== 中等题 (Medium) - 12道 ==========
+
+  - id: type-def-023
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type MyInt int
+      func main() {
+          var x MyInt = 10
+          var y int = 20
+          fmt.Println(x + MyInt(y))
+      }
+    options:
+      - "A: 30"
+      - "B: 编译错误"
+      - "C: 10"
+      - "D: 20"
+    answer: A
+    explanation: "MyInt(y)将int转换为MyInt。同类型可以相加。10+20=30。参见 Go 规范 Conversions 章节。"
+    topic: types
+    chapter: type_definitions
+
+  - id: type-def-024
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type A int
+      func (a A) M() { fmt.Print("A") }
+      type B A
+      func main() {
+          var b B = 1
+          b.M()
+      }
+    options:
+      - "A: A"
+      - "B: 编译错误"
+      - "C: B"
+      - "D: 1"
+    answer: B
+    explanation: "B是新类型,不继承A的方法M。b.M()编译错误。参见 Go 规范 Type definitions 章节。"
+    topic: types
+    chapter: type_definitions
+
+  - id: type-def-025
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type Celsius float64
+      type Fahrenheit float64
+      func main() {
+          var c Celsius = 100
+          var f Fahrenheit = Fahrenheit(c*9/5 + 32)
+          fmt.Println(f)
+      }
+    options:
+      - "A: 212"
+      - "B: 100"
+      - "C: 编译错误"
+      - "D: 180"
+    answer: A
+    explanation: "c*9/5+32计算为212。显式转换为Fahrenheit。输出212。参见 Go 规范 Conversions 章节。"
+    topic: types
+    chapter: type_definitions
+
+  - id: type-def-026
+    type: code_fix
+    difficulty: medium
+    stem: "以下代码编译错误,正确的修正是?"
+    code: |
+      package main
+      type MyInt int
+      func main() {
+          var x MyInt = 10
+          var y int = x
+          _ = y
+      }
+    options:
+      - "A: y := int(x)"
+      - "B: y := x"
+      - "C: 代码正确"
+      - "D: 删除var y"
+    answer: A
+    explanation: "MyInt和int是不同类型。需要显式转换int(x)。参见 Go 规范 Conversions 章节。"
+    topic: types
+    chapter: type_definitions
+
+  - id: type-def-027
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type Duration int64
+      func (d Duration) String() string { return "duration" }
+      func main() {
+          var d Duration = 100
+          fmt.Println(d)
+      }
+    options:
+      - "A: 100"
+      - "B: duration"
+      - "C: Duration(100)"
+      - "D: 编译错误"
+    answer: B
+    explanation: "Duration实现了Stringer接口(String方法)。fmt.Println调用它。参见 Go fmt包文档。"
+    topic: types
+    chapter: type_definitions
+
+  - id: type-def-028
+    type: multiple
+    difficulty: medium
+    stem: "关于底层类型,以下说法正确的是?(多选)"
+    options:
+      - "A: 决定类型的表示"
+      - "B: 影响类型转换"
+      - "C: 预声明类型底层是自己"
+      - "D: 影响可比较性"
+    answer: ABCD
+    explanation: "底层类型决定表示和转换规则。预声明类型底层是自己。影响比较等操作。参见 Go 规范 Underlying types 章节。"
+    topic: types
+    chapter: type_definitions
+
+  - id: type-def-029
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type S []int
+      func main() {
+          var s S = []int{1, 2, 3}
+          fmt.Println(len(s))
+      }
+    options:
+      - "A: 3"
+      - "B: 编译错误"
+      - "C: 0"
+      - "D: panic"
+    answer: A
+    explanation: "S底层是[]int。[]int{1,2,3}可赋值给S(底层类型相同)。len(s)=3。参见 Go 规范 Type definitions 章节。"
+    topic: types
+    chapter: type_definitions
+
+  - id: type-def-030
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type M map[string]int
+      func (m M) Get(k string) int { return m[k] }
+      func main() {
+          m := M{"a": 1}
+          fmt.Println(m.Get("a"))
+      }
+    options:
+      - "A: 1"
+      - "B: 0"
+      - "C: 编译错误"
+      - "D: nil"
+    answer: A
+    explanation: "M是map[string]int的新类型。可以定义方法Get。m.Get(\"a\")返回1。参见 Go 规范 Method declarations 章节。"
+    topic: types
+    chapter: type_definitions
+
+  - id: type-def-031
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type T1 struct{ X int }
+      type T2 T1
+      func main() {
+          var t1 T1 = T1{1}
+          var t2 T2 = T2(t1)
+          fmt.Println(t2.X)
+      }
+    options:
+      - "A: 1"
+      - "B: 0"
+      - "C: 编译错误"
+      - "D: {1}"
+    answer: A
+    explanation: "T2底层是struct{X int}。T1可转换为T2。t2.X=1。参见 Go 规范 Conversions 章节。"
+    topic: types
+    chapter: type_definitions
+
+  - id: type-def-032
+    type: code_fix
+    difficulty: medium
+    stem: "以下代码如何让MyInt实现Stringer?"
+    code: |
+      package main
+      import "fmt"
+      type MyInt int
+      func main() {
+          var x MyInt = 42
+          fmt.Println(x)
+      }
+    options:
+      - "A: 添加String方法"
+      - "B: 实现Error方法"
+      - "C: 嵌入fmt.Stringer"
+      - "D: 不可能"
+    answer: A
+    explanation: "为MyInt添加String() string方法即可实现Stringer。参见 Go fmt包文档。"
+    topic: types
+    chapter: type_definitions
+
+  - id: type-def-033
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type Counter int
+      func (c *Counter) Inc() { *c++ }
+      func main() {
+          var c Counter
+          c.Inc()
+          c.Inc()
+          fmt.Println(c)
+      }
+    options:
+      - "A: 2"
+      - "B: 0"
+      - "C: 1"
+      - "D: 编译错误"
+    answer: A
+    explanation: "Counter有指针接收者方法Inc。c.Inc()两次,c从0变为2。参见 Go 规范 Method declarations 章节。"
+    topic: types
+    chapter: type_definitions
+
+  - id: type-def-034
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type ID string
+      func main() {
+          var id ID = "abc"
+          fmt.Println(len(id))
+      }
+    options:
+      - "A: 3"
+      - "B: abc"
+      - "C: 编译错误"
+      - "D: 0"
+    answer: A
+    explanation: "ID底层是string。len()对底层类型操作。len(\"abc\")=3。参见 Go 规范 Length and capacity 章节。"
+    topic: types
+    chapter: type_definitions
+
+  # ========== 困难题 (Hard) - 4道 ==========
+
+  - id: type-def-035
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type A struct{ v int }
+      func (a A) M() int { return a.v }
+      type B = A
+      func main() {
+          b := B{1}
+          fmt.Println(b.M())
+      }
+    options:
+      - "A: 1"
+      - "B: 0"
+      - "C: 编译错误"
+      - "D: panic"
+    answer: A
+    explanation: "B = A是类型别名,B和A是同一类型。B继承A的方法。b.M()=1。参见 Go 规范 Alias declarations 章节。"
+    topic: types
+    chapter: type_definitions
+
+  - id: type-def-036
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type A int
+      type B A
+      type C B
+      func main() {
+          var c C = 1
+          var a A = A(c)
+          fmt.Println(a)
+      }
+    options:
+      - "A: 1"
+      - "B: 编译错误"
+      - "C: 0"
+      - "D: C(1)"
+    answer: A
+    explanation: "C、B、A底层都是int。可以互相转换(底层类型相同)。A(c)=1。参见 Go 规范 Conversions 章节。"
+    topic: types
+    chapter: type_definitions
+
+  - id: type-def-037
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type IntSlice []int
+      func (s IntSlice) Sum() int {
+          sum := 0
+          for _, v := range s {
+              sum += v
+          }
+          return sum
+      }
+      func main() {
+          s := []int{1, 2, 3}
+          fmt.Println(IntSlice(s).Sum())
+      }
+    options:
+      - "A: 6"
+      - "B: [1 2 3]"
+      - "C: 编译错误"
+      - "D: 0"
+    answer: A
+    explanation: "[]int转换为IntSlice。调用Sum方法。1+2+3=6。参见 Go 规范 Conversions 章节。"
+    topic: types
+    chapter: type_definitions
+
+  - id: type-def-038
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type T struct{ X int }
+      type U T
+      func main() {
+          t := T{1}
+          u := U{2}
+          fmt.Println(T(u).X == t.X)
+      }
+    options:
+      - "A: true"
+      - "B: false"
+      - "C: 编译错误"
+      - "D: panic"
+    answer: B
+    explanation: "T和U底层相同可转换。T(u).X=2,t.X=1。2==1为false。参见 Go 规范 Conversions 章节。"
+    topic: types
+    chapter: type_definitions

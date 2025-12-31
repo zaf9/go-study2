@@ -1,456 +1,608 @@
+# Go 字符(Rune)常量测验题库
+# 章节: constants/rune
+# 符合 Go 1.24 语言规范
+
+metadata:
+  topic: constants
+  chapter: rune
+  total_questions: 35
+  last_updated: "2025-01-01"
+  difficulty_distribution:
+    easy: 21      # 60%
+    medium: 11    # 31%
+    hard: 3       # 9%
+  type_distribution:
+    single: 15
+    multiple: 10
+    code_output: 6
+    code_fix: 4
+
 questions:
-    - id: const-rune-001
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 constants.rune，下面哪个选项是正确的？
-      options:
-        - 'A: 正确项（关于rune.constants的重要结论）'
-        - 'B: 正确项（关于rune.constants的重要结论）'
-        - 'C: 常见误解或反例（容易混淆）'
-        - 'D: 正确项（关于rune.constants的重要结论）'
-      answer: ABD
-      explanation: 本题考查 constants.rune 的相关知识。正确答案：ABD。解析：rune 的关键点在于...（请在校稿时补充具体细节）。
-      topic: constants
-      chapter: rune
-    - id: const-rune-002
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 constants.rune，下面哪个选项是正确的？
-      options:
-        - 'A: 常见误解或反例（容易混淆）'
-        - 'B: 正确：关于rune.constants的关键点描述（正确选项）'
-        - 'C: 语法/语义上不正确的陈述'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: B
-      explanation: 本题考查 constants.rune 的概念。正确答案为 B。解析：rune 的关键点在于...（请在校稿时补充具体细节）。
-      topic: constants
-      chapter: rune
-    - id: const-rune-003
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 constants.rune，下面哪个选项是正确的？
-      options:
-        - 'A: 正确项（关于rune.constants的重要结论）'
-        - 'B: 正确项（关于rune.constants的重要结论）'
-        - 'C: 部分正确但不完整的说法'
-        - 'D: 正确项（关于rune.constants的重要结论）'
-      answer: ABD
-      explanation: 本题考查 constants.rune 的相关知识。正确答案：ABD。解析：rune 的关键点在于...（请在校稿时补充具体细节）。
-      topic: constants
-      chapter: rune
-    - id: const-rune-004
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 constants.rune，下面哪个选项是正确的？
-      options:
-        - 'A: 正确：关于rune.constants的关键点描述（正确选项）'
-        - 'B: 常见误解或反例（容易混淆）'
-        - 'C: 常见误解或反例（容易混淆）'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: A
-      explanation: 本题考查 constants.rune 的概念。正确答案为 A。解析：rune 的关键点在于...（请在校稿时补充具体细节）。
-      topic: constants
-      chapter: rune
-    - id: const-rune-005
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 constants.rune，下面哪个选项是正确的？
-      options:
-        - 'A: 语法/语义上不正确的陈述'
-        - 'B: 常见误解或反例（容易混淆）'
-        - 'C: 正确项（关于rune.constants的重要结论）'
-        - 'D: 正确项（关于rune.constants的重要结论）'
-      answer: CD
-      explanation: 本题考查 constants.rune 的相关知识。正确答案：CD。解析：rune 的关键点在于...（请在校稿时补充具体细节）。
-      topic: constants
-      chapter: rune
-    - id: const-rune-006
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 constants.rune，下面哪个选项是正确的？
-      options:
-        - 'A: 常见误解或反例（容易混淆）'
-        - 'B: 正确：关于rune.constants的关键点描述（正确选项）'
-        - 'C: 与rune.constants 相关但不适用的选项'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: B
-      explanation: 本题考查 constants.rune 的概念。正确答案为 B。解析：rune 的关键点在于...（请在校稿时补充具体细节）。
-      topic: constants
-      chapter: rune
-    - id: const-rune-007
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 constants.rune，下面哪个选项是正确的？
-      options:
-        - 'A: 部分正确但不完整的说法'
-        - 'B: 正确项（关于rune.constants的重要结论）'
-        - 'C: 正确项（关于rune.constants的重要结论）'
-        - 'D: 正确项（关于rune.constants的重要结论）'
-      answer: BCD
-      explanation: 本题考查 constants.rune 的相关知识。正确答案：BCD。解析：rune 的关键点在于...（请在校稿时补充具体细节）。
-      topic: constants
-      chapter: rune
-    - id: const-rune-008
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 constants.rune，下面哪个选项是正确的？
-      options:
-        - 'A: 语法/语义上不正确的陈述'
-        - 'B: 正确：关于rune.constants的关键点描述（正确选项）'
-        - 'C: 语法/语义上不正确的陈述'
-        - 'D: 部分正确但不完整的说法'
-      answer: B
-      explanation: 本题考查 constants.rune 的概念。正确答案为 B。解析：rune 的关键点在于...（请在校稿时补充具体细节）。
-      topic: constants
-      chapter: rune
-    - id: const-rune-009
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 constants.rune，下面哪个选项是正确的？
-      options:
-        - 'A: 正确项（关于rune.constants的重要结论）'
-        - 'B: 正确项（关于rune.constants的重要结论）'
-        - 'C: 部分正确但不完整的说法'
-        - 'D: 正确项（关于rune.constants的重要结论）'
-      answer: ABD
-      explanation: 本题考查 constants.rune 的相关知识。正确答案：ABD。解析：rune 的关键点在于...（请在校稿时补充具体细节）。
-      topic: constants
-      chapter: rune
-    - id: const-rune-010
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 constants.rune，下面哪个选项是正确的？
-      options:
-        - 'A: 正确：关于rune.constants的关键点描述（正确选项）'
-        - 'B: 语法/语义上不正确的陈述'
-        - 'C: 常见误解或反例（容易混淆）'
-        - 'D: 与rune.constants 相关但不适用的选项'
-      answer: A
-      explanation: 本题考查 constants.rune 的概念。正确答案为 A。解析：rune 的关键点在于...（请在校稿时补充具体细节）。
-      topic: constants
-      chapter: rune
-    - id: const-rune-011
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 constants.rune，下面哪个选项是正确的？
-      options:
-        - 'A: 正确项（关于rune.constants的重要结论）'
-        - 'B: 正确项（关于rune.constants的重要结论）'
-        - 'C: 正确项（关于rune.constants的重要结论）'
-        - 'D: 部分正确但不完整的说法'
-      answer: ABC
-      explanation: 本题考查 constants.rune 的相关知识。正确答案：ABC。解析：rune 的关键点在于...（请在校稿时补充具体细节）。
-      topic: constants
-      chapter: rune
-    - id: const-rune-012
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 constants.rune，下面哪个选项是正确的？
-      options:
-        - 'A: 正确：关于rune.constants的关键点描述（正确选项）'
-        - 'B: 常见误解或反例（容易混淆）'
-        - 'C: 常见误解或反例（容易混淆）'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: A
-      explanation: 本题考查 constants.rune 的概念。正确答案为 A。解析：rune 的关键点在于...（请在校稿时补充具体细节）。
-      topic: constants
-      chapter: rune
-    - id: const-rune-013
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 constants.rune，下面哪个选项是正确的？
-      options:
-        - 'A: 正确项（关于rune.constants的重要结论）'
-        - 'B: 常见误解或反例（容易混淆）'
-        - 'C: 正确项（关于rune.constants的重要结论）'
-        - 'D: 正确项（关于rune.constants的重要结论）'
-      answer: ACD
-      explanation: 本题考查 constants.rune 的相关知识。正确答案：ACD。解析：rune 的关键点在于...（请在校稿时补充具体细节）。
-      topic: constants
-      chapter: rune
-    - id: const-rune-014
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 constants.rune，下面哪个选项是正确的？
-      options:
-        - 'A: 与rune.constants 相关但不适用的选项'
-        - 'B: 正确：关于rune.constants的关键点描述（正确选项）'
-        - 'C: 常见误解或反例（容易混淆）'
-        - 'D: 部分正确但不完整的说法'
-      answer: B
-      explanation: 本题考查 constants.rune 的概念。正确答案为 B。解析：rune 的关键点在于...（请在校稿时补充具体细节）。
-      topic: constants
-      chapter: rune
-    - id: const-rune-015
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 constants.rune 的情境下，哪个说法更合适？
-      options:
-        - 'A: 正确项（关于rune.constants的重要结论）'
-        - 'B: 正确项（关于rune.constants的重要结论）'
-        - 'C: 语法/语义上不正确的陈述'
-        - 'D: 正确项（关于rune.constants的重要结论）'
-      answer: ABD
-      explanation: 本题考查 constants.rune 的相关知识。正确答案：ABD。解析：rune 的关键点在于...（请在校稿时补充具体细节）。
-      topic: constants
-      chapter: rune
-    - id: const-rune-016
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 constants.rune 的情境下，哪个说法更合适？
-      options:
-        - 'A: 常见误解或反例（容易混淆）'
-        - 'B: 正确：关于rune.constants的关键点描述（正确选项）'
-        - 'C: 常见误解或反例（容易混淆）'
-        - 'D: 常见误解或反例（容易混淆）'
-      answer: B
-      explanation: 本题考查 constants.rune 的概念。正确答案为 B。解析：rune 的关键点在于...（请在校稿时补充具体细节）。
-      topic: constants
-      chapter: rune
-    - id: const-rune-017
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 constants.rune 的情境下，哪个说法更合适？
-      options:
-        - 'A: 正确项（关于rune.constants的重要结论）'
-        - 'B: 部分正确但不完整的说法'
-        - 'C: 正确项（关于rune.constants的重要结论）'
-        - 'D: 正确项（关于rune.constants的重要结论）'
-      answer: ACD
-      explanation: 本题考查 constants.rune 的相关知识。正确答案：ACD。解析：rune 的关键点在于...（请在校稿时补充具体细节）。
-      topic: constants
-      chapter: rune
-    - id: const-rune-018
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 constants.rune 的情境下，哪个说法更合适？
-      options:
-        - 'A: 常见误解或反例（容易混淆）'
-        - 'B: 正确：关于rune.constants的关键点描述（正确选项）'
-        - 'C: 常见误解或反例（容易混淆）'
-        - 'D: 常见误解或反例（容易混淆）'
-      answer: B
-      explanation: 本题考查 constants.rune 的概念。正确答案为 B。解析：rune 的关键点在于...（请在校稿时补充具体细节）。
-      topic: constants
-      chapter: rune
-    - id: const-rune-019
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 constants.rune 的情境下，哪个说法更合适？
-      options:
-        - 'A: 与rune.constants 相关但不适用的选项'
-        - 'B: 正确项（关于rune.constants的重要结论）'
-        - 'C: 正确项（关于rune.constants的重要结论）'
-        - 'D: 正确项（关于rune.constants的重要结论）'
-      answer: BCD
-      explanation: 本题考查 constants.rune 的相关知识。正确答案：BCD。解析：rune 的关键点在于...（请在校稿时补充具体细节）。
-      topic: constants
-      chapter: rune
-    - id: const-rune-020
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 constants.rune 的情境下，哪个说法更合适？
-      options:
-        - 'A: 部分正确但不完整的说法'
-        - 'B: 正确：关于rune.constants的关键点描述（正确选项）'
-        - 'C: 与rune.constants 相关但不适用的选项'
-        - 'D: 部分正确但不完整的说法'
-      answer: B
-      explanation: 本题考查 constants.rune 的概念。正确答案为 B。解析：rune 的关键点在于...（请在校稿时补充具体细节）。
-      topic: constants
-      chapter: rune
-    - id: const-rune-021
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 constants.rune 的情境下，哪个说法更合适？
-      options:
-        - 'A: 正确项（关于rune.constants的重要结论）'
-        - 'B: 部分正确但不完整的说法'
-        - 'C: 部分正确但不完整的说法'
-        - 'D: 正确项（关于rune.constants的重要结论）'
-      answer: AD
-      explanation: 本题考查 constants.rune 的相关知识。正确答案：AD。解析：rune 的关键点在于...（请在校稿时补充具体细节）。
-      topic: constants
-      chapter: rune
-    - id: const-rune-022
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 constants.rune 的情境下，哪个说法更合适？
-      options:
-        - 'A: 部分正确但不完整的说法'
-        - 'B: 部分正确但不完整的说法'
-        - 'C: 正确：关于rune.constants的关键点描述（正确选项）'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: C
-      explanation: 本题考查 constants.rune 的概念。正确答案为 C。解析：rune 的关键点在于...（请在校稿时补充具体细节）。
-      topic: constants
-      chapter: rune
-    - id: const-rune-023
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 constants.rune 的情境下，哪个说法更合适？
-      options:
-        - 'A: 部分正确但不完整的说法'
-        - 'B: 正确项（关于rune.constants的重要结论）'
-        - 'C: 正确项（关于rune.constants的重要结论）'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: BC
-      explanation: 本题考查 constants.rune 的相关知识。正确答案：BC。解析：rune 的关键点在于...（请在校稿时补充具体细节）。
-      topic: constants
-      chapter: rune
-    - id: const-rune-024
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 constants.rune 的情境下，哪个说法更合适？
-      options:
-        - 'A: 部分正确但不完整的说法'
-        - 'B: 与rune.constants 相关但不适用的选项'
-        - 'C: 正确：关于rune.constants的关键点描述（正确选项）'
-        - 'D: 部分正确但不完整的说法'
-      answer: C
-      explanation: 本题考查 constants.rune 的概念。正确答案为 C。解析：rune 的关键点在于...（请在校稿时补充具体细节）。
-      topic: constants
-      chapter: rune
-    - id: const-rune-025
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 constants.rune 的情境下，哪个说法更合适？
-      options:
-        - 'A: 正确项（关于rune.constants的重要结论）'
-        - 'B: 正确项（关于rune.constants的重要结论）'
-        - 'C: 正确项（关于rune.constants的重要结论）'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: ABC
-      explanation: 本题考查 constants.rune 的相关知识。正确答案：ABC。解析：rune 的关键点在于...（请在校稿时补充具体细节）。
-      topic: constants
-      chapter: rune
-    - id: const-rune-026
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 constants.rune 的情境下，哪个说法更合适？
-      options:
-        - 'A: 语法/语义上不正确的陈述'
-        - 'B: 正确：关于rune.constants的关键点描述（正确选项）'
-        - 'C: 常见误解或反例（容易混淆）'
-        - 'D: 部分正确但不完整的说法'
-      answer: B
-      explanation: 本题考查 constants.rune 的概念。正确答案为 B。解析：rune 的关键点在于...（请在校稿时补充具体细节）。
-      topic: constants
-      chapter: rune
-    - id: const-rune-027
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 constants.rune 的情境下，哪个说法更合适？
-      options:
-        - 'A: 正确项（关于rune.constants的重要结论）'
-        - 'B: 语法/语义上不正确的陈述'
-        - 'C: 正确项（关于rune.constants的重要结论）'
-        - 'D: 正确项（关于rune.constants的重要结论）'
-      answer: ACD
-      explanation: 本题考查 constants.rune 的相关知识。正确答案：ACD。解析：rune 的关键点在于...（请在校稿时补充具体细节）。
-      topic: constants
-      chapter: rune
-    - id: const-rune-028
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 constants.rune 的情境下，哪个说法更合适？
-      options:
-        - 'A: 部分正确但不完整的说法'
-        - 'B: 常见误解或反例（容易混淆）'
-        - 'C: 正确：关于rune.constants的关键点描述（正确选项）'
-        - 'D: 部分正确但不完整的说法'
-      answer: C
-      explanation: 本题考查 constants.rune 的概念。正确答案为 C。解析：rune 的关键点在于...（请在校稿时补充具体细节）。
-      topic: constants
-      chapter: rune
-    - id: const-rune-029
-      type: multiple
-      difficulty: hard
-      stem: 【思考题】针对 constants.rune，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 正确项（关于rune.constants的重要结论）'
-        - 'B: 语法/语义上不正确的陈述'
-        - 'C: 正确项（关于rune.constants的重要结论）'
-        - 'D: 部分正确但不完整的说法'
-      answer: AC
-      explanation: 本题考查 constants.rune 的相关知识。正确答案：AC。解析：rune 的关键点在于...（请在校稿时补充具体细节）。
-      topic: constants
-      chapter: rune
-    - id: const-rune-030
-      type: single
-      difficulty: hard
-      stem: 【思考题】针对 constants.rune，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 常见误解或反例（容易混淆）'
-        - 'B: 与rune.constants 相关但不适用的选项'
-        - 'C: 语法/语义上不正确的陈述'
-        - 'D: 正确：关于rune.constants的关键点描述（正确选项）'
-      answer: D
-      explanation: 本题考查 constants.rune 的概念。正确答案为 D。解析：rune 的关键点在于...（请在校稿时补充具体细节）。
-      topic: constants
-      chapter: rune
-    - id: const-rune-031
-      type: multiple
-      difficulty: hard
-      stem: 【思考题】针对 constants.rune，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 部分正确但不完整的说法'
-        - 'B: 正确项（关于rune.constants的重要结论）'
-        - 'C: 正确项（关于rune.constants的重要结论）'
-        - 'D: 正确项（关于rune.constants的重要结论）'
-      answer: BCD
-      explanation: 本题考查 constants.rune 的相关知识。正确答案：BCD。解析：rune 的关键点在于...（请在校稿时补充具体细节）。
-      topic: constants
-      chapter: rune
-    - id: const-rune-032
-      type: single
-      difficulty: hard
-      stem: 【思考题】针对 constants.rune，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 部分正确但不完整的说法'
-        - 'B: 与rune.constants 相关但不适用的选项'
-        - 'C: 正确：关于rune.constants的关键点描述（正确选项）'
-        - 'D: 常见误解或反例（容易混淆）'
-      answer: C
-      explanation: 本题考查 constants.rune 的概念。正确答案为 C。解析：rune 的关键点在于...（请在校稿时补充具体细节）。
-      topic: constants
-      chapter: rune
-    - id: const-rune-033
-      type: multiple
-      difficulty: hard
-      stem: 【思考题】针对 constants.rune，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 正确项（关于rune.constants的重要结论）'
-        - 'B: 常见误解或反例（容易混淆）'
-        - 'C: 正确项（关于rune.constants的重要结论）'
-        - 'D: 正确项（关于rune.constants的重要结论）'
-      answer: ACD
-      explanation: 本题考查 constants.rune 的相关知识。正确答案：ACD。解析：rune 的关键点在于...（请在校稿时补充具体细节）。
-      topic: constants
-      chapter: rune
-    - id: const-rune-034
-      type: single
-      difficulty: hard
-      stem: 【思考题】针对 constants.rune，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 部分正确但不完整的说法'
-        - 'B: 常见误解或反例（容易混淆）'
-        - 'C: 正确：关于rune.constants的关键点描述（正确选项）'
-        - 'D: 部分正确但不完整的说法'
-      answer: C
-      explanation: 本题考查 constants.rune 的概念。正确答案为 C。解析：rune 的关键点在于...（请在校稿时补充具体细节）。
-      topic: constants
-      chapter: rune
-    - id: const-rune-035
-      type: multiple
-      difficulty: hard
-      stem: 【思考题】针对 constants.rune，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 语法/语义上不正确的陈述'
-        - 'B: 正确项（关于rune.constants的重要结论）'
-        - 'C: 正确项（关于rune.constants的重要结论）'
-        - 'D: 正确项（关于rune.constants的重要结论）'
-      answer: BCD
-      explanation: 本题考查 constants.rune 的相关知识。正确答案：BCD。解析：rune 的关键点在于...（请在校稿时补充具体细节）。
-      topic: constants
-      chapter: rune
+  # ========== 简单题 (Easy) - 21道 ==========
+  
+  - id: const-rune-001
+    type: single
+    difficulty: easy
+    stem: "Go语言中字符常量使用什么符号定义?"
+    options:
+      - "A: 双引号 \"\""
+      - "B: 单引号 ''"
+      - "C: 反引号 ``"
+      - "D: 都可以"
+    answer: B
+    explanation: "Go使用单引号定义字符(rune)常量,如'a'。双引号用于字符串,反引号用于原始字符串。参见 Go 规范 Rune literals 章节。"
+    topic: constants
+    chapter: rune
+
+  - id: const-rune-002
+    type: single
+    difficulty: easy
+    stem: "const c = 'A'声明的常量c的默认类型是什么?"
+    options:
+      - "A: byte"
+      - "B: rune"
+      - "C: 无类型rune常量"
+      - "D: int32"
+    answer: C
+    explanation: "'A'是无类型rune常量。赋值时根据目标类型转换。无类型常量有更大的适用范围。参见 Go 规范 Constants 章节。"
+    topic: constants
+    chapter: rune
+
+  - id: const-rune-003
+    type: single
+    difficulty: easy
+    stem: "字符常量'A'的数值等于什么?"
+    options:
+      - "A: 65"
+      - "B: 97"
+      - "C: 41"
+      - "D: 0"
+    answer: A
+    explanation: "'A'的ASCII/Unicode码点是65(十进制)。'a'是97。这是标准ASCII编码。参见 Go 规范 Rune literals 章节。"
+    topic: constants
+    chapter: rune
+
+  - id: const-rune-004
+    type: single
+    difficulty: easy
+    stem: "以下哪个是合法的rune常量?"
+    options:
+      - "A: 'ab'"
+      - "B: '中'"
+      - "C: \"a\""
+      - "D: `a`"
+    answer: B
+    explanation: "rune常量只能包含单个字符。'ab'包含两个字符不合法。'中'是单个Unicode字符是合法的。C和D是字符串。参见 Go 规范 Rune literals 章节。"
+    topic: constants
+    chapter: rune
+
+  - id: const-rune-005
+    type: single
+    difficulty: easy
+    stem: "转义序列'\\n'代表什么?"
+    options:
+      - "A: 字母n"
+      - "B: 换行符"
+      - "C: 两个字符\\和n"
+      - "D: 空字符"
+    answer: B
+    explanation: "'\\n'是换行符(newline)的转义表示。这是单个字符常量,不是两个字符。参见 Go 规范 Rune literals 章节。"
+    topic: constants
+    chapter: rune
+
+  - id: const-rune-006
+    type: multiple
+    difficulty: easy
+    stem: "以下哪些是有效的Go转义序列?(多选)"
+    options:
+      - "A: \\t"
+      - "B: \\r"
+      - "C: \\0"
+      - "D: \\\\"
+    answer: ABD
+    explanation: "\\t(制表符)、\\r(回车)、\\\\(反斜杠)是有效转义。Go不支持\\0,需要用\\x00。参见 Go 规范 Rune literals 章节。"
+    topic: constants
+    chapter: rune
+
+  - id: const-rune-007
+    type: single
+    difficulty: easy
+    stem: "如何表示Unicode码点U+0041?"
+    options:
+      - "A: '\\u0041'"
+      - "B: '\\x41'"
+      - "C: 'A'"
+      - "D: 以上都可以"
+    answer: D
+    explanation: "U+0041是字母'A'。可以直接写'A',或用\\u0041(Unicode转义),或\\x41(十六进制字节)。参见 Go 规范 Rune literals 章节。"
+    topic: constants
+    chapter: rune
+
+  - id: const-rune-008
+    type: single
+    difficulty: easy
+    stem: "无类型rune常量可以赋值给什么类型?"
+    options:
+      - "A: 只能赋给rune"
+      - "B: 可以赋给任何整数类型"
+      - "C: 可以赋给任何数值类型"
+      - "D: 只能赋给int32"
+    answer: B
+    explanation: "无类型rune常量本质是无类型整数,可以赋给任何能表示该值的整数类型(byte、int、int64等)。参见 Go 规范 Constants 章节。"
+    topic: constants
+    chapter: rune
+
+  - id: const-rune-009
+    type: single
+    difficulty: easy
+    stem: "const c = 'a' + 1的值是什么?"
+    options:
+      - "A: 'a1'"
+      - "B: 'b'"
+      - "C: 98"
+      - "D: 编译错误"
+    answer: C
+    explanation: "'a'的码点是97,加1得98。常量表达式结果是无类型整数98。作为rune显示是'b'。参见 Go 规范 Constant expressions 章节。"
+    topic: constants
+    chapter: rune
+
+  - id: const-rune-010
+    type: single
+    difficulty: easy
+    stem: "八进制转义'\\101'表示什么字符?"
+    options:
+      - "A: 字母A"
+      - "B: 数字101"
+      - "C: 编译错误"
+      - "D: 字母e"
+    answer: A
+    explanation: "\\101是八进制转义。八进制101 = 64+1 = 65(十进制) = 'A'。参见 Go 规范 Rune literals 章节。"
+    topic: constants
+    chapter: rune
+
+  - id: const-rune-011
+    type: single
+    difficulty: easy
+    stem: "十六进制转义'\\x41'表示什么字符?"
+    options:
+      - "A: 字母A"
+      - "B: 数字41"
+      - "C: 字母x"
+      - "D: 编译错误"
+    answer: A
+    explanation: "\\x41是十六进制转义。0x41 = 65(十进制) = 'A'。参见 Go 规范 Rune literals 章节。"
+    topic: constants
+    chapter: rune
+
+  - id: const-rune-012
+    type: multiple
+    difficulty: easy
+    stem: "关于rune和byte的关系,以下说法正确的是?(多选)"
+    options:
+      - "A: rune是int32的别名"
+      - "B: byte是uint8的别名"
+      - "C: rune用于Unicode码点"
+      - "D: byte用于原始字节"
+    answer: ABCD
+    explanation: "rune(int32)表示Unicode码点(32位可表示所有Unicode)。byte(uint8)表示单个字节。参见 Go 规范 Numeric types 章节。"
+    topic: constants
+    chapter: rune
+
+  - id: const-rune-013
+    type: single
+    difficulty: easy
+    stem: "string(65)的结果是什么?"
+    options:
+      - "A: \"65\""
+      - "B: \"A\""
+      - "C: 编译错误"
+      - "D: \"6\" 和 \"5\""
+    answer: B
+    explanation: "string(整数)将整数作为Unicode码点转换为字符串。65对应'A',结果是\"A\"。注意这与strconv.Itoa不同。参见 Go 规范 Conversions 章节。"
+    topic: constants
+    chapter: rune
+
+  - id: const-rune-014
+    type: single
+    difficulty: easy
+    stem: "'\\''表示什么字符?"
+    options:
+      - "A: 两个字符\\和'"
+      - "B: 单引号字符"
+      - "C: 反斜杠字符"
+      - "D: 编译错误"
+    answer: B
+    explanation: "\\' 是单引号的转义表示。在rune字面量中,单引号必须转义。参见 Go 规范 Rune literals 章节。"
+    topic: constants
+    chapter: rune
+
+  - id: const-rune-015
+    type: single
+    difficulty: easy
+    stem: "Go中'\\U00000041'表示什么?"
+    options:
+      - "A: 字符串\"U00000041\""
+      - "B: 字母A"
+      - "C: 编译错误"
+      - "D: 8个字符"
+    answer: B
+    explanation: "\\U后跟8位十六进制数表示Unicode码点。U+0041是'A'。\\U用于BMP外的字符。参见 Go 规范 Rune literals 章节。"
+    topic: constants
+    chapter: rune
+
+  - id: const-rune-016
+    type: single
+    difficulty: easy
+    stem: "rune类型的零值是什么?"
+    options:
+      - "A: ''"
+      - "B: nil"
+      - "C: 0 (NUL字符)"
+      - "D: ' ' (空格)"
+    answer: C
+    explanation: "rune是int32别名,零值是0,对应NUL字符(U+0000)。不是空字符串或nil。参见 Go 规范 The zero value 章节。"
+    topic: constants
+    chapter: rune
+
+  - id: const-rune-017
+    type: single
+    difficulty: easy
+    stem: "以下哪个表达式可以获取字符'A'的ASCII值?"
+    options:
+      - "A: ord('A')"
+      - "B: int('A')"
+      - "C: ascii('A')"
+      - "D: 直接使用'A'就是整数"
+    answer: B
+    explanation: "Go中rune本身就是整数类型。可以直接当整数用,或用int('A')显式转换得到65。Go没有ord函数。参见 Go 规范 Conversions 章节。"
+    topic: constants
+    chapter: rune
+
+  - id: const-rune-018
+    type: single
+    difficulty: easy
+    stem: "const chars = \"abc\"中chars[0]的类型是什么?"
+    options:
+      - "A: rune"
+      - "B: byte"
+      - "C: string"
+      - "D: int"
+    answer: B
+    explanation: "字符串索引返回byte(uint8),不是rune。要获取rune需要用for range或转换[]rune。参见 Go 规范 String types 章节。"
+    topic: constants
+    chapter: rune
+
+  - id: const-rune-019
+    type: multiple
+    difficulty: easy
+    stem: "以下哪些是有效的rune常量定义?(多选)"
+    options:
+      - "A: const a = 'x'"
+      - "B: const b rune = 'x'"
+      - "C: const c = 120"
+      - "D: const d byte = 'x'"
+    answer: ABCD
+    explanation: "A是无类型rune常量,B是有类型rune常量,C是无类型整数常量(可赋给rune),D是byte常量。参见 Go 规范 Constant declarations 章节。"
+    topic: constants
+    chapter: rune
+
+  - id: const-rune-020
+    type: single
+    difficulty: easy
+    stem: "以下哪个不是有效的转义字符?"
+    options:
+      - "A: \\a"
+      - "B: \\b"
+      - "C: \\e"
+      - "D: \\f"
+    answer: C
+    explanation: "Go不支持\\e(escape字符)。支持\\a(alert)、\\b(backspace)、\\f(form feed)等。参见 Go 规范 Rune literals 章节。"
+    topic: constants
+    chapter: rune
+
+  - id: const-rune-021
+    type: single
+    difficulty: easy
+    stem: "'中'这个字符在Go中需要多少字节存储?"
+    options:
+      - "A: 1字节"
+      - "B: 2字节"
+      - "C: 3字节(UTF-8编码)"
+      - "D: 4字节(rune类型)"
+    answer: D
+    explanation: "rune是int32,固定占4字节。但在UTF-8字符串中,'中'编码为3字节。问的是rune存储,答4字节。参见 Go 规范 Numeric types 章节。"
+    topic: constants
+    chapter: rune
+
+  # ========== 中等题 (Medium) - 11道 ==========
+
+  - id: const-rune-022
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          const c = 'A'
+          var r rune = c
+          var b byte = c
+          fmt.Println(r, b)
+      }
+    options:
+      - "A: 65 65"
+      - "B: A A"
+      - "C: 65 A"
+      - "D: 编译错误"
+    answer: A
+    explanation: "无类型rune常量可以赋给rune和byte(值65在byte范围内)。Println默认打印整数值65 65。参见 Go 规范 Constants 章节。"
+    topic: constants
+    chapter: rune
+
+  - id: const-rune-023
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          const c = '中'
+          var b byte = c
+          fmt.Println(b)
+      }
+    options:
+      - "A: 20013"
+      - "B: 中"
+      - "C: 编译错误"
+      - "D: 173"
+    answer: C
+    explanation: "'中'的码点是20013,超出byte范围(0-255),不能赋值给byte。编译错误:constant 20013 overflows byte。参见 Go 规范 Constants 章节。"
+    topic: constants
+    chapter: rune
+
+  - id: const-rune-024
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          const a, b, c = 'A', 'B', 'C'
+          fmt.Printf("%c%c%c\n", a, b, c)
+      }
+    options:
+      - "A: 656667"
+      - "B: ABC"
+      - "C: 'A''B''C'"
+      - "D: abc"
+    answer: B
+    explanation: "%c格式符打印Unicode字符。'A'(65)、'B'(66)、'C'(67)打印为ABC。参见 fmt包文档。"
+    topic: constants
+    chapter: rune
+
+  - id: const-rune-025
+    type: code_fix
+    difficulty: medium
+    stem: "以下代码有错误,正确的修正方案是?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          const c = '\z'
+          fmt.Println(c)
+      }
+    options:
+      - "A: 改为'\\\\z'"
+      - "B: 改为'z'"
+      - "C: 改为\"\\z\""
+      - "D: 改为'\\x7a'"
+    answer: B
+    explanation: "\\z不是有效的转义序列。如果要字母z,直接写'z'。如果要反斜杠和z,那是两个字符不能放在单引号里。参见 Go 规范 Rune literals 章节。"
+    topic: constants
+    chapter: rune
+
+  - id: const-rune-026
+    type: multiple
+    difficulty: medium
+    stem: "关于无类型rune常量,以下说法正确的是?(多选)"
+    options:
+      - "A: 可以参与算术运算"
+      - "B: 结果仍是无类型常量"
+      - "C: 可以与无类型整数常量运算"
+      - "D: 运算结果类型取决于操作数"
+    answer: ABCD
+    explanation: "无类型常量运算遵循常量规则。rune和整数常量可以运算,结果类型取决于操作数(通常是更宽的类型)。参见 Go 规范 Constant expressions 章节。"
+    topic: constants
+    chapter: rune
+
+  - id: const-rune-027
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          const c = 'a' - 'A'
+          fmt.Printf("%T %d\n", c, c)
+      }
+    options:
+      - "A: int 32"
+      - "B: rune 32"
+      - "C: int32 32"
+      - "D: untyped int 32"
+    answer: A
+    explanation: "常量表达式的结果赋给变量时,无类型整数常量默认类型是int。c默认为int类型,值32('a'-'A'=97-65)。参见 Go 规范 Constants 章节。"
+    topic: constants
+    chapter: rune
+
+  - id: const-rune-028
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          s := "Hello"
+          for i, r := range s {
+              if i == 0 {
+                  fmt.Printf("%T %c\n", r, r)
+              }
+          }
+      }
+    options:
+      - "A: byte H"
+      - "B: uint8 H"
+      - "C: int32 H"
+      - "D: rune H"
+    answer: C
+    explanation: "for range遍历字符串返回rune类型(int32)。%T显示实际类型int32(rune是别名)。参见 Go 规范 For statements 章节。"
+    topic: constants
+    chapter: rune
+
+  - id: const-rune-029
+    type: code_fix
+    difficulty: medium
+    stem: "以下代码不能正确比较字符,正确的修正方案是?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          s := "Hello"
+          if s[0] == 'H' {
+              fmt.Println("starts with H")
+          }
+      }
+    options:
+      - "A: 代码正确,无需修改"
+      - "B: 改为rune(s[0]) == 'H'"
+      - "C: 改为s[0] == byte('H')"
+      - "D: 改为string(s[0]) == \"H\""
+    answer: A
+    explanation: "s[0]是byte,'H'是无类型rune常量,可以隐式转换为byte比较。代码正确且常见。参见 Go 规范 Comparison operators 章节。"
+    topic: constants
+    chapter: rune
+
+  - id: const-rune-030
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          const c1 = 'A'
+          const c2 rune = 'A'
+          fmt.Printf("%T %T\n", c1, c2)
+      }
+    options:
+      - "A: rune rune"
+      - "B: int32 int32"
+      - "C: int rune"
+      - "D: int int32"
+    answer: D
+    explanation: "c1是无类型常量,传给Printf时默认为int。c2是有类型rune常量(int32别名),%T显示int32。参见 Go 规范 Constants 章节。"
+    topic: constants
+    chapter: rune
+
+  - id: const-rune-031
+    type: multiple
+    difficulty: medium
+    stem: "关于Unicode转义,以下说法正确的是?(多选)"
+    options:
+      - "A: \\uNNNN支持4位十六进制"
+      - "B: \\UNNNNNNNN支持8位十六进制"
+      - "C: \\u不能表示BMP外字符"
+      - "D: 代理对范围不能用于\\u"
+    answer: ABCD
+    explanation: "\\u用4位hex(BMP内)、\\U用8位hex(任意码点)。BMP外(>0xFFFF)需用\\U。代理对范围(D800-DFFF)不是有效码点。参见 Go 规范 Rune literals 章节。"
+    topic: constants
+    chapter: rune
+
+  - id: const-rune-032
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          const emoji = '😀'
+          fmt.Printf("%d %x\n", emoji, emoji)
+      }
+    options:
+      - "A: 128512 1f600"
+      - "B: 55357 d83d"
+      - "C: 编译错误"
+      - "D: 4 4"
+    answer: A
+    explanation: "😀的Unicode码点是U+1F600=128512(十进制)=1f600(十六进制)。Go支持BMP外字符。参见Unicode码点表。"
+    topic: constants
+    chapter: rune
+
+  # ========== 困难题 (Hard) - 3道 ==========
+
+  - id: const-rune-033
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          const (
+              a = 'A' + iota
+              b
+              c
+          )
+          fmt.Printf("%c %c %c\n", a, b, c)
+      }
+    options:
+      - "A: A A A"
+      - "B: A B C"
+      - "C: 65 66 67"
+      - "D: 编译错误"
+    answer: B
+    explanation: "iota在const块中递增。a='A'+0=65='A',b='A'+1=66='B',c='A'+2=67='C'。参见 Go 规范 Iota 章节。"
+    topic: constants
+    chapter: rune
+
+  - id: const-rune-034
+    type: multiple
+    difficulty: hard
+    stem: "关于rune常量的表示范围,以下说法正确的是?(多选)"
+    options:
+      - "A: rune可表示所有Unicode码点"
+      - "B: 有效Unicode范围是0到0x10FFFF"
+      - "C: 代理对(0xD800-0xDFFF)不是有效rune"
+      - "D: rune可以是负数"
+    answer: ABD
+    explanation: "rune(int32)可表示所有Unicode(0-0x10FFFF),也可以是负数(虽然不是有效Unicode)。代理对虽然不是有效码点,但Go允许存储。参见 Go 规范 Rune literals 章节。"
+    topic: constants
+    chapter: rune
+
+  - id: const-rune-035
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          const c = '\xff'
+          var b byte = c
+          var r rune = c
+          fmt.Printf("%d %d %d\n", c, b, r)
+      }
+    options:
+      - "A: 255 255 255"
+      - "B: -1 255 255"
+      - "C: 255 255 -1"
+      - "D: 编译错误"
+    answer: A
+    explanation: "\\xff是255。无类型常量255可赋给byte和rune。byte是uint8(255),rune是int32(255)。都打印255。参见 Go 规范 Constants 章节。"
+    topic: constants
+    chapter: rune

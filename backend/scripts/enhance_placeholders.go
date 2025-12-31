@@ -46,7 +46,7 @@ func main() {
 	}
 
 	filePath := os.Args[1]
-	
+
 	// 读取文件
 	data, err := os.ReadFile(filePath)
 	if err != nil {
@@ -64,17 +64,17 @@ func main() {
 	enhanced := false
 	for i := range bank.Questions {
 		q := &bank.Questions[i]
-		
+
 		// 移除占位标记
 		if len(q.Stem) > 100 {
 			q.Stem = fmt.Sprintf("关于 %s 的第 %d 道测验题：请根据 Go 1.24 规范回答本题", bank.Metadata.Chapter, i+1)
 		}
-		
+
 		// 移除 explanation 的占位标记，添加最小内容
 		if len(q.Explanation) > 200 || q.Explanation == "" {
 			q.Explanation = fmt.Sprintf("本题考查 Go 语言 %s 相关知识。参见 Go 1.24 规范相关章节。正确答案需理解 %s 的核心概念和实际应用场景。", bank.Metadata.Chapter, bank.Metadata.Chapter)
 		}
-		
+
 		// 清理选项
 		for j := range q.Options {
 			if len(q.Options[j]) > 50 {
@@ -82,7 +82,7 @@ func main() {
 				q.Options[j] = fmt.Sprintf("%s: 选项%s（示例选项）", label, label)
 			}
 		}
-		
+
 		// 清理答案
 		if len(q.Answer) > 10 {
 			if q.Type == "multiple_choice" {
@@ -91,7 +91,7 @@ func main() {
 				q.Answer = "B"
 			}
 		}
-		
+
 		enhanced = true
 	}
 

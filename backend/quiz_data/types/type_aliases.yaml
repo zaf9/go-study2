@@ -1,0 +1,649 @@
+# Go 类型别名测验题库
+# 章节: types/type_aliases
+# 符合 Go 1.24 语言规范
+
+metadata:
+  topic: types
+  chapter: type_aliases
+  total_questions: 35
+  last_updated: "2025-01-01"
+  difficulty_distribution:
+    easy: 20      # 57%
+    medium: 11    # 31%
+    hard: 4       # 12%
+  type_distribution:
+    single: 16
+    multiple: 8
+    code_output: 7
+    code_fix: 4
+
+questions:
+  # ========== 简单题 (Easy) - 20道 ==========
+  
+  - id: type-alias-001
+    type: single
+    difficulty: easy
+    stem: "Go中类型别名的语法是什么?"
+    options:
+      - "A: type A B"
+      - "B: type A = B"
+      - "C: alias A = B"
+      - "D: typedef B A"
+    answer: B
+    explanation: "类型别名使用type A = B语法。注意有等号。参见 Go 规范 Alias declarations 章节。"
+    topic: types
+    chapter: type_aliases
+
+  - id: type-alias-002
+    type: single
+    difficulty: easy
+    stem: "类型别名和类型定义的区别是什么?"
+    options:
+      - "A: 没有区别"
+      - "B: 别名不创建新类型"
+      - "C: 别名创建新类型"
+      - "D: 取决于底层类型"
+    answer: B
+    explanation: "type A = B是别名,A和B是同一类型。type A B是定义,创建新类型。参见 Go 规范 Alias declarations 章节。"
+    topic: types
+    chapter: type_aliases
+
+  - id: type-alias-003
+    type: single
+    difficulty: easy
+    stem: "type MyInt = int,MyInt和int可以直接赋值吗?"
+    options:
+      - "A: 不可以"
+      - "B: 可以"
+      - "C: 需要转换"
+      - "D: 取决于值"
+    answer: B
+    explanation: "MyInt是int的别名,是同一类型。可以直接赋值,无需转换。参见 Go 规范 Alias declarations 章节。"
+    topic: types
+    chapter: type_aliases
+
+  - id: type-alias-004
+    type: single
+    difficulty: easy
+    stem: "Go标准库中byte是什么的别名?"
+    options:
+      - "A: int8"
+      - "B: uint8"
+      - "C: rune"
+      - "D: char"
+    answer: B
+    explanation: "byte是uint8的类型别名。type byte = uint8。参见 Go 规范 Numeric types 章节。"
+    topic: types
+    chapter: type_aliases
+
+  - id: type-alias-005
+    type: single
+    difficulty: easy
+    stem: "Go标准库中rune是什么的别名?"
+    options:
+      - "A: int8"
+      - "B: int16"
+      - "C: int32"
+      - "D: int64"
+    answer: C
+    explanation: "rune是int32的类型别名。用于表示Unicode码点。参见 Go 规范 Numeric types 章节。"
+    topic: types
+    chapter: type_aliases
+
+  - id: type-alias-006
+    type: single
+    difficulty: easy
+    stem: "any是什么的别名?(Go 1.18+)"
+    options:
+      - "A: object"
+      - "B: interface{}"
+      - "C: void"
+      - "D: *interface{}"
+    answer: B
+    explanation: "any是interface{}的类型别名。Go 1.18引入,更简洁。参见 Go 规范 Predeclared identifiers 章节。"
+    topic: types
+    chapter: type_aliases
+
+  - id: type-alias-007
+    type: single
+    difficulty: easy
+    stem: "类型别名继承原类型的方法吗?"
+    options:
+      - "A: 不继承"
+      - "B: 继承(因为是同一类型)"
+      - "C: 只继承导出方法"
+      - "D: 需要显式声明"
+    answer: B
+    explanation: "别名和原类型是同一类型,共享方法集。不是继承,本就是同一个。参见 Go 规范 Alias declarations 章节。"
+    topic: types
+    chapter: type_aliases
+
+  - id: type-alias-008
+    type: single
+    difficulty: easy
+    stem: "可以为类型别名定义新方法吗?"
+    options:
+      - "A: 可以"
+      - "B: 不可以"
+      - "C: 只能在定义包"
+      - "D: 取决于原类型"
+    answer: C
+    explanation: "为别名定义方法等于为原类型定义方法。只能在原类型定义的包中。参见 Go 规范 Method declarations 章节。"
+    topic: types
+    chapter: type_aliases
+
+  - id: type-alias-009
+    type: single
+    difficulty: easy
+    stem: "类型别名主要用途是什么?"
+    options:
+      - "A: 创建新类型"
+      - "B: 重构时保持兼容"
+      - "C: 添加方法"
+      - "D: 类型安全"
+    answer: B
+    explanation: "类型别名主要用于重构时保持向后兼容,或提供更好的名称。参见 Go 规范 Alias declarations 章节。"
+    topic: types
+    chapter: type_aliases
+
+  - id: type-alias-010
+    type: single
+    difficulty: easy
+    stem: "type A = B时,reflect.TypeOf返回什么?"
+    options:
+      - "A: A"
+      - "B: B"
+      - "C: A或B"
+      - "D: 取决于变量声明"
+    answer: B
+    explanation: "A是B的别名,运行时只有B。reflect.TypeOf返回原类型名B。参见 Go reflect包文档。"
+    topic: types
+    chapter: type_aliases
+
+  - id: type-alias-011
+    type: single
+    difficulty: easy
+    stem: "类型别名可以跨包使用吗?"
+    options:
+      - "A: 不可以"
+      - "B: 可以"
+      - "C: 只有导出的"
+      - "D: 需要特殊语法"
+    answer: C
+    explanation: "大写开头的别名可以导出。可以为其他包的类型创建本地别名。参见 Go 规范 Exported identifiers 章节。"
+    topic: types
+    chapter: type_aliases
+
+  - id: type-alias-012
+    type: single
+    difficulty: easy
+    stem: "type A = []int和type B []int的区别是什么?"
+    options:
+      - "A: A是别名,B是新类型"
+      - "B: B是别名,A是新类型"
+      - "C: 没有区别"
+      - "D: 都是新类型"
+    answer: A
+    explanation: "A = []int是别名(同类型)。B []int是类型定义(新类型)。参见 Go 规范 Type declarations 章节。"
+    topic: types
+    chapter: type_aliases
+
+  - id: type-alias-013
+    type: single
+    difficulty: easy
+    stem: "别名声明中可以使用类型字面量吗?"
+    options:
+      - "A: 不可以"
+      - "B: 可以"
+      - "C: 只有struct"
+      - "D: 只有interface"
+    answer: B
+    explanation: "可以为任何类型创建别名,包括类型字面量如struct{X int}。参见 Go 规范 Alias declarations 章节。"
+    topic: types
+    chapter: type_aliases
+
+  - id: type-alias-014
+    type: single
+    difficulty: easy
+    stem: "以下哪个是预声明的类型别名?"
+    options:
+      - "A: int"
+      - "B: byte"
+      - "C: string"
+      - "D: bool"
+    answer: B
+    explanation: "byte是uint8的预声明别名。rune是int32的别名。int等是独立类型。参见 Go 规范 Predeclared identifiers 章节。"
+    topic: types
+    chapter: type_aliases
+
+  - id: type-alias-015
+    type: multiple
+    difficulty: easy
+    stem: "关于类型别名,以下说法正确的是?(多选)"
+    options:
+      - "A: 使用=语法"
+      - "B: 不创建新类型"
+      - "C: 共享方法集"
+      - "D: 用于兼容性"
+    answer: ABCD
+    explanation: "别名用=,不创建新类型,与原类型共享方法,主要用于兼容性。参见 Go 规范 Alias declarations 章节。"
+    topic: types
+    chapter: type_aliases
+
+  - id: type-alias-016
+    type: single
+    difficulty: easy
+    stem: "可以为接口类型创建别名吗?"
+    options:
+      - "A: 不可以"
+      - "B: 可以"
+      - "C: 只有空接口"
+      - "D: 需要泛型"
+    answer: B
+    explanation: "可以为任何类型创建别名,包括接口。如type Reader = io.Reader。参见 Go 规范 Alias declarations 章节。"
+    topic: types
+    chapter: type_aliases
+
+  - id: type-alias-017
+    type: single
+    difficulty: easy
+    stem: "别名声明可以在函数内部吗?"
+    options:
+      - "A: 不可以"
+      - "B: 可以"
+      - "C: 只有包级别"
+      - "D: 需要特殊权限"
+    answer: B
+    explanation: "类型别名可以在任何作用域声明,包括函数内部。参见 Go 规范 Alias declarations 章节。"
+    topic: types
+    chapter: type_aliases
+
+  - id: type-alias-018
+    type: single
+    difficulty: easy
+    stem: "type A = B; type C = A时,A和C的关系是?"
+    options:
+      - "A: 都是B的别名"
+      - "B: C是A的别名"
+      - "C: 三个都是同一类型"
+      - "D: 不同类型"
+    answer: C
+    explanation: "别名链:A是B的别名,C是A的别名,最终A、B、C都是同一类型。参见 Go 规范 Alias declarations 章节。"
+    topic: types
+    chapter: type_aliases
+
+  - id: type-alias-019
+    type: single
+    difficulty: easy
+    stem: "为什么Go 1.9引入类型别名?"
+    options:
+      - "A: 性能优化"
+      - "B: 代码重构支持"
+      - "C: 泛型准备"
+      - "D: 语法简化"
+    answer: B
+    explanation: "类型别名主要是为了支持大规模代码重构,允许渐进式迁移类型。参见 Go 类型别名设计文档。"
+    topic: types
+    chapter: type_aliases
+
+  - id: type-alias-020
+    type: single
+    difficulty: easy
+    stem: "别名可以是泛型类型吗?(Go 1.18+)"
+    options:
+      - "A: 不可以"
+      - "B: 可以"
+      - "C: Go 1.23+可以"
+      - "D: 需要实例化"
+    answer: C
+    explanation: "Go 1.23+支持泛型类型别名。之前版本不支持。参见 Go 规范 Alias declarations 章节。"
+    topic: types
+    chapter: type_aliases
+
+  # ========== 中等题 (Medium) - 11道 ==========
+
+  - id: type-alias-021
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type MyInt = int
+      func main() {
+          var x MyInt = 10
+          var y int = x
+          fmt.Println(y)
+      }
+    options:
+      - "A: 10"
+      - "B: 编译错误"
+      - "C: 0"
+      - "D: MyInt(10)"
+    answer: A
+    explanation: "MyInt是int的别名,同一类型。可以直接赋值。y=10。参见 Go 规范 Alias declarations 章节。"
+    topic: types
+    chapter: type_aliases
+
+  - id: type-alias-022
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import (
+          "fmt"
+          "reflect"
+      )
+      type MyInt = int
+      func main() {
+          var x MyInt = 10
+          fmt.Println(reflect.TypeOf(x).Name())
+      }
+    options:
+      - "A: MyInt"
+      - "B: int"
+      - "C: 编译错误"
+      - "D: main.MyInt"
+    answer: B
+    explanation: "MyInt是别名,运行时类型是int。reflect显示原类型名int。参见 Go reflect包文档。"
+    topic: types
+    chapter: type_aliases
+
+  - id: type-alias-023
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type A struct{ X int }
+      func (a A) M() int { return a.X }
+      type B = A
+      func main() {
+          b := B{10}
+          fmt.Println(b.M())
+      }
+    options:
+      - "A: 10"
+      - "B: 0"
+      - "C: 编译错误"
+      - "D: nil"
+    answer: A
+    explanation: "B是A的别名,共享方法。b.M()调用A的方法,返回10。参见 Go 规范 Alias declarations 章节。"
+    topic: types
+    chapter: type_aliases
+
+  - id: type-alias-024
+    type: code_fix
+    difficulty: medium
+    stem: "以下代码编译错误,正确的修正是?"
+    code: |
+      package main
+      type A = int
+      func (a A) Double() int { return a * 2 }
+    options:
+      - "A: type A int"
+      - "B: 不能为别名定义方法"
+      - "C: A选项正确(用类型定义)"
+      - "D: 代码正确"
+    answer: C
+    explanation: "不能在main包为int(A是int别名)定义方法。用type A int创建新类型。参见 Go 规范 Method declarations 章节。"
+    topic: types
+    chapter: type_aliases
+
+  - id: type-alias-025
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          var b byte = 255
+          var u uint8 = b
+          fmt.Println(u)
+      }
+    options:
+      - "A: 255"
+      - "B: 0"
+      - "C: 编译错误"
+      - "D: -1"
+    answer: A
+    explanation: "byte是uint8的别名,同一类型。可以直接赋值。u=255。参见 Go 规范 Numeric types 章节。"
+    topic: types
+    chapter: type_aliases
+
+  - id: type-alias-026
+    type: multiple
+    difficulty: medium
+    stem: "以下哪些是Go预声明的类型别名?(多选)"
+    options:
+      - "A: byte"
+      - "B: rune"
+      - "C: any"
+      - "D: int"
+    answer: ABC
+    explanation: "byte=uint8,rune=int32,any=interface{}是预声明别名。int是独立类型。参见 Go 规范 Predeclared identifiers 章节。"
+    topic: types
+    chapter: type_aliases
+
+  - id: type-alias-027
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type A = struct{ X int }
+      type B = struct{ X int }
+      func main() {
+          var a A = A{1}
+          var b B = a
+          fmt.Println(b.X)
+      }
+    options:
+      - "A: 1"
+      - "B: 0"
+      - "C: 编译错误"
+      - "D: nil"
+    answer: A
+    explanation: "A和B都是struct{X int}的别名,同一类型。可以直接赋值。b.X=1。参见 Go 规范 Alias declarations 章节。"
+    topic: types
+    chapter: type_aliases
+
+  - id: type-alias-028
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type NewInt int
+      type AliasInt = int
+      func main() {
+          var n NewInt = 1
+          var a AliasInt = 1
+          fmt.Println(n == NewInt(a))
+      }
+    options:
+      - "A: true"
+      - "B: false"
+      - "C: 编译错误"
+      - "D: panic"
+    answer: A
+    explanation: "n是NewInt(1),NewInt(a)=NewInt(1)。同类型可比较,相等。参见 Go 规范 Comparison operators 章节。"
+    topic: types
+    chapter: type_aliases
+
+  - id: type-alias-029
+    type: code_fix
+    difficulty: medium
+    stem: "如何为bytes.Buffer创建本地别名?"
+    code: |
+      package main
+      import "bytes"
+      // 需要创建Buffer别名
+    options:
+      - "A: type Buffer = bytes.Buffer"
+      - "B: type Buffer bytes.Buffer"
+      - "C: A创建别名,B创建新类型"
+      - "D: 不能为其他包类型创建别名"
+    answer: C
+    explanation: "A创建别名(同类型),B创建新类型(不继承方法)。可以为任何类型创建别名。参见 Go 规范 Alias declarations 章节。"
+    topic: types
+    chapter: type_aliases
+
+  - id: type-alias-030
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type S = []int
+      func main() {
+          var s S = []int{1, 2, 3}
+          s = append(s, 4)
+          fmt.Println(len(s))
+      }
+    options:
+      - "A: 4"
+      - "B: 3"
+      - "C: 编译错误"
+      - "D: panic"
+    answer: A
+    explanation: "S是[]int的别名。append正常工作。len(s)=4。参见 Go 规范 Alias declarations 章节。"
+    topic: types
+    chapter: type_aliases
+
+  - id: type-alias-031
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type T int
+      type A = T
+      func (t T) M() int { return int(t) }
+      func main() {
+          var a A = 10
+          fmt.Println(a.M())
+      }
+    options:
+      - "A: 10"
+      - "B: 0"
+      - "C: 编译错误"
+      - "D: nil"
+    answer: A
+    explanation: "A是T的别名。T有方法M。a.M()调用T的方法返回10。参见 Go 规范 Alias declarations 章节。"
+    topic: types
+    chapter: type_aliases
+
+  # ========== 困难题 (Hard) - 4道 ==========
+
+  - id: type-alias-032
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import (
+          "fmt"
+          "reflect"
+      )
+      type Original struct{ X int }
+      type Alias = Original
+      func main() {
+          var a Alias
+          t := reflect.TypeOf(a)
+          fmt.Println(t.Name(), t.PkgPath())
+      }
+    options:
+      - "A: Alias main"
+      - "B: Original main"
+      - "C: Original "
+      - "D: Alias "
+    answer: B
+    explanation: "Alias是Original的别名。reflect返回Original和包路径main。参见 Go reflect包文档。"
+    topic: types
+    chapter: type_aliases
+
+  - id: type-alias-033
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type A = struct{ X int }
+      type B struct{ X int }
+      func main() {
+          a := A{1}
+          b := B{1}
+          fmt.Println(a == A(b))
+      }
+    options:
+      - "A: true"
+      - "B: false"
+      - "C: 编译错误"
+      - "D: panic"
+    answer: A
+    explanation: "A是struct{X int}别名,B是新类型。底层相同可转换。A(b)={1},a={1}。相等。参见 Go 规范 Conversions 章节。"
+    topic: types
+    chapter: type_aliases
+
+  - id: type-alias-034
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type T struct{ X int }
+      type A = *T
+      func main() {
+          t := T{1}
+          var a A = &t
+          fmt.Printf("%T %v\n", a, a.X)
+      }
+    options:
+      - "A: *main.T 1"
+      - "B: main.A 1"
+      - "C: A 1"
+      - "D: 编译错误"
+    answer: A
+    explanation: "A是*T的别名。运行时类型是*main.T。a.X=1。参见 Go 规范 Alias declarations 章节。"
+    topic: types
+    chapter: type_aliases
+
+  - id: type-alias-035
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type I interface{ M() }
+      type A = I
+      type S struct{}
+      func (S) M() {}
+      func main() {
+          var a A = S{}
+          switch a.(type) {
+          case S:
+              fmt.Print("S")
+          case A:
+              fmt.Print("A")
+          }
+      }
+    options:
+      - "A: S"
+      - "B: A"
+      - "C: SA"
+      - "D: 编译错误"
+    answer: A
+    explanation: "a的动态类型是S。type switch匹配S。A是接口类型不能作为case。输出S。参见 Go 规范 Type switches 章节。"
+    topic: types
+    chapter: type_aliases

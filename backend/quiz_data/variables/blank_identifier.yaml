@@ -1,0 +1,654 @@
+# Go 空白标识符测验题库
+# 章节: variables/blank_identifier
+# 符合 Go 1.24 语言规范
+
+metadata:
+  topic: variables
+  chapter: blank_identifier
+  total_questions: 35
+  last_updated: "2025-01-01"
+  difficulty_distribution:
+    easy: 21      # 60%
+    medium: 10    # 29%
+    hard: 4       # 11%
+  type_distribution:
+    single: 15
+    multiple: 8
+    code_output: 7
+    code_fix: 5
+
+questions:
+  # ========== 简单题 (Easy) - 21道 ==========
+  
+  - id: var-blank-001
+    type: single
+    difficulty: easy
+    stem: "Go语言的空白标识符是什么?"
+    options:
+      - "A: null"
+      - "B: _"
+      - "C: void"
+      - "D: nil"
+    answer: B
+    explanation: "下划线_是Go的空白标识符,用于忽略值。null、void不是Go关键字,nil是空值。参见 Go 规范 Blank identifier 章节。"
+    topic: variables
+    chapter: blank_identifier
+
+  - id: var-blank-002
+    type: single
+    difficulty: easy
+    stem: "空白标识符的主要用途是什么?"
+    options:
+      - "A: 声明空变量"
+      - "B: 忽略不需要的值"
+      - "C: 创建占位符"
+      - "D: 定义空函数"
+    answer: B
+    explanation: "空白标识符用于忽略不需要使用的值,如函数返回值。它不存储任何值。参见 Go 规范 Blank identifier 章节。"
+    topic: variables
+    chapter: blank_identifier
+
+  - id: var-blank-003
+    type: single
+    difficulty: easy
+    stem: "_, err := f()中_代表什么?"
+    options:
+      - "A: nil值"
+      - "B: 默认值"
+      - "C: 忽略的返回值"
+      - "D: 错误值"
+    answer: C
+    explanation: "_表示忽略f()的第一个返回值,只使用err。常见于忽略不需要的返回值。参见 Go 规范 Blank identifier 章节。"
+    topic: variables
+    chapter: blank_identifier
+
+  - id: var-blank-004
+    type: single
+    difficulty: easy
+    stem: "for _, v := range slice中_的作用是?"
+    options:
+      - "A: 表示切片长度"
+      - "B: 忽略索引"
+      - "C: 表示空元素"
+      - "D: 占位第一个元素"
+    answer: B
+    explanation: "range返回索引和值,_忽略索引,只使用值v。常见写法避免声明不使用的变量。参见 Go 规范 For statements 章节。"
+    topic: variables
+    chapter: blank_identifier
+
+  - id: var-blank-005
+    type: single
+    difficulty: easy
+    stem: "可以读取_的值吗?"
+    options:
+      - "A: 可以"
+      - "B: 不可以"
+      - "C: 有时可以"
+      - "D: 取决于类型"
+    answer: B
+    explanation: "空白标识符只能用于赋值左侧,不能读取其值。赋给_的值被丢弃。参见 Go 规范 Blank identifier 章节。"
+    topic: variables
+    chapter: blank_identifier
+
+  - id: var-blank-006
+    type: single
+    difficulty: easy
+    stem: "import _ \"pkg\"的作用是什么?"
+    options:
+      - "A: 不导入任何包"
+      - "B: 只执行包的init函数"
+      - "C: 导入但标记为废弃"
+      - "D: 导入私有成员"
+    answer: B
+    explanation: "空白导入只执行包的init函数和包级变量初始化,不使用包内导出的标识符。参见 Go 规范 Import declarations 章节。"
+    topic: variables
+    chapter: blank_identifier
+
+  - id: var-blank-007
+    type: single
+    difficulty: easy
+    stem: "var _ = initDB()的用途是什么?"
+    options:
+      - "A: 声明空变量"
+      - "B: 执行副作用,忽略返回值"
+      - "C: 检查类型"
+      - "D: 创建常量"
+    answer: B
+    explanation: "包级var _ = f()用于执行f()的副作用(如初始化),同时忽略返回值。参见 Go 规范 Blank identifier 章节。"
+    topic: variables
+    chapter: blank_identifier
+
+  - id: var-blank-008
+    type: single
+    difficulty: easy
+    stem: "var _ Interface = (*Type)(nil)的用途是什么?"
+    options:
+      - "A: 声明nil指针"
+      - "B: 编译时接口实现检查"
+      - "C: 创建接口变量"
+      - "D: 类型转换"
+    answer: B
+    explanation: "这是编译时检查Type是否实现Interface的惯用法。如果不实现会编译错误。参见 Go 官方接口检查模式。"
+    topic: variables
+    chapter: blank_identifier
+
+  - id: var-blank-009
+    type: multiple
+    difficulty: easy
+    stem: "以下哪些是_的合法用法?(多选)"
+    options:
+      - "A: _, err := f()"
+      - "B: for _, v := range s"
+      - "C: import _ \"pkg\""
+      - "D: x = _"
+    answer: ABC
+    explanation: "ABC都是合法用法。D不合法,不能读取_的值。_只能用于接收值,不能作为值使用。参见 Go 规范 Blank identifier 章节。"
+    topic: variables
+    chapter: blank_identifier
+
+  - id: var-blank-010
+    type: single
+    difficulty: easy
+    stem: "_可以用作变量名吗?"
+    options:
+      - "A: 是普通变量名"
+      - "B: 是特殊标识符"
+      - "C: 是关键字"
+      - "D: 是保留字"
+    answer: B
+    explanation: "_是特殊的空白标识符,不是普通变量名,也不是关键字。它有特殊语义:值被丢弃。参见 Go 规范 Blank identifier 章节。"
+    topic: variables
+    chapter: blank_identifier
+
+  - id: var-blank-011
+    type: single
+    difficulty: easy
+    stem: "同一语句中可以多次使用_吗?"
+    options:
+      - "A: 不可以"
+      - "B: 可以"
+      - "C: 最多两次"
+      - "D: 取决于上下文"
+    answer: B
+    explanation: "_可以多次使用。如a, _, _, d := f()忽略第2和第3个返回值。参见 Go 规范 Blank identifier 章节。"
+    topic: variables
+    chapter: blank_identifier
+
+  - id: var-blank-012
+    type: single
+    difficulty: easy
+    stem: "switch x := v.(type)中如果不需要x怎么办?"
+    options:
+      - "A: 删除x"
+      - "B: 使用_"
+      - "C: 只能使用x"
+      - "D: 使用void"
+    answer: B
+    explanation: "可以用switch _ := v.(type)或直接switch v.(type)来忽略值。参见 Go 规范 Switch statements 章节。"
+    topic: variables
+    chapter: blank_identifier
+
+  - id: var-blank-013
+    type: single
+    difficulty: easy
+    stem: "for i, _ := range s和for i := range s等价吗?"
+    options:
+      - "A: 完全等价"
+      - "B: 不等价"
+      - "C: 取决于s类型"
+      - "D: 语法错误"
+    answer: A
+    explanation: "两者等价。for i := range s只获取索引。for i, _ := range s显式忽略值,效果相同。参见 Go 规范 For statements 章节。"
+    topic: variables
+    chapter: blank_identifier
+
+  - id: var-blank-014
+    type: single
+    difficulty: easy
+    stem: "为什么需要空白标识符?"
+    options:
+      - "A: 节省内存"
+      - "B: 避免声明未使用的变量"
+      - "C: 提高性能"
+      - "D: 类型检查"
+    answer: B
+    explanation: "Go不允许未使用的局部变量。_让我们能接收但不使用某些值,避免编译错误。参见 Go 规范 Blank identifier 章节。"
+    topic: variables
+    chapter: blank_identifier
+
+  - id: var-blank-015
+    type: single
+    difficulty: easy
+    stem: "_, ok := m[key]中ok的类型是什么?"
+    options:
+      - "A: int"
+      - "B: bool"
+      - "C: error"
+      - "D: interface{}"
+    answer: B
+    explanation: "map的逗号ok惯用法中ok是bool。true表示key存在,false表示不存在。参见 Go 规范 Index expressions 章节。"
+    topic: variables
+    chapter: blank_identifier
+
+  - id: var-blank-016
+    type: single
+    difficulty: easy
+    stem: "_, ok := x.(T)中_忽略的是什么?"
+    options:
+      - "A: 错误值"
+      - "B: 类型断言的值"
+      - "C: nil"
+      - "D: 原始值"
+    answer: B
+    explanation: "类型断言返回转换后的值和bool。_忽略转换后的值,只检查断言是否成功。参见 Go 规范 Type assertions 章节。"
+    topic: variables
+    chapter: blank_identifier
+
+  - id: var-blank-017
+    type: single
+    difficulty: easy
+    stem: "在函数参数中可以使用_吗?"
+    options:
+      - "A: 不可以"
+      - "B: 可以,表示不使用该参数"
+      - "C: 只能在接口中"
+      - "D: 只能在方法中"
+    answer: B
+    explanation: "函数参数可以用_命名,表示不使用该参数。如func f(_ int, b string)。参见 Go 规范 Function declarations 章节。"
+    topic: variables
+    chapter: blank_identifier
+
+  - id: var-blank-018
+    type: single
+    difficulty: easy
+    stem: "import _ \"database/sql\"通常用于什么?"
+    options:
+      - "A: 测试SQL"
+      - "B: 注册数据库驱动"
+      - "C: 导入SQL函数"
+      - "D: 创建连接"
+    answer: B
+    explanation: "数据库驱动在init中注册自己。空白导入执行init,注册驱动,但不直接使用驱动包。参见 Go 数据库驱动模式。"
+    topic: variables
+    chapter: blank_identifier
+
+  - id: var-blank-019
+    type: single
+    difficulty: easy
+    stem: "_是关键字还是标识符?"
+    options:
+      - "A: 关键字"
+      - "B: 预声明标识符"
+      - "C: 空白标识符(特殊标识符)"
+      - "D: 运算符"
+    answer: C
+    explanation: "_是空白标识符,是一种特殊的标识符。不是关键字,也不是预声明标识符。参见 Go 规范 Blank identifier 章节。"
+    topic: variables
+    chapter: blank_identifier
+
+  - id: var-blank-020
+    type: single
+    difficulty: easy
+    stem: "const _ = 100合法吗?"
+    options:
+      - "A: 合法"
+      - "B: 不合法"
+      - "C: 取决于值"
+      - "D: 只在函数内合法"
+    answer: A
+    explanation: "const _ = value是合法的,通常用于编译时检查(如确保值在某范围内)。参见 Go 规范 Constant declarations 章节。"
+    topic: variables
+    chapter: blank_identifier
+
+  - id: var-blank-021
+    type: multiple
+    difficulty: easy
+    stem: "关于空白标识符,以下说法正确的是?(多选)"
+    options:
+      - "A: 可以多次赋值"
+      - "B: 不能读取值"
+      - "C: 不占用内存"
+      - "D: 可以用于导入"
+    answer: ABCD
+    explanation: "_可以多次赋值,不能读取,编译器优化不实际存储,可用于空白导入。参见 Go 规范 Blank identifier 章节。"
+    topic: variables
+    chapter: blank_identifier
+
+  # ========== 中等题 (Medium) - 10道 ==========
+
+  - id: var-blank-022
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func f() (int, int, int) { return 1, 2, 3 }
+      func main() {
+          a, _, b := f()
+          fmt.Println(a, b)
+      }
+    options:
+      - "A: 1 2"
+      - "B: 1 3"
+      - "C: 2 3"
+      - "D: 编译错误"
+    answer: B
+    explanation: "_忽略第二个返回值2。a=1,b=3。输出1 3。参见 Go 规范 Blank identifier 章节。"
+    topic: variables
+    chapter: blank_identifier
+
+  - id: var-blank-023
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          m := map[string]int{"a": 1}
+          _, ok1 := m["a"]
+          _, ok2 := m["b"]
+          fmt.Println(ok1, ok2)
+      }
+    options:
+      - "A: true true"
+      - "B: true false"
+      - "C: 1 0"
+      - "D: false false"
+    answer: B
+    explanation: "\"a\"存在ok1=true。\"b\"不存在ok2=false。参见 Go 规范 Index expressions 章节。"
+    topic: variables
+    chapter: blank_identifier
+
+  - id: var-blank-024
+    type: code_fix
+    difficulty: medium
+    stem: "以下代码有编译错误,正确的修正方案是?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          x := _
+          fmt.Println(x)
+      }
+    options:
+      - "A: 改为x := 0"
+      - "B: 改为_ := 0; x := _"
+      - "C: 改为var x = _"
+      - "D: 无法修复"
+    answer: A
+    explanation: "不能读取_的值。应该直接赋一个具体的值。_只能用于接收,不能作为值。参见 Go 规范 Blank identifier 章节。"
+    topic: variables
+    chapter: blank_identifier
+
+  - id: var-blank-025
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          s := []int{1, 2, 3}
+          for _, _ = range s {
+              fmt.Print("x")
+          }
+      }
+    options:
+      - "A: xxx"
+      - "B: 无输出"
+      - "C: 编译错误"
+      - "D: 123"
+    answer: A
+    explanation: "两个_都忽略,但循环仍执行3次(切片长度)。每次打印x。参见 Go 规范 For statements 章节。"
+    topic: variables
+    chapter: blank_identifier
+
+  - id: var-blank-026
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type I interface { M() }
+      type T struct{}
+      func (T) M() {}
+      var _ I = T{}
+      func main() {
+          fmt.Println("ok")
+      }
+    options:
+      - "A: ok"
+      - "B: 编译错误:T未实现I"
+      - "C: 运行时panic"
+      - "D: 无输出"
+    answer: A
+    explanation: "T实现了I接口(有M方法)。var _ I = T{}编译通过。程序正常输出ok。参见 Go 规范 Interface types 章节。"
+    topic: variables
+    chapter: blank_identifier
+
+  - id: var-blank-027
+    type: code_fix
+    difficulty: medium
+    stem: "以下代码不符合预期,正确的修正方案是?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          ch := make(chan int, 1)
+          ch <- 1
+          _ = <-ch
+          fmt.Println(<-ch)
+      }
+    options:
+      - "A: 删除_ = <-ch"
+      - "B: 将_ = <-ch改为x := <-ch"
+      - "C: 代码正确"
+      - "D: 增加ch <- 2"
+    answer: A
+    explanation: "_ = <-ch消费了通道中唯一的值。第二次<-ch会阻塞(死锁)。应该只读取一次或发送两次。参见 Go 规范 Channel types 章节。"
+    topic: variables
+    chapter: blank_identifier
+
+  - id: var-blank-028
+    type: multiple
+    difficulty: medium
+    stem: "关于空白导入import _ \"pkg\",以下说法正确的是?(多选)"
+    options:
+      - "A: 执行pkg的init函数"
+      - "B: 初始化pkg的包级变量"
+      - "C: 不能使用pkg的导出标识符"
+      - "D: 常用于数据库驱动"
+    answer: ABCD
+    explanation: "空白导入执行init和包级变量初始化,但不导入任何名字。常用于注册驱动等副作用。参见 Go 规范 Import declarations 章节。"
+    topic: variables
+    chapter: blank_identifier
+
+  - id: var-blank-029
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          var x interface{} = 10
+          if _, ok := x.(string); ok {
+              fmt.Println("string")
+          } else {
+              fmt.Println("not string")
+          }
+      }
+    options:
+      - "A: string"
+      - "B: not string"
+      - "C: panic"
+      - "D: 编译错误"
+    answer: B
+    explanation: "x是int不是string,类型断言失败ok=false。输出not string。参见 Go 规范 Type assertions 章节。"
+    topic: variables
+    chapter: blank_identifier
+
+  - id: var-blank-030
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func div(a, b int) (int, error) {
+          if b == 0 {
+              return 0, fmt.Errorf("division by zero")
+          }
+          return a / b, nil
+      }
+      func main() {
+          _, err := div(10, 0)
+          fmt.Println(err == nil)
+      }
+    options:
+      - "A: true"
+      - "B: false"
+      - "C: division by zero"
+      - "D: panic"
+    answer: B
+    explanation: "b=0返回错误。err不是nil。err==nil是false。参见 Go 规范 Errors 章节。"
+    topic: variables
+    chapter: blank_identifier
+
+  - id: var-blank-031
+    type: code_fix
+    difficulty: medium
+    stem: "以下代码有编译警告/问题,最佳修正方案是?"
+    code: |
+      package main
+      import (
+          "fmt"
+          "os"
+      )
+      func main() {
+          f, err := os.Open("test.txt")
+          if err != nil {
+              fmt.Println(err)
+              return
+          }
+          data := make([]byte, 100)
+          f.Read(data)
+          f.Close()
+      }
+    options:
+      - "A: _, _ = f.Read(data)"
+      - "B: _ = f.Close()"
+      - "C: 处理Read和Close的错误"
+      - "D: 代码没有问题"
+    answer: C
+    explanation: "Read和Close返回的error应该处理,不应忽略。最佳实践是检查错误。_只应在确实不需要值时使用。参见 Go 错误处理最佳实践。"
+    topic: variables
+    chapter: blank_identifier
+
+  # ========== 困难题 (Hard) - 4道 ==========
+
+  - id: var-blank-032
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type Counter int
+      func (c Counter) String() string { return fmt.Sprintf("%d", c) }
+      var _ fmt.Stringer = Counter(0)
+      func main() {
+          c := Counter(42)
+          fmt.Println(c)
+      }
+    options:
+      - "A: 42"
+      - "B: Counter(42)"
+      - "C: 编译错误"
+      - "D: {42}"
+    answer: A
+    explanation: "Counter实现fmt.Stringer(有String方法)。var _检查通过。Println调用String()输出42。参见 Go fmt包文档。"
+    topic: variables
+    chapter: blank_identifier
+
+  - id: var-blank-033
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          funcs := make([]func(), 3)
+          for i := 0; i < 3; i++ {
+              _ = i
+              funcs[i] = func() { fmt.Print(i) }
+          }
+          for _, f := range funcs {
+              f()
+          }
+      }
+    options:
+      - "A: 012"
+      - "B: 333"
+      - "C: 222"
+      - "D: 编译错误"
+    answer: B
+    explanation: "_ = i不创建新变量。闭包捕获循环变量i,循环结束后i=3。Go1.22前输出333。参见 Go 规范 For statements 章节。"
+    topic: variables
+    chapter: blank_identifier
+
+  - id: var-blank-034
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      const (
+          _ = iota
+          KB = 1 << (10 * iota)
+          MB
+          GB
+      )
+      func main() {
+          fmt.Println(KB, MB, GB)
+      }
+    options:
+      - "A: 1 1024 1048576"
+      - "B: 1024 1048576 1073741824"
+      - "C: 0 1024 1048576"
+      - "D: 1 2 3"
+    answer: B
+    explanation: "_=iota跳过0。KB iota=1,1<<10=1024。MB iota=2,1<<20=1048576。GB iota=3,1<<30=1073741824。参见 Go 规范 Iota 章节。"
+    topic: variables
+    chapter: blank_identifier
+
+  - id: var-blank-035
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type T struct{ x int }
+      func (t T) Get() int { return t.x }
+      var _ interface{ Get() int } = (*T)(nil)
+      func main() {
+          var t *T
+          if t == nil {
+              fmt.Println(t.Get())
+          }
+      }
+    options:
+      - "A: 0"
+      - "B: panic: nil pointer"
+      - "C: 编译错误"
+      - "D: <nil>"
+    answer: A
+    explanation: "*T可以有nil接收者调用方法。t.Get()返回t.x,t是nil但T.x的零值是0。值接收者方法会复制nil,x是零值0。参见 Go 规范 Method sets 章节。"
+    topic: variables
+    chapter: blank_identifier

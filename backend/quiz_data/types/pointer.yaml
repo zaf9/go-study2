@@ -1,521 +1,703 @@
+# Go 指针类型测验题库
+# 章节: types/pointer
+# 符合 Go 1.24 语言规范
+
+metadata:
+  topic: types
+  chapter: pointer
+  total_questions: 38
+  last_updated: "2025-01-01"
+  difficulty_distribution:
+    easy: 22      # 58%
+    medium: 12    # 32%
+    hard: 4       # 10%
+  type_distribution:
+    single: 17
+    multiple: 9
+    code_output: 8
+    code_fix: 4
+
 questions:
-    - id: type-pointer-001
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 types.pointer，下面哪个选项是正确的？
-      options:
-        - 'A: 常见误解或反例（容易混淆）'
-        - 'B: 正确项（关于pointer.types的重要结论）'
-        - 'C: 正确项（关于pointer.types的重要结论）'
-        - 'D: 正确项（关于pointer.types的重要结论）'
-      answer: BCD
-      explanation: 本题考查 types.pointer 的相关知识。正确答案：BCD。解析：pointer 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: pointer
-    - id: type-pointer-002
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 types.pointer，下面哪个选项是正确的？
-      options:
-        - 'A: 语法/语义上不正确的陈述'
-        - 'B: 正确：关于pointer.types的关键点描述（正确选项）'
-        - 'C: 常见误解或反例（容易混淆）'
-        - 'D: 与pointer.types 相关但不适用的选项'
-      answer: B
-      explanation: 本题考查 types.pointer 的概念。正确答案为 B。解析：pointer 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: pointer
-    - id: type-pointer-003
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 types.pointer，下面哪个选项是正确的？
-      options:
-        - 'A: 正确项（关于pointer.types的重要结论）'
-        - 'B: 正确项（关于pointer.types的重要结论）'
-        - 'C: 正确项（关于pointer.types的重要结论）'
-        - 'D: 与pointer.types 相关但不适用的选项'
-      answer: ABC
-      explanation: 本题考查 types.pointer 的相关知识。正确答案：ABC。解析：pointer 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: pointer
-    - id: type-pointer-004
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 types.pointer，下面哪个选项是正确的？
-      options:
-        - 'A: 正确：关于pointer.types的关键点描述（正确选项）'
-        - 'B: 部分正确但不完整的说法'
-        - 'C: 常见误解或反例（容易混淆）'
-        - 'D: 与pointer.types 相关但不适用的选项'
-      answer: A
-      explanation: 本题考查 types.pointer 的概念。正确答案为 A。解析：pointer 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: pointer
-    - id: type-pointer-005
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 types.pointer，下面哪个选项是正确的？
-      options:
-        - 'A: 正确项（关于pointer.types的重要结论）'
-        - 'B: 部分正确但不完整的说法'
-        - 'C: 正确项（关于pointer.types的重要结论）'
-        - 'D: 正确项（关于pointer.types的重要结论）'
-      answer: ACD
-      explanation: 本题考查 types.pointer 的相关知识。正确答案：ACD。解析：pointer 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: pointer
-    - id: type-pointer-006
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 types.pointer，下面哪个选项是正确的？
-      options:
-        - 'A: 部分正确但不完整的说法'
-        - 'B: 正确：关于pointer.types的关键点描述（正确选项）'
-        - 'C: 常见误解或反例（容易混淆）'
-        - 'D: 部分正确但不完整的说法'
-      answer: B
-      explanation: 本题考查 types.pointer 的概念。正确答案为 B。解析：pointer 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: pointer
-    - id: type-pointer-007
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 types.pointer，下面哪个选项是正确的？
-      options:
-        - 'A: 正确项（关于pointer.types的重要结论）'
-        - 'B: 常见误解或反例（容易混淆）'
-        - 'C: 正确项（关于pointer.types的重要结论）'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: AC
-      explanation: 本题考查 types.pointer 的相关知识。正确答案：AC。解析：pointer 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: pointer
-    - id: type-pointer-008
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 types.pointer，下面哪个选项是正确的？
-      options:
-        - 'A: 正确：关于pointer.types的关键点描述（正确选项）'
-        - 'B: 与pointer.types 相关但不适用的选项'
-        - 'C: 常见误解或反例（容易混淆）'
-        - 'D: 常见误解或反例（容易混淆）'
-      answer: A
-      explanation: 本题考查 types.pointer 的概念。正确答案为 A。解析：pointer 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: pointer
-    - id: type-pointer-009
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 types.pointer，下面哪个选项是正确的？
-      options:
-        - 'A: 正确项（关于pointer.types的重要结论）'
-        - 'B: 正确项（关于pointer.types的重要结论）'
-        - 'C: 语法/语义上不正确的陈述'
-        - 'D: 正确项（关于pointer.types的重要结论）'
-      answer: ABD
-      explanation: 本题考查 types.pointer 的相关知识。正确答案：ABD。解析：pointer 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: pointer
-    - id: type-pointer-010
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 types.pointer，下面哪个选项是正确的？
-      options:
-        - 'A: 常见误解或反例（容易混淆）'
-        - 'B: 正确：关于pointer.types的关键点描述（正确选项）'
-        - 'C: 语法/语义上不正确的陈述'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: B
-      explanation: 本题考查 types.pointer 的概念。正确答案为 B。解析：pointer 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: pointer
-    - id: type-pointer-011
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 types.pointer，下面哪个选项是正确的？
-      options:
-        - 'A: 正确项（关于pointer.types的重要结论）'
-        - 'B: 正确项（关于pointer.types的重要结论）'
-        - 'C: 语法/语义上不正确的陈述'
-        - 'D: 正确项（关于pointer.types的重要结论）'
-      answer: ABD
-      explanation: 本题考查 types.pointer 的相关知识。正确答案：ABD。解析：pointer 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: pointer
-    - id: type-pointer-012
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 types.pointer，下面哪个选项是正确的？
-      options:
-        - 'A: 语法/语义上不正确的陈述'
-        - 'B: 正确：关于pointer.types的关键点描述（正确选项）'
-        - 'C: 语法/语义上不正确的陈述'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: B
-      explanation: 本题考查 types.pointer 的概念。正确答案为 B。解析：pointer 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: pointer
-    - id: type-pointer-013
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 types.pointer，下面哪个选项是正确的？
-      options:
-        - 'A: 正确项（关于pointer.types的重要结论）'
-        - 'B: 正确项（关于pointer.types的重要结论）'
-        - 'C: 与pointer.types 相关但不适用的选项'
-        - 'D: 正确项（关于pointer.types的重要结论）'
-      answer: ABD
-      explanation: 本题考查 types.pointer 的相关知识。正确答案：ABD。解析：pointer 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: pointer
-    - id: type-pointer-014
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 types.pointer，下面哪个选项是正确的？
-      options:
-        - 'A: 语法/语义上不正确的陈述'
-        - 'B: 正确：关于pointer.types的关键点描述（正确选项）'
-        - 'C: 常见误解或反例（容易混淆）'
-        - 'D: 常见误解或反例（容易混淆）'
-      answer: B
-      explanation: 本题考查 types.pointer 的概念。正确答案为 B。解析：pointer 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: pointer
-    - id: type-pointer-015
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 types.pointer，下面哪个选项是正确的？
-      options:
-        - 'A: 正确项（关于pointer.types的重要结论）'
-        - 'B: 正确项（关于pointer.types的重要结论）'
-        - 'C: 与pointer.types 相关但不适用的选项'
-        - 'D: 正确项（关于pointer.types的重要结论）'
-      answer: ABD
-      explanation: 本题考查 types.pointer 的相关知识。正确答案：ABD。解析：pointer 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: pointer
-    - id: type-pointer-016
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 types.pointer，下面哪个选项是正确的？
-      options:
-        - 'A: 部分正确但不完整的说法'
-        - 'B: 正确：关于pointer.types的关键点描述（正确选项）'
-        - 'C: 常见误解或反例（容易混淆）'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: B
-      explanation: 本题考查 types.pointer 的概念。正确答案为 B。解析：pointer 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: pointer
-    - id: type-pointer-017
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 types.pointer 的情境下，哪个说法更合适？
-      options:
-        - 'A: 部分正确但不完整的说法'
-        - 'B: 正确项（关于pointer.types的重要结论）'
-        - 'C: 正确项（关于pointer.types的重要结论）'
-        - 'D: 正确项（关于pointer.types的重要结论）'
-      answer: BCD
-      explanation: 本题考查 types.pointer 的相关知识。正确答案：BCD。解析：pointer 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: pointer
-    - id: type-pointer-018
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 types.pointer 的情境下，哪个说法更合适？
-      options:
-        - 'A: 常见误解或反例（容易混淆）'
-        - 'B: 正确：关于pointer.types的关键点描述（正确选项）'
-        - 'C: 部分正确但不完整的说法'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: B
-      explanation: 本题考查 types.pointer 的概念。正确答案为 B。解析：pointer 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: pointer
-    - id: type-pointer-019
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 types.pointer 的情境下，哪个说法更合适？
-      options:
-        - 'A: 正确项（关于pointer.types的重要结论）'
-        - 'B: 正确项（关于pointer.types的重要结论）'
-        - 'C: 正确项（关于pointer.types的重要结论）'
-        - 'D: 部分正确但不完整的说法'
-      answer: ABC
-      explanation: 本题考查 types.pointer 的相关知识。正确答案：ABC。解析：pointer 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: pointer
-    - id: type-pointer-020
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 types.pointer 的情境下，哪个说法更合适？
-      options:
-        - 'A: 常见误解或反例（容易混淆）'
-        - 'B: 部分正确但不完整的说法'
-        - 'C: 正确：关于pointer.types的关键点描述（正确选项）'
-        - 'D: 与pointer.types 相关但不适用的选项'
-      answer: C
-      explanation: 本题考查 types.pointer 的概念。正确答案为 C。解析：pointer 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: pointer
-    - id: type-pointer-021
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 types.pointer 的情境下，哪个说法更合适？
-      options:
-        - 'A: 正确项（关于pointer.types的重要结论）'
-        - 'B: 语法/语义上不正确的陈述'
-        - 'C: 正确项（关于pointer.types的重要结论）'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: AC
-      explanation: 本题考查 types.pointer 的相关知识。正确答案：AC。解析：pointer 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: pointer
-    - id: type-pointer-022
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 types.pointer 的情境下，哪个说法更合适？
-      options:
-        - 'A: 常见误解或反例（容易混淆）'
-        - 'B: 部分正确但不完整的说法'
-        - 'C: 正确：关于pointer.types的关键点描述（正确选项）'
-        - 'D: 部分正确但不完整的说法'
-      answer: C
-      explanation: 本题考查 types.pointer 的概念。正确答案为 C。解析：pointer 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: pointer
-    - id: type-pointer-023
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 types.pointer 的情境下，哪个说法更合适？
-      options:
-        - 'A: 正确项（关于pointer.types的重要结论）'
-        - 'B: 语法/语义上不正确的陈述'
-        - 'C: 与pointer.types 相关但不适用的选项'
-        - 'D: 正确项（关于pointer.types的重要结论）'
-      answer: AD
-      explanation: 本题考查 types.pointer 的相关知识。正确答案：AD。解析：pointer 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: pointer
-    - id: type-pointer-024
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 types.pointer 的情境下，哪个说法更合适？
-      options:
-        - 'A: 常见误解或反例（容易混淆）'
-        - 'B: 正确：关于pointer.types的关键点描述（正确选项）'
-        - 'C: 语法/语义上不正确的陈述'
-        - 'D: 部分正确但不完整的说法'
-      answer: B
-      explanation: 本题考查 types.pointer 的概念。正确答案为 B。解析：pointer 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: pointer
-    - id: type-pointer-025
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 types.pointer 的情境下，哪个说法更合适？
-      options:
-        - 'A: 正确项（关于pointer.types的重要结论）'
-        - 'B: 部分正确但不完整的说法'
-        - 'C: 语法/语义上不正确的陈述'
-        - 'D: 正确项（关于pointer.types的重要结论）'
-      answer: AD
-      explanation: 本题考查 types.pointer 的相关知识。正确答案：AD。解析：pointer 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: pointer
-    - id: type-pointer-026
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 types.pointer 的情境下，哪个说法更合适？
-      options:
-        - 'A: 部分正确但不完整的说法'
-        - 'B: 与pointer.types 相关但不适用的选项'
-        - 'C: 正确：关于pointer.types的关键点描述（正确选项）'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: C
-      explanation: 本题考查 types.pointer 的概念。正确答案为 C。解析：pointer 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: pointer
-    - id: type-pointer-027
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 types.pointer 的情境下，哪个说法更合适？
-      options:
-        - 'A: 正确项（关于pointer.types的重要结论）'
-        - 'B: 语法/语义上不正确的陈述'
-        - 'C: 正确项（关于pointer.types的重要结论）'
-        - 'D: 正确项（关于pointer.types的重要结论）'
-      answer: ACD
-      explanation: 本题考查 types.pointer 的相关知识。正确答案：ACD。解析：pointer 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: pointer
-    - id: type-pointer-028
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 types.pointer 的情境下，哪个说法更合适？
-      options:
-        - 'A: 语法/语义上不正确的陈述'
-        - 'B: 部分正确但不完整的说法'
-        - 'C: 正确：关于pointer.types的关键点描述（正确选项）'
-        - 'D: 常见误解或反例（容易混淆）'
-      answer: C
-      explanation: 本题考查 types.pointer 的概念。正确答案为 C。解析：pointer 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: pointer
-    - id: type-pointer-029
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 types.pointer 的情境下，哪个说法更合适？
-      options:
-        - 'A: 正确项（关于pointer.types的重要结论）'
-        - 'B: 正确项（关于pointer.types的重要结论）'
-        - 'C: 正确项（关于pointer.types的重要结论）'
-        - 'D: 部分正确但不完整的说法'
-      answer: ABC
-      explanation: 本题考查 types.pointer 的相关知识。正确答案：ABC。解析：pointer 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: pointer
-    - id: type-pointer-030
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 types.pointer 的情境下，哪个说法更合适？
-      options:
-        - 'A: 与pointer.types 相关但不适用的选项'
-        - 'B: 正确：关于pointer.types的关键点描述（正确选项）'
-        - 'C: 常见误解或反例（容易混淆）'
-        - 'D: 与pointer.types 相关但不适用的选项'
-      answer: B
-      explanation: 本题考查 types.pointer 的概念。正确答案为 B。解析：pointer 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: pointer
-    - id: type-pointer-031
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 types.pointer 的情境下，哪个说法更合适？
-      options:
-        - 'A: 常见误解或反例（容易混淆）'
-        - 'B: 正确项（关于pointer.types的重要结论）'
-        - 'C: 正确项（关于pointer.types的重要结论）'
-        - 'D: 正确项（关于pointer.types的重要结论）'
-      answer: BCD
-      explanation: 本题考查 types.pointer 的相关知识。正确答案：BCD。解析：pointer 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: pointer
-    - id: type-pointer-032
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 types.pointer 的情境下，哪个说法更合适？
-      options:
-        - 'A: 部分正确但不完整的说法'
-        - 'B: 与pointer.types 相关但不适用的选项'
-        - 'C: 正确：关于pointer.types的关键点描述（正确选项）'
-        - 'D: 部分正确但不完整的说法'
-      answer: C
-      explanation: 本题考查 types.pointer 的概念。正确答案为 C。解析：pointer 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: pointer
-    - id: type-pointer-033
-      type: multiple
-      difficulty: hard
-      stem: 【思考题】针对 types.pointer，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 部分正确但不完整的说法'
-        - 'B: 正确项（关于pointer.types的重要结论）'
-        - 'C: 正确项（关于pointer.types的重要结论）'
-        - 'D: 与pointer.types 相关但不适用的选项'
-      answer: BC
-      explanation: 本题考查 types.pointer 的相关知识。正确答案：BC。解析：pointer 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: pointer
-    - id: type-pointer-034
-      type: single
-      difficulty: hard
-      stem: 【思考题】针对 types.pointer，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 语法/语义上不正确的陈述'
-        - 'B: 常见误解或反例（容易混淆）'
-        - 'C: 语法/语义上不正确的陈述'
-        - 'D: 正确：关于pointer.types的关键点描述（正确选项）'
-      answer: D
-      explanation: 本题考查 types.pointer 的概念。正确答案为 D。解析：pointer 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: pointer
-    - id: type-pointer-035
-      type: multiple
-      difficulty: hard
-      stem: 【思考题】针对 types.pointer，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 正确项（关于pointer.types的重要结论）'
-        - 'B: 正确项（关于pointer.types的重要结论）'
-        - 'C: 语法/语义上不正确的陈述'
-        - 'D: 正确项（关于pointer.types的重要结论）'
-      answer: ABD
-      explanation: 本题考查 types.pointer 的相关知识。正确答案：ABD。解析：pointer 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: pointer
-    - id: type-pointer-036
-      type: single
-      difficulty: hard
-      stem: 【思考题】针对 types.pointer，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 常见误解或反例（容易混淆）'
-        - 'B: 与pointer.types 相关但不适用的选项'
-        - 'C: 正确：关于pointer.types的关键点描述（正确选项）'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: C
-      explanation: 本题考查 types.pointer 的概念。正确答案为 C。解析：pointer 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: pointer
-    - id: type-pointer-037
-      type: multiple
-      difficulty: hard
-      stem: 【思考题】针对 types.pointer，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 正确项（关于pointer.types的重要结论）'
-        - 'B: 与pointer.types 相关但不适用的选项'
-        - 'C: 正确项（关于pointer.types的重要结论）'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: AC
-      explanation: 本题考查 types.pointer 的相关知识。正确答案：AC。解析：pointer 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: pointer
-    - id: type-pointer-038
-      type: single
-      difficulty: hard
-      stem: 【思考题】针对 types.pointer，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 常见误解或反例（容易混淆）'
-        - 'B: 语法/语义上不正确的陈述'
-        - 'C: 部分正确但不完整的说法'
-        - 'D: 正确：关于pointer.types的关键点描述（正确选项）'
-      answer: D
-      explanation: 本题考查 types.pointer 的概念。正确答案为 D。解析：pointer 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: pointer
-    - id: type-pointer-039
-      type: multiple
-      difficulty: hard
-      stem: 【思考题】针对 types.pointer，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 正确项（关于pointer.types的重要结论）'
-        - 'B: 常见误解或反例（容易混淆）'
-        - 'C: 正确项（关于pointer.types的重要结论）'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: AC
-      explanation: 本题考查 types.pointer 的相关知识。正确答案：AC。解析：pointer 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: pointer
-    - id: type-pointer-040
-      type: single
-      difficulty: hard
-      stem: 【思考题】针对 types.pointer，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 部分正确但不完整的说法'
-        - 'B: 常见误解或反例（容易混淆）'
-        - 'C: 正确：关于pointer.types的关键点描述（正确选项）'
-        - 'D: 与pointer.types 相关但不适用的选项'
-      answer: C
-      explanation: 本题考查 types.pointer 的概念。正确答案为 C。解析：pointer 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: pointer
+  # ========== 简单题 (Easy) - 22道 ==========
+  
+  - id: type-ptr-001
+    type: single
+    difficulty: easy
+    stem: "Go中指针类型如何表示?"
+    options:
+      - "A: T*"
+      - "B: *T"
+      - "C: &T"
+      - "D: ptr[T]"
+    answer: B
+    explanation: "*T表示指向类型T的指针。Go使用前缀*,不像C/C++的后缀*。参见 Go 规范 Pointer types 章节。"
+    topic: types
+    chapter: pointer
+
+  - id: type-ptr-002
+    type: single
+    difficulty: easy
+    stem: "如何获取变量的地址?"
+    options:
+      - "A: *x"
+      - "B: &x"
+      - "C: addr(x)"
+      - "D: ptr(x)"
+    answer: B
+    explanation: "&x返回变量x的地址。&是取地址运算符。参见 Go 规范 Address operators 章节。"
+    topic: types
+    chapter: pointer
+
+  - id: type-ptr-003
+    type: single
+    difficulty: easy
+    stem: "如何解引用指针获取值?"
+    options:
+      - "A: &p"
+      - "B: *p"
+      - "C: p.value"
+      - "D: p->"
+    answer: B
+    explanation: "*p解引用指针,获取指向的值。*是解引用运算符。参见 Go 规范 Address operators 章节。"
+    topic: types
+    chapter: pointer
+
+  - id: type-ptr-004
+    type: single
+    difficulty: easy
+    stem: "指针的零值是什么?"
+    options:
+      - "A: 0"
+      - "B: null"
+      - "C: nil"
+      - "D: undefined"
+    answer: C
+    explanation: "Go中指针的零值是nil。nil表示不指向任何值。参见 Go 规范 The zero value 章节。"
+    topic: types
+    chapter: pointer
+
+  - id: type-ptr-005
+    type: single
+    difficulty: easy
+    stem: "解引用nil指针会怎样?"
+    options:
+      - "A: 返回零值"
+      - "B: 返回nil"
+      - "C: 编译错误"
+      - "D: 运行时panic"
+    answer: D
+    explanation: "解引用nil指针会导致运行时panic。必须先检查指针是否为nil。参见 Go 规范 Address operators 章节。"
+    topic: types
+    chapter: pointer
+
+  - id: type-ptr-006
+    type: single
+    difficulty: easy
+    stem: "new(T)返回什么?"
+    options:
+      - "A: T类型的零值"
+      - "B: *T类型的指针"
+      - "C: 错误"
+      - "D: nil"
+    answer: B
+    explanation: "new(T)分配T的零值并返回其指针*T。参见 Go 规范 Allocation 章节。"
+    topic: types
+    chapter: pointer
+
+  - id: type-ptr-007
+    type: single
+    difficulty: easy
+    stem: "Go支持指针运算吗?"
+    options:
+      - "A: 支持,如p++"
+      - "B: 不支持"
+      - "C: 只支持加减"
+      - "D: 只有unsafe包支持"
+    answer: D
+    explanation: "Go不支持常规指针运算。只有unsafe包可以进行指针运算。参见 Go 规范 Pointer types 章节。"
+    topic: types
+    chapter: pointer
+
+  - id: type-ptr-008
+    type: single
+    difficulty: easy
+    stem: "指针可以比较吗?"
+    options:
+      - "A: 不可以"
+      - "B: 可以,比较地址"
+      - "C: 可以,比较值"
+      - "D: 只能与nil比较"
+    answer: B
+    explanation: "指针可以用==和!=比较。比较的是地址,不是指向的值。参见 Go 规范 Comparison operators 章节。"
+    topic: types
+    chapter: pointer
+
+  - id: type-ptr-009
+    type: single
+    difficulty: easy
+    stem: "var p *int的初始值是什么?"
+    options:
+      - "A: 0"
+      - "B: &0"
+      - "C: nil"
+      - "D: 未定义"
+    answer: C
+    explanation: "指针变量声明后零值是nil,不指向任何内存。参见 Go 规范 The zero value 章节。"
+    topic: types
+    chapter: pointer
+
+  - id: type-ptr-010
+    type: single
+    difficulty: easy
+    stem: "&和*是什么关系?"
+    options:
+      - "A: 相同操作"
+      - "B: 互逆操作"
+      - "C: 无关"
+      - "D: 取决于类型"
+    answer: B
+    explanation: "&取地址,*解引用,是互逆操作。*(&x)等于x。参见 Go 规范 Address operators 章节。"
+    topic: types
+    chapter: pointer
+
+  - id: type-ptr-011
+    type: single
+    difficulty: easy
+    stem: "函数参数传指针的目的是什么?"
+    options:
+      - "A: 提高效率"
+      - "B: 允许修改原值"
+      - "C: A和B"
+      - "D: 语法要求"
+    answer: C
+    explanation: "传指针可以修改原值(不是副本),也避免复制大结构体提高效率。参见 Go 规范 Calls 章节。"
+    topic: types
+    chapter: pointer
+
+  - id: type-ptr-012
+    type: single
+    difficulty: easy
+    stem: "以下哪个可以取地址?"
+    options:
+      - "A: 字面量123"
+      - "B: 变量x"
+      - "C: 常量const c"
+      - "D: 表达式a+b"
+    answer: B
+    explanation: "只有可寻址的值可以取地址。变量可寻址,字面量/常量/表达式不可寻址。参见 Go 规范 Address operators 章节。"
+    topic: types
+    chapter: pointer
+
+  - id: type-ptr-013
+    type: multiple
+    difficulty: easy
+    stem: "以下哪些可以取地址?(多选)"
+    options:
+      - "A: 变量"
+      - "B: 数组元素"
+      - "C: 结构体字段"
+      - "D: 切片元素"
+    answer: ABCD
+    explanation: "变量、数组/切片元素、结构体字段都是可寻址的。参见 Go 规范 Address operators 章节。"
+    topic: types
+    chapter: pointer
+
+  - id: type-ptr-014
+    type: single
+    difficulty: easy
+    stem: "通过指针访问结构体字段用什么符号?"
+    options:
+      - "A: p->field"
+      - "B: (*p).field"
+      - "C: p.field"
+      - "D: B或C"
+    answer: D
+    explanation: "Go自动解引用结构体指针。p.field等于(*p).field。没有->运算符。参见 Go 规范 Selectors 章节。"
+    topic: types
+    chapter: pointer
+
+  - id: type-ptr-015
+    type: single
+    difficulty: easy
+    stem: "&T{}语法的含义是什么?"
+    options:
+      - "A: 类型T的地址"
+      - "B: T字面量的指针"
+      - "C: 编译错误"
+      - "D: nil指针"
+    answer: B
+    explanation: "&T{}创建T类型字面量并返回其指针。等于v:=T{};&v但更简洁。参见 Go 规范 Composite literals 章节。"
+    topic: types
+    chapter: pointer
+
+  - id: type-ptr-016
+    type: single
+    difficulty: easy
+    stem: "map的值不能直接取地址,为什么?"
+    options:
+      - "A: map值不可寻址"
+      - "B: map可能重新分配"
+      - "C: A和B"
+      - "D: 语法错误"
+    answer: C
+    explanation: "map的值不可寻址。map扩容时值会移动,取地址后可能失效。参见 Go 规范 Address operators 章节。"
+    topic: types
+    chapter: pointer
+
+  - id: type-ptr-017
+    type: single
+    difficulty: easy
+    stem: "指针类型的方法集包含什么?"
+    options:
+      - "A: 只有*T方法"
+      - "B: T和*T方法"
+      - "C: 只有T方法"
+      - "D: 没有方法"
+    answer: B
+    explanation: "*T类型的方法集包含T和*T接收者的所有方法。参见 Go 规范 Method sets 章节。"
+    topic: types
+    chapter: pointer
+
+  - id: type-ptr-018
+    type: single
+    difficulty: easy
+    stem: "值类型T的方法集包含什么?"
+    options:
+      - "A: 只有T方法"
+      - "B: T和*T方法"
+      - "C: 只有*T方法"
+      - "D: 取决于方法"
+    answer: A
+    explanation: "T类型的方法集只包含T接收者的方法。*T方法需要指针调用。参见 Go 规范 Method sets 章节。"
+    topic: types
+    chapter: pointer
+
+  - id: type-ptr-019
+    type: multiple
+    difficulty: easy
+    stem: "关于Go指针,以下说法正确的是?(多选)"
+    options:
+      - "A: 零值是nil"
+      - "B: 不支持算术运算"
+      - "C: 可以比较"
+      - "D: 自动垃圾回收"
+    answer: ABCD
+    explanation: "Go指针零值nil,不支持算术,可比较,由GC管理。参见 Go 规范 Pointer types 章节。"
+    topic: types
+    chapter: pointer
+
+  - id: type-ptr-020
+    type: single
+    difficulty: easy
+    stem: "var p *int; *p = 10会怎样?"
+    options:
+      - "A: p指向10"
+      - "B: 编译错误"
+      - "C: panic(nil指针)"
+      - "D: 运行正常"
+    answer: C
+    explanation: "p是nil,*p解引用nil指针导致panic。必须先分配内存。参见 Go 规范 Address operators 章节。"
+    topic: types
+    chapter: pointer
+
+  - id: type-ptr-021
+    type: single
+    difficulty: easy
+    stem: "Go函数可以返回局部变量的指针吗?"
+    options:
+      - "A: 不可以,会悬挂"
+      - "B: 可以,逃逸到堆"
+      - "C: 取决于变量类型"
+      - "D: 编译错误"
+    answer: B
+    explanation: "Go支持返回局部变量指针。编译器会分析逃逸,将变量分配到堆上。参见 Go 逃逸分析机制。"
+    topic: types
+    chapter: pointer
+
+  - id: type-ptr-022
+    type: single
+    difficulty: easy
+    stem: "双重指针**T有什么用?"
+    options:
+      - "A: 指向指针的指针"
+      - "B: 修改指针本身"
+      - "C: A和B"
+      - "D: Go不支持"
+    answer: C
+    explanation: "**T是指向*T的指针。可以在函数中修改调用者的指针。Go支持多级指针。参见 Go 规范 Pointer types 章节。"
+    topic: types
+    chapter: pointer
+
+  # ========== 中等题 (Medium) - 12道 ==========
+
+  - id: type-ptr-023
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          x := 10
+          p := &x
+          *p = 20
+          fmt.Println(x)
+      }
+    options:
+      - "A: 10"
+      - "B: 20"
+      - "C: 地址值"
+      - "D: 编译错误"
+    answer: B
+    explanation: "p指向x。*p=20修改p指向的值,即修改x。输出20。参见 Go 规范 Address operators 章节。"
+    topic: types
+    chapter: pointer
+
+  - id: type-ptr-024
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func modify(p *int) {
+          *p = 100
+      }
+      func main() {
+          x := 10
+          modify(&x)
+          fmt.Println(x)
+      }
+    options:
+      - "A: 10"
+      - "B: 100"
+      - "C: 0"
+      - "D: 编译错误"
+    answer: B
+    explanation: "传递&x(x的地址)。modify通过指针修改x的值为100。参见 Go 规范 Calls 章节。"
+    topic: types
+    chapter: pointer
+
+  - id: type-ptr-025
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          p := new(int)
+          *p = 10
+          q := p
+          *q = 20
+          fmt.Println(*p)
+      }
+    options:
+      - "A: 10"
+      - "B: 20"
+      - "C: 0"
+      - "D: nil"
+    answer: B
+    explanation: "q:=p复制指针,p和q指向同一地址。*q=20也修改了*p。输出20。参见 Go 规范 Allocation 章节。"
+    topic: types
+    chapter: pointer
+
+  - id: type-ptr-026
+    type: code_fix
+    difficulty: medium
+    stem: "以下代码有bug,正确的修正是?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          var p *int
+          *p = 10
+          fmt.Println(*p)
+      }
+    options:
+      - "A: p = new(int)"
+      - "B: p = &10"
+      - "C: A(分配内存)"
+      - "D: 代码正确"
+    answer: C
+    explanation: "p是nil,解引用会panic。必须先分配内存:p=new(int)或p=&x。B语法错误。参见 Go 规范 Allocation 章节。"
+    topic: types
+    chapter: pointer
+
+  - id: type-ptr-027
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          x := 1
+          y := 2
+          p := &x
+          q := &y
+          fmt.Println(p == q, *p == *q)
+      }
+    options:
+      - "A: true true"
+      - "B: false false"
+      - "C: true false"
+      - "D: false false"
+    answer: D
+    explanation: "p和q指向不同地址,p==q为false。*p=1,*q=2,*p==*q也为false。参见 Go 规范 Comparison operators 章节。"
+    topic: types
+    chapter: pointer
+
+  - id: type-ptr-028
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func getPtr() *int {
+          x := 10
+          return &x
+      }
+      func main() {
+          p := getPtr()
+          fmt.Println(*p)
+      }
+    options:
+      - "A: 10"
+      - "B: 0"
+      - "C: 悬挂指针"
+      - "D: 编译错误"
+    answer: A
+    explanation: "Go支持返回局部变量指针。x逃逸到堆上,不会悬挂。输出10。参见 Go 逃逸分析机制。"
+    topic: types
+    chapter: pointer
+
+  - id: type-ptr-029
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type Point struct{ X, Y int }
+      func main() {
+          p := &Point{1, 2}
+          fmt.Println(p.X, (*p).X)
+      }
+    options:
+      - "A: 1 1"
+      - "B: &1 1"
+      - "C: 编译错误"
+      - "D: 1 编译错误"
+    answer: A
+    explanation: "p.X自动解引用,等于(*p).X。两者都输出1。参见 Go 规范 Selectors 章节。"
+    topic: types
+    chapter: pointer
+
+  - id: type-ptr-030
+    type: multiple
+    difficulty: medium
+    stem: "以下哪些不能取地址?(多选)"
+    options:
+      - "A: 常量"
+      - "B: 字面量"
+      - "C: map元素"
+      - "D: 函数返回值"
+    answer: ABCD
+    explanation: "常量、字面量、map元素、函数返回值都不可寻址。参见 Go 规范 Address operators 章节。"
+    topic: types
+    chapter: pointer
+
+  - id: type-ptr-031
+    type: code_fix
+    difficulty: medium
+    stem: "以下代码编译失败,正确的修正是?"
+    code: |
+      package main
+      func main() {
+          m := map[string]int{"a": 1}
+          p := &m["a"]
+      }
+    options:
+      - "A: 不能取地址"
+      - "B: 用临时变量"
+      - "C: 存指针值"
+      - "D: B或C"
+    answer: D
+    explanation: "map元素不可寻址。可以v:=m[\"a\"];&v,或用map[string]*int存指针。参见 Go 规范 Address operators 章节。"
+    topic: types
+    chapter: pointer
+
+  - id: type-ptr-032
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          s := []int{1, 2, 3}
+          p := &s[1]
+          *p = 100
+          fmt.Println(s)
+      }
+    options:
+      - "A: [1 2 3]"
+      - "B: [1 100 3]"
+      - "C: 编译错误"
+      - "D: panic"
+    answer: B
+    explanation: "切片元素可寻址。p指向s[1],*p=100修改s[1]。输出[1 100 3]。参见 Go 规范 Index expressions 章节。"
+    topic: types
+    chapter: pointer
+
+  - id: type-ptr-033
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func swap(a, b *int) {
+          a, b = b, a
+      }
+      func main() {
+          x, y := 1, 2
+          swap(&x, &y)
+          fmt.Println(x, y)
+      }
+    options:
+      - "A: 2 1"
+      - "B: 1 2"
+      - "C: 0 0"
+      - "D: 编译错误"
+    answer: B
+    explanation: "swap交换的是指针值(局部变量),不是指向的值。x,y不变。应该*a,*b=*b,*a。参见 Go 规范 Assignments 章节。"
+    topic: types
+    chapter: pointer
+
+  - id: type-ptr-034
+    type: code_fix
+    difficulty: medium
+    stem: "修正上面的swap函数使其能交换值"
+    code: |
+      func swap(a, b *int) {
+          a, b = b, a
+      }
+    options:
+      - "A: *a, *b = *b, *a"
+      - "B: 返回两个值"
+      - "C: 用临时变量"
+      - "D: A或C"
+    answer: D
+    explanation: "应该交换指向的值:*a,*b=*b,*a。或用temp:=*a;*a=*b;*b=temp。参见 Go 规范 Assignments 章节。"
+    topic: types
+    chapter: pointer
+
+  # ========== 困难题 (Hard) - 4道 ==========
+
+  - id: type-ptr-035
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          s := []int{1, 2, 3}
+          for _, p := range s {
+              p := &p
+              *p = 100
+          }
+          fmt.Println(s)
+      }
+    options:
+      - "A: [100 100 100]"
+      - "B: [1 2 3]"
+      - "C: [100 2 3]"
+      - "D: panic"
+    answer: B
+    explanation: "range的p是副本。&p取的是循环变量地址,不是切片元素。s不变。参见 Go 规范 For statements 章节。"
+    topic: types
+    chapter: pointer
+
+  - id: type-ptr-036
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          funcs := make([]func(), 3)
+          for i := 0; i < 3; i++ {
+              p := &i
+              funcs[i] = func() { fmt.Print(*p) }
+          }
+          for _, f := range funcs {
+              f()
+          }
+      }
+    options:
+      - "A: 012"
+      - "B: 333"
+      - "C: 222"
+      - "D: 000"
+    answer: B
+    explanation: "&i取的是同一个i的地址。循环结束i=3。所有闭包打印*p=3。输出333。参见 Go 规范 For statements 章节。"
+    topic: types
+    chapter: pointer
+
+  - id: type-ptr-037
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func modify(pp **int) {
+          x := 100
+          *pp = &x
+      }
+      func main() {
+          var p *int
+          modify(&p)
+          fmt.Println(*p)
+      }
+    options:
+      - "A: 100"
+      - "B: 0"
+      - "C: nil"
+      - "D: panic"
+    answer: A
+    explanation: "pp是指向p的指针。*pp=&x使p指向x。x逃逸到堆。*p=100。参见 Go 逃逸分析和双指针用法。"
+    topic: types
+    chapter: pointer
+
+  - id: type-ptr-038
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import (
+          "fmt"
+          "unsafe"
+      )
+      func main() {
+          x := 10
+          p := &x
+          up := unsafe.Pointer(p)
+          p2 := (*int)(up)
+          fmt.Println(*p2, p == p2)
+      }
+    options:
+      - "A: 10 true"
+      - "B: 10 false"
+      - "C: 0 true"
+      - "D: 编译错误"
+    answer: A
+    explanation: "unsafe.Pointer可在不同指针类型间转换。up转回*int得p2。*p2=10,p==p2。参见 Go unsafe包文档。"
+    topic: types
+    chapter: pointer

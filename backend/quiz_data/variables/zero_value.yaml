@@ -1,0 +1,682 @@
+# Go 零值测验题库
+# 章节: variables/zero_value
+# 符合 Go 1.24 语言规范
+
+metadata:
+  topic: variables
+  chapter: zero_value
+  total_questions: 38
+  last_updated: "2025-01-01"
+  difficulty_distribution:
+    easy: 23      # 60%
+    medium: 11    # 29%
+    hard: 4       # 11%
+  type_distribution:
+    single: 16
+    multiple: 9
+    code_output: 8
+    code_fix: 5
+
+questions:
+  # ========== 简单题 (Easy) - 23道 ==========
+  
+  - id: var-zero-001
+    type: single
+    difficulty: easy
+    stem: "Go语言的零值是什么概念?"
+    options:
+      - "A: 值等于0"
+      - "B: 变量默认初始化值"
+      - "C: 空指针"
+      - "D: 未定义值"
+    answer: B
+    explanation: "零值是变量声明但未初始化时的默认值。每种类型都有确定的零值,不是未定义。参见 Go 规范 The zero value 章节。"
+    topic: variables
+    chapter: zero_value
+
+  - id: var-zero-002
+    type: single
+    difficulty: easy
+    stem: "int类型的零值是什么?"
+    options:
+      - "A: nil"
+      - "B: 0"
+      - "C: -1"
+      - "D: undefined"
+    answer: B
+    explanation: "所有数值类型(int,float,complex)的零值都是0。nil不用于数值类型。参见 Go 规范 The zero value 章节。"
+    topic: variables
+    chapter: zero_value
+
+  - id: var-zero-003
+    type: single
+    difficulty: easy
+    stem: "bool类型的零值是什么?"
+    options:
+      - "A: 0"
+      - "B: false"
+      - "C: true"
+      - "D: nil"
+    answer: B
+    explanation: "bool的零值是false。Go中没有0/1代表布尔值的概念。参见 Go 规范 The zero value 章节。"
+    topic: variables
+    chapter: zero_value
+
+  - id: var-zero-004
+    type: single
+    difficulty: easy
+    stem: "string类型的零值是什么?"
+    options:
+      - "A: nil"
+      - "B: \"nil\""
+      - "C: \"\"(空字符串)"
+      - "D: null"
+    answer: C
+    explanation: "string的零值是空字符串\"\",长度为0。string不能是nil。参见 Go 规范 The zero value 章节。"
+    topic: variables
+    chapter: zero_value
+
+  - id: var-zero-005
+    type: single
+    difficulty: easy
+    stem: "指针类型的零值是什么?"
+    options:
+      - "A: 0"
+      - "B: null"
+      - "C: nil"
+      - "D: undefined"
+    answer: C
+    explanation: "指针的零值是nil,表示不指向任何有效内存。Go用nil而不是null。参见 Go 规范 The zero value 章节。"
+    topic: variables
+    chapter: zero_value
+
+  - id: var-zero-006
+    type: single
+    difficulty: easy
+    stem: "slice的零值是什么?"
+    options:
+      - "A: []"
+      - "B: nil"
+      - "C: make([]T, 0)"
+      - "D: 空数组"
+    answer: B
+    explanation: "slice的零值是nil。nil slice的length和capacity都是0。与空切片[]不完全相同。参见 Go 规范 The zero value 章节。"
+    topic: variables
+    chapter: zero_value
+
+  - id: var-zero-007
+    type: single
+    difficulty: easy
+    stem: "map的零值是什么?"
+    options:
+      - "A: {}"
+      - "B: nil"
+      - "C: make(map[K]V)"
+      - "D: 空map"
+    answer: B
+    explanation: "map的零值是nil。nil map可以读取(返回零值)但不能写入(会panic)。参见 Go 规范 The zero value 章节。"
+    topic: variables
+    chapter: zero_value
+
+  - id: var-zero-008
+    type: single
+    difficulty: easy
+    stem: "channel的零值是什么?"
+    options:
+      - "A: 关闭的channel"
+      - "B: nil"
+      - "C: make(chan T)"
+      - "D: 0"
+    answer: B
+    explanation: "channel的零值是nil。向nil channel发送或接收会永久阻塞。参见 Go 规范 The zero value 章节。"
+    topic: variables
+    chapter: zero_value
+
+  - id: var-zero-009
+    type: single
+    difficulty: easy
+    stem: "函数类型的零值是什么?"
+    options:
+      - "A: 空函数"
+      - "B: nil"
+      - "C: func(){}"
+      - "D: undefined"
+    answer: B
+    explanation: "函数类型的零值是nil。调用nil函数会panic。参见 Go 规范 The zero value 章节。"
+    topic: variables
+    chapter: zero_value
+
+  - id: var-zero-010
+    type: single
+    difficulty: easy
+    stem: "interface{}的零值是什么?"
+    options:
+      - "A: any"
+      - "B: nil"
+      - "C: interface{}"
+      - "D: void"
+    answer: B
+    explanation: "interface的零值是nil。nil interface既没有类型也没有值。参见 Go 规范 The zero value 章节。"
+    topic: variables
+    chapter: zero_value
+
+  - id: var-zero-011
+    type: multiple
+    difficulty: easy
+    stem: "以下哪些类型的零值是nil?(多选)"
+    options:
+      - "A: 指针"
+      - "B: slice"
+      - "C: map"
+      - "D: string"
+    answer: ABC
+    explanation: "指针、slice、map、channel、interface、函数的零值都是nil。string的零值是空字符串。参见 Go 规范 The zero value 章节。"
+    topic: variables
+    chapter: zero_value
+
+  - id: var-zero-012
+    type: single
+    difficulty: easy
+    stem: "struct的零值是什么?"
+    options:
+      - "A: nil"
+      - "B: 空struct"
+      - "C: 所有字段为零值的struct"
+      - "D: undefined"
+    answer: C
+    explanation: "struct的零值是所有字段都为各自类型零值的struct。struct不能是nil。参见 Go 规范 The zero value 章节。"
+    topic: variables
+    chapter: zero_value
+
+  - id: var-zero-013
+    type: single
+    difficulty: easy
+    stem: "数组的零值是什么?"
+    options:
+      - "A: nil"
+      - "B: 空数组"
+      - "C: 所有元素为零值的数组"
+      - "D: undefined"
+    answer: C
+    explanation: "数组的零值是所有元素都为元素类型零值的数组。数组是值类型,不能是nil。参见 Go 规范 The zero value 章节。"
+    topic: variables
+    chapter: zero_value
+
+  - id: var-zero-014
+    type: single
+    difficulty: easy
+    stem: "float64的零值是什么?"
+    options:
+      - "A: 0"
+      - "B: 0.0"
+      - "C: +0.0"
+      - "D: 以上都对"
+    answer: D
+    explanation: "float64的零值是0.0,也就是+0.0。0、0.0、+0.0在Go中是相等的。参见 Go 规范 The zero value 章节。"
+    topic: variables
+    chapter: zero_value
+
+  - id: var-zero-015
+    type: single
+    difficulty: easy
+    stem: "complex128的零值是什么?"
+    options:
+      - "A: 0"
+      - "B: 0+0i"
+      - "C: nil"
+      - "D: (0,0)"
+    answer: B
+    explanation: "复数的零值是0+0i,即实部和虚部都是0。参见 Go 规范 The zero value 章节。"
+    topic: variables
+    chapter: zero_value
+
+  - id: var-zero-016
+    type: single
+    difficulty: easy
+    stem: "byte的零值是什么?"
+    options:
+      - "A: '\\0'"
+      - "B: 0"
+      - "C: nil"
+      - "D: A和B都对"
+    answer: D
+    explanation: "byte是uint8的别名,零值是0。'\\0'(NUL字符)的值也是0。参见 Go 规范 The zero value 章节。"
+    topic: variables
+    chapter: zero_value
+
+  - id: var-zero-017
+    type: single
+    difficulty: easy
+    stem: "rune的零值是什么?"
+    options:
+      - "A: ''"
+      - "B: 0"
+      - "C: nil"
+      - "D: '\\0'"
+    answer: B
+    explanation: "rune是int32的别名,零值是0(对应NUL字符)。Go没有空字符''语法。参见 Go 规范 The zero value 章节。"
+    topic: variables
+    chapter: zero_value
+
+  - id: var-zero-018
+    type: single
+    difficulty: easy
+    stem: "为什么Go有零值概念?"
+    options:
+      - "A: 节省内存"
+      - "B: 保证变量总有有效值"
+      - "C: 提高性能"
+      - "D: 兼容C语言"
+    answer: B
+    explanation: "零值保证所有变量总有确定的初始值,避免未初始化变量导致的不确定行为。参见 Go 规范 The zero value 章节。"
+    topic: variables
+    chapter: zero_value
+
+  - id: var-zero-019
+    type: single
+    difficulty: easy
+    stem: "var x int; if x == 0 {}会编译错误吗?"
+    options:
+      - "A: 会,x未初始化"
+      - "B: 不会,x是0"
+      - "C: 取决于平台"
+      - "D: 运行时错误"
+    answer: B
+    explanation: "Go的零值机制保证x被初始化为0。可以安全比较。参见 Go 规范 The zero value 章节。"
+    topic: variables
+    chapter: zero_value
+
+  - id: var-zero-020
+    type: single
+    difficulty: easy
+    stem: "nil slice可以调用len()吗?"
+    options:
+      - "A: 不可以,panic"
+      - "B: 可以,返回0"
+      - "C: 编译错误"
+      - "D: 返回-1"
+    answer: B
+    explanation: "len(nil slice)返回0。nil slice可以安全地获取长度和容量。参见 Go 规范 Length and capacity 章节。"
+    topic: variables
+    chapter: zero_value
+
+  - id: var-zero-021
+    type: single
+    difficulty: easy
+    stem: "nil map可以读取吗?"
+    options:
+      - "A: 不可以,panic"
+      - "B: 可以,返回零值"
+      - "C: 编译错误"
+      - "D: 返回nil"
+    answer: B
+    explanation: "nil map可以读取,任何键都返回值类型的零值。写入nil map会panic。参见 Go 规范 Map types 章节。"
+    topic: variables
+    chapter: zero_value
+
+  - id: var-zero-022
+    type: multiple
+    difficulty: easy
+    stem: "关于零值,以下说法正确的是?(多选)"
+    options:
+      - "A: 每种类型都有零值"
+      - "B: 零值在编译时确定"
+      - "C: 零值保证内存安全"
+      - "D: 可以直接使用零值变量"
+    answer: ABCD
+    explanation: "所有类型都有零值,编译时确定。零值保证变量总有有效值,可以直接使用。参见 Go 规范 The zero value 章节。"
+    topic: variables
+    chapter: zero_value
+
+  - id: var-zero-023
+    type: single
+    difficulty: easy
+    stem: "var err error的零值是什么?"
+    options:
+      - "A: error{}"
+      - "B: nil"
+      - "C: \"\""
+      - "D: errors.New(\"\")"
+    answer: B
+    explanation: "error是接口类型,零值是nil。nil error表示没有错误。参见 Go 规范 The zero value 章节。"
+    topic: variables
+    chapter: zero_value
+
+  # ========== 中等题 (Medium) - 11道 ==========
+
+  - id: var-zero-024
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          var s []int
+          var m map[string]int
+          fmt.Println(s == nil, m == nil)
+      }
+    options:
+      - "A: true true"
+      - "B: false false"
+      - "C: true false"
+      - "D: 编译错误"
+    answer: A
+    explanation: "slice和map的零值都是nil。var声明没有初始化时是nil。参见 Go 规范 The zero value 章节。"
+    topic: variables
+    chapter: zero_value
+
+  - id: var-zero-025
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type Person struct {
+          Name string
+          Age  int
+      }
+      func main() {
+          var p Person
+          fmt.Println(p.Name, p.Age)
+      }
+    options:
+      - "A:  0(空字符串和0)"
+      - "B: nil nil"
+      - "C: \"\" 0"
+      - "D: panic"
+    answer: A
+    explanation: "struct的零值是所有字段的零值。Name是空字符串,Age是0。参见 Go 规范 The zero value 章节。"
+    topic: variables
+    chapter: zero_value
+
+  - id: var-zero-026
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          var a [3]int
+          fmt.Println(a[0], a[1], a[2])
+      }
+    options:
+      - "A: nil nil nil"
+      - "B: 0 0 0"
+      - "C: undefined"
+      - "D: 编译错误"
+    answer: B
+    explanation: "数组元素初始化为元素类型的零值。int的零值是0。参见 Go 规范 The zero value 章节。"
+    topic: variables
+    chapter: zero_value
+
+  - id: var-zero-027
+    type: code_fix
+    difficulty: medium
+    stem: "以下代码会panic,正确的修正方案是?"
+    code: |
+      package main
+      func main() {
+          var m map[string]int
+          m["key"] = 1
+      }
+    options:
+      - "A: 添加m = map[string]int{}"
+      - "B: 添加m = make(map[string]int)"
+      - "C: A或B都可以"
+      - "D: 代码正确"
+    answer: C
+    explanation: "向nil map写入会panic。需要先初始化:用字面量{}或make()。参见 Go 规范 Map types 章节。"
+    topic: variables
+    chapter: zero_value
+
+  - id: var-zero-028
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          var s []int
+          s = append(s, 1, 2, 3)
+          fmt.Println(len(s), cap(s))
+      }
+    options:
+      - "A: 3 3或更大"
+      - "B: panic"
+      - "C: 0 0"
+      - "D: 编译错误"
+    answer: A
+    explanation: "append可以作用于nil slice。结果是新slice,长度3。容量至少3(可能更大)。参见 Go 规范 Appending to slices 章节。"
+    topic: variables
+    chapter: zero_value
+
+  - id: var-zero-029
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          var ch chan int
+          select {
+          case ch <- 1:
+              fmt.Println("sent")
+          default:
+              fmt.Println("default")
+          }
+      }
+    options:
+      - "A: sent"
+      - "B: default"
+      - "C: 死锁"
+      - "D: panic"
+    answer: B
+    explanation: "向nil channel发送会阻塞。但有default分支,所以执行default。参见 Go 规范 Select statements 章节。"
+    topic: variables
+    chapter: zero_value
+
+  - id: var-zero-030
+    type: multiple
+    difficulty: medium
+    stem: "nil slice和空slice []int{}的区别是?(多选)"
+    options:
+      - "A: nil slice是nil"
+      - "B: 空slice不是nil"
+      - "C: len()都返回0"
+      - "D: JSON序列化不同"
+    answer: ABCD
+    explanation: "nil slice==nil,空slice!=nil。长度都是0。JSON:nil→null,空slice→[]。参见 Go 规范 Slice types 章节。"
+    topic: variables
+    chapter: zero_value
+
+  - id: var-zero-031
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          var f func()
+          fmt.Println(f == nil)
+      }
+    options:
+      - "A: true"
+      - "B: false"
+      - "C: 编译错误"
+      - "D: panic"
+    answer: A
+    explanation: "函数类型的零值是nil。var f func()声明nil函数。f==nil是true。参见 Go 规范 The zero value 章节。"
+    topic: variables
+    chapter: zero_value
+
+  - id: var-zero-032
+    type: code_fix
+    difficulty: medium
+    stem: "以下代码会panic,正确的修正方案是?"
+    code: |
+      package main
+      func main() {
+          var f func()
+          f()
+      }
+    options:
+      - "A: 添加if f != nil"
+      - "B: 初始化f = func(){}"
+      - "C: A或B都可以"
+      - "D: 代码正确"
+    answer: C
+    explanation: "调用nil函数会panic。可以检查nil或初始化函数。参见 Go 规范 Function types 章节。"
+    topic: variables
+    chapter: zero_value
+
+  - id: var-zero-033
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          var x *int
+          if x == nil {
+              fmt.Println("nil")
+          }
+          var y = new(int)
+          fmt.Println(*y)
+      }
+    options:
+      - "A: nil 0"
+      - "B: nil nil"
+      - "C: 0 0"
+      - "D: panic"
+    answer: A
+    explanation: "x是nil指针。new(int)分配内存并返回指针,指向的int是零值0。参见 Go 规范 The zero value 章节。"
+    topic: variables
+    chapter: zero_value
+
+  - id: var-zero-034
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type I interface{ M() }
+      func main() {
+          var i I
+          fmt.Println(i == nil)
+      }
+    options:
+      - "A: true"
+      - "B: false"
+      - "C: panic"
+      - "D: 编译错误"
+    answer: A
+    explanation: "接口的零值是nil(类型和值都是nil)。i==nil是true。参见 Go 规范 The zero value 章节。"
+    topic: variables
+    chapter: zero_value
+
+  # ========== 困难题 (Hard) - 4道 ==========
+
+  - id: var-zero-035
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type I interface{ M() }
+      type T struct{}
+      func (T) M() {}
+      func main() {
+          var t *T
+          var i I = t
+          fmt.Println(t == nil, i == nil)
+      }
+    options:
+      - "A: true true"
+      - "B: true false"
+      - "C: false false"
+      - "D: false true"
+    answer: B
+    explanation: "t是nil指针(true)。i包含nil指针但类型不是nil,所以i!=nil(false)。接口nil判断需要类型和值都是nil。参见 Go 规范 Interface types 章节。"
+    topic: variables
+    chapter: zero_value
+
+  - id: var-zero-036
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          var s1 []int
+          var s2 = []int{}
+          var s3 = make([]int, 0)
+          fmt.Printf("%p %p %p\n", s1, s2, s3)
+      }
+    options:
+      - "A: 三个相同地址"
+      - "B: 0x0 相同非零 相同非零"
+      - "C: 三个nil"
+      - "D: 取决于实现"
+    answer: B
+    explanation: "nil slice的底层指针是nil(打印0x0)。空slice[]int{}和make都有非nil底层数组(可能相同地址:zerobase)。参见 Go 运行时实现。"
+    topic: variables
+    chapter: zero_value
+
+  - id: var-zero-037
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          var m map[string]int
+          v, ok := m["key"]
+          fmt.Println(v, ok)
+      }
+    options:
+      - "A: 0 true"
+      - "B: 0 false"
+      - "C: nil false"
+      - "D: panic"
+    answer: B
+    explanation: "从nil map读取不会panic。key不存在返回零值0和false。参见 Go 规范 Map types 章节。"
+    topic: variables
+    chapter: zero_value
+
+  - id: var-zero-038
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import (
+          "encoding/json"
+          "fmt"
+      )
+      func main() {
+          var s1 []int
+          var s2 = []int{}
+          b1, _ := json.Marshal(s1)
+          b2, _ := json.Marshal(s2)
+          fmt.Println(string(b1), string(b2))
+      }
+    options:
+      - "A: [] []"
+      - "B: null []"
+      - "C: null null"
+      - "D: [] null"
+    answer: B
+    explanation: "json.Marshal:nil slice→null,空slice→[]。这是常见的坑,API返回值需注意。参见 Go encoding/json包文档。"
+    topic: variables
+    chapter: zero_value

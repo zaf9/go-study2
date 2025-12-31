@@ -1,521 +1,708 @@
+# Go 字符串类型测验题库
+# 章节: types/string
+# 符合 Go 1.24 语言规范
+
+metadata:
+  topic: types
+  chapter: string
+  total_questions: 40
+  last_updated: "2025-01-01"
+  difficulty_distribution:
+    easy: 24      # 60%
+    medium: 12    # 30%
+    hard: 4       # 10%
+  type_distribution:
+    single: 17
+    multiple: 10
+    code_output: 8
+    code_fix: 5
+
 questions:
-    - id: type-string-001
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 types.string，下面哪个选项是正确的？
-      options:
-        - 'A: 正确项（关于string.types的重要结论）'
-        - 'B: 正确项（关于string.types的重要结论）'
-        - 'C: 与string.types 相关但不适用的选项'
-        - 'D: 正确项（关于string.types的重要结论）'
-      answer: ABD
-      explanation: 本题考查 types.string 的相关知识。正确答案：ABD。解析：string 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: string
-    - id: type-string-002
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 types.string，下面哪个选项是正确的？
-      options:
-        - 'A: 正确：关于string.types的关键点描述（正确选项）'
-        - 'B: 语法/语义上不正确的陈述'
-        - 'C: 部分正确但不完整的说法'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: A
-      explanation: 本题考查 types.string 的概念。正确答案为 A。解析：string 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: string
-    - id: type-string-003
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 types.string，下面哪个选项是正确的？
-      options:
-        - 'A: 正确项（关于string.types的重要结论）'
-        - 'B: 常见误解或反例（容易混淆）'
-        - 'C: 语法/语义上不正确的陈述'
-        - 'D: 正确项（关于string.types的重要结论）'
-      answer: AD
-      explanation: 本题考查 types.string 的相关知识。正确答案：AD。解析：string 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: string
-    - id: type-string-004
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 types.string，下面哪个选项是正确的？
-      options:
-        - 'A: 常见误解或反例（容易混淆）'
-        - 'B: 正确：关于string.types的关键点描述（正确选项）'
-        - 'C: 与string.types 相关但不适用的选项'
-        - 'D: 部分正确但不完整的说法'
-      answer: B
-      explanation: 本题考查 types.string 的概念。正确答案为 B。解析：string 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: string
-    - id: type-string-005
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 types.string，下面哪个选项是正确的？
-      options:
-        - 'A: 常见误解或反例（容易混淆）'
-        - 'B: 正确项（关于string.types的重要结论）'
-        - 'C: 正确项（关于string.types的重要结论）'
-        - 'D: 正确项（关于string.types的重要结论）'
-      answer: BCD
-      explanation: 本题考查 types.string 的相关知识。正确答案：BCD。解析：string 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: string
-    - id: type-string-006
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 types.string，下面哪个选项是正确的？
-      options:
-        - 'A: 正确：关于string.types的关键点描述（正确选项）'
-        - 'B: 语法/语义上不正确的陈述'
-        - 'C: 与string.types 相关但不适用的选项'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: A
-      explanation: 本题考查 types.string 的概念。正确答案为 A。解析：string 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: string
-    - id: type-string-007
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 types.string，下面哪个选项是正确的？
-      options:
-        - 'A: 正确项（关于string.types的重要结论）'
-        - 'B: 语法/语义上不正确的陈述'
-        - 'C: 语法/语义上不正确的陈述'
-        - 'D: 正确项（关于string.types的重要结论）'
-      answer: AD
-      explanation: 本题考查 types.string 的相关知识。正确答案：AD。解析：string 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: string
-    - id: type-string-008
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 types.string，下面哪个选项是正确的？
-      options:
-        - 'A: 正确：关于string.types的关键点描述（正确选项）'
-        - 'B: 与string.types 相关但不适用的选项'
-        - 'C: 部分正确但不完整的说法'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: A
-      explanation: 本题考查 types.string 的概念。正确答案为 A。解析：string 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: string
-    - id: type-string-009
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 types.string，下面哪个选项是正确的？
-      options:
-        - 'A: 正确项（关于string.types的重要结论）'
-        - 'B: 正确项（关于string.types的重要结论）'
-        - 'C: 正确项（关于string.types的重要结论）'
-        - 'D: 部分正确但不完整的说法'
-      answer: ABC
-      explanation: 本题考查 types.string 的相关知识。正确答案：ABC。解析：string 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: string
-    - id: type-string-010
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 types.string，下面哪个选项是正确的？
-      options:
-        - 'A: 部分正确但不完整的说法'
-        - 'B: 正确：关于string.types的关键点描述（正确选项）'
-        - 'C: 部分正确但不完整的说法'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: B
-      explanation: 本题考查 types.string 的概念。正确答案为 B。解析：string 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: string
-    - id: type-string-011
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 types.string，下面哪个选项是正确的？
-      options:
-        - 'A: 正确项（关于string.types的重要结论）'
-        - 'B: 正确项（关于string.types的重要结论）'
-        - 'C: 与string.types 相关但不适用的选项'
-        - 'D: 正确项（关于string.types的重要结论）'
-      answer: ABD
-      explanation: 本题考查 types.string 的相关知识。正确答案：ABD。解析：string 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: string
-    - id: type-string-012
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 types.string，下面哪个选项是正确的？
-      options:
-        - 'A: 正确：关于string.types的关键点描述（正确选项）'
-        - 'B: 常见误解或反例（容易混淆）'
-        - 'C: 常见误解或反例（容易混淆）'
-        - 'D: 常见误解或反例（容易混淆）'
-      answer: A
-      explanation: 本题考查 types.string 的概念。正确答案为 A。解析：string 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: string
-    - id: type-string-013
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 types.string，下面哪个选项是正确的？
-      options:
-        - 'A: 部分正确但不完整的说法'
-        - 'B: 常见误解或反例（容易混淆）'
-        - 'C: 正确项（关于string.types的重要结论）'
-        - 'D: 正确项（关于string.types的重要结论）'
-      answer: CD
-      explanation: 本题考查 types.string 的相关知识。正确答案：CD。解析：string 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: string
-    - id: type-string-014
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 types.string，下面哪个选项是正确的？
-      options:
-        - 'A: 语法/语义上不正确的陈述'
-        - 'B: 正确：关于string.types的关键点描述（正确选项）'
-        - 'C: 部分正确但不完整的说法'
-        - 'D: 常见误解或反例（容易混淆）'
-      answer: B
-      explanation: 本题考查 types.string 的概念。正确答案为 B。解析：string 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: string
-    - id: type-string-015
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 types.string，下面哪个选项是正确的？
-      options:
-        - 'A: 正确项（关于string.types的重要结论）'
-        - 'B: 正确项（关于string.types的重要结论）'
-        - 'C: 部分正确但不完整的说法'
-        - 'D: 正确项（关于string.types的重要结论）'
-      answer: ABD
-      explanation: 本题考查 types.string 的相关知识。正确答案：ABD。解析：string 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: string
-    - id: type-string-016
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 types.string，下面哪个选项是正确的？
-      options:
-        - 'A: 语法/语义上不正确的陈述'
-        - 'B: 正确：关于string.types的关键点描述（正确选项）'
-        - 'C: 与string.types 相关但不适用的选项'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: B
-      explanation: 本题考查 types.string 的概念。正确答案为 B。解析：string 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: string
-    - id: type-string-017
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 types.string 的情境下，哪个说法更合适？
-      options:
-        - 'A: 与string.types 相关但不适用的选项'
-        - 'B: 与string.types 相关但不适用的选项'
-        - 'C: 正确项（关于string.types的重要结论）'
-        - 'D: 正确项（关于string.types的重要结论）'
-      answer: CD
-      explanation: 本题考查 types.string 的相关知识。正确答案：CD。解析：string 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: string
-    - id: type-string-018
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 types.string 的情境下，哪个说法更合适？
-      options:
-        - 'A: 部分正确但不完整的说法'
-        - 'B: 正确：关于string.types的关键点描述（正确选项）'
-        - 'C: 语法/语义上不正确的陈述'
-        - 'D: 常见误解或反例（容易混淆）'
-      answer: B
-      explanation: 本题考查 types.string 的概念。正确答案为 B。解析：string 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: string
-    - id: type-string-019
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 types.string 的情境下，哪个说法更合适？
-      options:
-        - 'A: 正确项（关于string.types的重要结论）'
-        - 'B: 语法/语义上不正确的陈述'
-        - 'C: 正确项（关于string.types的重要结论）'
-        - 'D: 正确项（关于string.types的重要结论）'
-      answer: ACD
-      explanation: 本题考查 types.string 的相关知识。正确答案：ACD。解析：string 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: string
-    - id: type-string-020
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 types.string 的情境下，哪个说法更合适？
-      options:
-        - 'A: 与string.types 相关但不适用的选项'
-        - 'B: 语法/语义上不正确的陈述'
-        - 'C: 正确：关于string.types的关键点描述（正确选项）'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: C
-      explanation: 本题考查 types.string 的概念。正确答案为 C。解析：string 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: string
-    - id: type-string-021
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 types.string 的情境下，哪个说法更合适？
-      options:
-        - 'A: 常见误解或反例（容易混淆）'
-        - 'B: 与string.types 相关但不适用的选项'
-        - 'C: 正确项（关于string.types的重要结论）'
-        - 'D: 正确项（关于string.types的重要结论）'
-      answer: CD
-      explanation: 本题考查 types.string 的相关知识。正确答案：CD。解析：string 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: string
-    - id: type-string-022
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 types.string 的情境下，哪个说法更合适？
-      options:
-        - 'A: 常见误解或反例（容易混淆）'
-        - 'B: 部分正确但不完整的说法'
-        - 'C: 正确：关于string.types的关键点描述（正确选项）'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: C
-      explanation: 本题考查 types.string 的概念。正确答案为 C。解析：string 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: string
-    - id: type-string-023
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 types.string 的情境下，哪个说法更合适？
-      options:
-        - 'A: 语法/语义上不正确的陈述'
-        - 'B: 正确项（关于string.types的重要结论）'
-        - 'C: 正确项（关于string.types的重要结论）'
-        - 'D: 正确项（关于string.types的重要结论）'
-      answer: BCD
-      explanation: 本题考查 types.string 的相关知识。正确答案：BCD。解析：string 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: string
-    - id: type-string-024
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 types.string 的情境下，哪个说法更合适？
-      options:
-        - 'A: 与string.types 相关但不适用的选项'
-        - 'B: 正确：关于string.types的关键点描述（正确选项）'
-        - 'C: 与string.types 相关但不适用的选项'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: B
-      explanation: 本题考查 types.string 的概念。正确答案为 B。解析：string 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: string
-    - id: type-string-025
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 types.string 的情境下，哪个说法更合适？
-      options:
-        - 'A: 正确项（关于string.types的重要结论）'
-        - 'B: 正确项（关于string.types的重要结论）'
-        - 'C: 正确项（关于string.types的重要结论）'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: ABC
-      explanation: 本题考查 types.string 的相关知识。正确答案：ABC。解析：string 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: string
-    - id: type-string-026
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 types.string 的情境下，哪个说法更合适？
-      options:
-        - 'A: 部分正确但不完整的说法'
-        - 'B: 常见误解或反例（容易混淆）'
-        - 'C: 正确：关于string.types的关键点描述（正确选项）'
-        - 'D: 常见误解或反例（容易混淆）'
-      answer: C
-      explanation: 本题考查 types.string 的概念。正确答案为 C。解析：string 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: string
-    - id: type-string-027
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 types.string 的情境下，哪个说法更合适？
-      options:
-        - 'A: 正确项（关于string.types的重要结论）'
-        - 'B: 正确项（关于string.types的重要结论）'
-        - 'C: 语法/语义上不正确的陈述'
-        - 'D: 正确项（关于string.types的重要结论）'
-      answer: ABD
-      explanation: 本题考查 types.string 的相关知识。正确答案：ABD。解析：string 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: string
-    - id: type-string-028
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 types.string 的情境下，哪个说法更合适？
-      options:
-        - 'A: 部分正确但不完整的说法'
-        - 'B: 部分正确但不完整的说法'
-        - 'C: 正确：关于string.types的关键点描述（正确选项）'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: C
-      explanation: 本题考查 types.string 的概念。正确答案为 C。解析：string 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: string
-    - id: type-string-029
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 types.string 的情境下，哪个说法更合适？
-      options:
-        - 'A: 语法/语义上不正确的陈述'
-        - 'B: 正确项（关于string.types的重要结论）'
-        - 'C: 正确项（关于string.types的重要结论）'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: BC
-      explanation: 本题考查 types.string 的相关知识。正确答案：BC。解析：string 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: string
-    - id: type-string-030
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 types.string 的情境下，哪个说法更合适？
-      options:
-        - 'A: 语法/语义上不正确的陈述'
-        - 'B: 正确：关于string.types的关键点描述（正确选项）'
-        - 'C: 语法/语义上不正确的陈述'
-        - 'D: 常见误解或反例（容易混淆）'
-      answer: B
-      explanation: 本题考查 types.string 的概念。正确答案为 B。解析：string 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: string
-    - id: type-string-031
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 types.string 的情境下，哪个说法更合适？
-      options:
-        - 'A: 正确项（关于string.types的重要结论）'
-        - 'B: 正确项（关于string.types的重要结论）'
-        - 'C: 正确项（关于string.types的重要结论）'
-        - 'D: 部分正确但不完整的说法'
-      answer: ABC
-      explanation: 本题考查 types.string 的相关知识。正确答案：ABC。解析：string 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: string
-    - id: type-string-032
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 types.string 的情境下，哪个说法更合适？
-      options:
-        - 'A: 语法/语义上不正确的陈述'
-        - 'B: 正确：关于string.types的关键点描述（正确选项）'
-        - 'C: 语法/语义上不正确的陈述'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: B
-      explanation: 本题考查 types.string 的概念。正确答案为 B。解析：string 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: string
-    - id: type-string-033
-      type: multiple
-      difficulty: hard
-      stem: 【思考题】针对 types.string，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 正确项（关于string.types的重要结论）'
-        - 'B: 正确项（关于string.types的重要结论）'
-        - 'C: 正确项（关于string.types的重要结论）'
-        - 'D: 常见误解或反例（容易混淆）'
-      answer: ABC
-      explanation: 本题考查 types.string 的相关知识。正确答案：ABC。解析：string 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: string
-    - id: type-string-034
-      type: single
-      difficulty: hard
-      stem: 【思考题】针对 types.string，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 部分正确但不完整的说法'
-        - 'B: 部分正确但不完整的说法'
-        - 'C: 正确：关于string.types的关键点描述（正确选项）'
-        - 'D: 部分正确但不完整的说法'
-      answer: C
-      explanation: 本题考查 types.string 的概念。正确答案为 C。解析：string 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: string
-    - id: type-string-035
-      type: multiple
-      difficulty: hard
-      stem: 【思考题】针对 types.string，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 正确项（关于string.types的重要结论）'
-        - 'B: 常见误解或反例（容易混淆）'
-        - 'C: 正确项（关于string.types的重要结论）'
-        - 'D: 正确项（关于string.types的重要结论）'
-      answer: ACD
-      explanation: 本题考查 types.string 的相关知识。正确答案：ACD。解析：string 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: string
-    - id: type-string-036
-      type: single
-      difficulty: hard
-      stem: 【思考题】针对 types.string，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 常见误解或反例（容易混淆）'
-        - 'B: 常见误解或反例（容易混淆）'
-        - 'C: 正确：关于string.types的关键点描述（正确选项）'
-        - 'D: 常见误解或反例（容易混淆）'
-      answer: C
-      explanation: 本题考查 types.string 的概念。正确答案为 C。解析：string 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: string
-    - id: type-string-037
-      type: multiple
-      difficulty: hard
-      stem: 【思考题】针对 types.string，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 正确项（关于string.types的重要结论）'
-        - 'B: 正确项（关于string.types的重要结论）'
-        - 'C: 语法/语义上不正确的陈述'
-        - 'D: 与string.types 相关但不适用的选项'
-      answer: AB
-      explanation: 本题考查 types.string 的相关知识。正确答案：AB。解析：string 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: string
-    - id: type-string-038
-      type: single
-      difficulty: hard
-      stem: 【思考题】针对 types.string，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 与string.types 相关但不适用的选项'
-        - 'B: 与string.types 相关但不适用的选项'
-        - 'C: 正确：关于string.types的关键点描述（正确选项）'
-        - 'D: 常见误解或反例（容易混淆）'
-      answer: C
-      explanation: 本题考查 types.string 的概念。正确答案为 C。解析：string 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: string
-    - id: type-string-039
-      type: multiple
-      difficulty: hard
-      stem: 【思考题】针对 types.string，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 常见误解或反例（容易混淆）'
-        - 'B: 正确项（关于string.types的重要结论）'
-        - 'C: 正确项（关于string.types的重要结论）'
-        - 'D: 正确项（关于string.types的重要结论）'
-      answer: BCD
-      explanation: 本题考查 types.string 的相关知识。正确答案：BCD。解析：string 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: string
-    - id: type-string-040
-      type: single
-      difficulty: hard
-      stem: 【思考题】针对 types.string，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 常见误解或反例（容易混淆）'
-        - 'B: 部分正确但不完整的说法'
-        - 'C: 部分正确但不完整的说法'
-        - 'D: 正确：关于string.types的关键点描述（正确选项）'
-      answer: D
-      explanation: 本题考查 types.string 的概念。正确答案为 D。解析：string 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: string
+  # ========== 简单题 (Easy) - 24道 ==========
+  
+  - id: type-str-001
+    type: single
+    difficulty: easy
+    stem: "Go的字符串是什么编码?"
+    options:
+      - "A: ASCII"
+      - "B: UTF-8"
+      - "C: UTF-16"
+      - "D: 取决于系统"
+    answer: B
+    explanation: "Go字符串是UTF-8编码的字节序列。源代码也是UTF-8。参见 Go 规范 String types 章节。"
+    topic: types
+    chapter: string
+
+  - id: type-str-002
+    type: single
+    difficulty: easy
+    stem: "字符串是可变的还是不可变的?"
+    options:
+      - "A: 可变的"
+      - "B: 不可变的"
+      - "C: 有时可变"
+      - "D: 取决于声明方式"
+    answer: B
+    explanation: "Go字符串是不可变的。不能修改字符串中的字节,只能创建新字符串。参见 Go 规范 String types 章节。"
+    topic: types
+    chapter: string
+
+  - id: type-str-003
+    type: single
+    difficulty: easy
+    stem: "字符串的零值是什么?"
+    options:
+      - "A: nil"
+      - "B: null"
+      - "C: \"\"(空字符串)"
+      - "D: undefined"
+    answer: C
+    explanation: "string的零值是空字符串\"\",长度为0。string不能是nil。参见 Go 规范 The zero value 章节。"
+    topic: types
+    chapter: string
+
+  - id: type-str-004
+    type: single
+    difficulty: easy
+    stem: "len(\"hello\")的结果是什么?"
+    options:
+      - "A: 5"
+      - "B: 6"
+      - "C: 字符数"
+      - "D: 取决于编码"
+    answer: A
+    explanation: "len()返回字符串的字节数。\"hello\"是5个ASCII字符=5字节。参见 Go 规范 Length and capacity 章节。"
+    topic: types
+    chapter: string
+
+  - id: type-str-005
+    type: single
+    difficulty: easy
+    stem: "len(\"你好\")的结果是什么?"
+    options:
+      - "A: 2"
+      - "B: 4"
+      - "C: 6"
+      - "D: 8"
+    answer: C
+    explanation: "len()返回字节数。每个中文UTF-8占3字节。\"你好\"=6字节。参见 Go 规范 Length and capacity 章节。"
+    topic: types
+    chapter: string
+
+  - id: type-str-006
+    type: single
+    difficulty: easy
+    stem: "如何获取字符串的字符数?"
+    options:
+      - "A: len(s)"
+      - "B: utf8.RuneCountInString(s)"
+      - "C: len([]rune(s))"
+      - "D: B或C"
+    answer: D
+    explanation: "len()返回字节数。要获取字符(rune)数,用utf8.RuneCountInString或转[]rune后len。参见 Go unicode/utf8包文档。"
+    topic: types
+    chapter: string
+
+  - id: type-str-007
+    type: single
+    difficulty: easy
+    stem: "字符串连接用什么运算符?"
+    options:
+      - "A: ."
+      - "B: +"
+      - "C: &"
+      - "D: concat()"
+    answer: B
+    explanation: "Go用+连接字符串。\"a\" + \"b\" = \"ab\"。参见 Go 规范 String concatenation 章节。"
+    topic: types
+    chapter: string
+
+  - id: type-str-008
+    type: single
+    difficulty: easy
+    stem: "s[0]返回什么类型?"
+    options:
+      - "A: string"
+      - "B: rune"
+      - "C: byte(uint8)"
+      - "D: int"
+    answer: C
+    explanation: "字符串索引返回byte(uint8)。s[0]是第一个字节,不是第一个字符。参见 Go 规范 Index expressions 章节。"
+    topic: types
+    chapter: string
+
+  - id: type-str-009
+    type: single
+    difficulty: easy
+    stem: "如何获取子字符串?"
+    options:
+      - "A: s.substring(1,3)"
+      - "B: s[1:3]"
+      - "C: substr(s,1,3)"
+      - "D: s.slice(1,3)"
+    answer: B
+    explanation: "Go用切片语法s[start:end]获取子字符串。返回[start,end)的字节。参见 Go 规范 Slice expressions 章节。"
+    topic: types
+    chapter: string
+
+  - id: type-str-010
+    type: single
+    difficulty: easy
+    stem: "原始字符串字面量用什么符号?"
+    options:
+      - "A: 双引号\""
+      - "B: 单引号'"
+      - "C: 反引号`"
+      - "D: 三引号\"\"\""
+    answer: C
+    explanation: "反引号`包围的是原始字符串,保留原始内容(包括换行,不解析转义)。参见 Go 规范 String literals 章节。"
+    topic: types
+    chapter: string
+
+  - id: type-str-011
+    type: single
+    difficulty: easy
+    stem: "\"hello\\nworld\"中\\n代表什么?"
+    options:
+      - "A: 两个字符\\和n"
+      - "B: 换行符"
+      - "C: 空字符"
+      - "D: 取决于系统"
+    answer: B
+    explanation: "双引号字符串中\\n是换行符转义序列。参见 Go 规范 String literals 章节。"
+    topic: types
+    chapter: string
+
+  - id: type-str-012
+    type: single
+    difficulty: easy
+    stem: "`hello\\nworld`中\\n代表什么?"
+    options:
+      - "A: 换行符"
+      - "B: 两个字符\\和n"
+      - "C: 空字符"
+      - "D: 编译错误"
+    answer: B
+    explanation: "反引号原始字符串不解析转义。\\n就是反斜杠和n两个字符。参见 Go 规范 String literals 章节。"
+    topic: types
+    chapter: string
+
+  - id: type-str-013
+    type: multiple
+    difficulty: easy
+    stem: "以下哪些是有效的字符串操作?(多选)"
+    options:
+      - "A: s + t (连接)"
+      - "B: s[i] (索引)"
+      - "C: s[i:j] (切片)"
+      - "D: s[i] = 'a' (修改)"
+    answer: ABC
+    explanation: "字符串支持连接、索引、切片。但不能修改(不可变)。参见 Go 规范 String types 章节。"
+    topic: types
+    chapter: string
+
+  - id: type-str-014
+    type: single
+    difficulty: easy
+    stem: "字符串可以用==比较吗?"
+    options:
+      - "A: 可以"
+      - "B: 不可以"
+      - "C: 需要strings.Equal"
+      - "D: 只比较地址"
+    answer: A
+    explanation: "字符串是可比较类型。==比较内容是否相同。参见 Go 规范 Comparison operators 章节。"
+    topic: types
+    chapter: string
+
+  - id: type-str-015
+    type: single
+    difficulty: easy
+    stem: "字符串可以用<比较吗?"
+    options:
+      - "A: 可以,按字典序"
+      - "B: 不可以"
+      - "C: 只能用==和!="
+      - "D: 比较长度"
+    answer: A
+    explanation: "字符串支持<、<=、>、>=比较,按字节字典序(lexicographic)。参见 Go 规范 Comparison operators 章节。"
+    topic: types
+    chapter: string
+
+  - id: type-str-016
+    type: single
+    difficulty: easy
+    stem: "for i, c := range \"hello\"中c的类型是什么?"
+    options:
+      - "A: byte"
+      - "B: rune"
+      - "C: string"
+      - "D: int"
+    answer: B
+    explanation: "range字符串返回(索引,rune)。c是rune类型,按Unicode字符迭代。参见 Go 规范 For statements 章节。"
+    topic: types
+    chapter: string
+
+  - id: type-str-017
+    type: single
+    difficulty: easy
+    stem: "for i := 0; i < len(s); i++遍历的是什么?"
+    options:
+      - "A: 字符"
+      - "B: 字节"
+      - "C: rune"
+      - "D: 取决于s"
+    answer: B
+    explanation: "普通for循环用索引遍历的是字节。s[i]是byte类型。参见 Go 规范 For statements 章节。"
+    topic: types
+    chapter: string
+
+  - id: type-str-018
+    type: single
+    difficulty: easy
+    stem: "string和[]byte可以互相转换吗?"
+    options:
+      - "A: 可以"
+      - "B: 不可以"
+      - "C: 只能string转[]byte"
+      - "D: 需要特殊函数"
+    answer: A
+    explanation: "string和[]byte可以用类型转换互转:[]byte(s)和string(b)。参见 Go 规范 Conversions 章节。"
+    topic: types
+    chapter: string
+
+  - id: type-str-019
+    type: single
+    difficulty: easy
+    stem: "string和[]rune可以互相转换吗?"
+    options:
+      - "A: 可以"
+      - "B: 不可以"
+      - "C: 只能string转[]rune"
+      - "D: 需要utf8包"
+    answer: A
+    explanation: "string和[]rune可以用类型转换互转:[]rune(s)和string(r)。参见 Go 规范 Conversions 章节。"
+    topic: types
+    chapter: string
+
+  - id: type-str-020
+    type: single
+    difficulty: easy
+    stem: "strings.Contains(s, sub)检查什么?"
+    options:
+      - "A: s是否以sub开头"
+      - "B: s是否包含sub"
+      - "C: s是否等于sub"
+      - "D: sub在s中的位置"
+    answer: B
+    explanation: "strings.Contains检查s是否包含子字符串sub。返回bool。参见 Go strings包文档。"
+    topic: types
+    chapter: string
+
+  - id: type-str-021
+    type: single
+    difficulty: easy
+    stem: "strings.Split(\"a,b,c\", \",\")返回什么?"
+    options:
+      - "A: \"abc\""
+      - "B: []string{\"a\", \"b\", \"c\"}"
+      - "C: 3"
+      - "D: []byte"
+    answer: B
+    explanation: "Split按分隔符分割字符串,返回[]string切片。参见 Go strings包文档。"
+    topic: types
+    chapter: string
+
+  - id: type-str-022
+    type: single
+    difficulty: easy
+    stem: "strings.Join([]string{\"a\",\"b\"}, \"-\")返回什么?"
+    options:
+      - "A: \"a-b\""
+      - "B: \"ab\""
+      - "C: []string{\"a-b\"}"
+      - "D: \"a\"-\"b\""
+    answer: A
+    explanation: "Join用分隔符连接字符串切片。结果是\"a-b\"。参见 Go strings包文档。"
+    topic: types
+    chapter: string
+
+  - id: type-str-023
+    type: multiple
+    difficulty: easy
+    stem: "关于字符串,以下说法正确的是?(多选)"
+    options:
+      - "A: UTF-8编码"
+      - "B: 不可变"
+      - "C: 可以索引访问字节"
+      - "D: len返回字节数"
+    answer: ABCD
+    explanation: "字符串是UTF-8编码的不可变字节序列。可以索引访问字节。len返回字节数。参见 Go 规范 String types 章节。"
+    topic: types
+    chapter: string
+
+  - id: type-str-024
+    type: single
+    difficulty: easy
+    stem: "fmt.Sprintf(\"%s %d\", \"age\", 20)返回什么?"
+    options:
+      - "A: 打印到控制台"
+      - "B: \"age 20\""
+      - "C: 格式错误"
+      - "D: []byte"
+    answer: B
+    explanation: "Sprintf格式化并返回字符串,不打印。结果是\"age 20\"。参见 Go fmt包文档。"
+    topic: types
+    chapter: string
+
+  # ========== 中等题 (Medium) - 12道 ==========
+
+  - id: type-str-025
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          s := "hello"
+          fmt.Printf("%T %v\n", s[0], s[0])
+      }
+    options:
+      - "A: string h"
+      - "B: byte 104"
+      - "C: rune h"
+      - "D: uint8 104"
+    answer: D
+    explanation: "s[0]是byte(uint8),值是104('h'的ASCII)。%T显示uint8。参见 Go 规范 Index expressions 章节。"
+    topic: types
+    chapter: string
+
+  - id: type-str-026
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          s := "你好"
+          for i, c := range s {
+              fmt.Printf("%d:%c ", i, c)
+          }
+      }
+    options:
+      - "A: 0:你 1:好"
+      - "B: 0:你 3:好"
+      - "C: 0:你 2:好"
+      - "D: 0:ä 1:½ 2:..."
+    answer: B
+    explanation: "range按rune迭代。'你'占3字节(索引0),'好'占3字节(索引3)。参见 Go 规范 For statements 章节。"
+    topic: types
+    chapter: string
+
+  - id: type-str-027
+    type: code_fix
+    difficulty: medium
+    stem: "以下代码有编译错误,正确的修正方案是?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          s := "hello"
+          s[0] = 'H'
+          fmt.Println(s)
+      }
+    options:
+      - "A: s = \"H\" + s[1:]"
+      - "B: b := []byte(s); b[0] = 'H'; s = string(b)"
+      - "C: A或B"
+      - "D: 代码正确"
+    answer: C
+    explanation: "字符串不可变,不能s[0]='H'。可以拼接新字符串或转[]byte修改后转回。参见 Go 规范 String types 章节。"
+    topic: types
+    chapter: string
+
+  - id: type-str-028
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          s := "hello"
+          b := []byte(s)
+          b[0] = 'H'
+          fmt.Println(s, string(b))
+      }
+    options:
+      - "A: Hello Hello"
+      - "B: hello Hello"
+      - "C: Hello hello"
+      - "D: hello hello"
+    answer: B
+    explanation: "[]byte(s)复制数据。修改b不影响原s。s不变是hello,b转回是Hello。参见 Go 规范 Conversions 章节。"
+    topic: types
+    chapter: string
+
+  - id: type-str-029
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          s := "café"
+          fmt.Println(len(s), len([]rune(s)))
+      }
+    options:
+      - "A: 4 4"
+      - "B: 5 4"
+      - "C: 4 5"
+      - "D: 5 5"
+    answer: B
+    explanation: "\"café\"中é是2字节UTF-8。len(s)=5字节。[]rune长度=4字符。参见 Go 规范 Length and capacity 章节。"
+    topic: types
+    chapter: string
+
+  - id: type-str-030
+    type: multiple
+    difficulty: medium
+    stem: "关于strings.Builder,以下说法正确的是?(多选)"
+    options:
+      - "A: 用于高效字符串拼接"
+      - "B: 避免大量内存分配"
+      - "C: 有WriteString方法"
+      - "D: 线程安全"
+    answer: ABC
+    explanation: "Builder用于高效构建字符串,减少内存分配。有WriteString等方法。不是线程安全的。参见 Go strings包文档。"
+    topic: types
+    chapter: string
+
+  - id: type-str-031
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import (
+          "fmt"
+          "strings"
+      )
+      func main() {
+          s := "  hello world  "
+          fmt.Printf("[%s]\n", strings.TrimSpace(s))
+      }
+    options:
+      - "A: [hello world]"
+      - "B: [  hello world  ]"
+      - "C: [helloworld]"
+      - "D: [ hello world ]"
+    answer: A
+    explanation: "TrimSpace去除首尾空白字符。结果是\"hello world\"。参见 Go strings包文档。"
+    topic: types
+    chapter: string
+
+  - id: type-str-032
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          s := "hello"
+          r := []rune(s)
+          r[0] = '你'
+          fmt.Println(string(r))
+      }
+    options:
+      - "A: 你ello"
+      - "B: hello"
+      - "C: 乱码"
+      - "D: 编译错误"
+    answer: A
+    explanation: "转[]rune可以按字符操作。修改第一个rune后转回字符串得\"你ello\"。参见 Go 规范 Conversions 章节。"
+    topic: types
+    chapter: string
+
+  - id: type-str-033
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          s := "hello"
+          fmt.Println(s[:2], s[2:], s[:])
+      }
+    options:
+      - "A: he llo hello"
+      - "B: hel lo hello"
+      - "C: h ello hello"
+      - "D: he ello hello"
+    answer: A
+    explanation: "s[:2]是\"he\"(0,1)。s[2:]是\"llo\"(2到末)。s[:]是整个字符串。参见 Go 规范 Slice expressions 章节。"
+    topic: types
+    chapter: string
+
+  - id: type-str-034
+    type: code_fix
+    difficulty: medium
+    stem: "以下代码效率低,正确的优化方案是?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          s := ""
+          for i := 0; i < 1000; i++ {
+              s += "a"
+          }
+          fmt.Println(len(s))
+      }
+    options:
+      - "A: 使用strings.Builder"
+      - "B: 使用bytes.Buffer"
+      - "C: 预分配[]byte"
+      - "D: 以上都可以"
+    answer: D
+    explanation: "字符串拼接每次创建新字符串。应用Builder、Buffer或预分配避免多次分配。参见 Go 性能优化最佳实践。"
+    topic: types
+    chapter: string
+
+  - id: type-str-035
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          s := "hello"
+          t := s
+          fmt.Println(&s == &t, s == t)
+      }
+    options:
+      - "A: true true"
+      - "B: false true"
+      - "C: true false"
+      - "D: false false"
+    answer: B
+    explanation: "s和t是不同变量(地址不同false)。但内容相同(值相等true)。参见 Go 规范 String types 章节。"
+    topic: types
+    chapter: string
+
+  - id: type-str-036
+    type: multiple
+    difficulty: medium
+    stem: "关于字符串比较,以下说法正确的是?(多选)"
+    options:
+      - "A: ==比较内容"
+      - "B: <按字节字典序"
+      - "C: 大小写敏感"
+      - "D: strings.EqualFold忽略大小写"
+    answer: ABCD
+    explanation: "字符串比较按字节内容。大小写敏感。strings.EqualFold用于忽略大小写比较。参见 Go 规范和strings包文档。"
+    topic: types
+    chapter: string
+
+  # ========== 困难题 (Hard) - 4道 ==========
+
+  - id: type-str-037
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import (
+          "fmt"
+          "unicode/utf8"
+      )
+      func main() {
+          s := "日本語"
+          fmt.Println(len(s), utf8.RuneCountInString(s))
+          fmt.Printf("%x\n", s[0])
+      }
+    options:
+      - "A: 9 3 然后第一个字节的十六进制"
+      - "B: 3 3 日"
+      - "C: 9 3 e6"
+      - "D: 6 3 e5"
+    answer: C
+    explanation: "每个日文字符3字节,共9字节3字符。'日'的UTF-8首字节是0xe6。参见 Go unicode/utf8包文档。"
+    topic: types
+    chapter: string
+
+  - id: type-str-038
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          s := "hello"
+          p := &s
+          *p = "world"
+          fmt.Println(s)
+      }
+    options:
+      - "A: hello"
+      - "B: world"
+      - "C: 编译错误"
+      - "D: panic"
+    answer: B
+    explanation: "p指向s。*p=\"world\"修改s的值为\"world\"。字符串变量可以重新赋值(不是修改字符串内容)。参见 Go 规范 Pointer types 章节。"
+    topic: types
+    chapter: string
+
+  - id: type-str-039
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import (
+          "fmt"
+          "unsafe"
+      )
+      func main() {
+          s := "hello"
+          fmt.Println(unsafe.Sizeof(s))
+      }
+    options:
+      - "A: 5"
+      - "B: 6"
+      - "C: 16"
+      - "D: 取决于平台"
+    answer: C
+    explanation: "string内部是(指针,长度)结构。64位系统:8+8=16字节。与字符串内容无关。参见 Go 字符串内部结构。"
+    topic: types
+    chapter: string
+
+  - id: type-str-040
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          s := "hello"
+          t := s[:3]
+          u := s[3:]
+          fmt.Println(t+u == s)
+      }
+    options:
+      - "A: true"
+      - "B: false"
+      - "C: 编译错误"
+      - "D: panic"
+    answer: A
+    explanation: "t=\"hel\",u=\"lo\"。t+u=\"hello\"等于s。字符串切片返回子字符串,连接后与原串相等。参见 Go 规范 Slice expressions 章节。"
+    topic: types
+    chapter: string

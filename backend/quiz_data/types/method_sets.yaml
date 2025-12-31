@@ -1,0 +1,720 @@
+# Go 方法集测验题库
+# 章节: types/method_sets
+# 符合 Go 1.24 语言规范
+
+metadata:
+  topic: types
+  chapter: method_sets
+  total_questions: 38
+  last_updated: "2025-01-01"
+  difficulty_distribution:
+    easy: 21      # 55%
+    medium: 13    # 34%
+    hard: 4       # 11%
+  type_distribution:
+    single: 18
+    multiple: 9
+    code_output: 8
+    code_fix: 3
+
+questions:
+  # ========== 简单题 (Easy) - 21道 ==========
+  
+  - id: type-meth-001
+    type: single
+    difficulty: easy
+    stem: "Go中方法集(method set)是什么?"
+    options:
+      - "A: 所有函数"
+      - "B: 类型关联的方法集合"
+      - "C: 接口方法"
+      - "D: 导出方法"
+    answer: B
+    explanation: "方法集是与特定类型关联的方法的集合,决定了类型实现哪些接口。参见 Go 规范 Method sets 章节。"
+    topic: types
+    chapter: method_sets
+
+  - id: type-meth-002
+    type: single
+    difficulty: easy
+    stem: "值类型T的方法集包含什么?"
+    options:
+      - "A: 值接收者和指针接收者方法"
+      - "B: 只有值接收者方法"
+      - "C: 只有指针接收者方法"
+      - "D: 没有方法"
+    answer: B
+    explanation: "值类型T的方法集只包含接收者为T的方法。参见 Go 规范 Method sets 章节。"
+    topic: types
+    chapter: method_sets
+
+  - id: type-meth-003
+    type: single
+    difficulty: easy
+    stem: "指针类型*T的方法集包含什么?"
+    options:
+      - "A: 只有指针接收者方法"
+      - "B: 只有值接收者方法"
+      - "C: 值和指针接收者方法"
+      - "D: 没有方法"
+    answer: C
+    explanation: "*T的方法集包含接收者为T和*T的所有方法。参见 Go 规范 Method sets 章节。"
+    topic: types
+    chapter: method_sets
+
+  - id: type-meth-004
+    type: single
+    difficulty: easy
+    stem: "接口类型的方法集是什么?"
+    options:
+      - "A: 实现类型的方法"
+      - "B: 接口声明的方法"
+      - "C: 所有方法"
+      - "D: 空集"
+    answer: B
+    explanation: "接口类型的方法集是接口定义中声明的所有方法。参见 Go 规范 Interface types 章节。"
+    topic: types
+    chapter: method_sets
+
+  - id: type-meth-005
+    type: single
+    difficulty: easy
+    stem: "空接口interface{}的方法集是什么?"
+    options:
+      - "A: 所有方法"
+      - "B: 空集"
+      - "C: 一个方法"
+      - "D: 未定义"
+    answer: B
+    explanation: "空接口没有定义方法,方法集为空。任何类型都实现空接口。参见 Go 规范 Interface types 章节。"
+    topic: types
+    chapter: method_sets
+
+  - id: type-meth-006
+    type: single
+    difficulty: easy
+    stem: "类型实现接口的条件是什么?"
+    options:
+      - "A: 显式声明"
+      - "B: 方法集是接口方法集的超集"
+      - "C: 同一个包"
+      - "D: 继承"
+    answer: B
+    explanation: "类型的方法集包含接口的所有方法,就实现了该接口。隐式实现。参见 Go 规范 Interface types 章节。"
+    topic: types
+    chapter: method_sets
+
+  - id: type-meth-007
+    type: single
+    difficulty: easy
+    stem: "方法接收者可以是什么类型?"
+    options:
+      - "A: 只有结构体"
+      - "B: 任何定义类型"
+      - "C: 只有指针"
+      - "D: 只有接口"
+    answer: B
+    explanation: "方法可以为任何定义类型添加,包括int别名、结构体等。参见 Go 规范 Method declarations 章节。"
+    topic: types
+    chapter: method_sets
+
+  - id: type-meth-008
+    type: single
+    difficulty: easy
+    stem: "为什么*T的方法集比T大?"
+    options:
+      - "A: 指针更强大"
+      - "B: 可以通过指针调用值方法"
+      - "C: 设计如此"
+      - "D: 历史原因"
+    answer: B
+    explanation: "通过指针可以自动解引用调用值接收者方法,反之不行。参见 Go 规范 Method sets 章节。"
+    topic: types
+    chapter: method_sets
+
+  - id: type-meth-009
+    type: single
+    difficulty: easy
+    stem: "嵌入类型的方法属于外层类型的方法集吗?"
+    options:
+      - "A: 不属于"
+      - "B: 属于"
+      - "C: 只有导出方法"
+      - "D: 需要显式声明"
+    answer: B
+    explanation: "嵌入类型的方法被提升到外层类型的方法集。参见 Go 规范 Struct types 章节。"
+    topic: types
+    chapter: method_sets
+
+  - id: type-meth-010
+    type: single
+    difficulty: easy
+    stem: "可以为内置类型int添加方法吗?"
+    options:
+      - "A: 可以"
+      - "B: 不可以"
+      - "C: 只有指针方法"
+      - "D: 需要特殊语法"
+    answer: B
+    explanation: "不能为预声明类型或其他包的类型添加方法。需要定义新类型。参见 Go 规范 Method declarations 章节。"
+    topic: types
+    chapter: method_sets
+
+  - id: type-meth-011
+    type: single
+    difficulty: easy
+    stem: "方法和函数的区别是什么?"
+    options:
+      - "A: 没有区别"
+      - "B: 方法有接收者"
+      - "C: 方法更快"
+      - "D: 函数可以重载"
+    answer: B
+    explanation: "方法有接收者参数,关联到特定类型。函数没有。参见 Go 规范 Method declarations 章节。"
+    topic: types
+    chapter: method_sets
+
+  - id: type-meth-012
+    type: single
+    difficulty: easy
+    stem: "值接收者方法能修改接收者吗?"
+    options:
+      - "A: 能"
+      - "B: 不能"
+      - "C: 取决于类型"
+      - "D: 需要return"
+    answer: B
+    explanation: "值接收者是副本,修改不影响原值。需要指针接收者来修改。参见 Go 规范 Method declarations 章节。"
+    topic: types
+    chapter: method_sets
+
+  - id: type-meth-013
+    type: single
+    difficulty: easy
+    stem: "接口变量存储值时,可以调用指针方法吗?"
+    options:
+      - "A: 可以"
+      - "B: 不可以"
+      - "C: 取决于方法"
+      - "D: 自动转换"
+    answer: B
+    explanation: "接口存储值时,方法集只有值接收者方法。不能调用指针方法。参见 Go 规范 Method sets 章节。"
+    topic: types
+    chapter: method_sets
+
+  - id: type-meth-014
+    type: single
+    difficulty: easy
+    stem: "同一类型的方法可以同名吗?"
+    options:
+      - "A: 可以,参数不同"
+      - "B: 不可以"
+      - "C: 只有一个"
+      - "D: 取决于返回值"
+    answer: B
+    explanation: "Go不支持方法重载。同一类型的方法名必须唯一。参见 Go 规范 Method declarations 章节。"
+    topic: types
+    chapter: method_sets
+
+  - id: type-meth-015
+    type: multiple
+    difficulty: easy
+    stem: "关于方法集,以下说法正确的是?(多选)"
+    options:
+      - "A: T方法集是*T的子集"
+      - "B: 嵌入类型方法会提升"
+      - "C: 接口方法集决定实现"
+      - "D: 可以为任何类型加方法"
+    answer: ABC
+    explanation: "T⊆*T,嵌入提升,接口方法集决定实现。只能为定义类型加方法。参见 Go 规范 Method sets 章节。"
+    topic: types
+    chapter: method_sets
+
+  - id: type-meth-016
+    type: single
+    difficulty: easy
+    stem: "方法表达式T.M的类型是什么?"
+    options:
+      - "A: func()"
+      - "B: func(T)"
+      - "C: 方法签名加T参数"
+      - "D: M的类型"
+    answer: C
+    explanation: "方法表达式将接收者变为第一个参数。T.M类型是func(T, ...)。参见 Go 规范 Method expressions 章节。"
+    topic: types
+    chapter: method_sets
+
+  - id: type-meth-017
+    type: single
+    difficulty: easy
+    stem: "方法值t.M的类型是什么?"
+    options:
+      - "A: func(T)"
+      - "B: 方法的原始签名"
+      - "C: 不确定"
+      - "D: interface{}"
+    answer: B
+    explanation: "方法值绑定了接收者,类型是方法签名(不含接收者)。参见 Go 规范 Method values 章节。"
+    topic: types
+    chapter: method_sets
+
+  - id: type-meth-018
+    type: single
+    difficulty: easy
+    stem: "结构体嵌入*T时,外层类型的方法集包含什么?"
+    options:
+      - "A: 只有T的方法"
+      - "B: 只有*T的方法"
+      - "C: T和*T的方法"
+      - "D: 没有方法"
+    answer: C
+    explanation: "嵌入*T时,外层类型(值和指针)都包含T和*T的所有方法。参见 Go 规范 Struct types 章节。"
+    topic: types
+    chapter: method_sets
+
+  - id: type-meth-019
+    type: single
+    difficulty: easy
+    stem: "nil接收者可以调用方法吗?"
+    options:
+      - "A: 不可以,panic"
+      - "B: 可以"
+      - "C: 取决于方法实现"
+      - "D: B和C"
+    answer: D
+    explanation: "nil接收者可以调用方法,但方法内使用nil接收者可能panic。参见 Go 规范 Calls 章节。"
+    topic: types
+    chapter: method_sets
+
+  - id: type-meth-020
+    type: single
+    difficulty: easy
+    stem: "可以为类型别名定义方法吗?"
+    options:
+      - "A: 可以"
+      - "B: 不可以"
+      - "C: 只在定义包"
+      - "D: B和C"
+    answer: D
+    explanation: "别名是同一类型,为别名定义方法等于为原类型定义。只能在原类型的包。参见 Go 规范 Method declarations 章节。"
+    topic: types
+    chapter: method_sets
+
+  - id: type-meth-021
+    type: single
+    difficulty: easy
+    stem: "接口方法集中的方法可以有实现吗?"
+    options:
+      - "A: 可以"
+      - "B: 不可以"
+      - "C: 默认实现"
+      - "D: Go 1.18+可以"
+    answer: B
+    explanation: "接口只声明方法签名,不能有实现。Go没有默认方法实现。参见 Go 规范 Interface types 章节。"
+    topic: types
+    chapter: method_sets
+
+  # ========== 中等题 (Medium) - 13道 ==========
+
+  - id: type-meth-022
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type T struct{ X int }
+      func (t T) M() { fmt.Print("T") }
+      func (t *T) N() { fmt.Print("*T") }
+      func main() {
+          t := T{1}
+          t.M()
+          t.N()
+      }
+    options:
+      - "A: T*T"
+      - "B: T"
+      - "C: 编译错误"
+      - "D: panic"
+    answer: A
+    explanation: "t可以调用值方法M()。t.N()自动取地址调用指针方法。输出T*T。参见 Go 规范 Calls 章节。"
+    topic: types
+    chapter: method_sets
+
+  - id: type-meth-023
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type I interface{ M() }
+      type T struct{}
+      func (t *T) M() { fmt.Print("ok") }
+      func main() {
+          var i I = T{}
+          i.M()
+      }
+    options:
+      - "A: ok"
+      - "B: 编译错误"
+      - "C: panic"
+      - "D: 空输出"
+    answer: B
+    explanation: "T的方法集只有值方法,没有M()(是*T的方法)。T不实现I。编译错误。参见 Go 规范 Method sets 章节。"
+    topic: types
+    chapter: method_sets
+
+  - id: type-meth-024
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type I interface{ M() }
+      type T struct{}
+      func (t *T) M() { fmt.Print("ok") }
+      func main() {
+          var i I = &T{}
+          i.M()
+      }
+    options:
+      - "A: ok"
+      - "B: 编译错误"
+      - "C: panic"
+      - "D: &T"
+    answer: A
+    explanation: "*T的方法集包含M()。*T实现I。i.M()调用成功,输出ok。参见 Go 规范 Method sets 章节。"
+    topic: types
+    chapter: method_sets
+
+  - id: type-meth-025
+    type: code_fix
+    difficulty: medium
+    stem: "以下代码编译错误,正确的修正是?"
+    code: |
+      package main
+      type I interface{ M() }
+      type T struct{}
+      func (t *T) M() {}
+      func F(i I) {}
+      func main() {
+          F(T{})
+      }
+    options:
+      - "A: F(&T{})"
+      - "B: func (t T) M() {}"
+      - "C: A或B"
+      - "D: 代码正确"
+    answer: C
+    explanation: "T没有M方法(是*T的)。要么传&T{},要么改为值接收者。参见 Go 规范 Method sets 章节。"
+    topic: types
+    chapter: method_sets
+
+  - id: type-meth-026
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type A struct{}
+      func (A) M() { fmt.Print("A") }
+      type B struct{ A }
+      func main() {
+          b := B{}
+          b.M()
+      }
+    options:
+      - "A: A"
+      - "B: B"
+      - "C: 编译错误"
+      - "D: 空输出"
+    answer: A
+    explanation: "A嵌入B,A的方法M提升到B。b.M()调用A.M(),输出A。参见 Go 规范 Struct types 章节。"
+    topic: types
+    chapter: method_sets
+
+  - id: type-meth-027
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type A struct{}
+      func (A) M() { fmt.Print("A") }
+      type B struct{ A }
+      func (B) M() { fmt.Print("B") }
+      func main() {
+          b := B{}
+          b.M()
+      }
+    options:
+      - "A: A"
+      - "B: B"
+      - "C: AB"
+      - "D: 编译错误"
+    answer: B
+    explanation: "B自己定义了M,覆盖嵌入的A.M。b.M()调用B.M(),输出B。参见 Go 规范 Selectors 章节。"
+    topic: types
+    chapter: method_sets
+
+  - id: type-meth-028
+    type: multiple
+    difficulty: medium
+    stem: "T有值方法M(),以下哪些调用合法?(多选)"
+    options:
+      - "A: var t T; t.M()"
+      - "B: var p *T; p.M()"
+      - "C: T{}.M()"
+      - "D: (&T{}).M()"
+    answer: ABCD
+    explanation: "值和指针都可以调用值方法。自动解引用/取地址。参见 Go 规范 Calls 章节。"
+    topic: types
+    chapter: method_sets
+
+  - id: type-meth-029
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type T int
+      func (t T) M() int { return int(t) }
+      func main() {
+          var t T = 10
+          f := t.M
+          fmt.Println(f())
+      }
+    options:
+      - "A: 10"
+      - "B: 0"
+      - "C: 编译错误"
+      - "D: T"
+    answer: A
+    explanation: "t.M是方法值,绑定接收者t=10。f()调用返回10。参见 Go 规范 Method values 章节。"
+    topic: types
+    chapter: method_sets
+
+  - id: type-meth-030
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type T int
+      func (t T) M() int { return int(t) }
+      func main() {
+          f := T.M
+          fmt.Println(f(10))
+      }
+    options:
+      - "A: 10"
+      - "B: 0"
+      - "C: 编译错误"
+      - "D: T.M"
+    answer: A
+    explanation: "T.M是方法表达式,类型func(T)int。f(10)等于T(10).M()=10。参见 Go 规范 Method expressions 章节。"
+    topic: types
+    chapter: method_sets
+
+  - id: type-meth-031
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type T struct{ X int }
+      func (t *T) Inc() { t.X++ }
+      func main() {
+          t := T{0}
+          t.Inc()
+          t.Inc()
+          fmt.Println(t.X)
+      }
+    options:
+      - "A: 2"
+      - "B: 0"
+      - "C: 1"
+      - "D: 编译错误"
+    answer: A
+    explanation: "t.Inc()自动取地址调用。指针方法修改原值。两次Inc后X=2。参见 Go 规范 Calls 章节。"
+    topic: types
+    chapter: method_sets
+
+  - id: type-meth-032
+    type: code_fix
+    difficulty: medium
+    stem: "以下代码编译错误,如何修正?"
+    code: |
+      package main
+      func (t int) Double() int { return t * 2 }
+    options:
+      - "A: type MyInt int"
+      - "B: 不能为int定义方法"
+      - "C: A正确,然后为MyInt定义"
+      - "D: 代码正确"
+    answer: C
+    explanation: "不能为预声明类型int定义方法。需要定义新类型如type MyInt int。参见 Go 规范 Method declarations 章节。"
+    topic: types
+    chapter: method_sets
+
+  - id: type-meth-033
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type Inner struct{}
+      func (Inner) M() { fmt.Print("Inner") }
+      type Outer struct{ *Inner }
+      func main() {
+          o := Outer{&Inner{}}
+          o.M()
+      }
+    options:
+      - "A: Inner"
+      - "B: Outer"
+      - "C: 编译错误"
+      - "D: panic"
+    answer: A
+    explanation: "嵌入*Inner,方法提升。o.M()调用Inner.M(),输出Inner。参见 Go 规范 Struct types 章节。"
+    topic: types
+    chapter: method_sets
+
+  - id: type-meth-034
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type I interface{ M() }
+      type T struct{}
+      func (t T) M() { fmt.Print("ok") }
+      func main() {
+          var t *T = nil
+          var i I = t
+          fmt.Println(i == nil)
+      }
+    options:
+      - "A: true"
+      - "B: false"
+      - "C: 编译错误"
+      - "D: panic"
+    answer: B
+    explanation: "i存储了类型*T和值nil。接口不为nil(有类型信息)。参见 Go 规范 Interface types 章节。"
+    topic: types
+    chapter: method_sets
+
+  # ========== 困难题 (Hard) - 4道 ==========
+
+  - id: type-meth-035
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type A struct{}
+      func (*A) M() { fmt.Print("*A") }
+      type B struct{ A }
+      func main() {
+          var i interface{ M() } = B{}
+          i.M()
+      }
+    options:
+      - "A: *A"
+      - "B: 编译错误"
+      - "C: panic"
+      - "D: 空输出"
+    answer: B
+    explanation: "A嵌入B(值),但M是*A的方法。B(值)的方法集不包含M。B不实现interface{M()}。参见 Go 规范 Method sets 章节。"
+    topic: types
+    chapter: method_sets
+
+  - id: type-meth-036
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type A struct{}
+      func (*A) M() { fmt.Print("*A") }
+      type B struct{ *A }
+      func main() {
+          var i interface{ M() } = B{&A{}}
+          i.M()
+      }
+    options:
+      - "A: *A"
+      - "B: 编译错误"
+      - "C: panic"
+      - "D: B"
+    answer: A
+    explanation: "嵌入*A,B(值)的方法集包含*A的方法M。B实现接口。i.M()输出*A。参见 Go 规范 Method sets 章节。"
+    topic: types
+    chapter: method_sets
+
+  - id: type-meth-037
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type T struct{ x int }
+      func (t *T) M() {
+          if t == nil {
+              fmt.Print("nil")
+              return
+          }
+          fmt.Print(t.x)
+      }
+      func main() {
+          var t *T = nil
+          t.M()
+      }
+    options:
+      - "A: nil"
+      - "B: 0"
+      - "C: panic"
+      - "D: 编译错误"
+    answer: A
+    explanation: "nil指针可以调用方法。方法内检查t==nil,输出nil。参见 Go 规范 Calls 章节。"
+    topic: types
+    chapter: method_sets
+
+  - id: type-meth-038
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type I1 interface{ M() }
+      type I2 interface{ M(); N() }
+      type T struct{}
+      func (T) M() {}
+      func (T) N() {}
+      func main() {
+          var i2 I2 = T{}
+          var i1 I1 = i2
+          fmt.Printf("%T", i1)
+      }
+    options:
+      - "A: main.T"
+      - "B: main.I2"
+      - "C: main.I1"
+      - "D: 编译错误"
+    answer: A
+    explanation: "I2实现I1(超集)。i1存储的动态类型是T。%T打印main.T。参见 Go 规范 Interface types 章节。"
+    topic: types
+    chapter: method_sets

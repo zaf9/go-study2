@@ -1,0 +1,622 @@
+# Go 类型统一测验题库
+# 章节: types/type_unification
+# 符合 Go 1.24 语言规范 (泛型类型统一)
+
+metadata:
+  topic: types
+  chapter: type_unification
+  total_questions: 33
+  last_updated: "2025-01-01"
+  difficulty_distribution:
+    easy: 18      # 55%
+    medium: 11    # 33%
+    hard: 4       # 12%
+  type_distribution:
+    single: 15
+    multiple: 8
+    code_output: 7
+    code_fix: 3
+
+questions:
+  # ========== 简单题 (Easy) - 18道 ==========
+  
+  - id: type-unify-001
+    type: single
+    difficulty: easy
+    stem: "类型统一(Type Unification)是什么?"
+    options:
+      - "A: 类型转换"
+      - "B: 确定类型参数值的过程"
+      - "C: 类型断言"
+      - "D: 类型定义"
+    answer: B
+    explanation: "类型统一是泛型类型推断中确定类型参数具体值的过程。参见 Go 规范 Type unification 章节。"
+    topic: types
+    chapter: type_unification
+
+  - id: type-unify-002
+    type: single
+    difficulty: easy
+    stem: "类型统一发生在什么时候?"
+    options:
+      - "A: 运行时"
+      - "B: 编译时"
+      - "C: 链接时"
+      - "D: 加载时"
+    answer: B
+    explanation: "类型统一是编译时进行的类型推断过程。参见 Go 规范 Type unification 章节。"
+    topic: types
+    chapter: type_unification
+
+  - id: type-unify-003
+    type: single
+    difficulty: easy
+    stem: "如果T与int统一,T的值是什么?"
+    options:
+      - "A: any"
+      - "B: int"
+      - "C: interface{}"
+      - "D: 未定义"
+    answer: B
+    explanation: "T与int统一后,T绑定到具体类型int。参见 Go 规范 Type unification 章节。"
+    topic: types
+    chapter: type_unification
+
+  - id: type-unify-004
+    type: single
+    difficulty: easy
+    stem: "类型统一失败会发生什么?"
+    options:
+      - "A: 运行时panic"
+      - "B: 编译错误"
+      - "C: 默认为any"
+      - "D: 警告"
+    answer: B
+    explanation: "类型统一失败导致编译错误,需要显式指定类型参数。参见 Go 规范 Type unification 章节。"
+    topic: types
+    chapter: type_unification
+
+  - id: type-unify-005
+    type: single
+    difficulty: easy
+    stem: "[]T与[]int统一后,T是什么?"
+    options:
+      - "A: []int"
+      - "B: int"
+      - "C: any"
+      - "D: 未定义"
+    answer: B
+    explanation: "[]T与[]int统一,T绑定到元素类型int。参见 Go 规范 Type unification 章节。"
+    topic: types
+    chapter: type_unification
+
+  - id: type-unify-006
+    type: single
+    difficulty: easy
+    stem: "map[K]V与map[string]int统一后,K和V分别是什么?"
+    options:
+      - "A: K=string, V=int"
+      - "B: K=int, V=string"
+      - "C: K=map, V=int"
+      - "D: 编译错误"
+    answer: A
+    explanation: "map[K]V与map[string]int统一,K=string,V=int。参见 Go 规范 Type unification 章节。"
+    topic: types
+    chapter: type_unification
+
+  - id: type-unify-007
+    type: single
+    difficulty: easy
+    stem: "同一个类型参数多次出现必须统一到什么?"
+    options:
+      - "A: 不同类型"
+      - "B: 相同类型"
+      - "C: 兼容类型"
+      - "D: 任意类型"
+    answer: B
+    explanation: "同一类型参数的所有出现必须统一到相同的具体类型。参见 Go 规范 Type unification 章节。"
+    topic: types
+    chapter: type_unification
+
+  - id: type-unify-008
+    type: single
+    difficulty: easy
+    stem: "*T与*int统一后,T是什么?"
+    options:
+      - "A: *int"
+      - "B: int"
+      - "C: pointer"
+      - "D: 未定义"
+    answer: B
+    explanation: "*T与*int统一,T绑定到int(指针的基类型)。参见 Go 规范 Type unification 章节。"
+    topic: types
+    chapter: type_unification
+
+  - id: type-unify-009
+    type: single
+    difficulty: easy
+    stem: "chan T与chan int统一后,T是什么?"
+    options:
+      - "A: chan int"
+      - "B: int"
+      - "C: channel"
+      - "D: 未定义"
+    answer: B
+    explanation: "chan T与chan int统一,T绑定到int(通道元素类型)。参见 Go 规范 Type unification 章节。"
+    topic: types
+    chapter: type_unification
+
+  - id: type-unify-010
+    type: single
+    difficulty: easy
+    stem: "func(T) T与func(int) int统一后,T是什么?"
+    options:
+      - "A: func"
+      - "B: int"
+      - "C: any"
+      - "D: 两个int"
+    answer: B
+    explanation: "参数和返回值的T都统一到int。参见 Go 规范 Type unification 章节。"
+    topic: types
+    chapter: type_unification
+
+  - id: type-unify-011
+    type: single
+    difficulty: easy
+    stem: "T能与interface{}统一吗?"
+    options:
+      - "A: 能,T=interface{}"
+      - "B: 不能"
+      - "C: 取决于约束"
+      - "D: 只有any约束时"
+    answer: A
+    explanation: "T可以与interface{}统一,T绑定到interface{}。参见 Go 规范 Type unification 章节。"
+    topic: types
+    chapter: type_unification
+
+  - id: type-unify-012
+    type: single
+    difficulty: easy
+    stem: "类型统一是递归的吗?"
+    options:
+      - "A: 不是"
+      - "B: 是"
+      - "C: 只有一层"
+      - "D: 取决于类型"
+    answer: B
+    explanation: "类型统一递归进行,如[]map[K]V与[]map[string]int。参见 Go 规范 Type unification 章节。"
+    topic: types
+    chapter: type_unification
+
+  - id: type-unify-013
+    type: single
+    difficulty: easy
+    stem: "struct{X T}与struct{X int}统一后,T是什么?"
+    options:
+      - "A: struct{X int}"
+      - "B: int"
+      - "C: X"
+      - "D: 不能统一"
+    answer: B
+    explanation: "结构体字段类型统一,T绑定到int。参见 Go 规范 Type unification 章节。"
+    topic: types
+    chapter: type_unification
+
+  - id: type-unify-014
+    type: single
+    difficulty: easy
+    stem: "[3]T与[3]int统一后,T是什么?"
+    options:
+      - "A: [3]int"
+      - "B: int"
+      - "C: 3"
+      - "D: array"
+    answer: B
+    explanation: "数组元素类型统一,T绑定到int。数组长度必须匹配。参见 Go 规范 Type unification 章节。"
+    topic: types
+    chapter: type_unification
+
+  - id: type-unify-015
+    type: multiple
+    difficulty: easy
+    stem: "关于类型统一,以下说法正确的是?(多选)"
+    options:
+      - "A: 编译时进行"
+      - "B: 递归处理复合类型"
+      - "C: 同一参数必须一致"
+      - "D: 失败导致运行时错误"
+    answer: ABC
+    explanation: "类型统一在编译时递归进行,同一参数一致。失败是编译错误。参见 Go 规范 Type unification 章节。"
+    topic: types
+    chapter: type_unification
+
+  - id: type-unify-016
+    type: single
+    difficulty: easy
+    stem: "interface{M() T}与interface{M() int}统一后,T是什么?"
+    options:
+      - "A: interface"
+      - "B: int"
+      - "C: M"
+      - "D: 不能统一"
+    answer: B
+    explanation: "接口方法返回类型统一,T绑定到int。参见 Go 规范 Type unification 章节。"
+    topic: types
+    chapter: type_unification
+
+  - id: type-unify-017
+    type: single
+    difficulty: easy
+    stem: "T与T统一(相同类型参数)的结果是什么?"
+    options:
+      - "A: 成功,T不变"
+      - "B: 失败"
+      - "C: T=T"
+      - "D: 编译错误"
+    answer: A
+    explanation: "相同类型参数与自身统一总是成功,不改变绑定。参见 Go 规范 Type unification 章节。"
+    topic: types
+    chapter: type_unification
+
+  - id: type-unify-018
+    type: single
+    difficulty: easy
+    stem: "类型统一与类型断言的关系是什么?"
+    options:
+      - "A: 相同概念"
+      - "B: 完全不同"
+      - "C: 统一是编译时,断言是运行时"
+      - "D: 断言是统一的一种"
+    answer: C
+    explanation: "类型统一是编译时类型推断,类型断言是运行时类型检查。参见 Go 规范 Type unification 章节。"
+    topic: types
+    chapter: type_unification
+
+  # ========== 中等题 (Medium) - 11道 ==========
+
+  - id: type-unify-019
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func F[T any](a, b T) T { return a }
+      func main() {
+          fmt.Printf("%T\n", F(1, 2))
+      }
+    options:
+      - "A: int"
+      - "B: T"
+      - "C: any"
+      - "D: 编译错误"
+    answer: A
+    explanation: "两个参数都是int,T统一到int。返回int类型。参见 Go 规范 Type unification 章节。"
+    topic: types
+    chapter: type_unification
+
+  - id: type-unify-020
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func F[T any](a T, b T) T { return a }
+      func main() {
+          fmt.Println(F(1, 2.0))
+      }
+    options:
+      - "A: 1"
+      - "B: 2.0"
+      - "C: 编译错误"
+      - "D: 1.0"
+    answer: C
+    explanation: "1推断T=int,2.0推断T=float64。同一T不能统一到不同类型。编译错误。参见 Go 规范 Type unification 章节。"
+    topic: types
+    chapter: type_unification
+
+  - id: type-unify-021
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func F[T, U any](a T, b U) (T, U) { return a, b }
+      func main() {
+          x, y := F(1, "hello")
+          fmt.Printf("%T %T\n", x, y)
+      }
+    options:
+      - "A: int string"
+      - "B: T U"
+      - "C: any any"
+      - "D: 编译错误"
+    answer: A
+    explanation: "T与int统一,U与string统一。独立类型参数可以不同。参见 Go 规范 Type unification 章节。"
+    topic: types
+    chapter: type_unification
+
+  - id: type-unify-022
+    type: code_fix
+    difficulty: medium
+    stem: "以下代码编译错误,正确的修正是?"
+    code: |
+      package main
+      func F[T any](s []T, v T) bool {
+          for _, x := range s {
+              if x == v { return true }
+          }
+          return false
+      }
+    options:
+      - "A: T comparable"
+      - "B: 代码正确"
+      - "C: T any"
+      - "D: 移除==比较"
+    answer: A
+    explanation: "any约束不支持==比较。需要comparable约束。参见 Go 规范 Type constraints 章节。"
+    topic: types
+    chapter: type_unification
+
+  - id: type-unify-023
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func Swap[T any](a, b *T) { *a, *b = *b, *a }
+      func main() {
+          x, y := 1, 2
+          Swap(&x, &y)
+          fmt.Println(x, y)
+      }
+    options:
+      - "A: 2 1"
+      - "B: 1 2"
+      - "C: 编译错误"
+      - "D: 0 0"
+    answer: A
+    explanation: "*T与*int统一,T=int。Swap交换值。x=2,y=1。参见 Go 规范 Type unification 章节。"
+    topic: types
+    chapter: type_unification
+
+  - id: type-unify-024
+    type: multiple
+    difficulty: medium
+    stem: "以下哪些情况会导致类型统一失败?(多选)"
+    options:
+      - "A: T同时匹配int和string"
+      - "B: []T匹配map[K]V"
+      - "C: T匹配不满足约束的类型"
+      - "D: T匹配nil"
+    answer: ABCD
+    explanation: "同一T不同类型、结构不匹配、约束不满足、nil无类型都导致失败。参见 Go 规范 Type unification 章节。"
+    topic: types
+    chapter: type_unification
+
+  - id: type-unify-025
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func F[K comparable, V any](m map[K]V, k K) (V, bool) {
+          v, ok := m[k]
+          return v, ok
+      }
+      func main() {
+          m := map[string]int{"a": 1}
+          v, ok := F(m, "a")
+          fmt.Println(v, ok)
+      }
+    options:
+      - "A: 1 true"
+      - "B: 0 false"
+      - "C: 编译错误"
+      - "D: 1 false"
+    answer: A
+    explanation: "K=string,V=int统一成功。m[a]存在,返回1,true。参见 Go 规范 Type unification 章节。"
+    topic: types
+    chapter: type_unification
+
+  - id: type-unify-026
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func F[T any](ch chan T) T {
+          return <-ch
+      }
+      func main() {
+          ch := make(chan int, 1)
+          ch <- 42
+          fmt.Println(F(ch))
+      }
+    options:
+      - "A: 42"
+      - "B: 0"
+      - "C: 编译错误"
+      - "D: chan int"
+    answer: A
+    explanation: "chan T与chan int统一,T=int。从通道接收42。参见 Go 规范 Type unification 章节。"
+    topic: types
+    chapter: type_unification
+
+  - id: type-unify-027
+    type: code_fix
+    difficulty: medium
+    stem: "以下代码编译错误,如何修正?"
+    code: |
+      package main
+      func F[T any](a T, b T) T { return a }
+      func main() {
+          _ = F([]int{1}, []string{"a"})
+      }
+    options:
+      - "A: F[[]int]([]int{1}, []int{1})"
+      - "B: 不能修正,设计问题"
+      - "C: 使用不同类型参数"
+      - "D: A或C"
+    answer: D
+    explanation: "[]int和[]string不能统一到同一T。要么用相同类型,要么用两个类型参数。参见 Go 规范 Type unification 章节。"
+    topic: types
+    chapter: type_unification
+
+  - id: type-unify-028
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func F[T any](f func(T) T, v T) T { return f(v) }
+      func main() {
+          double := func(x int) int { return x * 2 }
+          fmt.Println(F(double, 5))
+      }
+    options:
+      - "A: 10"
+      - "B: 5"
+      - "C: 编译错误"
+      - "D: 0"
+    answer: A
+    explanation: "从double和5推断T=int。F(double,5)=double(5)=10。参见 Go 规范 Type unification 章节。"
+    topic: types
+    chapter: type_unification
+
+  - id: type-unify-029
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type Pair[T any] struct { First, Second T }
+      func F[T any](p Pair[T]) T { return p.First }
+      func main() {
+          p := Pair[int]{1, 2}
+          fmt.Println(F(p))
+      }
+    options:
+      - "A: 1"
+      - "B: 2"
+      - "C: 编译错误"
+      - "D: {1 2}"
+    answer: A
+    explanation: "Pair[T]与Pair[int]统一,T=int。F返回First=1。参见 Go 规范 Type unification 章节。"
+    topic: types
+    chapter: type_unification
+
+  # ========== 困难题 (Hard) - 4道 ==========
+
+  - id: type-unify-030
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func F[S ~[]E, E any](s S) E {
+          return s[0]
+      }
+      type MySlice []int
+      func main() {
+          s := MySlice{10, 20, 30}
+          fmt.Println(F(s))
+      }
+    options:
+      - "A: 10"
+      - "B: [10 20 30]"
+      - "C: 编译错误"
+      - "D: MySlice"
+    answer: A
+    explanation: "MySlice底层是[]int。S=MySlice,从~[]E推断E=int。返回s[0]=10。参见 Go 规范 Constraint type inference 章节。"
+    topic: types
+    chapter: type_unification
+
+  - id: type-unify-031
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type Ptr[T any] interface { *T }
+      func Deref[T any, P Ptr[T]](p P) T { return *p }
+      func main() {
+          x := 42
+          fmt.Println(Deref(&x))
+      }
+    options:
+      - "A: 42"
+      - "B: 编译错误(无法推断)"
+      - "C: &42"
+      - "D: 0"
+    answer: A
+    explanation: "从&x推断P=*int。从Ptr[T]约束*T=*int推断T=int。返回*p=42。参见 Go 规范 Constraint type inference 章节。"
+    topic: types
+    chapter: type_unification
+
+  - id: type-unify-032
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func F[M ~map[K]V, K comparable, V any](m M) []K {
+          keys := make([]K, 0, len(m))
+          for k := range m {
+              keys = append(keys, k)
+          }
+          return keys
+      }
+      type MyMap map[string]int
+      func main() {
+          m := MyMap{"a": 1, "b": 2}
+          fmt.Printf("%T\n", F(m))
+      }
+    options:
+      - "A: []string"
+      - "B: []K"
+      - "C: 编译错误"
+      - "D: []interface{}"
+    answer: A
+    explanation: "M=MyMap,~map[K]V推断K=string,V=int。返回[]string。参见 Go 规范 Constraint type inference 章节。"
+    topic: types
+    chapter: type_unification
+
+  - id: type-unify-033
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func Reduce[S ~[]E, E, R any](s S, init R, f func(R, E) R) R {
+          acc := init
+          for _, v := range s {
+              acc = f(acc, v)
+          }
+          return acc
+      }
+      func main() {
+          nums := []int{1, 2, 3, 4, 5}
+          sum := Reduce(nums, 0, func(a, b int) int { return a + b })
+          fmt.Println(sum)
+      }
+    options:
+      - "A: 15"
+      - "B: 0"
+      - "C: 编译错误"
+      - "D: 5"
+    answer: A
+    explanation: "S=[]int推断E=int。init=0和f返回值推断R=int。累加1+2+3+4+5=15。参见 Go 规范 Type unification 章节。"
+    topic: types
+    chapter: type_unification

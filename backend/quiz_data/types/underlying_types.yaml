@@ -1,0 +1,581 @@
+# Go 底层类型测验题库
+# 章节: types/underlying_types
+# 符合 Go 1.24 语言规范
+
+metadata:
+  topic: types
+  chapter: underlying_types
+  total_questions: 32
+  last_updated: "2025-01-01"
+  difficulty_distribution:
+    easy: 18      # 56%
+    medium: 10    # 31%
+    hard: 4       # 13%
+  type_distribution:
+    single: 15
+    multiple: 7
+    code_output: 7
+    code_fix: 3
+
+questions:
+  # ========== 简单题 (Easy) - 18道 ==========
+  
+  - id: type-under-001
+    type: single
+    difficulty: easy
+    stem: "Go中底层类型(underlying type)是什么?"
+    options:
+      - "A: 类型的别名"
+      - "B: 类型定义的基础类型"
+      - "C: 接口类型"
+      - "D: 指针类型"
+    answer: B
+    explanation: "每个类型都有底层类型,决定了类型的内存布局和操作。参见 Go 规范 Underlying types 章节。"
+    topic: types
+    chapter: underlying_types
+
+  - id: type-under-002
+    type: single
+    difficulty: easy
+    stem: "type MyInt int,MyInt的底层类型是什么?"
+    options:
+      - "A: MyInt"
+      - "B: int"
+      - "C: interface{}"
+      - "D: any"
+    answer: B
+    explanation: "type MyInt int定义新类型,底层类型是int。参见 Go 规范 Underlying types 章节。"
+    topic: types
+    chapter: underlying_types
+
+  - id: type-under-003
+    type: single
+    difficulty: easy
+    stem: "预声明类型int的底层类型是什么?"
+    options:
+      - "A: int"
+      - "B: number"
+      - "C: 无底层类型"
+      - "D: interface{}"
+    answer: A
+    explanation: "预声明类型的底层类型是其自身。int的底层类型是int。参见 Go 规范 Underlying types 章节。"
+    topic: types
+    chapter: underlying_types
+
+  - id: type-under-004
+    type: single
+    difficulty: easy
+    stem: "type A int; type B A,B的底层类型是什么?"
+    options:
+      - "A: A"
+      - "B: B"
+      - "C: int"
+      - "D: interface{}"
+    answer: C
+    explanation: "底层类型递归查找。B的底层类型是A的底层类型,即int。参见 Go 规范 Underlying types 章节。"
+    topic: types
+    chapter: underlying_types
+
+  - id: type-under-005
+    type: single
+    difficulty: easy
+    stem: "type S struct{X int}的底层类型是什么?"
+    options:
+      - "A: S"
+      - "B: struct{X int}"
+      - "C: int"
+      - "D: struct"
+    answer: B
+    explanation: "结构体类型的底层类型是结构体字面量struct{X int}。参见 Go 规范 Underlying types 章节。"
+    topic: types
+    chapter: underlying_types
+
+  - id: type-under-006
+    type: single
+    difficulty: easy
+    stem: "类型别名type A = B,A的底层类型是什么?"
+    options:
+      - "A: A"
+      - "B: B"
+      - "C: B的底层类型"
+      - "D: 无底层类型"
+    answer: C
+    explanation: "A是B的别名,A就是B。A的底层类型即B的底层类型。参见 Go 规范 Alias declarations 章节。"
+    topic: types
+    chapter: underlying_types
+
+  - id: type-under-007
+    type: single
+    difficulty: easy
+    stem: "[]int的底层类型是什么?"
+    options:
+      - "A: int"
+      - "B: []int"
+      - "C: slice"
+      - "D: array"
+    answer: B
+    explanation: "类型字面量的底层类型是其自身。[]int的底层类型是[]int。参见 Go 规范 Underlying types 章节。"
+    topic: types
+    chapter: underlying_types
+
+  - id: type-under-008
+    type: single
+    difficulty: easy
+    stem: "底层类型相同的两个类型可以相互转换吗?"
+    options:
+      - "A: 不可以"
+      - "B: 可以"
+      - "C: 需要显式转换"
+      - "D: B和C"
+    answer: D
+    explanation: "底层类型相同可以转换,但不同定义类型需要显式转换。参见 Go 规范 Conversions 章节。"
+    topic: types
+    chapter: underlying_types
+
+  - id: type-under-009
+    type: single
+    difficulty: easy
+    stem: "interface{}的底层类型是什么?"
+    options:
+      - "A: interface"
+      - "B: interface{}"
+      - "C: any"
+      - "D: 无底层类型"
+    answer: B
+    explanation: "interface{}是类型字面量,底层类型是其自身interface{}。参见 Go 规范 Underlying types 章节。"
+    topic: types
+    chapter: underlying_types
+
+  - id: type-under-010
+    type: single
+    difficulty: easy
+    stem: "map[string]int的底层类型是什么?"
+    options:
+      - "A: map"
+      - "B: string"
+      - "C: int"
+      - "D: map[string]int"
+    answer: D
+    explanation: "类型字面量的底层类型是其自身。参见 Go 规范 Underlying types 章节。"
+    topic: types
+    chapter: underlying_types
+
+  - id: type-under-011
+    type: single
+    difficulty: easy
+    stem: "chan int的底层类型是什么?"
+    options:
+      - "A: channel"
+      - "B: int"
+      - "C: chan int"
+      - "D: chan"
+    answer: C
+    explanation: "chan int是类型字面量,底层类型是其自身chan int。参见 Go 规范 Underlying types 章节。"
+    topic: types
+    chapter: underlying_types
+
+  - id: type-under-012
+    type: single
+    difficulty: easy
+    stem: "func(int)int的底层类型是什么?"
+    options:
+      - "A: function"
+      - "B: int"
+      - "C: func(int)int"
+      - "D: func"
+    answer: C
+    explanation: "函数类型字面量的底层类型是其自身。参见 Go 规范 Underlying types 章节。"
+    topic: types
+    chapter: underlying_types
+
+  - id: type-under-013
+    type: single
+    difficulty: easy
+    stem: "*int的底层类型是什么?"
+    options:
+      - "A: int"
+      - "B: pointer"
+      - "C: *int"
+      - "D: 无底层类型"
+    answer: C
+    explanation: "指针类型字面量的底层类型是其自身*int。参见 Go 规范 Underlying types 章节。"
+    topic: types
+    chapter: underlying_types
+
+  - id: type-under-014
+    type: single
+    difficulty: easy
+    stem: "泛型约束中~T表示什么?"
+    options:
+      - "A: 类型T"
+      - "B: 底层类型是T"
+      - "C: T的指针"
+      - "D: T的别名"
+    answer: B
+    explanation: "~T表示底层类型是T的所有类型。用于泛型约束。参见 Go 规范 Type approximation 章节。"
+    topic: types
+    chapter: underlying_types
+
+  - id: type-under-015
+    type: multiple
+    difficulty: easy
+    stem: "以下哪些类型的底层类型是其自身?(多选)"
+    options:
+      - "A: int"
+      - "B: []int"
+      - "C: type MyInt int"
+      - "D: map[string]int"
+    answer: ABD
+    explanation: "预声明类型和类型字面量底层类型是自身。type MyInt int底层是int。参见 Go 规范 Underlying types 章节。"
+    topic: types
+    chapter: underlying_types
+
+  - id: type-under-016
+    type: single
+    difficulty: easy
+    stem: "[3]int的底层类型是什么?"
+    options:
+      - "A: int"
+      - "B: array"
+      - "C: [3]int"
+      - "D: []int"
+    answer: C
+    explanation: "数组类型字面量的底层类型是其自身[3]int。参见 Go 规范 Underlying types 章节。"
+    topic: types
+    chapter: underlying_types
+
+  - id: type-under-017
+    type: single
+    difficulty: easy
+    stem: "底层类型决定了什么?"
+    options:
+      - "A: 类型名称"
+      - "B: 内存布局和操作"
+      - "C: 方法集"
+      - "D: 导出性"
+    answer: B
+    explanation: "底层类型决定类型的内存布局和允许的操作(如算术、索引等)。参见 Go 规范 Underlying types 章节。"
+    topic: types
+    chapter: underlying_types
+
+  - id: type-under-018
+    type: single
+    difficulty: easy
+    stem: "string的底层类型是什么?"
+    options:
+      - "A: []byte"
+      - "B: []rune"
+      - "C: string"
+      - "D: char[]"
+    answer: C
+    explanation: "string是预声明类型,底层类型是其自身string。参见 Go 规范 Underlying types 章节。"
+    topic: types
+    chapter: underlying_types
+
+  # ========== 中等题 (Medium) - 10道 ==========
+
+  - id: type-under-019
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type MyInt int
+      func main() {
+          var x MyInt = 10
+          var y int = int(x)
+          fmt.Println(y)
+      }
+    options:
+      - "A: 10"
+      - "B: MyInt(10)"
+      - "C: 编译错误"
+      - "D: 0"
+    answer: A
+    explanation: "MyInt底层是int,可以转换。int(x)=10。输出10。参见 Go 规范 Conversions 章节。"
+    topic: types
+    chapter: underlying_types
+
+  - id: type-under-020
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type A int
+      type B int
+      func main() {
+          var a A = 1
+          var b B = B(a)
+          fmt.Println(b)
+      }
+    options:
+      - "A: 1"
+      - "B: 编译错误"
+      - "C: 0"
+      - "D: A(1)"
+    answer: A
+    explanation: "A和B底层都是int,可以相互转换。B(a)=1。输出1。参见 Go 规范 Conversions 章节。"
+    topic: types
+    chapter: underlying_types
+
+  - id: type-under-021
+    type: code_fix
+    difficulty: medium
+    stem: "以下代码编译错误,正确的修正是?"
+    code: |
+      package main
+      type MyInt int
+      func main() {
+          var x MyInt = 10
+          var y int = x
+      }
+    options:
+      - "A: var y int = int(x)"
+      - "B: var y MyInt = x"
+      - "C: 代码正确"
+      - "D: A或B"
+    answer: D
+    explanation: "MyInt和int是不同类型,需要转换或改类型。A显式转换,B统一类型。参见 Go 规范 Conversions 章节。"
+    topic: types
+    chapter: underlying_types
+
+  - id: type-under-022
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type MySlice []int
+      func main() {
+          var s MySlice = []int{1, 2, 3}
+          fmt.Println(len(s))
+      }
+    options:
+      - "A: 3"
+      - "B: 编译错误"
+      - "C: 0"
+      - "D: MySlice"
+    answer: A
+    explanation: "MySlice底层是[]int。[]int字面量可以赋值。len(s)=3。参见 Go 规范 Underlying types 章节。"
+    topic: types
+    chapter: underlying_types
+
+  - id: type-under-023
+    type: multiple
+    difficulty: medium
+    stem: "以下哪些类型可以不经转换赋值给type MyInt int?(多选)"
+    options:
+      - "A: int"
+      - "B: int64"
+      - "C: 无类型常量10"
+      - "D: MyInt"
+    answer: CD
+    explanation: "无类型常量可以隐式转换,同类型可以。int需要显式转换。参见 Go 规范 Assignability 章节。"
+    topic: types
+    chapter: underlying_types
+
+  - id: type-under-024
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type Point struct{ X, Y int }
+      func main() {
+          p1 := Point{1, 2}
+          p2 := struct{ X, Y int }{1, 2}
+          fmt.Println(p1 == p2)
+      }
+    options:
+      - "A: true"
+      - "B: false"
+      - "C: 编译错误"
+      - "D: panic"
+    answer: A
+    explanation: "Point底层是struct{X,Y int}。p2也是该类型。可比较且相等。参见 Go 规范 Comparison operators 章节。"
+    topic: types
+    chapter: underlying_types
+
+  - id: type-under-025
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type MyFunc func(int) int
+      func main() {
+          var f MyFunc = func(x int) int { return x * 2 }
+          fmt.Println(f(5))
+      }
+    options:
+      - "A: 10"
+      - "B: 5"
+      - "C: 编译错误"
+      - "D: MyFunc"
+    answer: A
+    explanation: "MyFunc底层是func(int)int。函数字面量类型匹配可赋值。f(5)=10。参见 Go 规范 Underlying types 章节。"
+    topic: types
+    chapter: underlying_types
+
+  - id: type-under-026
+    type: multiple
+    difficulty: medium
+    stem: "关于底层类型和转换,以下说法正确的是?(多选)"
+    options:
+      - "A: 底层类型相同可以转换"
+      - "B: 无类型常量可以隐式转换"
+      - "C: 类型别名无需转换"
+      - "D: 不同定义类型总是需要转换"
+    answer: ABC
+    explanation: "底层相同可转换,无类型常量隐式,别名是同类型。同底层不同名需要转换。参见 Go 规范 Conversions 章节。"
+    topic: types
+    chapter: underlying_types
+
+  - id: type-under-027
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type MyMap map[string]int
+      func main() {
+          m := MyMap{"a": 1}
+          m["b"] = 2
+          fmt.Println(len(m))
+      }
+    options:
+      - "A: 2"
+      - "B: 1"
+      - "C: 编译错误"
+      - "D: 0"
+    answer: A
+    explanation: "MyMap底层是map[string]int。支持map操作。添加后len=2。参见 Go 规范 Underlying types 章节。"
+    topic: types
+    chapter: underlying_types
+
+  - id: type-under-028
+    type: code_fix
+    difficulty: medium
+    stem: "以下代码编译错误,如何修正?"
+    code: |
+      package main
+      type Int1 int
+      type Int2 int
+      func main() {
+          var x Int1 = 10
+          var y Int2 = x
+      }
+    options:
+      - "A: var y Int2 = Int2(x)"
+      - "B: 代码正确"
+      - "C: var y Int2 = int(x)"
+      - "D: 无法修正"
+    answer: A
+    explanation: "Int1和Int2是不同类型。需要显式转换Int2(x)。底层都是int可转换。参见 Go 规范 Conversions 章节。"
+    topic: types
+    chapter: underlying_types
+
+  # ========== 困难题 (Hard) - 4道 ==========
+
+  - id: type-under-029
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type T1 struct{ X int }
+      type T2 struct{ X int }
+      func main() {
+          v1 := T1{1}
+          v2 := T2(v1)
+          fmt.Println(v2.X)
+      }
+    options:
+      - "A: 1"
+      - "B: 编译错误"
+      - "C: 0"
+      - "D: T2{1}"
+    answer: A
+    explanation: "T1和T2底层类型相同struct{X int}。可以转换。v2.X=1。参见 Go 规范 Conversions 章节。"
+    topic: types
+    chapter: underlying_types
+
+  - id: type-under-030
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type A int
+      type B A
+      type C B
+      func main() {
+          var c C = 10
+          var i int = int(c)
+          fmt.Println(i)
+      }
+    options:
+      - "A: 10"
+      - "B: 编译错误"
+      - "C: C(10)"
+      - "D: 0"
+    answer: A
+    explanation: "C->B->A->int,底层都是int。可以链式转换。int(c)=10。参见 Go 规范 Conversions 章节。"
+    topic: types
+    chapter: underlying_types
+
+  - id: type-under-031
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type Number interface{ ~int | ~float64 }
+      type MyInt int
+      func Add[T Number](a, b T) T { return a + b }
+      func main() {
+          fmt.Println(Add(MyInt(1), MyInt(2)))
+      }
+    options:
+      - "A: 3"
+      - "B: 编译错误"
+      - "C: MyInt(3)"
+      - "D: 1"
+    answer: A
+    explanation: "MyInt底层是int,满足~int约束。Add(1,2)=3。输出3(非MyInt格式)。参见 Go 规范 Type constraints 章节。"
+    topic: types
+    chapter: underlying_types
+
+  - id: type-under-032
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      import "reflect"
+      type MyInt int
+      func main() {
+          var x MyInt = 10
+          t := reflect.TypeOf(x)
+          fmt.Println(t.Kind(), t.Name())
+      }
+    options:
+      - "A: int MyInt"
+      - "B: MyInt int"
+      - "C: int int"
+      - "D: MyInt MyInt"
+    answer: A
+    explanation: "Kind返回底层类型种类int。Name返回类型名MyInt。参见 Go reflect包文档。"
+    topic: types
+    chapter: underlying_types

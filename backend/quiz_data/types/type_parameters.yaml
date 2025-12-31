@@ -1,0 +1,829 @@
+# Go 类型参数测验题库
+# 章节: types/type_parameters
+# 符合 Go 1.24 语言规范 (泛型)
+
+metadata:
+  topic: types
+  chapter: type_parameters
+  total_questions: 42
+  last_updated: "2025-01-01"
+  difficulty_distribution:
+    easy: 23      # 55%
+    medium: 14    # 33%
+    hard: 5       # 12%
+  type_distribution:
+    single: 20
+    multiple: 9
+    code_output: 9
+    code_fix: 4
+
+questions:
+  # ========== 简单题 (Easy) - 23道 ==========
+  
+  - id: type-param-001
+    type: single
+    difficulty: easy
+    stem: "Go中类型参数使用什么语法声明?"
+    options:
+      - "A: func F<T>(x T)"
+      - "B: func F[T any](x T)"
+      - "C: func F(T)(x T)"
+      - "D: func F{T}(x T)"
+    answer: B
+    explanation: "Go使用方括号[]声明类型参数。func F[T any](x T)是正确语法。参见 Go 规范 Type parameter declarations 章节。"
+    topic: types
+    chapter: type_parameters
+
+  - id: type-param-002
+    type: single
+    difficulty: easy
+    stem: "any约束表示什么?"
+    options:
+      - "A: 只有基本类型"
+      - "B: 任何类型"
+      - "C: 只有接口"
+      - "D: 只有结构体"
+    answer: B
+    explanation: "any是interface{}的别名,允许任何类型。参见 Go 规范 Type constraints 章节。"
+    topic: types
+    chapter: type_parameters
+
+  - id: type-param-003
+    type: single
+    difficulty: easy
+    stem: "Go泛型是在哪个版本引入的?"
+    options:
+      - "A: Go 1.16"
+      - "B: Go 1.17"
+      - "C: Go 1.18"
+      - "D: Go 1.20"
+    answer: C
+    explanation: "Go 1.18(2022年3月)正式引入泛型。参见 Go 官方发布说明。"
+    topic: types
+    chapter: type_parameters
+
+  - id: type-param-004
+    type: single
+    difficulty: easy
+    stem: "泛型函数调用时如何指定类型参数?"
+    options:
+      - "A: F<int>(x)"
+      - "B: F[int](x)"
+      - "C: F(int)(x)"
+      - "D: F{int}(x)"
+    answer: B
+    explanation: "使用方括号指定类型参数:F[int](x)。参见 Go 规范 Instantiations 章节。"
+    topic: types
+    chapter: type_parameters
+
+  - id: type-param-005
+    type: single
+    difficulty: easy
+    stem: "泛型类型如何声明?"
+    options:
+      - "A: type List<T> []T"
+      - "B: type List[T any] []T"
+      - "C: type List(T) []T"
+      - "D: type List{T} []T"
+    answer: B
+    explanation: "泛型类型使用方括号声明类型参数:type List[T any] []T。参见 Go 规范 Type declarations 章节。"
+    topic: types
+    chapter: type_parameters
+
+  - id: type-param-006
+    type: single
+    difficulty: easy
+    stem: "comparable约束允许哪些操作?"
+    options:
+      - "A: 加减乘除"
+      - "B: 比较==和!="
+      - "C: 所有操作"
+      - "D: 只有赋值"
+    answer: B
+    explanation: "comparable约束允许==和!=比较。用于map键等场景。参见 Go 规范 comparable constraint 章节。"
+    topic: types
+    chapter: type_parameters
+
+  - id: type-param-007
+    type: single
+    difficulty: easy
+    stem: "泛型函数可以有多少个类型参数?"
+    options:
+      - "A: 只有1个"
+      - "B: 最多2个"
+      - "C: 最多5个"
+      - "D: 任意数量"
+    answer: D
+    explanation: "泛型函数可以有任意数量的类型参数。如[T, U, V any]。参见 Go 规范 Type parameters 章节。"
+    topic: types
+    chapter: type_parameters
+
+  - id: type-param-008
+    type: single
+    difficulty: easy
+    stem: "泛型类型实例化时必须指定类型参数吗?"
+    options:
+      - "A: 必须"
+      - "B: 可以推断"
+      - "C: 视情况而定"
+      - "D: 不需要"
+    answer: C
+    explanation: "函数调用可以推断,但类型声明必须显式指定。如var x List[int]。参见 Go 规范 Type inference 章节。"
+    topic: types
+    chapter: type_parameters
+
+  - id: type-param-009
+    type: single
+    difficulty: easy
+    stem: "泛型方法的接收者如何声明?"
+    options:
+      - "A: func (s *Stack<T>) Push(v T)"
+      - "B: func (s *Stack[T]) Push(v T)"
+      - "C: func [T any](s *Stack) Push(v T)"
+      - "D: func (s *Stack) Push[T any](v T)"
+    answer: B
+    explanation: "方法接收者使用泛型类型的实例化形式:func (s *Stack[T]) Push(v T)。参见 Go 规范 Method declarations 章节。"
+    topic: types
+    chapter: type_parameters
+
+  - id: type-param-010
+    type: single
+    difficulty: easy
+    stem: "可以为泛型类型的方法声明额外类型参数吗?"
+    options:
+      - "A: 可以"
+      - "B: 不可以"
+      - "C: 只能1个"
+      - "D: 需要特殊语法"
+    answer: B
+    explanation: "泛型类型的方法不能有额外类型参数。只能使用类型定义的参数。参见 Go 规范 Method declarations 章节。"
+    topic: types
+    chapter: type_parameters
+
+  - id: type-param-011
+    type: single
+    difficulty: easy
+    stem: "类型参数可以有默认值吗?"
+    options:
+      - "A: 可以"
+      - "B: 不可以"
+      - "C: Go 1.20+可以"
+      - "D: 只有约束可以"
+    answer: B
+    explanation: "Go的类型参数不支持默认值。必须显式提供或能够推断。参见 Go 规范 Type parameters 章节。"
+    topic: types
+    chapter: type_parameters
+
+  - id: type-param-012
+    type: single
+    difficulty: easy
+    stem: "泛型函数内如何创建类型参数的零值?"
+    options:
+      - "A: T{}"
+      - "B: new(T)"
+      - "C: var zero T"
+      - "D: B和C都可以"
+    answer: D
+    explanation: "可以用var zero T或*new(T)获得零值。T{}只对struct有效。参见 Go 规范 The zero value 章节。"
+    topic: types
+    chapter: type_parameters
+
+  - id: type-param-013
+    type: single
+    difficulty: easy
+    stem: "泛型约束必须是什么类型?"
+    options:
+      - "A: struct"
+      - "B: interface"
+      - "C: 任何类型"
+      - "D: func"
+    answer: B
+    explanation: "类型约束必须是接口类型。interface{}(any)是最宽松的约束。参见 Go 规范 Type constraints 章节。"
+    topic: types
+    chapter: type_parameters
+
+  - id: type-param-014
+    type: single
+    difficulty: easy
+    stem: "~int在类型约束中表示什么?"
+    options:
+      - "A: 约等于int"
+      - "B: 底层类型是int"
+      - "C: 可以转换为int"
+      - "D: int的指针"
+    answer: B
+    explanation: "~int表示底层类型是int的所有类型。包括type MyInt int。参见 Go 规范 Type approximation 章节。"
+    topic: types
+    chapter: type_parameters
+
+  - id: type-param-015
+    type: multiple
+    difficulty: easy
+    stem: "关于泛型,以下说法正确的是?(多选)"
+    options:
+      - "A: Go 1.18引入"
+      - "B: 使用[]声明"
+      - "C: 约束是接口"
+      - "D: 支持运行时反射泛型"
+    answer: ABC
+    explanation: "Go 1.18引入泛型,用[]声明,约束是接口。反射不直接支持泛型元数据。参见 Go 规范 Type parameters 章节。"
+    topic: types
+    chapter: type_parameters
+
+  - id: type-param-016
+    type: single
+    difficulty: easy
+    stem: "类型参数名有什么要求?"
+    options:
+      - "A: 必须是大写"
+      - "B: 必须是单字母"
+      - "C: 必须是T"
+      - "D: 是有效标识符即可"
+    answer: D
+    explanation: "类型参数名是有效标识符即可。习惯用T、K、V等,但非强制。参见 Go 规范 Identifiers 章节。"
+    topic: types
+    chapter: type_parameters
+
+  - id: type-param-017
+    type: single
+    difficulty: easy
+    stem: "泛型类型可以实现接口吗?"
+    options:
+      - "A: 不可以"
+      - "B: 可以"
+      - "C: 只有非泛型接口"
+      - "D: 需要显式声明"
+    answer: B
+    explanation: "泛型类型实例化后可以实现接口。如Stack[int]可以实现接口。参见 Go 规范 Method sets 章节。"
+    topic: types
+    chapter: type_parameters
+
+  - id: type-param-018
+    type: single
+    difficulty: easy
+    stem: "接口可以有类型参数吗?"
+    options:
+      - "A: 可以"
+      - "B: 不可以"
+      - "C: 只用于约束"
+      - "D: Go 1.20+可以"
+    answer: A
+    explanation: "Go 1.18+接口可以有类型参数。如type Comparable[T any] interface{...}。参见 Go 规范 Interface types 章节。"
+    topic: types
+    chapter: type_parameters
+
+  - id: type-param-019
+    type: single
+    difficulty: easy
+    stem: "以下哪个不是有效的类型约束?"
+    options:
+      - "A: any"
+      - "B: comparable"
+      - "C: int | string"
+      - "D: func()"
+    answer: D
+    explanation: "约束必须是接口。func()是函数类型不是接口。int|string是联合约束。参见 Go 规范 Type constraints 章节。"
+    topic: types
+    chapter: type_parameters
+
+  - id: type-param-020
+    type: multiple
+    difficulty: easy
+    stem: "以下哪些是预声明的约束?(多选)"
+    options:
+      - "A: any"
+      - "B: comparable"
+      - "C: numeric"
+      - "D: ordered"
+    answer: AB
+    explanation: "any和comparable是预声明的。numeric和ordered需要自定义或用cmp包。参见 Go 规范 Predeclared identifiers 章节。"
+    topic: types
+    chapter: type_parameters
+
+  - id: type-param-021
+    type: single
+    difficulty: easy
+    stem: "泛型类型嵌入其他类型时如何写?"
+    options:
+      - "A: type S struct { List[T] }"
+      - "B: type S[T any] struct { List[T] }"
+      - "C: 不能嵌入泛型类型"
+      - "D: type S struct { List[any] }"
+    answer: B
+    explanation: "嵌入泛型类型需要外层也是泛型。如type S[T any] struct { List[T] }。参见 Go 规范 Struct types 章节。"
+    topic: types
+    chapter: type_parameters
+
+  - id: type-param-022
+    type: single
+    difficulty: easy
+    stem: "泛型函数的类型参数作用域是什么?"
+    options:
+      - "A: 整个包"
+      - "B: 函数签名和函数体"
+      - "C: 只有函数体"
+      - "D: 文件级别"
+    answer: B
+    explanation: "类型参数作用域从声明开始到函数体结束。参见 Go 规范 Declarations and scope 章节。"
+    topic: types
+    chapter: type_parameters
+
+  - id: type-param-023
+    type: single
+    difficulty: easy
+    stem: "可以将泛型函数赋值给变量吗?"
+    options:
+      - "A: 直接赋值"
+      - "B: 需要先实例化"
+      - "C: 不可以"
+      - "D: 取决于约束"
+    answer: B
+    explanation: "泛型函数必须实例化后才能赋值:var f = F[int]。参见 Go 规范 Instantiations 章节。"
+    topic: types
+    chapter: type_parameters
+
+  # ========== 中等题 (Medium) - 14道 ==========
+
+  - id: type-param-024
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func First[T any](s []T) T {
+          return s[0]
+      }
+      func main() {
+          fmt.Println(First([]int{1, 2, 3}))
+      }
+    options:
+      - "A: 1"
+      - "B: [1 2 3]"
+      - "C: 编译错误"
+      - "D: 0"
+    answer: A
+    explanation: "类型推断T为int。First返回s[0]=1。参见 Go 规范 Type inference 章节。"
+    topic: types
+    chapter: type_parameters
+
+  - id: type-param-025
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func Swap[T any](a, b T) (T, T) {
+          return b, a
+      }
+      func main() {
+          x, y := Swap[string]("hello", "world")
+          fmt.Println(x, y)
+      }
+    options:
+      - "A: hello world"
+      - "B: world hello"
+      - "C: 编译错误"
+      - "D: panic"
+    answer: B
+    explanation: "Swap交换参数顺序。返回b,a即world,hello。参见 Go 规范 Type parameters 章节。"
+    topic: types
+    chapter: type_parameters
+
+  - id: type-param-026
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type Stack[T any] struct {
+          items []T
+      }
+      func (s *Stack[T]) Push(item T) {
+          s.items = append(s.items, item)
+      }
+      func (s *Stack[T]) Pop() T {
+          n := len(s.items)
+          item := s.items[n-1]
+          s.items = s.items[:n-1]
+          return item
+      }
+      func main() {
+          s := &Stack[int]{}
+          s.Push(10)
+          s.Push(20)
+          fmt.Println(s.Pop())
+      }
+    options:
+      - "A: 10"
+      - "B: 20"
+      - "C: 编译错误"
+      - "D: panic"
+    answer: B
+    explanation: "栈后进先出。Push(10),Push(20)后Pop()返回20。参见 Go 规范 Type parameters 章节。"
+    topic: types
+    chapter: type_parameters
+
+  - id: type-param-027
+    type: code_fix
+    difficulty: medium
+    stem: "以下代码编译错误,正确的修正是?"
+    code: |
+      package main
+      func Add[T any](a, b T) T {
+          return a + b
+      }
+    options:
+      - "A: T comparable"
+      - "B: T ~int | ~float64"
+      - "C: T interface{}"
+      - "D: 代码正确"
+    answer: B
+    explanation: "any约束不支持+操作。需要约束为支持+的类型如~int|~float64。参见 Go 规范 Type constraints 章节。"
+    topic: types
+    chapter: type_parameters
+
+  - id: type-param-028
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func Keys[K comparable, V any](m map[K]V) []K {
+          keys := make([]K, 0, len(m))
+          for k := range m {
+              keys = append(keys, k)
+          }
+          return keys
+      }
+      func main() {
+          m := map[string]int{"a": 1, "b": 2}
+          fmt.Println(len(Keys(m)))
+      }
+    options:
+      - "A: 2"
+      - "B: 0"
+      - "C: 编译错误"
+      - "D: panic"
+    answer: A
+    explanation: "Keys返回map的所有键。m有2个键,len=2。参见 Go 规范 Type parameters 章节。"
+    topic: types
+    chapter: type_parameters
+
+  - id: type-param-029
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func Zero[T any]() T {
+          var zero T
+          return zero
+      }
+      func main() {
+          fmt.Printf("%v %v", Zero[int](), Zero[string]())
+      }
+    options:
+      - "A: 0 "
+      - "B: nil nil"
+      - "C: <nil> <nil>"
+      - "D: 编译错误"
+    answer: A
+    explanation: "Zero返回T的零值。int的零值是0,string的零值是空串。参见 Go 规范 The zero value 章节。"
+    topic: types
+    chapter: type_parameters
+
+  - id: type-param-030
+    type: multiple
+    difficulty: medium
+    stem: "关于泛型方法,以下说法正确的是?(多选)"
+    options:
+      - "A: 方法不能有额外类型参数"
+      - "B: 必须使用接收者的类型参数"
+      - "C: 接收者可以是指针"
+      - "D: 可以为泛型类型定义方法"
+    answer: ABCD
+    explanation: "泛型类型的方法不能有额外参数,必须用接收者参数,可以是指针,可以定义方法。参见 Go 规范 Method declarations 章节。"
+    topic: types
+    chapter: type_parameters
+
+  - id: type-param-031
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type Pair[T, U any] struct {
+          First  T
+          Second U
+      }
+      func main() {
+          p := Pair[int, string]{1, "one"}
+          fmt.Println(p.First, p.Second)
+      }
+    options:
+      - "A: 1 one"
+      - "B: 0 "
+      - "C: 编译错误"
+      - "D: {1 one}"
+    answer: A
+    explanation: "Pair有两个类型参数。实例化为Pair[int,string]。输出1 one。参见 Go 规范 Type parameters 章节。"
+    topic: types
+    chapter: type_parameters
+
+  - id: type-param-032
+    type: code_fix
+    difficulty: medium
+    stem: "以下代码编译错误,正确的修正是?"
+    code: |
+      package main
+      type Stack[T any] []T
+      func (s *Stack[T]) Push[U any](item U) {
+          *s = append(*s, item)
+      }
+    options:
+      - "A: 移除Push的[U any]"
+      - "B: 将item类型改为T"
+      - "C: A和B都需要"
+      - "D: 代码正确"
+    answer: C
+    explanation: "方法不能有额外类型参数,且item类型必须是T。需要两个修改。参见 Go 规范 Method declarations 章节。"
+    topic: types
+    chapter: type_parameters
+
+  - id: type-param-033
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func Equal[T comparable](a, b T) bool {
+          return a == b
+      }
+      func main() {
+          fmt.Println(Equal([]int{1}, []int{1}))
+      }
+    options:
+      - "A: true"
+      - "B: false"
+      - "C: 编译错误"
+      - "D: panic"
+    answer: C
+    explanation: "[]int不满足comparable约束(切片不可比较)。编译错误。参见 Go 规范 comparable constraint 章节。"
+    topic: types
+    chapter: type_parameters
+
+  - id: type-param-034
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func Filter[T any](s []T, f func(T) bool) []T {
+          var result []T
+          for _, v := range s {
+              if f(v) {
+                  result = append(result, v)
+              }
+          }
+          return result
+      }
+      func main() {
+          nums := []int{1, 2, 3, 4, 5}
+          evens := Filter(nums, func(n int) bool { return n%2 == 0 })
+          fmt.Println(evens)
+      }
+    options:
+      - "A: [2 4]"
+      - "B: [1 3 5]"
+      - "C: 编译错误"
+      - "D: []"
+    answer: A
+    explanation: "Filter保留满足条件的元素。偶数是2和4。输出[2 4]。参见 Go 规范 Type inference 章节。"
+    topic: types
+    chapter: type_parameters
+
+  - id: type-param-035
+    type: multiple
+    difficulty: medium
+    stem: "类型推断可以在哪些情况下工作?(多选)"
+    options:
+      - "A: 函数参数推断"
+      - "B: 约束推断"
+      - "C: 返回值推断"
+      - "D: 变量声明推断"
+    answer: AB
+    explanation: "Go支持参数类型推断和约束类型推断。返回值和变量声明不能推断类型参数。参见 Go 规范 Type inference 章节。"
+    topic: types
+    chapter: type_parameters
+
+  - id: type-param-036
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type Number interface {
+          ~int | ~float64
+      }
+      func Sum[T Number](nums []T) T {
+          var sum T
+          for _, n := range nums {
+              sum += n
+          }
+          return sum
+      }
+      func main() {
+          fmt.Println(Sum([]float64{1.1, 2.2, 3.3}))
+      }
+    options:
+      - "A: 6.6"
+      - "B: 6"
+      - "C: 6.600000000000001"
+      - "D: 编译错误"
+    answer: A
+    explanation: "Number约束允许+操作。Sum计算切片总和。1.1+2.2+3.3=6.6。参见 Go 规范 Type constraints 章节。"
+    topic: types
+    chapter: type_parameters
+
+  - id: type-param-037
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func Map[T, U any](s []T, f func(T) U) []U {
+          r := make([]U, len(s))
+          for i, v := range s {
+              r[i] = f(v)
+          }
+          return r
+      }
+      func main() {
+          nums := []int{1, 2, 3}
+          strs := Map(nums, func(n int) string {
+              return fmt.Sprintf("%d", n)
+          })
+          fmt.Println(strs)
+      }
+    options:
+      - "A: [1 2 3]"
+      - "B: [\"1\" \"2\" \"3\"]"
+      - "C: 编译错误"
+      - "D: panic"
+    answer: A
+    explanation: "Map将int转为string。fmt打印string切片时不带引号。输出[1 2 3]。参见 Go 规范 Type inference 章节。"
+    topic: types
+    chapter: type_parameters
+
+  # ========== 困难题 (Hard) - 5道 ==========
+
+  - id: type-param-038
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type Addable interface {
+          ~int | ~float64 | ~string
+      }
+      func Add[T Addable](a, b T) T {
+          return a + b
+      }
+      func main() {
+          fmt.Println(Add("Hello", "World"))
+      }
+    options:
+      - "A: HelloWorld"
+      - "B: Hello World"
+      - "C: 编译错误"
+      - "D: panic"
+    answer: A
+    explanation: "Addable包含~string,+对string是拼接。输出HelloWorld(无空格)。参见 Go 规范 String concatenation 章节。"
+    topic: types
+    chapter: type_parameters
+
+  - id: type-param-039
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type Container[T any] struct {
+          value T
+      }
+      func (c Container[T]) Get() T {
+          return c.value
+      }
+      func (c *Container[T]) Set(v T) {
+          c.value = v
+      }
+      func main() {
+          c := Container[int]{10}
+          c.Set(20)
+          fmt.Println(c.Get())
+      }
+    options:
+      - "A: 10"
+      - "B: 20"
+      - "C: 编译错误"
+      - "D: 0"
+    answer: B
+    explanation: "Set是指针接收者,修改了c.value。Get返回修改后的值20。参见 Go 规范 Method sets 章节。"
+    topic: types
+    chapter: type_parameters
+
+  - id: type-param-040
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func Reduce[T, U any](s []T, init U, f func(U, T) U) U {
+          acc := init
+          for _, v := range s {
+              acc = f(acc, v)
+          }
+          return acc
+      }
+      func main() {
+          nums := []int{1, 2, 3, 4}
+          sum := Reduce(nums, 0, func(a, b int) int { return a + b })
+          fmt.Println(sum)
+      }
+    options:
+      - "A: 10"
+      - "B: 0"
+      - "C: 24"
+      - "D: 编译错误"
+    answer: A
+    explanation: "Reduce累加:0+1+2+3+4=10。T=int,U=int,类型推断成功。参见 Go 规范 Type inference 章节。"
+    topic: types
+    chapter: type_parameters
+
+  - id: type-param-041
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type Ptr[T any] interface {
+          *T
+      }
+      func Zero[T any, PT Ptr[T]]() T {
+          var p PT
+          return *p
+      }
+      func main() {
+          fmt.Println(Zero[int, *int]())
+      }
+    options:
+      - "A: 0"
+      - "B: nil"
+      - "C: panic"
+      - "D: 编译错误"
+    answer: C
+    explanation: "var p PT声明nil指针。*p解引用nil会panic。参见 Go 规范 Address operators 章节。"
+    topic: types
+    chapter: type_parameters
+
+  - id: type-param-042
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type Set[T comparable] map[T]struct{}
+      func (s Set[T]) Add(v T) { s[v] = struct{}{} }
+      func (s Set[T]) Has(v T) bool { _, ok := s[v]; return ok }
+      func NewSet[T comparable]() Set[T] { return make(Set[T]) }
+      func main() {
+          s := NewSet[string]()
+          s.Add("a")
+          s.Add("b")
+          s.Add("a")
+          fmt.Println(len(s), s.Has("a"), s.Has("c"))
+      }
+    options:
+      - "A: 2 true false"
+      - "B: 3 true false"
+      - "C: 2 true true"
+      - "D: 编译错误"
+    answer: A
+    explanation: "Set是map,重复Add(a)不增加元素。len=2,Has(a)=true,Has(c)=false。参见 Go 规范 Map types 章节。"
+    topic: types
+    chapter: type_parameters

@@ -1,0 +1,683 @@
+# Go 短变量声明测验题库
+# 章节: variables/short_declarations
+# 符合 Go 1.24 语言规范
+
+metadata:
+  topic: variables
+  chapter: short_declarations
+  total_questions: 38
+  last_updated: "2025-01-01"
+  difficulty_distribution:
+    easy: 23      # 60%
+    medium: 11    # 29%
+    hard: 4       # 11%
+  type_distribution:
+    single: 16
+    multiple: 9
+    code_output: 8
+    code_fix: 5
+
+questions:
+  # ========== 简单题 (Easy) - 23道 ==========
+  
+  - id: var-short-001
+    type: single
+    difficulty: easy
+    stem: "Go语言短变量声明使用什么符号?"
+    options:
+      - "A: ="
+      - "B: :="
+      - "C: =="
+      - "D: =:"
+    answer: B
+    explanation: ":=是短变量声明符号,声明并初始化变量。=是赋值,==是比较。参见 Go 规范 Short variable declarations 章节。"
+    topic: variables
+    chapter: short_declarations
+
+  - id: var-short-002
+    type: single
+    difficulty: easy
+    stem: "短变量声明可以在哪里使用?"
+    options:
+      - "A: 只能在函数内"
+      - "B: 只能在包级"
+      - "C: 任何地方"
+      - "D: 只能在main函数内"
+    answer: A
+    explanation: "短变量声明:=只能在函数内使用。包级变量必须用var声明。参见 Go 规范 Short variable declarations 章节。"
+    topic: variables
+    chapter: short_declarations
+
+  - id: var-short-003
+    type: single
+    difficulty: easy
+    stem: "x := 10和var x = 10的区别是什么?"
+    options:
+      - "A: 类型不同"
+      - "B: 作用域不同"
+      - "C: 只是语法简洁不同"
+      - "D: 性能不同"
+    answer: C
+    explanation: "两者效果相同,都是声明int类型变量并赋值10。:=是var的简洁语法。参见 Go 规范 Short variable declarations 章节。"
+    topic: variables
+    chapter: short_declarations
+
+  - id: var-short-004
+    type: single
+    difficulty: easy
+    stem: "x := 3.14声明的x是什么类型?"
+    options:
+      - "A: float32"
+      - "B: float64"
+      - "C: int"
+      - "D: double"
+    answer: B
+    explanation: "浮点数字面量的默认类型是float64。3.14推断为float64。参见 Go 规范 Floating-point literals 章节。"
+    topic: variables
+    chapter: short_declarations
+
+  - id: var-short-005
+    type: single
+    difficulty: easy
+    stem: "如何同时短声明多个变量?"
+    options:
+      - "A: x, y := 1, 2"
+      - "B: x := 1, y := 2"
+      - "C: x, y = 1, 2"
+      - "D: x := y := 1"
+    answer: A
+    explanation: "多个变量用逗号分隔:x, y := 1, 2。等号右边值与左边变量一一对应。参见 Go 规范 Short variable declarations 章节。"
+    topic: variables
+    chapter: short_declarations
+
+  - id: var-short-006
+    type: multiple
+    difficulty: easy
+    stem: "以下哪些是有效的短变量声明?(多选)"
+    options:
+      - "A: x := 10"
+      - "B: x, y := 1, 2"
+      - "C: x := func() int { return 1 }()"
+      - "D: x :="
+    answer: ABC
+    explanation: "A、B、C都有效。D缺少右侧值无效。短声明必须有初始值。参见 Go 规范 Short variable declarations 章节。"
+    topic: variables
+    chapter: short_declarations
+
+  - id: var-short-007
+    type: single
+    difficulty: easy
+    stem: "为什么包级别不能用:=?"
+    options:
+      - "A: 性能原因"
+      - "B: 与var有歧义"
+      - "C: 语法设计限制"
+      - "D: 类型推断失败"
+    answer: C
+    explanation: "Go语法规定:=只能在函数内使用。这是语言设计选择,保持包级声明一致性。参见 Go 规范 Short variable declarations 章节。"
+    topic: variables
+    chapter: short_declarations
+
+  - id: var-short-008
+    type: single
+    difficulty: easy
+    stem: "x := 10后再x := 20会怎样?"
+    options:
+      - "A: 重新声明x"
+      - "B: 编译错误"
+      - "C: 覆盖值"
+      - "D: 运行时错误"
+    answer: B
+    explanation: "同一作用域内不能重复短声明同一变量。这会报\"no new variables\"错误。参见 Go 规范 Short variable declarations 章节。"
+    topic: variables
+    chapter: short_declarations
+
+  - id: var-short-009
+    type: single
+    difficulty: easy
+    stem: "短变量声明的重声明条件是什么?"
+    options:
+      - "A: 左边全部是新变量"
+      - "B: 左边至少一个新变量"
+      - "C: 左边可以全是旧变量"
+      - "D: 没有条件"
+    answer: B
+    explanation: "短声明要求左边至少有一个新变量。已存在的变量会被赋值(不是重新声明)。参见 Go 规范 Short variable declarations 章节。"
+    topic: variables
+    chapter: short_declarations
+
+  - id: var-short-010
+    type: single
+    difficulty: easy
+    stem: "x, err := f()中err已存在,这合法吗?"
+    options:
+      - "A: 不合法"
+      - "B: 合法,err重新赋值"
+      - "C: 合法,err被重新声明"
+      - "D: 取决于err类型"
+    answer: B
+    explanation: "x是新变量,满足\"至少一个新变量\"条件。已存在的err被重新赋值,不是重新声明。参见 Go 规范 Short variable declarations 章节。"
+    topic: variables
+    chapter: short_declarations
+
+  - id: var-short-011
+    type: single
+    difficulty: easy
+    stem: "for i := 0; i < 10; i++ 中的i是什么?"
+    options:
+      - "A: 全局变量"
+      - "B: 循环作用域变量"
+      - "C: 包级变量"
+      - "D: 函数作用域变量"
+    answer: B
+    explanation: "for循环头部声明的变量仅在循环内有效。每次迭代i都是同一个变量(Go 1.22前)。参见 Go 规范 For statements 章节。"
+    topic: variables
+    chapter: short_declarations
+
+  - id: var-short-012
+    type: single
+    difficulty: easy
+    stem: "if err := f(); err != nil 中err的作用域是?"
+    options:
+      - "A: 整个函数"
+      - "B: if语句块内(含else)"
+      - "C: 只在if条件内"
+      - "D: 包级别"
+    answer: B
+    explanation: "if简单语句中声明的变量作用域包括if块和else块。函数其他地方不可见。参见 Go 规范 If statements 章节。"
+    topic: variables
+    chapter: short_declarations
+
+  - id: var-short-013
+    type: single
+    difficulty: easy
+    stem: "switch v := x.(type)中v的作用域是?"
+    options:
+      - "A: 整个函数"
+      - "B: switch语句块内"
+      - "C: 只在case内"
+      - "D: 全局"
+    answer: B
+    explanation: "switch简单语句声明的变量在整个switch块内有效,包括所有case。参见 Go 规范 Switch statements 章节。"
+    topic: variables
+    chapter: short_declarations
+
+  - id: var-short-014
+    type: single
+    difficulty: easy
+    stem: "a, b := b, a是什么操作?"
+    options:
+      - "A: 声明新变量"
+      - "B: 交换a和b的值"
+      - "C: 编译错误"
+      - "D: 创建别名"
+    answer: C
+    explanation: "a, b已存在,没有新变量,短声明要求至少一个新变量。应该用a, b = b, a交换。参见 Go 规范 Short variable declarations 章节。"
+    topic: variables
+    chapter: short_declarations
+
+  - id: var-short-015
+    type: single
+    difficulty: easy
+    stem: "短声明时类型如何确定?"
+    options:
+      - "A: 必须指定类型"
+      - "B: 从右侧值推断"
+      - "C: 默认int"
+      - "D: 默认interface{}"
+    answer: B
+    explanation: "短声明从右侧表达式值推断类型。类型由初始值的类型决定。参见 Go 规范 Short variable declarations 章节。"
+    topic: variables
+    chapter: short_declarations
+
+  - id: var-short-016
+    type: single
+    difficulty: easy
+    stem: "x, y, z := 1, 2有什么问题?"
+    options:
+      - "A: 没有问题"
+      - "B: 值数量不匹配"
+      - "C: 变量名无效"
+      - "D: 类型不匹配"
+    answer: B
+    explanation: "3个变量只有2个值,赋值数量不匹配。必须一一对应。参见 Go 规范 Short variable declarations 章节。"
+    topic: variables
+    chapter: short_declarations
+
+  - id: var-short-017
+    type: single
+    difficulty: easy
+    stem: "为什么Go社区推荐使用:=而不是var?"
+    options:
+      - "A: 性能更好"
+      - "B: 更简洁,函数内常用"
+      - "C: 类型更安全"
+      - "D: 占用内存更少"
+    answer: B
+    explanation: ":=语法简洁,是Go惯用法。函数内优先使用短声明,var用于包级或需要明确类型时。参见 Go 官方代码风格指南。"
+    topic: variables
+    chapter: short_declarations
+
+  - id: var-short-018
+    type: single
+    difficulty: easy
+    stem: "a := 1; a := 2的错误信息是什么?"
+    options:
+      - "A: type mismatch"
+      - "B: no new variables on left side"
+      - "C: cannot assign"
+      - "D: redeclared"
+    answer: B
+    explanation: "错误是\"no new variables on left side of :=\"。左边没有新变量时不能用短声明。参见 Go 规范 Short variable declarations 章节。"
+    topic: variables
+    chapter: short_declarations
+
+  - id: var-short-019
+    type: single
+    difficulty: easy
+    stem: "range循环中k, v := range m声明了什么?"
+    options:
+      - "A: 全局变量"
+      - "B: 循环作用域变量"
+      - "C: 包级变量"
+      - "D: 不声明变量"
+    answer: B
+    explanation: "range循环的k,v是循环作用域的变量。Go 1.22后每次迭代是新变量。参见 Go 规范 For statements 章节。"
+    topic: variables
+    chapter: short_declarations
+
+  - id: var-short-020
+    type: single
+    difficulty: easy
+    stem: "select中case x := <-ch声明的x作用域是?"
+    options:
+      - "A: 整个函数"
+      - "B: 整个select"
+      - "C: 仅该case分支"
+      - "D: 全局"
+    answer: C
+    explanation: "select的case中短声明的变量仅在该case分支内有效。其他case看不到。参见 Go 规范 Select statements 章节。"
+    topic: variables
+    chapter: short_declarations
+
+  - id: var-short-021
+    type: single
+    difficulty: easy
+    stem: "短声明可以声明常量吗?"
+    options:
+      - "A: 可以"
+      - "B: 不可以"
+      - "C: 使用const :="
+      - "D: 使用:= const"
+    answer: B
+    explanation: ":=只能声明变量,不能声明常量。常量必须用const关键字。参见 Go 规范 Constant declarations 章节。"
+    topic: variables
+    chapter: short_declarations
+
+  - id: var-short-022
+    type: multiple
+    difficulty: easy
+    stem: "关于短声明,以下说法正确的是?(多选)"
+    options:
+      - "A: 只能在函数内使用"
+      - "B: 必须有初始值"
+      - "C: 自动推断类型"
+      - "D: 可以重声明已存在的变量"
+    answer: ABC
+    explanation: "短声明只能在函数内,必须有初始值,自动推断类型。已存在变量只是赋值,不是重声明。参见 Go 规范 Short variable declarations 章节。"
+    topic: variables
+    chapter: short_declarations
+
+  - id: var-short-023
+    type: single
+    difficulty: easy
+    stem: "短声明和var声明的变量有什么本质区别?"
+    options:
+      - "A: 作用域不同"
+      - "B: 类型不同"
+      - "C: 没有本质区别"
+      - "D: 生命周期不同"
+    answer: C
+    explanation: "两者没有本质区别,只是语法形式不同。生成的变量完全相同。参见 Go 规范 Variable declarations 章节。"
+    topic: variables
+    chapter: short_declarations
+
+  # ========== 中等题 (Medium) - 11道 ==========
+
+  - id: var-short-024
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          x := 1
+          {
+              x, y := 2, 3
+              fmt.Print(x, y, " ")
+          }
+          fmt.Println(x)
+      }
+    options:
+      - "A: 2 3 2"
+      - "B: 2 3 1"
+      - "C: 1 3 1"
+      - "D: 编译错误"
+    answer: B
+    explanation: "内层块x是新变量(遮蔽外层),y也是新变量。内层输出2 3。外层x不变,输出1。参见 Go 规范 Short variable declarations 章节。"
+    topic: variables
+    chapter: short_declarations
+
+  - id: var-short-025
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          x := 1
+          x, y := 2, 3
+          fmt.Println(x, y)
+      }
+    options:
+      - "A: 1 3"
+      - "B: 2 3"
+      - "C: 编译错误"
+      - "D: 1 0"
+    answer: B
+    explanation: "y是新变量,x被重新赋值(不是重声明)。满足\"至少一个新变量\"条件。输出2 3。参见 Go 规范 Short variable declarations 章节。"
+    topic: variables
+    chapter: short_declarations
+
+  - id: var-short-026
+    type: code_fix
+    difficulty: medium
+    stem: "以下代码有编译错误,正确的修正方案是?"
+    code: |
+      package main
+      import "fmt"
+      x := 10
+      func main() {
+          fmt.Println(x)
+      }
+    options:
+      - "A: 将x := 10放入main函数"
+      - "B: 改为var x = 10"
+      - "C: A或B都可以"
+      - "D: 添加类型声明"
+    answer: C
+    explanation: "包级不能用:=。可以移入函数内使用:=,或改为var声明。参见 Go 规范 Short variable declarations 章节。"
+    topic: variables
+    chapter: short_declarations
+
+  - id: var-short-027
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          if x := 1; x > 0 {
+              x := 2
+              fmt.Print(x, " ")
+          }
+          fmt.Println("done")
+      }
+    options:
+      - "A: 2 done"
+      - "B: 1 done"
+      - "C: 编译错误:x未定义"
+      - "D: 编译错误:重复声明"
+    answer: A
+    explanation: "if条件中x=1。if块内x:=2遮蔽外层x。输出2。if外x不可见。参见 Go 规范 If statements 章节。"
+    topic: variables
+    chapter: short_declarations
+
+  - id: var-short-028
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          for i := 0; i < 3; i++ {
+              i := i * 10
+              fmt.Print(i, " ")
+          }
+      }
+    options:
+      - "A: 0 10 20"
+      - "B: 0 1 2"
+      - "C: 10 20 30"
+      - "D: 编译错误"
+    answer: A
+    explanation: "循环体内i:=i*10声明新的i遮蔽循环变量i。每次迭代:0*10=0,1*10=10,2*10=20。参见 Go 规范 For statements 章节。"
+    topic: variables
+    chapter: short_declarations
+
+  - id: var-short-029
+    type: code_fix
+    difficulty: medium
+    stem: "以下代码有问题,正确的修正方案是?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          x := 1
+          y := 2
+          x, y := y, x
+          fmt.Println(x, y)
+      }
+    options:
+      - "A: 改为x, y = y, x"
+      - "B: 添加新变量z, x, y := y, x, 0"
+      - "C: 删除前两行"
+      - "D: 使用var重新声明"
+    answer: A
+    explanation: "x, y都已存在,没有新变量。应该用=赋值而不是:=声明。参见 Go 规范 Short variable declarations 章节。"
+    topic: variables
+    chapter: short_declarations
+
+  - id: var-short-030
+    type: multiple
+    difficulty: medium
+    stem: "关于if简单语句中的短声明,以下说法正确的是?(多选)"
+    options:
+      - "A: 变量作用域包含if块"
+      - "B: 变量作用域包含else块"
+      - "C: 变量在if外不可见"
+      - "D: 可以遮蔽外层同名变量"
+    answer: ABCD
+    explanation: "if简单语句声明的变量在整个if语句(含else)内有效,外部不可见。可以遮蔽外层变量。参见 Go 规范 If statements 章节。"
+    topic: variables
+    chapter: short_declarations
+
+  - id: var-short-031
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func f() (int, int) { return 1, 2 }
+      func main() {
+          x, y := f()
+          y, z := f()
+          fmt.Println(x, y, z)
+      }
+    options:
+      - "A: 1 2 2"
+      - "B: 1 1 2"
+      - "C: 编译错误"
+      - "D: 1 2 1"
+    answer: B
+    explanation: "第一次x=1,y=2。第二次z是新变量,y被赋新值1。最终x=1,y=1,z=2。参见 Go 规范 Short variable declarations 章节。"
+    topic: variables
+    chapter: short_declarations
+
+  - id: var-short-032
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          var x int
+          if true {
+              x := 10
+              _ = x
+          }
+          fmt.Println(x)
+      }
+    options:
+      - "A: 10"
+      - "B: 0"
+      - "C: 编译错误"
+      - "D: nil"
+    answer: B
+    explanation: "if内的x是新变量(遮蔽外层)。外层x未被修改,仍是零值0。参见 Go 规范 Declarations and scope 章节。"
+    topic: variables
+    chapter: short_declarations
+
+  - id: var-short-033
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          a, b, c := 1, 2, 3
+          a, b, c, d := 4, 5, 6, 7
+          fmt.Println(a, b, c, d)
+      }
+    options:
+      - "A: 1 2 3 7"
+      - "B: 4 5 6 7"
+      - "C: 编译错误"
+      - "D: 1 2 3 0"
+    answer: B
+    explanation: "d是新变量,a,b,c被重新赋值。满足条件合法。输出4 5 6 7。参见 Go 规范 Short variable declarations 章节。"
+    topic: variables
+    chapter: short_declarations
+
+  - id: var-short-034
+    type: multiple
+    difficulty: medium
+    stem: "for循环中使用短声明,以下说法正确的是?(多选)"
+    options:
+      - "A: for i := 0的i在循环体内可见"
+      - "B: 循环体可以遮蔽i"
+      - "C: Go 1.22后每次迭代i是新变量"
+      - "D: 循环外i不可见"
+    answer: ABCD
+    explanation: "for初始化的变量在整个循环内有效。体内可遮蔽。Go1.22起每次迭代创建新变量。循环外不可见。参见 Go 规范 For statements 章节。"
+    topic: variables
+    chapter: short_declarations
+
+  # ========== 困难题 (Hard) - 4道 ==========
+
+  - id: var-short-035
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          var x *int
+          if x := new(int); x != nil {
+              *x = 10
+          }
+          fmt.Println(x)
+      }
+    options:
+      - "A: 10"
+      - "B: <nil>"
+      - "C: &10"
+      - "D: panic"
+    answer: B
+    explanation: "if中x:=new(int)是新变量,遮蔽外层x。外层var x *int仍是nil。输出<nil>。参见 Go 规范 Short variable declarations 章节。"
+    topic: variables
+    chapter: short_declarations
+
+  - id: var-short-036
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          x := 0
+          for i := 0; i < 3; i++ {
+              x, y := 1, 2
+              x += y
+              _ = y
+          }
+          fmt.Println(x)
+      }
+    options:
+      - "A: 0"
+      - "B: 3"
+      - "C: 9"
+      - "D: 6"
+    answer: A
+    explanation: "每次迭代x,y:=1,2声明新的x(遮蔽外层)。外层x始终是0不变。参见 Go 规范 Short variable declarations 章节。"
+    topic: variables
+    chapter: short_declarations
+
+  - id: var-short-037
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func f() (x int) {
+          defer func() {
+              x := 10
+              _ = x
+          }()
+          return 5
+      }
+      func main() {
+          fmt.Println(f())
+      }
+    options:
+      - "A: 10"
+      - "B: 5"
+      - "C: 0"
+      - "D: 15"
+    answer: B
+    explanation: "defer中x:=10是新变量,遮蔽命名返回值x。命名返回值不受影响,仍是5。参见 Go 规范 Defer statements 章节。"
+    topic: variables
+    chapter: short_declarations
+
+  - id: var-short-038
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          x := []int{1, 2, 3}
+          for i, x := range x {
+              fmt.Print(i, x, " ")
+          }
+      }
+    options:
+      - "A: 0 1 1 2 2 3"
+      - "B: 0 1 1 2 2 3 (空格间隔)"
+      - "C: 编译错误"
+      - "D: panic"
+    answer: A
+    explanation: "range x使用外层x切片。循环变量i,x遮蔽外层x。输出每个索引和元素:01 12 23(无空格格式)。参见 Go 规范 For statements 章节。"
+    topic: variables
+    chapter: short_declarations

@@ -1,521 +1,665 @@
+# Go 词法单元测验题库
+# 章节: lexical_elements/tokens
+# 符合 Go 1.24 语言规范
+
+metadata:
+  topic: lexical_elements
+  chapter: tokens
+  total_questions: 40
+  last_updated: "2025-01-01"
+  difficulty_distribution:
+    easy: 24      # 60%
+    medium: 12    # 30%
+    hard: 4       # 10%
+  type_distribution:
+    single: 18
+    multiple: 12
+    code_output: 6
+    code_fix: 4
+
 questions:
-    - id: lexical-tokens-001
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 lexical_elements.tokens，下面哪个选项是正确的？
-      options:
-        - 'A: 正确项（关于tokens.lexical_elements的重要结论）'
-        - 'B: 正确项（关于tokens.lexical_elements的重要结论）'
-        - 'C: 部分正确但不完整的说法'
-        - 'D: 正确项（关于tokens.lexical_elements的重要结论）'
-      answer: ABD
-      explanation: 本题考查 lexical_elements.tokens 的相关知识。正确答案：ABD。解析：tokens 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: tokens
-    - id: lexical-tokens-002
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 lexical_elements.tokens，下面哪个选项是正确的？
-      options:
-        - 'A: 部分正确但不完整的说法'
-        - 'B: 正确：关于tokens.lexical_elements的关键点描述（正确选项）'
-        - 'C: 常见误解或反例（容易混淆）'
-        - 'D: 与tokens.lexical_elements 相关但不适用的选项'
-      answer: B
-      explanation: 本题考查 lexical_elements.tokens 的概念。正确答案为 B。解析：tokens 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: tokens
-    - id: lexical-tokens-003
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 lexical_elements.tokens，下面哪个选项是正确的？
-      options:
-        - 'A: 与tokens.lexical_elements 相关但不适用的选项'
-        - 'B: 正确项（关于tokens.lexical_elements的重要结论）'
-        - 'C: 部分正确但不完整的说法'
-        - 'D: 正确项（关于tokens.lexical_elements的重要结论）'
-      answer: BD
-      explanation: 本题考查 lexical_elements.tokens 的相关知识。正确答案：BD。解析：tokens 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: tokens
-    - id: lexical-tokens-004
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 lexical_elements.tokens，下面哪个选项是正确的？
-      options:
-        - 'A: 正确：关于tokens.lexical_elements的关键点描述（正确选项）'
-        - 'B: 语法/语义上不正确的陈述'
-        - 'C: 与tokens.lexical_elements 相关但不适用的选项'
-        - 'D: 部分正确但不完整的说法'
-      answer: A
-      explanation: 本题考查 lexical_elements.tokens 的概念。正确答案为 A。解析：tokens 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: tokens
-    - id: lexical-tokens-005
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 lexical_elements.tokens，下面哪个选项是正确的？
-      options:
-        - 'A: 正确项（关于tokens.lexical_elements的重要结论）'
-        - 'B: 正确项（关于tokens.lexical_elements的重要结论）'
-        - 'C: 正确项（关于tokens.lexical_elements的重要结论）'
-        - 'D: 部分正确但不完整的说法'
-      answer: ABC
-      explanation: 本题考查 lexical_elements.tokens 的相关知识。正确答案：ABC。解析：tokens 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: tokens
-    - id: lexical-tokens-006
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 lexical_elements.tokens，下面哪个选项是正确的？
-      options:
-        - 'A: 正确：关于tokens.lexical_elements的关键点描述（正确选项）'
-        - 'B: 语法/语义上不正确的陈述'
-        - 'C: 常见误解或反例（容易混淆）'
-        - 'D: 部分正确但不完整的说法'
-      answer: A
-      explanation: 本题考查 lexical_elements.tokens 的概念。正确答案为 A。解析：tokens 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: tokens
-    - id: lexical-tokens-007
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 lexical_elements.tokens，下面哪个选项是正确的？
-      options:
-        - 'A: 正确项（关于tokens.lexical_elements的重要结论）'
-        - 'B: 与tokens.lexical_elements 相关但不适用的选项'
-        - 'C: 正确项（关于tokens.lexical_elements的重要结论）'
-        - 'D: 正确项（关于tokens.lexical_elements的重要结论）'
-      answer: ACD
-      explanation: 本题考查 lexical_elements.tokens 的相关知识。正确答案：ACD。解析：tokens 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: tokens
-    - id: lexical-tokens-008
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 lexical_elements.tokens，下面哪个选项是正确的？
-      options:
-        - 'A: 正确：关于tokens.lexical_elements的关键点描述（正确选项）'
-        - 'B: 与tokens.lexical_elements 相关但不适用的选项'
-        - 'C: 与tokens.lexical_elements 相关但不适用的选项'
-        - 'D: 部分正确但不完整的说法'
-      answer: A
-      explanation: 本题考查 lexical_elements.tokens 的概念。正确答案为 A。解析：tokens 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: tokens
-    - id: lexical-tokens-009
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 lexical_elements.tokens，下面哪个选项是正确的？
-      options:
-        - 'A: 正确项（关于tokens.lexical_elements的重要结论）'
-        - 'B: 部分正确但不完整的说法'
-        - 'C: 常见误解或反例（容易混淆）'
-        - 'D: 正确项（关于tokens.lexical_elements的重要结论）'
-      answer: AD
-      explanation: 本题考查 lexical_elements.tokens 的相关知识。正确答案：AD。解析：tokens 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: tokens
-    - id: lexical-tokens-010
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 lexical_elements.tokens，下面哪个选项是正确的？
-      options:
-        - 'A: 与tokens.lexical_elements 相关但不适用的选项'
-        - 'B: 正确：关于tokens.lexical_elements的关键点描述（正确选项）'
-        - 'C: 常见误解或反例（容易混淆）'
-        - 'D: 部分正确但不完整的说法'
-      answer: B
-      explanation: 本题考查 lexical_elements.tokens 的概念。正确答案为 B。解析：tokens 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: tokens
-    - id: lexical-tokens-011
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 lexical_elements.tokens，下面哪个选项是正确的？
-      options:
-        - 'A: 正确项（关于tokens.lexical_elements的重要结论）'
-        - 'B: 正确项（关于tokens.lexical_elements的重要结论）'
-        - 'C: 部分正确但不完整的说法'
-        - 'D: 正确项（关于tokens.lexical_elements的重要结论）'
-      answer: ABD
-      explanation: 本题考查 lexical_elements.tokens 的相关知识。正确答案：ABD。解析：tokens 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: tokens
-    - id: lexical-tokens-012
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 lexical_elements.tokens，下面哪个选项是正确的？
-      options:
-        - 'A: 正确：关于tokens.lexical_elements的关键点描述（正确选项）'
-        - 'B: 部分正确但不完整的说法'
-        - 'C: 部分正确但不完整的说法'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: A
-      explanation: 本题考查 lexical_elements.tokens 的概念。正确答案为 A。解析：tokens 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: tokens
-    - id: lexical-tokens-013
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 lexical_elements.tokens，下面哪个选项是正确的？
-      options:
-        - 'A: 正确项（关于tokens.lexical_elements的重要结论）'
-        - 'B: 语法/语义上不正确的陈述'
-        - 'C: 语法/语义上不正确的陈述'
-        - 'D: 正确项（关于tokens.lexical_elements的重要结论）'
-      answer: AD
-      explanation: 本题考查 lexical_elements.tokens 的相关知识。正确答案：AD。解析：tokens 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: tokens
-    - id: lexical-tokens-014
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 lexical_elements.tokens，下面哪个选项是正确的？
-      options:
-        - 'A: 语法/语义上不正确的陈述'
-        - 'B: 正确：关于tokens.lexical_elements的关键点描述（正确选项）'
-        - 'C: 部分正确但不完整的说法'
-        - 'D: 与tokens.lexical_elements 相关但不适用的选项'
-      answer: B
-      explanation: 本题考查 lexical_elements.tokens 的概念。正确答案为 B。解析：tokens 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: tokens
-    - id: lexical-tokens-015
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 lexical_elements.tokens，下面哪个选项是正确的？
-      options:
-        - 'A: 正确项（关于tokens.lexical_elements的重要结论）'
-        - 'B: 语法/语义上不正确的陈述'
-        - 'C: 正确项（关于tokens.lexical_elements的重要结论）'
-        - 'D: 正确项（关于tokens.lexical_elements的重要结论）'
-      answer: ACD
-      explanation: 本题考查 lexical_elements.tokens 的相关知识。正确答案：ACD。解析：tokens 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: tokens
-    - id: lexical-tokens-016
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 lexical_elements.tokens，下面哪个选项是正确的？
-      options:
-        - 'A: 与tokens.lexical_elements 相关但不适用的选项'
-        - 'B: 正确：关于tokens.lexical_elements的关键点描述（正确选项）'
-        - 'C: 与tokens.lexical_elements 相关但不适用的选项'
-        - 'D: 与tokens.lexical_elements 相关但不适用的选项'
-      answer: B
-      explanation: 本题考查 lexical_elements.tokens 的概念。正确答案为 B。解析：tokens 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: tokens
-    - id: lexical-tokens-017
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 lexical_elements.tokens 的情境下，哪个说法更合适？
-      options:
-        - 'A: 正确项（关于tokens.lexical_elements的重要结论）'
-        - 'B: 正确项（关于tokens.lexical_elements的重要结论）'
-        - 'C: 部分正确但不完整的说法'
-        - 'D: 正确项（关于tokens.lexical_elements的重要结论）'
-      answer: ABD
-      explanation: 本题考查 lexical_elements.tokens 的相关知识。正确答案：ABD。解析：tokens 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: tokens
-    - id: lexical-tokens-018
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 lexical_elements.tokens 的情境下，哪个说法更合适？
-      options:
-        - 'A: 常见误解或反例（容易混淆）'
-        - 'B: 常见误解或反例（容易混淆）'
-        - 'C: 正确：关于tokens.lexical_elements的关键点描述（正确选项）'
-        - 'D: 部分正确但不完整的说法'
-      answer: C
-      explanation: 本题考查 lexical_elements.tokens 的概念。正确答案为 C。解析：tokens 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: tokens
-    - id: lexical-tokens-019
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 lexical_elements.tokens 的情境下，哪个说法更合适？
-      options:
-        - 'A: 正确项（关于tokens.lexical_elements的重要结论）'
-        - 'B: 正确项（关于tokens.lexical_elements的重要结论）'
-        - 'C: 正确项（关于tokens.lexical_elements的重要结论）'
-        - 'D: 部分正确但不完整的说法'
-      answer: ABC
-      explanation: 本题考查 lexical_elements.tokens 的相关知识。正确答案：ABC。解析：tokens 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: tokens
-    - id: lexical-tokens-020
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 lexical_elements.tokens 的情境下，哪个说法更合适？
-      options:
-        - 'A: 与tokens.lexical_elements 相关但不适用的选项'
-        - 'B: 部分正确但不完整的说法'
-        - 'C: 正确：关于tokens.lexical_elements的关键点描述（正确选项）'
-        - 'D: 与tokens.lexical_elements 相关但不适用的选项'
-      answer: C
-      explanation: 本题考查 lexical_elements.tokens 的概念。正确答案为 C。解析：tokens 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: tokens
-    - id: lexical-tokens-021
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 lexical_elements.tokens 的情境下，哪个说法更合适？
-      options:
-        - 'A: 正确项（关于tokens.lexical_elements的重要结论）'
-        - 'B: 正确项（关于tokens.lexical_elements的重要结论）'
-        - 'C: 正确项（关于tokens.lexical_elements的重要结论）'
-        - 'D: 常见误解或反例（容易混淆）'
-      answer: ABC
-      explanation: 本题考查 lexical_elements.tokens 的相关知识。正确答案：ABC。解析：tokens 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: tokens
-    - id: lexical-tokens-022
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 lexical_elements.tokens 的情境下，哪个说法更合适？
-      options:
-        - 'A: 语法/语义上不正确的陈述'
-        - 'B: 正确：关于tokens.lexical_elements的关键点描述（正确选项）'
-        - 'C: 部分正确但不完整的说法'
-        - 'D: 常见误解或反例（容易混淆）'
-      answer: B
-      explanation: 本题考查 lexical_elements.tokens 的概念。正确答案为 B。解析：tokens 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: tokens
-    - id: lexical-tokens-023
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 lexical_elements.tokens 的情境下，哪个说法更合适？
-      options:
-        - 'A: 正确项（关于tokens.lexical_elements的重要结论）'
-        - 'B: 正确项（关于tokens.lexical_elements的重要结论）'
-        - 'C: 正确项（关于tokens.lexical_elements的重要结论）'
-        - 'D: 常见误解或反例（容易混淆）'
-      answer: ABC
-      explanation: 本题考查 lexical_elements.tokens 的相关知识。正确答案：ABC。解析：tokens 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: tokens
-    - id: lexical-tokens-024
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 lexical_elements.tokens 的情境下，哪个说法更合适？
-      options:
-        - 'A: 部分正确但不完整的说法'
-        - 'B: 常见误解或反例（容易混淆）'
-        - 'C: 正确：关于tokens.lexical_elements的关键点描述（正确选项）'
-        - 'D: 常见误解或反例（容易混淆）'
-      answer: C
-      explanation: 本题考查 lexical_elements.tokens 的概念。正确答案为 C。解析：tokens 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: tokens
-    - id: lexical-tokens-025
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 lexical_elements.tokens 的情境下，哪个说法更合适？
-      options:
-        - 'A: 正确项（关于tokens.lexical_elements的重要结论）'
-        - 'B: 正确项（关于tokens.lexical_elements的重要结论）'
-        - 'C: 正确项（关于tokens.lexical_elements的重要结论）'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: ABC
-      explanation: 本题考查 lexical_elements.tokens 的相关知识。正确答案：ABC。解析：tokens 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: tokens
-    - id: lexical-tokens-026
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 lexical_elements.tokens 的情境下，哪个说法更合适？
-      options:
-        - 'A: 常见误解或反例（容易混淆）'
-        - 'B: 常见误解或反例（容易混淆）'
-        - 'C: 正确：关于tokens.lexical_elements的关键点描述（正确选项）'
-        - 'D: 常见误解或反例（容易混淆）'
-      answer: C
-      explanation: 本题考查 lexical_elements.tokens 的概念。正确答案为 C。解析：tokens 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: tokens
-    - id: lexical-tokens-027
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 lexical_elements.tokens 的情境下，哪个说法更合适？
-      options:
-        - 'A: 与tokens.lexical_elements 相关但不适用的选项'
-        - 'B: 部分正确但不完整的说法'
-        - 'C: 正确项（关于tokens.lexical_elements的重要结论）'
-        - 'D: 正确项（关于tokens.lexical_elements的重要结论）'
-      answer: CD
-      explanation: 本题考查 lexical_elements.tokens 的相关知识。正确答案：CD。解析：tokens 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: tokens
-    - id: lexical-tokens-028
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 lexical_elements.tokens 的情境下，哪个说法更合适？
-      options:
-        - 'A: 与tokens.lexical_elements 相关但不适用的选项'
-        - 'B: 语法/语义上不正确的陈述'
-        - 'C: 正确：关于tokens.lexical_elements的关键点描述（正确选项）'
-        - 'D: 常见误解或反例（容易混淆）'
-      answer: C
-      explanation: 本题考查 lexical_elements.tokens 的概念。正确答案为 C。解析：tokens 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: tokens
-    - id: lexical-tokens-029
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 lexical_elements.tokens 的情境下，哪个说法更合适？
-      options:
-        - 'A: 正确项（关于tokens.lexical_elements的重要结论）'
-        - 'B: 常见误解或反例（容易混淆）'
-        - 'C: 常见误解或反例（容易混淆）'
-        - 'D: 正确项（关于tokens.lexical_elements的重要结论）'
-      answer: AD
-      explanation: 本题考查 lexical_elements.tokens 的相关知识。正确答案：AD。解析：tokens 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: tokens
-    - id: lexical-tokens-030
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 lexical_elements.tokens 的情境下，哪个说法更合适？
-      options:
-        - 'A: 常见误解或反例（容易混淆）'
-        - 'B: 常见误解或反例（容易混淆）'
-        - 'C: 正确：关于tokens.lexical_elements的关键点描述（正确选项）'
-        - 'D: 部分正确但不完整的说法'
-      answer: C
-      explanation: 本题考查 lexical_elements.tokens 的概念。正确答案为 C。解析：tokens 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: tokens
-    - id: lexical-tokens-031
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 lexical_elements.tokens 的情境下，哪个说法更合适？
-      options:
-        - 'A: 与tokens.lexical_elements 相关但不适用的选项'
-        - 'B: 正确项（关于tokens.lexical_elements的重要结论）'
-        - 'C: 正确项（关于tokens.lexical_elements的重要结论）'
-        - 'D: 正确项（关于tokens.lexical_elements的重要结论）'
-      answer: BCD
-      explanation: 本题考查 lexical_elements.tokens 的相关知识。正确答案：BCD。解析：tokens 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: tokens
-    - id: lexical-tokens-032
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 lexical_elements.tokens 的情境下，哪个说法更合适？
-      options:
-        - 'A: 常见误解或反例（容易混淆）'
-        - 'B: 部分正确但不完整的说法'
-        - 'C: 正确：关于tokens.lexical_elements的关键点描述（正确选项）'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: C
-      explanation: 本题考查 lexical_elements.tokens 的概念。正确答案为 C。解析：tokens 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: tokens
-    - id: lexical-tokens-033
-      type: multiple
-      difficulty: hard
-      stem: 【思考题】针对 lexical_elements.tokens，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 常见误解或反例（容易混淆）'
-        - 'B: 正确项（关于tokens.lexical_elements的重要结论）'
-        - 'C: 正确项（关于tokens.lexical_elements的重要结论）'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: BC
-      explanation: 本题考查 lexical_elements.tokens 的相关知识。正确答案：BC。解析：tokens 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: tokens
-    - id: lexical-tokens-034
-      type: single
-      difficulty: hard
-      stem: 【思考题】针对 lexical_elements.tokens，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 与tokens.lexical_elements 相关但不适用的选项'
-        - 'B: 常见误解或反例（容易混淆）'
-        - 'C: 正确：关于tokens.lexical_elements的关键点描述（正确选项）'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: C
-      explanation: 本题考查 lexical_elements.tokens 的概念。正确答案为 C。解析：tokens 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: tokens
-    - id: lexical-tokens-035
-      type: multiple
-      difficulty: hard
-      stem: 【思考题】针对 lexical_elements.tokens，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 语法/语义上不正确的陈述'
-        - 'B: 正确项（关于tokens.lexical_elements的重要结论）'
-        - 'C: 正确项（关于tokens.lexical_elements的重要结论）'
-        - 'D: 正确项（关于tokens.lexical_elements的重要结论）'
-      answer: BCD
-      explanation: 本题考查 lexical_elements.tokens 的相关知识。正确答案：BCD。解析：tokens 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: tokens
-    - id: lexical-tokens-036
-      type: single
-      difficulty: hard
-      stem: 【思考题】针对 lexical_elements.tokens，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 语法/语义上不正确的陈述'
-        - 'B: 常见误解或反例（容易混淆）'
-        - 'C: 与tokens.lexical_elements 相关但不适用的选项'
-        - 'D: 正确：关于tokens.lexical_elements的关键点描述（正确选项）'
-      answer: D
-      explanation: 本题考查 lexical_elements.tokens 的概念。正确答案为 D。解析：tokens 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: tokens
-    - id: lexical-tokens-037
-      type: multiple
-      difficulty: hard
-      stem: 【思考题】针对 lexical_elements.tokens，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 正确项（关于tokens.lexical_elements的重要结论）'
-        - 'B: 部分正确但不完整的说法'
-        - 'C: 常见误解或反例（容易混淆）'
-        - 'D: 正确项（关于tokens.lexical_elements的重要结论）'
-      answer: AD
-      explanation: 本题考查 lexical_elements.tokens 的相关知识。正确答案：AD。解析：tokens 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: tokens
-    - id: lexical-tokens-038
-      type: single
-      difficulty: hard
-      stem: 【思考题】针对 lexical_elements.tokens，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 部分正确但不完整的说法'
-        - 'B: 部分正确但不完整的说法'
-        - 'C: 正确：关于tokens.lexical_elements的关键点描述（正确选项）'
-        - 'D: 部分正确但不完整的说法'
-      answer: C
-      explanation: 本题考查 lexical_elements.tokens 的概念。正确答案为 C。解析：tokens 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: tokens
-    - id: lexical-tokens-039
-      type: multiple
-      difficulty: hard
-      stem: 【思考题】针对 lexical_elements.tokens，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 常见误解或反例（容易混淆）'
-        - 'B: 与tokens.lexical_elements 相关但不适用的选项'
-        - 'C: 正确项（关于tokens.lexical_elements的重要结论）'
-        - 'D: 正确项（关于tokens.lexical_elements的重要结论）'
-      answer: CD
-      explanation: 本题考查 lexical_elements.tokens 的相关知识。正确答案：CD。解析：tokens 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: tokens
-    - id: lexical-tokens-040
-      type: single
-      difficulty: hard
-      stem: 【思考题】针对 lexical_elements.tokens，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 语法/语义上不正确的陈述'
-        - 'B: 部分正确但不完整的说法'
-        - 'C: 正确：关于tokens.lexical_elements的关键点描述（正确选项）'
-        - 'D: 与tokens.lexical_elements 相关但不适用的选项'
-      answer: C
-      explanation: 本题考查 lexical_elements.tokens 的概念。正确答案为 C。解析：tokens 的关键点在于...（请在校稿时补充具体细节）。
-      topic: lexical_elements
-      chapter: tokens
+  # ========== 简单题 (Easy) - 24道 ==========
+  
+  - id: lexical-tokens-001
+    type: single
+    difficulty: easy
+    stem: "Go语言中,词法单元(token)分为哪几类?"
+    options:
+      - "A: 标识符、关键字、运算符"
+      - "B: 标识符、关键字、运算符、标点符号、字面量"
+      - "C: 变量、常量、函数"
+      - "D: 整数、浮点数、字符串"
+    answer: B
+    explanation: "Go词法单元分为五类:标识符(identifiers)、关键字(keywords)、运算符(operators)、标点符号(punctuation)和字面量(literals)。参见 Go 规范 Lexical elements 章节。"
+    topic: lexical_elements
+    chapter: tokens
+
+  - id: lexical-tokens-002
+    type: single
+    difficulty: easy
+    stem: "以下哪个是Go语言的赋值运算符?"
+    options:
+      - "A: =="
+      - "B: ="
+      - "C: :="
+      - "D: =>"
+    answer: B
+    explanation: "=是Go的赋值运算符。==是比较运算符,:=是短变量声明,=>不是Go的运算符(是其他语言如JavaScript的箭头函数)。参见 Go 规范 Operators 章节。"
+    topic: lexical_elements
+    chapter: tokens
+
+  - id: lexical-tokens-003
+    type: single
+    difficulty: easy
+    stem: "Go语言中,短变量声明使用的符号是?"
+    options:
+      - "A: ="
+      - "B: :="
+      - "C: =="
+      - "D: var"
+    answer: B
+    explanation: ":=是Go的短变量声明运算符,只能在函数内部使用,自动推断类型。=是普通赋值,var是变量声明关键字。参见 Go 规范 Short variable declarations 章节。"
+    topic: lexical_elements
+    chapter: tokens
+
+  - id: lexical-tokens-004
+    type: single
+    difficulty: easy
+    stem: "Go语言中,哪个运算符用于获取变量的地址?"
+    options:
+      - "A: *"
+      - "B: &"
+      - "C: @"
+      - "D: $"
+    answer: B
+    explanation: "&是取地址运算符,返回变量的内存地址。*用于解引用指针。@和$不是Go的运算符。参见 Go 规范 Address operators 章节。"
+    topic: lexical_elements
+    chapter: tokens
+
+  - id: lexical-tokens-005
+    type: single
+    difficulty: easy
+    stem: "以下哪个是Go语言的通道发送运算符?"
+    options:
+      - "A: ->"
+      - "B: <-"
+      - "C: =>"
+      - "D: >>"
+    answer: B
+    explanation: "<-是Go的通道操作符,用于发送和接收数据。ch <- v发送数据,v := <-ch接收数据。参见 Go 规范 Send statements 章节。"
+    topic: lexical_elements
+    chapter: tokens
+
+  - id: lexical-tokens-006
+    type: multiple
+    difficulty: easy
+    stem: "以下哪些是Go语言的比较运算符?(多选)"
+    options:
+      - "A: =="
+      - "B: !="
+      - "C: <>"
+      - "D: <="
+    answer: ABD
+    explanation: "Go的比较运算符包括==、!=、<、<=、>、>=。<>不是Go的运算符,那是某些SQL或VB的不等于写法。参见 Go 规范 Comparison operators 章节。"
+    topic: lexical_elements
+    chapter: tokens
+
+  - id: lexical-tokens-007
+    type: single
+    difficulty: easy
+    stem: "Go语言中,哪个运算符用于解引用指针?"
+    options:
+      - "A: &"
+      - "B: *"
+      - "C: ^"
+      - "D: ~"
+    answer: B
+    explanation: "*用于解引用指针获取指针指向的值。&是取地址运算符。^在Go中是位异或,~不是Go运算符。参见 Go 规范 Address operators 章节。"
+    topic: lexical_elements
+    chapter: tokens
+
+  - id: lexical-tokens-008
+    type: multiple
+    difficulty: easy
+    stem: "以下哪些是Go语言的算术运算符?(多选)"
+    options:
+      - "A: +"
+      - "B: -"
+      - "C: **"
+      - "D: %"
+    answer: ABD
+    explanation: "Go的算术运算符包括+、-、*、/、%。Go没有**幂运算符,需要使用math.Pow()函数。参见 Go 规范 Arithmetic operators 章节。"
+    topic: lexical_elements
+    chapter: tokens
+
+  - id: lexical-tokens-009
+    type: single
+    difficulty: easy
+    stem: "Go语言中,用于结构体字段访问的符号是?"
+    options:
+      - "A: ->"
+      - "B: ::"
+      - "C: ."
+      - "D: #"
+    answer: C
+    explanation: "Go使用点号.访问结构体字段和调用方法。Go没有->和::运算符,那是C/C++的语法。参见 Go 规范 Selectors 章节。"
+    topic: lexical_elements
+    chapter: tokens
+
+  - id: lexical-tokens-010
+    type: single
+    difficulty: easy
+    stem: "以下哪个是Go语言的逻辑与运算符?"
+    options:
+      - "A: &"
+      - "B: &&"
+      - "C: and"
+      - "D: AND"
+    answer: B
+    explanation: "Go使用&&表示逻辑与运算。&是位与运算符。and/AND不是Go的运算符,那是Python/SQL的写法。参见 Go 规范 Logical operators 章节。"
+    topic: lexical_elements
+    chapter: tokens
+
+  - id: lexical-tokens-011
+    type: single
+    difficulty: easy
+    stem: "Go语言中,用于逻辑或的运算符是?"
+    options:
+      - "A: |"
+      - "B: ||"
+      - "C: or"
+      - "D: OR"
+    answer: B
+    explanation: "Go使用||表示逻辑或运算。|是位或运算符。or/OR不是Go的运算符。参见 Go 规范 Logical operators 章节。"
+    topic: lexical_elements
+    chapter: tokens
+
+  - id: lexical-tokens-012
+    type: multiple
+    difficulty: easy
+    stem: "以下哪些是Go语言的位运算符?(多选)"
+    options:
+      - "A: &"
+      - "B: |"
+      - "C: ^"
+      - "D: ~"
+    answer: ABC
+    explanation: "Go的位运算符包括&(与)、|(或)、^(异或/取反)、&^(位清除)、<<、>>。Go没有~运算符,使用^作为一元取反。参见 Go 规范 Arithmetic operators 章节。"
+    topic: lexical_elements
+    chapter: tokens
+
+  - id: lexical-tokens-013
+    type: single
+    difficulty: easy
+    stem: "Go语言中,用于逻辑非的运算符是?"
+    options:
+      - "A: ~"
+      - "B: !"
+      - "C: not"
+      - "D: NOT"
+    answer: B
+    explanation: "Go使用!表示逻辑非运算。~不是Go的运算符,not/NOT也不是Go关键字或运算符。参见 Go 规范 Logical operators 章节。"
+    topic: lexical_elements
+    chapter: tokens
+
+  - id: lexical-tokens-014
+    type: single
+    difficulty: easy
+    stem: "Go语言中,用于左移位的运算符是?"
+    options:
+      - "A: <<"
+      - "B: >>"
+      - "C: <<<"
+      - "D: <-"
+    answer: A
+    explanation: "<<是左移位运算符,>>是右移位运算符。<<<不是Go运算符,<-是通道运算符。参见 Go 规范 Arithmetic operators 章节。"
+    topic: lexical_elements
+    chapter: tokens
+
+  - id: lexical-tokens-015
+    type: multiple
+    difficulty: easy
+    stem: "以下哪些是Go语言的标点符号?(多选)"
+    options:
+      - "A: ;"
+      - "B: ,"
+      - "C: :"
+      - "D: ;;"
+    answer: ABC
+    explanation: "Go的标点符号包括;(分号)、,(逗号)、:(冒号)等。;;不是有效的单一标点符号。参见 Go 规范 Punctuation 章节。"
+    topic: lexical_elements
+    chapter: tokens
+
+  - id: lexical-tokens-016
+    type: single
+    difficulty: easy
+    stem: "Go语言中,用于表示可变参数的符号是?"
+    options:
+      - "A: *"
+      - "B: ..."
+      - "C: []"
+      - "D: &"
+    answer: B
+    explanation: "...用于定义可变参数函数,如func sum(nums ...int)。也用于展开切片。参见 Go 规范 Passing arguments to ... parameters 章节。"
+    topic: lexical_elements
+    chapter: tokens
+
+  - id: lexical-tokens-017
+    type: single
+    difficulty: easy
+    stem: "Go语言中,自增运算符++的使用方式是?"
+    options:
+      - "A: 只能作为前缀 ++i"
+      - "B: 只能作为后缀 i++"
+      - "C: 前缀后缀都可以"
+      - "D: Go没有++运算符"
+    answer: B
+    explanation: "Go的++和--只能作为后缀使用(i++),且是语句不是表达式,不能用于赋值如x = i++。参见 Go 规范 IncDec statements 章节。"
+    topic: lexical_elements
+    chapter: tokens
+
+  - id: lexical-tokens-018
+    type: single
+    difficulty: easy
+    stem: "Go语言中,用于位清除的运算符是?"
+    options:
+      - "A: &"
+      - "B: &^"
+      - "C: ^&"
+      - "D: ~"
+    answer: B
+    explanation: "&^是Go特有的位清除运算符(bit clear/AND NOT),a &^ b等价于a & (^b)。这在其他语言中较少见。参见 Go 规范 Arithmetic operators 章节。"
+    topic: lexical_elements
+    chapter: tokens
+
+  - id: lexical-tokens-019
+    type: multiple
+    difficulty: easy
+    stem: "以下哪些是Go的复合赋值运算符?(多选)"
+    options:
+      - "A: +="
+      - "B: -="
+      - "C: **="
+      - "D: &="
+    answer: ABD
+    explanation: "Go支持+=、-=、*=、/=、%=、&=、|=、^=、<<=、>>=、&^=复合赋值。没有**=因为Go没有**幂运算符。参见 Go 规范 Assignments 章节。"
+    topic: lexical_elements
+    chapter: tokens
+
+  - id: lexical-tokens-020
+    type: single
+    difficulty: easy
+    stem: "Go语言的注释有哪两种形式?"
+    options:
+      - "A: // 和 /* */"
+      - "B: # 和 /* */"
+      - "C: -- 和 /* */"
+      - "D: // 和 ''' '''"
+    answer: A
+    explanation: "Go使用//进行单行注释,/* */进行多行注释。#是Python/Shell的注释,--是SQL的注释。参见 Go 规范 Comments 章节。"
+    topic: lexical_elements
+    chapter: tokens
+
+  - id: lexical-tokens-021
+    type: single
+    difficulty: easy
+    stem: "Go语言中,用于类型断言的语法是?"
+    options:
+      - "A: (type)x"
+      - "B: x.(type)"
+      - "C: x as type"
+      - "D: type(x)"
+    answer: B
+    explanation: "Go使用x.(T)进行类型断言,其中x是接口值,T是目标类型。type(x)是类型转换。参见 Go 规范 Type assertions 章节。"
+    topic: lexical_elements
+    chapter: tokens
+
+  - id: lexical-tokens-022
+    type: multiple
+    difficulty: easy
+    stem: "以下哪些是Go语言的括号类符号?(多选)"
+    options:
+      - "A: ()"
+      - "B: []"
+      - "C: {}"
+      - "D: <>"
+    answer: ABC
+    explanation: "Go使用()圆括号、[]方括号、{}花括号。<>不是Go的括号符号,Go的泛型使用[]而非<>。参见 Go 规范 Punctuation 章节。"
+    topic: lexical_elements
+    chapter: tokens
+
+  - id: lexical-tokens-023
+    type: single
+    difficulty: easy
+    stem: "Go语言中,切片操作使用的符号是?"
+    options:
+      - "A: a(1:3)"
+      - "B: a[1:3]"
+      - "C: a{1:3}"
+      - "D: a<1:3>"
+    answer: B
+    explanation: "Go使用方括号[]进行切片操作,如a[1:3]获取索引1到2的元素。冒号:用于指定范围。参见 Go 规范 Slice expressions 章节。"
+    topic: lexical_elements
+    chapter: tokens
+
+  - id: lexical-tokens-024
+    type: single
+    difficulty: easy
+    stem: "Go语言中,哪个符号用于标签定义?"
+    options:
+      - "A: :"
+      - "B: ::"
+      - "C: @"
+      - "D: #"
+    answer: A
+    explanation: "Go使用冒号:定义标签,如loop:后跟语句。标签配合goto、break、continue使用。参见 Go 规范 Labeled statements 章节。"
+    topic: lexical_elements
+    chapter: tokens
+
+  # ========== 中等题 (Medium) - 12道 ==========
+
+  - id: lexical-tokens-025
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          a := 5
+          b := 3
+          fmt.Println(a &^ b)
+      }
+    options:
+      - "A: 7"
+      - "B: 4"
+      - "C: 1"
+      - "D: 2"
+    answer: B
+    explanation: "a &^ b是位清除运算,等价于a & (^b)。5的二进制是101,3的二进制是011,^3是...11111100(补码),5 & (^3) = 100 = 4。参见 Go 规范 Arithmetic operators 章节。"
+    topic: lexical_elements
+    chapter: tokens
+
+  - id: lexical-tokens-026
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          a := 6 ^ 3
+          fmt.Println(a)
+      }
+    options:
+      - "A: 9"
+      - "B: 5"
+      - "C: 3"
+      - "D: 2"
+    answer: B
+    explanation: "^是位异或运算符。6的二进制是110,3的二进制是011,110 ^ 011 = 101 = 5。参见 Go 规范 Arithmetic operators 章节。"
+    topic: lexical_elements
+    chapter: tokens
+
+  - id: lexical-tokens-027
+    type: multiple
+    difficulty: medium
+    stem: "关于Go的运算符优先级,以下说法正确的是?(多选)"
+    options:
+      - "A: *的优先级高于+"
+      - "B: &&的优先级高于||"
+      - "C: ==的优先级高于&&"
+      - "D: 一元运算符优先级最高"
+    answer: ABD
+    explanation: "Go运算符优先级:一元最高,然后*/%, +-, 比较运算符, &&, ||。所以*>+, &&>||, 但==<&&而非>。参见 Go 规范 Operator precedence 章节。"
+    topic: lexical_elements
+    chapter: tokens
+
+  - id: lexical-tokens-028
+    type: code_fix
+    difficulty: medium
+    stem: "以下代码有语法错误,正确的修正方案是?"
+    code: |
+      package main
+      func main() {
+          i := 0
+          j := ++i
+          println(j)
+      }
+    options:
+      - "A: 将++i改为i++"
+      - "B: 将j := ++i改为i++; j := i"
+      - "C: 将++改为+1"
+      - "D: 删除j :="
+    answer: B
+    explanation: "Go的++只能作为后缀语句使用,不能作为表达式。正确做法是先i++,再j := i。或者j := i + 1。参见 Go 规范 IncDec statements 章节。"
+    topic: lexical_elements
+    chapter: tokens
+
+  - id: lexical-tokens-029
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          x := ^1
+          fmt.Println(x)
+      }
+    options:
+      - "A: 0"
+      - "B: -1"
+      - "C: -2"
+      - "D: 1"
+    answer: C
+    explanation: "^作为一元运算符是位取反。1的二进制取反(在int64上)得到-2(补码表示)。^x等价于m^x其中m是全1。参见 Go 规范 Arithmetic operators 章节。"
+    topic: lexical_elements
+    chapter: tokens
+
+  - id: lexical-tokens-030
+    type: multiple
+    difficulty: medium
+    stem: "关于Go的:=运算符,以下说法正确的是?(多选)"
+    options:
+      - "A: 只能在函数内使用"
+      - "B: 左侧必须有新变量"
+      - "C: 可以同时声明多个变量"
+      - "D: 可以在包级别使用"
+    answer: ABC
+    explanation: ":=只能在函数内使用,不能在包级别。左侧至少有一个新变量(可以重用已有变量)。可以同时声明多个如a, b := 1, 2。参见 Go 规范 Short variable declarations 章节。"
+    topic: lexical_elements
+    chapter: tokens
+
+  - id: lexical-tokens-031
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          a := []int{1, 2, 3, 4, 5}
+          fmt.Println(a[1:3:4])
+      }
+    options:
+      - "A: [2 3]"
+      - "B: [2 3 4]"
+      - "C: [1 2 3]"
+      - "D: 编译错误"
+    answer: A
+    explanation: "a[1:3:4]是三索引切片,1是起始,3是结束(不含),4是容量限制。结果是[2 3],长度2,容量3。参见 Go 规范 Slice expressions 章节。"
+    topic: lexical_elements
+    chapter: tokens
+
+  - id: lexical-tokens-032
+    type: code_fix
+    difficulty: medium
+    stem: "以下代码存在问题,最佳修正方案是?"
+    code: |
+      package main
+      func main() {
+          x := 5
+          y := x ** 2
+          println(y)
+      }
+    options:
+      - "A: 将**改为*"
+      - "B: 使用math.Pow(x, 2)"
+      - "C: 将**改为^"
+      - "D: 将y := x ** 2改为y := x * x"
+    answer: D
+    explanation: "Go没有**幂运算符。对于整数平方,x*x最简单高效。math.Pow适用于浮点数。^是位异或不是幂运算。参见 Go 规范 Arithmetic operators 章节。"
+    topic: lexical_elements
+    chapter: tokens
+
+  - id: lexical-tokens-033
+    type: multiple
+    difficulty: medium
+    stem: "关于Go的分号插入规则,以下说法正确的是?(多选)"
+    options:
+      - "A: 标识符后可自动插入分号"
+      - "B: 数字字面量后可自动插入分号"
+      - "C: )后可自动插入分号"
+      - "D: {前可自动插入分号"
+    answer: ABC
+    explanation: "Go在标识符、字面量、某些关键字(break/continue/return等)、)]}后自动插入分号。{前不会自动插入分号,这就是为什么{必须与前面的语句在同一行。参见 Go 规范 Semicolons 章节。"
+    topic: lexical_elements
+    chapter: tokens
+
+  - id: lexical-tokens-034
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          fmt.Println(1 << 3 >> 1)
+      }
+    options:
+      - "A: 4"
+      - "B: 8"
+      - "C: 2"
+      - "D: 1"
+    answer: A
+    explanation: "位移运算从左到右执行。1<<3=8(二进制1000),8>>1=4(二进制100)。参见 Go 规范 Arithmetic operators 章节。"
+    topic: lexical_elements
+    chapter: tokens
+
+  - id: lexical-tokens-035
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          a, b := 3, 5
+          a, b = b, a
+          fmt.Println(a, b)
+      }
+    options:
+      - "A: 3 5"
+      - "B: 5 3"
+      - "C: 5 5"
+      - "D: 3 3"
+    answer: B
+    explanation: "Go支持多重赋值,右侧先求值再赋值。a, b = b, a实现了变量交换,无需临时变量。参见 Go 规范 Assignments 章节。"
+    topic: lexical_elements
+    chapter: tokens
+
+  - id: lexical-tokens-036
+    type: multiple
+    difficulty: medium
+    stem: "以下哪些运算符在Go中可以用于字符串?(多选)"
+    options:
+      - "A: +"
+      - "B: +="
+      - "C: =="
+      - "D: -"
+    answer: ABC
+    explanation: "+用于字符串连接,+=追加字符串,==比较字符串。-不能用于字符串操作。参见 Go 规范 String concatenation 章节。"
+    topic: lexical_elements
+    chapter: tokens
+
+  # ========== 困难题 (Hard) - 4道 ==========
+
+  - id: lexical-tokens-037
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          var a uint8 = 255
+          a++
+          fmt.Println(a)
+      }
+    options:
+      - "A: 256"
+      - "B: 0"
+      - "C: -1"
+      - "D: 溢出错误"
+    answer: B
+    explanation: "uint8范围是0-255,255+1溢出回绕到0。Go整数运算溢出不报错,而是取模(wrap around)。参见 Go 规范 Integer overflow 章节。"
+    topic: lexical_elements
+    chapter: tokens
+
+  - id: lexical-tokens-038
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          x := -5
+          fmt.Println(x >> 1)
+      }
+    options:
+      - "A: -2"
+      - "B: -3"
+      - "C: 2"
+      - "D: 2147483645"
+    answer: B
+    explanation: "Go对有符号整数使用算术右移(保留符号位)。-5的二进制(补码)右移1位得到-3。算术右移等价于向下取整除以2。参见 Go 规范 Arithmetic operators 章节。"
+    topic: lexical_elements
+    chapter: tokens
+
+  - id: lexical-tokens-039
+    type: multiple
+    difficulty: hard
+    stem: "关于Go运算符的结合性,以下说法正确的是?(多选)"
+    options:
+      - "A: 二元运算符从左到右结合"
+      - "B: 赋值运算符从右到左结合"
+      - "C: 一元运算符从右到左结合"
+      - "D: Go不支持连续赋值a=b=c"
+    answer: ACD
+    explanation: "Go二元运算符左结合,一元运算符右结合。Go不支持连续赋值(a=b=c非法),每个赋值是独立语句。参见 Go 规范 Operator precedence 章节。"
+    topic: lexical_elements
+    chapter: tokens
+
+  - id: lexical-tokens-040
+    type: code_fix
+    difficulty: hard
+    stem: "以下代码存在潜在问题,最佳修正方案是?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          var x int64 = 1
+          var y uint64 = 2
+          fmt.Println(x + y)
+      }
+    options:
+      - "A: 将x转换为uint64"
+      - "B: 将y转换为int64"
+      - "C: 使用类型转换后相加"
+      - "D: 代码会编译通过"
+    answer: C
+    explanation: "Go不允许不同类型直接运算,int64和uint64相加会编译错误。需要显式转换,选择取决于数值范围和业务需求。参见 Go 规范 Conversions 章节。"
+    topic: lexical_elements
+    chapter: tokens

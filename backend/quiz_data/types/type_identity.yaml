@@ -1,0 +1,660 @@
+# Go 类型同一性测验题库
+# 章节: types/type_identity
+# 符合 Go 1.24 语言规范
+
+metadata:
+  topic: types
+  chapter: type_identity
+  total_questions: 35
+  last_updated: "2025-01-01"
+  difficulty_distribution:
+    easy: 19      # 54%
+    medium: 12    # 34%
+    hard: 4       # 12%
+  type_distribution:
+    single: 16
+    multiple: 8
+    code_output: 8
+    code_fix: 3
+
+questions:
+  # ========== 简单题 (Easy) - 19道 ==========
+  
+  - id: type-ident-001
+    type: single
+    difficulty: easy
+    stem: "Go中什么是类型同一性(type identity)?"
+    options:
+      - "A: 类型名称相同"
+      - "B: 两个类型完全相同"
+      - "C: 底层类型相同"
+      - "D: 可以相互转换"
+    answer: B
+    explanation: "类型同一性是指两个类型完全相同,可以相互赋值无需转换。参见 Go 规范 Type identity 章节。"
+    topic: types
+    chapter: type_identity
+
+  - id: type-ident-002
+    type: single
+    difficulty: easy
+    stem: "定义类型type A int和type B int,A和B是同一类型吗?"
+    options:
+      - "A: 是"
+      - "B: 不是"
+      - "C: 取决于上下文"
+      - "D: 取决于值"
+    answer: B
+    explanation: "每个type定义创建新的不同类型。A和B是不同类型。参见 Go 规范 Type identity 章节。"
+    topic: types
+    chapter: type_identity
+
+  - id: type-ident-003
+    type: single
+    difficulty: easy
+    stem: "类型别名type A = int,A和int是同一类型吗?"
+    options:
+      - "A: 不是"
+      - "B: 是"
+      - "C: 部分相同"
+      - "D: 取决于包"
+    answer: B
+    explanation: "类型别名不创建新类型。A就是int,是同一类型。参见 Go 规范 Alias declarations 章节。"
+    topic: types
+    chapter: type_identity
+
+  - id: type-ident-004
+    type: single
+    difficulty: easy
+    stem: "两个[]int类型是同一类型吗?"
+    options:
+      - "A: 是"
+      - "B: 不是"
+      - "C: 取决于元素"
+      - "D: 取决于长度"
+    answer: A
+    explanation: "相同的类型字面量是同一类型。所有[]int都是同一类型。参见 Go 规范 Type identity 章节。"
+    topic: types
+    chapter: type_identity
+
+  - id: type-ident-005
+    type: single
+    difficulty: easy
+    stem: "[3]int和[4]int是同一类型吗?"
+    options:
+      - "A: 是"
+      - "B: 不是"
+      - "C: 取决于元素"
+      - "D: 是,都是数组"
+    answer: B
+    explanation: "数组长度是类型的一部分。[3]int和[4]int是不同类型。参见 Go 规范 Array types 章节。"
+    topic: types
+    chapter: type_identity
+
+  - id: type-ident-006
+    type: single
+    difficulty: easy
+    stem: "map[string]int和map[string]int是同一类型吗?"
+    options:
+      - "A: 是"
+      - "B: 不是"
+      - "C: 取决于键"
+      - "D: 取决于值"
+    answer: A
+    explanation: "相同的类型字面量是同一类型。两个map[string]int是同一类型。参见 Go 规范 Type identity 章节。"
+    topic: types
+    chapter: type_identity
+
+  - id: type-ident-007
+    type: single
+    difficulty: easy
+    stem: "chan int和chan<- int是同一类型吗?"
+    options:
+      - "A: 是"
+      - "B: 不是"
+      - "C: 可以互换"
+      - "D: 取决于用法"
+    answer: B
+    explanation: "通道方向是类型的一部分。双向和单向通道是不同类型。参见 Go 规范 Channel types 章节。"
+    topic: types
+    chapter: type_identity
+
+  - id: type-ident-008
+    type: single
+    difficulty: easy
+    stem: "func(int)int和func(int)int是同一类型吗?"
+    options:
+      - "A: 是"
+      - "B: 不是"
+      - "C: 取决于函数体"
+      - "D: 取决于函数名"
+    answer: A
+    explanation: "函数类型由签名决定,相同签名是同一类型。函数体不影响类型。参见 Go 规范 Function types 章节。"
+    topic: types
+    chapter: type_identity
+
+  - id: type-ident-009
+    type: single
+    difficulty: easy
+    stem: "struct{X int}和struct{Y int}是同一类型吗?"
+    options:
+      - "A: 是"
+      - "B: 不是"
+      - "C: 字段类型相同就是"
+      - "D: 取决于值"
+    answer: B
+    explanation: "结构体字段名是类型的一部分。X和Y不同,类型不同。参见 Go 规范 Struct types 章节。"
+    topic: types
+    chapter: type_identity
+
+  - id: type-ident-010
+    type: single
+    difficulty: easy
+    stem: "两个struct{X int}是同一类型吗?"
+    options:
+      - "A: 是"
+      - "B: 不是"
+      - "C: 取决于包"
+      - "D: 取决于定义位置"
+    answer: A
+    explanation: "相同的结构体字面量是同一类型,与定义位置无关。参见 Go 规范 Type identity 章节。"
+    topic: types
+    chapter: type_identity
+
+  - id: type-ident-011
+    type: single
+    difficulty: easy
+    stem: "*int和*int是同一类型吗?"
+    options:
+      - "A: 是"
+      - "B: 不是"
+      - "C: 取决于指向的值"
+      - "D: 取决于nil"
+    answer: A
+    explanation: "相同的指针类型字面量是同一类型。参见 Go 规范 Type identity 章节。"
+    topic: types
+    chapter: type_identity
+
+  - id: type-ident-012
+    type: single
+    difficulty: easy
+    stem: "interface{M()}和interface{M()}是同一类型吗?"
+    options:
+      - "A: 是"
+      - "B: 不是"
+      - "C: 取决于方法实现"
+      - "D: 取决于包"
+    answer: A
+    explanation: "相同方法签名的接口字面量是同一类型。参见 Go 规范 Interface types 章节。"
+    topic: types
+    chapter: type_identity
+
+  - id: type-ident-013
+    type: single
+    difficulty: easy
+    stem: "定义类型的名称是类型同一性的一部分吗?"
+    options:
+      - "A: 不是"
+      - "B: 是"
+      - "C: 只有导出类型"
+      - "D: 只有包级类型"
+    answer: B
+    explanation: "定义类型的名称是其身份的一部分。type A int和type B int是不同类型。参见 Go 规范 Type identity 章节。"
+    topic: types
+    chapter: type_identity
+
+  - id: type-ident-014
+    type: single
+    difficulty: easy
+    stem: "类型同一性和可赋值性的关系是什么?"
+    options:
+      - "A: 完全相同"
+      - "B: 同一性要求更严格"
+      - "C: 可赋值性要求更严格"
+      - "D: 无关系"
+    answer: B
+    explanation: "同一类型可以赋值,但可赋值不要求同一类型(如接口赋值)。参见 Go 规范 Assignability 章节。"
+    topic: types
+    chapter: type_identity
+
+  - id: type-ident-015
+    type: multiple
+    difficulty: easy
+    stem: "以下哪些类型对是同一类型?(多选)"
+    options:
+      - "A: []int和[]int"
+      - "B: type A int和int"
+      - "C: type A = int和int"
+      - "D: [3]int和[3]int"
+    answer: ACD
+    explanation: "相同字面量是同一类型,别名是同一类型。定义类型是不同类型。参见 Go 规范 Type identity 章节。"
+    topic: types
+    chapter: type_identity
+
+  - id: type-ident-016
+    type: single
+    difficulty: easy
+    stem: "byte和uint8是同一类型吗?"
+    options:
+      - "A: 是"
+      - "B: 不是"
+      - "C: 只有某些操作"
+      - "D: 取决于平台"
+    answer: A
+    explanation: "byte是uint8的类型别名,是同一类型。参见 Go 规范 Numeric types 章节。"
+    topic: types
+    chapter: type_identity
+
+  - id: type-ident-017
+    type: single
+    difficulty: easy
+    stem: "rune和int32是同一类型吗?"
+    options:
+      - "A: 是"
+      - "B: 不是"
+      - "C: 部分相同"
+      - "D: 取决于值"
+    answer: A
+    explanation: "rune是int32的类型别名,是同一类型。参见 Go 规范 Numeric types 章节。"
+    topic: types
+    chapter: type_identity
+
+  - id: type-ident-018
+    type: single
+    difficulty: easy
+    stem: "any和interface{}是同一类型吗?"
+    options:
+      - "A: 是"
+      - "B: 不是"
+      - "C: Go 1.18+是"
+      - "D: 取决于使用"
+    answer: A
+    explanation: "any是interface{}的类型别名(Go 1.18+),是同一类型。参见 Go 规范 Predeclared identifiers 章节。"
+    topic: types
+    chapter: type_identity
+
+  - id: type-ident-019
+    type: single
+    difficulty: easy
+    stem: "不同包中定义的type A int是同一类型吗?"
+    options:
+      - "A: 是"
+      - "B: 不是"
+      - "C: 如果导入相同"
+      - "D: 取决于包路径"
+    answer: B
+    explanation: "定义类型包含包路径信息。不同包的同名类型是不同类型。参见 Go 规范 Type identity 章节。"
+    topic: types
+    chapter: type_identity
+
+  # ========== 中等题 (Medium) - 12道 ==========
+
+  - id: type-ident-020
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type A int
+      type B int
+      func main() {
+          var a A = 1
+          var b B = 1
+          fmt.Println(a == A(b))
+      }
+    options:
+      - "A: true"
+      - "B: false"
+      - "C: 编译错误"
+      - "D: panic"
+    answer: A
+    explanation: "A和B不同类型,需要转换。A(b)=1,a=1。转换后可比较,相等。参见 Go 规范 Comparison operators 章节。"
+    topic: types
+    chapter: type_identity
+
+  - id: type-ident-021
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          var x []int
+          var y []int
+          fmt.Println(x == nil, y == nil)
+      }
+    options:
+      - "A: true true"
+      - "B: false false"
+      - "C: 编译错误"
+      - "D: true false"
+    answer: A
+    explanation: "两个[]int是同一类型。未初始化都是nil。可以与nil比较。参见 Go 规范 Comparison operators 章节。"
+    topic: types
+    chapter: type_identity
+
+  - id: type-ident-022
+    type: code_fix
+    difficulty: medium
+    stem: "以下代码编译错误,正确的修正是?"
+    code: |
+      package main
+      type A int
+      type B int
+      func F(a A) {}
+      func main() {
+          var b B = 10
+          F(b)
+      }
+    options:
+      - "A: F(A(b))"
+      - "B: F(int(b))"
+      - "C: 将B改为A"
+      - "D: A或C"
+    answer: D
+    explanation: "A和B是不同类型。需要转换A(b)或改变b的类型。参见 Go 规范 Type identity 章节。"
+    topic: types
+    chapter: type_identity
+
+  - id: type-ident-023
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          type A = int
+          type B = int
+          var a A = 1
+          var b B = a
+          fmt.Println(b)
+      }
+    options:
+      - "A: 1"
+      - "B: 编译错误"
+      - "C: 0"
+      - "D: int(1)"
+    answer: A
+    explanation: "A和B都是int的别名,都是同一类型int。可以直接赋值。b=1。参见 Go 规范 Alias declarations 章节。"
+    topic: types
+    chapter: type_identity
+
+  - id: type-ident-024
+    type: multiple
+    difficulty: medium
+    stem: "以下哪些情况两个类型是同一类型?(多选)"
+    options:
+      - "A: 类型别名和原类型"
+      - "B: 相同的类型字面量"
+      - "C: 底层类型相同的定义类型"
+      - "D: 相同签名的函数类型"
+    answer: ABD
+    explanation: "别名是同类型,相同字面量是同类型,相同函数签名是同类型。定义类型不同。参见 Go 规范 Type identity 章节。"
+    topic: types
+    chapter: type_identity
+
+  - id: type-ident-025
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          type S1 struct{ X int }
+          type S2 struct{ X int }
+          var s1 S1 = S1{1}
+          var s2 S2 = S2(s1)
+          fmt.Println(s2.X)
+      }
+    options:
+      - "A: 1"
+      - "B: 编译错误"
+      - "C: 0"
+      - "D: S2{1}"
+    answer: A
+    explanation: "S1和S2底层类型相同,可转换。S2(s1)转换成功。s2.X=1。参见 Go 规范 Conversions 章节。"
+    topic: types
+    chapter: type_identity
+
+  - id: type-ident-026
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          var f1 func(int) int = func(x int) int { return x }
+          var f2 func(int) int = f1
+          fmt.Println(f2(5))
+      }
+    options:
+      - "A: 5"
+      - "B: 编译错误"
+      - "C: 0"
+      - "D: nil"
+    answer: A
+    explanation: "func(int)int是同一类型。f1可以赋值给f2。f2(5)=5。参见 Go 规范 Type identity 章节。"
+    topic: types
+    chapter: type_identity
+
+  - id: type-ident-027
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type I interface{ M() }
+      func main() {
+          var i1 I
+          var i2 interface{ M() }
+          fmt.Println(i1 == i2)
+      }
+    options:
+      - "A: true"
+      - "B: false"
+      - "C: 编译错误"
+      - "D: panic"
+    answer: A
+    explanation: "I和interface{M()}是同一类型(相同方法集)。两个nil接口相等。参见 Go 规范 Type identity 章节。"
+    topic: types
+    chapter: type_identity
+
+  - id: type-ident-028
+    type: code_fix
+    difficulty: medium
+    stem: "以下代码编译错误,如何修正?"
+    code: |
+      package main
+      func main() {
+          var ch1 chan int = make(chan int)
+          var ch2 chan<- int = ch1
+          var ch3 chan int = ch2
+      }
+    options:
+      - "A: ch3 := ch1"
+      - "B: ch3 chan<- int = ch2"
+      - "C: 单向不能转回双向"
+      - "D: A或B"
+    answer: D
+    explanation: "单向通道不能转回双向。要么用ch1赋值ch3,要么ch3声明为单向。参见 Go 规范 Channel types 章节。"
+    topic: types
+    chapter: type_identity
+
+  - id: type-ident-029
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          type T struct{ X int `json:"x"` }
+          type U struct{ X int `json:"y"` }
+          var t T = T{1}
+          var u U = U(t)
+          fmt.Println(u.X)
+      }
+    options:
+      - "A: 1"
+      - "B: 编译错误"
+      - "C: 0"
+      - "D: {1}"
+    answer: B
+    explanation: "结构体标签是类型的一部分。不同标签导致底层类型不同,不能转换。参见 Go 规范 Struct types 章节。"
+    topic: types
+    chapter: type_identity
+
+  - id: type-ident-030
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          type T struct{ X int }
+          type U struct{ X int }
+          fmt.Println(T{1} == U{1})
+      }
+    options:
+      - "A: true"
+      - "B: false"
+      - "C: 编译错误"
+      - "D: panic"
+    answer: C
+    explanation: "T和U是不同定义类型,不能直接比较。需要转换。参见 Go 规范 Comparison operators 章节。"
+    topic: types
+    chapter: type_identity
+
+  - id: type-ident-031
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          var p1 *int
+          var p2 *int
+          fmt.Println(p1 == p2)
+      }
+    options:
+      - "A: true"
+      - "B: false"
+      - "C: 编译错误"
+      - "D: panic"
+    answer: A
+    explanation: "两个*int是同一类型。两个nil指针相等。参见 Go 规范 Comparison operators 章节。"
+    topic: types
+    chapter: type_identity
+
+  # ========== 困难题 (Hard) - 4道 ==========
+
+  - id: type-ident-032
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type A struct{ x int }
+      type B struct{ x int }
+      func main() {
+          a := A{1}
+          b := struct{ x int }{1}
+          fmt.Println(a == A(b))
+      }
+    options:
+      - "A: true"
+      - "B: false"
+      - "C: 编译错误"
+      - "D: panic"
+    answer: A
+    explanation: "A底层是struct{x int}。b是该字面量类型。A(b)转换成功。相等。参见 Go 规范 Conversions 章节。"
+    topic: types
+    chapter: type_identity
+
+  - id: type-ident-033
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import (
+          "fmt"
+          "reflect"
+      )
+      type A int
+      type B = A
+      func main() {
+          var b B = 10
+          t := reflect.TypeOf(b)
+          fmt.Println(t.Name(), t.Kind())
+      }
+    options:
+      - "A: A int"
+      - "B: B int"
+      - "C: int int"
+      - "D: A A"
+    answer: A
+    explanation: "B是A的别名,运行时类型是A。Kind是底层类型int。参见 Go reflect包文档。"
+    topic: types
+    chapter: type_identity
+
+  - id: type-ident-034
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type I1 interface{ M() }
+      type I2 interface{ M() }
+      type T struct{}
+      func (T) M() {}
+      func F(i I1) { fmt.Print("I1") }
+      func main() {
+          var i2 I2 = T{}
+          F(i2)
+      }
+    options:
+      - "A: I1"
+      - "B: I2"
+      - "C: 编译错误"
+      - "D: panic"
+    answer: A
+    explanation: "I1和I2方法集相同,是同一类型。i2(类型I2)可以传给F(参数I1)。输出I1。参见 Go 规范 Type identity 章节。"
+    topic: types
+    chapter: type_identity
+
+  - id: type-ident-035
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          type T1 struct {
+              X int
+              Y int
+          }
+          type T2 struct {
+              X, Y int
+          }
+          fmt.Println(T1{1, 2} == T2{1, 2})
+      }
+    options:
+      - "A: true"
+      - "B: false"
+      - "C: 编译错误"
+      - "D: panic"
+    answer: C
+    explanation: "T1和T2是不同定义类型,尽管底层字面量等价。不能直接比较。参见 Go 规范 Type identity 章节。"
+    topic: types
+    chapter: type_identity

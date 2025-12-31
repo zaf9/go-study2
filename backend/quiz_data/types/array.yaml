@@ -1,586 +1,684 @@
+# Go 数组类型测验题库
+# 章节: types/array
+# 符合 Go 1.24 语言规范
+
+metadata:
+  topic: types
+  chapter: array
+  total_questions: 38
+  last_updated: "2025-01-01"
+  difficulty_distribution:
+    easy: 23      # 60%
+    medium: 11    # 29%
+    hard: 4       # 11%
+  type_distribution:
+    single: 16
+    multiple: 9
+    code_output: 8
+    code_fix: 5
+
 questions:
-    - id: type-array-001
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 types.array，下面哪个选项是正确的？
-      options:
-        - 'A: 正确项（关于array.types的重要结论）'
-        - 'B: 语法/语义上不正确的陈述'
-        - 'C: 正确项（关于array.types的重要结论）'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: AC
-      explanation: 本题考查 types.array 的相关知识。正确答案：AC。解析：array 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: array
-    - id: type-array-002
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 types.array，下面哪个选项是正确的？
-      options:
-        - 'A: 正确：关于array.types的关键点描述（正确选项）'
-        - 'B: 部分正确但不完整的说法'
-        - 'C: 与array.types 相关但不适用的选项'
-        - 'D: 部分正确但不完整的说法'
-      answer: A
-      explanation: 本题考查 types.array 的概念。正确答案为 A。解析：array 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: array
-    - id: type-array-003
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 types.array，下面哪个选项是正确的？
-      options:
-        - 'A: 正确项（关于array.types的重要结论）'
-        - 'B: 正确项（关于array.types的重要结论）'
-        - 'C: 与array.types 相关但不适用的选项'
-        - 'D: 正确项（关于array.types的重要结论）'
-      answer: ABD
-      explanation: 本题考查 types.array 的相关知识。正确答案：ABD。解析：array 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: array
-    - id: type-array-004
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 types.array，下面哪个选项是正确的？
-      options:
-        - 'A: 与array.types 相关但不适用的选项'
-        - 'B: 正确：关于array.types的关键点描述（正确选项）'
-        - 'C: 常见误解或反例（容易混淆）'
-        - 'D: 与array.types 相关但不适用的选项'
-      answer: B
-      explanation: 本题考查 types.array 的概念。正确答案为 B。解析：array 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: array
-    - id: type-array-005
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 types.array，下面哪个选项是正确的？
-      options:
-        - 'A: 正确项（关于array.types的重要结论）'
-        - 'B: 语法/语义上不正确的陈述'
-        - 'C: 正确项（关于array.types的重要结论）'
-        - 'D: 正确项（关于array.types的重要结论）'
-      answer: ACD
-      explanation: 本题考查 types.array 的相关知识。正确答案：ACD。解析：array 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: array
-    - id: type-array-006
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 types.array，下面哪个选项是正确的？
-      options:
-        - 'A: 与array.types 相关但不适用的选项'
-        - 'B: 正确：关于array.types的关键点描述（正确选项）'
-        - 'C: 与array.types 相关但不适用的选项'
-        - 'D: 部分正确但不完整的说法'
-      answer: B
-      explanation: 本题考查 types.array 的概念。正确答案为 B。解析：array 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: array
-    - id: type-array-007
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 types.array，下面哪个选项是正确的？
-      options:
-        - 'A: 正确项（关于array.types的重要结论）'
-        - 'B: 正确项（关于array.types的重要结论）'
-        - 'C: 正确项（关于array.types的重要结论）'
-        - 'D: 与array.types 相关但不适用的选项'
-      answer: ABC
-      explanation: 本题考查 types.array 的相关知识。正确答案：ABC。解析：array 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: array
-    - id: type-array-008
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 types.array，下面哪个选项是正确的？
-      options:
-        - 'A: 正确：关于array.types的关键点描述（正确选项）'
-        - 'B: 常见误解或反例（容易混淆）'
-        - 'C: 常见误解或反例（容易混淆）'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: A
-      explanation: 本题考查 types.array 的概念。正确答案为 A。解析：array 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: array
-    - id: type-array-009
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 types.array，下面哪个选项是正确的？
-      options:
-        - 'A: 常见误解或反例（容易混淆）'
-        - 'B: 正确项（关于array.types的重要结论）'
-        - 'C: 正确项（关于array.types的重要结论）'
-        - 'D: 正确项（关于array.types的重要结论）'
-      answer: BCD
-      explanation: 本题考查 types.array 的相关知识。正确答案：BCD。解析：array 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: array
-    - id: type-array-010
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 types.array，下面哪个选项是正确的？
-      options:
-        - 'A: 常见误解或反例（容易混淆）'
-        - 'B: 正确：关于array.types的关键点描述（正确选项）'
-        - 'C: 部分正确但不完整的说法'
-        - 'D: 部分正确但不完整的说法'
-      answer: B
-      explanation: 本题考查 types.array 的概念。正确答案为 B。解析：array 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: array
-    - id: type-array-011
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 types.array，下面哪个选项是正确的？
-      options:
-        - 'A: 正确项（关于array.types的重要结论）'
-        - 'B: 与array.types 相关但不适用的选项'
-        - 'C: 正确项（关于array.types的重要结论）'
-        - 'D: 正确项（关于array.types的重要结论）'
-      answer: ACD
-      explanation: 本题考查 types.array 的相关知识。正确答案：ACD。解析：array 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: array
-    - id: type-array-012
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 types.array，下面哪个选项是正确的？
-      options:
-        - 'A: 正确：关于array.types的关键点描述（正确选项）'
-        - 'B: 与array.types 相关但不适用的选项'
-        - 'C: 常见误解或反例（容易混淆）'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: A
-      explanation: 本题考查 types.array 的概念。正确答案为 A。解析：array 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: array
-    - id: type-array-013
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 types.array，下面哪个选项是正确的？
-      options:
-        - 'A: 正确项（关于array.types的重要结论）'
-        - 'B: 与array.types 相关但不适用的选项'
-        - 'C: 与array.types 相关但不适用的选项'
-        - 'D: 正确项（关于array.types的重要结论）'
-      answer: AD
-      explanation: 本题考查 types.array 的相关知识。正确答案：AD。解析：array 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: array
-    - id: type-array-014
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 types.array，下面哪个选项是正确的？
-      options:
-        - 'A: 正确：关于array.types的关键点描述（正确选项）'
-        - 'B: 语法/语义上不正确的陈述'
-        - 'C: 部分正确但不完整的说法'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: A
-      explanation: 本题考查 types.array 的概念。正确答案为 A。解析：array 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: array
-    - id: type-array-015
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 types.array，下面哪个选项是正确的？
-      options:
-        - 'A: 正确项（关于array.types的重要结论）'
-        - 'B: 正确项（关于array.types的重要结论）'
-        - 'C: 常见误解或反例（容易混淆）'
-        - 'D: 正确项（关于array.types的重要结论）'
-      answer: ABD
-      explanation: 本题考查 types.array 的相关知识。正确答案：ABD。解析：array 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: array
-    - id: type-array-016
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 types.array，下面哪个选项是正确的？
-      options:
-        - 'A: 正确：关于array.types的关键点描述（正确选项）'
-        - 'B: 部分正确但不完整的说法'
-        - 'C: 与array.types 相关但不适用的选项'
-        - 'D: 部分正确但不完整的说法'
-      answer: A
-      explanation: 本题考查 types.array 的概念。正确答案为 A。解析：array 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: array
-    - id: type-array-017
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 types.array，下面哪个选项是正确的？
-      options:
-        - 'A: 部分正确但不完整的说法'
-        - 'B: 正确项（关于array.types的重要结论）'
-        - 'C: 正确项（关于array.types的重要结论）'
-        - 'D: 正确项（关于array.types的重要结论）'
-      answer: BCD
-      explanation: 本题考查 types.array 的相关知识。正确答案：BCD。解析：array 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: array
-    - id: type-array-018
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 types.array，下面哪个选项是正确的？
-      options:
-        - 'A: 正确：关于array.types的关键点描述（正确选项）'
-        - 'B: 常见误解或反例（容易混淆）'
-        - 'C: 常见误解或反例（容易混淆）'
-        - 'D: 常见误解或反例（容易混淆）'
-      answer: A
-      explanation: 本题考查 types.array 的概念。正确答案为 A。解析：array 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: array
-    - id: type-array-019
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 types.array 的情境下，哪个说法更合适？
-      options:
-        - 'A: 正确项（关于array.types的重要结论）'
-        - 'B: 常见误解或反例（容易混淆）'
-        - 'C: 正确项（关于array.types的重要结论）'
-        - 'D: 正确项（关于array.types的重要结论）'
-      answer: ACD
-      explanation: 本题考查 types.array 的相关知识。正确答案：ACD。解析：array 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: array
-    - id: type-array-020
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 types.array 的情境下，哪个说法更合适？
-      options:
-        - 'A: 部分正确但不完整的说法'
-        - 'B: 与array.types 相关但不适用的选项'
-        - 'C: 正确：关于array.types的关键点描述（正确选项）'
-        - 'D: 常见误解或反例（容易混淆）'
-      answer: C
-      explanation: 本题考查 types.array 的概念。正确答案为 C。解析：array 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: array
-    - id: type-array-021
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 types.array 的情境下，哪个说法更合适？
-      options:
-        - 'A: 正确项（关于array.types的重要结论）'
-        - 'B: 常见误解或反例（容易混淆）'
-        - 'C: 正确项（关于array.types的重要结论）'
-        - 'D: 正确项（关于array.types的重要结论）'
-      answer: ACD
-      explanation: 本题考查 types.array 的相关知识。正确答案：ACD。解析：array 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: array
-    - id: type-array-022
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 types.array 的情境下，哪个说法更合适？
-      options:
-        - 'A: 语法/语义上不正确的陈述'
-        - 'B: 正确：关于array.types的关键点描述（正确选项）'
-        - 'C: 语法/语义上不正确的陈述'
-        - 'D: 与array.types 相关但不适用的选项'
-      answer: B
-      explanation: 本题考查 types.array 的概念。正确答案为 B。解析：array 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: array
-    - id: type-array-023
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 types.array 的情境下，哪个说法更合适？
-      options:
-        - 'A: 正确项（关于array.types的重要结论）'
-        - 'B: 正确项（关于array.types的重要结论）'
-        - 'C: 正确项（关于array.types的重要结论）'
-        - 'D: 与array.types 相关但不适用的选项'
-      answer: ABC
-      explanation: 本题考查 types.array 的相关知识。正确答案：ABC。解析：array 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: array
-    - id: type-array-024
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 types.array 的情境下，哪个说法更合适？
-      options:
-        - 'A: 语法/语义上不正确的陈述'
-        - 'B: 常见误解或反例（容易混淆）'
-        - 'C: 正确：关于array.types的关键点描述（正确选项）'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: C
-      explanation: 本题考查 types.array 的概念。正确答案为 C。解析：array 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: array
-    - id: type-array-025
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 types.array 的情境下，哪个说法更合适？
-      options:
-        - 'A: 正确项（关于array.types的重要结论）'
-        - 'B: 与array.types 相关但不适用的选项'
-        - 'C: 正确项（关于array.types的重要结论）'
-        - 'D: 正确项（关于array.types的重要结论）'
-      answer: ACD
-      explanation: 本题考查 types.array 的相关知识。正确答案：ACD。解析：array 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: array
-    - id: type-array-026
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 types.array 的情境下，哪个说法更合适？
-      options:
-        - 'A: 常见误解或反例（容易混淆）'
-        - 'B: 常见误解或反例（容易混淆）'
-        - 'C: 正确：关于array.types的关键点描述（正确选项）'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: C
-      explanation: 本题考查 types.array 的概念。正确答案为 C。解析：array 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: array
-    - id: type-array-027
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 types.array 的情境下，哪个说法更合适？
-      options:
-        - 'A: 正确项（关于array.types的重要结论）'
-        - 'B: 部分正确但不完整的说法'
-        - 'C: 正确项（关于array.types的重要结论）'
-        - 'D: 正确项（关于array.types的重要结论）'
-      answer: ACD
-      explanation: 本题考查 types.array 的相关知识。正确答案：ACD。解析：array 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: array
-    - id: type-array-028
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 types.array 的情境下，哪个说法更合适？
-      options:
-        - 'A: 语法/语义上不正确的陈述'
-        - 'B: 与array.types 相关但不适用的选项'
-        - 'C: 正确：关于array.types的关键点描述（正确选项）'
-        - 'D: 部分正确但不完整的说法'
-      answer: C
-      explanation: 本题考查 types.array 的概念。正确答案为 C。解析：array 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: array
-    - id: type-array-029
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 types.array 的情境下，哪个说法更合适？
-      options:
-        - 'A: 正确项（关于array.types的重要结论）'
-        - 'B: 正确项（关于array.types的重要结论）'
-        - 'C: 正确项（关于array.types的重要结论）'
-        - 'D: 部分正确但不完整的说法'
-      answer: ABC
-      explanation: 本题考查 types.array 的相关知识。正确答案：ABC。解析：array 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: array
-    - id: type-array-030
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 types.array 的情境下，哪个说法更合适？
-      options:
-        - 'A: 常见误解或反例（容易混淆）'
-        - 'B: 部分正确但不完整的说法'
-        - 'C: 正确：关于array.types的关键点描述（正确选项）'
-        - 'D: 与array.types 相关但不适用的选项'
-      answer: C
-      explanation: 本题考查 types.array 的概念。正确答案为 C。解析：array 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: array
-    - id: type-array-031
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 types.array 的情境下，哪个说法更合适？
-      options:
-        - 'A: 常见误解或反例（容易混淆）'
-        - 'B: 部分正确但不完整的说法'
-        - 'C: 正确项（关于array.types的重要结论）'
-        - 'D: 正确项（关于array.types的重要结论）'
-      answer: CD
-      explanation: 本题考查 types.array 的相关知识。正确答案：CD。解析：array 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: array
-    - id: type-array-032
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 types.array 的情境下，哪个说法更合适？
-      options:
-        - 'A: 部分正确但不完整的说法'
-        - 'B: 正确：关于array.types的关键点描述（正确选项）'
-        - 'C: 语法/语义上不正确的陈述'
-        - 'D: 部分正确但不完整的说法'
-      answer: B
-      explanation: 本题考查 types.array 的概念。正确答案为 B。解析：array 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: array
-    - id: type-array-033
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 types.array 的情境下，哪个说法更合适？
-      options:
-        - 'A: 语法/语义上不正确的陈述'
-        - 'B: 常见误解或反例（容易混淆）'
-        - 'C: 正确项（关于array.types的重要结论）'
-        - 'D: 正确项（关于array.types的重要结论）'
-      answer: CD
-      explanation: 本题考查 types.array 的相关知识。正确答案：CD。解析：array 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: array
-    - id: type-array-034
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 types.array 的情境下，哪个说法更合适？
-      options:
-        - 'A: 与array.types 相关但不适用的选项'
-        - 'B: 正确：关于array.types的关键点描述（正确选项）'
-        - 'C: 常见误解或反例（容易混淆）'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: B
-      explanation: 本题考查 types.array 的概念。正确答案为 B。解析：array 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: array
-    - id: type-array-035
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 types.array 的情境下，哪个说法更合适？
-      options:
-        - 'A: 正确项（关于array.types的重要结论）'
-        - 'B: 正确项（关于array.types的重要结论）'
-        - 'C: 常见误解或反例（容易混淆）'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: AB
-      explanation: 本题考查 types.array 的相关知识。正确答案：AB。解析：array 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: array
-    - id: type-array-036
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 types.array 的情境下，哪个说法更合适？
-      options:
-        - 'A: 部分正确但不完整的说法'
-        - 'B: 正确：关于array.types的关键点描述（正确选项）'
-        - 'C: 语法/语义上不正确的陈述'
-        - 'D: 与array.types 相关但不适用的选项'
-      answer: B
-      explanation: 本题考查 types.array 的概念。正确答案为 B。解析：array 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: array
-    - id: type-array-037
-      type: multiple
-      difficulty: hard
-      stem: 【思考题】针对 types.array，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 正确项（关于array.types的重要结论）'
-        - 'B: 正确项（关于array.types的重要结论）'
-        - 'C: 常见误解或反例（容易混淆）'
-        - 'D: 正确项（关于array.types的重要结论）'
-      answer: ABD
-      explanation: 本题考查 types.array 的相关知识。正确答案：ABD。解析：array 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: array
-    - id: type-array-038
-      type: single
-      difficulty: hard
-      stem: 【思考题】针对 types.array，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 语法/语义上不正确的陈述'
-        - 'B: 部分正确但不完整的说法'
-        - 'C: 常见误解或反例（容易混淆）'
-        - 'D: 正确：关于array.types的关键点描述（正确选项）'
-      answer: D
-      explanation: 本题考查 types.array 的概念。正确答案为 D。解析：array 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: array
-    - id: type-array-039
-      type: multiple
-      difficulty: hard
-      stem: 【思考题】针对 types.array，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 与array.types 相关但不适用的选项'
-        - 'B: 语法/语义上不正确的陈述'
-        - 'C: 正确项（关于array.types的重要结论）'
-        - 'D: 正确项（关于array.types的重要结论）'
-      answer: CD
-      explanation: 本题考查 types.array 的相关知识。正确答案：CD。解析：array 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: array
-    - id: type-array-040
-      type: single
-      difficulty: hard
-      stem: 【思考题】针对 types.array，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 常见误解或反例（容易混淆）'
-        - 'B: 与array.types 相关但不适用的选项'
-        - 'C: 与array.types 相关但不适用的选项'
-        - 'D: 正确：关于array.types的关键点描述（正确选项）'
-      answer: D
-      explanation: 本题考查 types.array 的概念。正确答案为 D。解析：array 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: array
-    - id: type-array-041
-      type: multiple
-      difficulty: hard
-      stem: 【思考题】针对 types.array，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 正确项（关于array.types的重要结论）'
-        - 'B: 正确项（关于array.types的重要结论）'
-        - 'C: 与array.types 相关但不适用的选项'
-        - 'D: 正确项（关于array.types的重要结论）'
-      answer: ABD
-      explanation: 本题考查 types.array 的相关知识。正确答案：ABD。解析：array 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: array
-    - id: type-array-042
-      type: single
-      difficulty: hard
-      stem: 【思考题】针对 types.array，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 与array.types 相关但不适用的选项'
-        - 'B: 部分正确但不完整的说法'
-        - 'C: 正确：关于array.types的关键点描述（正确选项）'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: C
-      explanation: 本题考查 types.array 的概念。正确答案为 C。解析：array 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: array
-    - id: type-array-043
-      type: multiple
-      difficulty: hard
-      stem: 【思考题】针对 types.array，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 正确项（关于array.types的重要结论）'
-        - 'B: 语法/语义上不正确的陈述'
-        - 'C: 正确项（关于array.types的重要结论）'
-        - 'D: 正确项（关于array.types的重要结论）'
-      answer: ACD
-      explanation: 本题考查 types.array 的相关知识。正确答案：ACD。解析：array 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: array
-    - id: type-array-044
-      type: single
-      difficulty: hard
-      stem: 【思考题】针对 types.array，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 部分正确但不完整的说法'
-        - 'B: 与array.types 相关但不适用的选项'
-        - 'C: 正确：关于array.types的关键点描述（正确选项）'
-        - 'D: 部分正确但不完整的说法'
-      answer: C
-      explanation: 本题考查 types.array 的概念。正确答案为 C。解析：array 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: array
-    - id: type-array-045
-      type: multiple
-      difficulty: hard
-      stem: 【思考题】针对 types.array，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 语法/语义上不正确的陈述'
-        - 'B: 正确项（关于array.types的重要结论）'
-        - 'C: 正确项（关于array.types的重要结论）'
-        - 'D: 正确项（关于array.types的重要结论）'
-      answer: BCD
-      explanation: 本题考查 types.array 的相关知识。正确答案：BCD。解析：array 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: array
+  # ========== 简单题 (Easy) - 23道 ==========
+  
+  - id: type-arr-001
+    type: single
+    difficulty: easy
+    stem: "Go中如何声明一个长度为5的int数组?"
+    options:
+      - "A: var a []int = [5]int{}"
+      - "B: var a [5]int"
+      - "C: var a array[5]int"
+      - "D: var a = new int[5]"
+    answer: B
+    explanation: "Go数组语法是[N]T。var a [5]int声明长度5的int数组。参见 Go 规范 Array types 章节。"
+    topic: types
+    chapter: array
+
+  - id: type-arr-002
+    type: single
+    difficulty: easy
+    stem: "数组长度是类型的一部分吗?"
+    options:
+      - "A: 是"
+      - "B: 不是"
+      - "C: 取决于声明方式"
+      - "D: 只在编译时"
+    answer: A
+    explanation: "[3]int和[4]int是不同类型。数组长度是类型的一部分,必须是编译时常量。参见 Go 规范 Array types 章节。"
+    topic: types
+    chapter: array
+
+  - id: type-arr-003
+    type: single
+    difficulty: easy
+    stem: "[3]int和[4]int可以互相赋值吗?"
+    options:
+      - "A: 可以"
+      - "B: 不可以"
+      - "C: 需要转换"
+      - "D: 自动截断"
+    answer: B
+    explanation: "[3]int和[4]int是不同类型,不能互相赋值。参见 Go 规范 Array types 章节。"
+    topic: types
+    chapter: array
+
+  - id: type-arr-004
+    type: single
+    difficulty: easy
+    stem: "数组的零值是什么?"
+    options:
+      - "A: nil"
+      - "B: 空数组"
+      - "C: 元素全为零值"
+      - "D: undefined"
+    answer: C
+    explanation: "数组的零值是所有元素都为元素类型零值的数组。数组不能是nil。参见 Go 规范 The zero value 章节。"
+    topic: types
+    chapter: array
+
+  - id: type-arr-005
+    type: single
+    difficulty: easy
+    stem: "var a [3]int声明后a[0]的值是什么?"
+    options:
+      - "A: nil"
+      - "B: undefined"
+      - "C: 0"
+      - "D: 随机值"
+    answer: C
+    explanation: "数组元素初始化为零值。int的零值是0。参见 Go 规范 The zero value 章节。"
+    topic: types
+    chapter: array
+
+  - id: type-arr-006
+    type: single
+    difficulty: easy
+    stem: "如何用字面量初始化数组?"
+    options:
+      - "A: [3]int{1, 2, 3}"
+      - "B: {1, 2, 3}[3]int"
+      - "C: array(1, 2, 3)"
+      - "D: [1, 2, 3]"
+    answer: A
+    explanation: "数组字面量语法是[N]T{values}。如[3]int{1, 2, 3}。参见 Go 规范 Composite literals 章节。"
+    topic: types
+    chapter: array
+
+  - id: type-arr-007
+    type: single
+    difficulty: easy
+    stem: "[...]int{1, 2, 3}中...的作用是什么?"
+    options:
+      - "A: 可变参数"
+      - "B: 编译器推断长度"
+      - "C: 无限长度"
+      - "D: 创建切片"
+    answer: B
+    explanation: "[...]让编译器根据初始值个数推断数组长度。[...]int{1,2,3}等于[3]int{1,2,3}。参见 Go 规范 Composite literals 章节。"
+    topic: types
+    chapter: array
+
+  - id: type-arr-008
+    type: single
+    difficulty: easy
+    stem: "len([5]int{})的结果是什么?"
+    options:
+      - "A: 0"
+      - "B: 5"
+      - "C: 编译错误"
+      - "D: 取决于初始化"
+    answer: B
+    explanation: "数组长度固定。即使是空字面量,长度也是声明的5。参见 Go 规范 Length and capacity 章节。"
+    topic: types
+    chapter: array
+
+  - id: type-arr-009
+    type: single
+    difficulty: easy
+    stem: "数组是值类型还是引用类型?"
+    options:
+      - "A: 值类型"
+      - "B: 引用类型"
+      - "C: 取决于大小"
+      - "D: 取决于元素类型"
+    answer: A
+    explanation: "数组是值类型。赋值和传参会复制整个数组。参见 Go 规范 Array types 章节。"
+    topic: types
+    chapter: array
+
+  - id: type-arr-010
+    type: single
+    difficulty: easy
+    stem: "数组赋值a = b会发生什么?"
+    options:
+      - "A: a和b指向同一数组"
+      - "B: 复制整个数组"
+      - "C: 浅拷贝"
+      - "D: 编译错误"
+    answer: B
+    explanation: "数组是值类型。a=b复制整个数组,a和b是独立的。参见 Go 规范 Array types 章节。"
+    topic: types
+    chapter: array
+
+  - id: type-arr-011
+    type: single
+    difficulty: easy
+    stem: "如何获取数组的容量?"
+    options:
+      - "A: cap(a)"
+      - "B: len(a)"
+      - "C: 数组没有容量概念"
+      - "D: A和B都可以"
+    answer: D
+    explanation: "数组的长度和容量相同,都是固定的。cap(a)和len(a)对数组返回相同值。参见 Go 规范 Length and capacity 章节。"
+    topic: types
+    chapter: array
+
+  - id: type-arr-012
+    type: single
+    difficulty: easy
+    stem: "数组可以比较相等吗?"
+    options:
+      - "A: 可以"
+      - "B: 不可以"
+      - "C: 只能比较地址"
+      - "D: 需要循环比较"
+    answer: A
+    explanation: "同类型数组可以用==和!=比较。逐元素比较,全部相等则相等。参见 Go 规范 Comparison operators 章节。"
+    topic: types
+    chapter: array
+
+  - id: type-arr-013
+    type: single
+    difficulty: easy
+    stem: "[3]int{1,2,3} == [3]int{1,2,3}的结果是什么?"
+    options:
+      - "A: true"
+      - "B: false"
+      - "C: 编译错误"
+      - "D: 比较地址"
+    answer: A
+    explanation: "相同类型数组可以比较。元素全部相等,结果是true。参见 Go 规范 Comparison operators 章节。"
+    topic: types
+    chapter: array
+
+  - id: type-arr-014
+    type: multiple
+    difficulty: easy
+    stem: "以下哪些是有效的数组声明?(多选)"
+    options:
+      - "A: var a [3]int"
+      - "B: a := [3]int{1, 2, 3}"
+      - "C: a := [...]int{1, 2, 3}"
+      - "D: var a []int = [3]int{}"
+    answer: ABC
+    explanation: "A声明零值数组,B显式长度字面量,C推断长度。D是类型不匹配([]int是切片)。参见 Go 规范 Array types 章节。"
+    topic: types
+    chapter: array
+
+  - id: type-arr-015
+    type: single
+    difficulty: easy
+    stem: "a[1:3]对数组a返回什么类型?"
+    options:
+      - "A: 数组"
+      - "B: 切片"
+      - "C: 指针"
+      - "D: 子数组"
+    answer: B
+    explanation: "对数组切片操作返回切片,不是数组。切片引用数组的底层数据。参见 Go 规范 Slice expressions 章节。"
+    topic: types
+    chapter: array
+
+  - id: type-arr-016
+    type: single
+    difficulty: easy
+    stem: "[2][3]int是什么类型?"
+    options:
+      - "A: 2x3矩阵"
+      - "B: 二维数组"
+      - "C: 数组的数组"
+      - "D: 以上都对"
+    answer: D
+    explanation: "[2][3]int是包含2个[3]int元素的数组,即2行3列的二维数组/矩阵。参见 Go 规范 Array types 章节。"
+    topic: types
+    chapter: array
+
+  - id: type-arr-017
+    type: single
+    difficulty: easy
+    stem: "如何遍历数组?"
+    options:
+      - "A: for range a"
+      - "B: for i := 0; i < len(a); i++"
+      - "C: A和B都可以"
+      - "D: foreach a"
+    answer: C
+    explanation: "可以用range或传统for循环遍历数组。Go没有foreach关键字。参见 Go 规范 For statements 章节。"
+    topic: types
+    chapter: array
+
+  - id: type-arr-018
+    type: single
+    difficulty: easy
+    stem: "for i, v := range a中v是什么?"
+    options:
+      - "A: 元素的引用"
+      - "B: 元素的副本"
+      - "C: 元素的指针"
+      - "D: 索引"
+    answer: B
+    explanation: "range遍历数组时v是元素的副本。修改v不影响原数组。参见 Go 规范 For statements 章节。"
+    topic: types
+    chapter: array
+
+  - id: type-arr-019
+    type: single
+    difficulty: easy
+    stem: "如何传递大数组而不复制?"
+    options:
+      - "A: 传指针*[N]T"
+      - "B: 传切片[]T"
+      - "C: A和B都可以"
+      - "D: 无法避免复制"
+    answer: C
+    explanation: "传数组指针或切片都可以避免复制整个数组。切片更常用。参见 Go 规范 Pointer types 章节。"
+    topic: types
+    chapter: array
+
+  - id: type-arr-020
+    type: single
+    difficulty: easy
+    stem: "&a[0]和&a类型一样吗?"
+    options:
+      - "A: 一样"
+      - "B: 不一样"
+      - "C: 取决于a"
+      - "D: 编译错误"
+    answer: B
+    explanation: "&a[0]是*T(元素指针),&a是*[N]T(数组指针)。类型不同。参见 Go 规范 Address operators 章节。"
+    topic: types
+    chapter: array
+
+  - id: type-arr-021
+    type: single
+    difficulty: easy
+    stem: "数组索引从几开始?"
+    options:
+      - "A: 0"
+      - "B: 1"
+      - "C: 可配置"
+      - "D: 取决于声明"
+    answer: A
+    explanation: "Go数组索引从0开始。a[0]是第一个元素,a[len(a)-1]是最后一个。参见 Go 规范 Index expressions 章节。"
+    topic: types
+    chapter: array
+
+  - id: type-arr-022
+    type: single
+    difficulty: easy
+    stem: "访问越界索引会怎样?"
+    options:
+      - "A: 返回零值"
+      - "B: 编译错误(常量索引)"
+      - "C: 运行时panic"
+      - "D: B或C"
+    answer: D
+    explanation: "常量越界索引编译错误。运行时越界会panic。参见 Go 规范 Index expressions 章节。"
+    topic: types
+    chapter: array
+
+  - id: type-arr-023
+    type: multiple
+    difficulty: easy
+    stem: "关于数组,以下说法正确的是?(多选)"
+    options:
+      - "A: 长度固定"
+      - "B: 是值类型"
+      - "C: 可以比较"
+      - "D: 长度是类型的一部分"
+    answer: ABCD
+    explanation: "数组长度固定且是类型一部分,是值类型,同类型可比较。参见 Go 规范 Array types 章节。"
+    topic: types
+    chapter: array
+
+  # ========== 中等题 (Medium) - 11道 ==========
+
+  - id: type-arr-024
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          a := [3]int{1, 2, 3}
+          b := a
+          b[0] = 10
+          fmt.Println(a[0], b[0])
+      }
+    options:
+      - "A: 10 10"
+      - "B: 1 10"
+      - "C: 1 1"
+      - "D: 编译错误"
+    answer: B
+    explanation: "数组是值类型。b=a复制整个数组。修改b不影响a。a[0]=1,b[0]=10。参见 Go 规范 Array types 章节。"
+    topic: types
+    chapter: array
+
+  - id: type-arr-025
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func modify(a [3]int) {
+          a[0] = 100
+      }
+      func main() {
+          arr := [3]int{1, 2, 3}
+          modify(arr)
+          fmt.Println(arr[0])
+      }
+    options:
+      - "A: 100"
+      - "B: 1"
+      - "C: 0"
+      - "D: 编译错误"
+    answer: B
+    explanation: "数组传参是值传递,复制整个数组。函数内修改的是副本。原arr不变。参见 Go 规范 Array types 章节。"
+    topic: types
+    chapter: array
+
+  - id: type-arr-026
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func modify(a *[3]int) {
+          a[0] = 100
+      }
+      func main() {
+          arr := [3]int{1, 2, 3}
+          modify(&arr)
+          fmt.Println(arr[0])
+      }
+    options:
+      - "A: 100"
+      - "B: 1"
+      - "C: 0"
+      - "D: 编译错误"
+    answer: A
+    explanation: "传数组指针,函数内修改原数组。a[0]自动解引用。arr[0]变为100。参见 Go 规范 Pointer types 章节。"
+    topic: types
+    chapter: array
+
+  - id: type-arr-027
+    type: code_fix
+    difficulty: medium
+    stem: "以下代码有编译错误,正确的修正方案是?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          a := [3]int{1, 2, 3}
+          var b [4]int = a
+          fmt.Println(b)
+      }
+    options:
+      - "A: 改为var b = a"
+      - "B: 改为var b [3]int = a"
+      - "C: 改为b := [4]int(a)"
+      - "D: 无法直接转换"
+    answer: B
+    explanation: "[3]int和[4]int是不同类型。必须用相同类型。[3]int不能转为[4]int。参见 Go 规范 Array types 章节。"
+    topic: types
+    chapter: array
+
+  - id: type-arr-028
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          a := [5]int{1: 10, 3: 30}
+          fmt.Println(a)
+      }
+    options:
+      - "A: [10 0 30 0 0]"
+      - "B: [0 10 0 30 0]"
+      - "C: [1 10 3 30 0]"
+      - "D: 编译错误"
+    answer: B
+    explanation: "带索引的字面量:索引1是10,索引3是30,其他是零值。结果[0 10 0 30 0]。参见 Go 规范 Composite literals 章节。"
+    topic: types
+    chapter: array
+
+  - id: type-arr-029
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          a := [...]int{2: 3}
+          fmt.Println(len(a), a)
+      }
+    options:
+      - "A: 1 [3]"
+      - "B: 3 [0 0 3]"
+      - "C: 2 [0 3]"
+      - "D: 编译错误"
+    answer: B
+    explanation: "索引2的值是3,...推断最小长度为3。结果长度3,内容[0 0 3]。参见 Go 规范 Composite literals 章节。"
+    topic: types
+    chapter: array
+
+  - id: type-arr-030
+    type: multiple
+    difficulty: medium
+    stem: "关于数组和切片的区别,以下说法正确的是?(多选)"
+    options:
+      - "A: 数组长度固定,切片可变"
+      - "B: 数组是值类型,切片是引用类型"
+      - "C: 数组可以比较,切片不能"
+      - "D: 数组不能是nil,切片可以"
+    answer: ABCD
+    explanation: "数组固定长度、值类型、可比较、不能nil。切片可变长、引用类型、不能比较、可nil。参见 Go 规范 Array/Slice types 章节。"
+    topic: types
+    chapter: array
+
+  - id: type-arr-031
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          a := [3]int{1, 2, 3}
+          s := a[:]
+          s[0] = 100
+          fmt.Println(a[0])
+      }
+    options:
+      - "A: 1"
+      - "B: 100"
+      - "C: 0"
+      - "D: 编译错误"
+    answer: B
+    explanation: "a[:]创建切片,底层数组是a。修改切片影响原数组。a[0]变为100。参见 Go 规范 Slice expressions 章节。"
+    topic: types
+    chapter: array
+
+  - id: type-arr-032
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          a := [2][3]int{{1, 2, 3}, {4, 5, 6}}
+          fmt.Println(a[1][2])
+      }
+    options:
+      - "A: 3"
+      - "B: 5"
+      - "C: 6"
+      - "D: 编译错误"
+    answer: C
+    explanation: "a[1]是第二行{4,5,6}。a[1][2]是该行第三个元素6。参见 Go 规范 Index expressions 章节。"
+    topic: types
+    chapter: array
+
+  - id: type-arr-033
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          a := [3]int{1, 2, 3}
+          for i, v := range a {
+              a[i] = v * 2
+          }
+          fmt.Println(a)
+      }
+    options:
+      - "A: [1 2 3]"
+      - "B: [2 4 6]"
+      - "C: [1 4 6]"
+      - "D: 编译错误"
+    answer: B
+    explanation: "range遍历时可以通过索引修改原数组。每个元素乘2。结果[2 4 6]。参见 Go 规范 For statements 章节。"
+    topic: types
+    chapter: array
+
+  - id: type-arr-034
+    type: code_fix
+    difficulty: medium
+    stem: "以下代码range修改不生效,正确的修正方案是?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          a := [3]int{1, 2, 3}
+          for _, v := range a {
+              v = v * 2
+          }
+          fmt.Println(a)
+      }
+    options:
+      - "A: 使用for i, v := range a { a[i] = v * 2 }"
+      - "B: 使用for i := range a { a[i] *= 2 }"
+      - "C: A或B"
+      - "D: 代码正确"
+    answer: C
+    explanation: "v是副本,修改v不影响原数组。需要用索引修改a[i]。参见 Go 规范 For statements 章节。"
+    topic: types
+    chapter: array
+
+  # ========== 困难题 (Hard) - 4道 ==========
+
+  - id: type-arr-035
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          a := [3]int{1, 2, 3}
+          p := &a
+          (*p)[0] = 100
+          fmt.Println(a, p[0])
+      }
+    options:
+      - "A: [100 2 3] 100"
+      - "B: [1 2 3] 100"
+      - "C: [100 2 3] 1"
+      - "D: 编译错误"
+    answer: A
+    explanation: "p是数组指针。(*p)[0]和p[0]都能访问元素(指针自动解引用)。a[0]变为100。参见 Go 规范 Pointer types 章节。"
+    topic: types
+    chapter: array
+
+  - id: type-arr-036
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import (
+          "fmt"
+          "unsafe"
+      )
+      func main() {
+          a := [3]int{1, 2, 3}
+          fmt.Println(unsafe.Sizeof(a))
+      }
+    options:
+      - "A: 3"
+      - "B: 12"
+      - "C: 24"
+      - "D: 取决于平台"
+    answer: D
+    explanation: "数组大小=元素大小*长度。int在32位是4字节(总12),64位是8字节(总24)。参见 Go unsafe包文档。"
+    topic: types
+    chapter: array
+
+  - id: type-arr-037
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          a := [...]int{5: 5}
+          b := [...]int{1, 2, 3, 4, 5, 5}
+          fmt.Println(a == b)
+      }
+    options:
+      - "A: true"
+      - "B: false"
+      - "C: 编译错误"
+      - "D: panic"
+    answer: B
+    explanation: "a=[0,0,0,0,0,5],b=[1,2,3,4,5,5]。同为[6]int可比较。元素不全相等,结果false。参见 Go 规范 Composite literals 章节。"
+    topic: types
+    chapter: array
+
+  - id: type-arr-038
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          a := [3]*int{}
+          x := 1
+          a[0] = &x
+          b := a
+          *b[0] = 100
+          fmt.Println(x, *a[0])
+      }
+    options:
+      - "A: 1 1"
+      - "B: 100 100"
+      - "C: 1 100"
+      - "D: 100 1"
+    answer: B
+    explanation: "a是指针数组。b=a复制指针(浅拷贝)。b[0]和a[0]指向同一个x。修改*b[0]影响x和*a[0]。参见 Go 规范 Array types 章节。"
+    topic: types
+    chapter: array

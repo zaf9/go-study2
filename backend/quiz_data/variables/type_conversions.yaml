@@ -1,0 +1,665 @@
+# Go 类型转换测验题库
+# 章节: variables/type_conversions
+# 符合 Go 1.24 语言规范
+
+metadata:
+  topic: variables
+  chapter: type_conversions
+  total_questions: 38
+  last_updated: "2025-01-01"
+  difficulty_distribution:
+    easy: 23      # 60%
+    medium: 11    # 29%
+    hard: 4       # 11%
+  type_distribution:
+    single: 16
+    multiple: 9
+    code_output: 8
+    code_fix: 5
+
+questions:
+  # ========== 简单题 (Easy) - 23道 ==========
+  
+  - id: var-conv-001
+    type: single
+    difficulty: easy
+    stem: "Go语言类型转换的语法是什么?"
+    options:
+      - "A: (Type)value"
+      - "B: Type(value)"
+      - "C: value as Type"
+      - "D: cast(value, Type)"
+    answer: B
+    explanation: "Go使用Type(value)语法进行类型转换,如int(3.14)。不是C风格的(Type)value。参见 Go 规范 Conversions 章节。"
+    topic: variables
+    chapter: type_conversions
+
+  - id: var-conv-002
+    type: single
+    difficulty: easy
+    stem: "int(3.14)的结果是什么?"
+    options:
+      - "A: 3.14"
+      - "B: 3"
+      - "C: 4"
+      - "D: 编译错误"
+    answer: B
+    explanation: "float到int转换会截断小数部分。3.14截断为3。不是四舍五入。参见 Go 规范 Conversions 章节。"
+    topic: variables
+    chapter: type_conversions
+
+  - id: var-conv-003
+    type: single
+    difficulty: easy
+    stem: "float64(10)的结果是什么?"
+    options:
+      - "A: 10"
+      - "B: 10.0"
+      - "C: 10.000000"
+      - "D: 编译错误"
+    answer: B
+    explanation: "int到float64转换产生对应的浮点数10.0。精度取决于float64的表示。参见 Go 规范 Conversions 章节。"
+    topic: variables
+    chapter: type_conversions
+
+  - id: var-conv-004
+    type: single
+    difficulty: easy
+    stem: "string(65)的结果是什么?"
+    options:
+      - "A: \"65\""
+      - "B: \"A\""
+      - "C: 编译错误"
+      - "D: \"6\""
+    answer: B
+    explanation: "整数转string产生对应Unicode码点的字符。65是'A'的码点。参见 Go 规范 Conversions 章节。"
+    topic: variables
+    chapter: type_conversions
+
+  - id: var-conv-005
+    type: single
+    difficulty: easy
+    stem: "[]byte(\"hello\")的结果类型是什么?"
+    options:
+      - "A: string"
+      - "B: []byte"
+      - "C: []rune"
+      - "D: []int"
+    answer: B
+    explanation: "string转[]byte产生字节切片,每个字节对应UTF-8编码的一个字节。参见 Go 规范 Conversions 章节。"
+    topic: variables
+    chapter: type_conversions
+
+  - id: var-conv-006
+    type: single
+    difficulty: easy
+    stem: "string([]byte{104, 105})的结果是什么?"
+    options:
+      - "A: \"hi\""
+      - "B: \"104105\""
+      - "C: []byte"
+      - "D: 编译错误"
+    answer: A
+    explanation: "[]byte转string产生对应字符串。104是'h',105是'i'的ASCII码。参见 Go 规范 Conversions 章节。"
+    topic: variables
+    chapter: type_conversions
+
+  - id: var-conv-007
+    type: single
+    difficulty: easy
+    stem: "Go的类型转换是隐式还是显式?"
+    options:
+      - "A: 隐式"
+      - "B: 显式"
+      - "C: 两者都有"
+      - "D: 取决于类型"
+    answer: B
+    explanation: "Go要求显式类型转换,不支持隐式转换(除了赋值给接口)。必须写Type(value)。参见 Go 规范 Conversions 章节。"
+    topic: variables
+    chapter: type_conversions
+
+  - id: var-conv-008
+    type: single
+    difficulty: easy
+    stem: "var x int = 10; var y int64 = x 是否合法?"
+    options:
+      - "A: 合法"
+      - "B: 不合法,需要转换"
+      - "C: 取决于平台"
+      - "D: 合法但有警告"
+    answer: B
+    explanation: "int和int64是不同类型,即使底层都是整数也需要显式转换:y = int64(x)。参见 Go 规范 Conversions 章节。"
+    topic: variables
+    chapter: type_conversions
+
+  - id: var-conv-009
+    type: multiple
+    difficulty: easy
+    stem: "以下哪些是合法的类型转换?(多选)"
+    options:
+      - "A: int(3.14)"
+      - "B: string(65)"
+      - "C: []byte(\"hello\")"
+      - "D: int(\"10\")"
+    answer: ABC
+    explanation: "A,B,C都是合法转换。D不合法,string到int需要strconv.Atoi。参见 Go 规范 Conversions 章节。"
+    topic: variables
+    chapter: type_conversions
+
+  - id: var-conv-010
+    type: single
+    difficulty: easy
+    stem: "int(-3.7)的结果是什么?"
+    options:
+      - "A: -3"
+      - "B: -4"
+      - "C: 3"
+      - "D: -3.7"
+    answer: A
+    explanation: "float到int转换向零截断。-3.7截断为-3(不是向下取整-4)。参见 Go 规范 Conversions 章节。"
+    topic: variables
+    chapter: type_conversions
+
+  - id: var-conv-011
+    type: single
+    difficulty: easy
+    stem: "[]rune(\"你好\")的长度是多少?"
+    options:
+      - "A: 6"
+      - "B: 2"
+      - "C: 4"
+      - "D: 编译错误"
+    answer: B
+    explanation: "string转[]rune按Unicode字符切分。\"你好\"是2个rune。[]byte则是6字节(UTF-8)。参见 Go 规范 Conversions 章节。"
+    topic: variables
+    chapter: type_conversions
+
+  - id: var-conv-012
+    type: single
+    difficulty: easy
+    stem: "uint8(256)的结果是什么?"
+    options:
+      - "A: 256"
+      - "B: 0"
+      - "C: 编译错误"
+      - "D: 255"
+    answer: C
+    explanation: "常量256超出uint8范围(0-255),编译错误。运行时变量会截断。参见 Go 规范 Conversions 章节。"
+    topic: variables
+    chapter: type_conversions
+
+  - id: var-conv-013
+    type: single
+    difficulty: easy
+    stem: "type MyInt int; MyInt(10)是什么操作?"
+    options:
+      - "A: 类型转换"
+      - "B: 类型断言"
+      - "C: 类型定义"
+      - "D: 编译错误"
+    answer: A
+    explanation: "MyInt(10)是类型转换。MyInt和int底层类型相同,可以互相转换。参见 Go 规范 Conversions 章节。"
+    topic: variables
+    chapter: type_conversions
+
+  - id: var-conv-014
+    type: single
+    difficulty: easy
+    stem: "byte和uint8是什么关系?"
+    options:
+      - "A: 完全不同"
+      - "B: byte是uint8的别名"
+      - "C: uint8是byte的别名"
+      - "D: 可以隐式转换"
+    answer: B
+    explanation: "byte是uint8的类型别名,完全相同。不需要转换。参见 Go 规范 Numeric types 章节。"
+    topic: variables
+    chapter: type_conversions
+
+  - id: var-conv-015
+    type: single
+    difficulty: easy
+    stem: "rune和int32是什么关系?"
+    options:
+      - "A: 完全不同"
+      - "B: rune是int32的别名"
+      - "C: int32是rune的别名"
+      - "D: 需要转换"
+    answer: B
+    explanation: "rune是int32的类型别名,表示Unicode码点。不需要转换。参见 Go 规范 Numeric types 章节。"
+    topic: variables
+    chapter: type_conversions
+
+  - id: var-conv-016
+    type: single
+    difficulty: easy
+    stem: "float32(int64(1<<63-1))会发生什么?"
+    options:
+      - "A: 精确转换"
+      - "B: 精度损失"
+      - "C: 编译错误"
+      - "D: 运行时错误"
+    answer: B
+    explanation: "float32只有约7位有效数字,无法精确表示大int64。会损失精度。参见 Go 规范 Conversions 章节。"
+    topic: variables
+    chapter: type_conversions
+
+  - id: var-conv-017
+    type: single
+    difficulty: easy
+    stem: "string([]rune{'你', '好'})的结果是什么?"
+    options:
+      - "A: \"你好\""
+      - "B: \"[20320 22909]\""
+      - "C: 编译错误"
+      - "D: 乱码"
+    answer: A
+    explanation: "[]rune转string产生对应的字符串。'你'和'好'的rune组成\"你好\"。参见 Go 规范 Conversions 章节。"
+    topic: variables
+    chapter: type_conversions
+
+  - id: var-conv-018
+    type: single
+    difficulty: easy
+    stem: "如何将int转换为string数字表示?"
+    options:
+      - "A: string(n)"
+      - "B: strconv.Itoa(n)"
+      - "C: fmt.Sprint(n)"
+      - "D: B或C"
+    answer: D
+    explanation: "string(n)产生Unicode字符,不是数字。应用strconv.Itoa或fmt.Sprint。参见 Go strconv包文档。"
+    topic: variables
+    chapter: type_conversions
+
+  - id: var-conv-019
+    type: single
+    difficulty: easy
+    stem: "(*int)(nil)是什么操作?"
+    options:
+      - "A: 创建nil指针"
+      - "B: 类型转换nil"
+      - "C: 两者都是"
+      - "D: 编译错误"
+    answer: C
+    explanation: "(*int)(nil)将无类型nil转换为*int类型的nil指针。是类型转换。参见 Go 规范 Conversions 章节。"
+    topic: variables
+    chapter: type_conversions
+
+  - id: var-conv-020
+    type: single
+    difficulty: easy
+    stem: "unsafe.Pointer可以转换为什么?"
+    options:
+      - "A: 任何指针类型"
+      - "B: uintptr"
+      - "C: 两者都可以"
+      - "D: 只能转换为*byte"
+    answer: C
+    explanation: "unsafe.Pointer可以与任何指针类型和uintptr互相转换。这是不安全操作。参见 Go unsafe包文档。"
+    topic: variables
+    chapter: type_conversions
+
+  - id: var-conv-021
+    type: multiple
+    difficulty: easy
+    stem: "关于类型转换,以下说法正确的是?(多选)"
+    options:
+      - "A: Go要求显式转换"
+      - "B: 数值类型间可转换"
+      - "C: string和[]byte可互转"
+      - "D: 不同指针类型可直接转换"
+    answer: ABC
+    explanation: "Go要求显式转换。数值类型、string和[]byte/[]rune可互转。指针类型需要unsafe.Pointer中转。参见 Go 规范 Conversions 章节。"
+    topic: variables
+    chapter: type_conversions
+
+  - id: var-conv-022
+    type: single
+    difficulty: easy
+    stem: "int(1.0)和int(1)有什么区别?"
+    options:
+      - "A: 类型不同"
+      - "B: 结果相同,都是int类型的1"
+      - "C: 第一个编译错误"
+      - "D: 精度不同"
+    answer: B
+    explanation: "1.0和1都是无类型常量,转换为int后都是1。结果完全相同。参见 Go 规范 Conversions 章节。"
+    topic: variables
+    chapter: type_conversions
+
+  - id: var-conv-023
+    type: single
+    difficulty: easy
+    stem: "类型断言x.(T)和类型转换T(x)的区别是什么?"
+    options:
+      - "A: 没有区别"
+      - "B: 断言用于接口,转换用于具体类型"
+      - "C: 断言更安全"
+      - "D: 转换只用于数值"
+    answer: B
+    explanation: "类型断言x.(T)从接口获取具体类型。类型转换T(x)在兼容类型间转换。参见 Go 规范 Conversions 和 Type assertions 章节。"
+    topic: variables
+    chapter: type_conversions
+
+  # ========== 中等题 (Medium) - 11道 ==========
+
+  - id: var-conv-024
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          var x int8 = 127
+          x++
+          fmt.Println(x)
+      }
+    options:
+      - "A: 128"
+      - "B: -128"
+      - "C: 溢出错误"
+      - "D: 0"
+    answer: B
+    explanation: "int8范围是-128到127。127+1溢出为-128(二进制补码)。Go不检测整数溢出。参见 Go 规范 Integer overflow 章节。"
+    topic: variables
+    chapter: type_conversions
+
+  - id: var-conv-025
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          x := 256
+          y := uint8(x)
+          fmt.Println(y)
+      }
+    options:
+      - "A: 256"
+      - "B: 0"
+      - "C: 255"
+      - "D: 编译错误"
+    answer: B
+    explanation: "运行时转换会截断。256的低8位是0。uint8(256)=0。参见 Go 规范 Conversions 章节。"
+    topic: variables
+    chapter: type_conversions
+
+  - id: var-conv-026
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          s := "hello世界"
+          fmt.Println(len(s), len([]rune(s)))
+      }
+    options:
+      - "A: 11 7"
+      - "B: 7 7"
+      - "C: 11 11"
+      - "D: 7 11"
+    answer: A
+    explanation: "len(s)是字节数:5+3*2=11。len([]rune(s))是字符数:5+2=7。参见 Go 规范 Length and capacity 章节。"
+    topic: variables
+    chapter: type_conversions
+
+  - id: var-conv-027
+    type: code_fix
+    difficulty: medium
+    stem: "以下代码有编译错误,正确的修正方案是?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          var x int = 10
+          var y int64 = x
+          fmt.Println(y)
+      }
+    options:
+      - "A: 将x改为int64"
+      - "B: 添加y = int64(x)"
+      - "C: 将y改为int"
+      - "D: 以上都可以"
+    answer: D
+    explanation: "int和int64是不同类型,需要显式转换或统一类型。三种方案都能解决问题。参见 Go 规范 Conversions 章节。"
+    topic: variables
+    chapter: type_conversions
+
+  - id: var-conv-028
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          f := 1e100
+          i := int(f)
+          fmt.Println(i)
+      }
+    options:
+      - "A: 1e100"
+      - "B: 0"
+      - "C: 未定义行为(溢出)"
+      - "D: 编译错误"
+    answer: C
+    explanation: "1e100远超int范围。转换结果是未定义的(取决于实现)。可能是最大/最小int或其他值。参见 Go 规范 Conversions 章节。"
+    topic: variables
+    chapter: type_conversions
+
+  - id: var-conv-029
+    type: multiple
+    difficulty: medium
+    stem: "关于string和[]byte转换,以下说法正确的是?(多选)"
+    options:
+      - "A: 转换会复制数据"
+      - "B: 修改[]byte不影响原string"
+      - "C: string是不可变的"
+      - "D: 编译器可能优化避免复制"
+    answer: ABCD
+    explanation: "string是不可变的,转换为[]byte会复制。修改[]byte不影响原string。编译器有时优化只读[]byte。参见 Go 规范 Conversions 章节。"
+    topic: variables
+    chapter: type_conversions
+
+  - id: var-conv-030
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type Int int
+      func main() {
+          var x int = 10
+          var y Int = Int(x)
+          fmt.Printf("%T %T\n", x, y)
+      }
+    options:
+      - "A: int int"
+      - "B: int Int"
+      - "C: Int Int"
+      - "D: 编译错误"
+    answer: B
+    explanation: "x是int类型,y是Int类型。虽然底层相同,但是不同的类型。参见 Go 规范 Type definitions 章节。"
+    topic: variables
+    chapter: type_conversions
+
+  - id: var-conv-031
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          var f float64 = 1.9999999999999998
+          i := int(f)
+          fmt.Println(i)
+      }
+    options:
+      - "A: 1"
+      - "B: 2"
+      - "C: 1.9999999999999998"
+      - "D: 取决于平台"
+    answer: B
+    explanation: "1.9999999999999998由于float64精度限制实际上就是2.0。int(2.0)=2。参见 IEEE 754浮点数精度。"
+    topic: variables
+    chapter: type_conversions
+
+  - id: var-conv-032
+    type: code_fix
+    difficulty: medium
+    stem: "以下代码有问题,正确的修正方案是?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          s := "hello"
+          b := []byte(s)
+          b[0] = 'H'
+          fmt.Println(s)
+      }
+    options:
+      - "A: 代码正确,输出Hello"
+      - "B: 代码正确,输出hello"
+      - "C: 需要s = string(b)"
+      - "D: 编译错误"
+    answer: B
+    explanation: "代码正确但输出hello。[]byte(s)复制数据,修改b不影响原s。要改变需要重新赋值。参见 Go 规范 Conversions 章节。"
+    topic: variables
+    chapter: type_conversions
+
+  - id: var-conv-033
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          x := complex(3, 4)
+          r := float64(real(x))
+          i := float64(imag(x))
+          fmt.Println(r, i)
+      }
+    options:
+      - "A: 3 4"
+      - "B: 3+4i 0"
+      - "C: (3+4i) 0"
+      - "D: 编译错误"
+    answer: A
+    explanation: "real(x)=3,imag(x)=4。转换为float64后输出3 4。参见 Go 规范 Complex numbers 章节。"
+    topic: variables
+    chapter: type_conversions
+
+  - id: var-conv-034
+    type: multiple
+    difficulty: medium
+    stem: "关于指针类型转换,以下说法正确的是?(多选)"
+    options:
+      - "A: *int不能直接转为*float64"
+      - "B: 需要unsafe.Pointer中转"
+      - "C: 这是不安全操作"
+      - "D: Go不支持指针类型转换"
+    answer: ABC
+    explanation: "不同指针类型不能直接转换。需要unsafe.Pointer中转,这是不安全操作。Go支持但不推荐。参见 Go unsafe包文档。"
+    topic: variables
+    chapter: type_conversions
+
+  # ========== 困难题 (Hard) - 4道 ==========
+
+  - id: var-conv-035
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          var x uint = 1
+          var y int = -1
+          fmt.Println(x + uint(y))
+      }
+    options:
+      - "A: 0"
+      - "B: 2"
+      - "C: 溢出错误"
+      - "D: 18446744073709551616(假设64位)"
+    answer: A
+    explanation: "-1转uint是全1(最大uint),加1溢出回0。在64位系统:1+0xFFFFFFFFFFFFFFFF=0。参见 Go 规范 Integer overflow 章节。"
+    topic: variables
+    chapter: type_conversions
+
+  - id: var-conv-036
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import (
+          "fmt"
+          "unsafe"
+      )
+      func main() {
+          var f float64 = 1.5
+          p := *(*int64)(unsafe.Pointer(&f))
+          fmt.Printf("%016x\n", p)
+      }
+    options:
+      - "A: 0000000000000001"
+      - "B: 3ff8000000000000"
+      - "C: 编译错误"
+      - "D: 运行时panic"
+    answer: B
+    explanation: "1.5的IEEE 754表示是0x3FF8000000000000。unsafe.Pointer让我们看到底层位模式。参见 IEEE 754 浮点表示。"
+    topic: variables
+    chapter: type_conversions
+
+  - id: var-conv-037
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          const x = 1 << 100
+          fmt.Println(float64(x))
+      }
+    options:
+      - "A: 编译错误:overflow"
+      - "B: +Inf"
+      - "C: 1.2676506002282294e+30"
+      - "D: 0"
+    answer: C
+    explanation: "无类型常量可以是任意精度。1<<100转float64不溢出(float64最大约1.8e308)。输出约1.27e30。参见 Go 规范 Constants 章节。"
+    topic: variables
+    chapter: type_conversions
+
+  - id: var-conv-038
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          s1 := "hello"
+          s2 := string([]byte(s1))
+          fmt.Println(s1 == s2, &s1 == &s2)
+      }
+    options:
+      - "A: true true"
+      - "B: true false"
+      - "C: false false"
+      - "D: false true"
+    answer: B
+    explanation: "s1和s2内容相同(true)。但它们是不同的变量,地址不同(false)。转换创建新字符串。参见 Go 规范 String types 章节。"
+    topic: variables
+    chapter: type_conversions

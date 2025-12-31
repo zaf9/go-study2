@@ -1,521 +1,832 @@
+# Go Channel类型测验题库
+# 章节: types/channel
+# 符合 Go 1.24 语言规范
+
+metadata:
+  topic: types
+  chapter: channel
+  total_questions: 42
+  last_updated: "2025-01-01"
+  difficulty_distribution:
+    easy: 24      # 57%
+    medium: 13    # 31%
+    hard: 5       # 12%
+  type_distribution:
+    single: 18
+    multiple: 11
+    code_output: 8
+    code_fix: 5
+
 questions:
-    - id: type-channel-001
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 types.channel，下面哪个选项是正确的？
-      options:
-        - 'A: 正确项（关于channel.types的重要结论）'
-        - 'B: 与channel.types 相关但不适用的选项'
-        - 'C: 正确项（关于channel.types的重要结论）'
-        - 'D: 正确项（关于channel.types的重要结论）'
-      answer: ACD
-      explanation: 本题考查 types.channel 的相关知识。正确答案：ACD。解析：channel 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: channel
-    - id: type-channel-002
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 types.channel，下面哪个选项是正确的？
-      options:
-        - 'A: 常见误解或反例（容易混淆）'
-        - 'B: 正确：关于channel.types的关键点描述（正确选项）'
-        - 'C: 部分正确但不完整的说法'
-        - 'D: 常见误解或反例（容易混淆）'
-      answer: B
-      explanation: 本题考查 types.channel 的概念。正确答案为 B。解析：channel 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: channel
-    - id: type-channel-003
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 types.channel，下面哪个选项是正确的？
-      options:
-        - 'A: 正确项（关于channel.types的重要结论）'
-        - 'B: 部分正确但不完整的说法'
-        - 'C: 正确项（关于channel.types的重要结论）'
-        - 'D: 部分正确但不完整的说法'
-      answer: AC
-      explanation: 本题考查 types.channel 的相关知识。正确答案：AC。解析：channel 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: channel
-    - id: type-channel-004
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 types.channel，下面哪个选项是正确的？
-      options:
-        - 'A: 部分正确但不完整的说法'
-        - 'B: 正确：关于channel.types的关键点描述（正确选项）'
-        - 'C: 部分正确但不完整的说法'
-        - 'D: 与channel.types 相关但不适用的选项'
-      answer: B
-      explanation: 本题考查 types.channel 的概念。正确答案为 B。解析：channel 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: channel
-    - id: type-channel-005
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 types.channel，下面哪个选项是正确的？
-      options:
-        - 'A: 正确项（关于channel.types的重要结论）'
-        - 'B: 语法/语义上不正确的陈述'
-        - 'C: 正确项（关于channel.types的重要结论）'
-        - 'D: 正确项（关于channel.types的重要结论）'
-      answer: ACD
-      explanation: 本题考查 types.channel 的相关知识。正确答案：ACD。解析：channel 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: channel
-    - id: type-channel-006
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 types.channel，下面哪个选项是正确的？
-      options:
-        - 'A: 正确：关于channel.types的关键点描述（正确选项）'
-        - 'B: 部分正确但不完整的说法'
-        - 'C: 与channel.types 相关但不适用的选项'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: A
-      explanation: 本题考查 types.channel 的概念。正确答案为 A。解析：channel 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: channel
-    - id: type-channel-007
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 types.channel，下面哪个选项是正确的？
-      options:
-        - 'A: 正确项（关于channel.types的重要结论）'
-        - 'B: 正确项（关于channel.types的重要结论）'
-        - 'C: 正确项（关于channel.types的重要结论）'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: ABC
-      explanation: 本题考查 types.channel 的相关知识。正确答案：ABC。解析：channel 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: channel
-    - id: type-channel-008
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 types.channel，下面哪个选项是正确的？
-      options:
-        - 'A: 常见误解或反例（容易混淆）'
-        - 'B: 正确：关于channel.types的关键点描述（正确选项）'
-        - 'C: 常见误解或反例（容易混淆）'
-        - 'D: 部分正确但不完整的说法'
-      answer: B
-      explanation: 本题考查 types.channel 的概念。正确答案为 B。解析：channel 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: channel
-    - id: type-channel-009
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 types.channel，下面哪个选项是正确的？
-      options:
-        - 'A: 正确项（关于channel.types的重要结论）'
-        - 'B: 与channel.types 相关但不适用的选项'
-        - 'C: 正确项（关于channel.types的重要结论）'
-        - 'D: 正确项（关于channel.types的重要结论）'
-      answer: ACD
-      explanation: 本题考查 types.channel 的相关知识。正确答案：ACD。解析：channel 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: channel
-    - id: type-channel-010
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 types.channel，下面哪个选项是正确的？
-      options:
-        - 'A: 语法/语义上不正确的陈述'
-        - 'B: 正确：关于channel.types的关键点描述（正确选项）'
-        - 'C: 与channel.types 相关但不适用的选项'
-        - 'D: 部分正确但不完整的说法'
-      answer: B
-      explanation: 本题考查 types.channel 的概念。正确答案为 B。解析：channel 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: channel
-    - id: type-channel-011
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 types.channel，下面哪个选项是正确的？
-      options:
-        - 'A: 语法/语义上不正确的陈述'
-        - 'B: 正确项（关于channel.types的重要结论）'
-        - 'C: 正确项（关于channel.types的重要结论）'
-        - 'D: 与channel.types 相关但不适用的选项'
-      answer: BC
-      explanation: 本题考查 types.channel 的相关知识。正确答案：BC。解析：channel 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: channel
-    - id: type-channel-012
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 types.channel，下面哪个选项是正确的？
-      options:
-        - 'A: 正确：关于channel.types的关键点描述（正确选项）'
-        - 'B: 常见误解或反例（容易混淆）'
-        - 'C: 部分正确但不完整的说法'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: A
-      explanation: 本题考查 types.channel 的概念。正确答案为 A。解析：channel 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: channel
-    - id: type-channel-013
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 types.channel，下面哪个选项是正确的？
-      options:
-        - 'A: 正确项（关于channel.types的重要结论）'
-        - 'B: 正确项（关于channel.types的重要结论）'
-        - 'C: 常见误解或反例（容易混淆）'
-        - 'D: 与channel.types 相关但不适用的选项'
-      answer: AB
-      explanation: 本题考查 types.channel 的相关知识。正确答案：AB。解析：channel 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: channel
-    - id: type-channel-014
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 types.channel，下面哪个选项是正确的？
-      options:
-        - 'A: 正确：关于channel.types的关键点描述（正确选项）'
-        - 'B: 与channel.types 相关但不适用的选项'
-        - 'C: 语法/语义上不正确的陈述'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: A
-      explanation: 本题考查 types.channel 的概念。正确答案为 A。解析：channel 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: channel
-    - id: type-channel-015
-      type: multiple
-      difficulty: easy
-      stem: 【单项基础】关于 types.channel，下面哪个选项是正确的？
-      options:
-        - 'A: 语法/语义上不正确的陈述'
-        - 'B: 正确项（关于channel.types的重要结论）'
-        - 'C: 正确项（关于channel.types的重要结论）'
-        - 'D: 正确项（关于channel.types的重要结论）'
-      answer: BCD
-      explanation: 本题考查 types.channel 的相关知识。正确答案：BCD。解析：channel 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: channel
-    - id: type-channel-016
-      type: single
-      difficulty: easy
-      stem: 【单项基础】关于 types.channel，下面哪个选项是正确的？
-      options:
-        - 'A: 部分正确但不完整的说法'
-        - 'B: 正确：关于channel.types的关键点描述（正确选项）'
-        - 'C: 常见误解或反例（容易混淆）'
-        - 'D: 常见误解或反例（容易混淆）'
-      answer: B
-      explanation: 本题考查 types.channel 的概念。正确答案为 B。解析：channel 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: channel
-    - id: type-channel-017
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 types.channel 的情境下，哪个说法更合适？
-      options:
-        - 'A: 正确项（关于channel.types的重要结论）'
-        - 'B: 常见误解或反例（容易混淆）'
-        - 'C: 正确项（关于channel.types的重要结论）'
-        - 'D: 正确项（关于channel.types的重要结论）'
-      answer: ACD
-      explanation: 本题考查 types.channel 的相关知识。正确答案：ACD。解析：channel 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: channel
-    - id: type-channel-018
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 types.channel 的情境下，哪个说法更合适？
-      options:
-        - 'A: 与channel.types 相关但不适用的选项'
-        - 'B: 正确：关于channel.types的关键点描述（正确选项）'
-        - 'C: 部分正确但不完整的说法'
-        - 'D: 部分正确但不完整的说法'
-      answer: B
-      explanation: 本题考查 types.channel 的概念。正确答案为 B。解析：channel 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: channel
-    - id: type-channel-019
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 types.channel 的情境下，哪个说法更合适？
-      options:
-        - 'A: 正确项（关于channel.types的重要结论）'
-        - 'B: 正确项（关于channel.types的重要结论）'
-        - 'C: 与channel.types 相关但不适用的选项'
-        - 'D: 正确项（关于channel.types的重要结论）'
-      answer: ABD
-      explanation: 本题考查 types.channel 的相关知识。正确答案：ABD。解析：channel 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: channel
-    - id: type-channel-020
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 types.channel 的情境下，哪个说法更合适？
-      options:
-        - 'A: 语法/语义上不正确的陈述'
-        - 'B: 部分正确但不完整的说法'
-        - 'C: 正确：关于channel.types的关键点描述（正确选项）'
-        - 'D: 部分正确但不完整的说法'
-      answer: C
-      explanation: 本题考查 types.channel 的概念。正确答案为 C。解析：channel 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: channel
-    - id: type-channel-021
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 types.channel 的情境下，哪个说法更合适？
-      options:
-        - 'A: 语法/语义上不正确的陈述'
-        - 'B: 与channel.types 相关但不适用的选项'
-        - 'C: 正确项（关于channel.types的重要结论）'
-        - 'D: 正确项（关于channel.types的重要结论）'
-      answer: CD
-      explanation: 本题考查 types.channel 的相关知识。正确答案：CD。解析：channel 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: channel
-    - id: type-channel-022
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 types.channel 的情境下，哪个说法更合适？
-      options:
-        - 'A: 与channel.types 相关但不适用的选项'
-        - 'B: 正确：关于channel.types的关键点描述（正确选项）'
-        - 'C: 语法/语义上不正确的陈述'
-        - 'D: 常见误解或反例（容易混淆）'
-      answer: B
-      explanation: 本题考查 types.channel 的概念。正确答案为 B。解析：channel 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: channel
-    - id: type-channel-023
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 types.channel 的情境下，哪个说法更合适？
-      options:
-        - 'A: 部分正确但不完整的说法'
-        - 'B: 正确项（关于channel.types的重要结论）'
-        - 'C: 正确项（关于channel.types的重要结论）'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: BC
-      explanation: 本题考查 types.channel 的相关知识。正确答案：BC。解析：channel 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: channel
-    - id: type-channel-024
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 types.channel 的情境下，哪个说法更合适？
-      options:
-        - 'A: 部分正确但不完整的说法'
-        - 'B: 部分正确但不完整的说法'
-        - 'C: 正确：关于channel.types的关键点描述（正确选项）'
-        - 'D: 部分正确但不完整的说法'
-      answer: C
-      explanation: 本题考查 types.channel 的概念。正确答案为 C。解析：channel 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: channel
-    - id: type-channel-025
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 types.channel 的情境下，哪个说法更合适？
-      options:
-        - 'A: 正确项（关于channel.types的重要结论）'
-        - 'B: 部分正确但不完整的说法'
-        - 'C: 正确项（关于channel.types的重要结论）'
-        - 'D: 正确项（关于channel.types的重要结论）'
-      answer: ACD
-      explanation: 本题考查 types.channel 的相关知识。正确答案：ACD。解析：channel 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: channel
-    - id: type-channel-026
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 types.channel 的情境下，哪个说法更合适？
-      options:
-        - 'A: 部分正确但不完整的说法'
-        - 'B: 常见误解或反例（容易混淆）'
-        - 'C: 正确：关于channel.types的关键点描述（正确选项）'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: C
-      explanation: 本题考查 types.channel 的概念。正确答案为 C。解析：channel 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: channel
-    - id: type-channel-027
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 types.channel 的情境下，哪个说法更合适？
-      options:
-        - 'A: 正确项（关于channel.types的重要结论）'
-        - 'B: 部分正确但不完整的说法'
-        - 'C: 正确项（关于channel.types的重要结论）'
-        - 'D: 正确项（关于channel.types的重要结论）'
-      answer: ACD
-      explanation: 本题考查 types.channel 的相关知识。正确答案：ACD。解析：channel 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: channel
-    - id: type-channel-028
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 types.channel 的情境下，哪个说法更合适？
-      options:
-        - 'A: 语法/语义上不正确的陈述'
-        - 'B: 语法/语义上不正确的陈述'
-        - 'C: 正确：关于channel.types的关键点描述（正确选项）'
-        - 'D: 部分正确但不完整的说法'
-      answer: C
-      explanation: 本题考查 types.channel 的概念。正确答案为 C。解析：channel 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: channel
-    - id: type-channel-029
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 types.channel 的情境下，哪个说法更合适？
-      options:
-        - 'A: 正确项（关于channel.types的重要结论）'
-        - 'B: 正确项（关于channel.types的重要结论）'
-        - 'C: 正确项（关于channel.types的重要结论）'
-        - 'D: 常见误解或反例（容易混淆）'
-      answer: ABC
-      explanation: 本题考查 types.channel 的相关知识。正确答案：ABC。解析：channel 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: channel
-    - id: type-channel-030
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 types.channel 的情境下，哪个说法更合适？
-      options:
-        - 'A: 与channel.types 相关但不适用的选项'
-        - 'B: 语法/语义上不正确的陈述'
-        - 'C: 正确：关于channel.types的关键点描述（正确选项）'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: C
-      explanation: 本题考查 types.channel 的概念。正确答案为 C。解析：channel 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: channel
-    - id: type-channel-031
-      type: multiple
-      difficulty: medium
-      stem: 【应用题】在 types.channel 的情境下，哪个说法更合适？
-      options:
-        - 'A: 与channel.types 相关但不适用的选项'
-        - 'B: 常见误解或反例（容易混淆）'
-        - 'C: 正确项（关于channel.types的重要结论）'
-        - 'D: 正确项（关于channel.types的重要结论）'
-      answer: CD
-      explanation: 本题考查 types.channel 的相关知识。正确答案：CD。解析：channel 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: channel
-    - id: type-channel-032
-      type: single
-      difficulty: medium
-      stem: 【应用题】在 types.channel 的情境下，哪个说法更合适？
-      options:
-        - 'A: 语法/语义上不正确的陈述'
-        - 'B: 正确：关于channel.types的关键点描述（正确选项）'
-        - 'C: 常见误解或反例（容易混淆）'
-        - 'D: 常见误解或反例（容易混淆）'
-      answer: B
-      explanation: 本题考查 types.channel 的概念。正确答案为 B。解析：channel 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: channel
-    - id: type-channel-033
-      type: multiple
-      difficulty: hard
-      stem: 【思考题】针对 types.channel，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 与channel.types 相关但不适用的选项'
-        - 'B: 部分正确但不完整的说法'
-        - 'C: 正确项（关于channel.types的重要结论）'
-        - 'D: 正确项（关于channel.types的重要结论）'
-      answer: CD
-      explanation: 本题考查 types.channel 的相关知识。正确答案：CD。解析：channel 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: channel
-    - id: type-channel-034
-      type: single
-      difficulty: hard
-      stem: 【思考题】针对 types.channel，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 常见误解或反例（容易混淆）'
-        - 'B: 语法/语义上不正确的陈述'
-        - 'C: 正确：关于channel.types的关键点描述（正确选项）'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: C
-      explanation: 本题考查 types.channel 的概念。正确答案为 C。解析：channel 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: channel
-    - id: type-channel-035
-      type: multiple
-      difficulty: hard
-      stem: 【思考题】针对 types.channel，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 语法/语义上不正确的陈述'
-        - 'B: 部分正确但不完整的说法'
-        - 'C: 正确项（关于channel.types的重要结论）'
-        - 'D: 正确项（关于channel.types的重要结论）'
-      answer: CD
-      explanation: 本题考查 types.channel 的相关知识。正确答案：CD。解析：channel 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: channel
-    - id: type-channel-036
-      type: single
-      difficulty: hard
-      stem: 【思考题】针对 types.channel，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 常见误解或反例（容易混淆）'
-        - 'B: 常见误解或反例（容易混淆）'
-        - 'C: 正确：关于channel.types的关键点描述（正确选项）'
-        - 'D: 常见误解或反例（容易混淆）'
-      answer: C
-      explanation: 本题考查 types.channel 的概念。正确答案为 C。解析：channel 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: channel
-    - id: type-channel-037
-      type: multiple
-      difficulty: hard
-      stem: 【思考题】针对 types.channel，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 正确项（关于channel.types的重要结论）'
-        - 'B: 部分正确但不完整的说法'
-        - 'C: 正确项（关于channel.types的重要结论）'
-        - 'D: 常见误解或反例（容易混淆）'
-      answer: AC
-      explanation: 本题考查 types.channel 的相关知识。正确答案：AC。解析：channel 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: channel
-    - id: type-channel-038
-      type: single
-      difficulty: hard
-      stem: 【思考题】针对 types.channel，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 常见误解或反例（容易混淆）'
-        - 'B: 语法/语义上不正确的陈述'
-        - 'C: 正确：关于channel.types的关键点描述（正确选项）'
-        - 'D: 部分正确但不完整的说法'
-      answer: C
-      explanation: 本题考查 types.channel 的概念。正确答案为 C。解析：channel 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: channel
-    - id: type-channel-039
-      type: multiple
-      difficulty: hard
-      stem: 【思考题】针对 types.channel，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 正确项（关于channel.types的重要结论）'
-        - 'B: 与channel.types 相关但不适用的选项'
-        - 'C: 正确项（关于channel.types的重要结论）'
-        - 'D: 语法/语义上不正确的陈述'
-      answer: AC
-      explanation: 本题考查 types.channel 的相关知识。正确答案：AC。解析：channel 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: channel
-    - id: type-channel-040
-      type: single
-      difficulty: hard
-      stem: 【思考题】针对 types.channel，判断下列说法的正确性并选择最合适的选项。
-      options:
-        - 'A: 部分正确但不完整的说法'
-        - 'B: 与channel.types 相关但不适用的选项'
-        - 'C: 语法/语义上不正确的陈述'
-        - 'D: 正确：关于channel.types的关键点描述（正确选项）'
-      answer: D
-      explanation: 本题考查 types.channel 的概念。正确答案为 D。解析：channel 的关键点在于...（请在校稿时补充具体细节）。
-      topic: types
-      chapter: channel
+  # ========== 简单题 (Easy) - 24道 ==========
+  
+  - id: type-chan-001
+    type: single
+    difficulty: easy
+    stem: "Go中channel类型的表示格式是什么?"
+    options:
+      - "A: channel[T]"
+      - "B: chan T"
+      - "C: Channel<T>"
+      - "D: pipe[T]"
+    answer: B
+    explanation: "Go的channel类型写作chan T。T是元素类型。参见 Go 规范 Channel types 章节。"
+    topic: types
+    chapter: channel
+
+  - id: type-chan-002
+    type: single
+    difficulty: easy
+    stem: "channel的零值是什么?"
+    options:
+      - "A: 空channel"
+      - "B: nil"
+      - "C: closed channel"
+      - "D: 0"
+    answer: B
+    explanation: "channel的零值是nil。nil channel的发送和接收永远阻塞。参见 Go 规范 The zero value 章节。"
+    topic: types
+    chapter: channel
+
+  - id: type-chan-003
+    type: single
+    difficulty: easy
+    stem: "如何创建一个channel?"
+    options:
+      - "A: new(chan int)"
+      - "B: make(chan int)"
+      - "C: chan int{}"
+      - "D: create(chan int)"
+    answer: B
+    explanation: "使用make(chan T)或make(chan T, capacity)创建channel。参见 Go 规范 Making slices maps channels 章节。"
+    topic: types
+    chapter: channel
+
+  - id: type-chan-004
+    type: single
+    difficulty: easy
+    stem: "无缓冲channel的特点是什么?"
+    options:
+      - "A: 发送不阻塞"
+      - "B: 接收不阻塞"
+      - "C: 同步通信"
+      - "D: 可以缓存一个值"
+    answer: C
+    explanation: "无缓冲channel是同步的。发送阻塞直到接收,接收阻塞直到发送。参见 Go 规范 Channel types 章节。"
+    topic: types
+    chapter: channel
+
+  - id: type-chan-005
+    type: single
+    difficulty: easy
+    stem: "make(chan int, 5)创建的是什么?"
+    options:
+      - "A: 无缓冲channel"
+      - "B: 容量5的缓冲channel"
+      - "C: 长度5的channel"
+      - "D: 5个channel"
+    answer: B
+    explanation: "make(chan T, n)创建容量n的缓冲channel。可缓存n个值。参见 Go 规范 Making slices maps channels 章节。"
+    topic: types
+    chapter: channel
+
+  - id: type-chan-006
+    type: single
+    difficulty: easy
+    stem: "向channel发送值用什么操作符?"
+    options:
+      - "A: ch >> v"
+      - "B: ch = v"
+      - "C: ch <- v"
+      - "D: ch.send(v)"
+    answer: C
+    explanation: "ch <- v向channel ch发送值v。<-是channel操作符。参见 Go 规范 Send statements 章节。"
+    topic: types
+    chapter: channel
+
+  - id: type-chan-007
+    type: single
+    difficulty: easy
+    stem: "从channel接收值用什么操作符?"
+    options:
+      - "A: v << ch"
+      - "B: v = ch"
+      - "C: v := <-ch"
+      - "D: v = ch.recv()"
+    answer: C
+    explanation: "<-ch从channel接收值。v := <-ch接收并赋值给v。参见 Go 规范 Receive operator 章节。"
+    topic: types
+    chapter: channel
+
+  - id: type-chan-008
+    type: single
+    difficulty: easy
+    stem: "如何关闭channel?"
+    options:
+      - "A: ch.close()"
+      - "B: close(ch)"
+      - "C: ch = nil"
+      - "D: delete(ch)"
+    answer: B
+    explanation: "close(ch)关闭channel。关闭后不能发送,但可以接收剩余值。参见 Go 规范 Close 章节。"
+    topic: types
+    chapter: channel
+
+  - id: type-chan-009
+    type: single
+    difficulty: easy
+    stem: "向已关闭的channel发送会怎样?"
+    options:
+      - "A: 返回false"
+      - "B: 阻塞"
+      - "C: panic"
+      - "D: 忽略"
+    answer: C
+    explanation: "向已关闭的channel发送会panic。参见 Go 规范 Send statements 章节。"
+    topic: types
+    chapter: channel
+
+  - id: type-chan-010
+    type: single
+    difficulty: easy
+    stem: "从已关闭的空channel接收会怎样?"
+    options:
+      - "A: panic"
+      - "B: 返回零值"
+      - "C: 阻塞"
+      - "D: 返回nil"
+    answer: B
+    explanation: "从关闭的空channel接收返回元素类型零值。不会阻塞或panic。参见 Go 规范 Receive operator 章节。"
+    topic: types
+    chapter: channel
+
+  - id: type-chan-011
+    type: single
+    difficulty: easy
+    stem: "如何检查channel是否关闭?"
+    options:
+      - "A: ch.closed()"
+      - "B: v, ok := <-ch"
+      - "C: closed(ch)"
+      - "D: ch == closed"
+    answer: B
+    explanation: "v, ok := <-ch的ok为false表示channel已关闭且无值。参见 Go 规范 Receive operator 章节。"
+    topic: types
+    chapter: channel
+
+  - id: type-chan-012
+    type: single
+    difficulty: easy
+    stem: "chan<- int表示什么?"
+    options:
+      - "A: 接收channel"
+      - "B: 发送channel"
+      - "C: 双向channel"
+      - "D: 只读channel"
+    answer: B
+    explanation: "chan<- T是只发送channel。只能向它发送,不能接收。参见 Go 规范 Channel types 章节。"
+    topic: types
+    chapter: channel
+
+  - id: type-chan-013
+    type: single
+    difficulty: easy
+    stem: "<-chan int表示什么?"
+    options:
+      - "A: 发送channel"
+      - "B: 接收channel"
+      - "C: 双向channel"
+      - "D: 只写channel"
+    answer: B
+    explanation: "<-chan T是只接收channel。只能从它接收,不能发送。参见 Go 规范 Channel types 章节。"
+    topic: types
+    chapter: channel
+
+  - id: type-chan-014
+    type: single
+    difficulty: easy
+    stem: "len(ch)返回什么?"
+    options:
+      - "A: 容量"
+      - "B: 当前缓冲的元素数"
+      - "C: 总接收次数"
+      - "D: 总发送次数"
+    answer: B
+    explanation: "len(ch)返回channel中当前缓冲的元素数量。参见 Go 规范 Length and capacity 章节。"
+    topic: types
+    chapter: channel
+
+  - id: type-chan-015
+    type: single
+    difficulty: easy
+    stem: "cap(ch)返回什么?"
+    options:
+      - "A: 当前元素数"
+      - "B: channel容量"
+      - "C: 剩余空间"
+      - "D: 最大容量"
+    answer: B
+    explanation: "cap(ch)返回channel的缓冲容量。无缓冲channel容量为0。参见 Go 规范 Length and capacity 章节。"
+    topic: types
+    chapter: channel
+
+  - id: type-chan-016
+    type: single
+    difficulty: easy
+    stem: "select语句的作用是什么?"
+    options:
+      - "A: 选择类型"
+      - "B: 多路复用channel操作"
+      - "C: 选择goroutine"
+      - "D: 条件分支"
+    answer: B
+    explanation: "select监听多个channel操作,执行第一个就绪的。参见 Go 规范 Select statements 章节。"
+    topic: types
+    chapter: channel
+
+  - id: type-chan-017
+    type: single
+    difficulty: easy
+    stem: "select中多个case同时就绪时怎么选择?"
+    options:
+      - "A: 第一个"
+      - "B: 最后一个"
+      - "C: 随机选择"
+      - "D: 按优先级"
+    answer: C
+    explanation: "select随机选择一个就绪的case执行。参见 Go 规范 Select statements 章节。"
+    topic: types
+    chapter: channel
+
+  - id: type-chan-018
+    type: single
+    difficulty: easy
+    stem: "select的default分支有什么作用?"
+    options:
+      - "A: 必须有"
+      - "B: 无case就绪时执行"
+      - "C: 最后执行"
+      - "D: 错误处理"
+    answer: B
+    explanation: "default分支在所有case都不就绪时执行,使select非阻塞。参见 Go 规范 Select statements 章节。"
+    topic: types
+    chapter: channel
+
+  - id: type-chan-019
+    type: multiple
+    difficulty: easy
+    stem: "关于channel,以下说法正确的是?(多选)"
+    options:
+      - "A: 是引用类型"
+      - "B: 零值是nil"
+      - "C: 可以比较"
+      - "D: FIFO顺序"
+    answer: ABCD
+    explanation: "channel是引用类型,零值nil,可比较(比较地址),FIFO顺序。参见 Go 规范 Channel types 章节。"
+    topic: types
+    chapter: channel
+
+  - id: type-chan-020
+    type: single
+    difficulty: easy
+    stem: "for range遍历channel的结束条件是什么?"
+    options:
+      - "A: channel为空"
+      - "B: channel被关闭"
+      - "C: 超时"
+      - "D: 手动break"
+    answer: B
+    explanation: "for v := range ch在channel关闭且无剩余值时结束。参见 Go 规范 For statements 章节。"
+    topic: types
+    chapter: channel
+
+  - id: type-chan-021
+    type: single
+    difficulty: easy
+    stem: "nil channel有什么特点?"
+    options:
+      - "A: 发送接收都panic"
+      - "B: 发送接收永远阻塞"
+      - "C: 自动初始化"
+      - "D: 可以关闭"
+    answer: B
+    explanation: "nil channel的发送和接收永远阻塞。常用于select禁用某个case。参见 Go 规范 Channel types 章节。"
+    topic: types
+    chapter: channel
+
+  - id: type-chan-022
+    type: single
+    difficulty: easy
+    stem: "关闭nil channel会怎样?"
+    options:
+      - "A: 无操作"
+      - "B: 返回错误"
+      - "C: panic"
+      - "D: 阻塞"
+    answer: C
+    explanation: "关闭nil channel会panic。参见 Go 规范 Close 章节。"
+    topic: types
+    chapter: channel
+
+  - id: type-chan-023
+    type: single
+    difficulty: easy
+    stem: "双向channel可以赋值给单向channel吗?"
+    options:
+      - "A: 不可以"
+      - "B: 可以"
+      - "C: 需要类型转换"
+      - "D: 取决于方向"
+    answer: B
+    explanation: "chan T可以赋值给chan<- T或<-chan T。单向不能转双向。参见 Go 规范 Assignability 章节。"
+    topic: types
+    chapter: channel
+
+  - id: type-chan-024
+    type: multiple
+    difficulty: easy
+    stem: "以下哪些操作会panic?(多选)"
+    options:
+      - "A: 向已关闭channel发送"
+      - "B: 关闭已关闭channel"
+      - "C: 关闭nil channel"
+      - "D: 从已关闭channel接收"
+    answer: ABC
+    explanation: "发送关闭channel、重复关闭、关闭nil都panic。接收关闭channel不panic。参见 Go 规范 Channel types 章节。"
+    topic: types
+    chapter: channel
+
+  # ========== 中等题 (Medium) - 13道 ==========
+
+  - id: type-chan-025
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          ch := make(chan int)
+          go func() { ch <- 42 }()
+          fmt.Println(<-ch)
+      }
+    options:
+      - "A: 42"
+      - "B: 0"
+      - "C: 死锁"
+      - "D: 不确定"
+    answer: A
+    explanation: "goroutine发送42到无缓冲channel。主goroutine接收。同步通信,输出42。参见 Go 规范 Channel types 章节。"
+    topic: types
+    chapter: channel
+
+  - id: type-chan-026
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          ch := make(chan int, 1)
+          ch <- 1
+          fmt.Println(<-ch)
+      }
+    options:
+      - "A: 1"
+      - "B: 0"
+      - "C: 死锁"
+      - "D: panic"
+    answer: A
+    explanation: "缓冲容量1,发送不阻塞。接收1。输出1。参见 Go 规范 Channel types 章节。"
+    topic: types
+    chapter: channel
+
+  - id: type-chan-027
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          ch := make(chan int)
+          ch <- 1
+          fmt.Println(<-ch)
+      }
+    options:
+      - "A: 1"
+      - "B: 0"
+      - "C: 死锁"
+      - "D: panic"
+    answer: C
+    explanation: "无缓冲channel,发送阻塞等待接收。只有一个goroutine,死锁。参见 Go 规范 Channel types 章节。"
+    topic: types
+    chapter: channel
+
+  - id: type-chan-028
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          ch := make(chan int)
+          close(ch)
+          v, ok := <-ch
+          fmt.Println(v, ok)
+      }
+    options:
+      - "A: 0 true"
+      - "B: 0 false"
+      - "C: panic"
+      - "D: nil false"
+    answer: B
+    explanation: "关闭的空channel接收返回零值0和false。参见 Go 规范 Receive operator 章节。"
+    topic: types
+    chapter: channel
+
+  - id: type-chan-029
+    type: code_fix
+    difficulty: medium
+    stem: "以下代码死锁,正确的修正是?"
+    code: |
+      package main
+      func main() {
+          ch := make(chan int)
+          for i := 0; i < 3; i++ {
+              ch <- i
+          }
+          for v := range ch {
+              println(v)
+          }
+      }
+    options:
+      - "A: 用缓冲channel"
+      - "B: 用goroutine发送"
+      - "C: 关闭channel"
+      - "D: B并关闭channel"
+    answer: D
+    explanation: "无缓冲channel发送阻塞。应goroutine发送并close。range需要close结束。参见 Go 规范 Channel types 章节。"
+    topic: types
+    chapter: channel
+
+  - id: type-chan-030
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          ch := make(chan int, 2)
+          ch <- 1
+          ch <- 2
+          close(ch)
+          for v := range ch {
+              fmt.Print(v)
+          }
+      }
+    options:
+      - "A: 12"
+      - "B: 21"
+      - "C: 死锁"
+      - "D: panic"
+    answer: A
+    explanation: "缓冲channel关闭前发送1,2。range接收剩余值后结束。FIFO输出12。参见 Go 规范 For statements 章节。"
+    topic: types
+    chapter: channel
+
+  - id: type-chan-031
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          ch1 := make(chan int, 1)
+          ch2 := make(chan int, 1)
+          ch1 <- 1
+          select {
+          case v := <-ch1:
+              fmt.Print(v)
+          case ch2 <- 2:
+              fmt.Print("sent")
+          }
+      }
+    options:
+      - "A: 1"
+      - "B: sent"
+      - "C: 1sent"
+      - "D: 随机"
+    answer: D
+    explanation: "两个case都就绪(ch1有值,ch2有空间)。select随机选择一个。参见 Go 规范 Select statements 章节。"
+    topic: types
+    chapter: channel
+
+  - id: type-chan-032
+    type: multiple
+    difficulty: medium
+    stem: "关于select,以下说法正确的是?(多选)"
+    options:
+      - "A: 可以有多个case"
+      - "B: default使其非阻塞"
+      - "C: 空select永远阻塞"
+      - "D: case顺序重要"
+    answer: ABC
+    explanation: "select可多case,default非阻塞,空select阻塞。case顺序不重要(随机选)。参见 Go 规范 Select statements 章节。"
+    topic: types
+    chapter: channel
+
+  - id: type-chan-033
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          ch := make(chan int, 3)
+          ch <- 1
+          ch <- 2
+          ch <- 3
+          fmt.Println(len(ch), cap(ch))
+      }
+    options:
+      - "A: 3 3"
+      - "B: 0 3"
+      - "C: 3 0"
+      - "D: 死锁"
+    answer: A
+    explanation: "缓冲channel容量3。发送3个值。len=3(当前元素),cap=3(容量)。参见 Go 规范 Length and capacity 章节。"
+    topic: types
+    chapter: channel
+
+  - id: type-chan-034
+    type: code_fix
+    difficulty: medium
+    stem: "以下代码panic,正确的修正是?"
+    code: |
+      package main
+      func main() {
+          ch := make(chan int)
+          close(ch)
+          close(ch)
+      }
+    options:
+      - "A: 检查再关闭"
+      - "B: 只关闭一次"
+      - "C: 用sync.Once"
+      - "D: B或C"
+    answer: D
+    explanation: "重复关闭channel panic。应确保只关闭一次,可用sync.Once。参见 Go 规范 Close 章节。"
+    topic: types
+    chapter: channel
+
+  - id: type-chan-035
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func worker(ch <-chan int) {
+          for v := range ch {
+              fmt.Print(v)
+          }
+      }
+      func main() {
+          ch := make(chan int, 3)
+          ch <- 1
+          ch <- 2
+          ch <- 3
+          close(ch)
+          worker(ch)
+      }
+    options:
+      - "A: 123"
+      - "B: 321"
+      - "C: 死锁"
+      - "D: panic"
+    answer: A
+    explanation: "worker接收只读channel。range遍历所有值直到关闭。FIFO输出123。参见 Go 规范 Channel types 章节。"
+    topic: types
+    chapter: channel
+
+  - id: type-chan-036
+    type: code_fix
+    difficulty: medium
+    stem: "以下代码如何实现超时?"
+    code: |
+      package main
+      func main() {
+          ch := make(chan int)
+          v := <-ch // 可能永远阻塞
+          println(v)
+      }
+    options:
+      - "A: select + time.After"
+      - "B: context.WithTimeout"
+      - "C: A或B"
+      - "D: 不可能"
+    answer: C
+    explanation: "用select配合time.After或context可实现超时。参见 Go 并发模式。"
+    topic: types
+    chapter: channel
+
+  - id: type-chan-037
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          var ch chan int
+          select {
+          case ch <- 1:
+              fmt.Println("sent")
+          default:
+              fmt.Println("default")
+          }
+      }
+    options:
+      - "A: sent"
+      - "B: default"
+      - "C: 死锁"
+      - "D: panic"
+    answer: B
+    explanation: "ch是nil,发送永远阻塞(不就绪)。有default执行default。参见 Go 规范 Select statements 章节。"
+    topic: types
+    chapter: channel
+
+  # ========== 困难题 (Hard) - 5道 ==========
+
+  - id: type-chan-038
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          ch := make(chan int, 1)
+          ch <- 1
+          select {
+          case ch <- 2:
+              fmt.Print("sent")
+          case v := <-ch:
+              fmt.Print(v)
+          }
+      }
+    options:
+      - "A: sent"
+      - "B: 1"
+      - "C: 2"
+      - "D: 随机"
+    answer: D
+    explanation: "ch有1个元素(满)。发送阻塞但接收就绪。但容量1时两个case可能都就绪。随机选择。参见 Go 规范 Select statements 章节。"
+    topic: types
+    chapter: channel
+
+  - id: type-chan-039
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          ch := make(chan int)
+          go func() {
+              for i := 0; i < 3; i++ {
+                  ch <- i
+              }
+              close(ch)
+          }()
+          for {
+              select {
+              case v, ok := <-ch:
+                  if !ok {
+                      fmt.Print("done")
+                      return
+                  }
+                  fmt.Print(v)
+              }
+          }
+      }
+    options:
+      - "A: 012done"
+      - "B: 012"
+      - "C: done012"
+      - "D: 死锁"
+    answer: A
+    explanation: "goroutine发送0,1,2后关闭。select接收直到ok=false。输出012done。参见 Go 规范 Select statements 章节。"
+    topic: types
+    chapter: channel
+
+  - id: type-chan-040
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import (
+          "fmt"
+          "time"
+      )
+      func main() {
+          ch := make(chan int, 1)
+          ch <- 1
+          go func() {
+              time.Sleep(time.Millisecond)
+              <-ch
+          }()
+          ch <- 2
+          fmt.Println(<-ch)
+      }
+    options:
+      - "A: 1"
+      - "B: 2"
+      - "C: 死锁"
+      - "D: 取决于调度"
+    answer: B
+    explanation: "ch有1,满。主goroutine发送2阻塞。goroutine接收1后,发送2成功。接收得2。参见 Go 规范 Channel types 章节。"
+    topic: types
+    chapter: channel
+
+  - id: type-chan-041
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          done := make(chan struct{})
+          ch := make(chan int)
+          go func() {
+              defer close(done)
+              for v := range ch {
+                  fmt.Print(v)
+              }
+          }()
+          ch <- 1
+          ch <- 2
+          close(ch)
+          <-done
+      }
+    options:
+      - "A: 12"
+      - "B: 21"
+      - "C: 不确定"
+      - "D: 死锁"
+    answer: A
+    explanation: "发送1,2关闭ch。goroutine range接收,FIFO输出12。done同步等待完成。参见 Go 并发模式。"
+    topic: types
+    chapter: channel
+
+  - id: type-chan-042
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func merge(ch1, ch2 <-chan int) <-chan int {
+          out := make(chan int)
+          go func() {
+              for ch1 != nil || ch2 != nil {
+                  select {
+                  case v, ok := <-ch1:
+                      if !ok { ch1 = nil; continue }
+                      out <- v
+                  case v, ok := <-ch2:
+                      if !ok { ch2 = nil; continue }
+                      out <- v
+                  }
+              }
+              close(out)
+          }()
+          return out
+      }
+      func main() {
+          ch1 := make(chan int, 2)
+          ch2 := make(chan int, 2)
+          ch1 <- 1; ch1 <- 2; close(ch1)
+          ch2 <- 3; ch2 <- 4; close(ch2)
+          for v := range merge(ch1, ch2) {
+              fmt.Print(v)
+          }
+      }
+    options:
+      - "A: 1234"
+      - "B: 3412"
+      - "C: 包含1234的某个排列"
+      - "D: 死锁"
+    answer: C
+    explanation: "merge合并两个channel。select随机选择就绪case。输出是1234的某个排列。参见 Go 并发模式。"
+    topic: types
+    chapter: channel

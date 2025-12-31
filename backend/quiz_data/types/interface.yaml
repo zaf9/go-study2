@@ -1,0 +1,774 @@
+# Go 接口类型测验题库
+# 章节: types/interface
+# 符合 Go 1.24 语言规范
+
+metadata:
+  topic: types
+  chapter: interface
+  total_questions: 42
+  last_updated: "2025-01-01"
+  difficulty_distribution:
+    easy: 24      # 57%
+    medium: 13    # 31%
+    hard: 5       # 12%
+  type_distribution:
+    single: 18
+    multiple: 11
+    code_output: 8
+    code_fix: 5
+
+questions:
+  # ========== 简单题 (Easy) - 24道 ==========
+  
+  - id: type-iface-001
+    type: single
+    difficulty: easy
+    stem: "Go中定义接口的关键字是什么?"
+    options:
+      - "A: interface"
+      - "B: protocol"
+      - "C: abstract"
+      - "D: trait"
+    answer: A
+    explanation: "Go使用interface关键字定义接口。接口定义方法集合。参见 Go 规范 Interface types 章节。"
+    topic: types
+    chapter: interface
+
+  - id: type-iface-002
+    type: single
+    difficulty: easy
+    stem: "接口的零值是什么?"
+    options:
+      - "A: 空接口"
+      - "B: nil"
+      - "C: 0"
+      - "D: undefined"
+    answer: B
+    explanation: "接口的零值是nil。nil接口没有类型和值。参见 Go 规范 The zero value 章节。"
+    topic: types
+    chapter: interface
+
+  - id: type-iface-003
+    type: single
+    difficulty: easy
+    stem: "什么是空接口interface{}?"
+    options:
+      - "A: 无方法的接口"
+      - "B: 可以接受任何值"
+      - "C: 类似其他语言的Object"
+      - "D: 以上都是"
+    answer: D
+    explanation: "空接口无方法,任何类型都实现它。可以存储任意值。类似Object。参见 Go 规范 Interface types 章节。"
+    topic: types
+    chapter: interface
+
+  - id: type-iface-004
+    type: single
+    difficulty: easy
+    stem: "Go 1.18+中any是什么?"
+    options:
+      - "A: 新关键字"
+      - "B: interface{}的别名"
+      - "C: 泛型约束"
+      - "D: 类型参数"
+    answer: B
+    explanation: "any是interface{}的类型别名。Go 1.18引入,更简洁。参见 Go 规范 Predeclared identifiers 章节。"
+    topic: types
+    chapter: interface
+
+  - id: type-iface-005
+    type: single
+    difficulty: easy
+    stem: "类型如何实现接口?"
+    options:
+      - "A: 显式声明implements"
+      - "B: 实现所有方法"
+      - "C: 继承接口"
+      - "D: 注册接口"
+    answer: B
+    explanation: "Go是隐式接口实现。只要实现了接口的所有方法,就实现了该接口。参见 Go 规范 Interface types 章节。"
+    topic: types
+    chapter: interface
+
+  - id: type-iface-006
+    type: single
+    difficulty: easy
+    stem: "接口值包含什么?"
+    options:
+      - "A: 只有值"
+      - "B: 只有类型"
+      - "C: 类型和值"
+      - "D: 方法列表"
+    answer: C
+    explanation: "接口值包含(动态类型,动态值)二元组。参见 Go 规范 Interface types 章节。"
+    topic: types
+    chapter: interface
+
+  - id: type-iface-007
+    type: single
+    difficulty: easy
+    stem: "如何判断接口值是否为nil?"
+    options:
+      - "A: v == nil"
+      - "B: v.value == nil"
+      - "C: reflect.IsNil(v)"
+      - "D: A(类型和值都nil)"
+    answer: D
+    explanation: "接口值只有类型和值都是nil时才等于nil。有类型无值不是nil。参见 Go 规范 Comparison operators 章节。"
+    topic: types
+    chapter: interface
+
+  - id: type-iface-008
+    type: single
+    difficulty: easy
+    stem: "类型断言x.(T)的作用是什么?"
+    options:
+      - "A: 类型转换"
+      - "B: 获取底层值"
+      - "C: 检查类型"
+      - "D: B和C"
+    answer: D
+    explanation: "类型断言检查接口值的动态类型是否为T,并返回底层值。参见 Go 规范 Type assertions 章节。"
+    topic: types
+    chapter: interface
+
+  - id: type-iface-009
+    type: single
+    difficulty: easy
+    stem: "类型断言失败会怎样?"
+    options:
+      - "A: 返回零值"
+      - "B: panic"
+      - "C: 返回nil"
+      - "D: 取决于语法"
+    answer: D
+    explanation: "x.(T)失败会panic。v,ok:=x.(T)失败返回零值和false。参见 Go 规范 Type assertions 章节。"
+    topic: types
+    chapter: interface
+
+  - id: type-iface-010
+    type: single
+    difficulty: easy
+    stem: "type switch的作用是什么?"
+    options:
+      - "A: 切换类型"
+      - "B: 检查接口的动态类型"
+      - "C: 类型转换"
+      - "D: 接口组合"
+    answer: B
+    explanation: "type switch检查接口值的动态类型,执行对应分支。参见 Go 规范 Type switches 章节。"
+    topic: types
+    chapter: interface
+
+  - id: type-iface-011
+    type: single
+    difficulty: easy
+    stem: "接口可以嵌入其他接口吗?"
+    options:
+      - "A: 不可以"
+      - "B: 可以"
+      - "C: 只能嵌入一个"
+      - "D: 只能继承"
+    answer: B
+    explanation: "接口可以嵌入其他接口,组合它们的方法集。如io.ReadWriter嵌入Reader和Writer。参见 Go 规范 Interface types 章节。"
+    topic: types
+    chapter: interface
+
+  - id: type-iface-012
+    type: single
+    difficulty: easy
+    stem: "error接口定义了什么方法?"
+    options:
+      - "A: Error() string"
+      - "B: String() string"
+      - "C: Message() string"
+      - "D: ToString() string"
+    answer: A
+    explanation: "error接口只有一个方法:Error() string。返回错误描述。参见 Go 规范 Errors 章节。"
+    topic: types
+    chapter: interface
+
+  - id: type-iface-013
+    type: single
+    difficulty: easy
+    stem: "Stringer接口定义了什么方法?"
+    options:
+      - "A: Error() string"
+      - "B: String() string"
+      - "C: Format() string"
+      - "D: Print() string"
+    answer: B
+    explanation: "fmt.Stringer接口定义String() string方法。fmt包会调用它格式化输出。参见 Go fmt包文档。"
+    topic: types
+    chapter: interface
+
+  - id: type-iface-014
+    type: single
+    difficulty: easy
+    stem: "接口可以直接比较吗?"
+    options:
+      - "A: 不可以"
+      - "B: 可以"
+      - "C: 取决于动态类型"
+      - "D: 只能与nil比较"
+    answer: C
+    explanation: "接口可以比较,但如果动态类型不可比较会panic。参见 Go 规范 Comparison operators 章节。"
+    topic: types
+    chapter: interface
+
+  - id: type-iface-015
+    type: single
+    difficulty: easy
+    stem: "值接收者方法和指针接收者方法对接口实现有什么影响?"
+    options:
+      - "A: 没有影响"
+      - "B: *T实现接口但T不一定"
+      - "C: T和*T都实现"
+      - "D: 只有T实现"
+    answer: B
+    explanation: "*T的方法集包含T和*T方法。T的方法集只有T方法。指针接收者方法只算*T。参见 Go 规范 Method sets 章节。"
+    topic: types
+    chapter: interface
+
+  - id: type-iface-016
+    type: multiple
+    difficulty: easy
+    stem: "关于接口,以下说法正确的是?(多选)"
+    options:
+      - "A: 隐式实现"
+      - "B: 可以嵌入组合"
+      - "C: 零值是nil"
+      - "D: 不能有字段"
+    answer: ABCD
+    explanation: "Go接口隐式实现,可嵌入组合,零值nil,只能有方法不能有字段。参见 Go 规范 Interface types 章节。"
+    topic: types
+    chapter: interface
+
+  - id: type-iface-017
+    type: single
+    difficulty: easy
+    stem: "comparable约束在Go 1.20+表示什么?"
+    options:
+      - "A: 可比较的类型"
+      - "B: 包括接口类型"
+      - "C: 用于泛型约束"
+      - "D: 以上都是"
+    answer: D
+    explanation: "comparable是预声明的可比较类型约束。Go 1.20+包括接口。用于泛型。参见 Go 规范 Type constraints 章节。"
+    topic: types
+    chapter: interface
+
+  - id: type-iface-018
+    type: single
+    difficulty: easy
+    stem: "io.Reader接口定义了什么方法?"
+    options:
+      - "A: Read([]byte) (int, error)"
+      - "B: ReadAll() []byte"
+      - "C: ReadString() string"
+      - "D: Get() []byte"
+    answer: A
+    explanation: "io.Reader定义Read(p []byte) (n int, err error)方法。参见 Go io包文档。"
+    topic: types
+    chapter: interface
+
+  - id: type-iface-019
+    type: single
+    difficulty: easy
+    stem: "如何确保类型实现了接口?(编译时检查)"
+    options:
+      - "A: implements关键字"
+      - "B: var _ Interface = (*Type)(nil)"
+      - "C: 类型断言"
+      - "D: 无法检查"
+    answer: B
+    explanation: "var _ I = (*T)(nil)是编译时检查T是否实现I的惯用法。参见 Go 接口实现检查模式。"
+    topic: types
+    chapter: interface
+
+  - id: type-iface-020
+    type: single
+    difficulty: easy
+    stem: "空接口interface{}可以存储什么?"
+    options:
+      - "A: 只有引用类型"
+      - "B: 只有基本类型"
+      - "C: 任何类型的值"
+      - "D: 只有接口"
+    answer: C
+    explanation: "空接口可以存储任何类型的值。所有类型都实现空接口。参见 Go 规范 Interface types 章节。"
+    topic: types
+    chapter: interface
+
+  - id: type-iface-021
+    type: single
+    difficulty: easy
+    stem: "接口的方法集是什么?"
+    options:
+      - "A: 所有定义的方法"
+      - "B: 接口声明的方法"
+      - "C: 继承的方法"
+      - "D: 导出的方法"
+    answer: B
+    explanation: "接口的方法集是接口声明的所有方法(包括嵌入接口的方法)。参见 Go 规范 Method sets 章节。"
+    topic: types
+    chapter: interface
+
+  - id: type-iface-022
+    type: multiple
+    difficulty: easy
+    stem: "以下哪些是Go标准库中的常用接口?(多选)"
+    options:
+      - "A: io.Reader"
+      - "B: io.Writer"
+      - "C: fmt.Stringer"
+      - "D: error"
+    answer: ABCD
+    explanation: "io.Reader/Writer、fmt.Stringer、error都是Go标准库常用接口。参见 Go 标准库文档。"
+    topic: types
+    chapter: interface
+
+  - id: type-iface-023
+    type: single
+    difficulty: easy
+    stem: "接口可以有类型约束吗?(Go 1.18+)"
+    options:
+      - "A: 不可以"
+      - "B: 可以,用|列举类型"
+      - "C: 可以,用~表示底层类型"
+      - "D: B和C"
+    answer: D
+    explanation: "Go 1.18+接口可以包含类型约束。|列举类型,~表示底层类型。参见 Go 规范 Interface types 章节。"
+    topic: types
+    chapter: interface
+
+  - id: type-iface-024
+    type: single
+    difficulty: easy
+    stem: "类型约束接口可以作为普通接口使用吗?"
+    options:
+      - "A: 可以"
+      - "B: 不可以(只能约束)"
+      - "C: 取决于约束内容"
+      - "D: Go 1.20+可以"
+    answer: B
+    explanation: "包含类型元素的接口不能作为变量类型,只能用于类型约束。参见 Go 规范 Interface types 章节。"
+    topic: types
+    chapter: interface
+
+  # ========== 中等题 (Medium) - 13道 ==========
+
+  - id: type-iface-025
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type Speaker interface{ Speak() }
+      type Dog struct{}
+      func (d Dog) Speak() { fmt.Print("Woof") }
+      func main() {
+          var s Speaker = Dog{}
+          s.Speak()
+      }
+    options:
+      - "A: Woof"
+      - "B: 编译错误"
+      - "C: nil"
+      - "D: panic"
+    answer: A
+    explanation: "Dog实现了Speaker接口(有Speak方法)。s.Speak()调用Dog的方法。参见 Go 规范 Interface types 章节。"
+    topic: types
+    chapter: interface
+
+  - id: type-iface-026
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          var i interface{} = "hello"
+          s := i.(string)
+          fmt.Println(s)
+      }
+    options:
+      - "A: hello"
+      - "B: 编译错误"
+      - "C: panic"
+      - "D: nil"
+    answer: A
+    explanation: "i的动态类型是string。类型断言i.(string)成功,返回\"hello\"。参见 Go 规范 Type assertions 章节。"
+    topic: types
+    chapter: interface
+
+  - id: type-iface-027
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          var i interface{} = 42
+          s, ok := i.(string)
+          fmt.Println(s, ok)
+      }
+    options:
+      - "A: 42 false"
+      - "B:  false"
+      - "C: panic"
+      - "D: 编译错误"
+    answer: B
+    explanation: "i是int不是string。断言失败,s是string零值(\"\"),ok是false。参见 Go 规范 Type assertions 章节。"
+    topic: types
+    chapter: interface
+
+  - id: type-iface-028
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          var p *int = nil
+          var i interface{} = p
+          fmt.Println(i == nil)
+      }
+    options:
+      - "A: true"
+      - "B: false"
+      - "C: 编译错误"
+      - "D: panic"
+    answer: B
+    explanation: "i有类型(*int)但值是nil。接口值不等于nil(需要类型和值都nil)。参见 Go 规范 Interface types 章节。"
+    topic: types
+    chapter: interface
+
+  - id: type-iface-029
+    type: code_fix
+    difficulty: medium
+    stem: "以下代码有bug,正确的修正是?"
+    code: |
+      package main
+      type Setter interface{ Set(int) }
+      type S struct{ v int }
+      func (s *S) Set(v int) { s.v = v }
+      func main() {
+          var setter Setter = S{}
+          setter.Set(10)
+      }
+    options:
+      - "A: var setter Setter = &S{}"
+      - "B: func (s S) Set"
+      - "C: A(指针实现接口)"
+      - "D: 代码正确"
+    answer: C
+    explanation: "Set是指针接收者方法。S值类型不实现Setter,*S才实现。应该用&S{}。参见 Go 规范 Method sets 章节。"
+    topic: types
+    chapter: interface
+
+  - id: type-iface-030
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func describe(i interface{}) {
+          switch v := i.(type) {
+          case int:
+              fmt.Printf("int: %d", v)
+          case string:
+              fmt.Printf("string: %s", v)
+          default:
+              fmt.Printf("unknown")
+          }
+      }
+      func main() {
+          describe(42)
+      }
+    options:
+      - "A: int: 42"
+      - "B: unknown"
+      - "C: string: 42"
+      - "D: 编译错误"
+    answer: A
+    explanation: "type switch检查动态类型。42是int,匹配case int分支。参见 Go 规范 Type switches 章节。"
+    topic: types
+    chapter: interface
+
+  - id: type-iface-031
+    type: multiple
+    difficulty: medium
+    stem: "关于接口nil陷阱,以下说法正确的是?(多选)"
+    options:
+      - "A: nil指针赋给接口不是nil"
+      - "B: 接口比较类型和值"
+      - "C: 应该返回nil而非类型化nil"
+      - "D: 可用reflect检查"
+    answer: ABCD
+    explanation: "nil指针赋接口后接口不nil。接口比较类型值。返回error应直接返回nil。参见 Go 接口nil陷阱。"
+    topic: types
+    chapter: interface
+
+  - id: type-iface-032
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type A interface{ a() }
+      type B interface{ b() }
+      type AB interface{ A; B }
+      type S struct{}
+      func (S) a() {}
+      func (S) b() {}
+      func main() {
+          var ab AB = S{}
+          fmt.Printf("%T", ab)
+      }
+    options:
+      - "A: main.S"
+      - "B: main.AB"
+      - "C: interface"
+      - "D: 编译错误"
+    answer: A
+    explanation: "S实现了A和B的方法,所以实现了AB。动态类型是main.S。参见 Go 规范 Interface types 章节。"
+    topic: types
+    chapter: interface
+
+  - id: type-iface-033
+    type: code_fix
+    difficulty: medium
+    stem: "以下代码panic,正确的修正是?"
+    code: |
+      package main
+      func main() {
+          var i interface{} = "hello"
+          n := i.(int)
+          println(n)
+      }
+    options:
+      - "A: 用type switch"
+      - "B: n, ok := i.(int)"
+      - "C: 先检查类型"
+      - "D: 以上都可以"
+    answer: D
+    explanation: "类型断言失败panic。应该用v,ok形式检查,或type switch,或先检查类型。参见 Go 规范 Type assertions 章节。"
+    topic: types
+    chapter: interface
+
+  - id: type-iface-034
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          var i1 interface{} = []int{1, 2}
+          var i2 interface{} = []int{1, 2}
+          fmt.Println(i1 == i2)
+      }
+    options:
+      - "A: true"
+      - "B: false"
+      - "C: panic"
+      - "D: 编译错误"
+    answer: C
+    explanation: "切片不可比较。比较包含切片的接口值会panic。参见 Go 规范 Comparison operators 章节。"
+    topic: types
+    chapter: interface
+
+  - id: type-iface-035
+    type: code_output
+    difficulty: medium
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type I interface{ M() }
+      type T struct{}
+      func (T) M() {}
+      func main() {
+          var t *T = nil
+          var i I = t
+          fmt.Println(t == nil, i == nil)
+      }
+    options:
+      - "A: true true"
+      - "B: true false"
+      - "C: false false"
+      - "D: false true"
+    answer: B
+    explanation: "t是nil指针。i有类型*T但值nil。t==nil为true,i==nil为false(有类型)。参见 Go 规范 Interface types 章节。"
+    topic: types
+    chapter: interface
+
+  - id: type-iface-036
+    type: multiple
+    difficulty: medium
+    stem: "接口组合的好处是什么?(多选)"
+    options:
+      - "A: 复用方法定义"
+      - "B: 保持接口小"
+      - "C: 灵活组合"
+      - "D: 强制实现"
+    answer: ABC
+    explanation: "接口嵌入复用方法,保持单一接口小,灵活组合大接口。不强制实现。参见 Go 接口设计原则。"
+    topic: types
+    chapter: interface
+
+  - id: type-iface-037
+    type: code_fix
+    difficulty: medium
+    stem: "如何修复接口nil陷阱?"
+    code: |
+      func getError() error {
+          var err *MyError = nil
+          return err
+      }
+    options:
+      - "A: return nil"
+      - "B: if err == nil { return nil }"
+      - "C: A或B"
+      - "D: 代码正确"
+    answer: C
+    explanation: "返回nil而非类型化nil可避免nil陷阱。或检查后返回nil。参见 Go 接口nil陷阱。"
+    topic: types
+    chapter: interface
+
+  # ========== 困难题 (Hard) - 5道 ==========
+
+  - id: type-iface-038
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type I interface{ M() }
+      type S struct{ I }
+      func (s S) M() { fmt.Print("S") }
+      type T struct{}
+      func (T) M() { fmt.Print("T") }
+      func main() {
+          s := S{I: T{}}
+          s.M()
+          s.I.M()
+      }
+    options:
+      - "A: SS"
+      - "B: TT"
+      - "C: ST"
+      - "D: TS"
+    answer: C
+    explanation: "S有自己的M方法,s.M()调用S的(输出S)。s.I是T,s.I.M()调用T的(输出T)。参见 Go 规范 Selectors 章节。"
+    topic: types
+    chapter: interface
+
+  - id: type-iface-039
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      func main() {
+          var data interface{} = map[string]int{"a": 1}
+          m := data.(map[string]int)
+          m["b"] = 2
+          fmt.Println(len(data.(map[string]int)))
+      }
+    options:
+      - "A: 1"
+      - "B: 2"
+      - "C: panic"
+      - "D: 编译错误"
+    answer: B
+    explanation: "m是data底层map的引用。m[\"b\"]=2修改了原map。长度变为2。参见 Go 规范 Type assertions 章节。"
+    topic: types
+    chapter: interface
+
+  - id: type-iface-040
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type I interface{ M() int }
+      type A struct{}
+      func (A) M() int { return 1 }
+      type B struct{ A }
+      func (B) M() int { return 2 }
+      func main() {
+          var i I = B{}
+          fmt.Println(i.M(), i.(B).A.M())
+      }
+    options:
+      - "A: 1 1"
+      - "B: 2 2"
+      - "C: 2 1"
+      - "D: 1 2"
+    answer: C
+    explanation: "B覆盖了A的M。i.M()调用B的返回2。i.(B).A.M()显式调用A的返回1。参见 Go 规范 Method sets 章节。"
+    topic: types
+    chapter: interface
+
+  - id: type-iface-041
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import (
+          "fmt"
+          "unsafe"
+      )
+      func main() {
+          var i interface{}
+          fmt.Println(unsafe.Sizeof(i))
+      }
+    options:
+      - "A: 0"
+      - "B: 8"
+      - "C: 16"
+      - "D: 取决于平台"
+    answer: D
+    explanation: "接口值包含(type,data)两个指针。64位系统16字节,32位系统8字节。参见 Go 接口内部结构。"
+    topic: types
+    chapter: interface
+
+  - id: type-iface-042
+    type: code_output
+    difficulty: hard
+    stem: "以下代码的输出结果是什么?"
+    code: |
+      package main
+      import "fmt"
+      type I interface{ M() }
+      type T int
+      func (t T) M() { fmt.Print(t) }
+      func main() {
+          var i I = T(1)
+          switch i.(type) {
+          case T:
+              i = T(2)
+          }
+          i.M()
+      }
+    options:
+      - "A: 1"
+      - "B: 2"
+      - "C: 12"
+      - "D: 21"
+    answer: B
+    explanation: "i初始T(1)。switch匹配case T,重新赋值i=T(2)。i.M()打印2。参见 Go 规范 Type switches 章节。"
+    topic: types
+    chapter: interface
