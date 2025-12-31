@@ -1,0 +1,630 @@
+questions:
+  - id: type-numeric-001
+    type: multiple
+    difficulty: easy
+    stem: 【占位】types - numeric 第 1 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+      - 'E: 示例选项 E'
+    answer: ACDE
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: numeric
+  - id: type-numeric-002
+    type: single
+    difficulty: easy
+    stem: 【占位】types - numeric 第 2 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+    answer: A
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: numeric
+  - id: type-numeric-003
+    type: multiple
+    difficulty: easy
+    stem: 【占位】types - numeric 第 3 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+    answer: AB
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: numeric
+  - id: type-numeric-004
+    type: single
+    difficulty: easy
+    stem: 【占位】types - numeric 第 4 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+    answer: B
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: numeric
+  - id: type-numeric-005
+    type: multiple
+    difficulty: easy
+    stem: 【占位】types - numeric 第 5 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+      - 'E: 示例选项 E'
+    answer: CE
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: numeric
+  - id: type-numeric-006
+    type: single
+    difficulty: easy
+    stem: 【占位】types - numeric 第 6 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+    answer: A
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: numeric
+  - id: type-numeric-007
+    type: multiple
+    difficulty: easy
+    stem: 【占位】types - numeric 第 7 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+    answer: ABC
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: numeric
+  - id: type-numeric-008
+    type: single
+    difficulty: easy
+    stem: 【占位】types - numeric 第 8 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+    answer: C
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: numeric
+  - id: type-numeric-009
+    type: multiple
+    difficulty: easy
+    stem: 【占位】types - numeric 第 9 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+    answer: ABC
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: numeric
+  - id: type-numeric-010
+    type: single
+    difficulty: easy
+    stem: 【占位】types - numeric 第 10 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+    answer: A
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: numeric
+  - id: type-numeric-011
+    type: multiple
+    difficulty: easy
+    stem: 【占位】types - numeric 第 11 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+    answer: BCD
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: numeric
+  - id: type-numeric-012
+    type: single
+    difficulty: easy
+    stem: 【占位】types - numeric 第 12 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+    answer: D
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: numeric
+  - id: type-numeric-013
+    type: multiple
+    difficulty: easy
+    stem: 【占位】types - numeric 第 13 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+    answer: ABC
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: numeric
+  - id: type-numeric-014
+    type: single
+    difficulty: easy
+    stem: 【占位】types - numeric 第 14 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+    answer: A
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: numeric
+  - id: type-numeric-015
+    type: multiple
+    difficulty: easy
+    stem: 【占位】types - numeric 第 15 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+    answer: ABC
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: numeric
+  - id: type-numeric-016
+    type: single
+    difficulty: easy
+    stem: 【占位】types - numeric 第 16 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+    answer: C
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: numeric
+  - id: type-numeric-017
+    type: multiple
+    difficulty: easy
+    stem: 【占位】types - numeric 第 17 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+      - 'E: 示例选项 E'
+    answer: BCDE
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: numeric
+  - id: type-numeric-018
+    type: single
+    difficulty: easy
+    stem: 【占位】types - numeric 第 18 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+    answer: C
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: numeric
+  - id: type-numeric-019
+    type: multiple
+    difficulty: easy
+    stem: 【占位】types - numeric 第 19 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+      - 'E: 示例选项 E'
+    answer: BC
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: numeric
+  - id: type-numeric-020
+    type: single
+    difficulty: easy
+    stem: 【占位】types - numeric 第 20 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+    answer: B
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: numeric
+  - id: type-numeric-021
+    type: multiple
+    difficulty: medium
+    stem: 【占位】types - numeric 第 21 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+    answer: CD
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: numeric
+  - id: type-numeric-022
+    type: single
+    difficulty: medium
+    stem: 【占位】types - numeric 第 22 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+    answer: A
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: numeric
+  - id: type-numeric-023
+    type: multiple
+    difficulty: medium
+    stem: 【占位】types - numeric 第 23 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+      - 'E: 示例选项 E'
+    answer: BCDE
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: numeric
+  - id: type-numeric-024
+    type: single
+    difficulty: medium
+    stem: 【占位】types - numeric 第 24 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+    answer: A
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: numeric
+  - id: type-numeric-025
+    type: multiple
+    difficulty: medium
+    stem: 【占位】types - numeric 第 25 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+    answer: AC
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: numeric
+  - id: type-numeric-026
+    type: single
+    difficulty: medium
+    stem: 【占位】types - numeric 第 26 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+    answer: C
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: numeric
+  - id: type-numeric-027
+    type: multiple
+    difficulty: medium
+    stem: 【占位】types - numeric 第 27 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+      - 'E: 示例选项 E'
+    answer: CDE
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: numeric
+  - id: type-numeric-028
+    type: single
+    difficulty: medium
+    stem: 【占位】types - numeric 第 28 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+    answer: C
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: numeric
+  - id: type-numeric-029
+    type: multiple
+    difficulty: medium
+    stem: 【占位】types - numeric 第 29 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+      - 'E: 示例选项 E'
+    answer: ABCD
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: numeric
+  - id: type-numeric-030
+    type: single
+    difficulty: medium
+    stem: 【占位】types - numeric 第 30 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+    answer: C
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: numeric
+  - id: type-numeric-031
+    type: multiple
+    difficulty: medium
+    stem: 【占位】types - numeric 第 31 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+      - 'E: 示例选项 E'
+    answer: ABCE
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: numeric
+  - id: type-numeric-032
+    type: single
+    difficulty: medium
+    stem: 【占位】types - numeric 第 32 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+    answer: C
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: numeric
+  - id: type-numeric-033
+    type: multiple
+    difficulty: medium
+    stem: 【占位】types - numeric 第 33 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+    answer: ABD
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: numeric
+  - id: type-numeric-034
+    type: single
+    difficulty: medium
+    stem: 【占位】types - numeric 第 34 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+    answer: B
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: numeric
+  - id: type-numeric-035
+    type: multiple
+    difficulty: medium
+    stem: 【占位】types - numeric 第 35 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+    answer: ABC
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: numeric
+  - id: type-numeric-036
+    type: single
+    difficulty: medium
+    stem: 【占位】types - numeric 第 36 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+    answer: B
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: numeric
+  - id: type-numeric-037
+    type: multiple
+    difficulty: medium
+    stem: 【占位】types - numeric 第 37 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+    answer: ABD
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: numeric
+  - id: type-numeric-038
+    type: single
+    difficulty: medium
+    stem: 【占位】types - numeric 第 38 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+    answer: A
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: numeric
+  - id: type-numeric-039
+    type: multiple
+    difficulty: medium
+    stem: 【占位】types - numeric 第 39 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+    answer: BC
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: numeric
+  - id: type-numeric-040
+    type: single
+    difficulty: medium
+    stem: 【占位】types - numeric 第 40 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+    answer: B
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: numeric
+  - id: type-numeric-041
+    type: multiple
+    difficulty: hard
+    stem: 【占位】types - numeric 第 41 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+    answer: ABD
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: numeric
+  - id: type-numeric-042
+    type: single
+    difficulty: hard
+    stem: 【占位】types - numeric 第 42 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+    answer: B
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: numeric
+  - id: type-numeric-043
+    type: multiple
+    difficulty: hard
+    stem: 【占位】types - numeric 第 43 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+    answer: ACD
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: numeric
+  - id: type-numeric-044
+    type: single
+    difficulty: hard
+    stem: 【占位】types - numeric 第 44 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+    answer: C
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: numeric
+  - id: type-numeric-045
+    type: multiple
+    difficulty: hard
+    stem: 【占位】types - numeric 第 45 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+    answer: AD
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: numeric
+  - id: type-numeric-046
+    type: single
+    difficulty: hard
+    stem: 【占位】types - numeric 第 46 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+    answer: A
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: numeric
+  - id: type-numeric-047
+    type: multiple
+    difficulty: hard
+    stem: 【占位】types - numeric 第 47 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+    answer: ABCD
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: numeric
+  - id: type-numeric-048
+    type: single
+    difficulty: hard
+    stem: 【占位】types - numeric 第 48 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+    answer: B
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: numeric
+  - id: type-numeric-049
+    type: multiple
+    difficulty: hard
+    stem: 【占位】types - numeric 第 49 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+    answer: ABCD
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: numeric
+  - id: type-numeric-050
+    type: single
+    difficulty: hard
+    stem: 【占位】types - numeric 第 50 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+    answer: B
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: numeric

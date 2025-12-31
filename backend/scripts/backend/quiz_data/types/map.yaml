@@ -1,0 +1,571 @@
+questions:
+  - id: type-map-001
+    type: multiple
+    difficulty: easy
+    stem: 【占位】types - map 第 1 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+    answer: ABCD
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: map
+  - id: type-map-002
+    type: single
+    difficulty: easy
+    stem: 【占位】types - map 第 2 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+    answer: B
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: map
+  - id: type-map-003
+    type: multiple
+    difficulty: easy
+    stem: 【占位】types - map 第 3 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+      - 'E: 示例选项 E'
+    answer: ABDE
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: map
+  - id: type-map-004
+    type: single
+    difficulty: easy
+    stem: 【占位】types - map 第 4 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+    answer: C
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: map
+  - id: type-map-005
+    type: multiple
+    difficulty: easy
+    stem: 【占位】types - map 第 5 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+    answer: ABC
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: map
+  - id: type-map-006
+    type: single
+    difficulty: easy
+    stem: 【占位】types - map 第 6 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+    answer: A
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: map
+  - id: type-map-007
+    type: multiple
+    difficulty: easy
+    stem: 【占位】types - map 第 7 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+    answer: AB
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: map
+  - id: type-map-008
+    type: single
+    difficulty: easy
+    stem: 【占位】types - map 第 8 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+    answer: A
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: map
+  - id: type-map-009
+    type: multiple
+    difficulty: easy
+    stem: 【占位】types - map 第 9 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+      - 'E: 示例选项 E'
+    answer: AC
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: map
+  - id: type-map-010
+    type: single
+    difficulty: easy
+    stem: 【占位】types - map 第 10 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+    answer: A
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: map
+  - id: type-map-011
+    type: multiple
+    difficulty: easy
+    stem: 【占位】types - map 第 11 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+    answer: AC
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: map
+  - id: type-map-012
+    type: single
+    difficulty: easy
+    stem: 【占位】types - map 第 12 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+    answer: B
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: map
+  - id: type-map-013
+    type: multiple
+    difficulty: easy
+    stem: 【占位】types - map 第 13 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+      - 'E: 示例选项 E'
+    answer: ABCD
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: map
+  - id: type-map-014
+    type: single
+    difficulty: easy
+    stem: 【占位】types - map 第 14 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+    answer: A
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: map
+  - id: type-map-015
+    type: multiple
+    difficulty: easy
+    stem: 【占位】types - map 第 15 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+      - 'E: 示例选项 E'
+    answer: ABDE
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: map
+  - id: type-map-016
+    type: single
+    difficulty: easy
+    stem: 【占位】types - map 第 16 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+    answer: A
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: map
+  - id: type-map-017
+    type: multiple
+    difficulty: easy
+    stem: 【占位】types - map 第 17 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+      - 'E: 示例选项 E'
+    answer: DE
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: map
+  - id: type-map-018
+    type: single
+    difficulty: easy
+    stem: 【占位】types - map 第 18 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+    answer: D
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: map
+  - id: type-map-019
+    type: multiple
+    difficulty: medium
+    stem: 【占位】types - map 第 19 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+    answer: BC
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: map
+  - id: type-map-020
+    type: single
+    difficulty: medium
+    stem: 【占位】types - map 第 20 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+    answer: A
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: map
+  - id: type-map-021
+    type: multiple
+    difficulty: medium
+    stem: 【占位】types - map 第 21 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+      - 'E: 示例选项 E'
+    answer: ABCE
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: map
+  - id: type-map-022
+    type: single
+    difficulty: medium
+    stem: 【占位】types - map 第 22 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+    answer: D
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: map
+  - id: type-map-023
+    type: multiple
+    difficulty: medium
+    stem: 【占位】types - map 第 23 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+      - 'E: 示例选项 E'
+    answer: ABCE
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: map
+  - id: type-map-024
+    type: single
+    difficulty: medium
+    stem: 【占位】types - map 第 24 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+    answer: A
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: map
+  - id: type-map-025
+    type: multiple
+    difficulty: medium
+    stem: 【占位】types - map 第 25 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+      - 'E: 示例选项 E'
+    answer: ABE
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: map
+  - id: type-map-026
+    type: single
+    difficulty: medium
+    stem: 【占位】types - map 第 26 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+    answer: B
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: map
+  - id: type-map-027
+    type: multiple
+    difficulty: medium
+    stem: 【占位】types - map 第 27 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+    answer: ABC
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: map
+  - id: type-map-028
+    type: single
+    difficulty: medium
+    stem: 【占位】types - map 第 28 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+    answer: A
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: map
+  - id: type-map-029
+    type: multiple
+    difficulty: medium
+    stem: 【占位】types - map 第 29 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+    answer: ABCD
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: map
+  - id: type-map-030
+    type: single
+    difficulty: medium
+    stem: 【占位】types - map 第 30 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+    answer: B
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: map
+  - id: type-map-031
+    type: multiple
+    difficulty: medium
+    stem: 【占位】types - map 第 31 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+    answer: AC
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: map
+  - id: type-map-032
+    type: single
+    difficulty: medium
+    stem: 【占位】types - map 第 32 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+    answer: B
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: map
+  - id: type-map-033
+    type: multiple
+    difficulty: medium
+    stem: 【占位】types - map 第 33 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+      - 'E: 示例选项 E'
+    answer: AD
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: map
+  - id: type-map-034
+    type: single
+    difficulty: medium
+    stem: 【占位】types - map 第 34 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+    answer: B
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: map
+  - id: type-map-035
+    type: multiple
+    difficulty: medium
+    stem: 【占位】types - map 第 35 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+      - 'E: 示例选项 E'
+    answer: BCD
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: map
+  - id: type-map-036
+    type: single
+    difficulty: medium
+    stem: 【占位】types - map 第 36 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+    answer: C
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: map
+  - id: type-map-037
+    type: multiple
+    difficulty: hard
+    stem: 【占位】types - map 第 37 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+    answer: ACD
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: map
+  - id: type-map-038
+    type: single
+    difficulty: hard
+    stem: 【占位】types - map 第 38 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+    answer: C
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: map
+  - id: type-map-039
+    type: multiple
+    difficulty: hard
+    stem: 【占位】types - map 第 39 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+    answer: ABD
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: map
+  - id: type-map-040
+    type: single
+    difficulty: hard
+    stem: 【占位】types - map 第 40 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+    answer: A
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: map
+  - id: type-map-041
+    type: multiple
+    difficulty: hard
+    stem: 【占位】types - map 第 41 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+      - 'E: 示例选项 E'
+    answer: AD
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: map
+  - id: type-map-042
+    type: single
+    difficulty: hard
+    stem: 【占位】types - map 第 42 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+    answer: A
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: map
+  - id: type-map-043
+    type: multiple
+    difficulty: hard
+    stem: 【占位】types - map 第 43 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+    answer: ABC
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: map
+  - id: type-map-044
+    type: single
+    difficulty: hard
+    stem: 【占位】types - map 第 44 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+    answer: B
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: map
+  - id: type-map-045
+    type: multiple
+    difficulty: hard
+    stem: 【占位】types - map 第 45 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+    answer: AC
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: types
+    chapter: map

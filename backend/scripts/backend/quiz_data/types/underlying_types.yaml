@@ -1,0 +1,513 @@
+metadata:
+  topic: types
+  chapter: underlying_types
+  total_questions: 38
+  last_updated: "2026-01-01"
+  description: 【待补充】类型系统 - underlying_types 章节测验题库
+questions:
+  - id: underlying_types-001
+    type: single_choice
+    difficulty: easy
+    stem: 【占位】underlying_types 第 1 题：请替换为真实题干，描述清晰，引用 Go 1.24 规范相关章节
+    options:
+      - 'A: 【占位】选项 A'
+      - 'B: 【占位】选项 B'
+      - 'C: 【占位】选项 C'
+      - 'D: 【占位】选项 D'
+    answer: 【占位】B
+    explanation: 【占位】请补充详细解析：1. 解释正确答案原理；2. 引用 Go 规范章节（如 §3.1）；3. 提供代码示例（可选）；4. 说明常见错误
+    topic: types
+    chapter: underlying_types
+  - id: underlying_types-002
+    type: single_choice
+    difficulty: easy
+    stem: 【占位】underlying_types 第 2 题：请替换为真实题干，描述清晰，引用 Go 1.24 规范相关章节
+    options:
+      - 'A: 【占位】选项 A'
+      - 'B: 【占位】选项 B'
+      - 'C: 【占位】选项 C'
+      - 'D: 【占位】选项 D'
+    answer: 【占位】B
+    explanation: 【占位】请补充详细解析：1. 解释正确答案原理；2. 引用 Go 规范章节（如 §3.1）；3. 提供代码示例（可选）；4. 说明常见错误
+    topic: types
+    chapter: underlying_types
+  - id: underlying_types-003
+    type: single_choice
+    difficulty: easy
+    stem: 【占位】underlying_types 第 3 题：请替换为真实题干，描述清晰，引用 Go 1.24 规范相关章节
+    options:
+      - 'A: 【占位】选项 A'
+      - 'B: 【占位】选项 B'
+      - 'C: 【占位】选项 C'
+      - 'D: 【占位】选项 D'
+    answer: 【占位】B
+    explanation: 【占位】请补充详细解析：1. 解释正确答案原理；2. 引用 Go 规范章节（如 §3.1）；3. 提供代码示例（可选）；4. 说明常见错误
+    topic: types
+    chapter: underlying_types
+  - id: underlying_types-004
+    type: multiple_choice
+    difficulty: easy
+    stem: 【占位】underlying_types 第 4 题：请替换为真实题干，描述清晰，引用 Go 1.24 规范相关章节
+    options:
+      - 'A: 【占位】选项 A'
+      - 'B: 【占位】选项 B'
+      - 'C: 【占位】选项 C'
+      - 'D: 【占位】选项 D'
+      - 'E: 【占位】选项 E（可选）'
+    answer: 【占位】AC
+    explanation: 【占位】请补充详细解析：1. 解释正确答案原理；2. 引用 Go 规范章节（如 §3.1）；3. 提供代码示例（可选）；4. 说明常见错误
+    topic: types
+    chapter: underlying_types
+  - id: underlying_types-005
+    type: multiple_choice
+    difficulty: easy
+    stem: 【占位】underlying_types 第 5 题：请替换为真实题干，描述清晰，引用 Go 1.24 规范相关章节
+    options:
+      - 'A: 【占位】选项 A'
+      - 'B: 【占位】选项 B'
+      - 'C: 【占位】选项 C'
+      - 'D: 【占位】选项 D'
+      - 'E: 【占位】选项 E（可选）'
+    answer: 【占位】AC
+    explanation: 【占位】请补充详细解析：1. 解释正确答案原理；2. 引用 Go 规范章节（如 §3.1）；3. 提供代码示例（可选）；4. 说明常见错误
+    topic: types
+    chapter: underlying_types
+  - id: underlying_types-006
+    type: multiple_choice
+    difficulty: medium
+    stem: 【占位】underlying_types 第 6 题：请替换为真实题干，描述清晰，引用 Go 1.24 规范相关章节
+    options:
+      - 'A: 【占位】选项 A'
+      - 'B: 【占位】选项 B'
+      - 'C: 【占位】选项 C'
+      - 'D: 【占位】选项 D'
+      - 'E: 【占位】选项 E（可选）'
+    answer: 【占位】AC
+    explanation: 【占位】请补充详细解析：1. 解释正确答案原理；2. 引用 Go 规范章节（如 §3.1）；3. 提供代码示例（可选）；4. 说明常见错误
+    topic: types
+    chapter: underlying_types
+  - id: underlying_types-007
+    type: code_output
+    difficulty: medium
+    stem: 【占位】underlying_types 第 7 题：请替换为真实题干，描述清晰，引用 Go 1.24 规范相关章节
+    options:
+      - 'A: 【占位】输出结果 A'
+      - 'B: 【占位】输出结果 B'
+      - 'C: 【占位】编译错误'
+      - 'D: 【占位】运行时错误'
+    answer: 【占位】B
+    explanation: 【占位】请补充详细解析：1. 解释正确答案原理；2. 引用 Go 规范章节（如 §3.1）；3. 提供代码示例（可选）；4. 说明常见错误
+    topic: types
+    chapter: underlying_types
+  - id: underlying_types-008
+    type: code_output
+    difficulty: medium
+    stem: 【占位】underlying_types 第 8 题：请替换为真实题干，描述清晰，引用 Go 1.24 规范相关章节
+    options:
+      - 'A: 【占位】输出结果 A'
+      - 'B: 【占位】输出结果 B'
+      - 'C: 【占位】编译错误'
+      - 'D: 【占位】运行时错误'
+    answer: 【占位】B
+    explanation: 【占位】请补充详细解析：1. 解释正确答案原理；2. 引用 Go 规范章节（如 §3.1）；3. 提供代码示例（可选）；4. 说明常见错误
+    topic: types
+    chapter: underlying_types
+  - id: underlying_types-009
+    type: code_fix
+    difficulty: hard
+    stem: 【占位】underlying_types 第 9 题：请替换为真实题干，描述清晰，引用 Go 1.24 规范相关章节
+    options:
+      - 'A: 【占位】修复方案 A'
+      - 'B: 【占位】修复方案 B'
+      - 'C: 【占位】修复方案 C'
+      - 'D: 【占位】修复方案 D'
+    answer: 【占位】B
+    explanation: 【占位】请补充详细解析：1. 解释正确答案原理；2. 引用 Go 规范章节（如 §3.1）；3. 提供代码示例（可选）；4. 说明常见错误
+    topic: types
+    chapter: underlying_types
+  - id: underlying_types-010
+    type: single_choice
+    difficulty: easy
+    stem: 【占位】underlying_types 第 10 题：请替换为真实题干，描述清晰，引用 Go 1.24 规范相关章节
+    options:
+      - 'A: 【占位】选项 A'
+      - 'B: 【占位】选项 B'
+      - 'C: 【占位】选项 C'
+      - 'D: 【占位】选项 D'
+    answer: 【占位】B
+    explanation: 【占位】请补充详细解析：1. 解释正确答案原理；2. 引用 Go 规范章节（如 §3.1）；3. 提供代码示例（可选）；4. 说明常见错误
+    topic: types
+    chapter: underlying_types
+  - id: underlying_types-011
+    type: single_choice
+    difficulty: easy
+    stem: 【占位】underlying_types 第 11 题：请替换为真实题干，描述清晰，引用 Go 1.24 规范相关章节
+    options:
+      - 'A: 【占位】选项 A'
+      - 'B: 【占位】选项 B'
+      - 'C: 【占位】选项 C'
+      - 'D: 【占位】选项 D'
+    answer: 【占位】B
+    explanation: 【占位】请补充详细解析：1. 解释正确答案原理；2. 引用 Go 规范章节（如 §3.1）；3. 提供代码示例（可选）；4. 说明常见错误
+    topic: types
+    chapter: underlying_types
+  - id: underlying_types-012
+    type: single_choice
+    difficulty: easy
+    stem: 【占位】underlying_types 第 12 题：请替换为真实题干，描述清晰，引用 Go 1.24 规范相关章节
+    options:
+      - 'A: 【占位】选项 A'
+      - 'B: 【占位】选项 B'
+      - 'C: 【占位】选项 C'
+      - 'D: 【占位】选项 D'
+    answer: 【占位】B
+    explanation: 【占位】请补充详细解析：1. 解释正确答案原理；2. 引用 Go 规范章节（如 §3.1）；3. 提供代码示例（可选）；4. 说明常见错误
+    topic: types
+    chapter: underlying_types
+  - id: underlying_types-013
+    type: single_choice
+    difficulty: easy
+    stem: 【占位】underlying_types 第 13 题：请替换为真实题干，描述清晰，引用 Go 1.24 规范相关章节
+    options:
+      - 'A: 【占位】选项 A'
+      - 'B: 【占位】选项 B'
+      - 'C: 【占位】选项 C'
+      - 'D: 【占位】选项 D'
+    answer: 【占位】B
+    explanation: 【占位】请补充详细解析：1. 解释正确答案原理；2. 引用 Go 规范章节（如 §3.1）；3. 提供代码示例（可选）；4. 说明常见错误
+    topic: types
+    chapter: underlying_types
+  - id: underlying_types-014
+    type: multiple_choice
+    difficulty: easy
+    stem: 【占位】underlying_types 第 14 题：请替换为真实题干，描述清晰，引用 Go 1.24 规范相关章节
+    options:
+      - 'A: 【占位】选项 A'
+      - 'B: 【占位】选项 B'
+      - 'C: 【占位】选项 C'
+      - 'D: 【占位】选项 D'
+      - 'E: 【占位】选项 E（可选）'
+    answer: 【占位】AC
+    explanation: 【占位】请补充详细解析：1. 解释正确答案原理；2. 引用 Go 规范章节（如 §3.1）；3. 提供代码示例（可选）；4. 说明常见错误
+    topic: types
+    chapter: underlying_types
+  - id: underlying_types-015
+    type: multiple_choice
+    difficulty: easy
+    stem: 【占位】underlying_types 第 15 题：请替换为真实题干，描述清晰，引用 Go 1.24 规范相关章节
+    options:
+      - 'A: 【占位】选项 A'
+      - 'B: 【占位】选项 B'
+      - 'C: 【占位】选项 C'
+      - 'D: 【占位】选项 D'
+      - 'E: 【占位】选项 E（可选）'
+    answer: 【占位】AC
+    explanation: 【占位】请补充详细解析：1. 解释正确答案原理；2. 引用 Go 规范章节（如 §3.1）；3. 提供代码示例（可选）；4. 说明常见错误
+    topic: types
+    chapter: underlying_types
+  - id: underlying_types-016
+    type: multiple_choice
+    difficulty: medium
+    stem: 【占位】underlying_types 第 16 题：请替换为真实题干，描述清晰，引用 Go 1.24 规范相关章节
+    options:
+      - 'A: 【占位】选项 A'
+      - 'B: 【占位】选项 B'
+      - 'C: 【占位】选项 C'
+      - 'D: 【占位】选项 D'
+      - 'E: 【占位】选项 E（可选）'
+    answer: 【占位】AC
+    explanation: 【占位】请补充详细解析：1. 解释正确答案原理；2. 引用 Go 规范章节（如 §3.1）；3. 提供代码示例（可选）；4. 说明常见错误
+    topic: types
+    chapter: underlying_types
+  - id: underlying_types-017
+    type: code_output
+    difficulty: medium
+    stem: 【占位】underlying_types 第 17 题：请替换为真实题干，描述清晰，引用 Go 1.24 规范相关章节
+    options:
+      - 'A: 【占位】输出结果 A'
+      - 'B: 【占位】输出结果 B'
+      - 'C: 【占位】编译错误'
+      - 'D: 【占位】运行时错误'
+    answer: 【占位】B
+    explanation: 【占位】请补充详细解析：1. 解释正确答案原理；2. 引用 Go 规范章节（如 §3.1）；3. 提供代码示例（可选）；4. 说明常见错误
+    topic: types
+    chapter: underlying_types
+  - id: underlying_types-018
+    type: code_output
+    difficulty: medium
+    stem: 【占位】underlying_types 第 18 题：请替换为真实题干，描述清晰，引用 Go 1.24 规范相关章节
+    options:
+      - 'A: 【占位】输出结果 A'
+      - 'B: 【占位】输出结果 B'
+      - 'C: 【占位】编译错误'
+      - 'D: 【占位】运行时错误'
+    answer: 【占位】B
+    explanation: 【占位】请补充详细解析：1. 解释正确答案原理；2. 引用 Go 规范章节（如 §3.1）；3. 提供代码示例（可选）；4. 说明常见错误
+    topic: types
+    chapter: underlying_types
+  - id: underlying_types-019
+    type: code_fix
+    difficulty: hard
+    stem: 【占位】underlying_types 第 19 题：请替换为真实题干，描述清晰，引用 Go 1.24 规范相关章节
+    options:
+      - 'A: 【占位】修复方案 A'
+      - 'B: 【占位】修复方案 B'
+      - 'C: 【占位】修复方案 C'
+      - 'D: 【占位】修复方案 D'
+    answer: 【占位】B
+    explanation: 【占位】请补充详细解析：1. 解释正确答案原理；2. 引用 Go 规范章节（如 §3.1）；3. 提供代码示例（可选）；4. 说明常见错误
+    topic: types
+    chapter: underlying_types
+  - id: underlying_types-020
+    type: single_choice
+    difficulty: easy
+    stem: 【占位】underlying_types 第 20 题：请替换为真实题干，描述清晰，引用 Go 1.24 规范相关章节
+    options:
+      - 'A: 【占位】选项 A'
+      - 'B: 【占位】选项 B'
+      - 'C: 【占位】选项 C'
+      - 'D: 【占位】选项 D'
+    answer: 【占位】B
+    explanation: 【占位】请补充详细解析：1. 解释正确答案原理；2. 引用 Go 规范章节（如 §3.1）；3. 提供代码示例（可选）；4. 说明常见错误
+    topic: types
+    chapter: underlying_types
+  - id: underlying_types-021
+    type: single_choice
+    difficulty: easy
+    stem: 【占位】underlying_types 第 21 题：请替换为真实题干，描述清晰，引用 Go 1.24 规范相关章节
+    options:
+      - 'A: 【占位】选项 A'
+      - 'B: 【占位】选项 B'
+      - 'C: 【占位】选项 C'
+      - 'D: 【占位】选项 D'
+    answer: 【占位】B
+    explanation: 【占位】请补充详细解析：1. 解释正确答案原理；2. 引用 Go 规范章节（如 §3.1）；3. 提供代码示例（可选）；4. 说明常见错误
+    topic: types
+    chapter: underlying_types
+  - id: underlying_types-022
+    type: single_choice
+    difficulty: easy
+    stem: 【占位】underlying_types 第 22 题：请替换为真实题干，描述清晰，引用 Go 1.24 规范相关章节
+    options:
+      - 'A: 【占位】选项 A'
+      - 'B: 【占位】选项 B'
+      - 'C: 【占位】选项 C'
+      - 'D: 【占位】选项 D'
+    answer: 【占位】B
+    explanation: 【占位】请补充详细解析：1. 解释正确答案原理；2. 引用 Go 规范章节（如 §3.1）；3. 提供代码示例（可选）；4. 说明常见错误
+    topic: types
+    chapter: underlying_types
+  - id: underlying_types-023
+    type: single_choice
+    difficulty: easy
+    stem: 【占位】underlying_types 第 23 题：请替换为真实题干，描述清晰，引用 Go 1.24 规范相关章节
+    options:
+      - 'A: 【占位】选项 A'
+      - 'B: 【占位】选项 B'
+      - 'C: 【占位】选项 C'
+      - 'D: 【占位】选项 D'
+    answer: 【占位】B
+    explanation: 【占位】请补充详细解析：1. 解释正确答案原理；2. 引用 Go 规范章节（如 §3.1）；3. 提供代码示例（可选）；4. 说明常见错误
+    topic: types
+    chapter: underlying_types
+  - id: underlying_types-024
+    type: multiple_choice
+    difficulty: easy
+    stem: 【占位】underlying_types 第 24 题：请替换为真实题干，描述清晰，引用 Go 1.24 规范相关章节
+    options:
+      - 'A: 【占位】选项 A'
+      - 'B: 【占位】选项 B'
+      - 'C: 【占位】选项 C'
+      - 'D: 【占位】选项 D'
+      - 'E: 【占位】选项 E（可选）'
+    answer: 【占位】AC
+    explanation: 【占位】请补充详细解析：1. 解释正确答案原理；2. 引用 Go 规范章节（如 §3.1）；3. 提供代码示例（可选）；4. 说明常见错误
+    topic: types
+    chapter: underlying_types
+  - id: underlying_types-025
+    type: multiple_choice
+    difficulty: easy
+    stem: 【占位】underlying_types 第 25 题：请替换为真实题干，描述清晰，引用 Go 1.24 规范相关章节
+    options:
+      - 'A: 【占位】选项 A'
+      - 'B: 【占位】选项 B'
+      - 'C: 【占位】选项 C'
+      - 'D: 【占位】选项 D'
+      - 'E: 【占位】选项 E（可选）'
+    answer: 【占位】AC
+    explanation: 【占位】请补充详细解析：1. 解释正确答案原理；2. 引用 Go 规范章节（如 §3.1）；3. 提供代码示例（可选）；4. 说明常见错误
+    topic: types
+    chapter: underlying_types
+  - id: underlying_types-026
+    type: multiple_choice
+    difficulty: medium
+    stem: 【占位】underlying_types 第 26 题：请替换为真实题干，描述清晰，引用 Go 1.24 规范相关章节
+    options:
+      - 'A: 【占位】选项 A'
+      - 'B: 【占位】选项 B'
+      - 'C: 【占位】选项 C'
+      - 'D: 【占位】选项 D'
+      - 'E: 【占位】选项 E（可选）'
+    answer: 【占位】AC
+    explanation: 【占位】请补充详细解析：1. 解释正确答案原理；2. 引用 Go 规范章节（如 §3.1）；3. 提供代码示例（可选）；4. 说明常见错误
+    topic: types
+    chapter: underlying_types
+  - id: underlying_types-027
+    type: code_output
+    difficulty: medium
+    stem: 【占位】underlying_types 第 27 题：请替换为真实题干，描述清晰，引用 Go 1.24 规范相关章节
+    options:
+      - 'A: 【占位】输出结果 A'
+      - 'B: 【占位】输出结果 B'
+      - 'C: 【占位】编译错误'
+      - 'D: 【占位】运行时错误'
+    answer: 【占位】B
+    explanation: 【占位】请补充详细解析：1. 解释正确答案原理；2. 引用 Go 规范章节（如 §3.1）；3. 提供代码示例（可选）；4. 说明常见错误
+    topic: types
+    chapter: underlying_types
+  - id: underlying_types-028
+    type: code_output
+    difficulty: medium
+    stem: 【占位】underlying_types 第 28 题：请替换为真实题干，描述清晰，引用 Go 1.24 规范相关章节
+    options:
+      - 'A: 【占位】输出结果 A'
+      - 'B: 【占位】输出结果 B'
+      - 'C: 【占位】编译错误'
+      - 'D: 【占位】运行时错误'
+    answer: 【占位】B
+    explanation: 【占位】请补充详细解析：1. 解释正确答案原理；2. 引用 Go 规范章节（如 §3.1）；3. 提供代码示例（可选）；4. 说明常见错误
+    topic: types
+    chapter: underlying_types
+  - id: underlying_types-029
+    type: code_fix
+    difficulty: hard
+    stem: 【占位】underlying_types 第 29 题：请替换为真实题干，描述清晰，引用 Go 1.24 规范相关章节
+    options:
+      - 'A: 【占位】修复方案 A'
+      - 'B: 【占位】修复方案 B'
+      - 'C: 【占位】修复方案 C'
+      - 'D: 【占位】修复方案 D'
+    answer: 【占位】B
+    explanation: 【占位】请补充详细解析：1. 解释正确答案原理；2. 引用 Go 规范章节（如 §3.1）；3. 提供代码示例（可选）；4. 说明常见错误
+    topic: types
+    chapter: underlying_types
+  - id: underlying_types-030
+    type: single_choice
+    difficulty: easy
+    stem: 【占位】underlying_types 第 30 题：请替换为真实题干，描述清晰，引用 Go 1.24 规范相关章节
+    options:
+      - 'A: 【占位】选项 A'
+      - 'B: 【占位】选项 B'
+      - 'C: 【占位】选项 C'
+      - 'D: 【占位】选项 D'
+    answer: 【占位】B
+    explanation: 【占位】请补充详细解析：1. 解释正确答案原理；2. 引用 Go 规范章节（如 §3.1）；3. 提供代码示例（可选）；4. 说明常见错误
+    topic: types
+    chapter: underlying_types
+  - id: underlying_types-031
+    type: single_choice
+    difficulty: easy
+    stem: 【占位】underlying_types 第 31 题：请替换为真实题干，描述清晰，引用 Go 1.24 规范相关章节
+    options:
+      - 'A: 【占位】选项 A'
+      - 'B: 【占位】选项 B'
+      - 'C: 【占位】选项 C'
+      - 'D: 【占位】选项 D'
+    answer: 【占位】B
+    explanation: 【占位】请补充详细解析：1. 解释正确答案原理；2. 引用 Go 规范章节（如 §3.1）；3. 提供代码示例（可选）；4. 说明常见错误
+    topic: types
+    chapter: underlying_types
+  - id: underlying_types-032
+    type: single_choice
+    difficulty: easy
+    stem: 【占位】underlying_types 第 32 题：请替换为真实题干，描述清晰，引用 Go 1.24 规范相关章节
+    options:
+      - 'A: 【占位】选项 A'
+      - 'B: 【占位】选项 B'
+      - 'C: 【占位】选项 C'
+      - 'D: 【占位】选项 D'
+    answer: 【占位】B
+    explanation: 【占位】请补充详细解析：1. 解释正确答案原理；2. 引用 Go 规范章节（如 §3.1）；3. 提供代码示例（可选）；4. 说明常见错误
+    topic: types
+    chapter: underlying_types
+  - id: underlying_types-033
+    type: single_choice
+    difficulty: easy
+    stem: 【占位】underlying_types 第 33 题：请替换为真实题干，描述清晰，引用 Go 1.24 规范相关章节
+    options:
+      - 'A: 【占位】选项 A'
+      - 'B: 【占位】选项 B'
+      - 'C: 【占位】选项 C'
+      - 'D: 【占位】选项 D'
+    answer: 【占位】B
+    explanation: 【占位】请补充详细解析：1. 解释正确答案原理；2. 引用 Go 规范章节（如 §3.1）；3. 提供代码示例（可选）；4. 说明常见错误
+    topic: types
+    chapter: underlying_types
+  - id: underlying_types-034
+    type: multiple_choice
+    difficulty: easy
+    stem: 【占位】underlying_types 第 34 题：请替换为真实题干，描述清晰，引用 Go 1.24 规范相关章节
+    options:
+      - 'A: 【占位】选项 A'
+      - 'B: 【占位】选项 B'
+      - 'C: 【占位】选项 C'
+      - 'D: 【占位】选项 D'
+      - 'E: 【占位】选项 E（可选）'
+    answer: 【占位】AC
+    explanation: 【占位】请补充详细解析：1. 解释正确答案原理；2. 引用 Go 规范章节（如 §3.1）；3. 提供代码示例（可选）；4. 说明常见错误
+    topic: types
+    chapter: underlying_types
+  - id: underlying_types-035
+    type: multiple_choice
+    difficulty: easy
+    stem: 【占位】underlying_types 第 35 题：请替换为真实题干，描述清晰，引用 Go 1.24 规范相关章节
+    options:
+      - 'A: 【占位】选项 A'
+      - 'B: 【占位】选项 B'
+      - 'C: 【占位】选项 C'
+      - 'D: 【占位】选项 D'
+      - 'E: 【占位】选项 E（可选）'
+    answer: 【占位】AC
+    explanation: 【占位】请补充详细解析：1. 解释正确答案原理；2. 引用 Go 规范章节（如 §3.1）；3. 提供代码示例（可选）；4. 说明常见错误
+    topic: types
+    chapter: underlying_types
+  - id: underlying_types-036
+    type: multiple_choice
+    difficulty: medium
+    stem: 【占位】underlying_types 第 36 题：请替换为真实题干，描述清晰，引用 Go 1.24 规范相关章节
+    options:
+      - 'A: 【占位】选项 A'
+      - 'B: 【占位】选项 B'
+      - 'C: 【占位】选项 C'
+      - 'D: 【占位】选项 D'
+      - 'E: 【占位】选项 E（可选）'
+    answer: 【占位】AC
+    explanation: 【占位】请补充详细解析：1. 解释正确答案原理；2. 引用 Go 规范章节（如 §3.1）；3. 提供代码示例（可选）；4. 说明常见错误
+    topic: types
+    chapter: underlying_types
+  - id: underlying_types-037
+    type: code_output
+    difficulty: medium
+    stem: 【占位】underlying_types 第 37 题：请替换为真实题干，描述清晰，引用 Go 1.24 规范相关章节
+    options:
+      - 'A: 【占位】输出结果 A'
+      - 'B: 【占位】输出结果 B'
+      - 'C: 【占位】编译错误'
+      - 'D: 【占位】运行时错误'
+    answer: 【占位】B
+    explanation: 【占位】请补充详细解析：1. 解释正确答案原理；2. 引用 Go 规范章节（如 §3.1）；3. 提供代码示例（可选）；4. 说明常见错误
+    topic: types
+    chapter: underlying_types
+  - id: underlying_types-038
+    type: code_output
+    difficulty: medium
+    stem: 【占位】underlying_types 第 38 题：请替换为真实题干，描述清晰，引用 Go 1.24 规范相关章节
+    options:
+      - 'A: 【占位】输出结果 A'
+      - 'B: 【占位】输出结果 B'
+      - 'C: 【占位】编译错误'
+      - 'D: 【占位】运行时错误'
+    answer: 【占位】B
+    explanation: 【占位】请补充详细解析：1. 解释正确答案原理；2. 引用 Go 规范章节（如 §3.1）；3. 提供代码示例（可选）；4. 说明常见错误
+    topic: types
+    chapter: underlying_types

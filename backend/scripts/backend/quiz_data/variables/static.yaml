@@ -1,0 +1,434 @@
+questions:
+  - id: var-static-001
+    type: multiple
+    difficulty: easy
+    stem: 【占位】variables - static 第 1 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+    answer: ABCD
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: variables
+    chapter: static
+  - id: var-static-002
+    type: single
+    difficulty: easy
+    stem: 【占位】variables - static 第 2 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+    answer: C
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: variables
+    chapter: static
+  - id: var-static-003
+    type: multiple
+    difficulty: easy
+    stem: 【占位】variables - static 第 3 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+      - 'E: 示例选项 E'
+    answer: CE
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: variables
+    chapter: static
+  - id: var-static-004
+    type: single
+    difficulty: easy
+    stem: 【占位】variables - static 第 4 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+    answer: B
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: variables
+    chapter: static
+  - id: var-static-005
+    type: multiple
+    difficulty: easy
+    stem: 【占位】variables - static 第 5 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+    answer: ACD
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: variables
+    chapter: static
+  - id: var-static-006
+    type: single
+    difficulty: easy
+    stem: 【占位】variables - static 第 6 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+    answer: D
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: variables
+    chapter: static
+  - id: var-static-007
+    type: multiple
+    difficulty: easy
+    stem: 【占位】variables - static 第 7 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+      - 'E: 示例选项 E'
+    answer: BC
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: variables
+    chapter: static
+  - id: var-static-008
+    type: single
+    difficulty: easy
+    stem: 【占位】variables - static 第 8 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+    answer: A
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: variables
+    chapter: static
+  - id: var-static-009
+    type: multiple
+    difficulty: easy
+    stem: 【占位】variables - static 第 9 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+    answer: BC
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: variables
+    chapter: static
+  - id: var-static-010
+    type: single
+    difficulty: easy
+    stem: 【占位】variables - static 第 10 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+    answer: A
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: variables
+    chapter: static
+  - id: var-static-011
+    type: multiple
+    difficulty: easy
+    stem: 【占位】variables - static 第 11 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+    answer: ABC
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: variables
+    chapter: static
+  - id: var-static-012
+    type: single
+    difficulty: easy
+    stem: 【占位】variables - static 第 12 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+    answer: A
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: variables
+    chapter: static
+  - id: var-static-013
+    type: multiple
+    difficulty: easy
+    stem: 【占位】variables - static 第 13 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+    answer: ABC
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: variables
+    chapter: static
+  - id: var-static-014
+    type: single
+    difficulty: easy
+    stem: 【占位】variables - static 第 14 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+    answer: A
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: variables
+    chapter: static
+  - id: var-static-015
+    type: multiple
+    difficulty: medium
+    stem: 【占位】variables - static 第 15 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+      - 'E: 示例选项 E'
+    answer: ACE
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: variables
+    chapter: static
+  - id: var-static-016
+    type: single
+    difficulty: medium
+    stem: 【占位】variables - static 第 16 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+    answer: B
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: variables
+    chapter: static
+  - id: var-static-017
+    type: multiple
+    difficulty: medium
+    stem: 【占位】variables - static 第 17 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+    answer: BC
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: variables
+    chapter: static
+  - id: var-static-018
+    type: single
+    difficulty: medium
+    stem: 【占位】variables - static 第 18 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+    answer: C
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: variables
+    chapter: static
+  - id: var-static-019
+    type: multiple
+    difficulty: medium
+    stem: 【占位】variables - static 第 19 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+      - 'E: 示例选项 E'
+    answer: BCD
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: variables
+    chapter: static
+  - id: var-static-020
+    type: single
+    difficulty: medium
+    stem: 【占位】variables - static 第 20 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+    answer: C
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: variables
+    chapter: static
+  - id: var-static-021
+    type: multiple
+    difficulty: medium
+    stem: 【占位】variables - static 第 21 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+    answer: ABCD
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: variables
+    chapter: static
+  - id: var-static-022
+    type: single
+    difficulty: medium
+    stem: 【占位】variables - static 第 22 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+    answer: A
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: variables
+    chapter: static
+  - id: var-static-023
+    type: multiple
+    difficulty: medium
+    stem: 【占位】variables - static 第 23 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+    answer: AB
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: variables
+    chapter: static
+  - id: var-static-024
+    type: single
+    difficulty: medium
+    stem: 【占位】variables - static 第 24 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+    answer: A
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: variables
+    chapter: static
+  - id: var-static-025
+    type: multiple
+    difficulty: medium
+    stem: 【占位】variables - static 第 25 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+    answer: AB
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: variables
+    chapter: static
+  - id: var-static-026
+    type: single
+    difficulty: medium
+    stem: 【占位】variables - static 第 26 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+    answer: B
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: variables
+    chapter: static
+  - id: var-static-027
+    type: multiple
+    difficulty: medium
+    stem: 【占位】variables - static 第 27 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+    answer: ABCD
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: variables
+    chapter: static
+  - id: var-static-028
+    type: single
+    difficulty: medium
+    stem: 【占位】variables - static 第 28 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+    answer: C
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: variables
+    chapter: static
+  - id: var-static-029
+    type: multiple
+    difficulty: hard
+    stem: 【占位】variables - static 第 29 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+      - 'E: 示例选项 E'
+    answer: ACDE
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: variables
+    chapter: static
+  - id: var-static-030
+    type: single
+    difficulty: hard
+    stem: 【占位】variables - static 第 30 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+    answer: D
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: variables
+    chapter: static
+  - id: var-static-031
+    type: multiple
+    difficulty: hard
+    stem: 【占位】variables - static 第 31 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+    answer: AD
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: variables
+    chapter: static
+  - id: var-static-032
+    type: single
+    difficulty: hard
+    stem: 【占位】variables - static 第 32 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+    answer: B
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: variables
+    chapter: static
+  - id: var-static-033
+    type: multiple
+    difficulty: hard
+    stem: 【占位】variables - static 第 33 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+    answer: ABC
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: variables
+    chapter: static
+  - id: var-static-034
+    type: single
+    difficulty: hard
+    stem: 【占位】variables - static 第 34 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+    answer: C
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: variables
+    chapter: static
+  - id: var-static-035
+    type: multiple
+    difficulty: hard
+    stem: 【占位】variables - static 第 35 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+    answer: ABC
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: variables
+    chapter: static

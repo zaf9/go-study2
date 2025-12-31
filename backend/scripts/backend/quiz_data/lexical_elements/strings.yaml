@@ -1,0 +1,565 @@
+questions:
+  - id: lexical-strings-001
+    type: multiple
+    difficulty: easy
+    stem: 【占位】lexical_elements - strings 第 1 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+    answer: AC
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: lexical_elements
+    chapter: strings
+  - id: lexical-strings-002
+    type: single
+    difficulty: easy
+    stem: 【占位】lexical_elements - strings 第 2 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+    answer: B
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: lexical_elements
+    chapter: strings
+  - id: lexical-strings-003
+    type: multiple
+    difficulty: easy
+    stem: 【占位】lexical_elements - strings 第 3 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+    answer: ABC
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: lexical_elements
+    chapter: strings
+  - id: lexical-strings-004
+    type: single
+    difficulty: easy
+    stem: 【占位】lexical_elements - strings 第 4 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+    answer: C
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: lexical_elements
+    chapter: strings
+  - id: lexical-strings-005
+    type: multiple
+    difficulty: easy
+    stem: 【占位】lexical_elements - strings 第 5 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+      - 'E: 示例选项 E'
+    answer: ACDE
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: lexical_elements
+    chapter: strings
+  - id: lexical-strings-006
+    type: single
+    difficulty: easy
+    stem: 【占位】lexical_elements - strings 第 6 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+    answer: B
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: lexical_elements
+    chapter: strings
+  - id: lexical-strings-007
+    type: multiple
+    difficulty: easy
+    stem: 【占位】lexical_elements - strings 第 7 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+    answer: BD
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: lexical_elements
+    chapter: strings
+  - id: lexical-strings-008
+    type: single
+    difficulty: easy
+    stem: 【占位】lexical_elements - strings 第 8 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+    answer: C
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: lexical_elements
+    chapter: strings
+  - id: lexical-strings-009
+    type: multiple
+    difficulty: easy
+    stem: 【占位】lexical_elements - strings 第 9 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+    answer: AB
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: lexical_elements
+    chapter: strings
+  - id: lexical-strings-010
+    type: single
+    difficulty: easy
+    stem: 【占位】lexical_elements - strings 第 10 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+    answer: A
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: lexical_elements
+    chapter: strings
+  - id: lexical-strings-011
+    type: multiple
+    difficulty: easy
+    stem: 【占位】lexical_elements - strings 第 11 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+    answer: ACD
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: lexical_elements
+    chapter: strings
+  - id: lexical-strings-012
+    type: single
+    difficulty: easy
+    stem: 【占位】lexical_elements - strings 第 12 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+    answer: C
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: lexical_elements
+    chapter: strings
+  - id: lexical-strings-013
+    type: multiple
+    difficulty: easy
+    stem: 【占位】lexical_elements - strings 第 13 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+    answer: CD
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: lexical_elements
+    chapter: strings
+  - id: lexical-strings-014
+    type: single
+    difficulty: easy
+    stem: 【占位】lexical_elements - strings 第 14 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+    answer: B
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: lexical_elements
+    chapter: strings
+  - id: lexical-strings-015
+    type: multiple
+    difficulty: easy
+    stem: 【占位】lexical_elements - strings 第 15 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+    answer: ABC
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: lexical_elements
+    chapter: strings
+  - id: lexical-strings-016
+    type: single
+    difficulty: easy
+    stem: 【占位】lexical_elements - strings 第 16 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+    answer: D
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: lexical_elements
+    chapter: strings
+  - id: lexical-strings-017
+    type: multiple
+    difficulty: easy
+    stem: 【占位】lexical_elements - strings 第 17 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+      - 'E: 示例选项 E'
+    answer: BD
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: lexical_elements
+    chapter: strings
+  - id: lexical-strings-018
+    type: single
+    difficulty: easy
+    stem: 【占位】lexical_elements - strings 第 18 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+    answer: A
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: lexical_elements
+    chapter: strings
+  - id: lexical-strings-019
+    type: multiple
+    difficulty: medium
+    stem: 【占位】lexical_elements - strings 第 19 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+    answer: ABD
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: lexical_elements
+    chapter: strings
+  - id: lexical-strings-020
+    type: single
+    difficulty: medium
+    stem: 【占位】lexical_elements - strings 第 20 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+    answer: A
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: lexical_elements
+    chapter: strings
+  - id: lexical-strings-021
+    type: multiple
+    difficulty: medium
+    stem: 【占位】lexical_elements - strings 第 21 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+      - 'E: 示例选项 E'
+    answer: AB
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: lexical_elements
+    chapter: strings
+  - id: lexical-strings-022
+    type: single
+    difficulty: medium
+    stem: 【占位】lexical_elements - strings 第 22 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+    answer: B
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: lexical_elements
+    chapter: strings
+  - id: lexical-strings-023
+    type: multiple
+    difficulty: medium
+    stem: 【占位】lexical_elements - strings 第 23 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+      - 'E: 示例选项 E'
+    answer: ACE
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: lexical_elements
+    chapter: strings
+  - id: lexical-strings-024
+    type: single
+    difficulty: medium
+    stem: 【占位】lexical_elements - strings 第 24 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+    answer: A
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: lexical_elements
+    chapter: strings
+  - id: lexical-strings-025
+    type: multiple
+    difficulty: medium
+    stem: 【占位】lexical_elements - strings 第 25 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+      - 'E: 示例选项 E'
+    answer: ACDE
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: lexical_elements
+    chapter: strings
+  - id: lexical-strings-026
+    type: single
+    difficulty: medium
+    stem: 【占位】lexical_elements - strings 第 26 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+    answer: B
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: lexical_elements
+    chapter: strings
+  - id: lexical-strings-027
+    type: multiple
+    difficulty: medium
+    stem: 【占位】lexical_elements - strings 第 27 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+    answer: ABC
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: lexical_elements
+    chapter: strings
+  - id: lexical-strings-028
+    type: single
+    difficulty: medium
+    stem: 【占位】lexical_elements - strings 第 28 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+    answer: B
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: lexical_elements
+    chapter: strings
+  - id: lexical-strings-029
+    type: multiple
+    difficulty: medium
+    stem: 【占位】lexical_elements - strings 第 29 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+    answer: ABCD
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: lexical_elements
+    chapter: strings
+  - id: lexical-strings-030
+    type: single
+    difficulty: medium
+    stem: 【占位】lexical_elements - strings 第 30 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+    answer: A
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: lexical_elements
+    chapter: strings
+  - id: lexical-strings-031
+    type: multiple
+    difficulty: medium
+    stem: 【占位】lexical_elements - strings 第 31 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+    answer: BCD
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: lexical_elements
+    chapter: strings
+  - id: lexical-strings-032
+    type: single
+    difficulty: medium
+    stem: 【占位】lexical_elements - strings 第 32 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+    answer: D
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: lexical_elements
+    chapter: strings
+  - id: lexical-strings-033
+    type: multiple
+    difficulty: medium
+    stem: 【占位】lexical_elements - strings 第 33 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+    answer: BC
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: lexical_elements
+    chapter: strings
+  - id: lexical-strings-034
+    type: single
+    difficulty: medium
+    stem: 【占位】lexical_elements - strings 第 34 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+    answer: A
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: lexical_elements
+    chapter: strings
+  - id: lexical-strings-035
+    type: multiple
+    difficulty: medium
+    stem: 【占位】lexical_elements - strings 第 35 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+      - 'E: 示例选项 E'
+    answer: AD
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: lexical_elements
+    chapter: strings
+  - id: lexical-strings-036
+    type: single
+    difficulty: medium
+    stem: 【占位】lexical_elements - strings 第 36 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+    answer: A
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: lexical_elements
+    chapter: strings
+  - id: lexical-strings-037
+    type: multiple
+    difficulty: hard
+    stem: 【占位】lexical_elements - strings 第 37 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+    answer: ABCD
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: lexical_elements
+    chapter: strings
+  - id: lexical-strings-038
+    type: single
+    difficulty: hard
+    stem: 【占位】lexical_elements - strings 第 38 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+    answer: B
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: lexical_elements
+    chapter: strings
+  - id: lexical-strings-039
+    type: multiple
+    difficulty: hard
+    stem: 【占位】lexical_elements - strings 第 39 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+      - 'E: 示例选项 E'
+    answer: ACD
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: lexical_elements
+    chapter: strings
+  - id: lexical-strings-040
+    type: single
+    difficulty: hard
+    stem: 【占位】lexical_elements - strings 第 40 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+    answer: B
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: lexical_elements
+    chapter: strings
+  - id: lexical-strings-041
+    type: multiple
+    difficulty: hard
+    stem: 【占位】lexical_elements - strings 第 41 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+    answer: ABC
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: lexical_elements
+    chapter: strings
+  - id: lexical-strings-042
+    type: single
+    difficulty: hard
+    stem: 【占位】lexical_elements - strings 第 42 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+    answer: A
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: lexical_elements
+    chapter: strings
+  - id: lexical-strings-043
+    type: multiple
+    difficulty: hard
+    stem: 【占位】lexical_elements - strings 第 43 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+    answer: AB
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: lexical_elements
+    chapter: strings
+  - id: lexical-strings-044
+    type: single
+    difficulty: hard
+    stem: 【占位】lexical_elements - strings 第 44 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+    answer: A
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: lexical_elements
+    chapter: strings
+  - id: lexical-strings-045
+    type: multiple
+    difficulty: hard
+    stem: 【占位】lexical_elements - strings 第 45 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+    answer: AC
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: lexical_elements
+    chapter: strings

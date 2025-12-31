@@ -51,10 +51,10 @@ This is a web application with backend (Go) and frontend (TypeScript/React):
 
 ### Tool Chain Development (BLOCKING)
 
-- [ ] T004 Implement template generator backend/scripts/generate_quiz_template.go to create YAML skeleton with metadata and question placeholders
-- [ ] T005 [P] Implement format validator backend/scripts/validate_quiz_yaml.go with 100% automated checks (ID format, type enum, difficulty enum, option count, answer format)
-- [ ] T006 [P] Implement quality checker backend/scripts/quiz_quality_check.go with 80%+ automated content validation (explanation length, Go spec reference, code executability, duplicate detection)
-- [ ] T007 [P] Implement progress tracker backend/scripts/check_quiz_progress.sh to show completion status across all 41 chapters
+- [X] T004 Implement template generator backend/scripts/generate_quiz_template.go to create YAML skeleton with metadata and question placeholders
+- [X] T005 [P] Implement format validator backend/scripts/validate_quiz_yaml.go with 100% automated checks (ID format, type enum, difficulty enum, option count, answer format)
+- [X] T006 [P] Implement quality checker backend/scripts/quiz_quality_check.go with 80%+ automated content validation (explanation length, Go spec reference, code executability, duplicate detection)
+- [X] T007 [P] Implement progress tracker backend/scripts/check_quiz_progress.ps1 to show completion status across all 41 chapters
 
 ### Backend Service Extension (BLOCKING)
 

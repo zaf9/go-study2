@@ -1,0 +1,502 @@
+questions:
+  - id: const-conversions-001
+    type: multiple
+    difficulty: easy
+    stem: 【占位】constants - conversions 第 1 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+      - 'E: 示例选项 E'
+    answer: AE
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: constants
+    chapter: conversions
+  - id: const-conversions-002
+    type: single
+    difficulty: easy
+    stem: 【占位】constants - conversions 第 2 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+    answer: C
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: constants
+    chapter: conversions
+  - id: const-conversions-003
+    type: multiple
+    difficulty: easy
+    stem: 【占位】constants - conversions 第 3 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+      - 'E: 示例选项 E'
+    answer: BCDE
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: constants
+    chapter: conversions
+  - id: const-conversions-004
+    type: single
+    difficulty: easy
+    stem: 【占位】constants - conversions 第 4 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+    answer: B
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: constants
+    chapter: conversions
+  - id: const-conversions-005
+    type: multiple
+    difficulty: easy
+    stem: 【占位】constants - conversions 第 5 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+    answer: CD
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: constants
+    chapter: conversions
+  - id: const-conversions-006
+    type: single
+    difficulty: easy
+    stem: 【占位】constants - conversions 第 6 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+    answer: C
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: constants
+    chapter: conversions
+  - id: const-conversions-007
+    type: multiple
+    difficulty: easy
+    stem: 【占位】constants - conversions 第 7 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+    answer: ABC
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: constants
+    chapter: conversions
+  - id: const-conversions-008
+    type: single
+    difficulty: easy
+    stem: 【占位】constants - conversions 第 8 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+    answer: A
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: constants
+    chapter: conversions
+  - id: const-conversions-009
+    type: multiple
+    difficulty: easy
+    stem: 【占位】constants - conversions 第 9 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+      - 'E: 示例选项 E'
+    answer: ABDE
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: constants
+    chapter: conversions
+  - id: const-conversions-010
+    type: single
+    difficulty: easy
+    stem: 【占位】constants - conversions 第 10 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+    answer: A
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: constants
+    chapter: conversions
+  - id: const-conversions-011
+    type: multiple
+    difficulty: easy
+    stem: 【占位】constants - conversions 第 11 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+      - 'E: 示例选项 E'
+    answer: ABDE
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: constants
+    chapter: conversions
+  - id: const-conversions-012
+    type: single
+    difficulty: easy
+    stem: 【占位】constants - conversions 第 12 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+    answer: D
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: constants
+    chapter: conversions
+  - id: const-conversions-013
+    type: multiple
+    difficulty: easy
+    stem: 【占位】constants - conversions 第 13 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+    answer: ACD
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: constants
+    chapter: conversions
+  - id: const-conversions-014
+    type: single
+    difficulty: easy
+    stem: 【占位】constants - conversions 第 14 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+    answer: B
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: constants
+    chapter: conversions
+  - id: const-conversions-015
+    type: multiple
+    difficulty: easy
+    stem: 【占位】constants - conversions 第 15 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+    answer: BD
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: constants
+    chapter: conversions
+  - id: const-conversions-016
+    type: single
+    difficulty: easy
+    stem: 【占位】constants - conversions 第 16 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+    answer: C
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: constants
+    chapter: conversions
+  - id: const-conversions-017
+    type: multiple
+    difficulty: medium
+    stem: 【占位】constants - conversions 第 17 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+      - 'E: 示例选项 E'
+    answer: BE
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: constants
+    chapter: conversions
+  - id: const-conversions-018
+    type: single
+    difficulty: medium
+    stem: 【占位】constants - conversions 第 18 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+    answer: B
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: constants
+    chapter: conversions
+  - id: const-conversions-019
+    type: multiple
+    difficulty: medium
+    stem: 【占位】constants - conversions 第 19 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+      - 'E: 示例选项 E'
+    answer: ABC
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: constants
+    chapter: conversions
+  - id: const-conversions-020
+    type: single
+    difficulty: medium
+    stem: 【占位】constants - conversions 第 20 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+    answer: A
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: constants
+    chapter: conversions
+  - id: const-conversions-021
+    type: multiple
+    difficulty: medium
+    stem: 【占位】constants - conversions 第 21 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+    answer: ABCD
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: constants
+    chapter: conversions
+  - id: const-conversions-022
+    type: single
+    difficulty: medium
+    stem: 【占位】constants - conversions 第 22 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+    answer: A
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: constants
+    chapter: conversions
+  - id: const-conversions-023
+    type: multiple
+    difficulty: medium
+    stem: 【占位】constants - conversions 第 23 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+    answer: ABC
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: constants
+    chapter: conversions
+  - id: const-conversions-024
+    type: single
+    difficulty: medium
+    stem: 【占位】constants - conversions 第 24 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+    answer: A
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: constants
+    chapter: conversions
+  - id: const-conversions-025
+    type: multiple
+    difficulty: medium
+    stem: 【占位】constants - conversions 第 25 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+    answer: AB
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: constants
+    chapter: conversions
+  - id: const-conversions-026
+    type: single
+    difficulty: medium
+    stem: 【占位】constants - conversions 第 26 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+    answer: C
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: constants
+    chapter: conversions
+  - id: const-conversions-027
+    type: multiple
+    difficulty: medium
+    stem: 【占位】constants - conversions 第 27 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+      - 'E: 示例选项 E'
+    answer: ABDE
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: constants
+    chapter: conversions
+  - id: const-conversions-028
+    type: single
+    difficulty: medium
+    stem: 【占位】constants - conversions 第 28 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+    answer: B
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: constants
+    chapter: conversions
+  - id: const-conversions-029
+    type: multiple
+    difficulty: medium
+    stem: 【占位】constants - conversions 第 29 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+    answer: AD
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: constants
+    chapter: conversions
+  - id: const-conversions-030
+    type: single
+    difficulty: medium
+    stem: 【占位】constants - conversions 第 30 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+    answer: A
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: constants
+    chapter: conversions
+  - id: const-conversions-031
+    type: multiple
+    difficulty: medium
+    stem: 【占位】constants - conversions 第 31 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+    answer: BD
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: constants
+    chapter: conversions
+  - id: const-conversions-032
+    type: single
+    difficulty: medium
+    stem: 【占位】constants - conversions 第 32 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+    answer: A
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: constants
+    chapter: conversions
+  - id: const-conversions-033
+    type: multiple
+    difficulty: hard
+    stem: 【占位】constants - conversions 第 33 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+      - 'E: 示例选项 E'
+    answer: CDE
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: constants
+    chapter: conversions
+  - id: const-conversions-034
+    type: single
+    difficulty: hard
+    stem: 【占位】constants - conversions 第 34 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+    answer: A
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: constants
+    chapter: conversions
+  - id: const-conversions-035
+    type: multiple
+    difficulty: hard
+    stem: 【占位】constants - conversions 第 35 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+    answer: AC
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: constants
+    chapter: conversions
+  - id: const-conversions-036
+    type: single
+    difficulty: hard
+    stem: 【占位】constants - conversions 第 36 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+    answer: D
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: constants
+    chapter: conversions
+  - id: const-conversions-037
+    type: multiple
+    difficulty: hard
+    stem: 【占位】constants - conversions 第 37 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+      - 'D: 示例选项 D'
+      - 'E: 示例选项 E'
+    answer: CDE
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: constants
+    chapter: conversions
+  - id: const-conversions-038
+    type: single
+    difficulty: hard
+    stem: 【占位】constants - conversions 第 38 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+    answer: A
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: constants
+    chapter: conversions
+  - id: const-conversions-039
+    type: multiple
+    difficulty: hard
+    stem: 【占位】constants - conversions 第 39 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+      - 'C: 示例选项 C'
+    answer: ABC
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: constants
+    chapter: conversions
+  - id: const-conversions-040
+    type: single
+    difficulty: hard
+    stem: 【占位】constants - conversions 第 40 题：请替换为真实题干。
+    options:
+      - 'A: 示例选项 A'
+      - 'B: 示例选项 B'
+    answer: A
+    explanation: 【占位解析】示例解析，请人工替换为详实中文解析。
+    topic: constants
+    chapter: conversions
