@@ -58,19 +58,19 @@ This is a web application with backend (Go) and frontend (TypeScript/React):
 
 ### Backend Service Extension (BLOCKING)
 
-- [ ] T008 Extend QuizService interface in backend/internal/domain/quiz/service.go with GetAllChapters(), RecordQuizAttempt(), GetUserHistory() methods
-- [ ] T009 Implement QuizRepository in backend/internal/infra/repository/quiz_repository.go with YAML loading, sync.Map caching, and index-based lookup
-- [ ] T010 [P] Implement AttemptRepository in backend/internal/infra/repository/attempt_repository.go for JSON-based quiz attempt persistence
-- [ ] T011 [P] Add HTTP routes in backend/internal/interfaces/http/quiz_handler.go for GET /api/v1/quiz/chapters, GET /api/v1/quiz/:topic/:chapter, POST /api/v1/quiz/:topic/:chapter
-- [ ] T012 [P] Add HTTP routes in backend/internal/interfaces/http/progress_handler.go for GET /api/v1/quiz/history/:topic/:chapter, GET /api/v1/quiz/progress
+- [X] T008 Extend QuizService interface in backend/internal/domain/quiz/service.go with GetAllChapters(), RecordQuizAttempt(), GetUserHistory() methods
+- [X] T009 Implement QuizRepository in backend/internal/infra/repository/quiz_repository.go with YAML loading, sync.Map caching, and index-based lookup
+- [X] T010 [P] Implement AttemptRepository in backend/internal/infra/repository/attempt_repository.go for JSON-based quiz attempt persistence
+- [X] T011 [P] Add HTTP routes in backend/internal/interfaces/http/quiz_handler.go for GET /api/v1/quiz/chapters, GET /api/v1/quiz/:topic/:chapter, POST /api/v1/quiz/:topic/:chapter
+- [X] T012 [P] Add HTTP routes in backend/internal/interfaces/http/progress_handler.go for GET /api/v1/quiz/history/:topic/:chapter, GET /api/v1/quiz/progress
 
 ### Test Infrastructure (BLOCKING)
 
-- [ ] T013 Create test utilities in backend/tests/testutil/quiz_fixtures.go for generating mock quiz data
-- [ ] T014 [P] Unit test QuizService in backend/tests/unit/quiz_service_test.go covering random selection, scoring, validation edge cases
-- [ ] T015 [P] Unit test QuizRepository in backend/tests/unit/quiz_repository_test.go covering YAML loading, caching, index lookup performance
-- [ ] T016 [P] Integration test quiz API in backend/tests/integration/quiz_api_test.go covering all 5 endpoints with various scenarios
-- [ ] T017 [P] Benchmark test quiz loading in backend/tests/benchmark/quiz_load_test.go targeting <100ms first load, <10ms cached
+- [X] T013 Create test utilities in backend/tests/testutil/quiz_fixtures.go for generating mock quiz data
+- [X] T014 [P] Unit test QuizService in backend/tests/unit/quiz_service_test.go covering random selection, scoring, validation edge cases
+- [X] T015 [P] Unit test QuizRepository in backend/tests/unit/quiz_repository_test.go covering YAML loading, caching, index lookup performance
+- [X] T016 [P] Integration test quiz API in backend/tests/integration/quiz_api_test.go covering all 5 endpoints with various scenarios
+- [X] T017 [P] Benchmark test quiz loading in backend/tests/benchmark/quiz_load_test.go targeting <100ms first load, <10ms cached
 
 **Checkpoint**: Foundation ready - user story implementation can now begin in parallel
 
