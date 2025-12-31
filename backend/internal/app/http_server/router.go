@@ -31,6 +31,7 @@ func RegisterRoutes(s *ghttp.Server) {
 
 			// 学习进度
 			authGroup.GET("/progress", h.GetAllProgress)
+			authGroup.GET("/progress/overview", h.GetOverview) // User Story 4
 			authGroup.GET("/progress/:topic", h.GetTopicProgress)
 			authGroup.GET("/progress/last", h.GetLastLearning)
 			authGroup.POST("/progress", h.SaveProgress)

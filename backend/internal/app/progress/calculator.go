@@ -171,10 +171,16 @@ func (c *Calculator) CalculateOverallProgress(list []progressdom.LearningProgres
 		weightedSum += float64(topicProg.Progress) * float64(acc.Weight)
 		totalWeight += float64(acc.Weight)
 		completedChapters += topicProg.CompletedChapters
-		totalChapters += topicProg.TotalChapters
 		totalStudyTime += acc.ReadDuration
 		for day := range acc.StudyDays {
 			studyDays[day] = struct{}{}
+		}
+	}
+
+	// 计算总章节数时需要包括所有主题，而不仅仅是用户已学习过的主题
+	if c.ChapterTotals != nil {
+		for _, chapterCount := range c.ChapterTotals {
+			totalChapters += chapterCount
 		}
 	}
 

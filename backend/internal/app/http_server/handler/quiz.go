@@ -5,6 +5,7 @@ import (
 	"time"
 
 	"go-study2/internal/app/http_server/handler/internal"
+	progapp "go-study2/internal/app/progress"
 	appquiz "go-study2/internal/app/quiz"
 
 	"github.com/gogf/gf/v2/net/ghttp"
@@ -75,6 +76,23 @@ func (h *Handler) SubmitQuiz(r *ghttp.Request) {
 		return
 	}
 
+	// User Story 4 & FR-019: 测验提交成功后更新学习进度，确保进度数据一致性
+	progSvc, progOk := h.getProgressService(r)
+	if progOk {
+		updateReq := progapp.UpdateProgressRequest{
+			UserID:     userID,
+			Topic:      req.Topic,
+			Chapter:    req.Chapter,
+			QuizScore:  result.Score,
+			QuizPassed: result.Passed,
+		}
+		if _, err := progSvc.CreateOrUpdateProgress(r.GetCtx(), updateReq); err != nil {
+			// 日志记录更新失败，但不影响测验提交成功的响应
+			// 因为测验已经成功提交，进度更新失败只影响进度显示
+			// TODO: 添加日志记录
+		}
+	}
+
 	writeSuccess(r, "提交成功", map[string]interface{}{
 		"score":           result.Score,
 		"total_questions": result.TotalQuestions,
@@ -143,7 +161,7 @@ func (h *Handler) GetQuizReview(r *ghttp.Request) {
 		writeError(r, http.StatusUnauthorized, 40001, "认证信息缺失")
 		return
 	}
-	sessionID := r.Get("sessionId").String()
+	sessionID := r.GetRouter("sessionId").String()
 	if sessionID == "" {
 		writeError(r, http.StatusBadRequest, 40004, "会话ID不能为空")
 		return

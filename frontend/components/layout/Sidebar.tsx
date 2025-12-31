@@ -26,7 +26,7 @@ export default function Sidebar({ collapsed, onCollapse }: SidebarProps) {
     if (pathname.startsWith("/dashboard")) return ["/dashboard"];
     if (pathname.startsWith("/topics")) return ["/topics"];
     if (pathname.startsWith("/progress")) return ["/progress"];
-    if (pathname.startsWith("/quiz")) return ["/quiz"];
+    if (pathname.startsWith("/quiz")) return ["/quiz"]; // 匹配 /quiz 和 /quiz-center
     return [pathname];
   }, [pathname]);
 
@@ -53,8 +53,8 @@ export default function Sidebar({ collapsed, onCollapse }: SidebarProps) {
       key: "/quiz",
       icon: <QuestionCircleOutlined />,
       label: "章节测验",
-      // 导航到测验总览页，而不是固定到某个 topic（此前误指向 /quiz/variables）
-      onClick: () => router.push("/quiz"),
+      // 导航到测验中心页面
+      onClick: () => router.push("/quiz-center"),
     },
   ];
 

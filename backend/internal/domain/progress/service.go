@@ -227,3 +227,20 @@ func (s *Service) Get(ctx context.Context, userID int64, topic, chapter string) 
 	}
 	return nil, nil
 }
+
+// GetOverview 获取用户的全局学习进度概览
+func (s *Service) GetOverview(ctx context.Context, userID int64) (*ProgressOverview, error) {
+	if userID <= 0 {
+		return nil, ErrInvalidInput
+	}
+
+	// 转换为使用 ProgressRepository 接口
+	if progRepo, ok := s.repo.(interface {
+		GetOverview(context.Context, int64) (*ProgressOverview, error)
+	}); ok {
+		return progRepo.GetOverview(ctx, userID)
+	}
+
+	// 后备实现：从基本数据构建概览
+	return nil, errors.New("GetOverview not supported by repository")
+}

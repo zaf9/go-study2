@@ -110,30 +110,29 @@ progress:
   maxSeconds: 3600
   # 学习完成度触发阈值 (float, 0-1)。用户停留时长达到 (预估时长 * completionFraction) 即标记为已完成
   completionFraction: 0.5
-
-# Quiz 题库与测验逻辑配置
-quiz:
-  # 题库 Markdown 文件所在的根目录
-  dataPath: quiz_data
-  # 每次小测验生成的题目数量配额
-  questionCount:
-    # 单选题个数
-    single: 4
-    # 多选题个数
-    multiple: 4
-  # 题目难度随机生成的占比分布 (百分比)
-  difficultyDistribution:
-    # 简单题 (40%)
-    easy: 40
-    # 中等题 (40%)
-    medium: 40
-    # 困难题 (20%)
-    hard: 20
-  # 从文件系统异步加载题库的超时限制 (duration)
-  loadTimeout: 5s
-  # 题库内容校验逻辑
-  validation:
-    # 严格模式：格式校验失败将抛出错误
-    strictMode: true
-    # 快速失败：发现首个格式错误立即中断加载
-    failFast: true
+  # Quiz 题库与测验逻辑配置
+  quiz:
+    # 题库 Markdown 文件所在的根目录
+    dataPath: quiz_data
+    # 每次小测验生成的题目数量配额
+    questionCount:
+      # 单选题个数
+      single: 4
+      # 多选题个数
+      multiple: 4
+    # 题目难度随机生成的占比分布 (百分比)
+    difficultyDistribution:
+      # 简单题 (40%)
+      easy: 40
+      # 中等题 (40%)
+      medium: 40
+      # 困难题 (20%)
+      hard: 20
+    # 从文件系统异步加载题库的超时限制 (duration)
+    loadTimeout: 5s
+    # 题库内容校验逻辑
+    validation:
+      # 严格模式：格式校验失败将抛出错误
+      strictMode: true
+      # 快速失败：发现首个格式错误立即中断加载
+      failFast: true

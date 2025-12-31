@@ -10,6 +10,7 @@ import TopicProgressCard from "@/components/progress/TopicProgressCard";
 import { topicChapters } from "@/lib/static-routes";
 import { TopicProgressDetail } from "@/types/learning";
 import useProgress from "@/hooks/useProgress";
+import useTopicProgressDetail from "@/hooks/useTopicProgressDetail";
 
 const { Title } = Typography;
 
@@ -18,15 +19,30 @@ export default function ProgressPage() {
   const { overview, next, isLoading, error } = useProgress();
   const [selectedTopic, setSelectedTopic] = useState<string | undefined>();
 
+  // 为每个主题获取完整的章节详情
+  const topicIds = useMemo(
+    () => (overview?.topics ?? [])
+      .map(t => t.topic)
+      .filter((id): id is string => !!id && typeof id === 'string'), // 过滤掉undefined和空字符串
+    [overview?.topics]
+  );
+
+  const topicDetailsMap = useTopicProgressDetail(topicIds);
+
   const topics = useMemo(
     () =>
       (overview?.topics ?? [])
         .map<TopicProgressDetail>((item) => ({
-          ...item,
-          chapters: [],
+          id: item.topic,
+          name: item.topic,
+          weight: 0,
+          progress: 0,
+          totalChapters: item.totalChapters,
+          completedChapters: item.completedChapters,
+          chapters: topicDetailsMap[item.topic]?.chapters ?? [],
         }))
         .sort((a, b) => b.progress - a.progress),
-    [overview?.topics],
+    [overview?.topics, topicDetailsMap],
   );
 
   const filteredTopics = useMemo(() => {
@@ -41,7 +57,8 @@ export default function ProgressPage() {
 
   // 处理新用户空数据场景
   const hasNoProgress = !overview.topics || overview.topics.length === 0;
-  const isNewUser = hasNoProgress && overview.overall.completedChapters === 0;
+  // 只有当没有进度数据且没有总章节数据时才认为是全新用户
+  const isNewUser = hasNoProgress && overview.overall.completedChapters === 0 && overview.overall.totalChapters === 0;
 
   if (isNewUser) {
     return (

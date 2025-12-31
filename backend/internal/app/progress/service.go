@@ -336,6 +336,40 @@ func (s *Service) mergeProgress(existing progressdom.LearningProgress, req Updat
 		payload.QuizPassed = true
 	}
 	payload.LastVisitAt = time.Now()
+
+	// 根据阅读进度自动更新状态：当滚动进度达到100%或测验通过时，标记为已完成
+	est := s.calc.lookupDuration(payload.Topic, payload.Chapter)
+	percentFromRead := 0
+	if est > 0 {
+		percentFromRead = int((payload.ReadDuration * 100) / est)
+		if percentFromRead < 0 {
+			percentFromRead = 0
+		}
+		if percentFromRead > 100 {
+			percentFromRead = 100
+		}
+	}
+	percent := payload.ScrollProgress
+	if percent < percentFromRead {
+		percent = percentFromRead
+	}
+
+	// 只有在状态不是已完成时才自动更新
+	if payload.Status != progressdom.StatusCompleted {
+		if percent >= 100 || req.QuizPassed {
+			payload.Status = progressdom.StatusCompleted
+			if payload.CompletedAt == nil {
+				now := time.Now()
+				payload.CompletedAt = &now
+			}
+		} else if payload.Status == progressdom.StatusNotStarted {
+			// 如果从未开始变为有进度，更新为学习中
+			if percent > 0 || req.ReadDuration > 0 {
+				payload.Status = progressdom.StatusInProgress
+			}
+		}
+	}
+
 	return payload, totalRead
 }
 

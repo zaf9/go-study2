@@ -46,6 +46,30 @@ func (h *Handler) GetAllProgress(r *ghttp.Request) {
 	writeSuccess(r, "success", payload)
 }
 
+// GetOverview 返回用户的全局学习进度概览 (User Story 4)
+// GET /api/v1/progress/overview
+func (h *Handler) GetOverview(r *ghttp.Request) {
+	svc, ok := h.getProgressService(r)
+	if !ok {
+		return
+	}
+	userID := r.GetCtxVar("user_id").Int64()
+	if userID <= 0 {
+		writeError(r, http.StatusUnauthorized, 40001, "认证信息缺失")
+		return
+	}
+
+	// 调用domain service的GetOverview方法
+	overview, err := svc.GetOverview(r.GetCtx(), userID)
+	if err != nil {
+		writeError(r, http.StatusInternalServerError, 50000, "获取进度概览失败")
+		return
+	}
+
+	// 返回完整的统计数据
+	writeSuccess(r, "success", overview)
+}
+
 // GetTopicProgress 返回指定主题的章节进度。
 func (h *Handler) GetTopicProgress(r *ghttp.Request) {
 	svc, ok := h.getProgressService(r)

@@ -15,7 +15,12 @@ describe("QuizSession组件 (QuizQuestionCard)", () => {
         type: "single",
         difficulty: "easy",
         question: "Which keyword is used to declare a constant in Go?",
-        options: ["var", "const", "let", "define"],
+        options: [
+            { id: "1", label: "var" },
+            { id: "2", label: "const" },
+            { id: "3", label: "let" },
+            { id: "4", label: "define" },
+        ],
         codeSnippet: null,
     };
 
@@ -24,7 +29,12 @@ describe("QuizSession组件 (QuizQuestionCard)", () => {
         type: "multiple",
         difficulty: "medium",
         question: "Which of the following are value types in Go?",
-        options: ["int", "string", "slice", "array"],
+        options: [
+            { id: "1", label: "int" },
+            { id: "2", label: "string" },
+            { id: "3", label: "slice" },
+            { id: "4", label: "array" },
+        ],
         codeSnippet: null,
     };
 
@@ -33,7 +43,12 @@ describe("QuizSession组件 (QuizQuestionCard)", () => {
         type: "code_output",
         difficulty: "hard",
         question: "What is the output of the following code?",
-        options: ["0", "1", "nil", "compile error"],
+        options: [
+            { id: "1", label: "0" },
+            { id: "2", label: "1" },
+            { id: "3", label: "nil" },
+            { id: "4", label: "compile error" },
+        ],
         codeSnippet: `package main
 import "fmt"
 
@@ -61,11 +76,11 @@ func main() {
             ).toBeInTheDocument();
 
             // 验证题型标签
-            expect(screen.getByText("单选")).toBeInTheDocument();
+            expect(screen.getByText("单选题")).toBeInTheDocument();
 
-            // 验证选项
+            // 验证选项（使用完整的标签文本以避免与题目文本冲突）
             expect(screen.getByText(/var/)).toBeInTheDocument();
-            expect(screen.getByText(/const/)).toBeInTheDocument();
+            expect(screen.getAllByText(/const/)).toHaveLength(2); // 题目中有"constant"，选项中有"const"
             expect(screen.getByText(/let/)).toBeInTheDocument();
             expect(screen.getByText(/define/)).toBeInTheDocument();
 
@@ -85,7 +100,7 @@ func main() {
             );
 
             // 验证题型标签
-            expect(screen.getByText("多选")).toBeInTheDocument();
+            expect(screen.getByText("多选题")).toBeInTheDocument();
 
             // 验证题目文本
             expect(
@@ -134,9 +149,9 @@ func main() {
                 />,
             );
 
-            // 点击选项 "const"
-            const constOption = screen.getByText(/const/);
-            fireEvent.click(constOption);
+            // 点击第二个选项 "const" (索引为1，因为第一个是"var")
+            const radioButtons = screen.getAllByRole("radio");
+            fireEvent.click(radioButtons[1]);
 
             // 验证onChange被调用
             expect(handleChange).toHaveBeenCalledWith(["const"]);
@@ -201,9 +216,9 @@ func main() {
                 />,
             );
 
-            // 尝试点击选项
-            const constOption = screen.getByText(/const/);
-            fireEvent.click(constOption);
+            // 尝试点击选项（使用role选择器）
+            const radioButtons = screen.getAllByRole("radio");
+            fireEvent.click(radioButtons[1]); // 点击第二个选项 "const"
 
             // onChange不应该被调用
             expect(handleChange).not.toHaveBeenCalled();
@@ -222,13 +237,12 @@ func main() {
                 />,
             );
 
-            const varOption = screen.getByText(/var/);
-            const constOption = screen.getByText(/const/);
+            const radioButtons = screen.getAllByRole("radio");
 
             // 多次点击
-            fireEvent.click(varOption);
-            fireEvent.click(constOption);
-            fireEvent.click(varOption);
+            fireEvent.click(radioButtons[0]); // var
+            fireEvent.click(radioButtons[1]); // const
+            fireEvent.click(radioButtons[0]); // var
 
             // onChange不应该被调用
             expect(handleChange).not.toHaveBeenCalled();
@@ -267,9 +281,9 @@ func main() {
                 />,
             );
 
-            // 禁用状态下点击
-            const constOption = screen.getByText(/const/);
-            fireEvent.click(constOption);
+            // 禁用状态下点击（使用role选择器）
+            const radioButtons = screen.getAllByRole("radio");
+            fireEvent.click(radioButtons[1]); // const
             expect(handleChange).not.toHaveBeenCalled();
 
             // 重新渲染为启用状态
@@ -282,8 +296,9 @@ func main() {
                 />,
             );
 
-            // 再次点击
-            fireEvent.click(constOption);
+            // 再次点击（需要重新获取元素）
+            const radioButtons2 = screen.getAllByRole("radio");
+            fireEvent.click(radioButtons2[1]); // const
             expect(handleChange).toHaveBeenCalledWith(["const"]);
         });
 

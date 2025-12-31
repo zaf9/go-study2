@@ -184,6 +184,10 @@ export default function useQuiz(topic: string, chapter: string) {
         result,
         submitting,
         hasStoredAnswers, // 返回是否有暂存答案的标志
+        selectAnswer,
+        submit,
+        reset,
+    };
 }
 
 export function useQuizHistory(topic?: string) {

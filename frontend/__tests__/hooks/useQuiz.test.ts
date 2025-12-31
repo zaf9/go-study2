@@ -70,6 +70,8 @@ describe("useQuiz Hook", () => {
 
     beforeEach(() => {
         jest.clearAllMocks();
+        // 清除 localStorage 以避免测试之间的状态泄漏
+        localStorage.clear();
     });
 
     describe("加载测验会话", () => {
