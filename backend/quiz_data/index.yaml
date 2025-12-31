@@ -1,0 +1,233 @@
+# Quiz Data Index
+# 题库索引文件 - 用于快速定位章节题目文件
+# 自动生成时间: 2026-01-01
+
+version: "1.0"
+description: "Go 语言学习测验题库索引"
+
+topics:
+  lexical_elements:
+    name: "词法元素"
+    chapters:
+      - id: "comments"
+        name: "注释"
+        file: "lexical_elements/comments.yaml"
+        status: "completed"
+        question_count: 35
+      - id: "keywords"
+        name: "关键字"
+        file: "lexical_elements/keywords.yaml"
+        status: "pending"
+        question_count: 0
+      - id: "identifiers"
+        name: "标识符"
+        file: "lexical_elements/identifiers.yaml"
+        status: "pending"
+        question_count: 0
+      - id: "tokens"
+        name: "词法单元"
+        file: "lexical_elements/tokens.yaml"
+        status: "pending"
+        question_count: 0
+      - id: "integers"
+        name: "整数字面量"
+        file: "lexical_elements/integers.yaml"
+        status: "pending"
+        question_count: 0
+      - id: "floats"
+        name: "浮点数字面量"
+        file: "lexical_elements/floats.yaml"
+        status: "pending"
+        question_count: 0
+      - id: "strings"
+        name: "字符串字面量"
+        file: "lexical_elements/strings.yaml"
+        status: "pending"
+        question_count: 0
+      - id: "semicolons"
+        name: "分号"
+        file: "lexical_elements/semicolons.yaml"
+        status: "pending"
+        question_count: 0
+      - id: "imaginary"
+        name: "虚数字面量"
+        file: "lexical_elements/imaginary.yaml"
+        status: "pending"
+        question_count: 0
+      - id: "runes"
+        name: "字符字面量"
+        file: "lexical_elements/runes.yaml"
+        status: "pending"
+        question_count: 0
+
+  constants:
+    name: "常量"
+    chapters:
+      - id: "boolean"
+        name: "布尔常量"
+        file: "constants/boolean.yaml"
+        status: "pending"
+        question_count: 0
+      - id: "rune"
+        name: "字符常量"
+        file: "constants/rune.yaml"
+        status: "pending"
+        question_count: 0
+      - id: "integer"
+        name: "整数常量"
+        file: "constants/integer.yaml"
+        status: "pending"
+        question_count: 0
+      - id: "floating_point"
+        name: "浮点数常量"
+        file: "constants/floating_point.yaml"
+        status: "pending"
+        question_count: 0
+      - id: "complex"
+        name: "复数常量"
+        file: "constants/complex.yaml"
+        status: "pending"
+        question_count: 0
+      - id: "string"
+        name: "字符串常量"
+        file: "constants/string.yaml"
+        status: "pending"
+        question_count: 0
+
+  variables:
+    name: "变量"
+    chapters:
+      - id: "variable_declarations"
+        name: "变量声明"
+        file: "variables/variable_declarations.yaml"
+        status: "pending"
+        question_count: 0
+      - id: "short_declarations"
+        name: "短变量声明"
+        file: "variables/short_declarations.yaml"
+        status: "pending"
+        question_count: 0
+      - id: "blank_identifier"
+        name: "空白标识符"
+        file: "variables/blank_identifier.yaml"
+        status: "pending"
+        question_count: 0
+      - id: "type_conversions"
+        name: "类型转换"
+        file: "variables/type_conversions.yaml"
+        status: "pending"
+        question_count: 0
+      - id: "zero_value"
+        name: "零值"
+        file: "variables/zero_value.yaml"
+        status: "pending"
+        question_count: 0
+
+  types:
+    name: "类型系统"
+    chapters:
+      - id: "slice"
+        name: "切片类型"
+        file: "types/slice.yaml"
+        status: "pending"
+        question_count: 0
+      - id: "map"
+        name: "映射类型"
+        file: "types/map.yaml"
+        status: "pending"
+        question_count: 0
+      - id: "interface"
+        name: "接口类型"
+        file: "types/interface.yaml"
+        status: "pending"
+        question_count: 0
+      - id: "struct"
+        name: "结构体类型"
+        file: "types/struct.yaml"
+        status: "pending"
+        question_count: 0
+      - id: "pointer"
+        name: "指针类型"
+        file: "types/pointer.yaml"
+        status: "pending"
+        question_count: 0
+      - id: "channel"
+        name: "通道类型"
+        file: "types/channel.yaml"
+        status: "pending"
+        question_count: 0
+      - id: "function"
+        name: "函数类型"
+        file: "types/function.yaml"
+        status: "pending"
+        question_count: 0
+      - id: "array"
+        name: "数组类型"
+        file: "types/array.yaml"
+        status: "pending"
+        question_count: 0
+      - id: "string"
+        name: "字符串类型"
+        file: "types/string.yaml"
+        status: "pending"
+        question_count: 0
+      - id: "numeric"
+        name: "数值类型"
+        file: "types/numeric.yaml"
+        status: "pending"
+        question_count: 0
+      - id: "boolean"
+        name: "布尔类型"
+        file: "types/boolean.yaml"
+        status: "pending"
+        question_count: 0
+      - id: "type_definitions"
+        name: "类型定义"
+        file: "types/type_definitions.yaml"
+        status: "pending"
+        question_count: 0
+      - id: "type_aliases"
+        name: "类型别名"
+        file: "types/type_aliases.yaml"
+        status: "pending"
+        question_count: 0
+      - id: "type_parameters"
+        name: "类型参数"
+        file: "types/type_parameters.yaml"
+        status: "pending"
+        question_count: 0
+      - id: "type_constraints"
+        name: "类型约束"
+        file: "types/type_constraints.yaml"
+        status: "pending"
+        question_count: 0
+      - id: "type_inference"
+        name: "类型推断"
+        file: "types/type_inference.yaml"
+        status: "pending"
+        question_count: 0
+      - id: "type_unification"
+        name: "类型统一"
+        file: "types/type_unification.yaml"
+        status: "pending"
+        question_count: 0
+      - id: "underlying_types"
+        name: "底层类型"
+        file: "types/underlying_types.yaml"
+        status: "pending"
+        question_count: 0
+      - id: "type_identity"
+        name: "类型一致性"
+        file: "types/type_identity.yaml"
+        status: "pending"
+        question_count: 0
+      - id: "method_sets"
+        name: "方法集"
+        file: "types/method_sets.yaml"
+        status: "pending"
+        question_count: 0
+      - id: "type_assertions"
+        name: "类型断言"
+        file: "types/type_assertions.yaml"
+        status: "pending"
+        question_count: 0

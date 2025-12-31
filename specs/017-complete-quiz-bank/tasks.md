@@ -35,9 +35,9 @@ This is a web application with backend (Go) and frontend (TypeScript/React):
 
 **Purpose**: Project initialization and tool chain setup
 
-- [ ] T001 Create directory structure for quiz data storage in backend/quiz_data/{lexical_elements,constants,variables,types}
-- [ ] T002 [P] Create quiz data index file backend/quiz_data/index.yaml for fast chapter lookup
-- [ ] T003 [P] Create scripts directory backend/scripts/ with README.md documenting all utility tools
+- [X] T001 Create directory structure for quiz data storage in backend/quiz_data/{lexical_elements,constants,variables,types}
+- [X] T002 [P] Create quiz data index file backend/quiz_data/index.yaml for fast chapter lookup
+- [X] T003 [P] Create scripts directory backend/scripts/ with README.md documenting all utility tools
 
 **Checkpoint**: Basic structure ready for tool development
 
