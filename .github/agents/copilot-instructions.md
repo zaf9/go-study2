@@ -11,6 +11,8 @@ Auto-generated from all feature plans. Last updated: 2025-12-14
 - Go 1.24.5 + github.com/gogf/gf/v2 (GoFrame 框架) (005-https-protocol-support)
 - Go 1.24 (backend), TypeScript 5.x / Node.js (frontend) (016-progress-quiz-ux)
 - SQLite with GoFrame gdb ORM (tables: learning_progress, quiz_sessions, quiz_attempts) (016-progress-quiz-ux)
+- Go 1.24 (后端), TypeScript 5.x + React 18+ (前端) (017-complete-quiz-bank)
+- YAML 文件 (题库存储) + JSON 文件 (测验记录与进度存储), 无需数据库 (017-complete-quiz-bank)
 
 ## Project Structure
 
@@ -28,10 +30,10 @@ tests/
 Go 1.24.5: Follow standard conventions
 
 ## Recent Changes
+- 017-complete-quiz-bank: Added Go 1.24 (后端), TypeScript 5.x + React 18+ (前端)
 - 016-progress-quiz-ux: Added Go 1.24 (backend), TypeScript 5.x / Node.js (frontend)
 - 013-quiz-question-bank: Added Go 1.21+
 
-- 005-https-protocol-support: Added Go 1.24.5 + github.com/gogf/gf/v2 (GoFrame 框架)
 
 <!-- MANUAL ADDITIONS START -->
 <!-- MANUAL ADDITIONS END -->
