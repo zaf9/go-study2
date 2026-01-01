@@ -1,28 +1,24 @@
 <!--
 Sync Impact Report:
-- Version change: 2.0.0 -> 2.1.0 (新增多项治理原则以确保实现一致性)
+- Version change: 2.1.0 -> 2.2.0 (从specs中提炼规则并加强测验和进度跟踪标准)
 - Added sections: 
-  * Principle XIII: Fail-Fast Startup Strategy
-  * Principle XIV: Observability and Structured Logging
-  * Principle XV: Configuration Management
-  * Principle XVI: Asynchronous and Concurrent Processing
-  * Principle XVII: Graceful Shutdown
-  * Principle XXXI: Standardized Learning Content Structure
-  * Principle XXXII: Quiz and Assessment Standards
-  * Principle XXXIII: Learning Progress Tracking
-  * Principle XXXIV: Feature Independence and MVP Thinking
+  * Principle XXXII: Quiz Bank Standards (Per Chapter) - 新增子章节
+  * Principle XXXIII: Status Transition Rules - 新增子章节
+  * Principle XXXIII: Dashboard Homepage Standards - 新增子章节
+  * Principle XXXIII: Real-time Updates via WebSocket - 新增子章节
 - Removed sections: none
-- Modified sections: All subsequent principles renumbered (XIII->XVIII, XIV->XIX, etc.)
+- Modified sections: 
+  * Principle XXXII: 扩展测验题库标准（每章30-50题，YAML格式，难度分布等）
+  * Principle XXXIII: 扩展进度跟踪（状态转换规则，Dashboard首页标准，WebSocket实时更新）
 - Templates requiring updates:
   ✅ .specify/templates/plan-template.md
   ✅ .specify/templates/spec-template.md
   ✅ .specify/templates/tasks-template.md
   ✅ .specify/templates/checklist-template.md
-  ⚠ .specify/templates/commands/ (目录缺失, 待确认是否需要补充)
 - Follow-up TODOs: 
-  * 更新所有现有 spec 文档以引用新的原则编号
-  * 在下一个新 spec 开发时验证新原则的实践效果
-  * 如需 commands 模板请创建目录并补齐相应文件
+  * 更新所有specs的Constitution Guardrails以引用正确的原则编号
+  * 确保新主题实现时遵循测验题库和Dashboard标准
+  * 验证前后端构建成功
 -->
 
 # go-study2 Constitution
@@ -202,6 +198,17 @@ Learning chapters must provide comprehensive assessment mechanisms:
 * Quiz history tracking for progress monitoring
 * Support for retaking quizzes to reinforce learning
 
+##### Quiz Bank Standards (Per Chapter)
+* Each chapter must have 30-50 high-quality quiz questions stored in YAML format
+* Question type distribution: single choice 50% ± 5%, multiple choice 50% ± 5%
+* Difficulty distribution: Easy 40%, Medium 40%, Hard 20%
+* Random question selection per quiz: 6-10 questions (3-5 single + 3-5 multiple)
+* Questions must be stored in `quiz_data/{topic}/{chapter}.yaml` path structure
+* System must deep-validate all quiz YAML files at startup; reject startup on any validation failure with detailed error messages
+* Each question must contain: unique ID, question text (Chinese), options list (2-5), correct answer(s), explanation (Chinese), difficulty level, question type
+* Quiz submission must include confirmation dialog showing answered/unanswered question counts
+* Results page must display: percentage score, pass/fail status with color coding (green ≥60%, red <60%), question type labels
+
 #### Principle XXXIII: Learning Progress Tracking
 System must track and persist learner progress to support continuous learning:
 * Chapter status management: not_started, in_progress, completed, tested
@@ -211,6 +218,26 @@ System must track and persist learner progress to support continuous learning:
 * Automatic scroll position restoration on return to chapter
 * Overall progress calculation with topic-weighted formula
 * Support for "Continue Learning" feature to resume at first incomplete chapter
+
+##### Status Transition Rules
+* First page visit → status changes from `not_started` to `in_progress`
+* Quiz passed (≥60% score) → status changes to `completed`
+* Quiz failed (<60% score) → status remains `in_progress`
+* Visual distinction required for different statuses (color/icon/text)
+
+##### Dashboard Homepage Standards
+* Must display: welcome message with username, cumulative learning days, completed chapters/total chapters, overall completion percentage
+* Must provide "Quick Continue" feature: display last studied topic/chapter, one-click navigation to resume
+* Must display topic progress cards with visual progress bars for each topic
+* Must display recent quiz records (3-5 items) with chapter name, score, completion time
+* New user guidance: display "Start Learning" button when no learning records exist
+* Page load time requirement: all data must load within 2 seconds
+
+##### Real-time Updates via WebSocket
+* Supported event types: `progress_updated`, `quiz_completed`
+* Connection recovery: exponential backoff (initial 1s, max 30s, max 5 retries)
+* After 5 failed retries, display error message with manual refresh button
+* WebSocket connection must not block initial page render (async establishment)
 
 #### Principle XXXIV: Feature Independence and MVP Thinking
 New features must be designed with independent testability and incremental delivery:
@@ -345,4 +372,4 @@ Merged deployment in production environment:
 
 Adherence to this constitution is mandatory for all contributions. Pull requests and code reviews must verify that these principles are maintained. Any deviations require explicit justification and approval.
 
-**Version**: 2.1.0 | **Ratified**: 2025-12-10 | **Last Amended**: 2025-12-14
+**Version**: 2.2.0 | **Ratified**: 2025-12-10 | **Last Amended**: 2026-01-01
