@@ -2,6 +2,8 @@ package logger
 
 import (
 	"log/slog"
+	"os"
+	"path/filepath"
 	"testing"
 	"time"
 
@@ -78,7 +80,20 @@ func TestCleanOldLogsMock(t *testing.T) {
 	// CleanOldLogs is now a no-op or restored to original logic.
 	// We already have a test for the restored logic in tests/unit/logger/cleanup_test.go.
 	// This just ensures it doesn't crash.
-	err := CleanOldLogs(".", time.Hour)
+	// IMPORTANT: Never use "." as dir argument, it would delete source files!
+	dir, err := os.MkdirTemp("", "logger_test_")
+	if err != nil {
+		t.Fatalf("failed to create temp dir: %v", err)
+	}
+	defer os.RemoveAll(dir)
+
+	// Create a test file
+	testFile := filepath.Join(dir, "test.log")
+	if err := os.WriteFile(testFile, []byte("test"), 0o644); err != nil {
+		t.Fatalf("failed to create test file: %v", err)
+	}
+
+	err = CleanOldLogs(dir, time.Hour)
 	if err != nil {
 		t.Errorf("CleanOldLogs failed: %v", err)
 	}

@@ -8,12 +8,12 @@ metadata:
   total_questions: 40
   last_updated: "2025-01-01"
   difficulty_distribution:
-    easy: 24      # 60%
-    medium: 12    # 30%
+    easy: 18      # 45%
+    medium: 18    # 45%
     hard: 4       # 10%
   type_distribution:
-    single: 17
-    multiple: 10
+    single: 13
+    multiple: 14
     code_output: 8
     code_fix: 5
 
@@ -35,29 +35,29 @@ questions:
     chapter: string
 
   - id: const-string-002
-    type: single
+    type: multiple
     difficulty: easy
-    stem: "无类型字符串常量的默认类型是什么?"
+    stem: "关于无类型字符串常量,以下哪些说法是正确的?(多选)"
     options:
-      - "A: []byte"
-      - "B: []rune"
-      - "C: string"
-      - "D: *string"
-    answer: C
+      - "A: 默认类型是string"
+      - "B: 可以赋值给string变量"
+      - "C: 不能赋值给[]byte"
+      - "D: 使用时根据上下文确定类型"
+    answer: ABD
     explanation: "无类型字符串常量在需要具体类型时默认为string。参见 Go 规范 Constants 章节。"
     topic: constants
     chapter: string
 
   - id: const-string-003
-    type: single
+    type: multiple
     difficulty: easy
-    stem: "Go中字符串字面量使用什么符号定义?"
+    stem: "关于Go字符串字面量,以下哪些说法是正确的?(多选)"
     options:
-      - "A: 只能用双引号"
-      - "B: 只能用单引号"
-      - "C: 双引号或反引号"
-      - "D: 单引号或双引号"
-    answer: C
+      - "A: 双引号定义解释型字符串"
+      - "B: 反引号定义原始字符串"
+      - "C: 单引号用于rune字符"
+      - "D: 解释型字符串支持转义序列"
+    answer: ABCD
     explanation: "双引号定义解释型字符串(支持转义),反引号定义原始字符串(不解释转义)。单引号用于rune。参见 Go 规范 String literals 章节。"
     topic: constants
     chapter: string
@@ -105,36 +105,36 @@ questions:
     chapter: string
 
   - id: const-string-007
-    type: single
+    type: multiple
     difficulty: easy
-    stem: "const s = \"hello\" + \"world\"的值是?"
+    stem: "关于字符串常量拼接,以下哪些说法是正确的?(多选)"
     options:
-      - "A: \"hello world\""
-      - "B: \"helloworld\""
-      - "C: 编译错误"
-      - "D: 运行时拼接"
-    answer: B
+      - "A: 可以用+号拼接"
+      - "B: 编译时直接连接"
+      - "C: \"hello\" + \"world\" = \"helloworld\""
+      - "D: 拼接产生新字符串"
+    answer: ABCD
     explanation: "字符串常量可以用+连接。编译时直接连接为\"helloworld\"。参见 Go 规范 String concatenation 章节。"
     topic: constants
     chapter: string
 
   - id: const-string-008
-    type: single
+    type: multiple
     difficulty: easy
-    stem: "字符串的零值是什么?"
+    stem: "关于Go字符串的零值,以下哪些说法是正确的?(多选)"
     options:
-      - "A: nil"
-      - "B: null"
-      - "C: \"\" (空字符串)"
-      - "D: \" \" (空格)"
-    answer: C
+      - "A: 零值是空字符串\"\""
+      - "B: 不是nil"
+      - "C: string不能为nil"
+      - "D: 零值字符串可以安全使用"
+    answer: ABCD
     explanation: "string类型的零值是空字符串\"\"。Go字符串不是指针类型,不能为nil。参见 Go 规范 The zero value 章节。"
     topic: constants
     chapter: string
 
   - id: const-string-009
     type: single
-    difficulty: easy
+    difficulty: medium
     stem: "Go字符串使用什么编码?"
     options:
       - "A: ASCII"
@@ -147,22 +147,22 @@ questions:
     chapter: string
 
   - id: const-string-010
-    type: single
+    type: multiple
     difficulty: easy
-    stem: "len(\"hello\")的结果是?"
+    stem: "关于len()函数和字符串,以下哪些说法是正确的?(多选)"
     options:
-      - "A: 5"
-      - "B: 6"
-      - "C: 4"
-      - "D: 编译错误"
-    answer: A
+      - "A: len(\"hello\") = 5"
+      - "B: len返回字节数不是字符数"
+      - "C: len(\"中文\") = 6"
+      - "D: ASCII字符串字节数等于字符数"
+    answer: ABCD
     explanation: "len()返回字符串的字节数。\"hello\"有5个ASCII字符,各占1字节。参见 Go 规范 Length and capacity 章节。"
     topic: constants
     chapter: string
 
   - id: const-string-011
     type: single
-    difficulty: easy
+    difficulty: medium
     stem: "len(\"中文\")的结果是?"
     options:
       - "A: 2"
@@ -175,43 +175,43 @@ questions:
     chapter: string
 
   - id: const-string-012
-    type: single
+    type: multiple
     difficulty: easy
-    stem: "如何获取字符串\"中文\"的字符数?"
+    stem: "如何获取字符串的字符数(Unicode码点数)?(多选)"
     options:
-      - "A: len(\"中文\")"
-      - "B: len([]rune(\"中文\"))"
-      - "C: size(\"中文\")"
-      - "D: chars(\"中文\")"
-    answer: B
+      - "A: len([]rune(s))"
+      - "B: utf8.RuneCountInString(s)"
+      - "C: 转换为[]rune后计数"
+      - "D: 直接用len(s)"
+    answer: ABC
     explanation: "转为[]rune后用len获取字符数(Unicode码点数)。utf8.RuneCountInString也可以。参见 Go 规范 Conversions 章节。"
     topic: constants
     chapter: string
 
   - id: const-string-013
-    type: single
+    type: multiple
     difficulty: easy
-    stem: "s[0]获取字符串s的什么?"
+    stem: "关于字符串索引s[0],以下哪些说法是正确的?(多选)"
     options:
-      - "A: 第一个字符(rune)"
-      - "B: 第一个字节(byte)"
-      - "C: 第一个字符串"
-      - "D: 编译错误"
-    answer: B
+      - "A: 返回第一个字节(byte)"
+      - "B: 不是第一个字符(rune)"
+      - "C: 对于ASCII等于第一个字符"
+      - "D: 中文可能返回半个字符"
+    answer: ABCD
     explanation: "字符串索引返回byte(uint8),不是rune。要获取字符需要转[]rune或用for range。参见 Go 规范 Index expressions 章节。"
     topic: constants
     chapter: string
 
   - id: const-string-014
-    type: single
+    type: multiple
     difficulty: easy
-    stem: "Go字符串是否可变?"
+    stem: "关于Go字符串的不可变性,以下哪些说法是正确的?(多选)"
     options:
-      - "A: 可变"
-      - "B: 不可变"
-      - "C: 取决于声明方式"
-      - "D: 取决于运行时"
-    answer: B
+      - "A: 字符串不可变"
+      - "B: 不能通过s[0]='x'修改"
+      - "C: 修改需要转为[]byte"
+      - "D: 字符串拼接产生新字符串"
+    answer: ABCD
     explanation: "Go字符串是不可变的。不能通过s[0]='x'修改。需要转为[]byte修改后再转回。参见 Go 规范 String types 章节。"
     topic: constants
     chapter: string
@@ -232,7 +232,7 @@ questions:
 
   - id: const-string-016
     type: single
-    difficulty: easy
+    difficulty: medium
     stem: "原始字符串可以包含换行吗?"
     options:
       - "A: 不可以"
@@ -246,7 +246,7 @@ questions:
 
   - id: const-string-017
     type: single
-    difficulty: easy
+    difficulty: medium
     stem: "原始字符串可以包含反引号吗?"
     options:
       - "A: 可以,用\\`"
@@ -260,7 +260,7 @@ questions:
 
   - id: const-string-018
     type: single
-    difficulty: easy
+    difficulty: medium
     stem: "字符串比较使用什么规则?"
     options:
       - "A: 指针比较"
@@ -274,7 +274,7 @@ questions:
 
   - id: const-string-019
     type: single
-    difficulty: easy
+    difficulty: medium
     stem: "\"abc\" < \"abd\"的结果是?"
     options:
       - "A: true"

@@ -12,8 +12,8 @@ metadata:
     medium: 12    # 30%
     hard: 4       # 10%
   type_distribution:
-    single: 16
-    multiple: 12
+    single: 14
+    multiple: 14
     code_output: 8
     code_fix: 4
 
@@ -21,29 +21,29 @@ questions:
   # ========== 简单题 (Easy) - 24道 ==========
   
   - id: lexical-keywords-001
-    type: single
+    type: multiple
     difficulty: easy
-    stem: "Go语言中共有多少个关键字?"
+    stem: "关于Go关键字,以下哪些说法是正确的?(多选)"
     options:
-      - "A: 20个"
-      - "B: 25个"
-      - "C: 30个"
-      - "D: 35个"
-    answer: B
+      - "A: Go有25个关键字"
+      - "B: 关键字不能用作标识符"
+      - "C: var是声明关键字"
+      - "D: func是函数关键字"
+    answer: ABCD
     explanation: "Go语言共有25个关键字,这些关键字是语言的保留字,不能用作标识符。参见 Go 规范 Keywords 章节。"
     topic: lexical_elements
     chapter: keywords
 
   - id: lexical-keywords-002
-    type: single
+    type: multiple
     difficulty: easy
-    stem: "以下哪个不是Go语言的关键字?"
+    stem: "以下哪些不是Go语言的关键字?(多选)"
     options:
-      - "A: func"
-      - "B: class"
-      - "C: interface"
-      - "D: struct"
-    answer: B
+      - "A: class"
+      - "B: extends"
+      - "C: implements"
+      - "D: public"
+    answer: ABCD
     explanation: "Go语言没有class关键字,Go使用struct定义数据结构,使用interface定义接口。class是Java/C++等语言的关键字。参见 Go 规范 Keywords 章节。"
     topic: lexical_elements
     chapter: keywords

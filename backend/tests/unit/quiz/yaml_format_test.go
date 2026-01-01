@@ -48,6 +48,11 @@ func Test_YAMLFilesHaveRequiredFields(t *testing.T) {
 	}
 
 	for _, f := range entries {
+		// Skip index files
+		if filepath.Base(f) == "index.yaml" || filepath.Base(f) == "index.yml" {
+			continue
+		}
+
 		data, err := os.ReadFile(f)
 		if err != nil {
 			t.Fatalf("read %s: %v", f, err)

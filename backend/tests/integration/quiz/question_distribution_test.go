@@ -26,6 +26,10 @@ func Test_QuestionCountAndTypeDistribution(t *testing.T) {
 		if d.IsDir() {
 			return nil
 		}
+		// Skip index.yaml files (metadata files, not quiz files)
+		if filepath.Base(path) == "index.yaml" || filepath.Base(path) == "index.yml" {
+			return nil
+		}
 		if filepath.Ext(path) != ".yaml" && filepath.Ext(path) != ".yml" {
 			return nil
 		}

@@ -27,7 +27,22 @@
       "mcp__chrome-devtools__list_console_messages",
       "Bash(sqlite3:*)",
       "Bash(curl:*)",
-      "mcp__chrome-devtools__evaluate_script"
+      "mcp__chrome-devtools__evaluate_script",
+      "Bash(cmd.exe:*)",
+      "Bash(go clean:*)",
+      "Bash(go mod tidy:*)",
+      "Bash(go build:*)",
+      "Bash(set GO111MODULE=on:*)",
+      "Bash(set:*)",
+      "Bash(git ls-tree:*)",
+      "Bash(go get:*)",
+      "Bash(python3:*)",
+      "Bash(cat:*)",
+      "Bash(go env:*)",
+      "Bash(find:*)",
+      "Bash(for:*)",
+      "Bash(do sed:*)",
+      "Bash(done)"
     ]
   }
 }

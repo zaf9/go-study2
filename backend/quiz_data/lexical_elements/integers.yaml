@@ -8,12 +8,12 @@ metadata:
   total_questions: 40
   last_updated: "2025-01-01"
   difficulty_distribution:
-    easy: 24      # 60%
-    medium: 12    # 30%
+    easy: 19      # 48%
+    medium: 17    # 42%
     hard: 4       # 10%
   type_distribution:
-    single: 18
-    multiple: 10
+    single: 14
+    multiple: 14
     code_output: 8
     code_fix: 4
 
@@ -35,50 +35,50 @@ questions:
     chapter: integers
 
   - id: lexical-integers-002
-    type: single
+    type: multiple
     difficulty: easy
-    stem: "Go语言中,十六进制整数字面量的前缀是?"
+    stem: "关于Go的十六进制整数字面量,以下哪些说法是正确的?(多选)"
     options:
-      - "A: 0x或0X"
-      - "B: 0h"
-      - "C: #"
-      - "D: h"
-    answer: A
+      - "A: 使用0x或0X前缀"
+      - "B: 0xFF表示255"
+      - "C: 字母a-f不区分大小写"
+      - "D: 是Go 1.13之前就支持的特性"
+    answer: ABCD
     explanation: "Go使用0x或0X前缀表示十六进制整数,如0xFF、0X1A。#是某些语言(CSS)的十六进制写法,不是Go的。参见 Go 规范 Integer literals 章节。"
     topic: lexical_elements
     chapter: integers
 
   - id: lexical-integers-003
-    type: single
+    type: multiple
     difficulty: easy
-    stem: "Go语言中,二进制整数字面量的前缀是?"
+    stem: "关于Go的二进制整数字面量,以下哪些说法是正确的?(多选)"
     options:
-      - "A: 0b或0B"
-      - "B: 0x"
-      - "C: b"
-      - "D: 0"
-    answer: A
+      - "A: 使用0b或0B前缀"
+      - "B: Go 1.13+支持"
+      - "C: 0b1010表示十进制10"
+      - "D: 只能包含0和1"
+    answer: ABCD
     explanation: "Go 1.13+支持0b或0B前缀表示二进制整数,如0b1010表示10。参见 Go 规范 Integer literals 章节。"
     topic: lexical_elements
     chapter: integers
 
   - id: lexical-integers-004
-    type: single
+    type: multiple
     difficulty: easy
-    stem: "Go语言中,八进制整数字面量的前缀是?"
+    stem: "关于Go的八进制整数字面量,以下哪些说法是正确的?(多选)"
     options:
-      - "A: 仅0"
-      - "B: 0o或0O或仅0"
-      - "C: 0x"
-      - "D: o"
-    answer: B
+      - "A: 传统0前缀如0755"
+      - "B: Go 1.13+新增0o前缀"
+      - "C: 0o755等于十进制493"
+      - "D: 0o前缀更明确推荐"
+    answer: ABCD
     explanation: "Go支持传统的0前缀(如0755)和Go 1.13+新增的0o/0O前缀(如0o755)表示八进制。参见 Go 规范 Integer literals 章节。"
     topic: lexical_elements
     chapter: integers
 
   - id: lexical-integers-005
     type: single
-    difficulty: easy
+    difficulty: medium
     stem: "以下哪个是有效的Go十六进制整数字面量?"
     options:
       - "A: 0xGH"
@@ -92,7 +92,7 @@ questions:
 
   - id: lexical-integers-006
     type: single
-    difficulty: easy
+    difficulty: medium
     stem: "Go语言中,整数字面量可以使用什么字符来提高可读性?"
     options:
       - "A: 逗号,"
@@ -120,7 +120,7 @@ questions:
 
   - id: lexical-integers-008
     type: single
-    difficulty: easy
+    difficulty: medium
     stem: "0755在Go中表示什么进制的数?"
     options:
       - "A: 十进制"
@@ -288,7 +288,7 @@ questions:
 
   - id: lexical-integers-020
     type: single
-    difficulty: easy
+    difficulty: medium
     stem: "Go的int64类型占用多少字节?"
     options:
       - "A: 4字节"
@@ -302,7 +302,7 @@ questions:
 
   - id: lexical-integers-021
     type: single
-    difficulty: easy
+    difficulty: medium
     stem: "0b1100在Go中表示的十进制值是?"
     options:
       - "A: 1100"

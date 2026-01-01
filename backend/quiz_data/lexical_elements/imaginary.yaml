@@ -8,12 +8,12 @@ metadata:
   total_questions: 35
   last_updated: "2025-01-01"
   difficulty_distribution:
-    easy: 21      # 60%
-    medium: 11    # 31%
-    hard: 3       # 9%
+    easy: 17      # 49%
+    medium: 14    # 40%
+    hard: 4       # 11%
   type_distribution:
-    single: 15
-    multiple: 10
+    single: 14
+    multiple: 13
     code_output: 6
     code_fix: 4
 
@@ -21,36 +21,36 @@ questions:
   # ========== 简单题 (Easy) - 21道 ==========
   
   - id: lexical-imaginary-001
-    type: single
+    type: multiple
     difficulty: easy
-    stem: "Go语言中,虚数字面量使用什么后缀?"
+    stem: "关于Go的虚数字面量,以下哪些说法是正确的?(多选)"
     options:
-      - "A: j"
-      - "B: i"
-      - "C: im"
-      - "D: I"
-    answer: B
+      - "A: 使用i后缀表示虚数"
+      - "B: 3.14i是虚数字面量"
+      - "C: 虚数是复数的一部分"
+      - "D: 虚数字面量类型是complex128"
+    answer: ABC
     explanation: "Go使用小写i作为虚数后缀,如3.14i表示虚数。这与数学中的虚数单位i一致。参见 Go 规范 Imaginary literals 章节。"
     topic: lexical_elements
     chapter: imaginary
 
   - id: lexical-imaginary-002
-    type: single
+    type: multiple
     difficulty: easy
-    stem: "Go语言提供哪些复数类型?"
+    stem: "关于Go的复数类型,以下哪些说法是正确的?(多选)"
     options:
-      - "A: complex"
-      - "B: complex64和complex128"
-      - "C: imaginary"
-      - "D: cmplx"
-    answer: B
+      - "A: Go提供complex64类型"
+      - "B: Go提供complex128类型"
+      - "C: complex64由两个float32组成"
+      - "D: complex128由两个float64组成"
+    answer: ABCD
     explanation: "Go提供complex64(由两个float32组成)和complex128(由两个float64组成)两种复数类型。参见 Go 规范 Numeric types 章节。"
     topic: lexical_elements
     chapter: imaginary
 
   - id: lexical-imaginary-003
     type: single
-    difficulty: easy
+    difficulty: medium
     stem: "表达式3+4i的类型是什么?"
     options:
       - "A: int"
@@ -63,9 +63,9 @@ questions:
     chapter: imaginary
 
   - id: lexical-imaginary-004
-    type: single
+    type: multiple
     difficulty: easy
-    stem: "如何创建一个complex64类型的复数?"
+    stem: "如何创建一个complex64类型的复数?(多选)"
     options:
       - "A: 3+4i"
       - "B: complex64(3+4i)"
@@ -78,7 +78,7 @@ questions:
 
   - id: lexical-imaginary-005
     type: single
-    difficulty: easy
+    difficulty: hard
     stem: "以下哪个是有效的虚数字面量?"
     options:
       - "A: i"
@@ -91,9 +91,9 @@ questions:
     chapter: imaginary
 
   - id: lexical-imaginary-006
-    type: single
-    difficulty: easy
-    stem: "获取复数实部使用什么函数?"
+    type: multiple
+    difficulty: medium
+    stem: "关于获取复数实部,以下哪些说法是正确的?(多选)"
     options:
       - "A: real()"
       - "B: Re()"
@@ -106,7 +106,7 @@ questions:
 
   - id: lexical-imaginary-007
     type: single
-    difficulty: easy
+    difficulty: medium
     stem: "获取复数虚部使用什么函数?"
     options:
       - "A: real()"
@@ -120,7 +120,7 @@ questions:
 
   - id: lexical-imaginary-008
     type: multiple
-    difficulty: easy
+    difficulty: medium
     stem: "以下哪些是有效的Go虚数字面量?(多选)"
     options:
       - "A: 0i"

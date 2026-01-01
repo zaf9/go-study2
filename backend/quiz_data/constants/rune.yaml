@@ -8,12 +8,12 @@ metadata:
   total_questions: 35
   last_updated: "2025-01-01"
   difficulty_distribution:
-    easy: 21      # 60%
-    medium: 11    # 31%
-    hard: 3       # 9%
+    easy: 15      # 43%
+    medium: 16    # 46%
+    hard: 4       # 11%
   type_distribution:
-    single: 15
-    multiple: 10
+    single: 12
+    multiple: 13
     code_output: 6
     code_fix: 4
 
@@ -35,64 +35,64 @@ questions:
     chapter: rune
 
   - id: const-rune-002
-    type: single
+    type: multiple
     difficulty: easy
-    stem: "const c = 'A'声明的常量c的默认类型是什么?"
+    stem: "关于rune常量'A',以下哪些说法是正确的?(多选)"
     options:
-      - "A: byte"
-      - "B: rune"
-      - "C: 无类型rune常量"
-      - "D: int32"
-    answer: C
-    explanation: "'A'是无类型rune常量。赋值时根据目标类型转换。无类型常量有更大的适用范围。参见 Go 规范 Constants 章节。"
+      - "A: 可以赋值给byte类型"
+      - "B: 可以赋值给rune类型"
+      - "C: 是无类型rune常量"
+      - "D: 默认类型是int32"
+    answer: ABC
+    explanation: "'A'是无类型rune常量。可以赋值给byte、rune、int32等类型。赋值时根据目标类型转换。参见 Go 规范 Constants 和 Rune literals 章节。"
     topic: constants
     chapter: rune
 
   - id: const-rune-003
-    type: single
+    type: multiple
     difficulty: easy
-    stem: "字符常量'A'的数值等于什么?"
+    stem: "关于字符常量的码点,以下哪些是正确的?(多选)"
     options:
-      - "A: 65"
-      - "B: 97"
-      - "C: 41"
-      - "D: 0"
-    answer: A
-    explanation: "'A'的ASCII/Unicode码点是65(十进制)。'a'是97。这是标准ASCII编码。参见 Go 规范 Rune literals 章节。"
+      - "A: 'A'的码点是65"
+      - "B: 'a'的码点是97"
+      - "C: '0'的码点是48"
+      - "D: 空字符的码点是0"
+    answer: ABCD
+    explanation: "'A'=65,'a'=97,'0'=48,''(空)=0。这些是ASCII/Unicode标准码点。参见 Go 规范 Rune literals 章节。"
     topic: constants
     chapter: rune
 
   - id: const-rune-004
-    type: single
+    type: multiple
     difficulty: easy
-    stem: "以下哪个是合法的rune常量?"
+    stem: "以下哪些是合法的rune常量?(多选)"
     options:
-      - "A: 'ab'"
-      - "B: '中'"
-      - "C: \"a\""
-      - "D: `a`"
-    answer: B
-    explanation: "rune常量只能包含单个字符。'ab'包含两个字符不合法。'中'是单个Unicode字符是合法的。C和D是字符串。参见 Go 规范 Rune literals 章节。"
+      - "A: '中'"
+      - "B: '\\n'"
+      - "C: '\\u4e2d'"
+      - "D: 'ab'"
+    answer: ABC
+    explanation: "rune常量只能包含单个字符或转义序列。'中'是单个Unicode字符,'\\n'是转义序列,'\\u4e2d'是Unicode转义。'ab'包含两个字符不合法。参见 Go 规范 Rune literals 章节。"
     topic: constants
     chapter: rune
 
   - id: const-rune-005
-    type: single
+    type: multiple
     difficulty: easy
-    stem: "转义序列'\\n'代表什么?"
+    stem: "关于rune转义序列,以下哪些说法是正确的?(多选)"
     options:
-      - "A: 字母n"
-      - "B: 换行符"
-      - "C: 两个字符\\和n"
-      - "D: 空字符"
-    answer: B
-    explanation: "'\\n'是换行符(newline)的转义表示。这是单个字符常量,不是两个字符。参见 Go 规范 Rune literals 章节。"
+      - "A: '\\n'是换行符"
+      - "B: '\\t'是制表符"
+      - "C: '\\r'是回车符"
+      - "D: '\\\\'是反斜杠"
+    answer: ABCD
+    explanation: "'\\n'换行、'\\t'制表符、'\\r'回车、'\\\\'反斜杠都是常见的转义序列,表示单个字符常量。参见 Go 规范 Rune literals 章节。"
     topic: constants
     chapter: rune
 
   - id: const-rune-006
     type: multiple
-    difficulty: easy
+    difficulty: medium
     stem: "以下哪些是有效的Go转义序列?(多选)"
     options:
       - "A: \\t"
@@ -120,7 +120,7 @@ questions:
 
   - id: const-rune-008
     type: single
-    difficulty: easy
+    difficulty: medium
     stem: "无类型rune常量可以赋值给什么类型?"
     options:
       - "A: 只能赋给rune"
@@ -148,7 +148,7 @@ questions:
 
   - id: const-rune-010
     type: single
-    difficulty: easy
+    difficulty: medium
     stem: "八进制转义'\\101'表示什么字符?"
     options:
       - "A: 字母A"
@@ -162,7 +162,7 @@ questions:
 
   - id: const-rune-011
     type: single
-    difficulty: easy
+    difficulty: medium
     stem: "十六进制转义'\\x41'表示什么字符?"
     options:
       - "A: 字母A"
@@ -190,7 +190,7 @@ questions:
 
   - id: const-rune-013
     type: single
-    difficulty: easy
+    difficulty: medium
     stem: "string(65)的结果是什么?"
     options:
       - "A: \"65\""
@@ -232,7 +232,7 @@ questions:
 
   - id: const-rune-016
     type: single
-    difficulty: easy
+    difficulty: medium
     stem: "rune类型的零值是什么?"
     options:
       - "A: ''"
@@ -419,7 +419,7 @@ questions:
 
   - id: const-rune-027
     type: code_output
-    difficulty: medium
+    difficulty: hard
     stem: "以下代码的输出结果是什么?"
     code: |
       package main

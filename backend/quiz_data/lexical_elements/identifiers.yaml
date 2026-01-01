@@ -8,12 +8,12 @@ metadata:
   total_questions: 40
   last_updated: "2025-01-01"
   difficulty_distribution:
-    easy: 24      # 60%
-    medium: 12    # 30%
+    easy: 20      # 50%
+    medium: 16    # 40%
     hard: 4       # 10%
   type_distribution:
-    single: 18
-    multiple: 12
+    single: 15
+    multiple: 15
     code_output: 6
     code_fix: 4
 
@@ -21,22 +21,22 @@ questions:
   # ========== 简单题 (Easy) - 24道 ==========
   
   - id: lexical-identifiers-001
-    type: single
+    type: multiple
     difficulty: easy
-    stem: "Go语言中,标识符的第一个字符必须是?"
+    stem: "关于Go标识符的规则,以下哪些说法是正确的?(多选)"
     options:
-      - "A: 数字或字母"
-      - "B: 字母或下划线"
-      - "C: 仅字母"
-      - "D: 任意字符"
-    answer: B
+      - "A: 首字符必须是字母或下划线"
+      - "B: 不能以数字开头"
+      - "C: 后续可以是字母、数字、下划线"
+      - "D: 区分大小写"
+    answer: ABCD
     explanation: "Go标识符必须以字母(Unicode字母)或下划线(_)开头,后续可以是字母、数字或下划线。数字不能作为首字符。参见 Go 规范 Identifiers 章节。"
     topic: lexical_elements
     chapter: identifiers
 
   - id: lexical-identifiers-002
     type: single
-    difficulty: easy
+    difficulty: medium
     stem: "以下哪个是合法的Go标识符?"
     options:
       - "A: 123abc"
@@ -49,22 +49,22 @@ questions:
     chapter: identifiers
 
   - id: lexical-identifiers-003
-    type: single
+    type: multiple
     difficulty: easy
-    stem: "Go语言中,空白标识符是?"
+    stem: "关于Go的空白标识符,以下哪些说法是正确的?(多选)"
     options:
-      - "A: blank"
-      - "B: null"
-      - "C: _"
-      - "D: void"
-    answer: C
+      - "A: 空白标识符是_"
+      - "B: 用于忽略不需要的值"
+      - "C: 可以多次使用"
+      - "D: 不占用内存"
+    answer: ABC
     explanation: "Go使用单个下划线_作为空白标识符,用于忽略不需要的值。这是Go语言的特殊设计。参见 Go 规范 Blank identifier 章节。"
     topic: lexical_elements
     chapter: identifiers
 
   - id: lexical-identifiers-004
     type: single
-    difficulty: easy
+    difficulty: medium
     stem: "以下哪个标识符在Go中是导出的(public)?"
     options:
       - "A: myFunc"
@@ -92,7 +92,7 @@ questions:
 
   - id: lexical-identifiers-006
     type: single
-    difficulty: easy
+    difficulty: medium
     stem: "Go语言标识符是否区分大小写?"
     options:
       - "A: 不区分"
@@ -120,7 +120,7 @@ questions:
 
   - id: lexical-identifiers-008
     type: single
-    difficulty: easy
+    difficulty: medium
     stem: "Go语言中,空白标识符_的主要用途是?"
     options:
       - "A: 声明空变量"
@@ -456,9 +456,9 @@ questions:
     chapter: identifiers
 
   - id: lexical-identifiers-030
-    type: multiple
+    type: single
     difficulty: medium
-    stem: "以下哪些标识符遵循Go的导出命名惯例?(多选)"
+    stem: "以下哪个标识符遵循Go的导出命名惯例?"
     options:
       - "A: HandleRequest"
       - "B: handleRequest"

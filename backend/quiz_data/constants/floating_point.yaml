@@ -8,12 +8,12 @@ metadata:
   total_questions: 38
   last_updated: "2025-01-01"
   difficulty_distribution:
-    easy: 23      # 61%
-    medium: 12    # 31%
-    hard: 3       # 8%
+    easy: 16      # 42%
+    medium: 16    # 42%
+    hard: 6       # 16%
   type_distribution:
-    single: 16
-    multiple: 10
+    single: 13
+    multiple: 13
     code_output: 8
     code_fix: 4
 
@@ -35,16 +35,16 @@ questions:
     chapter: floating_point
 
   - id: const-float-002
-    type: single
+    type: multiple
     difficulty: easy
-    stem: "无类型浮点常量的默认类型是什么?"
+    stem: "关于无类型浮点常量,以下说法正确的是?(多选)"
     options:
-      - "A: float32"
-      - "B: float64"
-      - "C: double"
-      - "D: real"
-    answer: B
-    explanation: "无类型浮点常量在需要具体类型时默认为float64。Go没有double类型。参见 Go 规范 Constants 章节。"
+      - "A: 默认类型是float64"
+      - "B: 可以赋值给float32"
+      - "C: Go有double类型"
+      - "D: 使用时根据上下文确定类型"
+    answer: ABD
+    explanation: "无类型浮点常量在需要具体类型时默认为float64。也可以显式赋值给float32。Go没有double类型。使用时根据上下文确定类型。参见 Go 规范 Constants 章节。"
     topic: constants
     chapter: floating_point
 
@@ -77,15 +77,15 @@ questions:
     chapter: floating_point
 
   - id: const-float-005
-    type: single
+    type: multiple
     difficulty: easy
-    stem: "Go语言的浮点类型有哪些?"
+    stem: "关于Go语言的浮点类型,以下哪些是正确的?(多选)"
     options:
-      - "A: float, double"
-      - "B: float32, float64"
-      - "C: single, double"
-      - "D: real, float"
-    answer: B
+      - "A: 有float32类型"
+      - "B: 有float64类型"
+      - "C: 有float类型"
+      - "D: 有double类型"
+    answer: AB
     explanation: "Go只有float32(32位)和float64(64位)两种浮点类型。没有float、double等类型名。参见 Go 规范 Numeric types 章节。"
     topic: constants
     chapter: floating_point
@@ -105,22 +105,22 @@ questions:
     chapter: floating_point
 
   - id: const-float-007
-    type: single
+    type: multiple
     difficulty: easy
-    stem: "float32的精度大约是多少位有效数字?"
+    stem: "关于float32的精度,以下哪些说法是正确的?(多选)"
     options:
-      - "A: 3位"
-      - "B: 7位"
-      - "C: 15位"
-      - "D: 19位"
-    answer: B
+      - "A: 约7位十进制精度"
+      - "B: 32位IEEE 754浮点"
+      - "C: 23位尾数"
+      - "D: 约15位十进制精度"
+    answer: ABC
     explanation: "float32是32位IEEE 754浮点,23位尾数提供约7位十进制精度。float64约15位精度。参见IEEE 754标准。"
     topic: constants
     chapter: floating_point
 
   - id: const-float-008
     type: single
-    difficulty: easy
+    difficulty: medium
     stem: "float64的精度大约是多少位有效数字?"
     options:
       - "A: 7位"
@@ -133,50 +133,50 @@ questions:
     chapter: floating_point
 
   - id: const-float-009
-    type: single
-    difficulty: easy
-    stem: "const x = 0.1 + 0.2是否精确等于0.3?"
+    type: multiple
+    difficulty: medium
+    stem: "关于Go中无类型浮点常量的精度,以下哪些说法是正确的?(多选)"
     options:
-      - "A: 是,常量运算精确"
-      - "B: 否,浮点有精度损失"
-      - "C: 取决于平台"
-      - "D: 编译错误"
-    answer: A
-    explanation: "无类型常量有任意精度,常量表达式精确计算。只有赋值给变量时才可能有精度损失。参见 Go 规范 Constants 章节。"
+      - "A: 无类型常量有任意精度"
+      - "B: 常量表达式精确计算"
+      - "C: 赋值给变量时可能有精度损失"
+      - "D: 0.1 + 0.2 精确等于0.3"
+    answer: ABCD
+    explanation: "无类型常量有任意精度,常量表达式精确计算。只有赋值给变量时才可能有精度损失。所以在常量表达式中0.1 + 0.2精确等于0.3。参见 Go 规范 Constants 章节。"
     topic: constants
     chapter: floating_point
 
   - id: const-float-010
-    type: single
-    difficulty: easy
-    stem: "浮点数的零值是什么?"
+    type: multiple
+    difficulty: medium
+    stem: "关于Go浮点数的零值,以下哪些说法是正确的?(多选)"
     options:
-      - "A: nil"
-      - "B: NaN"
-      - "C: 0.0"
-      - "D: undefined"
-    answer: C
-    explanation: "float32和float64的零值都是0.0(正零)。Go所有数值类型零值都是0。参见 Go 规范 The zero value 章节。"
+      - "A: float32的零值是0.0"
+      - "B: float64的零值是0.0"
+      - "C: 是正零"
+      - "D: 是nil"
+    answer: ABC
+    explanation: "float32和float64的零值都是0.0(正零)。Go所有数值类型零值都是0。不是nil(nil只能用于指针、切片、映射、通道、函数和接口)。参见 Go 规范 The zero value 章节。"
     topic: constants
     chapter: floating_point
 
   - id: const-float-011
-    type: single
-    difficulty: easy
-    stem: "Go 1.13+支持的十六进制浮点格式前缀是什么?"
+    type: multiple
+    difficulty: medium
+    stem: "关于Go的十六进制浮点格式,以下哪些说法是正确的?(多选)"
     options:
-      - "A: 0x"
-      - "B: 0h"
-      - "C: 0f"
-      - "D: #"
-    answer: A
-    explanation: "Go 1.13+支持0x前缀的十六进制浮点,如0x1.0p10(必须有p指数)。参见 Go 规范 Floating-point literals 章节。"
+      - "A: 使用0x前缀"
+      - "B: 必须有p指数"
+      - "C: 0x1.0p10表示1024.0"
+      - "D: Go 1.13+支持"
+    answer: ABCD
+    explanation: "Go 1.13+支持0x前缀的十六进制浮点,如0x1.0p10。必须有p或P指数部分,0x1.0p10 = 1.0×2^10 = 1024.0。参见 Go 规范 Floating-point literals 章节。"
     topic: constants
     chapter: floating_point
 
   - id: const-float-012
     type: single
-    difficulty: easy
+    difficulty: medium
     stem: "十六进制浮点0x1.0p10表示什么值?"
     options:
       - "A: 1.0"
@@ -218,7 +218,7 @@ questions:
 
   - id: const-float-015
     type: single
-    difficulty: easy
+    difficulty: hard
     stem: "NaN与任何值(包括自身)比较的结果是?"
     options:
       - "A: 总是true"

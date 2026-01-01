@@ -8,17 +8,17 @@ metadata:
   total_questions: 35
   last_updated: "2025-01-01"
   difficulty_distribution:
-    easy: 21      # 60%
-    medium: 11    # 31%
-    hard: 3       # 9%
+    easy: 14      # 40%
+    medium: 14    # 40%
+    hard: 7       # 20%
   type_distribution:
-    single: 15
-    multiple: 10
+    single: 12
+    multiple: 13
     code_output: 6
     code_fix: 4
 
 questions:
-  # ========== 简单题 (Easy) - 21道 ==========
+  # ========== 简单题 (Easy) - 14道 ==========
   
   - id: const-boolean-001
     type: single
@@ -63,30 +63,30 @@ questions:
     chapter: boolean
 
   - id: const-boolean-004
-    type: single
-    difficulty: easy
-    stem: "Go中bool类型的零值是什么?"
+    type: multiple
+    difficulty: medium
+    stem: "以下哪些是Go中各类型的正确零值?(多选)"
     options:
-      - "A: nil"
-      - "B: 0"
-      - "C: false"
-      - "D: undefined"
-    answer: C
-    explanation: "bool类型的零值是false。所有类型都有零值:数值0,布尔false,字符串\"\",指针nil等。参见 Go 规范 The zero value 章节。"
+      - "A: bool: false"
+      - "B: int: 0"
+      - "C: string: \"\""
+      - "D: pointer: nil"
+    answer: ABCD
+    explanation: "所有类型都有零值:数值0,布尔false,字符串\"\",指针nil等。这些都是Go中各类型的正确零值。参见 Go 规范 The zero value 章节。"
     topic: constants
     chapter: boolean
 
   - id: const-boolean-005
-    type: single
-    difficulty: easy
-    stem: "以下代码var b bool后,b的值是什么?"
+    type: multiple
+    difficulty: medium
+    stem: "以下哪些变量声明后会是零值?(多选)"
     options:
-      - "A: nil"
-      - "B: true"
-      - "C: false"
-      - "D: 未定义"
-    answer: C
-    explanation: "var声明不初始化时使用零值。bool的零值是false。Go不存在未定义的值。参见 Go 规范 The zero value 章节。"
+      - "A: var b bool"
+      - "B: var i int"
+      - "C: var s string"
+      - "D: var p *int"
+    answer: ABCD
+    explanation: "var声明不初始化时使用零值。bool的零值是false,int是0,string是\"\",指针是nil。Go不存在未定义的值。参见 Go 规范 The zero value 章节。"
     topic: constants
     chapter: boolean
 
@@ -105,16 +105,16 @@ questions:
     chapter: boolean
 
   - id: const-boolean-007
-    type: single
+    type: multiple
     difficulty: easy
-    stem: "表达式true && false的结果是?"
+    stem: "以下哪些表达式结果为false?(多选)"
     options:
-      - "A: true"
-      - "B: false"
-      - "C: 1"
-      - "D: 编译错误"
-    answer: B
-    explanation: "&&是逻辑与,两边都为true才为true。true && false = false。参见 Go 规范 Logical operators 章节。"
+      - "A: true && false"
+      - "B: false && true"
+      - "C: false || false"
+      - "D: !true"
+    answer: ABCD
+    explanation: "&&是逻辑与,两边都为true才为true。||是逻辑或,任一为true则为true。!是逻辑非。A、B、D显然为false,C:false||false也为false。参见 Go 规范 Logical operators 章节。"
     topic: constants
     chapter: boolean
 
@@ -133,30 +133,30 @@ questions:
     chapter: boolean
 
   - id: const-boolean-009
-    type: single
-    difficulty: easy
-    stem: "表达式!true的结果是?"
+    type: multiple
+    difficulty: medium
+    stem: "以下哪些表达式结果为true?(多选)"
     options:
-      - "A: true"
-      - "B: false"
-      - "C: -1"
-      - "D: 编译错误"
-    answer: B
-    explanation: "!是逻辑非运算符,对布尔值取反。!true = false。参见 Go 规范 Logical operators 章节。"
+      - "A: !false"
+      - "B: true && true"
+      - "C: false || true"
+      - "D: !(false && true)"
+    answer: ABCD
+    explanation: "!是逻辑非运算符。A:!false=true, B:true&&true=true, C:false||true=true, D:!(false&&true)=!false=true。参见 Go 规范 Logical operators 章节。"
     topic: constants
     chapter: boolean
 
   - id: const-boolean-010
-    type: single
-    difficulty: easy
-    stem: "Go中可以将布尔值与整数相加吗?"
+    type: multiple
+    difficulty: medium
+    stem: "关于Go中布尔值与整数的关系,以下说法正确的是?(多选)"
     options:
-      - "A: 可以,true为1,false为0"
-      - "B: 可以,需要显式转换"
-      - "C: 不可以,类型不兼容"
-      - "D: 可以,使用int(bool)"
-    answer: C
-    explanation: "Go是强类型语言,bool和int是不同类型,不能直接相加。Go也没有提供bool到int的转换。参见 Go 规范 Type definitions 章节。"
+      - "A: bool和int是不同类型"
+      - "B: 不能直接相加"
+      - "C: 不支持int(bool)转换"
+      - "D: 可以通过if语句转换"
+    answer: ABCD
+    explanation: "Go是强类型语言,bool和int是不同类型,不能直接相加。Go也没有提供bool到int的转换。需要用if b { return 1 } return 0。参见 Go 规范 Conversions 章节。"
     topic: constants
     chapter: boolean
 
@@ -231,16 +231,16 @@ questions:
     chapter: boolean
 
   - id: const-boolean-016
-    type: single
+    type: multiple
     difficulty: easy
-    stem: "Go中如何声明一个布尔常量?"
+    stem: "Go中如何声明一个布尔常量?(多选)"
     options:
       - "A: const flag bool = true"
       - "B: const flag = true"
-      - "C: A和B都可以"
-      - "D: 只能用var声明"
-    answer: C
-    explanation: "常量声明可以显式指定类型或让编译器推断。const flag = true推断为无类型布尔常量。参见 Go 规范 Constant declarations 章节。"
+      - "C: const flag1, flag2 = true, false"
+      - "D: var flag = true"
+    answer: ABC
+    explanation: "常量声明可以显式指定类型或让编译器推断。const flag = true推断为无类型布尔常量。var是变量不是常量。参见 Go 规范 Constant declarations 章节。"
     topic: constants
     chapter: boolean
 
@@ -260,7 +260,7 @@ questions:
 
   - id: const-boolean-018
     type: single
-    difficulty: easy
+    difficulty: medium
     stem: "布尔运算的优先级从高到低是?"
     options:
       - "A: && > || > !"
@@ -274,7 +274,7 @@ questions:
 
   - id: const-boolean-019
     type: single
-    difficulty: easy
+    difficulty: medium
     stem: "表达式true || false && false的结果是?"
     options:
       - "A: true"
@@ -287,16 +287,16 @@ questions:
     chapter: boolean
 
   - id: const-boolean-020
-    type: single
-    difficulty: easy
-    stem: "如何在fmt中打印布尔值?"
+    type: multiple
+    difficulty: medium
+    stem: "如何在fmt中打印布尔值?(多选)"
     options:
       - "A: %b"
       - "B: %t"
       - "C: %v"
-      - "D: B和C都可以"
-    answer: D
-    explanation: "%t专门用于打印布尔值(true/false)。%v是通用格式也可以打印布尔值。%b用于二进制整数。参见 fmt包文档。"
+      - "D: %d"
+    answer: BC
+    explanation: "%t专门用于打印布尔值(true/false)。%v是通用格式也可以打印布尔值。%b用于二进制整数,%d用于十进制整数,不适用于bool。参见 fmt包文档。"
     topic: constants
     chapter: boolean
 
@@ -314,7 +314,7 @@ questions:
     topic: constants
     chapter: boolean
 
-  # ========== 中等题 (Medium) - 11道 ==========
+  # ========== 中等题 (Medium) - 14道 ==========
 
   - id: const-boolean-022
     type: code_output
@@ -422,7 +422,7 @@ questions:
 
   - id: const-boolean-027
     type: code_output
-    difficulty: medium
+    difficulty: hard
     stem: "以下代码的输出结果是什么?"
     code: |
       package main
@@ -443,7 +443,7 @@ questions:
 
   - id: const-boolean-028
     type: code_output
-    difficulty: medium
+    difficulty: hard
     stem: "以下代码的输出结果是什么?"
     code: |
       package main
@@ -465,7 +465,7 @@ questions:
 
   - id: const-boolean-029
     type: code_fix
-    difficulty: medium
+    difficulty: hard
     stem: "以下代码有逻辑错误,正确的修正方案是?"
     code: |
       package main
@@ -509,7 +509,7 @@ questions:
 
   - id: const-boolean-031
     type: multiple
-    difficulty: medium
+    difficulty: hard
     stem: "以下哪些比较操作会返回布尔值?(多选)"
     options:
       - "A: struct{a int}{1} == struct{a int}{1}"
@@ -542,7 +542,7 @@ questions:
     topic: constants
     chapter: boolean
 
-  # ========== 困难题 (Hard) - 3道 ==========
+  # ========== 困难题 (Hard) - 7道 ==========
 
   - id: const-boolean-033
     type: code_output

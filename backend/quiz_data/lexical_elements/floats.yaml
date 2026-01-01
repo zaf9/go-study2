@@ -8,12 +8,12 @@ metadata:
   total_questions: 40
   last_updated: "2025-01-01"
   difficulty_distribution:
-    easy: 24      # 60%
-    medium: 12    # 30%
+    easy: 20      # 50%
+    medium: 16    # 40%
     hard: 4       # 10%
   type_distribution:
-    single: 18
-    multiple: 10
+    single: 14
+    multiple: 14
     code_output: 8
     code_fix: 4
 
@@ -21,22 +21,22 @@ questions:
   # ========== 简单题 (Easy) - 24道 ==========
   
   - id: lexical-floats-001
-    type: single
+    type: multiple
     difficulty: easy
-    stem: "Go语言中,哪些是浮点数类型?"
+    stem: "关于Go的浮点数类型,以下哪些说法是正确的?(多选)"
     options:
-      - "A: float, double"
-      - "B: float32, float64"
-      - "C: single, double"
-      - "D: real32, real64"
-    answer: B
+      - "A: Go提供float32类型"
+      - "B: Go提供float64类型"
+      - "C: Go没有float类型"
+      - "D: Go没有double类型"
+    answer: ABCD
     explanation: "Go提供float32和float64两种浮点数类型。Go没有float、double、single、real等类型名称。参见 Go 规范 Numeric types 章节。"
     topic: lexical_elements
     chapter: floats
 
   - id: lexical-floats-002
     type: single
-    difficulty: easy
+    difficulty: medium
     stem: "Go的float64类型对应的IEEE标准是?"
     options:
       - "A: IEEE 754单精度"
@@ -49,22 +49,22 @@ questions:
     chapter: floats
 
   - id: lexical-floats-003
-    type: single
+    type: multiple
     difficulty: easy
-    stem: "以下哪个是有效的Go浮点数字面量?"
+    stem: "以下哪些是有效的Go浮点数字面量?(多选)"
     options:
       - "A: 3.14"
       - "B: .14"
       - "C: 3."
-      - "D: 以上都是"
-    answer: D
+      - "D: 3.14e10"
+    answer: ABCD
     explanation: "Go支持3.14、.14(省略整数部分)、3.(省略小数部分)等浮点数字面量格式。参见 Go 规范 Floating-point literals 章节。"
     topic: lexical_elements
     chapter: floats
 
   - id: lexical-floats-004
     type: single
-    difficulty: easy
+    difficulty: medium
     stem: "Go浮点数字面量的科学计数法使用什么符号?"
     options:
       - "A: e或E"
@@ -78,7 +78,7 @@ questions:
 
   - id: lexical-floats-005
     type: single
-    difficulty: easy
+    difficulty: medium
     stem: "浮点数字面量1e3表示的值是?"
     options:
       - "A: 1000"
@@ -92,7 +92,7 @@ questions:
 
   - id: lexical-floats-006
     type: single
-    difficulty: easy
+    difficulty: medium
     stem: "Go浮点数字面量的默认类型是?"
     options:
       - "A: float32"
@@ -119,15 +119,15 @@ questions:
     chapter: floats
 
   - id: lexical-floats-008
-    type: single
+    type: multiple
     difficulty: easy
-    stem: "float32类型大约有多少位有效数字?"
+    stem: "关于浮点类型的精度,以下哪些说法是正确的?(多选)"
     options:
-      - "A: 6-7位"
-      - "B: 15-16位"
-      - "C: 32位"
-      - "D: 4位"
-    answer: A
+      - "A: float32约6-7位有效数字"
+      - "B: float64约15-16位有效数字"
+      - "C: float32是IEEE 754单精度"
+      - "D: float64是IEEE 754双精度"
+    answer: ABCD
     explanation: "float32(单精度)有约6-7位十进制有效数字。float64(双精度)有约15-16位。参见 Go 规范和IEEE 754标准。"
     topic: lexical_elements
     chapter: floats
@@ -147,15 +147,15 @@ questions:
     chapter: floats
 
   - id: lexical-floats-010
-    type: single
+    type: multiple
     difficulty: easy
-    stem: "十六进制浮点数0x1p2表示的值是?"
+    stem: "关于十六进制浮点数,以下哪些说法是正确的?(多选)"
     options:
-      - "A: 2"
-      - "B: 4"
-      - "C: 12"
-      - "D: 0.5"
-    answer: B
+      - "A: 使用0x前缀"
+      - "B: 必须有p/P指数"
+      - "C: 0x1p2 = 4"
+      - "D: p表示2的幂次"
+    answer: ABCD
     explanation: "0x1p2表示1×2^2=4。十六进制浮点数的p/P指数是2的幂次,不是10的幂次。参见 Go 规范 Floating-point literals 章节。"
     topic: lexical_elements
     chapter: floats

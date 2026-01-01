@@ -8,12 +8,12 @@ metadata:
   total_questions: 40
   last_updated: "2025-01-01"
   difficulty_distribution:
-    easy: 24      # 60%
-    medium: 12    # 30%
+    easy: 18      # 45%
+    medium: 18    # 45%
     hard: 4       # 10%
   type_distribution:
-    single: 17
-    multiple: 10
+    single: 13
+    multiple: 14
     code_output: 8
     code_fix: 5
 
@@ -35,22 +35,22 @@ questions:
     chapter: integer
 
   - id: const-integer-002
-    type: single
+    type: multiple
     difficulty: easy
-    stem: "以下哪个是十六进制整数字面量?"
+    stem: "以下哪些是十六进制整数字面量?(多选)"
     options:
-      - "A: 0b1010"
-      - "B: 0o17"
-      - "C: 0xFF"
-      - "D: 123"
-    answer: C
-    explanation: "0x或0X前缀表示十六进制。0b是二进制,0o是八进制,无前缀是十进制。参见 Go 规范 Integer literals 章节。"
+      - "A: 0xFF"
+      - "B: 0XAB"
+      - "C: 0x"
+      - "D: 0x1.5"
+    answer: AB
+    explanation: "0x或0X前缀表示十六进制。0x必须有数字跟随。0x1.5是浮点数不是整数。参见 Go 规范 Integer literals 章节。"
     topic: constants
     chapter: integer
 
   - id: const-integer-003
     type: single
-    difficulty: easy
+    difficulty: medium
     stem: "0b1010表示的十进制值是多少?"
     options:
       - "A: 1010"
@@ -64,7 +64,7 @@ questions:
 
   - id: const-integer-004
     type: single
-    difficulty: easy
+    difficulty: medium
     stem: "0o17表示的十进制值是多少?"
     options:
       - "A: 17"
@@ -77,16 +77,16 @@ questions:
     chapter: integer
 
   - id: const-integer-005
-    type: single
+    type: multiple
     difficulty: easy
-    stem: "Go 1.13+支持的整数字面量分隔符是什么?"
+    stem: "关于Go 1.13+的整数字面量分隔符,以下哪些说法是正确的?(多选)"
     options:
-      - "A: 逗号 ,"
-      - "B: 下划线 _"
-      - "C: 空格"
-      - "D: 单引号 '"
-    answer: B
-    explanation: "Go 1.13+支持用下划线分隔数字增加可读性,如1_000_000。下划线会被忽略。参见 Go 规范 Integer literals 章节。"
+      - "A: 使用下划线_分隔"
+      - "B: 可以写在1_000_000"
+      - "C: 可以增强可读性"
+      - "D: 下划线会被计算"
+    answer: ABC
+    explanation: "Go 1.13+支持用下划线分隔数字增加可读性,如1_000_000。下划线会被忽略,不参与数值计算。参见 Go 规范 Integer literals 章节。"
     topic: constants
     chapter: integer
 
@@ -105,22 +105,22 @@ questions:
     chapter: integer
 
   - id: const-integer-007
-    type: single
+    type: multiple
     difficulty: easy
-    stem: "无类型整数常量的默认类型是什么?"
+    stem: "关于无类型整数常量的默认类型,以下哪些说法是正确的?(多选)"
     options:
-      - "A: int32"
-      - "B: int64"
-      - "C: int"
-      - "D: uint"
-    answer: C
-    explanation: "无类型整数常量在需要具体类型时默认为int。int的大小取决于平台(32或64位)。参见 Go 规范 Constants 章节。"
+      - "A: 默认类型是int"
+      - "B: int大小取决于平台"
+      - "C: 32位平台int是int32"
+      - "D: 64位平台int是int64"
+    answer: ABCD
+    explanation: "无类型整数常量在需要具体类型时默认为int。int的大小取决于平台(32位系统是int32,64位系统是int64)。参见 Go 规范 Constants 章节。"
     topic: constants
     chapter: integer
 
   - id: const-integer-008
     type: single
-    difficulty: easy
+    difficulty: medium
     stem: "const big = 1 << 100是否合法?"
     options:
       - "A: 不合法,超出int64范围"
@@ -133,36 +133,36 @@ questions:
     chapter: integer
 
   - id: const-integer-009
-    type: single
+    type: multiple
     difficulty: easy
-    stem: "以下哪个是Go 1.13+新增的八进制前缀?"
+    stem: "关于Go的八进制表示,以下哪些说法是正确的?(多选)"
     options:
-      - "A: 0"
-      - "B: 0o"
-      - "C: 0q"
-      - "D: 0c"
-    answer: B
-    explanation: "Go 1.13+新增0o前缀明确表示八进制。传统的0前缀(如017)仍然支持但不推荐。参见 Go 规范 Integer literals 章节。"
+      - "A: 0o是Go 1.13+新增的前缀"
+      - "B: 0o17表示十进制15"
+      - "C: 017也是八进制表示"
+      - "D: 0o前缀更明确"
+    answer: ABCD
+    explanation: "Go 1.13+新增0o前缀明确表示八进制。传统的0前缀(如017)仍然支持。0o17 = 1×8 + 7 = 15。参见 Go 规范 Integer literals 章节。"
     topic: constants
     chapter: integer
 
   - id: const-integer-010
-    type: single
-    difficulty: easy
-    stem: "017(传统八进制)的十进制值是?"
+    type: multiple
+    difficulty: medium
+    stem: "关于传统八进制表示,以下哪些说法是正确的?(多选)"
     options:
-      - "A: 17"
-      - "B: 15"
-      - "C: 7"
-      - "D: 编译错误"
-    answer: B
-    explanation: "以0开头(非0x/0b/0o)是传统八进制表示。017(八进制) = 1×8 + 7 = 15(十进制)。参见 Go 规范 Integer literals 章节。"
+      - "A: 0前缀表示八进制"
+      - "B: 017等于十进制15"
+      - "C: 0o17更明确推荐使用"
+      - "D: 0前缀容易与十进制混淆"
+    answer: ABCD
+    explanation: "以0开头(非0x/0b/0o)是传统八进制表示。017 = 1×8 + 7 = 15。Go 1.13+推荐使用0o前缀更明确,避免与十进制混淆。参见 Go 规范 Integer literals 章节。"
     topic: constants
     chapter: integer
 
   - id: const-integer-011
     type: single
-    difficulty: easy
+    difficulty: medium
     stem: "const x int8 = 200是否合法?"
     options:
       - "A: 合法"
@@ -175,16 +175,16 @@ questions:
     chapter: integer
 
   - id: const-integer-012
-    type: single
-    difficulty: easy
-    stem: "无类型常量可以用于哪些运算?"
+    type: multiple
+    difficulty: medium
+    stem: "无类型常量可以用于哪些运算?(多选)"
     options:
-      - "A: 只能加减"
-      - "B: 只能与同类型运算"
-      - "C: 任意算术运算"
-      - "D: 不能运算"
-    answer: C
-    explanation: "无类型常量可以进行任意算术运算(+、-、*、/、%、位运算等),结果仍是无类型常量。参见 Go 规范 Constant expressions 章节。"
+      - "A: 加减乘除"
+      - "B: 位运算"
+      - "C: 比较运算"
+      - "D: 逻辑运算"
+    answer: ABC
+    explanation: "无类型常量可以进行任意算术运算(+、-、*、/、%)、位运算(&、|、^)、比较运算等,结果仍是无类型常量。但不能用于逻辑运算(&&、||、!),这些要求bool类型。参见 Go 规范 Constant expressions 章节。"
     topic: constants
     chapter: integer
 
@@ -218,7 +218,7 @@ questions:
 
   - id: const-integer-015
     type: single
-    difficulty: easy
+    difficulty: medium
     stem: "const x = 1 << 3的结果是?"
     options:
       - "A: 3"

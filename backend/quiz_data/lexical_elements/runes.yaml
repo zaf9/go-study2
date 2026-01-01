@@ -12,8 +12,8 @@ metadata:
     medium: 12    # 30%
     hard: 4       # 10%
   type_distribution:
-    single: 17
-    multiple: 10
+    single: 13
+    multiple: 14
     code_output: 8
     code_fix: 5
 
@@ -21,57 +21,57 @@ questions:
   # ========== 简单题 (Easy) - 24道 ==========
   
   - id: lexical-runes-001
-    type: single
+    type: multiple
     difficulty: easy
-    stem: "Go语言中,rune是什么类型的别名?"
+    stem: "关于Go的rune类型,以下哪些说法是正确的?(多选)"
     options:
-      - "A: int"
-      - "B: int32"
-      - "C: uint32"
-      - "D: byte"
-    answer: B
+      - "A: rune是int32的别名"
+      - "B: 用于表示Unicode码点"
+      - "C: 可以存储任何Unicode字符"
+      - "D: 占用4字节"
+    answer: ABCD
     explanation: "rune是int32的别名,用于表示Unicode码点。byte是uint8的别名。参见 Go 规范 Numeric types 章节。"
     topic: lexical_elements
     chapter: runes
 
   - id: lexical-runes-002
-    type: single
+    type: multiple
     difficulty: easy
-    stem: "Go的字符字面量使用什么符号包围?"
+    stem: "关于Go字符字面量的符号,以下哪些说法是正确的?(多选)"
     options:
-      - "A: 双引号 \"\""
-      - "B: 单引号 ''"
-      - "C: 反引号 ``"
-      - "D: 都可以"
-    answer: B
+      - "A: 单引号用于rune字符"
+      - "B: 双引号用于字符串"
+      - "C: 反引号用于原始字符串"
+      - "D: rune类型是int32"
+    answer: ABCD
     explanation: "Go使用单引号包围字符(rune)字面量,如'a'。双引号用于字符串,反引号用于原始字符串。参见 Go 规范 Rune literals 章节。"
     topic: lexical_elements
     chapter: runes
 
   - id: lexical-runes-003
-    type: single
+    type: multiple
     difficulty: easy
-    stem: "'A'的类型是什么?"
+    stem: "关于Go中'A'的类型,以下哪些说法是正确的?(多选)"
     options:
-      - "A: char"
-      - "B: byte"
-      - "C: rune"
-      - "D: string"
-    answer: C
+      - "A: 类型是rune"
+      - "B: rune是int32的别名"
+      - "C: Go没有char类型"
+      - "D: 等价于整数65"
+    answer: ABCD
     explanation: "Go中单引号字符字面量的类型是rune(int32别名)。Go没有char类型。参见 Go 规范 Rune literals 章节。"
     topic: lexical_elements
     chapter: runes
 
   - id: lexical-runes-004
-    type: single
+    type: multiple
     difficulty: easy
-    stem: "rune类型可以存储的最大值是?"
+    stem: "关于rune类型的取值范围,以下哪些说法是正确的?(多选)"
     options:
-      - "A: 127"
-      - "B: 255"
-      - "C: 65535"
-      - "D: 2147483647"
-    answer: D
+      - "A: 可以表示所有Unicode码点"
+      - "B: 最大值是2147483647"
+      - "C: 有效Unicode最大是0x10FFFF"
+      - "D: 占用4字节内存"
+    answer: ABCD
     explanation: "rune是int32别名,最大值是2^31-1=2147483647。但有效Unicode码点最大是0x10FFFF。参见 Go 规范 Numeric types 章节。"
     topic: lexical_elements
     chapter: runes
