@@ -1,5 +1,7 @@
 package quiz
 
+import "sync"
+
 // YAMLQuestion 表示用于从 YAML 解码的题目结构，避免与数据库模型冲突。
 type YAMLQuestion struct {
 	ID          string   `yaml:"id" json:"id"`
@@ -43,4 +45,25 @@ func (r *QuizRepository) GetBank(topic, chapter string) ([]YAMLQuestion, bool) {
 		return qs, ok2
 	}
 	return nil, false
+}
+
+// 全局YAML题库仓储单例
+var (
+	globalRepo     *QuizRepository
+	globalRepoOnce sync.Once
+)
+
+// GetGlobalRepository 获取全局题库仓储（单例模式）
+func GetGlobalRepository() *QuizRepository {
+	globalRepoOnce.Do(func() {
+		globalRepo = NewRepository()
+	})
+	return globalRepo
+}
+
+// InitializeGlobalRepository 初始化全局题库（服务启动时调用）
+// 失败将返回错误，调用方应决定是否继续启动
+func InitializeGlobalRepository(quizDataPath string) error {
+	repo := GetGlobalRepository()
+	return LoadAllBanks(quizDataPath, repo)
 }

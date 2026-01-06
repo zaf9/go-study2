@@ -13,7 +13,7 @@ export interface QuizSubmitPayload {
   sessionId: string;
   topic: string;
   chapter: string;
-  answers: Array<{ questionId: number; userAnswers: string[] }>;
+  answers: Array<{ questionId: string | number; userAnswers: string[] }>; // 兼容string和number
   durationMs?: number;
 }
 

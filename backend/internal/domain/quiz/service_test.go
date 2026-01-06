@@ -40,32 +40,46 @@ func TestService_GetQuestionsAndSubmit(t *testing.T) {
 	svc := NewService(repo)
 	ctx := context.Background()
 
+	// 测试输入验证
 	_, err := svc.GetQuestions(ctx, "", "")
 	if !errors.Is(err, ErrInvalidInput) {
 		t.Fatalf("应返回 ErrInvalidInput")
 	}
 
+	// 测试 GetQuestions 已废弃，应返回 ErrQuizUnavailable
 	qs, err := svc.GetQuestions(ctx, "variables", "storage")
-	if err != nil {
-		t.Fatalf("获取题目失败: %v", err)
+	if err == nil {
+		t.Fatalf("GetQuestions 已废弃，应返回错误")
 	}
-	if len(qs) == 0 {
-		t.Fatalf("变量主题题目应大于 0")
+	if !errors.Is(err, ErrQuizUnavailable) {
+		t.Fatalf("应返回 ErrQuizUnavailable，得到: %v", err)
+	}
+	if len(qs) != 0 {
+		t.Fatalf("题目列表应为空")
 	}
 
+	// 测试 Submit 已废弃
 	answer := SubmitAnswer{
-		ID:      qs[0].ID,
-		Choices: qs[0].Answer,
+		ID:      "1",
+		Choices: []string{"A"},
 	}
-	result, err := svc.Submit(ctx, 1, "variables", "storage", []SubmitAnswer{answer}, 1500)
+	_, err = svc.Submit(ctx, 1, "variables", "storage", []SubmitAnswer{answer}, 1500)
+	if err == nil {
+		t.Fatalf("Submit 已废弃，应返回错误")
+	}
+
+	// 测试 History 仍可正常使用
+	record := &Record{
+		UserID:     1,
+		Topic:      "variables",
+		Chapter:    "storage",
+		Score:      80,
+		Total:      100,
+		DurationMs: 60000,
+	}
+	_, err = repo.SaveRecord(ctx, record)
 	if err != nil {
-		t.Fatalf("提交测验失败: %v", err)
-	}
-	if result.Total == 0 {
-		t.Fatalf("总题数不应为 0")
-	}
-	if len(repo.saved) != 1 {
-		t.Fatalf("记录未被保存")
+		t.Fatalf("保存记录失败: %v", err)
 	}
 
 	history, err := svc.History(ctx, 1, "variables", nil, nil)

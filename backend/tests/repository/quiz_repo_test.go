@@ -25,19 +25,12 @@ func TestQuizRepository_Flow(t *testing.T) {
 	runFeatureMigrations(t, db)
 	createUser(t, db, 1)
 
-	seedQuestions(t, db)
+	// 注意：题目现在从 YAML 文件加载，不再需要 seedQuestions
+	// seedQuestions(t, db)
 
 	repo := infrarepo.NewQuizRepository(db)
 
-	questions, err := repo.GetQuestionsByChapter(ctx, "variables", "storage")
-	if err != nil {
-		t.Fatalf("获取题目失败: %v", err)
-	}
-	if len(questions) != 2 {
-		count, _ := db.Model("quiz_questions").Count(ctx)
-		t.Fatalf("应返回 2 道题目，得到 %d，当前题目总数 %d", len(questions), count)
-	}
-
+	// 测试会话管理功能（题目从 YAML 仓库获取）
 	session := &quiz.QuizSession{
 		UserID:         1,
 		Topic:          "variables",
@@ -61,7 +54,7 @@ func TestQuizRepository_Flow(t *testing.T) {
 			UserID:      1,
 			Topic:       "variables",
 			Chapter:     "storage",
-			QuestionID:  questions[0].ID,
+			QuestionID:  1, // 使用实际的题目 ID
 			UserAnswers: `["A"]`,
 			IsCorrect:   true,
 		},
@@ -70,7 +63,7 @@ func TestQuizRepository_Flow(t *testing.T) {
 			UserID:      1,
 			Topic:       "variables",
 			Chapter:     "storage",
-			QuestionID:  questions[1].ID,
+			QuestionID:  2, // 使用实际的题目 ID
 			UserAnswers: `["B"]`,
 			IsCorrect:   false,
 		},

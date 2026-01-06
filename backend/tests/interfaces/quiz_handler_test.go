@@ -150,7 +150,8 @@ func TestQuizHandler_EndToEnd(t *testing.T) {
 			Explanation:    "示例",
 		},
 	})
-	svc := appquiz.NewService(repo)
+	yamlRepo := quizdom.NewRepository()
+	svc := appquiz.NewService(yamlRepo, repo)
 	h := handler.New()
 	setQuizService(h, svc)
 

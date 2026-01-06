@@ -14,7 +14,16 @@ func ValidateQuestion(q YAMLQuestion) error {
 	if strings.TrimSpace(q.ID) == "" {
 		return errors.New("题目缺少 id")
 	}
-	if q.Type != "single" && q.Type != "multiple" {
+	// 允许的题目类型：single, multiple, truefalse, code_output, code_correction, code_fix
+	validTypes := map[string]bool{
+		"single":          true,
+		"multiple":        true,
+		"truefalse":       true,
+		"code_output":     true,
+		"code_correction": true,
+		"code_fix":        true,
+	}
+	if !validTypes[q.Type] {
 		return fmt.Errorf("题目 %s 类型非法: %s", q.ID, q.Type)
 	}
 	if q.Difficulty != "easy" && q.Difficulty != "medium" && q.Difficulty != "hard" {
@@ -29,13 +38,17 @@ func ValidateQuestion(q YAMLQuestion) error {
 	if strings.TrimSpace(q.Answer) == "" {
 		return fmt.Errorf("题目 %s 答案为空", q.ID)
 	}
-	// 简单答案格式校验：single -> 1 字母，multiple -> 2-4 字母
+	// 简单答案格式校验
 	ansLen := len(q.Answer)
-	if q.Type == "single" && ansLen != 1 {
-		return fmt.Errorf("题目 %s 单选答案应为单个字母", q.ID)
-	}
-	if q.Type == "multiple" && (ansLen < 2 || ansLen > 4) {
-		return fmt.Errorf("题目 %s 多选答案应为2-4个字母", q.ID)
+	switch q.Type {
+	case "single", "code_output", "truefalse", "code_fix":
+		if ansLen != 1 {
+			return fmt.Errorf("题目 %s (类型:%s) 答案应为单个字母", q.ID, q.Type)
+		}
+	case "multiple", "code_correction":
+		if ansLen < 1 || ansLen > 4 {
+			return fmt.Errorf("题目 %s (类型:%s) 答案应为1-4个字母", q.ID, q.Type)
+		}
 	}
 	return nil
 }

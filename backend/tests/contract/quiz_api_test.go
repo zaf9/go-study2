@@ -37,10 +37,7 @@ func TestQuizAPI_GetQuiz_ReturnsCorrectStructure(t *testing.T) {
 	}
 	defer db.Close(ctx)
 
-	// 清空并初始化测试数据
-	if _, err := db.Exec(ctx, "DELETE FROM quiz_questions"); err != nil {
-		t.Fatalf("clear quiz_questions failed: %v", err)
-	}
+	// 清空并初始化测试数据（quiz_questions表已废弃，题目从YAML加载）
 	if _, err := db.Exec(ctx, "DELETE FROM quiz_sessions"); err != nil {
 		t.Fatalf("clear quiz_sessions failed: %v", err)
 	}
@@ -57,27 +54,25 @@ func TestQuizAPI_GetQuiz_ReturnsCorrectStructure(t *testing.T) {
 		t.Fatalf("insert user failed: %v", err)
 	}
 
-	// 插入测试题目
-	question := map[string]interface{}{
-		"topic":           "constants",
-		"chapter":         "boolean",
-		"type":            quizdom.QuestionTypeSingle,
-		"difficulty":      quizdom.DifficultyEasy,
-		"question":        "Go语言中布尔类型的零值是什么?",
-		"options":         `["true","false","nil","0"]`,
-		"correct_answers": `["B"]`,
-		"explanation":     "布尔类型的零值是false",
-		"created_at":      now,
-		"updated_at":      now,
-	}
-	if _, err := db.Model("quiz_questions").Data(question).Insert(); err != nil {
-		t.Fatalf("insert question failed: %v", err)
-	}
-
 	// 创建handler和service
 	h := handler.New()
+
+	// 创建YAML仓储并添加测试题目（至少4单选+4多选）
+	yamlRepo := quizdom.NewRepository()
+	testYAMLQuestions := []quizdom.YAMLQuestion{
+		{ID: "ct1", Type: "single", Difficulty: "easy", Stem: "Go语言中布尔类型的零值是什么?", Options: []string{"true", "false", "nil", "0"}, Answer: "B", Explanation: "布尔类型的零值是false", Topic: "constants", Chapter: "boolean"},
+		{ID: "ct2", Type: "single", Difficulty: "easy", Stem: "Single 2", Options: []string{"A", "B"}, Answer: "A", Explanation: "exp2", Topic: "constants", Chapter: "boolean"},
+		{ID: "ct3", Type: "single", Difficulty: "easy", Stem: "Single 3", Options: []string{"A", "B"}, Answer: "A", Explanation: "exp3", Topic: "constants", Chapter: "boolean"},
+		{ID: "ct4", Type: "single", Difficulty: "easy", Stem: "Single 4", Options: []string{"A", "B"}, Answer: "A", Explanation: "exp4", Topic: "constants", Chapter: "boolean"},
+		{ID: "ct5", Type: "multiple", Difficulty: "medium", Stem: "Multiple 1", Options: []string{"A", "B", "C"}, Answer: "AB", Explanation: "exp5", Topic: "constants", Chapter: "boolean"},
+		{ID: "ct6", Type: "multiple", Difficulty: "medium", Stem: "Multiple 2", Options: []string{"A", "B", "C"}, Answer: "AB", Explanation: "exp6", Topic: "constants", Chapter: "boolean"},
+		{ID: "ct7", Type: "multiple", Difficulty: "medium", Stem: "Multiple 3", Options: []string{"A", "B", "C"}, Answer: "AB", Explanation: "exp7", Topic: "constants", Chapter: "boolean"},
+		{ID: "ct8", Type: "multiple", Difficulty: "medium", Stem: "Multiple 4", Options: []string{"A", "B", "C"}, Answer: "AB", Explanation: "exp8", Topic: "constants", Chapter: "boolean"},
+	}
+	yamlRepo.AddBank("constants", "boolean", testYAMLQuestions)
+
 	repoImpl := infrarepo.NewQuizRepository(db)
-	svc := appquiz.NewService(repoImpl)
+	svc := appquiz.NewService(yamlRepo, repoImpl)
 
 	type quizSetter interface{ SetQuizService(*appquiz.Service) }
 	if s, ok := interface{}(h).(quizSetter); ok {
@@ -168,7 +163,7 @@ func TestQuizAPI_Submit_ReturnsCorrectScore(t *testing.T) {
 	defer db.Close(ctx)
 
 	// 清空表
-	for _, table := range []string{"quiz_questions", "quiz_sessions", "quiz_attempts", "users"} {
+	for _, table := range []string{"quiz_sessions", "quiz_attempts", "users"} {
 		if _, err := db.Exec(ctx, fmt.Sprintf("DELETE FROM %s", table)); err != nil {
 			t.Fatalf("clear %s failed: %v", table, err)
 		}
@@ -183,29 +178,25 @@ func TestQuizAPI_Submit_ReturnsCorrectScore(t *testing.T) {
 		t.Fatalf("insert user failed: %v", err)
 	}
 
-	// 插入测试题目 - 正确答案为B
-	question := map[string]interface{}{
-		"topic":           "constants",
-		"chapter":         "boolean",
-		"type":            quizdom.QuestionTypeSingle,
-		"difficulty":      quizdom.DifficultyEasy,
-		"question":        "Go语言中布尔类型的零值是什么?",
-		"options":         `["true","false"]`,
-		"correct_answers": `["B"]`,
-		"explanation":     "布尔类型的零值是false",
-		"created_at":      now,
-		"updated_at":      now,
-	}
-	result, err := db.Model("quiz_questions").Data(question).Insert()
-	if err != nil {
-		t.Fatalf("insert question failed: %v", err)
-	}
-	questionID, _ := result.LastInsertId()
-
-	// 创建handler和service
+	// 创建handler和服务
 	h := handler.New()
+
+	// 创建YAML仓储并添加测试题目（至少4单选+4多选）
+	yamlRepo := quizdom.NewRepository()
+	testYAMLQuestions := []quizdom.YAMLQuestion{
+		{ID: "ct1", Type: "single", Difficulty: "easy", Stem: "Go语言中布尔类型的零值是什么?", Options: []string{"true", "false", "nil", "0"}, Answer: "B", Explanation: "布尔类型的零值是false", Topic: "constants", Chapter: "boolean"},
+		{ID: "ct2", Type: "single", Difficulty: "easy", Stem: "Single 2", Options: []string{"A", "B"}, Answer: "A", Explanation: "exp2", Topic: "constants", Chapter: "boolean"},
+		{ID: "ct3", Type: "single", Difficulty: "easy", Stem: "Single 3", Options: []string{"A", "B"}, Answer: "A", Explanation: "exp3", Topic: "constants", Chapter: "boolean"},
+		{ID: "ct4", Type: "single", Difficulty: "easy", Stem: "Single 4", Options: []string{"A", "B"}, Answer: "A", Explanation: "exp4", Topic: "constants", Chapter: "boolean"},
+		{ID: "ct5", Type: "multiple", Difficulty: "medium", Stem: "Multiple 1", Options: []string{"A", "B", "C"}, Answer: "AB", Explanation: "exp5", Topic: "constants", Chapter: "boolean"},
+		{ID: "ct6", Type: "multiple", Difficulty: "medium", Stem: "Multiple 2", Options: []string{"A", "B", "C"}, Answer: "AB", Explanation: "exp6", Topic: "constants", Chapter: "boolean"},
+		{ID: "ct7", Type: "multiple", Difficulty: "medium", Stem: "Multiple 3", Options: []string{"A", "B", "C"}, Answer: "AB", Explanation: "exp7", Topic: "constants", Chapter: "boolean"},
+		{ID: "ct8", Type: "multiple", Difficulty: "medium", Stem: "Multiple 4", Options: []string{"A", "B", "C"}, Answer: "AB", Explanation: "exp8", Topic: "constants", Chapter: "boolean"},
+	}
+	yamlRepo.AddBank("constants", "boolean", testYAMLQuestions)
+
 	repoImpl := infrarepo.NewQuizRepository(db)
-	svc := appquiz.NewService(repoImpl)
+	svc := appquiz.NewService(yamlRepo, repoImpl)
 
 	type quizSetter interface{ SetQuizService(*appquiz.Service) }
 	if s, ok := interface{}(h).(quizSetter); ok {
@@ -218,6 +209,28 @@ func TestQuizAPI_Submit_ReturnsCorrectScore(t *testing.T) {
 		t.Fatalf("GetQuizQuestions failed: %v", err)
 	}
 	sessionID := payload.SessionID
+	if len(payload.Questions) == 0 {
+		t.Fatalf("no questions returned")
+	}
+
+	// 构建正确答案映射（从YAML题目）
+	correctAnswerMap := make(map[string]string)
+	for _, yq := range testYAMLQuestions {
+		correctAnswerMap[yq.Stem] = yq.Answer
+	}
+
+	// 构建所有题目的正确答案
+	var answers []string
+	for _, q := range payload.Questions {
+		correctAnswer := correctAnswerMap[q.Question]
+		// 将答案字符串转换为字符数组（例如 "AB" -> ["A", "B"]）
+		userAnswers := make([]string, 0, len(correctAnswer))
+		for _, ch := range correctAnswer {
+			userAnswers = append(userAnswers, fmt.Sprintf(`"%s"`, string(ch)))
+		}
+		answers = append(answers, fmt.Sprintf(`{"questionId":%d,"userAnswers":[%s]}`, q.ID, strings.Join(userAnswers, ",")))
+	}
+	answersJSON := fmt.Sprintf("[%s]", strings.Join(answers, ","))
 
 	// 启动测试服务器
 	s := ghttp.GetServer(fmt.Sprintf("quiz-submit-test-%d", time.Now().UnixNano()))
@@ -234,14 +247,14 @@ func TestQuizAPI_Submit_ReturnsCorrectScore(t *testing.T) {
 	defer s.Shutdown()
 	time.Sleep(30 * time.Millisecond)
 
-	// 提交正确答案
+	// 提交所有题目的正确答案
 	submitPayload := fmt.Sprintf(`{
 		"sessionId": "%s",
 		"topic": "constants",
 		"chapter": "boolean",
-		"answers": [{"questionId": %d, "userAnswers": ["B"]}],
+		"answers": %s,
 		"durationMs": 5000
-	}`, sessionID, questionID)
+	}`, sessionID, answersJSON)
 
 	req := httptest.NewRequest(http.MethodPost, "/api/v1/quiz/submit", strings.NewReader(submitPayload))
 	req.Header.Set("X-User-ID", "1")
@@ -296,7 +309,7 @@ func TestQuizAPI_Submit_RejectsDuplicateSubmission(t *testing.T) {
 	defer db.Close(ctx)
 
 	// 清空表
-	for _, table := range []string{"quiz_questions", "quiz_sessions", "quiz_attempts", "users"} {
+	for _, table := range []string{"quiz_sessions", "quiz_attempts", "users"} {
 		if _, err := db.Exec(ctx, fmt.Sprintf("DELETE FROM %s", table)); err != nil {
 			t.Fatalf("clear %s failed: %v", table, err)
 		}
@@ -310,27 +323,24 @@ func TestQuizAPI_Submit_RejectsDuplicateSubmission(t *testing.T) {
 		t.Fatalf("insert user failed: %v", err)
 	}
 
-	question := map[string]interface{}{
-		"topic":           "constants",
-		"chapter":         "boolean",
-		"type":            quizdom.QuestionTypeSingle,
-		"difficulty":      quizdom.DifficultyEasy,
-		"question":        "测试题目",
-		"options":         `["选项A"]`,
-		"correct_answers": `["A"]`,
-		"explanation":     "解析",
-		"created_at":      now,
-		"updated_at":      now,
-	}
-	result, err := db.Model("quiz_questions").Data(question).Insert()
-	if err != nil {
-		t.Fatalf("insert question failed: %v", err)
-	}
-	questionID, _ := result.LastInsertId()
-
 	h := handler.New()
+
+	// 创建YAML仓储并添加测试题目（至少4单选+4多选）
+	yamlRepo := quizdom.NewRepository()
+	testYAMLQuestions := []quizdom.YAMLQuestion{
+		{ID: "ct1", Type: "single", Difficulty: "easy", Stem: "测试题目", Options: []string{"选项A", "选项B"}, Answer: "A", Explanation: "解析", Topic: "constants", Chapter: "boolean"},
+		{ID: "ct2", Type: "single", Difficulty: "easy", Stem: "Single 2", Options: []string{"A", "B"}, Answer: "A", Explanation: "exp2", Topic: "constants", Chapter: "boolean"},
+		{ID: "ct3", Type: "single", Difficulty: "easy", Stem: "Single 3", Options: []string{"A", "B"}, Answer: "A", Explanation: "exp3", Topic: "constants", Chapter: "boolean"},
+		{ID: "ct4", Type: "single", Difficulty: "easy", Stem: "Single 4", Options: []string{"A", "B"}, Answer: "A", Explanation: "exp4", Topic: "constants", Chapter: "boolean"},
+		{ID: "ct5", Type: "multiple", Difficulty: "medium", Stem: "Multiple 1", Options: []string{"A", "B", "C"}, Answer: "AB", Explanation: "exp5", Topic: "constants", Chapter: "boolean"},
+		{ID: "ct6", Type: "multiple", Difficulty: "medium", Stem: "Multiple 2", Options: []string{"A", "B", "C"}, Answer: "AB", Explanation: "exp6", Topic: "constants", Chapter: "boolean"},
+		{ID: "ct7", Type: "multiple", Difficulty: "medium", Stem: "Multiple 3", Options: []string{"A", "B", "C"}, Answer: "AB", Explanation: "exp7", Topic: "constants", Chapter: "boolean"},
+		{ID: "ct8", Type: "multiple", Difficulty: "medium", Stem: "Multiple 4", Options: []string{"A", "B", "C"}, Answer: "AB", Explanation: "exp8", Topic: "constants", Chapter: "boolean"},
+	}
+	yamlRepo.AddBank("constants", "boolean", testYAMLQuestions)
+
 	repoImpl := infrarepo.NewQuizRepository(db)
-	svc := appquiz.NewService(repoImpl)
+	svc := appquiz.NewService(yamlRepo, repoImpl)
 
 	type quizSetter interface{ SetQuizService(*appquiz.Service) }
 	if s, ok := interface{}(h).(quizSetter); ok {
@@ -342,6 +352,11 @@ func TestQuizAPI_Submit_RejectsDuplicateSubmission(t *testing.T) {
 		t.Fatalf("GetQuizQuestions failed: %v", err)
 	}
 	sessionID := payload.SessionID
+	if len(payload.Questions) == 0 {
+		t.Fatalf("no questions returned")
+	}
+	// 获取第一个题目的ID（从字符串转换为int64）
+	firstQuestionID := payload.Questions[0].ID
 
 	s := ghttp.GetServer(fmt.Sprintf("quiz-duplicate-test-%d", time.Now().UnixNano()))
 	s.BindMiddlewareDefault(func(r *ghttp.Request) {
@@ -363,7 +378,7 @@ func TestQuizAPI_Submit_RejectsDuplicateSubmission(t *testing.T) {
 		"chapter": "boolean",
 		"answers": [{"questionId": %d, "userAnswers": ["A"]}],
 		"durationMs": 5000
-	}`, sessionID, questionID)
+	}`, sessionID, firstQuestionID)
 
 	// 第一次提交 - 应该成功
 	req1 := httptest.NewRequest(http.MethodPost, "/api/v1/quiz/submit", strings.NewReader(submitPayload))

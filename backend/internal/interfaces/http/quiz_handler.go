@@ -10,7 +10,7 @@ import (
 
 // QuizHandler 提供测验相关 HTTP 接口。
 type QuizHandler struct {
-	Repo repository.IQuizRepository
+	Repo repository.IQuizSessionRepository
 }
 
 // RegisterQuizRoutes 注册测验路由。

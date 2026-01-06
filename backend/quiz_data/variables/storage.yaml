@@ -1,0 +1,168 @@
+questions:
+  - id: vs1
+    type: single
+    difficulty: easy
+    stem: Go语言中变量的默认存储位置是什么？
+    options:
+      - 栈
+      - 堆
+      - 寄存器
+      - 静态区
+    answer: A
+    explanation: 局部变量默认存储在栈上，这是Go语言的内存管理策略
+    topic: variables
+    chapter: storage
+
+  - id: vs2
+    type: single
+    difficulty: easy
+    stem: 哪种情况下变量会被分配到堆上？
+    options:
+      - 使用new关键字
+      - 变量被逃逸分析认为可能被外部访问
+      - 变量是全局变量
+      - 变量是指针类型
+    answer: B
+    explanation: Go的编译器会进行逃逸分析，如果变量可能在函数外被访问，就会分配到堆上
+    topic: variables
+    chapter: storage
+
+  - id: vs3
+    type: single
+    difficulty: easy
+    stem: 栈和堆的主要区别是什么？
+    options:
+      - 栈速度快，堆速度慢
+      - 栈只能存基本类型
+      - 堆自动管理，栈手动管理
+      - 没有区别
+    answer: A
+    explanation: 栈是连续内存，分配和回收都很快；堆需要复杂的内存管理算法
+    topic: variables
+    chapter: storage
+
+  - id: vs4
+    type: single
+    difficulty: easy
+    stem: Go的垃圾回收器主要管理哪块内存？
+    options:
+      - 栈
+      - 堆
+      - 寄存器
+      - 代码段
+    answer: B
+    explanation: Go的垃圾回收器主要管理堆内存，栈内存随函数调用自动回收
+    topic: variables
+    chapter: storage
+
+  - id: vs5
+    type: multiple
+    difficulty: medium
+    stem: 以下哪些情况会导致变量逃逸到堆上？
+    options:
+      - 返回局部变量的指针
+      - 将局部变量赋值给接口
+      - 闭包捕获外部变量
+      - 局部变量是基本类型
+    answer: ABC
+    explanation: 返回指针、赋值给接口、闭包捕获都可能导致逃逸，基本类型不一定
+    topic: variables
+    chapter: storage
+
+  - id: vs6
+    type: multiple
+    difficulty: medium
+    stem: 栈内存的特点包括哪些？
+    options:
+      - 分配速度快
+      - 自动管理
+      - 大小有限
+      - 可以动态扩容
+    answer: ABC
+    explanation: 栈分配快、自动管理、大小有限制，不能动态扩容
+    topic: variables
+    chapter: storage
+
+  - id: vs7
+    type: multiple
+    difficulty: medium
+    stem: 堆内存的特点包括哪些？
+    options:
+      - 空间大
+      - 需要垃圾回收
+      - 分配速度较慢
+      - 只能存储指针
+    answer: ABC
+    explanation: 堆空间大、需要GC、分配较慢，可以存储任何类型数据
+    topic: variables
+    chapter: storage
+
+  - id: vs8
+    type: multiple
+    difficulty: medium
+    stem: Go语言内存管理的优势包括？
+    options:
+      - 自动垃圾回收
+      - 逃逸分析优化
+      - 栈分配优先
+      - 手动内存管理
+    answer: ABC
+    explanation: Go有自动GC、逃逸分析、优先栈分配，不需要手动管理内存
+    topic: variables
+    chapter: storage
+
+  - id: vs9
+    type: single
+    difficulty: hard
+    stem: 如何查看变量的内存分配情况？
+    options:
+      - 使用go build -gcflags=-m
+      - 使用go vet
+      - 使用go test
+      - 使用go run
+    answer: A
+    explanation: go build -gcflags=-m可以查看编译器的逃逸分析和内联决策
+    topic: variables
+    chapter: storage
+
+  - id: vs10
+    type: single
+    difficulty: hard
+    stem: Go的垃圾回收使用什么算法？
+    options:
+      - 标记清除
+      - 引用计数
+      - 三色标记+并发清除
+      - 复制算法
+    answer: C
+    explanation: Go使用三色标记法配合并发清除，实现低延迟的GC
+    topic: variables
+    chapter: storage
+
+  - id: vs11
+    type: single
+    difficulty: hard
+    stem: 以下哪个说法是错误的？
+    options:
+      - 栈随函数调用自动增长和收缩
+      - 堆内存需要垃圾回收器管理
+      - 所有指针都指向堆内存
+      - 逃逸分析影响变量存储位置
+    answer: C
+    explanation: 指针可以指向栈或堆内存，不是所有指针都指向堆
+    topic: variables
+    chapter: storage
+
+  - id: vs12
+    type: multiple
+    difficulty: hard
+    stem: 关于Go内存分配器的说法正确的是？
+    options:
+      - 使用tcmalloc思想
+      - 多级缓存
+      - size class分级
+      - 每个goroutine有独立缓存
+    answer: ABCD
+    explanation: Go分配器借鉴tcmalloc，有多级缓存、size class和P本地缓存
+    topic: variables
+    chapter: storage

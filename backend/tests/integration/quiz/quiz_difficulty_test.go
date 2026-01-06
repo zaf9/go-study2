@@ -12,7 +12,10 @@ import (
 
 	"go-study2/internal/app/http_server/handler"
 	middleware "go-study2/internal/app/http_server/middleware"
+	appquiz "go-study2/internal/app/quiz"
 	"go-study2/internal/config"
+	quizdom "go-study2/internal/domain/quiz"
+	infrarepo "go-study2/internal/infra/repository"
 	"go-study2/internal/infrastructure/database"
 	appjwt "go-study2/internal/pkg/jwt"
 	"go-study2/internal/pkg/password"
@@ -31,32 +34,6 @@ func Test_QuizDifficultyDistribution(t *testing.T) {
 		t.Fatalf("初始化数据库失败: %v", err)
 	}
 
-	// seed quiz questions for difficulty distribution test
-	now := time.Now()
-	for i := 0; i < 300; i++ {
-		d := "easy"
-		if i%5 == 0 {
-			d = "hard"
-		} else if i%2 == 0 {
-			d = "medium"
-		}
-		q := map[string]interface{}{
-			"topic":           "variables",
-			"chapter":         "storage",
-			"type":            "single",
-			"difficulty":      d,
-			"question":        fmt.Sprintf("Diff seed %d", i),
-			"options":         `["A","B","C","D"]`,
-			"correct_answers": `[["A"]]`,
-			"explanation":     "seed",
-			"created_at":      now,
-			"updated_at":      now,
-		}
-		if _, err := database.Default().Insert(ctx, "quiz_questions", q); err != nil {
-			t.Fatalf("插入难度种子题目失败: %v", err)
-		}
-	}
-
 	// Configure JWT for tests
 	if err := appjwt.Configure(appjwt.Options{
 		Secret:             "testsecret0123456789012345678901",
@@ -70,6 +47,35 @@ func Test_QuizDifficultyDistribution(t *testing.T) {
 	server.SetPort(0)
 	server.SetAccessLogEnabled(false)
 	h := handler.New()
+
+	// 创建YAML仓储并添加足够的测试题目（至少4单选+4多选，多种难度）
+	yamlRepo := quizdom.NewRepository()
+	testYAMLQuestions := []quizdom.YAMLQuestion{
+		{ID: "diff1", Type: "single", Difficulty: "easy", Stem: "Diff 1", Options: []string{"A", "B", "C", "D"}, Answer: "A", Explanation: "seed", Topic: "variables", Chapter: "storage"},
+		{ID: "diff2", Type: "single", Difficulty: "easy", Stem: "Diff 2", Options: []string{"A", "B", "C", "D"}, Answer: "A", Explanation: "seed", Topic: "variables", Chapter: "storage"},
+		{ID: "diff3", Type: "single", Difficulty: "easy", Stem: "Diff 3", Options: []string{"A", "B", "C", "D"}, Answer: "A", Explanation: "seed", Topic: "variables", Chapter: "storage"},
+		{ID: "diff4", Type: "single", Difficulty: "medium", Stem: "Diff 4", Options: []string{"A", "B", "C", "D"}, Answer: "A", Explanation: "seed", Topic: "variables", Chapter: "storage"},
+		{ID: "diff5", Type: "single", Difficulty: "medium", Stem: "Diff 5", Options: []string{"A", "B", "C", "D"}, Answer: "A", Explanation: "seed", Topic: "variables", Chapter: "storage"},
+		{ID: "diff6", Type: "single", Difficulty: "medium", Stem: "Diff 6", Options: []string{"A", "B", "C", "D"}, Answer: "A", Explanation: "seed", Topic: "variables", Chapter: "storage"},
+		{ID: "diff7", Type: "single", Difficulty: "hard", Stem: "Diff 7", Options: []string{"A", "B", "C", "D"}, Answer: "A", Explanation: "seed", Topic: "variables", Chapter: "storage"},
+		{ID: "diff8", Type: "multiple", Difficulty: "easy", Stem: "Diff 8", Options: []string{"A", "B", "C", "D"}, Answer: "AB", Explanation: "seed", Topic: "variables", Chapter: "storage"},
+		{ID: "diff9", Type: "multiple", Difficulty: "easy", Stem: "Diff 9", Options: []string{"A", "B", "C", "D"}, Answer: "AB", Explanation: "seed", Topic: "variables", Chapter: "storage"},
+		{ID: "diff10", Type: "multiple", Difficulty: "medium", Stem: "Diff 10", Options: []string{"A", "B", "C", "D"}, Answer: "AB", Explanation: "seed", Topic: "variables", Chapter: "storage"},
+		{ID: "diff11", Type: "multiple", Difficulty: "medium", Stem: "Diff 11", Options: []string{"A", "B", "C", "D"}, Answer: "AB", Explanation: "seed", Topic: "variables", Chapter: "storage"},
+		{ID: "diff12", Type: "multiple", Difficulty: "medium", Stem: "Diff 12", Options: []string{"A", "B", "C", "D"}, Answer: "AB", Explanation: "seed", Topic: "variables", Chapter: "storage"},
+		{ID: "diff13", Type: "multiple", Difficulty: "hard", Stem: "Diff 13", Options: []string{"A", "B", "C", "D"}, Answer: "AB", Explanation: "seed", Topic: "variables", Chapter: "storage"},
+	}
+	yamlRepo.AddBank("variables", "storage", testYAMLQuestions)
+
+	repoImpl := infrarepo.NewQuizRepository(database.Default())
+	svc := appquiz.NewService(yamlRepo, repoImpl)
+
+	// 注入服务到handler
+	type quizSetter interface{ SetQuizService(*appquiz.Service) }
+	if s, ok := interface{}(h).(quizSetter); ok {
+		s.SetQuizService(svc)
+	}
+
 	server.Group("/api/v1", func(group *ghttp.RouterGroup) {
 		group.POST("/auth/login", h.Login)
 		group.POST("/auth/register", middleware.Auth, h.Register)

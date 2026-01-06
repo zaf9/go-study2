@@ -71,7 +71,7 @@ questions:
       - "B: complex64(3+4i)"
       - "C: complex(float32(3), float32(4))"
       - "D: B和C都可以"
-    answer: D
+    answer: BC
     explanation: "可以用类型转换complex64(3+4i),或用complex函数传入float32参数。参见 Go 规范 Complex numbers 章节。"
     topic: lexical_elements
     chapter: imaginary
@@ -91,9 +91,9 @@ questions:
     chapter: imaginary
 
   - id: lexical-imaginary-006
-    type: multiple
+    type: single
     difficulty: medium
-    stem: "关于获取复数实部,以下哪些说法是正确的?(多选)"
+    stem: "关于获取复数实部,以下哪个说法是正确的?"
     options:
       - "A: real()"
       - "B: Re()"

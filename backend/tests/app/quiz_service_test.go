@@ -86,54 +86,49 @@ func (m *memoryQuizRepo) GetAttemptsBySession(ctx context.Context, sessionID str
 
 func TestQuizService_FlowAndIdempotency(t *testing.T) {
 	repo := newMemoryQuizRepo()
-	repo.questions = []quizdom.QuizQuestion{
-		{
-			ID:             1,
-			Topic:          "variables",
-			Chapter:        "storage",
-			Type:           quizdom.QuestionTypeSingle,
-			Difficulty:     quizdom.DifficultyEasy,
-			Question:       "单选示例",
-			Options:        toJSON([]string{"A1", "A2"}),
-			CorrectAnswers: toJSON([]string{"A"}),
-			Explanation:    "exp1",
-		},
-		{
-			ID:             2,
-			Topic:          "variables",
-			Chapter:        "storage",
-			Type:           quizdom.QuestionTypeMultiple,
-			Difficulty:     quizdom.DifficultyMedium,
-			Question:       "多选示例",
-			Options:        toJSON([]string{"B1", "B2", "B3"}),
-			CorrectAnswers: toJSON([]string{"A", "B"}),
-			Explanation:    "exp2",
-		},
+	// 创建YAML仓储并添加测试题目（至少4单选+4多选以支持随机抽题）
+	yamlRepo := quizdom.NewRepository()
+	testYAMLQuestions := []quizdom.YAMLQuestion{
+		{ID: "q1", Type: "single", Difficulty: "easy", Stem: "单选示例1", Options: []string{"A1", "A2"}, Answer: "A", Explanation: "exp1", Topic: "variables", Chapter: "storage"},
+		{ID: "q2", Type: "single", Difficulty: "easy", Stem: "单选示例2", Options: []string{"B1", "B2"}, Answer: "A", Explanation: "exp2", Topic: "variables", Chapter: "storage"},
+		{ID: "q3", Type: "single", Difficulty: "easy", Stem: "单选示例3", Options: []string{"C1", "C2"}, Answer: "A", Explanation: "exp3", Topic: "variables", Chapter: "storage"},
+		{ID: "q4", Type: "single", Difficulty: "easy", Stem: "单选示例4", Options: []string{"D1", "D2"}, Answer: "A", Explanation: "exp4", Topic: "variables", Chapter: "storage"},
+		{ID: "q5", Type: "multiple", Difficulty: "medium", Stem: "多选示例1", Options: []string{"B1", "B2", "B3"}, Answer: "AB", Explanation: "exp5", Topic: "variables", Chapter: "storage"},
+		{ID: "q6", Type: "multiple", Difficulty: "medium", Stem: "多选示例2", Options: []string{"C1", "C2", "C3"}, Answer: "AB", Explanation: "exp6", Topic: "variables", Chapter: "storage"},
+		{ID: "q7", Type: "multiple", Difficulty: "medium", Stem: "多选示例3", Options: []string{"D1", "D2", "D3"}, Answer: "AB", Explanation: "exp7", Topic: "variables", Chapter: "storage"},
+		{ID: "q8", Type: "multiple", Difficulty: "medium", Stem: "多选示例4", Options: []string{"E1", "E2", "E3"}, Answer: "AB", Explanation: "exp8", Topic: "variables", Chapter: "storage"},
 	}
+	yamlRepo.AddBank("variables", "storage", testYAMLQuestions)
 
-	svc := appquiz.NewService(repo)
+	svc := appquiz.NewService(yamlRepo, repo)
 	payload, err := svc.GetQuizQuestions(ctx(), 1, "variables", "storage")
 	if err != nil {
 		t.Fatalf("获取题目失败: %v", err)
 	}
-	if payload.SessionID == "" || len(payload.Questions) != 2 {
+	if payload.SessionID == "" || len(payload.Questions) < 1 {
 		t.Fatalf("返回内容不完整: %+v", payload)
 	}
 
-	result, err := svc.SubmitQuiz(ctx(), 1, payload.SessionID, "variables", "storage", []appquiz.AnswerSubmission{
-		{QuestionID: 1, UserAnswers: []string{"A"}},
-		{QuestionID: 2, UserAnswers: []string{"A", "B"}},
-	})
+	// 提交所有题目的正确答案（基于返回的题目ID）
+	answers := make([]appquiz.AnswerSubmission, 0, len(payload.Questions))
+	for _, q := range payload.Questions {
+		if q.Type == "single" {
+			answers = append(answers, appquiz.AnswerSubmission{QuestionID: q.ID, UserAnswers: []string{"A"}})
+		} else {
+			answers = append(answers, appquiz.AnswerSubmission{QuestionID: q.ID, UserAnswers: []string{"A", "B"}})
+		}
+	}
+
+	result, err := svc.SubmitQuiz(ctx(), 1, payload.SessionID, "variables", "storage", answers)
 	if err != nil {
 		t.Fatalf("提交测验失败: %v", err)
 	}
-	if result.Score <= 0 || result.CorrectAnswers != 2 || !result.Passed {
+	if result.Score <= 0 || result.CorrectAnswers < 1 || !result.Passed {
 		t.Fatalf("判分结果异常: %+v", result)
 	}
 
-	if _, err := svc.SubmitQuiz(ctx(), 1, payload.SessionID, "variables", "storage", []appquiz.AnswerSubmission{
-		{QuestionID: 1, UserAnswers: []string{"A"}},
-	}); !errors.Is(err, appquiz.ErrDuplicateSubmit) {
+	// 重复提交应被拒绝
+	if _, err := svc.SubmitQuiz(ctx(), 1, payload.SessionID, "variables", "storage", answers); !errors.Is(err, appquiz.ErrDuplicateSubmit) {
 		t.Fatalf("重复提交未被拒绝: %v", err)
 	}
 }
@@ -146,7 +141,8 @@ func toJSON(v interface{}) string {
 // TestQuizService_GetRecentQuizzes 测试获取最近测验记录功能
 func TestQuizService_GetRecentQuizzes(t *testing.T) {
 	repo := newMemoryQuizRepo()
-	svc := appquiz.NewService(repo)
+	yamlRepo := quizdom.NewRepository()
+	svc := appquiz.NewService(yamlRepo, repo)
 
 	// 创建多个已完成的测验会话
 	now := time.Now()

@@ -20,9 +20,9 @@ function getStorageKey(topic: string, chapter: string): string {
 /**
  * 从localStorage加载暂存的答案
  */
-function loadStoredAnswers(topic: string, chapter: string): Record<number, string[]> {
+function loadStoredAnswers(topic: string, chapter: string): Record<string, string[]> {
     if (typeof window === 'undefined') return {};
-    
+
     try {
         const key = getStorageKey(topic, chapter);
         const stored = localStorage.getItem(key);
@@ -38,9 +38,9 @@ function loadStoredAnswers(topic: string, chapter: string): Record<number, strin
 /**
  * 保存答案到localStorage
  */
-function saveAnswersToStorage(topic: string, chapter: string, answers: Record<number, string[]>): void {
+function saveAnswersToStorage(topic: string, chapter: string, answers: Record<string, string[]>): void {
     if (typeof window === 'undefined') return;
-    
+
     try {
         const key = getStorageKey(topic, chapter);
         localStorage.setItem(key, JSON.stringify(answers));
@@ -64,7 +64,7 @@ function clearStoredAnswers(topic: string, chapter: string): void {
 }
 
 export default function useQuiz(topic: string, chapter: string) {
-    const [answers, setAnswers] = useState<Record<number, string[]>>(() => {
+    const [answers, setAnswers] = useState<Record<string, string[]>>(() => {
         // 初始化时尝试加载暂存的答案
         return loadStoredAnswers(topic, chapter);
     });
@@ -89,9 +89,17 @@ export default function useQuiz(topic: string, chapter: string) {
         }
     }, [answers, topic, chapter, result]);
 
+    // 当 topic 或 chapter 改变时，重新加载对应的暂存答案
+    useEffect(() => {
+        const stored = loadStoredAnswers(topic, chapter);
+        setAnswers(stored);
+        setResult(null); // 切换章节时重置结果
+        setStartAt(Date.now()); // 切换章节时重置开始时间
+    }, [topic, chapter]);
+
     const selectAnswer = (id: string, choices: string[]) => {
-        const questionId = Number(id);
-        setAnswers((prev) => ({ ...prev, [questionId]: choices }));
+        // 直接使用字符串ID，不转换为number，避免大整数精度问题
+        setAnswers((prev) => ({ ...prev, [id]: choices }));
     };
 
     // 使用 ref 来立即锁定提交状态，防止闭包陈旧导致的并发提交问题
@@ -113,20 +121,27 @@ export default function useQuiz(topic: string, chapter: string) {
                 chapter,
                 durationMs,
                 answers: Object.entries(answers).map(([id, choices]) => ({
-                    questionId: Number(id),
+                    questionId: id, // 保持为字符串，避免大整数精度问题
                     userAnswers: choices,
                 })),
             };
             const res = await submitQuiz(payload);
             // 后端可能返回整章题目的判分详情；前端只需展示用户实际提交的题目详情，故在此进行过滤
             if (res && Array.isArray(res.details) && payload.answers.length > 0) {
-                const answeredIds = new Set<number>(
-                    payload.answers.map((a: any) => Number(a.questionId)),
+                const answeredIds = new Set<string>(
+                    payload.answers.map((a: any) => String(a.questionId)),
                 );
                 const filteredDetails = res.details.filter((d: any) =>
-                    answeredIds.has(Number(d.question_id)),
+                    answeredIds.has(String(d.question_id)),
                 );
-                setResult({ ...res, details: filteredDetails });
+                // 如果过滤后details为空，但原始details不为空，说明可能是ID类型匹配问题
+                // 这种情况下保留原始details，确保解析功能可用
+                if (filteredDetails.length === 0 && res.details.length > 0) {
+                    console.warn('Details filtering resulted in empty array, using original details');
+                    setResult({ ...res, details: res.details });
+                } else {
+                    setResult({ ...res, details: filteredDetails });
+                }
             } else {
                 setResult(res);
             }

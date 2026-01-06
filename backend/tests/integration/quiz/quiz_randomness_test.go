@@ -13,7 +13,10 @@ import (
 
 	"go-study2/internal/app/http_server/handler"
 	middleware "go-study2/internal/app/http_server/middleware"
+	appquiz "go-study2/internal/app/quiz"
 	"go-study2/internal/config"
+	quizdom "go-study2/internal/domain/quiz"
+	infrarepo "go-study2/internal/infra/repository"
 	"go-study2/internal/infrastructure/database"
 	appjwt "go-study2/internal/pkg/jwt"
 	"go-study2/internal/pkg/password"
@@ -39,8 +42,9 @@ func Test_QuizRandomness(t *testing.T) {
 		t.Fatalf("初始化数据库失败: %v", err)
 	}
 
-	// seed quiz questions for testing
-	now := time.Now()
+	// 创建YAML仓储并添加足够的测试题目（120题，确保随机性）
+	yamlRepo := quizdom.NewRepository()
+	testYAMLQuestions := make([]quizdom.YAMLQuestion, 120)
 	for i := 0; i < 120; i++ {
 		diff := "easy"
 		if i%3 == 1 {
@@ -52,22 +56,26 @@ func Test_QuizRandomness(t *testing.T) {
 		if i%4 == 0 {
 			typev = "multiple"
 		}
-		q := map[string]interface{}{
-			"topic":           "variables",
-			"chapter":         "storage",
-			"type":            typev,
-			"difficulty":      diff,
-			"question":        fmt.Sprintf("Seed question %d", i),
-			"options":         `["A","B","C","D"]`,
-			"correct_answers": `[["A"]]`,
-			"explanation":     "seed",
-			"created_at":      now,
-			"updated_at":      now,
+		answer := "A"
+		if typev == "multiple" {
+			answer = "AB"
 		}
-		if _, err := database.Default().Insert(ctx, "quiz_questions", q); err != nil {
-			t.Fatalf("插入种子题目失败: %v", err)
+		testYAMLQuestions[i] = quizdom.YAMLQuestion{
+			ID:          fmt.Sprintf("rand%d", i+1),
+			Type:        typev,
+			Difficulty:  diff,
+			Stem:        fmt.Sprintf("Seed question %d", i),
+			Options:     []string{"A", "B", "C", "D"},
+			Answer:      answer,
+			Explanation: "seed",
+			Topic:       "variables",
+			Chapter:     "storage",
 		}
 	}
+	yamlRepo.AddBank("variables", "storage", testYAMLQuestions)
+
+	repoImpl := infrarepo.NewQuizRepository(database.Default())
+	svc := appquiz.NewService(yamlRepo, repoImpl)
 
 	// Configure JWT for tests
 	if err := appjwt.Configure(appjwt.Options{
@@ -82,6 +90,13 @@ func Test_QuizRandomness(t *testing.T) {
 	server.SetPort(0)
 	server.SetAccessLogEnabled(false)
 	h := handler.New()
+
+	// 注入quiz service到handler
+	type quizSetter interface{ SetQuizService(*appquiz.Service) }
+	if s, ok := interface{}(h).(quizSetter); ok {
+		s.SetQuizService(svc)
+	}
+
 	server.Group("/api/v1", func(group *ghttp.RouterGroup) {
 		group.POST("/auth/login", h.Login)
 		group.POST("/auth/register", middleware.Auth, h.Register)

@@ -205,6 +205,11 @@ func (h *Handler) getQuizService(r *ghttp.Request) (*appquiz.Service, bool) {
 	return svc, true
 }
 
+// SetQuizService 设置测验服务（用于测试依赖注入）
+func (h *Handler) SetQuizService(svc *appquiz.Service) {
+	h.quizService = svc
+}
+
 func (h *Handler) writeQuizError(r *ghttp.Request, err error) {
 	if err == nil {
 		return

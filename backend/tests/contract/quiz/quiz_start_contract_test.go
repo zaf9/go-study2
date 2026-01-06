@@ -12,7 +12,6 @@ import (
 	"go-study2/internal/app/http_server/handler"
 	appquiz "go-study2/internal/app/quiz"
 	"go-study2/internal/config"
-	quizdom "go-study2/internal/domain/quiz"
 	infrarepo "go-study2/internal/infra/repository"
 	"go-study2/internal/infrastructure/database"
 
@@ -36,13 +35,12 @@ func TestQuizStartContract_Run(t *testing.T) {
 	}
 	defer db.Close(ctx)
 
-	// Clear tables
-	if _, err := db.Exec(ctx, "DELETE FROM quiz_questions"); err != nil {
-		t.Fatalf("clear quiz_questions failed: %v", err)
-	}
+	// Clear tables（quiz_questions已废弃，题目从YAML加载）
 	if _, err := db.Exec(ctx, "DELETE FROM quiz_sessions"); err != nil {
 		t.Fatalf("clear quiz_sessions failed: %v", err)
 	}
+	// quiz_questions表不再使用，已迁移到YAML
+
 	now := time.Now()
 	// Insert a test user
 	if _, err := db.Model("users").Data(map[string]interface{}{
@@ -50,27 +48,16 @@ func TestQuizStartContract_Run(t *testing.T) {
 	}).Insert(); err != nil {
 		t.Fatalf("insert user failed: %v", err)
 	}
-	// Clear and seed a quiz question
-	seed := map[string]interface{}{
-		"topic":           "constants",
-		"chapter":         "boolean",
-		"type":            quizdom.QuestionTypeSingle,
-		"difficulty":      quizdom.DifficultyEasy,
-		"question":        "布尔常量有哪些？",
-		"options":         `["true","false"]`,
-		"correct_answers": `["A"]`,
-		"explanation":     "示例解析",
-		"created_at":      now,
-		"updated_at":      now,
-	}
-	if _, err := db.Model("quiz_questions").Data(seed).Insert(); err != nil {
-		t.Fatalf("insert seed failed: %v", err)
-	}
+	// Quiz questions now loaded from YAML, no need to seed database
 
 	// Start handler and inject service
 	h := handler.New()
+
+	// 创建YAML仓储并添加测试题目
+	yamlRepo := SetupTestYAMLRepository("constants", "boolean")
+
 	repoImpl := infrarepo.NewQuizRepository(db)
-	svc := appquiz.NewService(repoImpl)
+	svc := appquiz.NewService(yamlRepo, repoImpl)
 	// sanity call
 	if _, err := svc.GetQuizQuestions(gctx.New(), 1, "constants", "boolean"); err != nil {
 		t.Fatalf("service GetQuizQuestions failed: %v", err)

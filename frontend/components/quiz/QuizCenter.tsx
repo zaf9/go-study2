@@ -55,7 +55,7 @@ export default function QuizCenter() {
   }
 
   function handleCardClick(sessionId: string) {
-    router.push(`/quiz/history/${sessionId}`);
+    router.push(`/quiz/review?sessionId=${sessionId}`);
   }
 
   function handleClearFilter() {

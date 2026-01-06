@@ -260,8 +260,8 @@ describe("useQuiz Hook", () => {
                 chapter: "storage",
                 durationMs: expect.any(Number),
                 answers: [
-                    { questionId: 1, userAnswers: ["A"] },
-                    { questionId: 2, userAnswers: ["A", "D"] },
+                    { questionId: "1", userAnswers: ["A"] },
+                    { questionId: "2", userAnswers: ["A", "D"] },
                 ],
             });
 

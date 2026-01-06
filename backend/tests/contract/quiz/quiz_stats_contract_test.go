@@ -35,7 +35,16 @@ func TestQuizStatsContract(t *testing.T) {
 			Explanation:    "示例",
 		},
 	})
-	svc := appquiz.NewService(repo)
+
+	// 创建YAML仓储并添加测试题目（只有2道题，用于测试统计功能）
+	yamlRepo := quizdom.NewRepository()
+	testQuestions := []quizdom.YAMLQuestion{
+		{ID: "stats_q1", Type: "single", Difficulty: "easy", Stem: "Single choice", Options: []string{"A", "B"}, Answer: "A", Explanation: "exp", Topic: "constants", Chapter: "boolean"},
+		{ID: "stats_q2", Type: "multiple", Difficulty: "medium", Stem: "Multiple choice", Options: []string{"A", "B"}, Answer: "AB", Explanation: "exp", Topic: "constants", Chapter: "boolean"},
+	}
+	yamlRepo.AddBank("constants", "boolean", testQuestions)
+
+	svc := appquiz.NewService(yamlRepo, repo)
 	h := handler.New()
 	setQuizService(h, svc)
 

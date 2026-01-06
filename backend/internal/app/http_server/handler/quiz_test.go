@@ -13,6 +13,7 @@ import (
 
 	"go-study2/internal/app/http_server/middleware"
 	"go-study2/internal/config"
+	quizdom "go-study2/internal/domain/quiz"
 	"go-study2/internal/infrastructure/database"
 	appjwt "go-study2/internal/pkg/jwt"
 	"go-study2/internal/pkg/password"
@@ -46,6 +47,102 @@ func TestQuizHandlers_Flow(t *testing.T) {
 	if _, err := database.Init(ctx, cfg); err != nil {
 		t.Fatalf("初始化数据库失败: %v", err)
 	}
+
+	// 初始化 YAML 仓库并添加测试数据
+	// 注意：使用全局仓库单例
+	yamlRepo := quizdom.GetGlobalRepository()
+	testQuestions := []quizdom.YAMLQuestion{
+		{
+			ID:          "1",
+			Type:        "single",
+			Difficulty:  "easy",
+			Stem:        "What is the default value of int?",
+			Options:     []string{"0", "1", "nil", "undefined"},
+			Answer:      "A",
+			Explanation: "The default value is 0",
+			Topic:       "variables",
+			Chapter:     "storage",
+		},
+		{
+			ID:          "2",
+			Type:        "single",
+			Difficulty:  "easy",
+			Stem:        "Which keyword declares a variable?",
+			Options:     []string{"var", "let", "const", "val"},
+			Answer:      "A",
+			Explanation: "Go uses var to declare variables",
+			Topic:       "variables",
+			Chapter:     "storage",
+		},
+		{
+			ID:          "3",
+			Type:        "single",
+			Difficulty:  "easy",
+			Stem:        "Which is a value type?",
+			Options:     []string{"int", "slice", "map", "channel"},
+			Answer:      "A",
+			Explanation: "int is a value type",
+			Topic:       "variables",
+			Chapter:     "storage",
+		},
+		{
+			ID:          "4",
+			Type:        "single",
+			Difficulty:  "easy",
+			Stem:        "What is zero value for string?",
+			Options:     []string{`""`, "nil", "0", "false"},
+			Answer:      "A",
+			Explanation: "Empty string is zero value",
+			Topic:       "variables",
+			Chapter:     "storage",
+		},
+		{
+			ID:          "5",
+			Type:        "multiple",
+			Difficulty:  "medium",
+			Stem:        "Which are value types?",
+			Options:     []string{"int", "string", "slice", "array"},
+			Answer:      "A,B,D",
+			Explanation: "int, string, and array are value types",
+			Topic:       "variables",
+			Chapter:     "storage",
+		},
+		{
+			ID:          "6",
+			Type:        "multiple",
+			Difficulty:  "medium",
+			Stem:        "Which keywords declare variables?",
+			Options:     []string{"var", "const", ":=", "let"},
+			Answer:      "A,B,C",
+			Explanation: "var, const, and := are used in Go",
+			Topic:       "variables",
+			Chapter:     "storage",
+		},
+		{
+			ID:          "7",
+			Type:        "multiple",
+			Difficulty:  "medium",
+			Stem:        "Which are reference types?",
+			Options:     []string{"slice", "map", "channel", "int"},
+			Answer:      "A,B,C",
+			Explanation: "slice, map, and channel are reference types",
+			Topic:       "variables",
+			Chapter:     "storage",
+		},
+		{
+			ID:          "8",
+			Type:        "multiple",
+			Difficulty:  "medium",
+			Stem:        "Which can store multiple values?",
+			Options:     []string{"array", "slice", "map", "int"},
+			Answer:      "A,B,C",
+			Explanation: "array, slice, and map store multiple values",
+			Topic:       "variables",
+			Chapter:     "storage",
+		},
+	}
+	yamlRepo.AddBank("variables", "storage", testQuestions)
+
 	if err := appjwt.Configure(appjwt.Options{
 		Secret:             "abcdefabcdefabcdefabcdefabcdef12",
 		AccessTokenExpiry:  time.Hour,
@@ -133,14 +230,15 @@ func TestQuizHandlers_Flow(t *testing.T) {
 	}
 
 	first := quizData.Questions[0]
+	// 题目 ID 以字符串形式返回（避免 JavaScript 大整数精度问题）
+	idStr, ok := first["id"].(string)
+	if !ok || idStr == "" {
+		t.Fatalf("题目 ID 缺失或格式错误: %+v", first)
+	}
+	// 提取数字部分（从 "1" 转换为 1）
 	var qid int64
-	switch v := first["id"].(type) {
-	case float64:
-		qid = int64(v)
-	case int:
-		qid = int64(v)
-	case int64:
-		qid = v
+	if _, err := fmt.Sscanf(idStr, "%d", &qid); err != nil || qid == 0 {
+		t.Fatalf("题目 ID 无法解析为整数: %s", idStr)
 	}
 	if qid == 0 {
 		t.Fatalf("题目信息缺失")

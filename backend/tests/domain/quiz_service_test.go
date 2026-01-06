@@ -2,7 +2,6 @@ package domain
 
 import (
 	"context"
-	"encoding/json"
 	"errors"
 	"testing"
 	"time"
@@ -193,9 +192,13 @@ func createTestQuestions() []quizdom.QuizQuestion {
 func TestGetQuizQuestions_Success(t *testing.T) {
 	ctx := context.Background()
 	repo := newMockQuizRepository()
-	repo.questions = createTestQuestions()
 
-	svc := appquiz.NewService(repo)
+	// 创建YAML仓储并添加测试题目（至少4单选+4多选以支持随机抽题）
+	yamlRepo := quizdom.NewRepository()
+	testYAMLQuestions := createTestYAMLQuestions()
+	yamlRepo.AddBank("variables", "storage", testYAMLQuestions)
+
+	svc := appquiz.NewService(yamlRepo, repo)
 
 	// Test getting quiz questions
 	result, err := svc.GetQuizQuestions(ctx, 1, "variables", "storage")
@@ -219,7 +222,8 @@ func TestGetQuizQuestions_Success(t *testing.T) {
 func TestGetQuizQuestions_InvalidInput(t *testing.T) {
 	ctx := context.Background()
 	repo := newMockQuizRepository()
-	svc := appquiz.NewService(repo)
+	yamlRepo := quizdom.NewRepository()
+	svc := appquiz.NewService(yamlRepo, repo)
 
 	tests := []struct {
 		name    string
@@ -247,9 +251,10 @@ func TestGetQuizQuestions_InvalidInput(t *testing.T) {
 func TestGetQuizQuestions_NoQuestionsAvailable(t *testing.T) {
 	ctx := context.Background()
 	repo := newMockQuizRepository()
-	repo.questions = []quizdom.QuizQuestion{} // No questions
+	yamlRepo := quizdom.NewRepository()
+	// 不添加题目，模拟题库为空
 
-	svc := appquiz.NewService(repo)
+	svc := appquiz.NewService(yamlRepo, repo)
 
 	result, err := svc.GetQuizQuestions(ctx, 1, "variables", "storage")
 
@@ -262,49 +267,58 @@ func TestGetQuizQuestions_NoQuestionsAvailable(t *testing.T) {
 func TestLoadQuestions_RepositoryError(t *testing.T) {
 	ctx := context.Background()
 	repo := newMockQuizRepository()
-	repo.getQuestionsErr = errors.New("database error")
+	yamlRepo := quizdom.NewRepository()
 
-	svc := appquiz.NewService(repo)
+	svc := appquiz.NewService(yamlRepo, repo)
+	// YAML repository doesn't have the topic/chapter, so it should return ErrQuizUnauthorized
 
 	result, err := svc.GetQuizQuestions(ctx, 1, "variables", "storage")
 
 	assert.Error(t, err)
 	assert.Nil(t, result)
-	assert.Equal(t, "database error", err.Error())
+	assert.Equal(t, appquiz.ErrQuizUnavailable, err)
 }
 
 // T061: Test SubmitAnswers (via SubmitQuiz)
 func TestSubmitQuiz_AllCorrect(t *testing.T) {
 	ctx := context.Background()
 	repo := newMockQuizRepository()
-	repo.questions = createTestQuestions()
 
-	svc := appquiz.NewService(repo)
+	// 创建YAML仓储并添加测试题目
+	yamlRepo := quizdom.NewRepository()
+	testYAMLQuestions := createTestYAMLQuestions()
+	yamlRepo.AddBank("variables", "storage", testYAMLQuestions)
 
-	// First, get questions to create a session
+	svc := appquiz.NewService(yamlRepo, repo)
+
+	// Get the actual questions from the service
 	payload, err := svc.GetQuizQuestions(ctx, 1, "variables", "storage")
 	require.NoError(t, err)
 	sessionID := payload.SessionID
 
-	// Prepare correct answers based on the actual questions from repository
-	// Parse correct answers from JSON
-	correctAnswerMap := make(map[int64][]string)
-	for _, q := range repo.questions {
-		var answers []string
-		err := json.Unmarshal([]byte(q.CorrectAnswers), &answers)
-		require.NoError(t, err)
-		correctAnswerMap[q.ID] = answers
+	// Build a map of the returned question IDs to their correct answers
+	// Since we can't easily hash the YAML IDs, we'll use the Options field to identify questions
+	correctAnswerMap := make(map[string]string)
+	for _, yq := range testYAMLQuestions {
+		// Create a unique key from options to identify the question
+		key := yq.Stem
+		correctAnswerMap[key] = yq.Answer
 	}
 
-	// Create answers for the questions in the payload
+	// Submit correct answers based on actual YAML correct answers
 	answers := make([]appquiz.AnswerSubmission, 0, len(payload.Questions))
 	for _, q := range payload.Questions {
-		if correctAns, ok := correctAnswerMap[q.ID]; ok {
-			answers = append(answers, appquiz.AnswerSubmission{
-				QuestionID:  q.ID,
-				UserAnswers: correctAns,
-			})
+		// Use the question text to look up the correct answer
+		correctAnswer := correctAnswerMap[q.Question]
+		// Convert answer string to individual characters (e.g., "AB" -> ["A", "B"])
+		userAnswers := make([]string, 0, len(correctAnswer))
+		for _, ch := range correctAnswer {
+			userAnswers = append(userAnswers, string(ch))
 		}
+		answers = append(answers, appquiz.AnswerSubmission{
+			QuestionID:  q.ID,
+			UserAnswers: userAnswers,
+		})
 	}
 
 	// Submit quiz
@@ -327,33 +341,32 @@ func TestSubmitQuiz_AllCorrect(t *testing.T) {
 func TestSubmitQuiz_PartialCorrect(t *testing.T) {
 	ctx := context.Background()
 	repo := newMockQuizRepository()
-	repo.questions = createTestQuestions()
 
-	svc := appquiz.NewService(repo)
+	yamlRepo := quizdom.NewRepository()
+	testYAMLQuestions := createTestYAMLQuestions()
+	yamlRepo.AddBank("variables", "storage", testYAMLQuestions)
+
+	svc := appquiz.NewService(yamlRepo, repo)
 
 	// Get questions
 	payload, err := svc.GetQuizQuestions(ctx, 1, "variables", "storage")
 	require.NoError(t, err)
 	sessionID := payload.SessionID
 
-	// Prepare correct answers map
-	correctAnswerMap := make(map[int64][]string)
-	for _, q := range repo.questions {
-		var answers []string
-		err := json.Unmarshal([]byte(q.CorrectAnswers), &answers)
-		require.NoError(t, err)
-		correctAnswerMap[q.ID] = answers
-	}
-
 	// Prepare answers: half correct, half wrong
 	answers := make([]appquiz.AnswerSubmission, 0, len(payload.Questions))
 	for i, q := range payload.Questions {
 		if i%2 == 0 {
 			// Correct answer
-			if correctAns, ok := correctAnswerMap[q.ID]; ok {
+			if q.Type == "single" {
 				answers = append(answers, appquiz.AnswerSubmission{
 					QuestionID:  q.ID,
-					UserAnswers: correctAns,
+					UserAnswers: []string{"A"},
+				})
+			} else {
+				answers = append(answers, appquiz.AnswerSubmission{
+					QuestionID:  q.ID,
+					UserAnswers: []string{"A", "D"},
 				})
 			}
 		} else {
@@ -378,9 +391,12 @@ func TestSubmitQuiz_PartialCorrect(t *testing.T) {
 func TestSubmitQuiz_DuplicateSubmit(t *testing.T) {
 	ctx := context.Background()
 	repo := newMockQuizRepository()
-	repo.questions = createTestQuestions()
 
-	svc := appquiz.NewService(repo)
+	yamlRepo := quizdom.NewRepository()
+	testYAMLQuestions := createTestYAMLQuestions()
+	yamlRepo.AddBank("variables", "storage", testYAMLQuestions)
+
+	svc := appquiz.NewService(yamlRepo, repo)
 
 	// Get questions
 	payload, err := svc.GetQuizQuestions(ctx, 1, "variables", "storage")
@@ -388,20 +404,17 @@ func TestSubmitQuiz_DuplicateSubmit(t *testing.T) {
 	sessionID := payload.SessionID
 
 	// Prepare correct answers
-	correctAnswerMap := make(map[int64][]string)
-	for _, q := range repo.questions {
-		var answers []string
-		err := json.Unmarshal([]byte(q.CorrectAnswers), &answers)
-		require.NoError(t, err)
-		correctAnswerMap[q.ID] = answers
-	}
-
 	answers := make([]appquiz.AnswerSubmission, 0, len(payload.Questions))
 	for _, q := range payload.Questions {
-		if correctAns, ok := correctAnswerMap[q.ID]; ok {
+		if q.Type == "single" {
 			answers = append(answers, appquiz.AnswerSubmission{
 				QuestionID:  q.ID,
-				UserAnswers: correctAns,
+				UserAnswers: []string{"A"},
+			})
+		} else {
+			answers = append(answers, appquiz.AnswerSubmission{
+				QuestionID:  q.ID,
+				UserAnswers: []string{"A", "D"},
 			})
 		}
 	}
@@ -421,9 +434,12 @@ func TestSubmitQuiz_DuplicateSubmit(t *testing.T) {
 func TestSubmitQuiz_InvalidInput(t *testing.T) {
 	ctx := context.Background()
 	repo := newMockQuizRepository()
-	repo.questions = createTestQuestions()
 
-	svc := appquiz.NewService(repo)
+	yamlRepo := quizdom.NewRepository()
+	testYAMLQuestions := createTestYAMLQuestions()
+	yamlRepo.AddBank("variables", "storage", testYAMLQuestions)
+
+	svc := appquiz.NewService(yamlRepo, repo)
 
 	// Get a valid session first
 	payload, err := svc.GetQuizQuestions(ctx, 1, "variables", "storage")
@@ -459,7 +475,8 @@ func TestSubmitQuiz_InvalidInput(t *testing.T) {
 func TestSubmitQuiz_SessionNotFound(t *testing.T) {
 	ctx := context.Background()
 	repo := newMockQuizRepository()
-	svc := appquiz.NewService(repo)
+	yamlRepo := quizdom.NewRepository()
+	svc := appquiz.NewService(yamlRepo, repo)
 
 	answers := []appquiz.AnswerSubmission{
 		{QuestionID: 1, UserAnswers: []string{"A"}},
@@ -469,4 +486,18 @@ func TestSubmitQuiz_SessionNotFound(t *testing.T) {
 
 	assert.Error(t, err)
 	assert.Nil(t, result)
+}
+
+// createTestYAMLQuestions 创建YAML格式的测试题目
+func createTestYAMLQuestions() []quizdom.YAMLQuestion {
+	return []quizdom.YAMLQuestion{
+		{ID: "yq1", Type: "single", Difficulty: "easy", Stem: "What is the default value of int?", Options: []string{"0", "1", "nil", "undefined"}, Answer: "A", Explanation: "The default value is 0", Topic: "variables", Chapter: "storage"},
+		{ID: "yq2", Type: "single", Difficulty: "easy", Stem: "Single choice 2", Options: []string{"A1", "A2"}, Answer: "A", Explanation: "exp2", Topic: "variables", Chapter: "storage"},
+		{ID: "yq3", Type: "single", Difficulty: "easy", Stem: "Single choice 3", Options: []string{"B1", "B2"}, Answer: "A", Explanation: "exp3", Topic: "variables", Chapter: "storage"},
+		{ID: "yq4", Type: "single", Difficulty: "easy", Stem: "Single choice 4", Options: []string{"C1", "C2"}, Answer: "A", Explanation: "exp4", Topic: "variables", Chapter: "storage"},
+		{ID: "yq5", Type: "multiple", Difficulty: "medium", Stem: "Which are value types?", Options: []string{"int", "string", "slice", "array"}, Answer: "AD", Explanation: "int and array are value types", Topic: "variables", Chapter: "storage"},
+		{ID: "yq6", Type: "multiple", Difficulty: "medium", Stem: "Multiple choice 2", Options: []string{"A", "B", "C"}, Answer: "AB", Explanation: "exp6", Topic: "variables", Chapter: "storage"},
+		{ID: "yq7", Type: "multiple", Difficulty: "medium", Stem: "Multiple choice 3", Options: []string{"D", "E", "F"}, Answer: "AB", Explanation: "exp7", Topic: "variables", Chapter: "storage"},
+		{ID: "yq8", Type: "multiple", Difficulty: "medium", Stem: "Multiple choice 4", Options: []string{"G", "H", "I"}, Answer: "AB", Explanation: "exp8", Topic: "variables", Chapter: "storage"},
+	}
 }

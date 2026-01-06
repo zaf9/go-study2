@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"path/filepath"
+	"strings"
 	"testing"
 	"time"
 
@@ -58,36 +59,26 @@ func TestQuizHTTP_StartSubmitHistory(t *testing.T) {
 		t.Fatalf("insert test user failed: %v", err)
 	}
 
-	// 清理并插入自定义题目
-	if _, err := db.Exec(ctx, "DELETE FROM quiz_questions"); err != nil {
-		t.Fatalf("clear quiz_questions failed: %v", err)
-	}
-
-	seed := []map[string]interface{}{
-		{
-			"topic":           "variables",
-			"chapter":         "storage",
-			"type":            quizdom.QuestionTypeSingle,
-			"difficulty":      quizdom.DifficultyEasy,
-			"question":        "变量存储类型是？",
-			"options":         `["栈","堆"]`,
-			"correct_answers": `["A"]`,
-			"explanation":     "示例",
-			"created_at":      now,
-			"updated_at":      now,
-		},
-	}
-	for _, r := range seed {
-		if _, err := db.Model("quiz_questions").Data(r).Insert(); err != nil {
-			t.Fatalf("insert seed failed: %v", err)
-		}
-	}
-
 	// 使用独立 ghttp.Server 并注入真实服务到 handler（避免全局中间件/认证影响）
 	h := handler.New()
+
+	// 创建YAML仓储并添加测试题目（至少4单选+4多选）
+	yamlRepo := quizdom.NewRepository()
+	testYAMLQuestions := []quizdom.YAMLQuestion{
+		{ID: "vs1", Type: "single", Difficulty: "easy", Stem: "变量存储类型是?", Options: []string{"栈", "堆", "寄存器", "内存"}, Answer: "A", Explanation: "变量通常存储在栈上", Topic: "variables", Chapter: "storage"},
+		{ID: "vs2", Type: "single", Difficulty: "easy", Stem: "Single 2", Options: []string{"A", "B"}, Answer: "A", Explanation: "exp2", Topic: "variables", Chapter: "storage"},
+		{ID: "vs3", Type: "single", Difficulty: "easy", Stem: "Single 3", Options: []string{"A", "B"}, Answer: "A", Explanation: "exp3", Topic: "variables", Chapter: "storage"},
+		{ID: "vs4", Type: "single", Difficulty: "easy", Stem: "Single 4", Options: []string{"A", "B"}, Answer: "A", Explanation: "exp4", Topic: "variables", Chapter: "storage"},
+		{ID: "vs5", Type: "multiple", Difficulty: "medium", Stem: "Multiple 1", Options: []string{"A", "B", "C"}, Answer: "AB", Explanation: "exp5", Topic: "variables", Chapter: "storage"},
+		{ID: "vs6", Type: "multiple", Difficulty: "medium", Stem: "Multiple 2", Options: []string{"A", "B", "C"}, Answer: "AB", Explanation: "exp6", Topic: "variables", Chapter: "storage"},
+		{ID: "vs7", Type: "multiple", Difficulty: "medium", Stem: "Multiple 3", Options: []string{"A", "B", "C"}, Answer: "AB", Explanation: "exp7", Topic: "variables", Chapter: "storage"},
+		{ID: "vs8", Type: "multiple", Difficulty: "medium", Stem: "Multiple 4", Options: []string{"A", "B", "C"}, Answer: "AB", Explanation: "exp8", Topic: "variables", Chapter: "storage"},
+	}
+	yamlRepo.AddBank("variables", "storage", testYAMLQuestions)
+
 	// 构造 DB-backed repository 并创建服务
 	repoImpl := infrarepo.NewQuizRepository(db)
-	svc := appquiz.NewService(repoImpl)
+	svc := appquiz.NewService(yamlRepo, repoImpl)
 	// 预先调用服务验证抽题流程是否可用（便于定位错误）
 	if _, err := svc.GetQuizQuestions(gctx.New(), 1, "variables", "storage"); err != nil {
 		t.Fatalf("service GetQuizQuestions failed: %v", err)
@@ -137,11 +128,26 @@ func TestQuizHTTP_StartSubmitHistory(t *testing.T) {
 	if len(questions) == 0 {
 		t.Fatalf("no questions in response: %v", resp)
 	}
-	firstQuestion, _ := questions[0].(map[string]interface{})
-	questionId, _ := firstQuestion["id"].(float64)
+	// 构建所有题目的答案
+	var answers []string
+	for _, q := range questions {
+		questionMap, _ := q.(map[string]interface{})
+		// id字段是字符串（避免JavaScript大整数精度问题）
+		idStr, _ := questionMap["id"].(string)
+		// 将字符串转换为int64
+		var questionId int64
+		if _, err := fmt.Sscanf(idStr, "%d", &questionId); err != nil {
+			t.Fatalf("invalid question id format: %s", idStr)
+		}
+		answers = append(answers, fmt.Sprintf(`{"questionId":%d,"userAnswers":["A"]}`, questionId))
+	}
+	answersJSON := fmt.Sprintf("[%s]", strings.Join(answers, ","))
 
-	// 提交答案
-	body := fmt.Sprintf(`{"sessionId":"%s","topic":"variables","chapter":"storage","durationMs":5000,"answers":[{"questionId":%d,"userAnswers":["A"]}]}`, sid, int(questionId))
+	t.Logf("Got %d questions from GetQuiz", len(questions))
+	t.Logf("Submitting %d answers", len(answers))
+
+	// 提交所有题目的答案
+	body := fmt.Sprintf(`{"sessionId":"%s","topic":"variables","chapter":"storage","durationMs":5000,"answers":%s}`, sid, answersJSON)
 	req2 := httptest.NewRequest(http.MethodPost, "/api/v1/quiz/submit", bytes.NewBufferString(body))
 	req2.Header.Set("Content-Type", "application/json")
 	req2.Header.Set("X-User-ID", "1")

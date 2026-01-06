@@ -137,14 +137,14 @@ export default function QuizPageClient({
                             <>
                                 <QuizQuestionCard
                                     question={{
-                                        id: Number(questions[currentIndex].id),
+                                        id: questions[currentIndex].id,
                                         type: questions[currentIndex].type ?? "single",
                                         difficulty: questions[currentIndex].difficulty ?? "easy",
                                         question: questions[currentIndex].stem,
                                         options: questions[currentIndex].options,
                                         codeSnippet: questions[currentIndex].codeSnippet,
                                     }}
-                                    value={answers[Number(questions[currentIndex].id)] ?? []}
+                                    value={answers[questions[currentIndex].id] ?? []}
                                     onChange={(val) => selectAnswer(questions[currentIndex].id, val)}
                                 />
                                 <QuizNavigation

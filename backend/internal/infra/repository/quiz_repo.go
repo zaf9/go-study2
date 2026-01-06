@@ -5,11 +5,9 @@ import (
 	quizdom "go-study2/internal/domain/quiz"
 )
 
-// IQuizRepository 定义了测验相关的仓储操作接口。
-type IQuizRepository interface {
-	// GetQuestionsByChapter 获取指定章节的题目。
-	GetQuestionsByChapter(ctx context.Context, topic, chapter string) ([]quizdom.QuizQuestion, error)
-
+// IQuizSessionRepository 定义了测验会话与答题记录相关的仓储操作接口。
+// 注意：题目数据由 YAML 文件管理，不再通过数据库获取。
+type IQuizSessionRepository interface {
 	// CreateSession 创建一个新的测验会话。
 	CreateSession(ctx context.Context, session *quizdom.QuizSession) (string, error)
 

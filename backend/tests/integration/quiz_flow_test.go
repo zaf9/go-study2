@@ -13,6 +13,7 @@ import (
 
 	"go-study2/internal/app/http_server"
 	"go-study2/internal/config"
+	quizdom "go-study2/internal/domain/quiz"
 	"go-study2/internal/domain/user"
 	"go-study2/internal/infrastructure/database"
 	appjwt "go-study2/internal/pkg/jwt"
@@ -57,6 +58,17 @@ func TestQuizFlow_EndToEnd(t *testing.T) {
 	}); err != nil {
 		t.Fatalf("配置 JWT 失败: %v", err)
 	}
+
+	// 初始化全局YAML题库（使用项目的quiz_data目录）
+	quizDataPath := filepath.Join("..", "..", "quiz_data")
+	if _, err := os.Stat(quizDataPath); os.IsNotExist(err) {
+		// 如果默认路径不存在，尝试绝对路径
+		quizDataPath = filepath.Join("backend", "quiz_data")
+	}
+	if err := quizdom.InitializeGlobalRepository(quizDataPath); err != nil {
+		t.Fatalf("初始化题库失败: %v", err)
+	}
+	t.Logf("题库已从 %s 加载", quizDataPath)
 
 	server, err := http_server.NewServer(cfg, "quiz-integration")
 	if err != nil {
@@ -129,29 +141,35 @@ func TestQuizFlow_EndToEnd(t *testing.T) {
 		SessionID string                   `json:"sessionId"`
 		Questions []map[string]interface{} `json:"questions"`
 	}
-	_ = json.Unmarshal(quizResp.Data, &quizData)
+	if err := json.Unmarshal(quizResp.Data, &quizData); err != nil {
+		t.Fatalf("解析题目响应失败: %v, 原始数据: %s", err, string(quizResp.Data))
+	}
 	if quizData.SessionID == "" {
-		t.Fatalf("题目响应缺少 sessionId")
+		t.Fatalf("题目响应缺少 sessionId, 原始数据: %s", string(quizResp.Data))
 	}
 	if len(quizData.Questions) == 0 {
 		t.Fatalf("题目列表为空")
 	}
 	first := quizData.Questions[0]
-	var qid int64
+
+	// 题目ID可能是字符串（YAML题目的hash ID转为字符串）或数字
+	var qidStr string
 	switch v := first["id"].(type) {
+	case string:
+		qidStr = v
 	case float64:
-		qid = int64(v)
+		qidStr = fmt.Sprintf("%.0f", v)
 	case int:
-		qid = int64(v)
+		qidStr = fmt.Sprintf("%d", v)
 	case int64:
-		qid = v
+		qidStr = fmt.Sprintf("%d", v)
 	}
-	if qid == 0 {
-		t.Fatalf("题目信息不完整")
+	if qidStr == "" || qidStr == "0" {
+		t.Fatalf("题目信息不完整, ID为空或0, first question: %+v", first)
 	}
 	answerChoice := "A"
 
-	submitBody := fmt.Sprintf(`{"sessionId":"%s","topic":"variables","chapter":"storage","durationMs":5000,"answers":[{"questionId":%d,"userAnswers":["%s"]}]}`, quizData.SessionID, qid, answerChoice)
+	submitBody := fmt.Sprintf(`{"sessionId":"%s","topic":"variables","chapter":"storage","durationMs":5000,"answers":[{"questionId":%s,"userAnswers":["%s"]}]}`, quizData.SessionID, qidStr, answerChoice)
 	submitReq, _ := http.NewRequest(http.MethodPost, baseURL+"/api/v1/quiz/submit", bytes.NewBufferString(submitBody))
 	submitReq.Header.Set("Content-Type", "application/json")
 	submitReq.Header.Set("Authorization", "Bearer "+access)

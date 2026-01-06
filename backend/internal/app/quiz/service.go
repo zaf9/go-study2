@@ -29,9 +29,8 @@ var ErrQuizUnavailable = errors.New("当前章节暂无测验")
 // ErrDuplicateSubmit 表示重复提交同一 session。
 var ErrDuplicateSubmit = errors.New("重复提交会话")
 
-// QuizRepository 抽象测验持久化操作，便于替换与测试。
-type QuizRepository interface {
-	GetQuestionsByChapter(ctx context.Context, topic, chapter string) ([]quizdom.QuizQuestion, error)
+// SessionRepository 抽象测验会话持久化操作（仅负责session/attempt，不负责题目）
+type SessionRepository interface {
 	CreateSession(ctx context.Context, session *quizdom.QuizSession) (string, error)
 	SaveAttempts(ctx context.Context, attempts []quizdom.QuizAttempt) error
 	GetHistory(ctx context.Context, userID int64, topic string, limit int) ([]quizdom.QuizSession, error)
@@ -42,20 +41,22 @@ type QuizRepository interface {
 
 // Service 提供测验题目获取与提交判分。
 type Service struct {
-	repo       QuizRepository
-	manager    *QuestionManager
-	scorer     *ScoringEngine
-	submitted  map[string]struct{}
-	submitLock sync.Mutex
+	yamlRepo    *quizdom.QuizRepository // YAML内存仓储（题目来源）
+	sessionRepo SessionRepository       // 数据库仓储（会话历史）
+	manager     *QuestionManager
+	scorer      *ScoringEngine
+	submitted   map[string]struct{}
+	submitLock  sync.Mutex
 }
 
 // NewService 创建测验服务。
-func NewService(repo QuizRepository) *Service {
+func NewService(yamlRepo *quizdom.QuizRepository, sessionRepo SessionRepository) *Service {
 	return &Service{
-		repo:      repo,
-		manager:   NewQuestionManager(),
-		scorer:    NewScoringEngine(),
-		submitted: map[string]struct{}{},
+		yamlRepo:    yamlRepo,
+		sessionRepo: sessionRepo,
+		manager:     NewQuestionManager(),
+		scorer:      NewScoringEngine(),
+		submitted:   map[string]struct{}{},
 	}
 }
 
@@ -91,11 +92,13 @@ func (s *Service) GetQuizQuestions(ctx context.Context, userID int64, topic, cha
 		return nil, ErrInvalidInput
 	}
 
-	records, err := s.repo.GetQuestionsByChapter(ctx, topic, chapter)
-	if err != nil {
-		return nil, err
+	// 从YAML内存仓储读取题目
+	yamlQuestions, ok := s.yamlRepo.GetBank(topic, chapter)
+	if !ok || len(yamlQuestions) == 0 {
+		return nil, ErrQuizUnavailable
 	}
-	prepared, _, err := s.manager.Prepare(records)
+
+	prepared, _, err := s.manager.PrepareFromYAML(yamlQuestions)
 	if err != nil {
 		return nil, err
 	}
@@ -205,7 +208,7 @@ func (s *Service) GetQuizQuestions(ctx context.Context, userID int64, topic, cha
 		TotalQuestions: len(selectedViews),
 		StartedAt:      time.Now(),
 	}
-	sessionID, err := s.repo.CreateSession(ctx, session)
+	sessionID, err := s.sessionRepo.CreateSession(ctx, session)
 	if err != nil {
 		return nil, err
 	}
@@ -267,7 +270,7 @@ func (s *Service) SubmitQuiz(ctx context.Context, userID int64, sessionID, topic
 	}
 
 	// 先检查数据库中的 session 状态，避免内存检查的竞态条件
-	existing, err := s.repo.GetSession(ctx, sessionID)
+	existing, err := s.sessionRepo.GetSession(ctx, sessionID)
 	if err != nil {
 		logger.LogWithFields(ctx, "ERROR", "quiz.submit.get_session_failed", map[string]interface{}{
 			"user_id":    userID,
@@ -359,38 +362,21 @@ func (s *Service) SubmitQuiz(ctx context.Context, userID int64, sessionID, topic
 		return nil, ErrInvalidInput
 	}
 
-	// 只获取用户提交答案对应的题目，而不是章节的所有题目
-	records, err := s.repo.GetQuestionsByChapter(ctx, topic, chapter)
-	if err != nil {
+	// 从YAML内存仓储获取题目（用于评分）
+	yamlQuestions, ok := s.yamlRepo.GetBank(topic, chapter)
+	if !ok || len(yamlQuestions) == 0 {
 		logger.LogWithFields(ctx, "ERROR", "quiz.submit.get_questions_failed", map[string]interface{}{
 			"user_id":    userID,
 			"session_id": sessionID,
 			"topic":      topic,
 			"chapter":    chapter,
-			"error":      err.Error(),
+			"error":      "题库不存在或为空",
 		})
-		return nil, err
-	}
-	// 筛选出实际测试的题目（用户提交答案的题目）
-	var testRecords []quizdom.QuizQuestion
-	for _, r := range records {
-		if _, ok := questionIDs[r.ID]; ok {
-			testRecords = append(testRecords, r)
-		}
-	}
-	if len(testRecords) == 0 {
-		logger.LogWithFields(ctx, "WARNING", "quiz.submit.no_test_records", map[string]interface{}{
-			"user_id":         userID,
-			"session_id":      sessionID,
-			"topic":           topic,
-			"chapter":         chapter,
-			"submitted_count": submittedCount,
-			"total_records":   len(records),
-		})
-		return nil, ErrInvalidInput
+		return nil, ErrQuizUnavailable
 	}
 
-	prepared, _, err := s.manager.Prepare(testRecords)
+	// 转换YAML题目并筛选出用户提交答案对应的题目
+	allPrepared, _, err := s.manager.PrepareFromYAML(yamlQuestions)
 	if err != nil {
 		logger.LogWithFields(ctx, "ERROR", "quiz.submit.prepare_questions_failed", map[string]interface{}{
 			"user_id":    userID,
@@ -400,6 +386,42 @@ func (s *Service) SubmitQuiz(ctx context.Context, userID int64, sessionID, topic
 			"error":      err.Error(),
 		})
 		return nil, err
+	}
+
+	// 筛选出实际测试的题目（用户提交答案的题目）
+	var prepared []PreparedQuestion
+	for _, p := range allPrepared {
+		if _, ok := questionIDs[p.View.ID]; ok {
+			prepared = append(prepared, p)
+		}
+	}
+
+	// 临时调试：记录questionIds和viewIDs
+	if len(prepared) == 0 {
+		viewIDs := make([]int64, 0, len(allPrepared))
+		for _, p := range allPrepared {
+			viewIDs = append(viewIDs, p.View.ID)
+		}
+		submittedIDs := make([]int64, 0, len(questionIDs))
+		for id := range questionIDs {
+			submittedIDs = append(submittedIDs, id)
+		}
+		logger.LogWithFields(ctx, "DEBUG", "quiz.submit.id_mismatch", map[string]interface{}{
+			"view_ids":      viewIDs,
+			"submitted_ids": submittedIDs,
+		})
+	}
+
+	if len(prepared) == 0 {
+		logger.LogWithFields(ctx, "WARNING", "quiz.submit.no_test_records", map[string]interface{}{
+			"user_id":         userID,
+			"session_id":      sessionID,
+			"topic":           topic,
+			"chapter":         chapter,
+			"submitted_count": submittedCount,
+			"total_yaml":      len(yamlQuestions),
+		})
+		return nil, ErrInvalidInput
 	}
 
 	// 使用实际测试的题目数量进行评分
@@ -432,7 +454,7 @@ func (s *Service) SubmitQuiz(ctx context.Context, userID int64, sessionID, topic
 			AttemptedAt: time.Now(),
 		})
 	}
-	if err := s.repo.SaveAttempts(ctx, attempts); err != nil {
+	if err := s.sessionRepo.SaveAttempts(ctx, attempts); err != nil {
 		logger.LogWithFields(ctx, "ERROR", "quiz.submit.save_attempts_failed", map[string]interface{}{
 			"user_id":    userID,
 			"session_id": sessionID,
@@ -443,7 +465,7 @@ func (s *Service) SubmitQuiz(ctx context.Context, userID int64, sessionID, topic
 		})
 		return nil, err
 	}
-	if err := s.repo.UpdateSessionResult(ctx, sessionID, score.CorrectAnswers, score.Score, score.Passed); err != nil {
+	if err := s.sessionRepo.UpdateSessionResult(ctx, sessionID, score.CorrectAnswers, score.Score, score.Passed); err != nil {
 		logger.LogWithFields(ctx, "ERROR", "quiz.submit.update_session_failed", map[string]interface{}{
 			"user_id":         userID,
 			"session_id":      sessionID,
@@ -484,7 +506,7 @@ func (s *Service) GetQuizHistory(ctx context.Context, userID int64, topic string
 	if topic != "" && !quizdom.IsSupportedTopic(topic) {
 		return nil, ErrInvalidInput
 	}
-	return s.repo.GetHistory(ctx, userID, strings.TrimSpace(topic), limit)
+	return s.sessionRepo.GetHistory(ctx, userID, strings.TrimSpace(topic), limit)
 }
 
 // GetStats 返回指定 topic/chapter 的题库统计信息
@@ -494,18 +516,21 @@ func (s *Service) GetStats(ctx context.Context, topic, chapter string) (*QuizSta
 	if !quizdom.IsSupportedTopic(topic) || chapter == "" {
 		return nil, ErrInvalidInput
 	}
-	records, err := s.repo.GetQuestionsByChapter(ctx, topic, chapter)
-	if err != nil {
-		return nil, err
+
+	// 从YAML内存仓储获取题目统计
+	yamlQuestions, ok := s.yamlRepo.GetBank(topic, chapter)
+	if !ok {
+		return nil, ErrQuizUnavailable
 	}
+
 	stats := &QuizStats{
-		Total:        len(records),
+		Total:        len(yamlQuestions),
 		ByType:       map[string]int{},
 		ByDifficulty: map[string]int{},
 	}
-	for _, r := range records {
-		stats.ByType[r.Type]++
-		stats.ByDifficulty[r.Difficulty]++
+	for _, q := range yamlQuestions {
+		stats.ByType[q.Type]++
+		stats.ByDifficulty[q.Difficulty]++
 	}
 	return stats, nil
 }
@@ -562,7 +587,7 @@ func (s *Service) GetRecentQuizzes(ctx context.Context, userID int64, limit int)
 	}
 
 	// 获取测验历史（只获取已完成的）
-	sessions, err := s.repo.GetHistory(ctx, userID, "", limit*2) // 获取更多，然后过滤已完成的
+	sessions, err := s.sessionRepo.GetHistory(ctx, userID, "", limit*2) // 获取更多，然后过滤已完成的
 	if err != nil {
 		return nil, err
 	}
@@ -643,7 +668,7 @@ func (s *Service) GetQuizReview(ctx context.Context, userID int64, sessionID str
 	}
 
 	// 获取会话信息
-	session, err := s.repo.GetSession(ctx, sessionID)
+	session, err := s.sessionRepo.GetSession(ctx, sessionID)
 	if err != nil {
 		return nil, err
 	}
@@ -657,21 +682,26 @@ func (s *Service) GetQuizReview(ctx context.Context, userID int64, sessionID str
 	}
 
 	// 获取答题记录
-	attempts, err := s.repo.GetAttemptsBySession(ctx, sessionID)
+	attempts, err := s.sessionRepo.GetAttemptsBySession(ctx, sessionID)
 	if err != nil {
 		return nil, err
 	}
 
-	// 获取题目信息
-	records, err := s.repo.GetQuestionsByChapter(ctx, session.Topic, session.Chapter)
+	// 从YAML内存仓储获取题目信息
+	yamlQuestions, ok := s.yamlRepo.GetBank(session.Topic, session.Chapter)
+	if !ok || len(yamlQuestions) == 0 {
+		return nil, ErrQuizUnavailable
+	}
+
+	// 转换YAML题目并构建题目映射
+	allPrepared, _, err := s.manager.PrepareFromYAML(yamlQuestions)
 	if err != nil {
 		return nil, err
 	}
 
-	// 构建题目映射
-	questionMap := make(map[int64]quizdom.QuizQuestion)
-	for _, r := range records {
-		questionMap[r.ID] = r
+	questionMap := make(map[int64]PreparedQuestion)
+	for _, p := range allPrepared {
+		questionMap[p.View.ID] = p
 	}
 
 	// 构建回顾详情
@@ -691,16 +721,10 @@ func (s *Service) GetQuizReview(ctx context.Context, userID int64, sessionID str
 			continue
 		}
 
-		// 解析选项
-		var options []string
-		if err := json.Unmarshal([]byte(question.Options), &options); err != nil {
-			continue
-		}
-
-		// 解析正确答案
-		var correctAnswers []string
-		if err := json.Unmarshal([]byte(question.CorrectAnswers), &correctAnswers); err != nil {
-			continue
+		// PreparedQuestion 已包含完整的选项和答案信息
+		options := make([]string, len(question.View.Options))
+		for i, opt := range question.View.Options {
+			options[i] = opt.Label
 		}
 
 		// 解析用户答案
@@ -727,10 +751,10 @@ func (s *Service) GetQuizReview(ctx context.Context, userID int64, sessionID str
 		}
 
 		correctChoice := ""
-		if len(correctAnswers) > 0 {
-			// correctAnswers 存储的是选项标签（如 "A", "B"）
-			correctContents := make([]string, 0, len(correctAnswers))
-			for _, ans := range correctAnswers {
+		if len(question.CorrectAnswer) > 0 {
+			// CorrectAnswer 存储的是选项标签（如 "A", "B"）
+			correctContents := make([]string, 0, len(question.CorrectAnswer))
+			for _, ans := range question.CorrectAnswer {
 				ans = strings.ToUpper(strings.TrimSpace(ans))
 				if idx := strings.Index("ABCDEFGHIJKLMNOPQRSTUVWXYZ", ans); idx >= 0 && idx < len(options) {
 					correctContents = append(correctContents, options[idx])
@@ -740,8 +764,8 @@ func (s *Service) GetQuizReview(ctx context.Context, userID int64, sessionID str
 		}
 
 		items = append(items, QuizReviewItem{
-			QuestionID:    question.ID,
-			Stem:          question.Question,
+			QuestionID:    question.View.ID,
+			Stem:          question.View.Question,
 			Options:       options,
 			UserChoice:    userChoice,
 			CorrectChoice: correctChoice,

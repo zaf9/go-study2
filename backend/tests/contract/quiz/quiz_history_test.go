@@ -108,8 +108,12 @@ func TestQuizHistoryContract(t *testing.T) {
 
 	// 创建 handler 和服务
 	h := handler.New()
+
+	// 创建YAML仓储并添加测试题目
+	yamlRepo := SetupTestYAMLRepository("constants", "boolean")
+
 	repoImpl := infrarepo.NewQuizRepository(db)
-	svc := appquiz.NewService(repoImpl)
+	svc := appquiz.NewService(yamlRepo, repoImpl)
 	setQuizService(h, svc)
 
 	// 创建测试服务器

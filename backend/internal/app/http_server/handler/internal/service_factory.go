@@ -5,6 +5,7 @@ import (
 
 	progapp "go-study2/internal/app/progress"
 	appquiz "go-study2/internal/app/quiz"
+	quizdom "go-study2/internal/domain/quiz"
 	"go-study2/internal/domain/user"
 	infrarepo "go-study2/internal/infra/repository"
 	"go-study2/internal/infrastructure/database"
@@ -37,5 +38,15 @@ func BuildQuizService() (*appquiz.Service, error) {
 	if db == nil {
 		return nil, errors.New("数据库未初始化")
 	}
-	return appquiz.NewService(infrarepo.NewQuizRepository(db)), nil
+
+	// YAML 题库由全局单例提供，在 main.go 中初始化
+	yamlRepo := quizdom.GetGlobalRepository()
+	if yamlRepo == nil {
+		return nil, errors.New("YAML 题库未初始化")
+	}
+
+	// 会话和答题记录仍存储在数据库
+	sessionRepo := infrarepo.NewQuizRepository(db)
+
+	return appquiz.NewService(yamlRepo, sessionRepo), nil
 }

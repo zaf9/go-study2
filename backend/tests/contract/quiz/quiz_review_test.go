@@ -13,7 +13,6 @@ import (
 	"go-study2/internal/app/http_server/middleware"
 	appquiz "go-study2/internal/app/quiz"
 	"go-study2/internal/config"
-	quizdom "go-study2/internal/domain/quiz"
 	infrarepo "go-study2/internal/infra/repository"
 	"go-study2/internal/infrastructure/database"
 	appjwt "go-study2/internal/pkg/jwt"
@@ -38,16 +37,14 @@ func TestQuizReviewContract(t *testing.T) {
 	}
 	defer db.Close(ctx)
 
-	// 清理表
+	// 清理表（quiz_questions已废弃，题目从YAML加载）
 	if _, err := db.Exec(ctx, "DELETE FROM quiz_attempts"); err != nil {
 		t.Fatalf("清理 quiz_attempts 失败: %v", err)
 	}
 	if _, err := db.Exec(ctx, "DELETE FROM quiz_sessions"); err != nil {
 		t.Fatalf("清理 quiz_sessions 失败: %v", err)
 	}
-	if _, err := db.Exec(ctx, "DELETE FROM quiz_questions"); err != nil {
-		t.Fatalf("清理 quiz_questions 失败: %v", err)
-	}
+	// quiz_questions表不再使用，已迁移到YAML
 
 	// 插入测试用户
 	now := time.Now()
@@ -57,60 +54,8 @@ func TestQuizReviewContract(t *testing.T) {
 	}).Insert(); err != nil {
 		t.Fatalf("插入用户失败: %v", err)
 	}
-
-	// 插入测试题目
-	questionSeed := map[string]interface{}{
-		"topic":           "constants",
-		"chapter":         "boolean",
-		"type":            quizdom.QuestionTypeSingle,
-		"difficulty":      quizdom.DifficultyEasy,
-		"question":        "布尔常量的零值是？",
-		"options":         `["false","true"]`,
-		"correct_answers": `["A"]`,
-		"explanation":     "布尔类型的零值是 false",
-		"created_at":      now,
-		"updated_at":      now,
-	}
-	result, err := db.Model("quiz_questions").Data(questionSeed).Insert()
-	if err != nil {
-		t.Fatalf("插入题目失败: %v", err)
-	}
-	questionID, _ := result.LastInsertId()
-
-	// 插入测试会话
-	completedAt := now.Add(10 * time.Minute)
-	sessionID := "session-review-1"
-	sessionData := map[string]interface{}{
-		"session_id":      sessionID,
-		"user_id":         1,
-		"topic":           "constants",
-		"chapter":         "boolean",
-		"total_questions": 1,
-		"correct_answers": 1,
-		"score":           100,
-		"passed":          true,
-		"started_at":      now,
-		"completed_at":    completedAt,
-		"created_at":      now,
-	}
-	if _, err := db.Model("quiz_sessions").Data(sessionData).Insert(); err != nil {
-		t.Fatalf("插入会话失败: %v", err)
-	}
-
-	// 插入测试答题记录
-	attemptData := map[string]interface{}{
-		"session_id":   sessionID,
-		"user_id":      1,
-		"topic":        "constants",
-		"chapter":      "boolean",
-		"question_id":  questionID,
-		"user_answers": `["false"]`,
-		"is_correct":   true,
-		"attempted_at": now.Add(5 * time.Minute),
-	}
-	if _, err := db.Model("quiz_attempts").Data(attemptData).Insert(); err != nil {
-		t.Fatalf("插入答题记录失败: %v", err)
-	}
+	// Quiz questions now loaded from YAML, no need to insert into database
+	// Quiz session and attempts will be created by service calls below
 
 	// 插入 refresh_token 记录（用于 Auth 中间件验证）
 	if _, err := db.Model("refresh_tokens").Data(map[string]interface{}{
@@ -133,9 +78,41 @@ func TestQuizReviewContract(t *testing.T) {
 
 	// 创建 handler 和服务
 	h := handler.New()
+
+	// 创建YAML仓储并添加测试题目
+	yamlRepo := SetupTestYAMLRepository("constants", "boolean")
+
 	repoImpl := infrarepo.NewQuizRepository(db)
-	svc := appquiz.NewService(repoImpl)
+	svc := appquiz.NewService(yamlRepo, repoImpl)
 	setQuizService(h, svc)
+
+	// 创建一个真实的测验会话和答题记录
+	quizPayload, err := svc.GetQuizQuestions(ctx, 1, "constants", "boolean")
+	if err != nil {
+		t.Fatalf("获取测验题目失败: %v", err)
+	}
+	sessionID := quizPayload.SessionID
+
+	// 提交所有题目的正确答案
+	answers := make([]appquiz.AnswerSubmission, 0, len(quizPayload.Questions))
+	for _, q := range quizPayload.Questions {
+		// 对于测试题库，所有单选题答案都是"A"，多选题答案都是"AB"
+		if q.Type == "single" {
+			answers = append(answers, appquiz.AnswerSubmission{
+				QuestionID:  q.ID,
+				UserAnswers: []string{"A"},
+			})
+		} else {
+			answers = append(answers, appquiz.AnswerSubmission{
+				QuestionID:  q.ID,
+				UserAnswers: []string{"A", "B"},
+			})
+		}
+	}
+	_, err = svc.SubmitQuiz(ctx, 1, sessionID, "constants", "boolean", answers)
+	if err != nil {
+		t.Fatalf("提交测验失败: %v", err)
+	}
 
 	// 创建测试服务器
 	s := ghttp.GetServer(fmt.Sprintf("quiz-review-contract-%d", time.Now().UnixNano()))

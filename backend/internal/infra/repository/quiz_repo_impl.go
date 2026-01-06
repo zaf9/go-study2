@@ -11,29 +11,18 @@ import (
 	"github.com/google/uuid"
 )
 
-// quizRepository 是 IQuizRepository 的 GoFrame gdb 实现。
-type quizRepository struct {
+// quizSessionRepository ? IQuizSessionRepository ? GoFrame gdb ???
+type quizSessionRepository struct {
 	db gdb.DB
 }
 
-// NewQuizRepository 创建一个测验仓储实例。
-func NewQuizRepository(db gdb.DB) IQuizRepository {
-	return &quizRepository{db: db}
+// NewQuizRepository ?????????????
+func NewQuizRepository(db gdb.DB) IQuizSessionRepository {
+	return &quizSessionRepository{db: db}
 }
 
-// GetQuestionsByChapter 获取指定章节的题目。
-func (r *quizRepository) GetQuestionsByChapter(ctx context.Context, topic, chapter string) ([]quizdom.QuizQuestion, error) {
-	var items []quizdom.QuizQuestion
-	err := r.db.Model("quiz_questions").
-		Where("topic", topic).
-		Where("chapter", chapter).
-		OrderAsc("id").
-		Scan(&items)
-	return items, err
-}
-
-// CreateSession 创建一个新的测验会话。
-func (r *quizRepository) CreateSession(ctx context.Context, session *quizdom.QuizSession) (string, error) {
+// CreateSession ???????????
+func (r *quizSessionRepository) CreateSession(ctx context.Context, session *quizdom.QuizSession) (string, error) {
 	if session == nil {
 		return "", errors.New("session is nil")
 	}
@@ -55,8 +44,8 @@ func (r *quizRepository) CreateSession(ctx context.Context, session *quizdom.Qui
 	return session.SessionID, nil
 }
 
-// SaveAttempts 批量保存用户的答题记录（需支持事务）。
-func (r *quizRepository) SaveAttempts(ctx context.Context, attempts []quizdom.QuizAttempt) error {
+// SaveAttempts ???????????????????
+func (r *quizSessionRepository) SaveAttempts(ctx context.Context, attempts []quizdom.QuizAttempt) error {
 	if len(attempts) == 0 {
 		return nil
 	}
@@ -72,8 +61,8 @@ func (r *quizRepository) SaveAttempts(ctx context.Context, attempts []quizdom.Qu
 	})
 }
 
-// GetSession 根据会话 ID 获取会话信息。
-func (r *quizRepository) GetSession(ctx context.Context, sessionID string) (*quizdom.QuizSession, error) {
+// GetSession ???? ID ???????
+func (r *quizSessionRepository) GetSession(ctx context.Context, sessionID string) (*quizdom.QuizSession, error) {
 	var sess *quizdom.QuizSession
 	err := r.db.Model("quiz_sessions").Where("session_id", sessionID).Scan(&sess)
 	if err != nil {
@@ -82,8 +71,8 @@ func (r *quizRepository) GetSession(ctx context.Context, sessionID string) (*qui
 	return sess, nil
 }
 
-// UpdateSessionResult 更新会话的测试结果。
-func (r *quizRepository) UpdateSessionResult(ctx context.Context, sessionID string, correct int, score int, passed bool) error {
+// UpdateSessionResult ??????????
+func (r *quizSessionRepository) UpdateSessionResult(ctx context.Context, sessionID string, correct int, score int, passed bool) error {
 	now := time.Now()
 	_, err := r.db.Model("quiz_sessions").
 		Where("session_id", sessionID).
@@ -97,8 +86,8 @@ func (r *quizRepository) UpdateSessionResult(ctx context.Context, sessionID stri
 	return err
 }
 
-// GetHistory 获取用户的测验历史列表。
-func (r *quizRepository) GetHistory(ctx context.Context, userID int64, topic string, limit int) ([]quizdom.QuizSession, error) {
+// GetHistory ????????????
+func (r *quizSessionRepository) GetHistory(ctx context.Context, userID int64, topic string, limit int) ([]quizdom.QuizSession, error) {
 	var sessions []quizdom.QuizSession
 	m := r.db.Model("quiz_sessions").Where("user_id", userID)
 	if topic != "" {
@@ -111,8 +100,8 @@ func (r *quizRepository) GetHistory(ctx context.Context, userID int64, topic str
 	return sessions, err
 }
 
-// GetAttemptsBySession 获取指定会话的所有答题详情。
-func (r *quizRepository) GetAttemptsBySession(ctx context.Context, sessionID string) ([]quizdom.QuizAttempt, error) {
+// GetAttemptsBySession ??????????????
+func (r *quizSessionRepository) GetAttemptsBySession(ctx context.Context, sessionID string) ([]quizdom.QuizAttempt, error) {
 	var items []quizdom.QuizAttempt
 	err := r.db.Model("quiz_attempts").
 		Where("session_id", sessionID).
@@ -121,10 +110,10 @@ func (r *quizRepository) GetAttemptsBySession(ctx context.Context, sessionID str
 	return items, err
 }
 
-// GetActiveSession 获取24小时内未提交的活跃会话。
-func (r *quizRepository) GetActiveSession(ctx context.Context, userID int64, topic, chapter string) (*quizdom.QuizSession, error) {
+// GetActiveSession ??24????????????
+func (r *quizSessionRepository) GetActiveSession(ctx context.Context, userID int64, topic, chapter string) (*quizdom.QuizSession, error) {
 	var sess *quizdom.QuizSession
-	// 查找24小时内、未提交的、匹配topic和chapter的最新会话
+	// ??24???????????topic?chapter?????
 	err := r.db.Model("quiz_sessions").
 		Fields("id,session_id,user_id,topic,chapter,total_questions,correct_answers,score,passed,started_at,completed_at,submitted_at,created_at").
 		Where("user_id", userID).
@@ -141,12 +130,12 @@ func (r *quizRepository) GetActiveSession(ctx context.Context, userID int64, top
 	return sess, nil
 }
 
-// MarkAsSubmitted 标记会话为已提交。
-func (r *quizRepository) MarkAsSubmitted(ctx context.Context, sessionID string) error {
+// MarkAsSubmitted ?????????
+func (r *quizSessionRepository) MarkAsSubmitted(ctx context.Context, sessionID string) error {
 	now := time.Now()
 	_, err := r.db.Model("quiz_sessions").
 		Where("session_id", sessionID).
-		Where("submitted_at IS NULL"). // 仅更新未提交的会话（幂等性）
+		Where("submitted_at IS NULL"). // ??????????????
 		Data(gdb.Map{"submitted_at": now}).
 		Update()
 	return err

@@ -13,7 +13,10 @@ import (
 
 	"go-study2/internal/app/http_server/handler"
 	middleware "go-study2/internal/app/http_server/middleware"
+	appquiz "go-study2/internal/app/quiz"
 	"go-study2/internal/config"
+	quizdom "go-study2/internal/domain/quiz"
+	infrarepo "go-study2/internal/infra/repository"
 	"go-study2/internal/infrastructure/database"
 	appjwt "go-study2/internal/pkg/jwt"
 	"go-study2/internal/pkg/password"
@@ -32,26 +35,6 @@ func Test_QuizConcurrency(t *testing.T) {
 		t.Fatalf("初始化数据库失败: %v", err)
 	}
 
-	// seed quiz questions for concurrency test
-	now := time.Now()
-	for i := 0; i < 30; i++ {
-		q := map[string]interface{}{
-			"topic":           "variables",
-			"chapter":         "storage",
-			"type":            "single",
-			"difficulty":      "easy",
-			"question":        fmt.Sprintf("Conc seed %d", i),
-			"options":         `["A","B","C","D"]`,
-			"correct_answers": `[["A"]]`,
-			"explanation":     "seed",
-			"created_at":      now,
-			"updated_at":      now,
-		}
-		if _, err := database.Default().Insert(ctx, "quiz_questions", q); err != nil {
-			t.Fatalf("插入并发种子题目失败: %v", err)
-		}
-	}
-
 	// Configure JWT for tests
 	if err := appjwt.Configure(appjwt.Options{
 		Secret:             "testsecret0123456789012345678901",
@@ -65,6 +48,30 @@ func Test_QuizConcurrency(t *testing.T) {
 	server.SetPort(0)
 	server.SetAccessLogEnabled(false)
 	h := handler.New()
+
+	// 创建YAML仓储并添加足够的测试题目（至少4单选+4多选）
+	yamlRepo := quizdom.NewRepository()
+	testYAMLQuestions := []quizdom.YAMLQuestion{
+		{ID: "conc1", Type: "single", Difficulty: "easy", Stem: "Conc 1", Options: []string{"A", "B", "C", "D"}, Answer: "A", Explanation: "seed", Topic: "variables", Chapter: "storage"},
+		{ID: "conc2", Type: "single", Difficulty: "easy", Stem: "Conc 2", Options: []string{"A", "B", "C", "D"}, Answer: "A", Explanation: "seed", Topic: "variables", Chapter: "storage"},
+		{ID: "conc3", Type: "single", Difficulty: "easy", Stem: "Conc 3", Options: []string{"A", "B", "C", "D"}, Answer: "A", Explanation: "seed", Topic: "variables", Chapter: "storage"},
+		{ID: "conc4", Type: "single", Difficulty: "easy", Stem: "Conc 4", Options: []string{"A", "B", "C", "D"}, Answer: "A", Explanation: "seed", Topic: "variables", Chapter: "storage"},
+		{ID: "conc5", Type: "multiple", Difficulty: "medium", Stem: "Conc 5", Options: []string{"A", "B", "C", "D"}, Answer: "AB", Explanation: "seed", Topic: "variables", Chapter: "storage"},
+		{ID: "conc6", Type: "multiple", Difficulty: "medium", Stem: "Conc 6", Options: []string{"A", "B", "C", "D"}, Answer: "AB", Explanation: "seed", Topic: "variables", Chapter: "storage"},
+		{ID: "conc7", Type: "multiple", Difficulty: "medium", Stem: "Conc 7", Options: []string{"A", "B", "C", "D"}, Answer: "AB", Explanation: "seed", Topic: "variables", Chapter: "storage"},
+		{ID: "conc8", Type: "multiple", Difficulty: "medium", Stem: "Conc 8", Options: []string{"A", "B", "C", "D"}, Answer: "AB", Explanation: "seed", Topic: "variables", Chapter: "storage"},
+	}
+	yamlRepo.AddBank("variables", "storage", testYAMLQuestions)
+
+	repoImpl := infrarepo.NewQuizRepository(database.Default())
+	svc := appquiz.NewService(yamlRepo, repoImpl)
+
+	// 注入服务到handler
+	type quizSetter interface{ SetQuizService(*appquiz.Service) }
+	if s, ok := interface{}(h).(quizSetter); ok {
+		s.SetQuizService(svc)
+	}
+
 	server.Group("/api/v1", func(group *ghttp.RouterGroup) {
 		group.POST("/auth/login", h.Login)
 		group.POST("/auth/register", middleware.Auth, h.Register)

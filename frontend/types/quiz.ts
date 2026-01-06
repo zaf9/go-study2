@@ -51,7 +51,7 @@ export interface QuizSubmitResult {
 }
 
 export interface QuizQuestion {
-  id: number;
+  id: string; // 改为string以避免大整数精度问题
   type: string;
   difficulty: string;
   question: string;
