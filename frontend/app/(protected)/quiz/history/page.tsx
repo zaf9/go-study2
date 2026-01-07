@@ -1,26 +1,22 @@
 "use client";
 
-import { Typography } from "antd";
-import QuizHistory from "@/components/quiz/QuizHistory";
-import Loading from "@/components/common/Loading";
-import ErrorMessage from "@/components/common/ErrorMessage";
-import { useQuizHistory } from "@/hooks/useQuiz";
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
-const { Title } = Typography;
-
+/**
+ * 测验历史页面
+ * 此页面已重定向到测验中心（/quiz-center）
+ * 保留此路由是为了兼容旧链接和书签
+ */
 export default function QuizHistoryPage() {
-  const { history, isLoading, error } = useQuizHistory();
+  const router = useRouter();
 
-  if (isLoading) return <Loading />;
-  if (error)
-    return (
-      <ErrorMessage message="加载测验历史失败" description={error.message} />
-    );
+  useEffect(() => {
+    // 重定向到测验中心
+    router.replace("/quiz-center");
+  }, [router]);
 
-  return (
-    <div className="space-y-4">
-      <Title level={3}>测验历史记录</Title>
-      <QuizHistory items={history} />
-    </div>
-  );
+  // 返回 null 或加载状态，因为会立即重定向
+  return null;
 }
+

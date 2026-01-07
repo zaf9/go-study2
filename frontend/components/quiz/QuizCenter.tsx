@@ -1,19 +1,24 @@
 /**
  * T119: QuizCenter组件
  * 测验中心容器组件,负责获取和展示测验历史列表
+ * 支持卡片视图和表格视图切换
  */
 
 "use client";
 
 import { useState, useEffect } from "react";
-import { Row, Col, Spin, Empty, Button, Select, Space, Typography, Alert } from "antd";
+import { Row, Col, Spin, Empty, Button, Select, Space, Typography, Alert, Segmented } from "antd";
+import { AppstoreOutlined, TableOutlined } from "@ant-design/icons";
 import { quizService } from "@/services/quizService";
 import { QuizHistoryItem } from "@/types/quiz";
 import QuizHistoryCard from "./QuizHistoryCard";
+import QuizHistory from "./QuizHistory";
 import { useRouter } from "next/navigation";
 
 const { Text } = Typography;
 const { Option } = Select;
+
+type ViewMode = 'card' | 'table';
 
 export default function QuizCenter() {
   const router = useRouter();
@@ -22,6 +27,7 @@ export default function QuizCenter() {
   const [historyList, setHistoryList] = useState<QuizHistoryItem[]>([]);
   const [filteredList, setFilteredList] = useState<QuizHistoryItem[]>([]);
   const [topicFilter, setTopicFilter] = useState<string>("");
+  const [viewMode, setViewMode] = useState<ViewMode>('card');
 
   // 获取所有topic选项
   const topics = Array.from(new Set(historyList.map(item => item.topic)));
@@ -90,8 +96,8 @@ export default function QuizCenter() {
 
   return (
     <div className="quiz-center" data-testid="quiz-center-component">
-      {/* 过滤器 */}
-      <div className="mb-6">
+      {/* 视图切换器和过滤器 */}
+      <div className="mb-6 flex justify-between items-center">
         <Space>
           <Text>筛选主题:</Text>
           <Select
@@ -112,6 +118,16 @@ export default function QuizCenter() {
             <Button onClick={handleClearFilter}>清除筛选</Button>
           )}
         </Space>
+
+        {/* 视图切换器 */}
+        <Segmented
+          value={viewMode}
+          onChange={setViewMode}
+          options={[
+            { label: '卡片视图', value: 'card', icon: <AppstoreOutlined /> },
+            { label: '表格视图', value: 'table', icon: <TableOutlined /> }
+          ]}
+        />
       </div>
 
       {/* 测验历史列表 */}
@@ -126,13 +142,23 @@ export default function QuizCenter() {
           </Button>
         </Empty>
       ) : (
-        <Row gutter={[16, 16]}>
-          {filteredList.map(item => (
-            <Col key={item.sessionId} xs={24} sm={12} md={8} lg={6}>
-              <QuizHistoryCard item={item} onClick={handleCardClick} />
-            </Col>
-          ))}
-        </Row>
+        <>
+          {/* 卡片视图 */}
+          {viewMode === 'card' && (
+            <Row gutter={[16, 16]}>
+              {filteredList.map(item => (
+                <Col key={item.sessionId} xs={24} sm={12} md={8} lg={6}>
+                  <QuizHistoryCard item={item} onClick={handleCardClick} />
+                </Col>
+              ))}
+            </Row>
+          )}
+
+          {/* 表格视图 */}
+          {viewMode === 'table' && (
+            <QuizHistory items={filteredList} loading={false} />
+          )}
+        </>
       )}
     </div>
   );

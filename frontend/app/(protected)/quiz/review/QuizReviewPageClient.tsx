@@ -62,9 +62,9 @@ export default function QuizReviewPageClient() {
             <Space>
                 <Button
                     icon={<LeftOutlined />}
-                    onClick={() => router.push("/quiz/history")}
+                    onClick={() => router.push("/quiz-center")}
                 >
-                    返回历史记录
+                    返回测验中心
                 </Button>
                 <Title level={3}>测验回顾</Title>
             </Space>

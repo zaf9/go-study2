@@ -1,18 +1,18 @@
 /**
  * T118: 测验中心页面
- * 提供测验历史记录的统一入口
+ * 提供测验历史记录的统一入口，支持卡片和表格视图切换
  */
 
 "use client";
 
-import { Breadcrumb, Button, Card, Typography, Space } from "antd";
-import { HomeOutlined, TrophyOutlined } from "@ant-design/icons";
+import { Typography } from "antd";
+import { TrophyOutlined } from "@ant-design/icons";
 import { useRouter } from "next/navigation";
 import QuizCenter from "@/components/quiz/QuizCenter";
 import useAuth from "@/hooks/useAuth";
 import { useEffect } from "react";
 
-const { Title, Text } = Typography;
+const { Title } = Typography;
 
 export default function QuizCenterPage() {
   const router = useRouter();
@@ -31,48 +31,16 @@ export default function QuizCenterPage() {
 
   return (
     <div className="quiz-center-page container mx-auto px-4 py-8" data-testid="quiz-center-page">
-      {/* 面包屑导航 */}
-      <Breadcrumb
-        className="mb-6"
-        items={[
-          {
-            href: "/dashboard",
-            title: (
-              <>
-                <HomeOutlined />
-                <span>主页</span>
-              </>
-            ),
-          },
-          {
-            title: "测验中心",
-          },
-        ]}
-      />
-
       {/* 页面标题 */}
-      <div className="mb-8">
-        <Space direction="vertical" size="small">
-          <Title level={2}>
-            <TrophyOutlined className="mr-2" />
-            测验中心
-          </Title>
-          <Text type="secondary">查看和管理你的测验记录</Text>
-        </Space>
+      <div className="mb-6">
+        <Title level={2} className="flex items-center gap-2">
+          <TrophyOutlined className="text-yellow-500" />
+          测验中心
+        </Title>
       </div>
-
-      {/* 统计摘要区域 */}
-      <Card className="mb-6" data-testid="stats-summary">
-        <Text>统计摘要将在后续版本中添加</Text>
-      </Card>
 
       {/* 测验中心组件 */}
       <QuizCenter />
-
-      {/* 返回按钮 */}
-      <div className="mt-8">
-        <Button onClick={() => router.push("/dashboard")}>返回主页</Button>
-      </div>
     </div>
   );
 }
