@@ -147,27 +147,76 @@ func (r *ProgressRepository) GetLastLearning(ctx context.Context, userID int64) 
 
 // GetOverview 计算用户的全局学习进度概览
 func (r *ProgressRepository) GetOverview(ctx context.Context, userID int64) (*progress.ProgressOverview, error) {
-	// 获取用户所有学习记录
+	// 1. 获取用户所有学习记录
 	allRecords, err := r.GetByUser(ctx, userID)
 	if err != nil {
 		return nil, err
 	}
 
-	// 按主题和章节构建进度映射
-	progressMap := make(map[string]map[string]*progress.LearningProgress) // topic -> chapter -> record
-	for _, record := range allRecords {
+	// 如果没有任何记录，返回空概览
+	if len(allRecords) == 0 {
+		// 计算总章节数
+		totalChapters := 0
+		for _, chapters := range progress.TopicChapterOrder {
+			totalChapters += len(chapters)
+		}
+
+		return &progress.ProgressOverview{
+			TotalChapters:      totalChapters,
+			CompletedChapters:  0,
+			InProgressChapters: 0,
+			CompletionRate:     0,
+			StudyDays:          0,
+			TotalStudyTime:     0,
+			Topics:             []progress.TopicProgressSummary{},
+			NextChapter:        nil,
+		}, nil
+	}
+
+	// 2. 按主题和章节构建进度映射
+	progressMap := make(map[string]map[string]*progress.LearningProgress)
+	for i := range allRecords {
+		record := &allRecords[i]
 		if _, ok := progressMap[record.Topic]; !ok {
 			progressMap[record.Topic] = make(map[string]*progress.LearningProgress)
 		}
-		progressMap[record.Topic][record.Chapter] = &record
+		progressMap[record.Topic][record.Chapter] = record
 	}
 
-	// 计算各主题的统计信息
+	// 3. 计算学习天数和总时长
+	firstVisit := allRecords[0].FirstVisitAt
+	lastVisit := allRecords[0].LastVisitAt
+	var totalStudyTime int64
+
+	for _, record := range allRecords {
+		totalStudyTime += record.ReadDuration
+
+		if record.FirstVisitAt.Before(firstVisit) {
+			firstVisit = record.FirstVisitAt
+		}
+		if record.LastVisitAt.After(lastVisit) {
+			lastVisit = record.LastVisitAt
+		}
+	}
+
+	// 计算学习天数（向上取整）
+	studyDays := 0
+	if !firstVisit.IsZero() && !lastVisit.IsZero() {
+		duration := lastVisit.Sub(firstVisit)
+		hours := duration.Hours()
+		studyDays = int(hours/24) + 1           // 至少1天
+		if studyDays < 0 || studyDays > 365*5 { // 异常值保护（最多5年）
+			studyDays = 0
+		}
+	}
+
+	// 4. 计算各主题的统计信息
 	topicSummaries := make([]progress.TopicProgressSummary, 0)
 	totalCompleted := 0
 	totalInProgress := 0
 	totalChapters := 0
 
+	// 遍历所有支持的主题
 	for topic, chapters := range progress.TopicChapterOrder {
 		topicTotal := len(chapters)
 		completed := 0
@@ -181,7 +230,8 @@ func (r *ProgressRepository) GetOverview(ctx context.Context, userID int64) (*pr
 		for _, chapter := range chapters {
 			record, exists := topicProgress[chapter]
 			if exists {
-				if record.Status == progress.StatusCompleted && record.QuizPassed {
+				// 【核心修改】只需 status='completed' 即可，不要求 quiz_passed
+				if record.Status == progress.StatusCompleted {
 					completed++
 				} else if record.Status == progress.StatusInProgress {
 					inProgress++
@@ -189,11 +239,22 @@ func (r *ProgressRepository) GetOverview(ctx context.Context, userID int64) (*pr
 			}
 		}
 
+		// 计算主题进度百分比
+		topicProgressPercent := 0.0
+		if topicTotal > 0 {
+			topicProgressPercent = float64(completed) / float64(topicTotal) * 100
+		}
+
+		// 获取主题权重
+		weight := getTopicWeight(topic)
+
 		topicSummaries = append(topicSummaries, progress.TopicProgressSummary{
 			Topic:              topic,
 			TotalChapters:      topicTotal,
 			CompletedChapters:  completed,
 			InProgressChapters: inProgress,
+			Weight:             weight,
+			Progress:           topicProgressPercent,
 		})
 
 		totalChapters += topicTotal
@@ -201,17 +262,16 @@ func (r *ProgressRepository) GetOverview(ctx context.Context, userID int64) (*pr
 		totalInProgress += inProgress
 	}
 
-	// 计算完成率
+	// 5. 计算整体完成率
 	completionRate := 0.0
 	if totalChapters > 0 {
 		completionRate = float64(totalCompleted) / float64(totalChapters) * 100
 	}
 
-	// 查找下一个建议学习的章节
+	// 6. 查找下一个建议学习的章节
 	var nextChapter *progress.NextChapterHint
 	lastLearning, err := r.GetLastLearning(ctx, userID)
 	if err == nil && lastLearning != nil {
-		// 简单逻辑：返回最后学习的章节
 		nextChapter = &progress.NextChapterHint{
 			Topic:   lastLearning.Topic,
 			Chapter: lastLearning.Chapter,
@@ -219,14 +279,31 @@ func (r *ProgressRepository) GetOverview(ctx context.Context, userID int64) (*pr
 		}
 	}
 
+	// 7. 返回完整的概览数据
 	return &progress.ProgressOverview{
 		TotalChapters:      totalChapters,
 		CompletedChapters:  totalCompleted,
 		InProgressChapters: totalInProgress,
 		CompletionRate:     completionRate,
+		StudyDays:          studyDays,
+		TotalStudyTime:     totalStudyTime,
 		Topics:             topicSummaries,
 		NextChapter:        nextChapter,
 	}, nil
+}
+
+// getTopicWeight 获取主题权重（辅助函数）
+func getTopicWeight(topic string) int {
+	weights := map[string]int{
+		"lexical_elements": 25,
+		"constants":        25,
+		"variables":        25,
+		"types":            25,
+	}
+	if w, ok := weights[topic]; ok {
+		return w
+	}
+	return 0
 }
 
 // GetByUserAndTopic 获取用户在指定主题的所有章节进度，包含未开始的章节

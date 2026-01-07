@@ -87,11 +87,15 @@ export interface ProgressOverview {
   completedChapters: number;
   inProgressChapters: number;
   completionRate: number;
+  studyDays: number;       // 新增：学习天数
+  totalStudyTime: number;  // 新增：学习总时长（秒）
   topics: Array<{
     topic: string;
     totalChapters: number;
     completedChapters: number;
     inProgressChapters: number;
+    weight: number;        // 新增：主题权重
+    progress: number;      // 新增：主题进度百分比
   }>;
   next?: {
     topic: string;

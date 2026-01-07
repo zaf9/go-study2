@@ -152,16 +152,14 @@ function convertToSnapshot(overview: ProgressOverview): ProgressSnapshot {
       progress: overview.completionRate,
       completedChapters: overview.completedChapters,
       totalChapters: overview.totalChapters,
-      studyDays: 0, // API 不返回此字段
-      totalStudyTime: 0, // API 不返回此字段
+      studyDays: overview.studyDays, // 使用API返回的实际值
+      totalStudyTime: overview.totalStudyTime, // 使用API返回的实际值
     },
     topics: overview.topics.map((t) => ({
       id: t.topic as any,
       name: t.topic,
-      weight: 0, // API 不返回权重
-      progress: t.totalChapters > 0 
-        ? (t.completedChapters / t.totalChapters) * 100 
-        : 0,
+      weight: t.weight, // 使用API返回的实际权重
+      progress: t.progress, // 使用API返回的实际进度
       completedChapters: t.completedChapters,
       totalChapters: t.totalChapters,
     })),

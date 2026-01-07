@@ -96,10 +96,12 @@ type ChapterStatusInfo struct {
 
 // TopicProgressSummary 主题进度汇总
 type TopicProgressSummary struct {
-	Topic              string `json:"topic"`
-	TotalChapters      int    `json:"totalChapters"`
-	CompletedChapters  int    `json:"completedChapters"`
-	InProgressChapters int    `json:"inProgressChapters"`
+	Topic              string  `json:"topic"`
+	TotalChapters      int     `json:"totalChapters"`
+	CompletedChapters  int     `json:"completedChapters"`
+	InProgressChapters int     `json:"inProgressChapters"`
+	Weight             int     `json:"weight"`   // 主题权重
+	Progress           float64 `json:"progress"` // 主题进度百分比
 }
 
 // ProgressOverview 进度概览
@@ -108,6 +110,8 @@ type ProgressOverview struct {
 	CompletedChapters  int                    `json:"completedChapters"`
 	InProgressChapters int                    `json:"inProgressChapters"`
 	CompletionRate     float64                `json:"completionRate"`
+	StudyDays          int                    `json:"studyDays"`      // 学习天数
+	TotalStudyTime     int64                  `json:"totalStudyTime"` // 学习总时长（秒）
 	Topics             []TopicProgressSummary `json:"topics"`
 	NextChapter        *NextChapterHint       `json:"next,omitempty"`
 }

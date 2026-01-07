@@ -35,8 +35,8 @@ export default function ProgressPage() {
                 .map<TopicProgressDetail>((item) => ({
                     id: item.id,
                     name: item.name,
-                    weight: 0,
-                    progress: 0,
+                    weight: item.weight ?? 0,
+                    progress: item.progress ?? 0,
                     totalChapters: item.totalChapters,
                     completedChapters: item.completedChapters,
                     chapters: topicDetailsMap[item.id]?.chapters ?? [],
