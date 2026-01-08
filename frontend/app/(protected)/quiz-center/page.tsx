@@ -11,6 +11,7 @@ import { useRouter } from "next/navigation";
 import QuizCenter from "@/components/quiz/QuizCenter";
 import useAuth from "@/hooks/useAuth";
 import { useEffect } from "react";
+import PageContainer from "@/components/layout/PageContainer";
 
 const { Title } = Typography;
 
@@ -30,9 +31,9 @@ export default function QuizCenterPage() {
   }
 
   return (
-    <div className="quiz-center-page container mx-auto px-4 py-8" data-testid="quiz-center-page">
+    <PageContainer className="space-y-6" data-testid="quiz-center-page">
       {/* 页面标题 */}
-      <div className="mb-6">
+      <div>
         <Title level={2} className="flex items-center gap-2">
           <TrophyOutlined className="text-yellow-500" />
           测验中心
@@ -41,6 +42,6 @@ export default function QuizCenterPage() {
 
       {/* 测验中心组件 */}
       <QuizCenter />
-    </div>
+    </PageContainer>
   );
 }

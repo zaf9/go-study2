@@ -1,6 +1,6 @@
 1. 进入前端目录，启动前端(npm run dev)
 2. 进入后端目录，启动后端(go run main.go -d)
-3. 使用chrome devtools mcp连接http://localhost:3000/
+3. 使用chrome devtools mcp连接http://localhost:3000/。注意因为前端的url需要构建，所以等待比较长的时间是正常的，可能需要60-300秒, 所以需要等待一段时间再连接。
 
 账号/密码：admin/GoStudy@789
 

@@ -51,7 +51,10 @@
       "mcp__chrome-devtools__press_key",
       "Bash(npm run export)",
       "Bash(npx next export)",
-      "Bash(grep:*)"
+      "Bash(grep:*)",
+      "Bash(chmod:*)",
+      "Bash(./build.sh:*)",
+      "Bash(git config:*)"
     ]
   }
 }

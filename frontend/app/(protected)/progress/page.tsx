@@ -11,6 +11,7 @@ import { topicChapters } from "@/lib/static-routes";
 import { TopicProgressDetail } from "@/types/learning";
 import useProgress from "@/hooks/useProgress";
 import useTopicProgressDetail from "@/hooks/useTopicProgressDetail";
+import PageContainer from "@/components/layout/PageContainer";
 
 const { Title } = Typography;
 
@@ -62,63 +63,69 @@ export default function ProgressPage() {
 
     if (isNewUser) {
         return (
-            <Space direction="vertical" className="w-full items-center justify-center min-h-[400px]">
-                <div className="text-center">
-                    <div className="text-6xl mb-4">📚</div>
-                    <Title level={3}>欢迎开始学习之旅！</Title>
-                    <p className="text-gray-600 mb-6">
-                        您还没有任何学习记录，从主题列表选择感兴趣的内容开始学习吧
-                    </p>
-                    <button
-                        onClick={() => router.push('/topics')}
-                        className="px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
-                    >
-                        开始学习
-                    </button>
-                </div>
-            </Space>
+            <PageContainer>
+                <Space direction="vertical" className="w-full items-center justify-center min-h-[400px]">
+                    <div className="text-center">
+                        <div className="text-6xl mb-4">📚</div>
+                        <Title level={3}>欢迎开始学习之旅！</Title>
+                        <p className="text-gray-600 mb-6">
+                            您还没有任何学习记录，从主题列表选择感兴趣的内容开始学习吧
+                        </p>
+                        <button
+                            onClick={() => router.push('/topics')}
+                            className="px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
+                        >
+                            开始学习
+                        </button>
+                    </div>
+                </Space>
+            </PageContainer>
         );
     }
 
     return (
-        <Space direction="vertical" className="w-full">
-            <Title level={3}>学习进度</Title>
-            <ProgressOverview
-                overall={overview.overall}
-                next={next}
-                onContinue={(hint) =>
-                    router.push(`/topics/${hint.topic}/${hint.chapter}`)
-                }
-            />
-            <div className="flex items-center justify-between">
-                <Title level={4} className="mb-0">
-                    主题进度
-                </Title>
-                <Select
-                    allowClear
-                    placeholder="筛选主题"
-                    value={selectedTopic}
-                    onChange={(v) => setSelectedTopic(v)}
-                    options={topics.map((t) => ({ label: t.name, value: t.id }))}
-                    style={{ minWidth: 200 }}
+        <PageContainer>
+            <Space direction="vertical" className="w-full" size="large">
+                <Title level={3}>学习进度</Title>
+                <ProgressOverview
+                    overall={overview.overall}
+                    next={next}
+                    onContinue={(hint) =>
+                        router.push(`/topics/${hint.topic}/${hint.chapter}`)
+                    }
                 />
-            </div>
-            <Space direction="vertical" className="w-full">
-                {filteredTopics.map((topic) => (
-                    <TopicProgressCard
-                        key={topic.id}
-                        topic={topic}
-                        onContinue={(chapter) => {
-                            const target =
-                                chapter?.chapter ??
-                                topicChapters[topic.id as keyof typeof topicChapters]?.[0];
-                            if (target) {
-                                router.push(`/topics/${topic.id}/${target}`);
-                            }
-                        }}
-                    />
-                ))}
+                <div>
+                    <Title level={4} className="mb-4">
+                        主题进度
+                    </Title>
+                    <div className="flex items-center justify-between mb-4">
+                        <Select
+                            allowClear
+                            placeholder="筛选主题"
+                            value={selectedTopic}
+                            onChange={(v) => setSelectedTopic(v)}
+                            options={topics.map((t) => ({ label: t.name, value: t.id }))}
+                            className="min-w-[200px]"
+                        />
+                    </div>
+                    <Space direction="vertical" className="w-full" size="middle">
+                        {filteredTopics.map((topic) => (
+                            <TopicProgressCard
+                                key={topic.id}
+                                topic={topic}
+                                onContinue={(chapter) => {
+                                    const target =
+                                        chapter?.chapter ??
+                                        topicChapters[topic.id as keyof typeof topicChapters]?.[0];
+                                    if (target) {
+                                        router.push(`/topics/${topic.id}/${target}`);
+                                    }
+                                }}
+                            />
+                        ))}
+                    </Space>
+                </div>
             </Space>
-        </Space>
+        </PageContainer>
     );
 }

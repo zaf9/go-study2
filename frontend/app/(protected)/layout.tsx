@@ -12,30 +12,40 @@ import Footer from "@/components/layout/Footer";
 const { Content } = Layout;
 
 export default function ProtectedLayout({
-  children,
+    children,
 }: {
-  children: React.ReactNode;
+    children: React.ReactNode;
 }) {
-  const [collapsed, setCollapsed] = useState(false);
+    const [collapsed, setCollapsed] = useState(false);
 
-  return (
-    <SWRConfig
-      value={{
-        revalidateOnFocus: false,
-        dedupingInterval: 60000,
-        errorRetryInterval: 2000,
-      }}
-    >
-      <AuthGuard>
-        <Layout style={{ minHeight: "100vh" }}>
-          <Sidebar collapsed={collapsed} onCollapse={setCollapsed} />
-          <Layout>
-            <Header onToggleSidebar={() => setCollapsed((prev) => !prev)} />
-            <Content className="p-6 bg-gray-50">{children}</Content>
-            <Footer />
-          </Layout>
-        </Layout>
-      </AuthGuard>
-    </SWRConfig>
-  );
+    return (
+        <SWRConfig
+            value={{
+                revalidateOnFocus: false,
+                dedupingInterval: 60000,
+                errorRetryInterval: 2000,
+            }}
+        >
+            <AuthGuard>
+                <Layout style={{ height: "100vh", overflow: "hidden" }}>
+                    <Sidebar collapsed={collapsed} onCollapse={setCollapsed} />
+                    <Layout style={{ display: "flex", flexDirection: "column" }}>
+                        <Header onToggleSidebar={() => setCollapsed((prev) => !prev)} />
+                        <Content
+                            className="bg-[#f5f5f7]"
+                            style={{
+                                flex: 1,
+                                overflowY: "auto",
+                                overflowX: "hidden",
+                                position: "relative",
+                            }}
+                        >
+                            {children}
+                            <Footer />
+                        </Content>
+                    </Layout>
+                </Layout>
+            </AuthGuard>
+        </SWRConfig>
+    );
 }

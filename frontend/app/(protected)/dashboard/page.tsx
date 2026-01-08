@@ -8,6 +8,7 @@ import { QuickContinue } from './components/QuickContinue'
 import { fetchDashboardStats, fetchLastLearning, fetchTopicProgress, fetchRecentQuizzes } from '@/lib/dashboard'
 import type { DashboardStats, ProgressUpdatedEventData, QuizCompletedEventData, LastLearningRecord, TopicProgressSummary, RecentQuizSummary } from '@/types/dashboard'
 import useAuth from '@/hooks/useAuth'
+import PageContainer from '@/components/layout/PageContainer'
 
 // 懒加载非关键组件以实现代码分割
 const TopicProgress = lazy(() => import('./components/TopicProgress').then(module => ({ default: module.TopicProgress })))
@@ -135,7 +136,7 @@ export default function DashboardPage() {
 	}
 
 	return (
-		<div className="p-3 sm:p-4 md:p-6 max-w-7xl mx-auto">
+		<PageContainer className="space-y-6">
 			<WelcomeHeader
 				username={user.username || '用户'}
 				studyDays={stats?.studyDays || 0}
@@ -155,6 +156,6 @@ export default function DashboardPage() {
 			<Suspense fallback={<div className="mb-6"><Spin size="large" /></div>}>
 				<RecentQuizzes quizzes={recentQuizzes} />
 			</Suspense>
-		</div>
+		</PageContainer>
 	)
 }

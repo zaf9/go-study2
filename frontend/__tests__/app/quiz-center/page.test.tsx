@@ -61,7 +61,7 @@ describe("QuizCenterPage", () => {
 
     const pageContainer = screen.getByTestId("quiz-center-page");
     expect(pageContainer).toBeInTheDocument();
-    expect(pageContainer).toHaveClass(/container|page|quiz-center/);
+    expect(pageContainer.className).toMatch(/max-w-7xl|mx-auto|px-4/);
   });
 
   it("应支持响应式布局", () => {
