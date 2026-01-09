@@ -54,7 +54,21 @@
       "Bash(grep:*)",
       "Bash(chmod:*)",
       "Bash(./build.sh:*)",
-      "Bash(git config:*)"
+      "Bash(git config:*)",
+      "Bash(bash -n:*)",
+      "Bash(tree:*)",
+      "Bash(./scripts/package.sh:*)",
+      "Bash(tee:*)",
+      "Bash(make:*)",
+      "Bash(npx next build:*)",
+      "Bash(NODE_ENV=production npx next build:*)",
+      "Bash(sudo apt-get:*)",
+      "Bash(tar:*)",
+      "Bash(sudo:*)",
+      "Bash(openssl:*)",
+      "Bash(echo:*)",
+      "Bash(time:*)",
+      "Bash(git add:*)"
     ]
   }
 }

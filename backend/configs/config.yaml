@@ -13,7 +13,7 @@ http:
 # HTTPS 配置：加密传输配置。生产环境强烈建议开启
 https:
   # 是否开启 HTTPS (bool)。若为 true，需确保 certFile 和 keyFile 路径正确且有效
-  enabled: false
+  enabled: true
   # HTTPS 监听端口 (int)。标准端口为 443
   port: 8443
   # 服务端公钥证书路径 (string)。支持绝对路径或相对于 backend 目录的相对路径
@@ -28,7 +28,7 @@ https:
 # 服务基础通用设置
 server:
   # 绑定监听地址 (string)。"127.0.0.1" 仅限本地访问，"0.0.0.0" 允许外部所有来源访问
-  host: "127.0.0.1"
+  host: "0.0.0.0"
   # 优雅停机超时时间 (int, 单位:秒)。接收停机信号后，等待存量请求处理完成的最长时间
   shutdownTimeout: 10
 

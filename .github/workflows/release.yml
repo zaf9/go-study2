@@ -1,0 +1,278 @@
+name: Build and Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: '版本号 (如: 1.0.0)'
+        required: true
+        default: '1.0.0'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+
+      - name: 设置 Go 环境
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.24.5'
+          cache: true
+
+      - name: 设置 Node.js 环境
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: 加载版本配置
+        id: version
+        run: |
+          if [ -f VERSION ]; then
+            source VERSION
+            echo "version=$VERSION" >> $GITHUB_OUTPUT
+            echo "VERSION=$VERSION" >> $GITHUB_ENV
+            echo "从 VERSION 文件加载版本: $VERSION"
+          else
+            VERSION=${{ github.event.inputs.version || github.ref_name }}
+            VERSION=${VERSION#v}
+            echo "version=$VERSION" >> $GITHUB_OUTPUT
+            echo "VERSION=$VERSION" >> $GITHUB_ENV
+            echo "从 Git tag 或输入获取版本: $VERSION"
+          fi
+
+      - name: 安装前端依赖
+        working-directory: ./frontend
+        run: |
+          echo ""$(date +%Y%m%d-%H%M%S)" - [CI]: 安装前端依赖..."
+          npm ci
+
+      - name: 构建前端
+        working-directory: ./frontend
+        run: |
+          echo ""$(date +%Y%m%d-%H%M%S)" - [CI]: 清理旧构建..."
+          rm -rf .next out
+          echo ""$(date +%Y%m%d-%H%M%S)" - [CI]: 构建前端..."
+          npm run build
+          echo ""$(date +%Y%m%d-%H%M%S)" - [CI]: 导出静态文件..."
+          npm run export
+
+      - name: 验证前端构建
+        run: |
+          if [ ! -d "frontend/out" ]; then
+            echo ""$(date +%Y%m%d-%H%M%S)" - [CI]: [ERROR] 前端构建失败: out 目录不存在"
+            exit 1
+          fi
+          echo ""$(date +%Y%m%d-%H%M%S)" - [CI]: ✓ 前端构建成功"
+          du -sh frontend/out
+
+      - name: 运行后端测试
+        working-directory: ./backend
+        run: |
+          echo ""$(date +%Y%m%d-%H%M%S)" - [CI]: 代码检查..."
+          go vet ./...
+          echo ""$(date +%Y%m%d-%H%M%S)" - [CI]: 运行测试..."
+          go test -cover ./...
+
+      - name: 编译后端 (Linux)
+        working-directory: ./backend
+        run: |
+          VERSION=${{ steps.version.outputs.version }}
+          BUILD_TIME=$(date +"%Y%m%d_%H%M%S")
+          echo ""$(date +%Y%m%d-%H%M%S)" - [CI]: 编译后端 v$VERSION..."
+          CGO_ENABLED=1 \
+          GOOS=linux \
+          GOARCH=amd64 \
+          go build \
+            -ldflags="-w -s -X main.Version=$VERSION -X main.BuildTime=$BUILD_TIME" \
+            -o go-study2 \
+            main.go
+          chmod +x go-study2
+          echo ""$(date +%Y%m%d-%H%M%S)" - [CI]: ✓ 后端编译成功"
+          ls -lh go-study2
+
+      - name: 组织打包文件
+        run: |
+          VERSION=${{ steps.version.outputs.version }}
+          BUILD_TIME=$(date +"%Y%m%d_%H%M%S")
+          PACKAGE_NAME="go-study2-${VERSION}-${BUILD_TIME}-linux-amd64"
+          PACKAGE_DIR="build/$PACKAGE_NAME"
+
+          echo ""$(date +%Y%m%d-%H%M%S)" - [CI]: 组织打包文件..."
+          echo "包名: $PACKAGE_NAME"
+
+          # 创建目录结构
+          mkdir -p "$PACKAGE_DIR"/{bin,configs,static,quiz_data,data,logs,scripts}
+
+          # 复制二进制到 bin/
+          cp backend/go-study2 "$PACKAGE_DIR/bin/"
+          chmod +x "$PACKAGE_DIR/bin/go-study2"
+          echo ""$(date +%Y%m%d-%H%M%S)" - [CI]: ✓ 二进制已复制: bin/go-study2"
+
+          # 复制配置文件
+          cp backend/configs/config.yaml "$PACKAGE_DIR/configs/"
+          cp backend/configs/logger.yaml "$PACKAGE_DIR/configs/"
+          mkdir -p "$PACKAGE_DIR/configs/certs"
+
+          # 修改配置路径为相对路径
+          sed -i 's|path: "../frontend/out"|path: "./static/out"|g' "$PACKAGE_DIR/configs/config.yaml"
+          sed -i 's|path: "./data/gostudy.db"|path: "./data/gostudy.db"|g' "$PACKAGE_DIR/configs/config.yaml"
+          echo ""$(date +%Y%m%d-%H%M%S)" - [CI]: ✓ 配置文件已准备"
+
+          # 复制前端静态文件
+          cp -r frontend/out "$PACKAGE_DIR/static/"
+          echo ""$(date +%Y%m%d-%H%M%S)" - [CI]: ✓ 前端静态文件已复制"
+
+          # 复制题库数据
+          cp -r backend/quiz_data "$PACKAGE_DIR/"
+          echo ""$(date +%Y%m%d-%H%M%S)" - [CI]: ✓ 题库数据已复制"
+
+          # 复制项目 VERSION 文件
+          if [ -f VERSION ]; then
+            cp VERSION "$PACKAGE_DIR/"
+            echo ""$(date +%Y%m%d-%H%M%S)" - [CI]: ✓ VERSION 文件已复制"
+          fi
+
+          # 创建日志函数库
+          cat > "$PACKAGE_DIR/scripts/logging.sh" << 'EOF'
+          #!/bin/bash
+          printlog() {
+              echo ""$(date +%Y%m%d-%H%M%S)" - [$(basename $0)]: $1"
+          }
+          log_info() { echo "$(printlog "[INFO] $1")"; }
+          log_warn() { echo "$(printlog "[WARN] $1")"; }
+          log_error() { echo "$(printlog "[ERROR] $1")"; }
+          EOF
+          chmod +x "$PACKAGE_DIR/scripts/logging.sh"
+
+          # 创建安装脚本
+          cat > "$PACKAGE_DIR/scripts/install.sh" << 'SCRIPT_EOF'
+          #!/bin/bash
+          set -e
+          SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+          source "$SCRIPT_DIR/logging.sh"
+          SERVICE_NAME="go-study2"
+          PROJECT_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+          log_info "开始安装 Go-Study2..."
+          if [ "$EUID" -ne 0 ]; then
+              log_error "请使用 root 权限运行"
+              exit 1
+          fi
+          chmod +x "$PROJECT_ROOT/bin/go-study2"
+          cat > "/etc/systemd/system/${SERVICE_NAME}.service" << EOF
+          [Unit]
+          Description=Go-Study2 Learning Platform
+          After=network.target
+          [Service]
+          Type=simple
+          User=root
+          WorkingDirectory=$PROJECT_ROOT
+          ExecStart=$PROJECT_ROOT/bin/go-study2 -d
+          Restart=on-failure
+          RestartSec=5s
+          Environment=JWT_SECRET=${JWT_SECRET:-}
+          StandardOutput=append:$PROJECT_ROOT/logs/go-study2.log
+          StandardError=append:$PROJECT_ROOT/logs/error.log
+          [Install]
+          WantedBy=multi-user.target
+          EOF
+          systemctl daemon-reload
+          systemctl enable $SERVICE_NAME
+          log_info "安装完成！启动服务: systemctl start $SERVICE_NAME"
+          SCRIPT_EOF
+          chmod +x "$PACKAGE_DIR/scripts/install.sh"
+
+          # 创建卸载脚本
+          cat > "$PACKAGE_DIR/scripts/uninstall.sh" << 'SCRIPT_EOF'
+          #!/bin/bash
+          set -e
+          SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+          source "$SCRIPT_DIR/logging.sh"
+          SERVICE_NAME="go-study2"
+          PROJECT_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+          log_info "开始卸载..."
+          if systemctl is-active --quiet $SERVICE_NAME; then
+              systemctl stop $SERVICE_NAME
+          fi
+          if systemctl is-enabled --quiet $SERVICE_NAME; then
+              systemctl disable $SERVICE_NAME
+          fi
+          rm -f "/etc/systemd/system/${SERVICE_NAME}.service"
+          systemctl daemon-reload
+          log_info "卸载完成"
+          SCRIPT_EOF
+          chmod +x "$PACKAGE_DIR/scripts/uninstall.sh"
+
+          # 创建 README
+          cat > "$PACKAGE_DIR/README.txt" << README_EOF
+          Go-Study2 学习平台 v${VERSION}
+          =============================
+
+          快速安装:
+            sudo ./scripts/install.sh
+            sudo systemctl start go-study2
+
+          访问地址:
+            http://localhost:8080
+
+          默认账户:
+            admin / GoStudy@123
+          README_EOF
+
+          # 打包
+          cd build
+          echo ""$(date +%Y%m%d-%H%M%S)" - [CI]: 打包压缩..."
+          tar -czf "${PACKAGE_NAME}.tar.gz" "go-study2"
+          sha256sum "${PACKAGE_NAME}.tar.gz" > "${PACKAGE_NAME}.tar.gz.sha256"
+
+          echo "PACKAGE_NAME=${PACKAGE_NAME}" >> $GITHUB_ENV
+          echo ""$(date +%Y%m%d-%H%M%S)" - [CI]: ✓ 打包完成"
+
+      - name: 上传构建产物
+        uses: actions/upload-artifact@v4
+        with:
+          name: go-study2-linux-amd64
+          path: |
+            build/*.tar.gz
+            build/*.sha256
+          retention-days: 30
+
+      - name: 创建 GitHub Release
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            build/*.tar.gz
+            build/*.sha256
+          generate_release_notes: true
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 构建信息
+        run: |
+          echo ""$(date +%Y%m%d-%H%M%S)" - [CI]: ================================"
+          echo ""$(date +%Y%m%d-%H%M%S)" - [CI]: 构建完成"
+          echo ""$(date +%Y%m%d-%H%M%S)" - [CI]: ================================"
+          echo ""
+          echo "构建产物:"
+          ls -lh build/*.tar.gz
+          echo ""
+          echo "SHA256 校验和:"
+          cat build/*.sha256
+          echo ""
+          echo "版本信息:"
+          echo "  版本: ${{ steps.version.outputs.version }}"
+          echo "  服务名: go-study2"
+          echo "  主程序: bin/go-study2"

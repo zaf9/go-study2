@@ -1,0 +1,45 @@
+# Go-Study2 版本配置
+# 语义化版本: MAJOR.MINOR.PATCH
+# 修改规则:
+# - MAJOR: 不兼容的 API 变更
+# - MINOR: 向下兼容的功能新增
+# - PATCH: 向下兼容的问题修正
+
+VERSION="1.0.0"
+
+# 构建元数据
+BUILD_TIME=""
+BUILD_COMMIT=""
+
+# 项目信息
+PROJECT_NAME="go-study2"
+SERVICE_NAME="go-study2"
+DESCRIPTION="Go语言学习平台"
+
+# 兼容性
+PLATFORM="linux-amd64"
+GO_VERSION_MIN="1.24.5"
+NODE_VERSION_MIN="18.0.0"
+
+# 更新日志
+CHANGELOG="\
+## [1.0.0] - 2025-01-09
+
+### Added
+- 初始发布版本
+- Go语言学习模块（词法元素、常量、变量、类型）
+- 集成测验系统（单选、多选）
+- 前后端一体化部署
+- systemd 服务管理
+- JWT 认证机制
+- 学习进度追踪
+- WebSocket 实时更新
+
+### Features
+- 支持CLI和HTTP双模式运行
+- Next.js 静态导出前端
+- SQLite 嵌入式数据库
+- YAML 题库配置
+- 自动数据迁移
+- 完整的日志系统
+"
