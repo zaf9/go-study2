@@ -33,9 +33,8 @@ logger:
   app:
     # 存储目录
     path: "logs"
-    # 文件名模板 (支持日期占位符 {Y-m-d})
-    # 物理滚动目前由 lumberjack 托管，文件名中的占位符在适配层会自动处理。
-    file: "app-{Y-m-d}.log"
+    # 文件名 (固定文件名，使用 lumberjack 自动滚动)
+    file: "app.log"
     # 输出格式 (json 或 text)
     # json 格式会自动记录 TraceID, Level 等字段为顶级 key，适合 ELK/Loki 采集。
     format: "json"
@@ -66,7 +65,7 @@ logger:
     # 存储路径
     path: "logs/access"
     # 文件名
-    file: "access-{Y-m-d}.log"
+    file: "access.log"
     # 输出格式
     format: "json"
     # 日志级别
@@ -80,7 +79,7 @@ logger:
     # 存储路径
     path: "logs/error"
     # 文件名
-    file: "error-{Y-m-d}.log"
+    file: "error.log"
     # 输出格式
     format: "json"
     # 日志级别
@@ -94,7 +93,7 @@ logger:
     # 存储路径
     path: "logs/slow"
     # 文件名
-    file: "slow-{Y-m-d}.log"
+    file: "slow.log"
     # 输出格式
     format: "json"
     # 日志级别
