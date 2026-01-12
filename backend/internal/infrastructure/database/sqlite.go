@@ -12,7 +12,6 @@ import (
 	"go-study2/internal/infrastructure/db_logging"
 
 	_ "github.com/gogf/gf/contrib/drivers/sqlite/v2"
-	_ "github.com/mattn/go-sqlite3"
 
 	"github.com/gogf/gf/v2/database/gdb"
 )

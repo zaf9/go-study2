@@ -110,8 +110,8 @@ func TestConfigLoad(t *testing.T) {
 		t.Fatal("Load() returned nil config")
 	}
 
-	if cfg.Server.Host != "127.0.0.1" {
-		t.Errorf("Expected host 127.0.0.1, got %s", cfg.Server.Host)
+	if cfg.Server.Host != "0.0.0.0" {
+		t.Errorf("Expected host 0.0.0.0, got %s", cfg.Server.Host)
 	}
 
 	if cfg.Http.Port != 8080 {

@@ -46,7 +46,7 @@ build-backend:
 	cd backend && go vet ./...
 	@echo ""$(date +%Y%m%d-%H%M%S)" - [Makefile]: 运行测试"
 	cd backend && go test -cover ./...
-	@echo ""$(date +%Y%m%d-%H%M%S)" - [Makefile]: 编译二进制"
+	@echo ""$(date +%Y%m%d-%H%M%S)" - [Makefile]: 编译二进制（本地开发，启用 CGO）"
 	cd backend && go build -o ../bin/go-study2 main.go
 	@echo ""$(date +%Y%m%d-%H%M%S)" - [Makefile]: ✓ 后端构建完成: bin/go-study2"
 

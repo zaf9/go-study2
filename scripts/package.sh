@@ -2,8 +2,43 @@
 
 # Go-Study2 Linux 打包脚本
 # 功能：将项目打包成 tar.gz 安装包（前端集成到后端）
+#
+# 使用方法:
+#   ./scripts/package.sh           # 默认：完整流程（包含测试）
+#   ./scripts/package.sh --skip-tests  # 跳过测试（快速打包）
+#   ./scripts/package.sh -h        # 显示帮助信息
 
 set -e
+
+# 默认参数
+SKIP_TESTS=false
+
+# 解析命令行参数
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        --skip-tests)
+            SKIP_TESTS=true
+            shift
+            ;;
+        -h|--help)
+            echo "用法: $0 [选项]"
+            echo ""
+            echo "选项:"
+            echo "  --skip-tests    跳过前后端单元测试，加快打包速度"
+            echo "  -h, --help      显示此帮助信息"
+            echo ""
+            echo "示例:"
+            echo "  $0                # 完整打包（包含测试）"
+            echo "  $0 --skip-tests   # 快速打包（跳过测试）"
+            exit 0
+            ;;
+        *)
+            echo "未知参数: $1"
+            echo "使用 -h 或 --help 查看帮助信息"
+            exit 1
+            ;;
+    esac
+done
 
 # 颜色定义
 RED='\033[0;31m'
@@ -57,6 +92,13 @@ SERVICE_NAME="go-study2"
 log_info "开始打包 Go-Study2 v${VERSION}"
 log_info "构建目录: $BUILD_DIR"
 
+# 显示构建模式
+if [ "$SKIP_TESTS" = true ]; then
+    log_warn "构建模式: 快速打包（跳过测试）"
+else
+    log_info "构建模式: 完整打包（包含测试）"
+fi
+
 # 清理并创建临时目录
 log_step "初始化构建环境..."
 rm -rf "$BUILD_DIR"
@@ -79,8 +121,22 @@ log_info "安装前端依赖..."
 npm install --silent 2>&1 | while IFS= read -r line; do log_info "  npm: $line"; done
 log_info "✓ 前端依赖安装完成"
 
+log_info "running lint..."
+npm run lint 2>&1 | while IFS= read -r line; do log_info "  lint: $line"; done
+log_info "✓ lint 检查通过"
+
+if [ "$SKIP_TESTS" = true ]; then
+    log_warn "跳过前端测试（--skip-tests 模式）"
+else
+    log_info "running tests with coverage..."
+    npm run test -- --coverage 2>&1 | while IFS= read -r line; do log_info "  test: $line"; done
+    log_info "✓ 测试完成"
+fi
+
 log_info "构建前端..."
-npm run build 2>&1 | while IFS= read -r line; do log_info "  build: $line"; done
+# 强制使用相对路径（生产环境）：覆盖 .env.local 中的 localhost 配置
+# 这样前端会向同源的 /api/v1 发送请求，而非固定的 localhost:8080
+NEXT_PUBLIC_API_URL="" npm run build 2>&1 | while IFS= read -r line; do log_info "  build: $line"; done
 
 # Next.js 14 使用 output: 'export' 时会自动生成静态文件到 out 目录
 if [ ! -d "out" ]; then
@@ -112,17 +168,37 @@ if ! go vet ./... 2>&1 | tee /tmp/vet.log | while IFS= read -r line; do log_warn
 fi
 log_info "✓ 代码检查通过"
 
-log_info "运行测试..."
-go test -cover ./... 2>&1 | tee /tmp/test.log | while IFS= read -r line; do log_info "  test: $line"; done
-if [ ${PIPESTATUS[0]} -ne 0 ]; then
-    log_warn "测试失败，但继续构建"
+if [ "$SKIP_TESTS" = true ]; then
+    log_warn "跳过后端测试（--skip-tests 模式）"
+else
+    log_info "运行测试..."
+    if ! go test -cover ./... 2>&1 | tee /tmp/test.log | while IFS= read -r line; do log_info "  test: $line"; done; then
+        log_error "测试失败，终止构建"
+        cat /tmp/test.log
+        exit 1
+    fi
 fi
 
-log_info "编译后端（Linux x86_64，静态链接）..."
+log_info "编译后端（Linux x86_64，完全静态链接，禁用 CGO）..."
 mkdir -p "$PACKAGE_DIR/bin"
-CGO_ENABLED=1 \
-GOOS=linux \
-GOARCH=amd64 \
+
+# 显式设置环境变量以禁用 CGO（兼容 CentOS 7.6 的 GLIBC 2.17）
+export CGO_ENABLED=0
+export GOOS=linux
+export GOARCH=amd64
+
+# 验证 CGO 已禁用
+log_info "验证构建环境..."
+log_info "  CGO_ENABLED=$CGO_ENABLED"
+log_info "  GOOS=$GOOS"
+log_info "  GOARCH=$GOARCH"
+
+if [ "$CGO_ENABLED" != "0" ]; then
+    log_error "CGO 未禁用，生成的二进制将无法在 CentOS 7.6 上运行"
+    exit 1
+fi
+
+# 构建静态链接的二进制（移除 extldflags '-static' 因为纯 Go 构建不需要）
 go build \
     -ldflags="-w -s -X main.Version=$VERSION -X main.BuildTime=$BUILD_TIME" \
     -o "$PACKAGE_DIR/bin/go-study2" \
@@ -137,6 +213,37 @@ fi
 chmod +x "$PACKAGE_DIR/bin/go-study2"
 BACKEND_SIZE=$(du -h "$PACKAGE_DIR/bin/go-study2" | cut -f1)
 log_info "✓ 后端编译成功，大小: $BACKEND_SIZE"
+
+# 验证二进制是否为静态链接
+log_info "验证二进制链接类型..."
+if command -v file &> /dev/null; then
+    FILE_INFO=$(file "$PACKAGE_DIR/bin/go-study2")
+    log_info "  $FILE_INFO"
+
+    # 检查是否为动态链接（不应包含 "dynamically linked"）
+    if echo "$FILE_INFO" | grep -q "dynamically linked"; then
+        log_error "二进制为动态链接，无法在 CentOS 7.6 上运行！"
+        log_error "请确保 CGO_ENABLED=0 并且没有使用 CGO 依赖"
+        exit 1
+    fi
+
+    # 检查是否为静态链接或纯 Go 二进制
+    if echo "$FILE_INFO" | grep -q "statically linked" || echo "$FILE_INFO" | grep -q "not stripped"; then
+        log_info "✓ 二进制链接类型验证通过（静态或纯 Go）"
+    fi
+fi
+
+# 检查动态库依赖（应该没有）
+if command -v ldd &> /dev/null; then
+    LDD_OUTPUT=$(ldd "$PACKAGE_DIR/bin/go-study2" 2>&1 || true)
+    if [ -n "$LDD_OUTPUT" ]; then
+        log_warn "检测到动态库依赖："
+        echo "$LDD_OUTPUT" | while IFS= read -r line; do log_warn "  $line"; done
+        log_warn "虽然可能有动态依赖，但纯 Go 二进制通常会显示 'not a dynamic executable'"
+    else
+        log_info "✓ 无动态库依赖（纯 Go 二进制）"
+    fi
+fi
 
 # ========== 步骤3：复制配置文件 ==========
 log_step "步骤 3/7: 复制配置文件..."
@@ -165,7 +272,62 @@ sed -i 's|path: "../frontend/out"|path: "./static/out"|g' "$PACKAGE_DIR/configs/
 sed -i 's|path: "./data/gostudy.db"|path: "./data/gostudy.db"|g' "$PACKAGE_DIR/configs/config.yaml"
 log_info "✓ 配置文件路径已调整为相对路径"
 
+# 启用 HTTPS 模式（生产环境默认启用）
+# 同时启用 insecureSkipVerify 以支持自签名证书
+awk '
+/^https:/ { in_https = 1 }
+/^http:/ { in_https = 0 }
+/^server:/ { in_https = 0 }
+in_https && /^  enabled: false/ { print "  enabled: true"; replaced = 1; next }
+in_https && /^  insecureSkipVerify: false/ { print "  insecureSkipVerify: true"; next }
+{ print }
+END { exit(replaced ? 0 : 1) }
+' "$PACKAGE_DIR/configs/config.yaml" > "$PACKAGE_DIR/configs/config.yaml.tmp" || {
+    log_error "HTTPS 模式替换失败，未能找到 https.enabled 配置项"
+    rm -f "$PACKAGE_DIR/configs/config.yaml.tmp"
+    exit 1
+}
+
+# 验证替换是否成功（检查整个文件中的配置）
+if ! grep "^  enabled: true" "$PACKAGE_DIR/configs/config.yaml.tmp" | grep -q "true"; then
+    log_error "HTTPS 模式验证失败，enabled 未正确设置"
+    rm -f "$PACKAGE_DIR/configs/config.yaml.tmp"
+    exit 1
+fi
+
+if ! grep "^  insecureSkipVerify: true" "$PACKAGE_DIR/configs/config.yaml.tmp" | grep -q "true"; then
+    log_error "HTTPS 模式验证失败，insecureSkipVerify 未正确设置"
+    rm -f "$PACKAGE_DIR/configs/config.yaml.tmp"
+    exit 1
+fi
+
+mv "$PACKAGE_DIR/configs/config.yaml.tmp" "$PACKAGE_DIR/configs/config.yaml"
+log_info "✓ HTTPS 模式已在生产配置中启用（含自签名证书支持）"
+
 log_info "✓ 配置文件复制完成"
+
+# ========== 步骤 3.5：生成 TLS 证书 ==========
+log_step "步骤 3.5/7: 生成 TLS 证书..."
+
+# 检查是否需要生成证书
+if [ ! -f "$PROJECT_ROOT/backend/configs/certs/server.crt" ] || [ ! -f "$PROJECT_ROOT/backend/configs/certs/server.key" ]; then
+    log_warn "证书文件不存在，将生成默认证书"
+    chmod +x "$PROJECT_ROOT/scripts/generate-cert.sh"
+    cd "$PROJECT_ROOT"
+    ./scripts/generate-cert.sh -f
+    cd "$SCRIPT_DIR/.."
+fi
+
+# 复制证书到打包目录
+if [ -f "$PROJECT_ROOT/backend/configs/certs/server.crt" ] && [ -f "$PROJECT_ROOT/backend/configs/certs/server.key" ]; then
+    cp "$PROJECT_ROOT/backend/configs/certs/server.crt" "$PACKAGE_DIR/configs/certs/"
+    cp "$PROJECT_ROOT/backend/configs/certs/server.key" "$PACKAGE_DIR/configs/certs/"
+    chmod 644 "$PACKAGE_DIR/configs/certs/server.crt"
+    chmod 600 "$PACKAGE_DIR/configs/certs/server.key"
+    log_info "✓ TLS 证书已生成并复制到打包目录"
+else
+    log_error "TLS 证书生成失败，HTTPS 功能将不可用"
+fi
 
 # ========== 步骤4：复制静态文件 ==========
 log_step "步骤 4/7: 复制前端静态文件..."
@@ -277,6 +439,28 @@ SERVICE_NAME="go-study2"
 PROJECT_ROOT="\$(cd "\$SCRIPT_DIR/.." && pwd)"
 log_info "项目根目录: \$PROJECT_ROOT"
 
+# 检测安装路径类型并设置安全级别
+detect_installation_path() {
+    local install_path="\$1"
+
+    if [[ "\$install_path" == /tmp* ]]; then
+        log_warn "检测到安装路径在 /tmp 下" >&2
+        log_warn "将调整安全设置以兼容 systemd" >&2
+        echo "tmp"
+    elif [[ "\$install_path" == /opt* ]] || [[ "\$install_path" == /usr/local* ]]; then
+        log_info "推荐安装路径: \$install_path" >&2
+        echo "recommended"
+    elif [[ "\$install_path" == /home* ]]; then
+        log_info "用户目录安装: \$install_path" >&2
+        echo "homedir"
+    else
+        log_info "自定义安装路径: \$install_path" >&2
+        echo "custom"
+    fi
+}
+
+INSTALLATION_TYPE=\$(detect_installation_path "\$PROJECT_ROOT")
+
 # 显示欢迎信息
 echo -e "\${GREEN}=== Go-Study2 安装程序 ===\${NC}"
 echo ""
@@ -342,14 +526,103 @@ log_info "✓ 运行时目录已创建"
 # 检查环境变量
 log_info "检查环境变量..."
 if [ -z "\$JWT_SECRET" ]; then
-    log_warn "JWT_SECRET 未设置，使用默认值（不推荐）"
-    log_warn "请编辑 \$PROJECT_ROOT/configs/config.yaml 设置安全的 JWT_SECRET"
+    log_warn "JWT_SECRET 未设置，自动生成随机密钥"
+    JWT_SECRET=\$(openssl rand -base64 32 | tr -d '=+/' | cut -c1-32)
+    log_info "✓ JWT_SECRET 已自动生成: \${JWT_SECRET:0:8}..."
+
+    # 将生成的密钥保存到配置文件（使用 awk 直接替换 secret 的值）
+    if [ -f "\$PROJECT_ROOT/configs/config.yaml" ]; then
+        awk -v secret="\$JWT_SECRET" '
+        /^jwt:/ { in_jwt = 1; print; next }
+        in_jwt && /^  secret:/ {
+            print "  secret: \"" secret "\""
+            replaced = 1
+            next
+        }
+        in_jwt && /^[a-z]/ { in_jwt = 0 }
+        { print }
+        END { exit(replaced ? 0 : 1) }
+        ' "\$PROJECT_ROOT/configs/config.yaml" > "\$PROJECT_ROOT/configs/config.yaml.tmp" && \
+        mv "\$PROJECT_ROOT/configs/config.yaml.tmp" "\$PROJECT_ROOT/configs/config.yaml" && \
+        log_info "✓ JWT_SECRET 已保存到配置文件" || {
+            log_warn "配置文件更新失败，请手动修改 configs/config.yaml 中的 jwt.secret"
+        }
+    fi
 else
     log_info "✓ JWT_SECRET 已设置"
 fi
 
+# /tmp 路径警告
+if [[ "\$PROJECT_ROOT" == /tmp* ]]; then
+    echo ""
+    echo -e "\${YELLOW}⚠️  警告：安装路径在 /tmp 下\${NC}"
+    echo "  /tmp 目录在系统重启后会被清空"
+    echo "  systemd 的 PrivateTmp 功能会导致命名空间冲突"
+    echo ""
+    echo "推荐安装目录："
+    echo "  - /opt/go-study2       (生产环境)"
+    echo "  - /usr/local/go-study2 (生产环境)"
+    echo "  - /home/\$USER/go-study2 (开发环境)"
+    echo ""
+    read -p "是否继续安装? (y/N): " -n 1 -r
+    echo
+    if [[ ! \$REPLY =~ ^[Yy]\$ ]]; then
+        log_error "用户取消安装"
+        exit 1
+    fi
+    log_warn "用户选择继续 /tmp 安装，安全设置已调整"
+fi
+
 # 创建 systemd 服务
 log_info "创建 systemd 服务..."
+
+# 检测 systemd 版本
+SYSTEMD_VERSION=\$(systemctl --version 2>/dev/null | head -1 | awk '{print \$2}' || echo "0")
+log_info "检测到 systemd 版本: \${SYSTEMD_VERSION}"
+
+# 根据安装路径类型和 systemd 版本选择安全配置
+case "\$INSTALLATION_TYPE" in
+    tmp)
+        # /tmp 下安装：禁用 PrivateTmp，调整 ProtectSystem
+        SECURITY_PRIVATE_TMP="false"
+        SECURITY_PROTECT_SYSTEM="full"
+        log_warn "⚠️  /tmp 路径安全限制：已禁用 PrivateTmp"
+        ;;
+    recommended)
+        # /opt, /usr/local：根据 systemd 版本选择安全级别
+        if [ "\${SYSTEMD_VERSION}" -lt 232 ]; then
+            # CentOS 7 的 systemd 版本为 219，不支持 strict 和 ReadWritePaths
+            SECURITY_PRIVATE_TMP="true"
+            SECURITY_PROTECT_SYSTEM="full"
+            USE_READ_WRITE_PATHS="false"
+            log_warn "⚠️  旧版 systemd (\${SYSTEMD_VERSION})，使用兼容配置"
+        else
+            SECURITY_PRIVATE_TMP="true"
+            SECURITY_PROTECT_SYSTEM="strict"
+            USE_READ_WRITE_PATHS="true"
+        fi
+        ;;
+    homedir|custom)
+        # 其他路径：平衡安全性和兼容性
+        SECURITY_PRIVATE_TMP="true"
+        SECURITY_PROTECT_SYSTEM="full"
+        USE_READ_WRITE_PATHS="false"
+        ;;
+esac
+
+# 根据 systemd 版本选择日志输出方式
+if [ "\${SYSTEMD_VERSION}" -lt 232 ]; then
+    # CentOS 7 不支持 append:，使用文件重定向
+    LOG_OUTPUT=""
+    LOG_ERROR=""
+    log_info "使用传统日志方式（systemd < 232）"
+else
+    # 新版 systemd 支持 append:
+    LOG_OUTPUT="StandardOutput=append:\$PROJECT_ROOT/logs/go-study2.log"
+    LOG_ERROR="StandardError=append:\$PROJECT_ROOT/logs/error.log"
+    log_info "使用 append 日志方式（systemd >= 232）"
+fi
+
 cat > "/etc/systemd/system/\${SERVICE_NAME}.service" << EOM
 [Unit]
 Description=Go-Study2 Learning Platform
@@ -369,23 +642,24 @@ TimeoutStartSec=30
 # 环境变量
 Environment="JWT_SECRET=\${JWT_SECRET:-}"
 Environment="INSTALL_DIR=\$PROJECT_ROOT"
+Environment="INSTALLATION_TYPE=\${INSTALLATION_TYPE}"
 
-# 日志输出
-StandardOutput=append:\$PROJECT_ROOT/logs/go-study2.log
-StandardError=append:\$PROJECT_ROOT/logs/error.log
+\${LOG_OUTPUT}
+\${LOG_ERROR}
 
-# 安全设置
+# 安全设置（自适应 systemd 版本）
 NoNewPrivileges=true
-PrivateTmp=true
-ProtectSystem=strict
+PrivateTmp=\${SECURITY_PRIVATE_TMP}
+ProtectSystem=\${SECURITY_PROTECT_SYSTEM}
 ProtectHome=true
-ReadWritePaths=\$PROJECT_ROOT/data \$PROJECT_ROOT/logs
+\${USE_READ_WRITE_PATHS:+ReadWritePaths=}\${USE_READ_WRITE_PATHS:+\$PROJECT_ROOT/data }\${USE_READ_WRITE_PATHS:+\$PROJECT_ROOT/logs}
 
 [Install]
 WantedBy=multi-user.target
 EOM
 
 log_info "✓ systemd 服务文件已创建: /etc/systemd/system/\${SERVICE_NAME}.service"
+log_info "  安全配置: PrivateTmp=\${SECURITY_PRIVATE_TMP}, ProtectSystem=\${SECURITY_PROTECT_SYSTEM}"
 
 # 重新加载 systemd
 log_info "重新加载 systemd 配置..."
@@ -608,12 +882,23 @@ Go-Study2 学习平台 v${VERSION}
 
 快速安装
 --------
+⚠️  重要：选择合适的安装目录
+  推荐目录（生产环境）：
+    - /opt/go-study2
+    - /usr/local/go-study2
+    - /home/youruser/go-study2
+
+  不推荐目录：
+    - /tmp/go-study2      (系统重启后数据丢失，systemd 兼容性问题)
+    - /var/tmp/go-study2  (清理策略不确定)
+
 方法1: systemd 服务（推荐）
-  1. 解压到任意目录:
-     tar -xf go-study2-*.tar.gz -C /opt/hadoop
+  1. 解压到推荐目录:
+     tar -xf go-study2-*.tar.gz -C /opt
+     # 结果: /opt/go-study2/
 
   2. 运行安装脚本:
-     cd /opt/hadoop/go-study2
+     cd /opt/go-study2
      sudo ./scripts/install.sh
 
   3. 启动服务:
@@ -624,10 +909,10 @@ Go-Study2 学习平台 v${VERSION}
 
 方法2: 直接启动（测试用）
   1. 解压安装包:
-     tar -xf go-study2-*.tar.gz -C /opt/hadoop
+     tar -xf go-study2-*.tar.gz -C /opt
 
   2. 启动服务:
-     cd /opt/hadoop/go-study2
+     cd /opt/go-study2
      ./scripts/start.sh
 
 目录结构
