@@ -15,6 +15,7 @@ import (
 	appjwt "go-study2/internal/pkg/jwt"
 	typescli "go-study2/src/learning/types/cli"
 	varcli "go-study2/src/learning/variables/cli"
+	propertiescli "go-study2/src/learning/properties/cli"
 	"io"
 	"os"
 	"sort"
@@ -72,6 +73,10 @@ func NewApp(stdin io.Reader, stdout, stderr io.Writer) *App {
 			"3": {
 				Description: "Types",
 				Action:      typescli.DisplayMenu,
+			},
+			"4": {
+				Description: "Properties of types and values",
+				Action:      propertiescli.DisplayMenu,
 			},
 			// Add new items here
 		},
