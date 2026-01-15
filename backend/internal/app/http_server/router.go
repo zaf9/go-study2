@@ -77,6 +77,17 @@ func RegisterRoutes(s *ghttp.Server) {
 		// Types 搜索
 		group.ALL("/topic/types/search", h.SearchTypes)
 
+		// Properties 菜单
+		group.ALL("/topic/properties", h.GetPropertiesMenu)
+		// Properties 内容
+		group.ALL("/topic/properties/:subtopic", h.GetPropertiesContent)
+		// Properties 提纲
+		group.ALL("/topic/properties/outline", h.GetPropertiesOutline)
+		// Properties 测验提交
+		group.ALL("/topic/properties/:subtopic/quiz/submit", h.SubmitPropertiesQuiz)
+		// Properties 搜索
+		group.ALL("/topic/properties/search", h.SearchProperties)
+
 		// 后续路由将在其他 User Story 中添加
 	})
 }
