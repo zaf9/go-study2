@@ -1,0 +1,586 @@
+# Properties of Types and Values - Method Set (方法集) 测验题库
+# 章节: properties/method_set
+# 符合 Go 1.24 语言规范
+
+metadata:
+  topic: properties
+  chapter: method_set
+  total_questions: 40
+  last_updated: "2025-01-16"
+  difficulty_distribution:
+    easy: 16       # 40%
+    medium: 16     # 40%
+    hard: 8        # 20%
+  type_distribution:
+    single: 20     # 50%
+    multiple: 20   # 50%
+    code_output: 0
+    code_fix: 0
+
+questions:
+  # ============ 单选题 (Easy) ============
+  - id: q-method-001
+    type: single
+    difficulty: easy
+    stem: "类型 T 的方法集包含哪些方法？"
+    options:
+      - "A: 只有接收者为 T 的方法"
+      - "B: 只有接收者为 *T 的方法"
+      - "C: 接收者为 T 和 *T 的所有方法"
+      - "D: 没有方法"
+    answer: A
+    explanation: "类型 T 的方法集包含所有接收者为 T 的方法。"
+    topic: properties
+    chapter: method_set
+
+  - id: q-method-002
+    type: single
+    difficulty: easy
+    stem: "类型 *T 的方法集包含哪些方法？"
+    options:
+      - "A: 只有接收者为 *T 的方法"
+      - "B: 只有接收者为 T 的方法"
+      - "C: 接收者为 T 和 *T 的所有方法"
+      - "D: 没有方法"
+    answer: C
+    explanation: "类型 *T 的方法集包含所有接收者为 T 和 *T 的方法。"
+    topic: properties
+    chapter: method_set
+
+  - id: q-method-003
+    type: single
+    difficulty: easy
+    stem: "接口类型的方法集是什么？"
+    options:
+      - "A: 所有实现的方法"
+      - "B: 接口声明的方法"
+      - "C: 所有方法"
+      - "D: 没有方法"
+    answer: B
+    explanation: "接口类型的方法集就是接口声明的所有方法。"
+    topic: properties
+    chapter: method_set
+
+  - id: q-method-004
+    type: single
+    difficulty: easy
+    stem: "值接收者方法属于哪个类型的方法集？"
+    options:
+      - "A: 只属于值类型"
+      - "B: 只属于指针类型"
+      - "C: 同时属于值类型和指针类型"
+      - "D: 不属于任何类型"
+    answer: C
+    explanation: "值接收者方法同时属于值类型和指针类型的方法集。"
+    topic: properties
+    chapter: method_set
+
+  - id: q-method-005
+    type: single
+    difficulty: easy
+    stem: "指针接收者方法属于哪个类型的方法集？"
+    options:
+      - "A: 只属于指针类型"
+      - "B: 只属于值类型"
+      - "C: 同时属于值类型和指针类型"
+      - "D: 不属于任何类型"
+    answer: A
+    explanation: "指针接收者方法只属于指针类型的方法集。"
+    topic: properties
+    chapter: method_set
+
+  - id: q-method-006
+    type: single
+    difficulty: easy
+    stem: "方法集决定了什么？"
+    options:
+      - "A: 类型的内存布局"
+      - "B: 类型是否实现了某个接口"
+      - "C: 类型的可见性"
+      - "D: 类型的初始化"
+    answer: B
+    explanation: "类型的方法集决定了该类型是否实现了某个接口。"
+    topic: properties
+    chapter: method_set
+
+  - id: q-method-007
+    type: single
+    difficulty: easy
+    stem: "嵌入字段的方法会如何处理？"
+    options:
+      - "A: 被忽略"
+      - "B: 提升到外层类型的方法集"
+      - "C: 必须显式调用"
+      - "D: 编译错误"
+    answer: B
+    explanation: "嵌入字段的方法会被提升到外层类型的方法集。"
+    topic: properties
+    chapter: method_set
+
+  - id: q-method-008
+    type: single
+    difficulty: easy
+    stem: "以下代码是否编译通过？\n\ntype MyInt int\nfunc (m MyInt) Value() int { return int(m) }\nvar x MyInt = 42\nfmt.Println(x.Value())"
+    options:
+      - "A: 通过"
+      - "B: 不通过：MyInt 没有 Value 方法"
+      - "C: 不通过：需要指针"
+      - "D: 运行时 panic"
+    answer: A
+    explanation: "MyInt 有 Value 方法，可以调用。"
+    topic: properties
+    chapter: method_set
+
+  # ============ 单选题 (Medium) ============
+  - id: q-method-009
+    type: single
+    difficulty: medium
+    stem: "以下代码是否编译通过？\n\ntype MyInt int\nfunc (m *MyInt) Value() int { return int(*m) }\nvar x MyInt = 42\nfmt.Println(x.Value())"
+    options:
+      - "A: 通过：编译器自动取地址"
+      - "B: 不通过：MyInt 没有 Value 方法"
+      - "C: 不通过：需要显式调用 (&x).Value()"
+      - "D: 运行时 panic"
+    answer: A
+    explanation: "当值类型可以寻址时，编译器会自动取地址来调用指针接收者方法。"
+    topic: properties
+    chapter: method_set
+
+  - id: q-method-010
+    type: single
+    difficulty: medium
+    stem: "以下代码是否编译通过？\n\ntype Stringer interface { String() string }\ntype MyInt int\nfunc (m *MyInt) String() string { return \"42\" }\nvar s Stringer = MyInt(42)\nfmt.Println(s)"
+    options:
+      - "A: 通过：MyInt 实现了 Stringer"
+      - "B: 不通过：MyInt 没有实现 Stringer"
+      - "C: 不通过：需要使用指针"
+      - "D: 运行时 panic"
+    answer: B
+    explanation: "MyInt 类型没有 String 方法（只有 *MyInt 有），所以 MyInt 没有实现 Stringer 接口。"
+    topic: properties
+    chapter: method_set
+
+  - id: q-method-011
+    type: single
+    difficulty: medium
+    stem: "以下代码是否编译通过？\n\ntype MyInt int\nfunc (m *MyInt) SetValue(x int) { *m = MyInt(x) }\nvar x MyInt = 42\nx.SetValue(100)"
+    options:
+      - "A: 通过：编译器自动取地址"
+      - "B: 不通过：MyInt 没有 SetValue 方法"
+      - "C: 不通过：需要显式调用 (&x).SetValue(100)"
+      - "D: 运行时 panic"
+    answer: A
+    explanation: "编译器会自动取地址来调用指针接收者方法。"
+    topic: properties
+    chapter: method_set
+
+  - id: q-method-012
+    type: single
+    difficulty: medium
+    stem: "嵌入字段的方法提升规则是什么？"
+    options:
+      - "A: 只提升值接收者方法"
+      - "B: 只提升指针接收者方法"
+      - "C: 提升所有方法"
+      - "D: 不提升方法"
+    answer: C
+    explanation: "嵌入字段的所有方法都会被提升到外层类型的方法集。"
+    topic: properties
+    chapter: method_set
+
+  - id: q-method-013
+    type: single
+    difficulty: medium
+    stem: "以下代码中 MyInt 是否实现了 Stringer 接口？\n\ntype Stringer interface { String() string }\ntype MyInt int\nfunc (m MyInt) String() string { return \"42\" }"
+    options:
+      - "A: 实现了"
+      - "B: 没有实现"
+      - "C: 需要指针实现"
+      - "D: 取决于调用"
+    answer: A
+    explanation: "MyInt 有 String 方法，实现了 Stringer 接口。"
+    topic: properties
+    chapter: method_set
+
+  - id: q-method-014
+    type: single
+    difficulty: medium
+    stem: "以下代码中 *MyInt 是否实现了 Stringer 接口？\n\ntype Stringer interface { String() string }\ntype MyInt int\nfunc (m MyInt) String() string { return \"42\" }"
+    options:
+      - "A: 实现了"
+      - "B: 没有实现"
+      - "C: 只能 MyInt 实现"
+      - "D: 取决于调用"
+    answer: A
+    explanation: "*MyInt 的方法集包含 MyInt 的方法，所以也实现了 Stringer。"
+    topic: properties
+    chapter: method_set
+
+  - id: q-method-015
+    type: single
+    difficulty: medium
+    stem: "不可寻址的值可以调用指针接收者方法吗？"
+    options:
+      - "A: 可以"
+      - "B: 不可以"
+      - "C: 编译器自动处理"
+      - "D: 运行时决定"
+    answer: B
+    explanation: "不可寻址的值不能自动取地址，不能调用指针接收者方法。"
+    topic: properties
+    chapter: method_set
+
+  - id: q-method-016
+    type: single
+    difficulty: medium
+    stem: "接口嵌入的方法集规则是什么？"
+    options:
+      - "A: 只包含嵌入接口的方法"
+      - "B: 包含所有嵌入接口的方法"
+      - "C: 不包含任何方法"
+      - "D: 必须显式实现"
+    answer: B
+    explanation: "接口嵌入后，方法集包含所有嵌入接口的方法。"
+    topic: properties
+    chapter: method_set
+
+  # ============ 单选题 (Hard) ============
+  - id: q-method-017
+    type: single
+    difficulty: hard
+    stem: "以下代码是否编译通过？\n\ntype MyInt int\nfunc (m MyInt) Value() int { return int(m) }\nfunc (m *MyInt) SetValue(x int) { *m = MyInt(x) }\nvar _ interface{ SetValue(int) } = MyInt(42)"
+    options:
+      - "A: 通过"
+      - "B: 不通过：MyInt 没有 SetValue 方法"
+      - "C: 通过：编译器自动取地址"
+      - "D: 运行时 panic"
+    answer: B
+    explanation: "MyInt 没有 SetValue 方法（只有 *MyInt 有），不能赋值给该接口变量。"
+    topic: properties
+    chapter: method_set
+
+  - id: q-method-018
+    type: single
+    difficulty: hard
+    stem: "结构体嵌入时的方法提升冲突如何处理？"
+    options:
+      - "A: 编译错误"
+      - "B: 后面的覆盖前面的"
+      - "C: 都提升"
+      - "D: 只提升第一个"
+    answer: A
+    explanation: "如果嵌入字段的方法提升后产生冲突，编译错误。"
+    topic: properties
+    chapter: method_set
+
+  - id: q-method-019
+    type: single
+    difficulty: hard
+    stem: "指针嵌入的方法提升规则是什么？"
+    options:
+      - "A: 只提升值接收者方法"
+      - "B: 只提升指针接收者方法"
+      - "C: 提升所有方法"
+      - "D: 不提升方法"
+    answer: C
+    explanation: "指针嵌入也会提升所有方法到外层类型。"
+    topic: properties
+    chapter: method_set
+
+  - id: q-method-020
+    type: single
+    difficulty: hard
+    stem: "多个接口嵌入时的方法集是什么？"
+    options:
+      - "A: 第一个接口的方法"
+      - "B: 所有接口的方法集并集"
+      - "C: 所有接口的方法集交集"
+      - "D: 没有方法"
+    answer: B
+    explanation: "多个接口嵌入时，方法集是所有接口方法的并集。"
+    topic: properties
+    chapter: method_set
+
+  # ============ 多选题 (Easy) ============
+  - id: q-method-021
+    type: multiple
+    difficulty: easy
+    stem: "关于方法集，以下哪些说法是正确的？"
+    options:
+      - "A: T 的方法集包含接收者为 T 的方法"
+      - "B: *T 的方法集包含接收者为 T 和 *T 的方法"
+      - "C: 方法集决定接口实现"
+      - "D: 指针接收者方法只属于指针类型"
+    answer: ABCD
+    explanation: "所有选项都正确。"
+    topic: properties
+    chapter: method_set
+
+  - id: q-method-022
+    type: multiple
+    difficulty: easy
+    stem: "以下哪些类型有方法集？"
+    options:
+      - "A: 命名类型"
+      - "B: 指针类型"
+      - "C: 接口类型"
+      - "D: 基本类型"
+    answer: ABCD
+    explanation: "所有类型都有方法集（可能是空的）。"
+    topic: properties
+    chapter: method_set
+
+  - id: q-method-023
+    type: multiple
+    difficulty: easy
+    stem: "值接收者方法的特点是什么？"
+    options:
+      - "A: 不能修改接收者"
+      - "B: 属于 T 和 *T 的方法集"
+      - "C: 可以通过值和指针调用"
+      - "D: 可以修改接收者的字段"
+    answer: ABC
+    explanation: "值接收者方法不能修改接收者。"
+    topic: properties
+    chapter: method_set
+
+  - id: q-method-024
+    type: multiple
+    difficulty: easy
+    stem: "指针接收者方法的特点是什么？"
+    options:
+      - "A: 可以修改接收者"
+      - "B: 只属于 *T 的方法集"
+      - "C: 只能通过指针调用"
+      - "D: 编译器可以自动取地址"
+    answer: ABD
+    explanation: "指针接收者方法可以通过值自动取地址调用。"
+    topic: properties
+    chapter: method_set
+
+  # ============ 多选题 (Medium) ============
+  - id: q-method-025
+    type: multiple
+    difficulty: medium
+    stem: "关于接口实现，以下哪些说法是正确的？"
+    options:
+      - "A: 类型实现了接口的所有方法就实现了接口"
+      - "B: 方法集决定了类型有哪些方法"
+      - "C: 值类型实现接口，指针类型也实现"
+      - "D: 指针类型实现接口，值类型不一定实现"
+    answer: ABD
+    explanation: "值类型实现接口，指针类型不一定实现（需要看方法集）。"
+    topic: properties
+    chapter: method_set
+
+  - id: q-method-026
+    type: multiple
+    difficulty: medium
+    stem: "以下哪些情况可以调用指针接收者方法？"
+    options:
+      - "A: 通过指针变量"
+      - "B: 通过可寻址的值变量"
+      - "C: 通过字面量"
+      - "D: 通过函数返回值（可寻址）"
+    answer: AB
+    explanation: "通过指针变量或可寻址的值变量可以调用。"
+    topic: properties
+    chapter: method_set
+
+  - id: q-method-027
+    type: multiple
+    difficulty: medium
+    stem: "关于嵌入字段，以下哪些说法是正确的？"
+    options:
+      - "A: 嵌入字段的方法会被提升"
+      - "B: 可以通过外层类型调用嵌入字段的方法"
+      - "C: 提升的方法和直接定义的方法一起构成方法集"
+      - "D: 嵌入字段不能有同名方法"
+    answer: ABCD
+    explanation: "所有选项都正确描述了嵌入字段的方法提升规则。"
+    topic: properties
+    chapter: method_set
+
+  - id: q-method-028
+    type: multiple
+    difficulty: medium
+    stem: "以下哪些是方法集的作用？"
+    options:
+      - "A: 决定接口实现"
+      - "B: 决定可以调用的方法"
+      - "C: 决定类型的可见性"
+      - "D: 决定类型的赋值性"
+    answer: AB
+    explanation: "方法集决定接口实现和可以调用的方法。"
+    topic: properties
+    chapter: method_set
+
+  # ============ 多选题 (Hard) ============
+  - id: q-method-029
+    type: multiple
+    difficulty: hard
+    stem: "关于编译器自动取地址，以下哪些说法是正确的？"
+    options:
+      - "A: 可寻址的值可以自动取地址"
+      - "B: 只能用于调用指针接收者方法"
+      - "C: 不可寻址的值不能自动取地址"
+      - "D: 是编译器的语法糖"
+    answer: ABCD
+    explanation: "所有选项都正确。"
+    topic: properties
+    chapter: method_set
+
+  - id: q-method-030
+    type: multiple
+    difficulty: hard
+    stem: "以下哪些值是不可寻址的？"
+    options:
+      - "A: 字面量"
+      - "B: 函数返回值"
+      - "C: map 的元素"
+      - "D: 切片索引"
+    answer: ABC
+    explanation: "切片索引是可寻址的。"
+    topic: properties
+    chapter: method_set
+
+  - id: q-method-031
+    type: multiple
+    difficulty: hard
+    stem: "关于方法集和方法调用的关系，以下哪些说法是正确的？"
+    options:
+      - "A: 方法集决定可以调用的方法"
+      - "B: 方法集在编译时确定"
+      - "C: 方法集影响接口实现"
+      - "D: 方法集运行时改变"
+    answer: ABC
+    explanation: "方法集在编译时确定，不会运行时改变。"
+    topic: properties
+    chapter: method_set
+
+  - id: q-method-032
+    type: multiple
+    difficulty: hard
+    stem: "以下哪些情况会导致方法集冲突？"
+    options:
+      - "A: 嵌入字段有同名方法"
+      - "B: 类型定义和嵌入字段有同名方法"
+      - "C: 多个嵌入字段有同名方法"
+      - "D: 值接收者和指针接收者同名"
+    answer: ABC
+    explanation: "值接收者和指针接收者可以有同名方法。"
+    topic: properties
+    chapter: method_set
+
+  # ============ 补充单选题 ============
+  - id: q-method-033
+    type: single
+    difficulty: easy
+    stem: "空接口的方法集是什么？"
+    options:
+      - "A: 空"
+      - "B: 所有方法"
+      - "C: 任意方法"
+      - "D: 没有方法集"
+    answer: A
+    explanation: "空接口的方法集为空。"
+    topic: properties
+    chapter: method_set
+
+  - id: q-method-034
+    type: single
+    difficulty: medium
+    stem: "以下代码是否编译通过？\n\ntype I interface { A() }\ntype J interface { B() }\ntype K interface { I; J }"
+    options:
+      - "A: 通过"
+      - "B: 不通过：接口嵌入冲突"
+      - "C: 不通过：K 需要实现 A 和 B"
+      - "D: 运行时错误"
+    answer: A
+    explanation: "接口嵌入可以组合，K 的方法集包含 A 和 B。"
+    topic: properties
+    chapter: method_set
+
+  - id: q-method-035
+    type: single
+    difficulty: easy
+    stem: "方法的接收者可以是什么类型？"
+    options:
+      - "A: 命名类型"
+      - "B: 指针类型"
+      - "C: 基本类型"
+      - "D: 以上都可以"
+    answer: D
+    explanation: "任何命名类型都可以作为接收者。"
+    topic: properties
+    chapter: method_set
+
+  - id: q-method-036
+    type: single
+    difficulty: medium
+    stem: "以下代码是否编译通过？\n\ntype MyInt int\nfunc (m MyInt) Value() int { return int(m) }\nvar p *MyInt = &MyInt{42}\nfmt.Println(p.Value())"
+    options:
+      - "A: 通过"
+      - "B: 不通过：*MyInt 没有 Value 方法"
+      - "C: 不通过：需要 (*p).Value()"
+      - "D: 运行时 panic"
+    answer: A
+    explanation: "*MyInt 的方法集包含 MyInt 的方法。"
+    topic: properties
+    chapter: method_set
+
+  - id: q-method-037
+    type: single
+    difficulty: easy
+    stem: "结构体的方法集可以包含哪些方法？"
+    options:
+      - "A: 结构体定义的方法"
+      - "B: 嵌入字段提升的方法"
+      - "C: 以上都是"
+      - "D: 只有结构体定义的方法"
+    answer: C
+    explanation: "结构体的方法集包含定义的方法和嵌入字段提升的方法。"
+    topic: properties
+    chapter: method_set
+
+  - id: q-method-038
+    type: single
+    difficulty: medium
+    stem: "以下代码是否编译通过？\n\ntype T struct{}\nfunc (t T) M() {}\nfunc (t *T) N() {}\nvar _ interface{ M(); N() } = T{}"
+    options:
+      - "A: 通过"
+      - "B: 不通过：T 没有 N 方法"
+      - "C: 通过：编译器自动取地址"
+      - "D: 运行时 panic"
+    answer: C
+    explanation: "T{} 是可寻址的，编译器会自动取地址。"
+    topic: properties
+    chapter: method_set
+
+  - id: q-method-039
+    type: single
+    difficulty: easy
+    stem: "接口的方法集如何确定？"
+    options:
+      - "A: 由接口声明确定"
+      - "B: 由实现类型确定"
+      - "C: 由编译器推断"
+      - "D: 由用户指定"
+    answer: A
+    explanation: "接口的方法集由接口声明确定。"
+    topic: properties
+    chapter: method_set
+
+  - id: q-method-040
+    type: single
+    difficulty: medium
+    stem: "类型可以实现接口的方法但不显式声明吗？"
+    options:
+      - "A: 可以"
+      - "B: 不可以"
+      - "C: 需要显式声明"
+      - "D: 取决于接口"
+    answer: A
+    explanation: "Go 的接口实现是隐式的，只要类型实现了接口的所有方法。"
+    topic: properties
+    chapter: method_set

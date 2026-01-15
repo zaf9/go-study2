@@ -97,7 +97,21 @@ export default function QuizReviewPageClient() {
 
             <div className="space-y-4">
                 {items.map((item, index) => (
-                    <Card key={item.questionId} title={`题目 ${index + 1}`}>
+                    <Card key={item.questionId} title={
+                        <Space>
+                            <span>题目 {index + 1}</span>
+                            <Tag color={item.type === 'single' ? 'blue' : 'purple'}>
+                                {item.type === 'single' ? '单选题' : '多选题'}
+                            </Tag>
+                            <Tag color={
+                                item.difficulty === 'easy' ? 'green' :
+                                item.difficulty === 'medium' ? 'orange' : 'red'
+                            }>
+                                {item.difficulty === 'easy' ? '简单' :
+                                 item.difficulty === 'medium' ? '中等' : '困难'}
+                            </Tag>
+                        </Space>
+                    }>
                         <Space direction="vertical" className="w-full" size="large">
                             <Paragraph className="text-base font-medium">
                                 {item.stem}

@@ -20,6 +20,8 @@ type AnswerDetail struct {
 	CorrectAnswers []string `json:"correct_answers"`
 	Explanation    string   `json:"explanation"`
 	ScorePart      float64  `json:"score_part"`
+	Type           string   `json:"type"`           // 题型：single/multiple
+	Difficulty     string   `json:"difficulty"`     // 难度：easy/medium/hard
 }
 
 // ScoringResult 汇总判分结果。
@@ -63,6 +65,8 @@ func (e *ScoringEngine) Evaluate(questions []PreparedQuestion, answers map[int64
 			CorrectAnswers: correct,
 			Explanation:    q.Explanation,
 			ScorePart:      part,
+			Type:           q.View.Type,
+			Difficulty:     q.View.Difficulty,
 		})
 	}
 
@@ -104,6 +108,8 @@ func (e *ScoringEngine) EvaluateWithTotal(questions []PreparedQuestion, answers 
 				CorrectAnswers: q.CorrectAnswer,
 				Explanation:    q.Explanation,
 				ScorePart:      0,
+				Type:           q.View.Type,
+				Difficulty:     q.View.Difficulty,
 			})
 			continue
 		}
@@ -121,6 +127,8 @@ func (e *ScoringEngine) EvaluateWithTotal(questions []PreparedQuestion, answers 
 			CorrectAnswers: correct,
 			Explanation:    q.Explanation,
 			ScorePart:      part,
+			Type:           q.View.Type,
+			Difficulty:     q.View.Difficulty,
 		})
 	}
 

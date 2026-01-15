@@ -1,6 +1,6 @@
 "use client";
 
-import { Badge, List, Typography } from "antd";
+import { Badge, List, Space, Tag, Typography } from "antd";
 import { QuizAnswerDetail } from "@/types/quiz";
 
 /** 答案解析属性：传入判分明细，逐题展示正确答案与说明。 */
@@ -23,7 +23,21 @@ export default function AnswerExplanation({ details }: AnswerExplanationProps) {
                 text={item.is_correct ? "正确" : "错误"}
               />
             }
-            title={`题目 ${item.question_id}`}
+            title={
+              <Space>
+                <span>题目 {item.question_id}</span>
+                <Tag color={item.type === 'single' ? 'blue' : 'purple'}>
+                  {item.type === 'single' ? '单选题' : '多选题'}
+                </Tag>
+                <Tag color={
+                  item.difficulty === 'easy' ? 'green' :
+                  item.difficulty === 'medium' ? 'orange' : 'red'
+                }>
+                  {item.difficulty === 'easy' ? '简单' :
+                   item.difficulty === 'medium' ? '中等' : '困难'}
+                </Tag>
+              </Space>
+            }
             description={
               <div className="space-y-1">
                 <Text type="secondary">

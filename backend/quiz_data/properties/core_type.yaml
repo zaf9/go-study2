@@ -1,0 +1,586 @@
+# Properties of Types and Values - Core Type (核心类型) 测验题库
+# 章节: properties/core_type
+# 符合 Go 1.24 语言规范
+
+metadata:
+  topic: properties
+  chapter: core_type
+  total_questions: 40
+  last_updated: "2025-01-16"
+  difficulty_distribution:
+    easy: 16       # 40%
+    medium: 16     # 40%
+    hard: 8        # 20%
+  type_distribution:
+    single: 20     # 50%
+    multiple: 20   # 50%
+    code_output: 0
+    code_fix: 0
+
+questions:
+  # ============ 单选题 (Easy) ============
+  - id: q-core-001
+    type: single
+    difficulty: easy
+    stem: "基本类型 int 的核心类型是什么？"
+    options:
+      - "A: int"
+      - "B: interface{}"
+      - "C: any"
+      - "D: 没有核心类型"
+    answer: A
+    explanation: "基本类型的核心类型是其底层类型，也就是其自身。"
+    topic: properties
+    chapter: core_type
+
+  - id: q-core-002
+    type: single
+    difficulty: easy
+    stem: "类型定义 type MyInt int 创建的 MyInt 的核心类型是什么？"
+    options:
+      - "A: MyInt"
+      - "B: int"
+      - "C: interface{}"
+      - "D: 没有核心类型"
+    answer: B
+    explanation: "MyInt 的核心类型是其底层类型 int。"
+    topic: properties
+    chapter: core_type
+
+  - id: q-core-003
+    type: single
+    difficulty: easy
+    stem: "指针类型 *int 的核心类型是什么？"
+    options:
+      - "A: *int"
+      - "B: int"
+      - "C: unsafe.Pointer"
+      - "D: 没有核心类型"
+    answer: A
+    explanation: "指针类型的核心类型是其底层类型，也就是指针类型本身。"
+    topic: properties
+    chapter: core_type
+
+  - id: q-core-004
+    type: single
+    difficulty: easy
+    stem: "数组类型 [3]int 的核心类型是什么？"
+    options:
+      - "A: [3]int"
+      - "B: []int"
+      - "C: int"
+      - "D: 没有核心类型"
+    answer: A
+    explanation: "数组类型的核心类型是其底层类型 [3]int。"
+    topic: properties
+    chapter: core_type
+
+  - id: q-core-005
+    type: single
+    difficulty: easy
+    stem: "切片类型 []int 的核心类型是什么？"
+    options:
+      - "A: []int"
+      - "B: [3]int"
+      - "C: int"
+      - "D: 没有核心类型"
+    answer: A
+    explanation: "切片类型的核心类型是其底层类型 []int。"
+    topic: properties
+    chapter: core_type
+
+  - id: q-core-006
+    type: single
+    difficulty: easy
+    stem: "string 的核心类型是什么？"
+    options:
+      - "A: string"
+      - "B: []byte"
+      - "C: []rune"
+      - "D: bytestring"
+    answer: A
+    explanation: "string 的核心类型是 string 本身。"
+    topic: properties
+    chapter: core_type
+
+  - id: q-core-007
+    type: single
+    difficulty: easy
+    stem: "float64 的核心类型是什么？"
+    options:
+      - "A: float64"
+      - "B: float32"
+      - "C: int"
+      - "D: 没有核心类型"
+    answer: A
+    explanation: "float64 的核心类型是 float64 本身。"
+    topic: properties
+    chapter: core_type
+
+  - id: q-core-008
+    type: single
+    difficulty: easy
+    stem: "map 类型的核心类型是什么？"
+    options:
+      - "A: map 类型本身"
+      - "B: 键类型"
+      - "C: 值类型"
+      - "D: 没有核心类型"
+    answer: A
+    explanation: "map 类型的核心类型是 map 类型本身。"
+    topic: properties
+    chapter: core_type
+
+  # ============ 单选题 (Medium) ============
+  - id: q-core-009
+    type: single
+    difficulty: medium
+    stem: "以下类型定义中，哪个没有核心类型？"
+    options:
+      - "A: type Point struct { X, Y int }"
+      - "B: type Data struct { a int; b string }"
+      - "C: type IntPtr *int"
+      - "D: type MyInt int"
+    answer: B
+    explanation: "结构体类型 Data 的字段类型不同（int 和 string），因此没有核心类型。"
+    topic: properties
+    chapter: core_type
+
+  - id: q-core-010
+    type: single
+    difficulty: medium
+    stem: "bytestring 核心类型表示什么？"
+    options:
+      - "A: 只是 string"
+      - "B: 只是 []byte"
+      - "C: string 或 []byte"
+      - "D: 任意字节序列"
+    answer: C
+    explanation: "bytestring 核心类型表示可以是 string 或 []byte。"
+    topic: properties
+    chapter: core_type
+
+  - id: q-core-011
+    type: single
+    difficulty: medium
+    stem: "接口类型 Integer 的核心类型是什么？\n\ntype Integer interface {\n\t~int | ~int8 | ~int16 | ~int32 | ~int64\n}"
+    options:
+      - "A: int"
+      - "B: interface{}"
+      - "C: 没有核心类型"
+      - "D: int8"
+    answer: A
+    explanation: "Integer 接口的类型集是所有整型的核心类型，它们的核心类型是 int。"
+    topic: properties
+    chapter: core_type
+
+  - id: q-core-012
+    type: single
+    difficulty: medium
+    stem: "以下接口的核心类型是什么？\n\ntype Any interface {\n\tint | float64 | string\n}"
+    options:
+      - "A: int"
+      - "B: interface{}"
+      - "C: 没有核心类型"
+      - "D: bytestring"
+    answer: C
+    explanation: "int、float64、string 没有共同的核心类型，因此 Any 接口没有核心类型。"
+    topic: properties
+    chapter: core_type
+
+  - id: q-core-013
+    type: single
+    difficulty: medium
+    stem: "结构体 Point 的核心类型是什么？\n\ntype Point struct {\n\tX int\n\tY int\n}"
+    options:
+      - "A: Point"
+      - "B: int"
+      - "C: struct"
+      - "D: 没有核心类型"
+    answer: A
+    explanation: "结构体字段类型相同，核心类型是结构体本身。"
+    topic: properties
+    chapter: core_type
+
+  - id: q-core-014
+    type: single
+    difficulty: medium
+    stem: "以下代码中 MyIntPtr 的核心类型是什么？\n\ntype MyInt int\ntype MyIntPtr *MyInt"
+    options:
+      - "A: *int"
+      - "B: *MyInt"
+      - "C: int"
+      - "D: 没有核心类型"
+    answer: A
+    explanation: "MyIntPtr 的核心类型是其底层类型 *int。"
+    topic: properties
+    chapter: core_type
+
+  - id: q-core-015
+    type: single
+    difficulty: medium
+    stem: "函数类型的核心类型是什么？"
+    options:
+      - "A: 函数类型本身"
+      - "B: 返回值类型"
+      - "C: 参数类型"
+      - "D: 没有核心类型"
+    answer: A
+    explanation: "函数类型的核心类型是函数类型本身。"
+    topic: properties
+    chapter: core_type
+
+  - id: q-core-016
+    type: single
+    difficulty: medium
+    stem: "channel 类型的核心类型是什么？"
+    options:
+      - "A: channel 类型本身"
+      - "B: 元素类型"
+      - "C: direction"
+      - "D: 没有核心类型"
+    answer: A
+    explanation: "channel 类型的核心类型是 channel 类型本身。"
+    topic: properties
+    chapter: core_type
+
+  # ============ 单选题 (Hard) ============
+  - id: q-core-017
+    type: single
+    difficulty: hard
+    stem: "接口类型 Byteseq 的核心类型是什么？\n\ntype Byteseq interface {\n\t~string | ~[]byte\n}"
+    options:
+      - "A: string"
+      - "B: []byte"
+      - "C: bytestring"
+      - "D: 没有核心类型"
+    answer: C
+    explanation: "Byteseq 接口包含 string 和 []byte，它们的核心类型是 bytestring（联合核心类型）。"
+    topic: properties
+    chapter: core_type
+
+  - id: q-core-018
+    type: single
+    difficulty: hard
+    stem: "以下接口的核心类型是什么？\n\ntype Ordered interface {\n\t~int | ~float64 | ~string\n}"
+    options:
+      - "A: int"
+      - "B: 没有核心类型"
+      - "C: interface{}"
+      - "D: any"
+    answer: B
+    explanation: "int、float64、string 没有共同的核心类型，因此 Ordered 接口没有核心类型。"
+    topic: properties
+    chapter: core_type
+
+  - id: q-core-019
+    type: single
+    difficulty: hard
+    stem: "带有标签的结构体有核心类型吗？\n\ntype Point struct {\n\tX int `json:\"x\"`\n\tY int `json:\"y\"`\n}"
+    options:
+      - "A: 有，是 Point"
+      - "B: 没有"
+      - "C: 有，是 int"
+      - "D: 有，是 struct"
+    answer: A
+    explanation: "字段类型相同且有标签，核心类型是结构体本身。"
+    topic: properties
+    chapter: core_type
+
+  - id: q-core-020
+    type: single
+    difficulty: hard
+    stem: "类型参数 T 的核心类型是什么？\n\ntype Numeric interface {\n\t~int | ~float64\n}"
+    options:
+      - "A: int"
+      - "B: 由 T 的实例化决定"
+      - "C: 没有核心类型"
+      - "D: interface{}"
+    answer: B
+    explanation: "类型参数的核心类型由其实例化的具体类型决定。"
+    topic: properties
+    chapter: core_type
+
+  # ============ 多选题 (Easy) ============
+  - id: q-core-021
+    type: multiple
+    difficulty: easy
+    stem: "以下哪些类型有核心类型？"
+    options:
+      - "A: int"
+      - "B: string"
+      - "C: []int"
+      - "D: struct{ X int; Y int }"
+    answer: ABCD
+    explanation: "所有非接口类型都有核心类型（可能是其自身或底层类型）。"
+    topic: properties
+    chapter: core_type
+
+  - id: q-core-022
+    type: multiple
+    difficulty: easy
+    stem: "以下哪些类型的核心类型是其自身？"
+    options:
+      - "A: int"
+      - "B: float64"
+      - "C: string"
+      - "D: bool"
+    answer: ABCD
+    explanation: "基本类型的核心类型是其自身。"
+    topic: properties
+    chapter: core_type
+
+  - id: q-core-023
+    type: multiple
+    difficulty: easy
+    stem: "以下哪些类型的核心类型是其底层类型？"
+    options:
+      - "A: 指针"
+      - "B: 数组"
+      - "C: 切片"
+      - "D: map"
+    answer: ABCD
+    explanation: "指针、数组、切片、map 等类型的核心类型是其底层类型。"
+    topic: properties
+    chapter: core_type
+
+  - id: q-core-024
+    type: multiple
+    difficulty: easy
+    stem: "以下哪些是特殊的核心类型？"
+    options:
+      - "A: bytestring"
+      - "B: int"
+      - "C: string"
+      - "D: float64"
+    answer: A
+    explanation: "bytestring 是特殊的核心类型，表示 string 或 []byte 的联合。"
+    topic: properties
+    chapter: core_type
+
+  # ============ 多选题 (Medium) ============
+  - id: q-core-025
+    type: multiple
+    difficulty: medium
+    stem: "关于核心类型，以下哪些说法是正确的？"
+    options:
+      - "A: 基本类型的核心类型是其自身"
+      - "B: 结构体字段类型相同时，核心类型是结构体本身"
+      - "C: 接口类型的核心类型是其类型集的交集"
+      - "D: bytestring 是 string 或 []byte"
+    answer: ABCD
+    explanation: "所有选项都正确描述了核心类型的规则。"
+    topic: properties
+    chapter: core_type
+
+  - id: q-core-026
+    type: multiple
+    difficulty: medium
+    stem: "以下哪些结构体有核心类型？"
+    options:
+      - "A: type Point struct { X, Y int }"
+      - "B: type Data struct { name string; age int }"
+      - "C: type Empty struct {}"
+      - "D: type Pair struct { a, b int }"
+    answer: ACD
+    explanation: "Point（字段相同）、Empty（无字段）、Pair（字段相同）都有核心类型。Data 字段不同，没有核心类型。"
+    topic: properties
+    chapter: core_type
+
+  - id: q-core-027
+    type: multiple
+    difficulty: medium
+    stem: "关于接口的核心类型，以下哪些说法是正确的？"
+    options:
+      - "A: 接口的核心类型是其类型集的核心类型"
+      - "B: 类型集为空时没有核心类型"
+      - "C: 类型集只有一个类型时，核心类型是那个类型"
+      - "D: 类型集类型无共同核心类型时，没有核心类型"
+    answer: ABCD
+    explanation: "接口的核心类型由其类型集决定。"
+    topic: properties
+    chapter: core_type
+
+  - id: q-core-028
+    type: multiple
+    difficulty: medium
+    stem: "以下哪些接口有核心类型？"
+    options:
+      - "A: type Integer interface { ~int | ~int8 }"
+      - "B: type Any interface { int | float64 }"
+      - "C: type Byteseq interface { ~string | ~[]byte }"
+      - "D: type Empty interface {}"
+    answer: AC
+    explanation: "Integer 的核心类型是 int。Byteseq 的核心类型是 bytestring。Any 和 Empty 没有核心类型。"
+    topic: properties
+    chapter: core_type
+
+  # ============ 多选题 (Hard) ============
+  - id: q-core-029
+    type: multiple
+    difficulty: hard
+    stem: "关于 bytestring 核心类型，以下哪些说法是正确的？"
+    options:
+      - "A: bytestring 表示 string 或 []byte"
+      - "B: 用于泛型类型约束"
+      - "C: 是一种联合核心类型"
+      - "D: 可以用于 byteseq 接口"
+    answer: ABCD
+    explanation: "bytestring 是特殊的联合核心类型，用于表示 string 或 []byte。"
+    topic: properties
+    chapter: core_type
+
+  - id: q-core-030
+    type: multiple
+    difficulty: hard
+    stem: "以下哪些情况会导致结构体没有核心类型？"
+    options:
+      - "A: 字段类型不同"
+      - "B: 空结构体"
+      - "C: 字段类型相同但标签不同"
+      - "D: 嵌入字段"
+    answer: AC
+    explanation: "字段类型不同或字段类型相同但标签不同的结构体没有核心类型。"
+    topic: properties
+    chapter: core_type
+
+  - id: q-core-031
+    type: multiple
+    difficulty: hard
+    stem: "关于类型参数的核心类型，以下哪些说法是正确的？"
+    options:
+      - "A: 类型参数的核心类型由其约束决定"
+      - "B: 约束是接口时，核心类型是接口的核心类型"
+      - "C: 约束是具体类型时，核心类型是该类型的核心类型"
+      - "D: 类型参数本身有独立的核心类型"
+    answer: ABC
+    explanation: "类型参数的核心类型基于其类型约束，不是独立的。"
+    topic: properties
+    chapter: core_type
+
+  - id: q-core-032
+    type: multiple
+    difficulty: hard
+    stem: "以下哪些函数签名使用了核心类型相关的约束？"
+    options:
+      - "A: func Print[T ~string](v T)"
+      - "B: func Sum[T ~int | ~float64](v T) T"
+      - "C: func Process[T any](v T)"
+      - "D: func Bytes[T ~[]byte | ~string](v T)"
+    answer: ABD
+    explanation: "any 不限制核心类型。其他选项都使用了核心类型相关的约束。"
+    topic: properties
+    chapter: core_type
+
+  # ============ 补充单选题 ============
+  - id: q-core-033
+    type: single
+    difficulty: easy
+    stem: "bool 的核心类型是什么？"
+    options:
+      - "A: bool"
+      - "B: int"
+      - "C: interface{}"
+      - "D: 没有核心类型"
+    answer: A
+    explanation: "bool 的核心类型是 bool 本身。"
+    topic: properties
+    chapter: core_type
+
+  - id: q-core-034
+    type: single
+    difficulty: medium
+    stem: "空接口 interface{} 的核心类型是什么？"
+    options:
+      - "A: interface{}"
+      - "B: any"
+      - "C: 没有核心类型"
+      - "D: 所有类型"
+    answer: C
+    explanation: "空接口的类型集包含所有类型，没有共同的核心类型。"
+    topic: properties
+    chapter: core_type
+
+  - id: q-core-035
+    type: single
+    difficulty: easy
+    stem: "rune 的核心类型是什么？"
+    options:
+      - "A: rune (int32)"
+      - "B: int"
+      - "C: int32"
+      - "D: 没有核心类型"
+    answer: A
+    explanation: "rune 是 int32 的别名，其核心类型是 int32（即 rune）。"
+    topic: properties
+    chapter: core_type
+
+  - id: q-core-036
+    type: single
+    difficulty: medium
+    stem: "复杂类型的核心类型是什么？\n\ntype MyInt int\ntype Complex [3]MyInt"
+    options:
+      - "A: [3]int"
+      - "B: [3]MyInt"
+      - "C: int"
+      - "D: MyInt"
+    answer: A
+    explanation: "Complex 的核心类型是其底层类型 [3]int。"
+    topic: properties
+    chapter: core_type
+
+  - id: q-core-037
+    type: single
+    difficulty: easy
+    stem: "uintptr 的核心类型是什么？"
+    options:
+      - "A: uintptr"
+      - "B: uint"
+      - "C: unsafe.Pointer"
+      - "D: 没有核心类型"
+    answer: A
+    explanation: "uintptr 的核心类型是 uintptr 本身。"
+    topic: properties
+    chapter: core_type
+
+  - id: q-core-038
+    type: single
+    difficulty: medium
+    stem: "嵌套结构体的核心类型是什么？"
+    options:
+      - "A: 外层结构体本身（如果字段类型相同）"
+      - "B: 内层结构体"
+      - "C: 没有核心类型"
+      - "D: 所有字段类型的组合"
+    answer: A
+    explanation: "嵌套结构体的核心类型规则与普通结构体相同。"
+    topic: properties
+    chapter: core_type
+
+  - id: q-core-039
+    type: single
+    difficulty: easy
+    stem: "complex64 的核心类型是什么？"
+    options:
+      - "A: complex64"
+      - "B: float32"
+      - "C: complex128"
+      - "D: 没有核心类型"
+    answer: A
+    explanation: "complex64 的核心类型是 complex64 本身。"
+    topic: properties
+    chapter: core_type
+
+  - id: q-core-040
+    type: single
+    difficulty: medium
+    stem: "类型别名的核心类型是什么？\n\ntype MyInt = int"
+    options:
+      - "A: int"
+      - "B: MyInt"
+      - "C: 没有核心类型"
+      - "D: interface{}"
+    answer: A
+    explanation: "类型别名的核心类型与原类型相同。MyInt 的核心类型是 int。"
+    topic: properties
+    chapter: core_type

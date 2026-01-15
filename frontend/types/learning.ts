@@ -1,4 +1,4 @@
-export type TopicKey = "lexical_elements" | "constants" | "variables" | "types";
+export type TopicKey = "lexical_elements" | "constants" | "variables" | "types" | "properties";
 
 export interface TopicSummary {
   key: TopicKey;

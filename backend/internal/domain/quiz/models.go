@@ -63,6 +63,7 @@ var supportedTopics = map[string]struct{}{
 	"constants":        {},
 	"variables":        {},
 	"types":            {},
+	"properties":       {},
 }
 
 // IsSupportedTopic 判断 topic 是否在允许范围内。

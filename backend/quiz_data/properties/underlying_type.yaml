@@ -1,0 +1,586 @@
+# Properties of Types and Values - Underlying Type (底层类型) 测验题库
+# 章节: properties/underlying_type
+# 符合 Go 1.24 语言规范
+
+metadata:
+  topic: properties
+  chapter: underlying_type
+  total_questions: 40
+  last_updated: "2025-01-16"
+  difficulty_distribution:
+    easy: 16       # 40%
+    medium: 16     # 40%
+    hard: 8        # 20%
+  type_distribution:
+    single: 20     # 50%
+    multiple: 20   # 50%
+    code_output: 0
+    code_fix: 0
+
+questions:
+  # ============ 单选题 (Easy) ============
+  - id: q-under-001
+    type: single
+    difficulty: easy
+    stem: "基本类型 int 的底层类型是什么？"
+    options:
+      - "A: int"
+      - "B: interface{}"
+      - "C: any"
+      - "D: 没有底层类型"
+    answer: A
+    explanation: "基本类型（预声明类型）的底层类型是自身。int 的底层类型是 int。"
+    topic: properties
+    chapter: underlying_type
+
+  - id: q-under-002
+    type: single
+    difficulty: easy
+    stem: "类型定义 type T int 创建的新类型 T 的底层类型是什么？"
+    options:
+      - "A: T"
+      - "B: int"
+      - "C: interface{}"
+      - "D: any"
+    answer: B
+    explanation: "类型定义 type T int 创建的新类型 T 的底层类型是 int。"
+    topic: properties
+    chapter: underlying_type
+
+  - id: q-under-003
+    type: single
+    difficulty: easy
+    stem: "类型别名 type T = int 创建的 T 的底层类型是什么？"
+    options:
+      - "A: T"
+      - "B: int"
+      - "C: interface{}"
+      - "D: any"
+    answer: B
+    explanation: "类型别名 type T = int 的底层类型是 int。实际上 T 和 int 是完全相同的类型。"
+    topic: properties
+    chapter: underlying_type
+
+  - id: q-under-004
+    type: single
+    difficulty: easy
+    stem: "字符串类型 string 的底层类型是什么？"
+    options:
+      - "A: string"
+      - "B: []byte"
+      - "C: []rune"
+      - "D: interface{}"
+    answer: A
+    explanation: "string 是基本类型，其底层类型是 string 本身。"
+    topic: properties
+    chapter: underlying_type
+
+  - id: q-under-005
+    type: single
+    difficulty: easy
+    stem: "数组类型 [3]int 的底层类型是什么？"
+    options:
+      - "A: [3]int"
+      - "B: []int"
+      - "C: int"
+      - "D: interface{}"
+    answer: A
+    explanation: "数组类型的底层类型是数组类型本身。[3]int 的底层类型是 [3]int。"
+    topic: properties
+    chapter: underlying_type
+
+  - id: q-under-006
+    type: single
+    difficulty: easy
+    stem: "指针类型 *int 的底层类型是什么？"
+    options:
+      - "A: *int"
+      - "B: int"
+      - "C: unsafe.Pointer"
+      - "D: interface{}"
+    answer: A
+    explanation: "指针类型的底层类型是指针类型本身。*int 的底层类型是 *int。"
+    topic: properties
+    chapter: underlying_type
+
+  - id: q-under-007
+    type: single
+    difficulty: easy
+    stem: "切片类型 []int 的底层类型是什么？"
+    options:
+      - "A: []int"
+      - "B: [3]int"
+      - "C: int"
+      - "D: interface{}"
+    answer: A
+    explanation: "切片类型的底层类型是切片类型本身。[]int 的底层类型是 []int。"
+    topic: properties
+    chapter: underlying_type
+
+  - id: q-under-008
+    type: single
+    difficulty: easy
+    stem: "结构体类型的底层类型是什么？"
+    options:
+      - "A: 结构体类型本身"
+      - "B: interface{}"
+      - "C: 所有字段类型的组合"
+      - "D: 没有底层类型"
+    answer: A
+    explanation: "结构体类型的底层类型是结构体类型本身。"
+    topic: properties
+    chapter: underlying_type
+
+  # ============ 单选题 (Medium) ============
+  - id: q-under-009
+    type: single
+    difficulty: medium
+    stem: "以下代码中 YourInt 的底层类型是什么？\n\ntype MyInt int\ntype YourInt MyInt"
+    options:
+      - "A: YourInt"
+      - "B: MyInt"
+      - "C: int"
+      - "D: interface{}"
+    answer: C
+    explanation: "YourInt 的底层类型是 MyInt 的底层类型，即 int。类型定义会递归地查找底层类型。"
+    topic: properties
+    chapter: underlying_type
+
+  - id: q-under-010
+    type: single
+    difficulty: medium
+    stem: "以下代码中 MyIntPtr 的底层类型是什么？\n\ntype MyInt int\ntype MyIntPtr *MyInt"
+    options:
+      - "A: *MyInt"
+      - "B: *int"
+      - "C: MyInt"
+      - "D: int"
+    answer: B
+    explanation: "MyIntPtr 的底层类型是 *int。指针类型的底层类型递归地应用到底层类型上。"
+    topic: properties
+    chapter: underlying_type
+
+  - id: q-under-011
+    type: single
+    difficulty: medium
+    stem: "以下代码中 MyIntArray 的底层类型是什么？\n\ntype MyInt int\ntype MyIntArray [3]MyInt"
+    options:
+      - "A: [3]MyInt"
+      - "B: [3]int"
+      - "C: []int"
+      - "D: MyInt"
+    answer: B
+    explanation: "MyIntArray 的底层类型是 [3]int。数组类型的底层类型递归地应用到底层类型上。"
+    topic: properties
+    chapter: underlying_type
+
+  - id: q-under-012
+    type: single
+    difficulty: medium
+    stem: "以下代码中 MyIntSlice 的底层类型是什么？\n\ntype MyInt int\ntype MyIntSlice []MyInt"
+    options:
+      - "A: []MyInt"
+      - "B: []int"
+      - "C: MyInt"
+      - "D: int"
+    answer: B
+    explanation: "MyIntSlice 的底层类型是 []int。切片类型的底层类型递归地应用到底层类型上。"
+    topic: properties
+    chapter: underlying_type
+
+  - id: q-under-013
+    type: single
+    difficulty: medium
+    stem: "函数类型的底层类型是什么？"
+    options:
+      - "A: 函数类型本身"
+      - "B: 返回值类型"
+      - "C: 所有参数类型的组合"
+      - "D: interface{}"
+    answer: A
+    explanation: "函数类型的底层类型是函数类型本身。"
+    topic: properties
+    chapter: underlying_type
+
+  - id: q-under-014
+    type: single
+    difficulty: medium
+    stem: "接口类型的底层类型是什么？"
+    options:
+      - "A: 接口类型本身"
+      - "B: 接口的方法集"
+      - "C: interface{}"
+      - "D: 没有底层类型"
+    answer: A
+    explanation: "接口类型的底层类型是接口类型本身。"
+    topic: properties
+    chapter: underlying_type
+
+  - id: q-under-015
+    type: single
+    difficulty: medium
+    stem: "map 类型的底层类型是什么？"
+    options:
+      - "A: map 类型本身"
+      - "B: 键类型"
+      - "C: 值类型"
+      - "D: interface{}"
+    answer: A
+    explanation: "map 类型的底层类型是 map 类型本身。"
+    topic: properties
+    chapter: underlying_type
+
+  - id: q-under-016
+    type: single
+    difficulty: medium
+    stem: "channel 类型的底层类型是什么？"
+    options:
+      - "A: channel 类型本身"
+      - "B: 元素类型"
+      - "C: direction"
+      - "D: interface{}"
+    answer: A
+    explanation: "channel 类型的底层类型是 channel 类型本身。"
+    topic: properties
+    chapter: underlying_type
+
+  # ============ 单选题 (Hard) ============
+  - id: q-under-017
+    type: single
+    difficulty: hard
+    stem: "以下代码中 YourYourInt 的底层类型是什么？\n\ntype MyInt int\ntype YourInt MyInt\ntype YourYourInt YourInt"
+    options:
+      - "A: YourYourInt"
+      - "B: YourInt"
+      - "C: MyInt"
+      - "D: int"
+    answer: D
+    explanation: "底层类型推导会一直递归直到基本类型。YourYourInt → YourInt → MyInt → int。"
+    topic: properties
+    chapter: underlying_type
+
+  - id: q-under-018
+    type: single
+    difficulty: hard
+    stem: "以下代码中 ComplexPtr 的底层类型是什么？\n\ntype MyInt int\ntype MyIntPtr *MyInt\ntype ComplexPtr *MyIntPtr"
+    options:
+      - "A: *MyIntPtr"
+      - "B: **MyInt"
+      - "C: **int"
+      - "D: *int"
+    answer: C
+    explanation: "ComplexPtr → *MyIntPtr → **MyInt → **int。指针类型的底层类型递归应用。"
+    topic: properties
+    chapter: underlying_type
+
+  - id: q-under-019
+    type: single
+    difficulty: hard
+    stem: "类型参数的底层类型是什么？"
+    options:
+      - "A: 类型参数本身"
+      - "B: 类型参数的约束类型"
+      - "C: 约束类型的底层类型"
+      - "D: interface{}"
+    answer: C
+    explanation: "类型参数的底层类型是其类型约束的底层类型。"
+    topic: properties
+    chapter: underlying_type
+
+  - id: q-under-020
+    type: single
+    difficulty: hard
+    stem: "以下代码中 MyFunc 的底层类型是什么？\n\ntype MyInt int\ntype MyFunc func(MyInt) string"
+    options:
+      - "A: func(MyInt) string"
+      - "B: func(int) string"
+      - "C: func(int) interface{}"
+      - "D: interface{}"
+    answer: A
+    explanation: "函数类型的底层类型是函数类型本身，不递归到参数和返回值的底层类型。"
+    topic: properties
+    chapter: underlying_type
+
+  # ============ 多选题 (Easy) ============
+  - id: q-under-021
+    type: multiple
+    difficulty: easy
+    stem: "以下哪些类型的底层类型是它们自身？"
+    options:
+      - "A: int"
+      - "B: string"
+      - "C: float64"
+      - "D: []int"
+    answer: ABC
+    explanation: "基本类型（int, string, float64等）的底层类型是自身。[]int 不是基本类型，但其底层类型也是 []int 本身。题目问基本类型，所以选 A, B, C。"
+    topic: properties
+    chapter: underlying_type
+
+  - id: q-under-022
+    type: multiple
+    difficulty: easy
+    stem: "以下哪些类型的底层类型是它们自身？"
+    options:
+      - "A: [3]int"
+      - "B: []int"
+      - "C: *int"
+      - "D: map[string]int"
+    answer: ABCD
+    explanation: "复合类型（数组、切片、指针、map、channel）的底层类型都是它们自身。"
+    topic: properties
+    chapter: underlying_type
+
+  - id: q-under-023
+    type: multiple
+    difficulty: easy
+    stem: "以下哪些语句创建了底层类型为 int 的新类型？"
+    options:
+      - "A: type MyInt int"
+      - "B: type MyInt = int"
+      - "C: type MyInt int; type YourInt MyInt"
+      - "D: type MyInt = int; type YourInt = MyInt"
+    answer: AC
+    explanation: "类型定义 type T int 创建新类型，底层类型为 int。类型别名 type T = int 不创建新类型。"
+    topic: properties
+    chapter: underlying_type
+
+  - id: q-under-024
+    type: multiple
+    difficulty: easy
+    stem: "以下哪些是基本类型？"
+    options:
+      - "A: bool"
+      - "B: int"
+      - "C: string"
+      - "D: []int"
+    answer: ABC
+    explanation: "bool, int, string 都是基本类型。[]int 是复合类型。"
+    topic: properties
+    chapter: underlying_type
+
+  # ============ 多选题 (Medium) ============
+  - id: q-under-025
+    type: multiple
+    difficulty: medium
+    stem: "关于底层类型，以下哪些说法是正确的？"
+    options:
+      - "A: 基本类型的底层类型是自身"
+      - "B: 类型定义创建的新类型，其底层类型是原类型的底层类型"
+      - "C: 类型别名的底层类型是别名指定的类型"
+      - "D: 指针类型的底层类型会递归应用"
+    answer: ABCD
+    explanation: "所有选项都正确。底层类型的推导规则适用于所有情况。"
+    topic: properties
+    chapter: underlying_type
+
+  - id: q-under-026
+    type: multiple
+    difficulty: medium
+    stem: "以下哪些代码片段中，T 的底层类型是 int？"
+    options:
+      - "A: type T int"
+      - "B: type T = int"
+      - "C: type MyInt int; type T MyInt"
+      - "D: type T int; type U T"
+    answer: ABCD
+    explanation: "所有情况最终都会推导到 int 作为底层类型。"
+    topic: properties
+    chapter: underlying_type
+
+  - id: q-under-027
+    type: multiple
+    difficulty: medium
+    stem: "关于类型别名，以下哪些说法是正确的？"
+    options:
+      - "A: 类型别名不创建新类型"
+      - "B: 类型别名和原类型可以互相赋值"
+      - "C: 类型别名的底层类型是原类型的底层类型"
+      - "D: 类型别名和原类型完全相同"
+    answer: ABCD
+    explanation: "类型别名 type T = base 创建的 T 和 base 完全相同，可以互相赋值。"
+    topic: properties
+    chapter: underlying_type
+
+  - id: q-under-028
+    type: multiple
+    difficulty: medium
+    stem: "以下哪些类型的底层类型是 *int？"
+    options:
+      - "A: *int"
+      - "B: type MyInt int; type MyIntPtr *MyInt"
+      - "C: type IntPtr *int"
+      - "D: type P **int"
+    answer: ABC
+    explanation: "*int, MyIntPtr (递归到 *int), IntPtr 的底层类型都是 *int。P 的底层类型是 **int。"
+    topic: properties
+    chapter: underlying_type
+
+  # ============ 多选题 (Hard) ============
+  - id: q-under-029
+    type: multiple
+    difficulty: hard
+    stem: "关于底层类型推导的递归性，以下哪些说法是正确的？"
+    options:
+      - "A: 类型定义会递归查找底层类型"
+      - "B: 指针类型会递归应用到底层类型"
+      - "C: 数组类型会递归应用到元素类型"
+      - "D: 函数类型不会递归到参数和返回值"
+    answer: ABCD
+    explanation: "底层类型推导在大多数情况下会递归，但函数类型的参数和返回值不会递归。"
+    topic: properties
+    chapter: underlying_type
+
+  - id: q-under-030
+    type: multiple
+    difficulty: hard
+    stem: "以下哪些情况会导致两个类型即使底层类型相同也不能直接赋值？"
+    options:
+      - "A: 两个都是通过 type 定义的新类型"
+      - "B: 一个是类型定义，一个是类型别名"
+      - "C: 两个都是类型别名"
+      - "D: 一个是基本类型，一个是类型定义"
+    answer: AB
+    explanation: "两个都是 type 定义的新类型不能直接赋值。类型别名与原类型相同可以赋值。类型定义与基本类型（其中一个不是命名类型）可以赋值。"
+    topic: properties
+    chapter: underlying_type
+
+  - id: q-under-031
+    type: multiple
+    difficulty: hard
+    stem: "以下哪些关于类型参数底层类型的说法是正确的？"
+    options:
+      - "A: 类型参数的底层类型是其约束的底层类型"
+      - "B: 约束是接口时，底层类型是接口的类型集的核心类型"
+      - "C: 约束是具体类型时，底层类型是该类型"
+      - "D: 类型参数本身没有底层类型"
+    answer: ABC
+    explanation: "类型参数的底层类型推导遵循特定规则，基于其类型约束。"
+    topic: properties
+    chapter: underlying_type
+
+  - id: q-under-032
+    type: multiple
+    difficulty: hard
+    stem: "以下哪些复合类型的底层类型是类型本身？"
+    options:
+      - "A: 结构体"
+      - "B: 函数"
+      - "C: 接口"
+      - "D: map"
+    answer: ABCD
+    explanation: "结构体、函数、接口、map、channel 等类型的底层类型都是类型本身，不会递归。"
+    topic: properties
+    chapter: underlying_type
+
+  # ============ 补充单选题 ============
+  - id: q-under-033
+    type: single
+    difficulty: easy
+    stem: "bool 类型的底层类型是什么？"
+    options:
+      - "A: bool"
+      - "B: int"
+      - "C: interface{}"
+      - "D: any"
+    answer: A
+    explanation: "bool 是基本类型，其底层类型是 bool 本身。"
+    topic: properties
+    chapter: underlying_type
+
+  - id: q-under-034
+    type: single
+    difficulty: medium
+    stem: "类型定义和类型别名的主要区别是什么？"
+    options:
+      - "A: 类型定义创建新类型，类型别名不创建"
+      - "B: 类型别名创建新类型，类型定义不创建"
+      - "C: 两者都创建新类型"
+      - "D: 两者都不创建新类型"
+    answer: A
+    explanation: "type T base 创建新类型，type T = base 是类型别名，不创建新类型。"
+    topic: properties
+    chapter: underlying_type
+
+  - id: q-under-035
+    type: single
+    difficulty: easy
+    stem: "float64 类型的底层类型是什么？"
+    options:
+      - "A: float64"
+      - "B: float32"
+      - "C: int"
+      - "D: interface{}"
+    answer: A
+    explanation: "float64 是基本类型，其底层类型是 float64 本身。"
+    topic: properties
+    chapter: underlying_type
+
+  - id: q-under-036
+    type: single
+    difficulty: medium
+    stem: "chan int 类型的底层类型是什么？"
+    options:
+      - "A: chan int"
+      - "B: int"
+      - "C: channel"
+      - "D: interface{}"
+    answer: A
+    explanation: "channel 类型的底层类型是 channel 类型本身。"
+    topic: properties
+    chapter: underlying_type
+
+  - id: q-under-037
+    type: single
+    difficulty: easy
+    stem: "接口类型的底层类型是什么？"
+    options:
+      - "A: 接口类型本身"
+      - "B: interface{}"
+      - "C: any"
+      - "D: 方法集"
+    answer: A
+    explanation: "接口类型的底层类型是接口类型本身。"
+    topic: properties
+    chapter: underlying_type
+
+  - id: q-under-038
+    type: single
+    difficulty: medium
+    stem: "以下代码中 MyMap 的底层类型是什么？\n\ntype MyMap map[string]int"
+    options:
+      - "A: map[string]int"
+      - "B: map"
+      - "C: string"
+      - "D: int"
+    answer: A
+    explanation: "map 类型的底层类型是 map 类型本身。"
+    topic: properties
+    chapter: underlying_type
+
+  - id: q-under-039
+    type: single
+    difficulty: easy
+    stem: "rune 类型的底层类型是什么？"
+    options:
+      - "A: rune (int32)"
+      - "B: int"
+      - "C: int32"
+      - "D: interface{}"
+    answer: A
+    explanation: "rune 是 int32 的别名，其底层类型是 int32。"
+    topic: properties
+    chapter: underlying_type
+
+  - id: q-under-040
+    type: single
+    difficulty: medium
+    stem: "byte 类型的底层类型是什么？"
+    options:
+      - "A: byte (uint8)"
+      - "B: uint8"
+      - "C: int"
+      - "D: uint"
+    answer: A
+    explanation: "byte 是 uint8 的别名，其底层类型是 uint8。"
+    topic: properties
+    chapter: underlying_type

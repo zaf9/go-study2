@@ -13,9 +13,9 @@ import (
 
 	logger "go-study2/internal/infrastructure/logger"
 	appjwt "go-study2/internal/pkg/jwt"
+	propertiescli "go-study2/src/learning/properties/cli"
 	typescli "go-study2/src/learning/types/cli"
 	varcli "go-study2/src/learning/variables/cli"
-	propertiescli "go-study2/src/learning/properties/cli"
 	"io"
 	"os"
 	"sort"

@@ -53,6 +53,15 @@ var TopicChapterOrder = map[string][]string{
 		"map",
 		"channel",
 	},
+	"properties": {
+		"representation",
+		"underlying_type",
+		"core_type",
+		"type_identity",
+		"assignability",
+		"representability",
+		"method_set",
+	},
 }
 
 // ChapterDisplayName 返回章节的显示名称，将章节 ID 格式化为可读名称。

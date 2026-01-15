@@ -40,6 +40,8 @@ export interface QuizAnswerDetail {
   is_correct: boolean;
   correct_answers: string[];
   explanation: string;
+  type: string;       // 题型：single/multiple
+  difficulty: string; // 难度：easy/medium/hard
 }
 
 export interface QuizSubmitResult {
@@ -95,6 +97,8 @@ export interface QuizReviewItem {
   correctChoice: string;
   isCorrect: boolean;
   explanation: string;
+  type: string;       // 题型：single/multiple
+  difficulty: string; // 难度：easy/medium/hard
 }
 
 export interface QuizReviewDetail {

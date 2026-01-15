@@ -1,0 +1,587 @@
+# Properties of Types and Values - Representation (值的表示) 测验题库
+# 章节: properties/representation
+# 符合 Go 1.24 语言规范
+
+metadata:
+  topic: properties
+  chapter: representation
+  total_questions: 40
+  last_updated: "2025-01-16"
+  difficulty_distribution:
+    easy: 16       # 40%
+    medium: 16     # 40%
+    hard: 8        # 20%
+  type_distribution:
+    single: 20     # 50%
+    multiple: 20   # 50%
+    code_output: 0
+    code_fix: 0
+
+questions:
+  # ============ 原有题目 ============
+  - id: q-rep-001
+    type: single
+    difficulty: easy
+    stem: "以下哪些类型是自包含值?"
+    options:
+      - "A: 数组、结构体、基本类型"
+      - "B: 切片、map、channel"
+      - "C: 指针、函数"
+      - "D: 以上都是"
+    answer: A
+    explanation: "自包含值包括数组、结构体和基本类型（bool、数值、string）。它们直接包含数据，拷贝时完全复制。"
+    topic: properties
+    chapter: representation
+
+  - id: q-rep-002
+    type: single
+    difficulty: easy
+    stem: "拷贝一个切片时，会发生什么?"
+    options:
+      - "A: 完全复制底层数组"
+      - "B: 只复制切片结构（指针、长度、容量），共享底层数组"
+      - "C: 创建新的底层数组"
+      - "D: 编译错误"
+    answer: B
+    explanation: "切片是引用值，拷贝时只复制切片结构（包含指向底层数组的指针、长度和容量），不复制底层数组。因此两个切片共享同一底层数组。"
+    topic: properties
+    chapter: representation
+
+  - id: q-rep-003
+    type: single
+    difficulty: medium
+    stem: "执行以下代码后，a 的值是什么?\n\na := [3]int{1, 2, 3}\nb := a\nb[0] = 99"
+    options:
+      - "A: [99 2 3]"
+      - "B: [1 2 3]"
+      - "C: 编译错误"
+      - "D: 运行时 panic"
+    answer: B
+    explanation: "数组是自包含值，b := a 会完全复制数组。修改 b 不会影响 a。因此 a 保持为 [1 2 3]。"
+    topic: properties
+    chapter: representation
+
+  # ============ 单选题 (Easy) ============
+  - id: q-rep-004
+    type: single
+    difficulty: easy
+    stem: "以下哪些类型是引用值?"
+    options:
+      - "A: 切片、map、channel"
+      - "B: 数组、结构体、基本类型"
+      - "C: 指针、函数"
+      - "D: A 和 C 都是"
+    answer: D
+    explanation: "引用值包括切片、map、channel、指针和函数。它们包含引用或指向数据的指针。"
+    topic: properties
+    chapter: representation
+
+  - id: q-rep-005
+    type: single
+    difficulty: easy
+    stem: "拷贝一个 map 时，会发生什么?"
+    options:
+      - "A: 完全复制所有键值对"
+      - "B: 只复制 map 结构（指针），共享底层数据"
+      - "C: 创建新的底层数据"
+      - "D: 编译错误"
+    answer: B
+    explanation: "map 是引用值，拷贝时只复制 map 结构（包含指向底层哈希表的指针）。"
+    topic: properties
+    chapter: representation
+
+  - id: q-rep-006
+    type: single
+    difficulty: easy
+    stem: "拷贝一个 channel 时，会发生什么?"
+    options:
+      - "A: 创建新的 channel"
+      - "B: 只复制 channel 结构（指针），共享同一个 channel"
+      - "C: 深度复制 channel 的缓冲区"
+      - "D: 编译错误"
+    answer: B
+    explanation: "channel 是引用值，拷贝时只复制 channel 结构（指针）。"
+    topic: properties
+    chapter: representation
+
+  - id: q-rep-007
+    type: single
+    difficulty: easy
+    stem: "拷贝一个指针时，会发生什么?"
+    options:
+      - "A: 复制指向的值"
+      - "B: 只复制指针地址"
+      - "C: 创建新的指向的值"
+      - "D: 编译错误"
+    answer: B
+    explanation: "指针是引用值，拷贝时只复制指针地址（指向的值不变）。"
+    topic: properties
+    chapter: representation
+
+  - id: q-rep-008
+    type: single
+    difficulty: easy
+    stem: "基本类型 int 是自包含值还是引用值?"
+    options:
+      - "A: 自包含值"
+      - "B: 引用值"
+      - "C: 取决于上下文"
+      - "D: 既不是自包含值也不是引用值"
+    answer: A
+    explanation: "int 是基本类型，是自包含值。"
+    topic: properties
+    chapter: representation
+
+  # ============ 单选题 (Medium) ============
+  - id: q-rep-009
+    type: single
+    difficulty: medium
+    stem: "执行以下代码后，s1 的值是什么?\n\ns1 := []int{1, 2, 3}\ns2 := s1\ns2[0] = 99"
+    options:
+      - "A: [1 2 3]"
+      - "B: [99 2 3]"
+      - "C: 编译错误"
+      - "D: 运行时 panic"
+    answer: B
+    explanation: "切片是引用值，s1 和 s2 共享底层数组。修改 s2 会影响 s1。"
+    topic: properties
+    chapter: representation
+
+  - id: q-rep-010
+    type: single
+    difficulty: medium
+    stem: "执行以下代码后，m1 的值是什么?\n\nm1 := map[string]int{\"a\": 1}\nm2 := m1\nm2[\"a\"] = 99"
+    options:
+      - "A: map[a:1]"
+      - "B: map[a:99]"
+      - "C: 编译错误"
+      - "D: 运行时 panic"
+    answer: B
+    explanation: "map 是引用值，m1 和 m2 共享底层数据。修改 m2 会影响 m1。"
+    topic: properties
+    chapter: representation
+
+  - id: q-rep-011
+    type: single
+    difficulty: medium
+    stem: "拷贝一个结构体时，会发生什么?"
+    options:
+      - "A: 深度复制所有字段"
+      - "B: 浅度复制（引用字段共享）"
+      - "C: 只复制结构体指针"
+      - "D: 取决于字段类型"
+    answer: A
+    explanation: "结构体是自包含值，拷贝时会复制所有字段（包括引用字段）。"
+    topic: properties
+    chapter: representation
+
+  - id: q-rep-012
+    type: single
+    difficulty: medium
+    stem: "函数类型是自包含值还是引用值?"
+    options:
+      - "A: 自包含值"
+      - "B: 引用值"
+      - "C: 取决于函数体"
+      - "D: 既不是自包含值也不是引用值"
+    answer: B
+    explanation: "函数类型是引用值，包含指向函数代码的指针。"
+    topic: properties
+    chapter: representation
+
+  - id: q-rep-013
+    type: single
+    difficulty: medium
+    stem: "执行以下代码后，p1 指向的值是什么?\n\nx := 42\np1 := &x\np2 := p1\n*p2 = 99"
+    options:
+      - "A: 42"
+      - "B: 99"
+      - "C: 编译错误"
+      - "D: 运行时 panic"
+    answer: B
+    explanation: "指针是引用值，p1 和 p2 指向同一个地址。修改 *p2 会影响 *p1。"
+    topic: properties
+    chapter: representation
+
+  - id: q-rep-014
+    type: single
+    difficulty: medium
+    stem: "string 类型的值表示是什么?"
+    options:
+      - "A: 自包含值（不可变字节序列）"
+      - "B: 引用值（指向字节数组的指针）"
+      - "C: 取决于字符串长度"
+      - "D: 既是自包含值也是引用值"
+    answer: A
+    explanation: "string 是自包含值，包含不可变的字节序列。"
+    topic: properties
+    chapter: representation
+
+  - id: q-rep-015
+    type: single
+    difficulty: medium
+    stem: "切片的底层数组什么时候会被共享?"
+    options:
+      - "A: 切片赋值时"
+      - "B: 切片作为函数参数时"
+      - "C: 切片取子切片时"
+      - "D: 以上都是"
+    answer: D
+    explanation: "所有这些操作都会共享底层数组。"
+    topic: properties
+    chapter: representation
+
+  - id: q-rep-016
+    type: single
+    difficulty: medium
+    stem: "如何完全复制一个切片（不共享底层数组）?"
+    options:
+      - "A: 使用赋值"
+      - "B: 使用 copy() 函数"
+      - "C: 使用 append() 函数"
+      - "D: 不能完全复制"
+    answer: B
+    explanation: "使用 copy() 函数可以完全复制切片的元素到新的底层数组。"
+    topic: properties
+    chapter: representation
+
+  # ============ 单选题 (Hard) ============
+  - id: q-rep-017
+    type: single
+    difficulty: hard
+    stem: "切片的长度和容量在拷贝后如何变化?"
+    options:
+      - "A: 长度和容量都保持不变"
+      - "B: 长度保持不变，容量可能不同"
+      - "C: 长度和容量都可能不同"
+      - "D: 长度和容量都会改变"
+    answer: A
+    explanation: "切片赋值时，长度和容量都保持不变（只是复制切片结构）。"
+    topic: properties
+    chapter: representation
+
+  - id: q-rep-018
+    type: single
+    difficulty: hard
+    stem: "以下代码输出什么?\n\ns := []int{1, 2, 3, 4, 5}\ns1 := s[1:3]\ns2 := s[:3:3]\nfmt.Println(len(s1), cap(s1), len(s2), cap(s2))"
+    options:
+      - "A: 2 4 3 3"
+      - "B: 2 2 3 3"
+      - "C: 2 4 3 5"
+      - "D: 编译错误"
+    answer: A
+    explanation: "s1 长度2容量4，s2 长度3容量3（3参数限制容量）。"
+    topic: properties
+    chapter: representation
+
+  - id: q-rep-019
+    type: single
+    difficulty: hard
+    stem: "channel 作为函数参数传递时是值传递还是引用传递?"
+    options:
+      - "A: 值传递（复制 channel）"
+      - "B: 引用传递（传递指针）"
+      - "C: 指针传递"
+      - "D: 既是值传递也是引用传递"
+    answer: A
+    explanation: "channel 是值传递，但复制的是 channel 结构（指针），所以共享同一个 channel。"
+    topic: properties
+    chapter: representation
+
+  - id: q-rep-020
+    type: single
+    difficulty: hard
+    stem: "以下代码输出什么?\n\nm := make(map[string]int)\nm[\"a\"] = 1\nfunc f(m map[string]int) {\n\tm[\"b\"] = 2\n}\nf(m)\nfmt.Println(m)"
+    options:
+      - "A: map[a:1]"
+      - "B: map[a:1 b:2]"
+      - "C: map[b:2]"
+      - "D: 编译错误"
+    answer: B
+    explanation: "map 是引用值，函数内修改会影响原始 map。"
+    topic: properties
+    chapter: representation
+
+  # ============ 多选题 (Easy) ============
+  - id: q-rep-021
+    type: multiple
+    difficulty: easy
+    stem: "以下哪些类型是自包含值?"
+    options:
+      - "A: 数组"
+      - "B: 结构体"
+      - "C: bool"
+      - "D: string"
+    answer: ABCD
+    explanation: "数组、结构体、bool 和 string 都是自包含值。"
+    topic: properties
+    chapter: representation
+
+  - id: q-rep-022
+    type: multiple
+    difficulty: easy
+    stem: "以下哪些类型是引用值?"
+    options:
+      - "A: 切片"
+      - "B: map"
+      - "C: channel"
+      - "D: 指针"
+    answer: ABCD
+    explanation: "切片、map、channel 和指针都是引用值。"
+    topic: properties
+    chapter: representation
+
+  - id: q-rep-023
+    type: multiple
+    difficulty: easy
+    stem: "关于自包含值，以下哪些说法是正确的?"
+    options:
+      - "A: 拷贝时完全复制数据"
+      - "B: 修改副本不影响原值"
+      - "C: 包括基本类型、数组、结构体"
+      - "D: string 是引用值"
+    answer: ABC
+    explanation: "string 是自包含值，不是引用值。"
+    topic: properties
+    chapter: representation
+
+  - id: q-rep-024
+    type: multiple
+    difficulty: easy
+    stem: "关于引用值，以下哪些说法是正确的?"
+    options:
+      - "A: 拷贝时只复制引用"
+      - "B: 修改副本可能影响原值"
+      - "C: 包括切片、map、channel"
+      - "D: 指针不是引用值"
+    answer: ABC
+    explanation: "指针也是引用值。"
+    topic: properties
+    chapter: representation
+
+  # ============ 多选题 (Medium) ============
+  - id: q-rep-025
+    type: multiple
+    difficulty: medium
+    stem: "以下哪些操作会共享切片的底层数组?"
+    options:
+      - "A: s1 := s2"
+      - "B: s1 := s2[1:3]"
+      - "C: s1 := make([]int, len(s2)); copy(s1, s2)"
+      - "D: s1 := append(s2[:0:0], s2...)"
+    answer: AB
+    explanation: "赋值和切片操作共享底层数组。copy() 和 append() 创建新数组。"
+    topic: properties
+    chapter: representation
+
+  - id: q-rep-026
+    type: multiple
+    difficulty: medium
+    stem: "以下哪些情况会导致共享底层数据?"
+    options:
+      - "A: 切片赋值"
+      - "B: map 赋值"
+      - "C: channel 赋值"
+      - "D: 指针赋值"
+    answer: ABCD
+    explanation: "所有这些操作都会共享底层数据。"
+    topic: properties
+    chapter: representation
+
+  - id: q-rep-027
+    type: multiple
+    difficulty: medium
+    stem: "关于数组，以下哪些说法是正确的?"
+    options:
+      - "A: 数组是自包含值"
+      - "B: 数组赋值会完全复制"
+      - "C: 数组作为函数参数会复制整个数组"
+      - "D: 数组可以转换为切片"
+    answer: ABCD
+    explanation: "所有选项都正确。"
+    topic: properties
+    chapter: representation
+
+  - id: q-rep-028
+    type: multiple
+    difficulty: medium
+    stem: "关于字符串，以下哪些说法是正确的?"
+    options:
+      - "A: string 是自包含值"
+      - "B: string 是不可变的"
+      - "C: 拷贝 string 会复制字节序列"
+      - "D: string 可以转换为 []byte"
+    answer: ABCD
+    explanation: "所有选项都正确。"
+    topic: properties
+    chapter: representation
+
+  # ============ 多选题 (Hard) ============
+  - id: q-rep-029
+    type: multiple
+    difficulty: hard
+    stem: "关于切片的容量，以下哪些说法是正确的?"
+    options:
+      - "A: 容量可以从长度开始到底层数组末尾"
+      - "B: 三索引切片可以限制容量"
+      - "C: 容量决定了可以 append 多少元素"
+      - "D: 容量总是等于长度"
+    answer: ABC
+    explanation: "容量不一定等于长度。"
+    topic: properties
+    chapter: representation
+
+  - id: q-rep-030
+    type: multiple
+    difficulty: hard
+    stem: "以下哪些情况会导致底层数组重新分配?"
+    options:
+      - "A: append 超过容量"
+      - "B: 切片赋值"
+      - "C: copy() 函数"
+      - "D: 三索引切片"
+    answer: A
+    explanation: "只有 append 超过容量时会重新分配底层数组。"
+    topic: properties
+    chapter: representation
+
+  - id: q-rep-031
+    type: multiple
+    difficulty: hard
+    stem: "关于 map 的并发访问，以下哪些说法是正确的?"
+    options:
+      - "A: 并发读 map 是安全的"
+      - "B: 并发写 map 会导致 panic"
+      - "C: 可以使用 sync.Map"
+      - "D: 可以使用 mutex 保护 map"
+    answer: ABCD
+    explanation: "所有选项都正确。"
+    topic: properties
+    chapter: representation
+
+  - id: q-rep-032
+    type: multiple
+    difficulty: hard
+    stem: "关于函数值，以下哪些说法是正确的?"
+    options:
+      - "A: 函数是引用值"
+      - "B: 函数可以比较（nil 比较）"
+      - "C: 函数可以作为参数传递"
+      - "D: 函数可以作为返回值"
+    answer: ABCD
+    explanation: "所有选项都正确。"
+    topic: properties
+    chapter: representation
+
+  # ============ 补充单选题 ============
+  - id: q-rep-033
+    type: single
+    difficulty: easy
+    stem: "基本类型 bool 是什么值?"
+    options:
+      - "A: 自包含值"
+      - "B: 引用值"
+      - "C: 取决于上下文"
+      - "D: 特殊类型"
+    answer: A
+    explanation: "bool 是基本类型，是自包含值。"
+    topic: properties
+    chapter: representation
+
+  - id: q-rep-034
+    type: single
+    difficulty: medium
+    stem: "执行以下代码后，ch1 和 ch2 的关系是什么?\n\nch1 := make(chan int)\nch2 := ch1"
+    options:
+      - "A: 两个独立的 channel"
+      - "B: 指向同一个 channel"
+      - "C: ch2 是 ch1 的副本"
+      - "D: 编译错误"
+    answer: B
+    explanation: "ch1 和 ch2 共享同一个 channel。"
+    topic: properties
+    chapter: representation
+
+  - id: q-rep-035
+    type: single
+    difficulty: easy
+    stem: "float64 是什么值?"
+    options:
+      - "A: 自包含值"
+      - "B: 引用值"
+      - "C: 取决于大小"
+      - "D: 特殊类型"
+    answer: A
+    explanation: "float64 是基本类型，是自包含值。"
+    topic: properties
+    chapter: representation
+
+  - id: q-rep-036
+    type: single
+    difficulty: medium
+    stem: "如何深拷贝一个 map?"
+    options:
+      - "A: 使用赋值"
+      - "B: 遍历原 map，创建新 map 并复制所有键值对"
+      - "C: 使用 copy() 函数"
+      - "D: 不能深拷贝 map"
+    answer: B
+    explanation: "需要遍历原 map，创建新 map 并递归复制值（如果值也是引用类型）。"
+    topic: properties
+    chapter: representation
+
+  - id: q-rep-037
+    type: single
+    difficulty: easy
+    stem: "complex128 是什么值?"
+    options:
+      - "A: 自包含值"
+      - "B: 引用值"
+      - "C: 取决于实部和虚部"
+      - "D: 特殊类型"
+    answer: A
+    explanation: "complex128 是基本类型，是自包含值。"
+    topic: properties
+    chapter: representation
+
+  - id: q-rep-038
+    type: single
+    difficulty: medium
+    stem: "切片的底层数组什么时候会被重新分配?"
+    options:
+      - "A: 赋值时"
+      - "B: 切片操作时"
+      - "C: append 超过容量时"
+      - "D: copy() 时"
+    answer: C
+    explanation: "只有 append 超过容量时才会重新分配底层数组。"
+    topic: properties
+    chapter: representation
+
+  - id: q-rep-039
+    type: single
+    difficulty: easy
+    stem: "int 是什么值?"
+    options:
+      - "A: 自包含值"
+      - "B: 引用值"
+      - "C: 取决于平台"
+      - "D: 特殊类型"
+    answer: A
+    explanation: "int 是基本类型，是自包含值。"
+    topic: properties
+    chapter: representation
+
+  - id: q-rep-040
+    type: single
+    difficulty: medium
+    stem: "以下代码输出什么?\n\na := [3]int{1, 2, 3}\nf := func(arr [3]int) { arr[0] = 99 }\nf(a)\nfmt.Println(a)"
+    options:
+      - "A: [99 2 3]"
+      - "B: [1 2 3]"
+      - "C: 编译错误"
+      - "D: 运行时 panic"
+    answer: B
+    explanation: "数组作为函数参数会完全复制，函数内修改不影响原数组。"
+    topic: properties
+    chapter: representation

@@ -1,0 +1,586 @@
+# Properties of Types and Values - Assignability (可赋值性) 测验题库
+# 章节: properties/assignability
+# 符合 Go 1.24 语言规范
+
+metadata:
+  topic: properties
+  chapter: assignability
+  total_questions: 40
+  last_updated: "2025-01-16"
+  difficulty_distribution:
+    easy: 16       # 40%
+    medium: 16     # 40%
+    hard: 8        # 20%
+  type_distribution:
+    single: 20     # 50%
+    multiple: 20   # 50%
+    code_output: 0
+    code_fix: 0
+
+questions:
+  # ============ 单选题 (Easy) ============
+  - id: q-assign-001
+    type: single
+    difficulty: easy
+    stem: "以下哪个赋值是合法的？\n\nvar x int = 42\nvar y int\ny = x"
+    options:
+      - "A: 合法"
+      - "B: 不合法"
+      - "C: 需要类型转换"
+      - "D: 编译错误"
+    answer: A
+    explanation: "类型相同可以赋值（条件1）。"
+    topic: properties
+    chapter: assignability
+
+  - id: q-assign-002
+    type: single
+    difficulty: easy
+    stem: "nil 可以赋值给哪些类型？"
+    options:
+      - "A: 所有类型"
+      - "B: 指针、函数、切片、map、channel、接口"
+      - "C: 仅接口类型"
+      - "D: 仅指针类型"
+    answer: B
+    explanation: "nil 可以赋值给指针、函数、切片、map、channel 和接口类型的变量（条件5）。"
+    topic: properties
+    chapter: assignability
+
+  - id: q-assign-003
+    type: single
+    difficulty: easy
+    stem: "无类型常量 42 可以赋值给 float64 类型吗？"
+    options:
+      - "A: 可以"
+      - "B: 不可以"
+      - "C: 需要显式转换"
+      - "D: 编译错误"
+    answer: A
+    explanation: "无类型常量可表示为类型 T 时可以赋值（条件6）。"
+    topic: properties
+    chapter: assignability
+
+  - id: q-assign-004
+    type: single
+    difficulty: easy
+    stem: "nil 可以赋值给 int 类型吗？"
+    options:
+      - "A: 可以"
+      - "B: 不可以"
+      - "C: 需要显式转换"
+      - "D: 取决于上下文"
+    answer: B
+    explanation: "int 不是指针、函数、切片、map、channel 或接口类型，nil 不能赋值。"
+    topic: properties
+    chapter: assignability
+
+  - id: q-assign-005
+    type: single
+    difficulty: easy
+    stem: "值实现了接口时，可以赋值给接口变量吗？"
+    options:
+      - "A: 可以"
+      - "B: 不可以"
+      - "C: 需要显式转换"
+      - "D: 取决于接口"
+    answer: A
+    explanation: "值实现了接口类型可以赋值（条件3）。"
+    topic: properties
+    chapter: assignability
+
+  - id: q-assign-006
+    type: single
+    difficulty: easy
+    stem: "双向 channel 可以赋值给单向 channel 吗？"
+    options:
+      - "A: 可以"
+      - "B: 不可以"
+      - "C: 需要显式转换"
+      - "D: 取决于元素类型"
+    answer: A
+    explanation: "双向 channel 可以赋值给类型兼容的单向 channel（条件4）。"
+    topic: properties
+    chapter: assignability
+
+  - id: q-assign-007
+    type: single
+    difficulty: easy
+    stem: "无类型常量 3.14 可以赋值给 int 类型吗？"
+    options:
+      - "A: 可以"
+      - "B: 不可以"
+      - "C: 截断为 3"
+      - "D: 编译警告"
+    answer: B
+    explanation: "浮点常量不能直接赋值给整数类型（会截断小数部分）。"
+    topic: properties
+    chapter: assignability
+
+  - id: q-assign-008
+    type: single
+    difficulty: easy
+    stem: "类型字面量 []int 可以赋值给类型为 []int 的变量吗？"
+    options:
+      - "A: 可以"
+      - "B: 不可以"
+      - "C: 需要显式转换"
+      - "D: 取决于内容"
+    answer: A
+    explanation: "类型字面量不是命名类型，可以赋值给相同类型的变量（条件2）。"
+    topic: properties
+    chapter: assignability
+
+  # ============ 单选题 (Medium) ============
+  - id: q-assign-009
+    type: single
+    difficulty: medium
+    stem: "以下哪个赋值是合法的？\n\ntype MyInt int\nvar x MyInt = 42\nvar y int\ny = x"
+    options:
+      - "A: 合法"
+      - "B: 不合法：都是命名类型"
+      - "C: 不合法：类型不同"
+      - "D: 编译错误"
+    answer: B
+    explanation: "MyInt 和 int 都是命名类型，不能直接赋值。"
+    topic: properties
+    chapter: assignability
+
+  - id: q-assign-010
+    type: single
+    difficulty: medium
+    stem: "以下哪个赋值是合法的？\n\ntype Stringer interface { String() string }\ntype MyInt int\nfunc (m MyInt) String() string { return \"42\" }\nvar x MyInt = 42\nvar s Stringer\ns = x"
+    options:
+      - "A: 合法：MyInt 实现了 Stringer"
+      - "B: 不合法：类型不同"
+      - "C: 不合法：需要类型转换"
+      - "D: 编译错误"
+    answer: A
+    explanation: "MyInt 实现了 Stringer 接口，可以赋值。"
+    topic: properties
+    chapter: assignability
+
+  - id: q-assign-011
+    type: single
+    difficulty: medium
+    stem: "以下哪个赋值是合法的？\n\nvar ch chan int = make(chan int)\nvar chSend chan<- int\nchSend = ch"
+    options:
+      - "A: 合法"
+      - "B: 不合法"
+      - "C: 需要显式转换"
+      - "D: 取决于容量"
+    answer: A
+    explanation: "双向 channel 可以赋值给单向 channel。"
+    topic: properties
+    chapter: assignability
+
+  - id: q-assign-012
+    type: single
+    difficulty: medium
+    stem: "以下哪个赋值是合法的？\n\ntype MyInt int\nvar x MyInt = 42\nvar y int\ny = int(x)"
+    options:
+      - "A: 合法：显式转换"
+      - "B: 不合法"
+      - "C: 不能转换"
+      - "D: 编译错误"
+    answer: A
+    explanation: "显式类型转换后可以赋值。"
+    topic: properties
+    chapter: assignability
+
+  - id: q-assign-013
+    type: single
+    difficulty: medium
+    stem: "无类型常量 128 可以赋值给 int8 类型吗？"
+    options:
+      - "A: 可以"
+      - "B: 不可以：超出范围"
+      - "C: 截断为 -128"
+      - "D: 编译警告"
+    answer: B
+    explanation: "128 超出 int8 范围 (-128 到 127)，不能赋值。"
+    topic: properties
+    chapter: assignability
+
+  - id: q-assign-014
+    type: single
+    difficulty: medium
+    stem: "类型别名可以赋值给原类型吗？\n\ntype MyInt = int\nvar x MyInt = 42\nvar y int\ny = x"
+    options:
+      - "A: 可以"
+      - "B: 不可以"
+      - "C: 需要显式转换"
+      - "D: 取决于值"
+    answer: A
+    explanation: "类型别名与原类型相同，可以直接赋值。"
+    topic: properties
+    chapter: assignability
+
+  - id: q-assign-015
+    type: single
+    difficulty: medium
+    stem: "以下哪个赋值是合法的？\n\nvar s []int = []int{1, 2, 3}\nvar t []int\nt = s"
+    options:
+      - "A: 合法"
+      - "B: 不合法"
+      - "C: 需要显式转换"
+      - "D: 取决于长度"
+    answer: A
+    explanation: "[]int 是类型字面量，不是命名类型，可以赋值。"
+    topic: properties
+    chapter: assignability
+
+  - id: q-assign-016
+    type: single
+    difficulty: medium
+    stem: "以下哪个赋值是合法的？\n\ntype MySlice []int\nvar s MySlice = []int{1, 2, 3}\nvar t []int\nt = s"
+    options:
+      - "A: 合法"
+      - "B: 不合法：都是命名类型"
+      - "C: 需要显式转换"
+      - "D: 取决于长度"
+    answer: B
+    explanation: "MySlice 和 []int 都是命名类型（[]int 的底层类型不是基本类型），不能直接赋值。"
+    topic: properties
+    chapter: assignability
+
+  # ============ 单选题 (Hard) ============
+  - id: q-assign-017
+    type: single
+    difficulty: hard
+    stem: "关于类型参数的可赋值性，以下哪个是正确的？"
+    options:
+      - "A: 类型参数的实例化类型相同可以赋值"
+      - "B: 类型参数总是可以赋值"
+      - "C: 类型参数不能赋值"
+      - "D: 取决于约束"
+    answer: A
+    explanation: "类型参数的可赋值性依赖于其实例化的具体类型。"
+    topic: properties
+    chapter: assignability
+
+  - id: q-assign-018
+    type: single
+    difficulty: hard
+    stem: "忽略结构体标签的可赋值性条件是什么？"
+    options:
+      - "A: 底层类型相同，忽略标签"
+      - "B: 类型相同，忽略标签"
+      - "C: 字段名相同"
+      - "D: 字段顺序相同"
+    answer: A
+    explanation: "结构体标签不影响可赋值性，底层类型相同可以赋值。"
+    topic: properties
+    chapter: assignability
+
+  - id: q-assign-019
+    type: single
+    difficulty: hard
+    stem: "核心类型实现接口的可赋值性条件是什么？"
+    options:
+      - "A: T 是接口，V 的核心类型实现了 T"
+      - "B: T 是接口，V 实现了 T"
+      - "C: V 是接口，T 实现了 V"
+      - "D: V 和 T 的核心类型相同"
+    answer: A
+    explanation: "额外条件2：T 是接口类型，V 有核心类型，且 V 的核心类型实现了 T。"
+    topic: properties
+    chapter: assignability
+
+  - id: q-assign-020
+    type: single
+    difficulty: hard
+    stem: "双向 channel 赋值给单向 channel 的条件是什么？"
+    options:
+      - "A: 元素类型相同，至少一个不是命名类型"
+      - "B: 元素类型相同即可"
+      - "C: 需要显式转换"
+      - "D: 不能赋值"
+    answer: A
+    explanation: "双向 channel 可以赋值给单向 channel，当元素类型相同且至少一个不是命名类型。"
+    topic: properties
+    chapter: assignability
+
+  # ============ 多选题 (Easy) ============
+  - id: q-assign-021
+    type: multiple
+    difficulty: easy
+    stem: "以下哪些是可赋值性的基本条件？"
+    options:
+      - "A: 类型相同"
+      - "B: 底层类型相同且至少一个不是命名类型"
+      - "C: 值实现了接口"
+      - "D: nil 赋值给特定类型"
+    answer: ABCD
+    explanation: "这些都是可赋值性的基本条件（条件1-6）。"
+    topic: properties
+    chapter: assignability
+
+  - id: q-assign-022
+    type: multiple
+    difficulty: easy
+    stem: "nil 可以赋值给以下哪些类型？"
+    options:
+      - "A: *int"
+      - "B: func()"
+      - "C: []int"
+      - "D: int"
+    answer: ABC
+    explanation: "nil 可以赋值给指针、函数、切片、map、channel 和接口类型。"
+    topic: properties
+    chapter: assignability
+
+  - id: q-assign-023
+    type: multiple
+    difficulty: easy
+    stem: "以下哪些常量可以赋值给 int 类型？"
+    options:
+      - "A: 42"
+      - "B: 3.14"
+      - "C: 'a'"
+      - "D: true"
+    answer: AC
+    explanation: "42 和 'a' 可以表示为 int。3.14 是浮点数，true 是布尔值。"
+    topic: properties
+    chapter: assignability
+
+  - id: q-assign-024
+    type: multiple
+    difficulty: easy
+    stem: "以下哪些赋值是合法的？"
+    options:
+      - "A: var i int = 42"
+      - "B: var f float64 = 3.14"
+      - "C: var s string = \"hello\""
+      - "D: var b bool = true"
+    answer: ABCD
+    explanation: "所有赋值都合法（类型相同）。"
+    topic: properties
+    chapter: assignability
+
+  # ============ 多选题 (Medium) ============
+  - id: q-assign-025
+    type: multiple
+    difficulty: medium
+    stem: "关于可赋值性，以下哪些说法是正确的？"
+    options:
+      - "A: 类型相同可以赋值"
+      - "B: 底层类型相同且一个不是命名类型可以赋值"
+      - "C: 实现了接口可以赋值给接口变量"
+      - "D: nil 只能赋值给特定类型"
+    answer: ABCD
+    explanation: "所有选项都正确描述了可赋值性条件。"
+    topic: properties
+    chapter: assignability
+
+  - id: q-assign-026
+    type: multiple
+    difficulty: medium
+    stem: "以下哪些赋值是不合法的？"
+    options:
+      - "A: type T1 int; type T2 int; var t1 T1; var t2 T2; t2 = t1"
+      - "B: type T int; var t T; var i int; i = t"
+      - "C: type T = int; var t T; var i int; i = t"
+      - "D: var i int; i = nil"
+    answer: ABD
+    explanation: "T1 和 T2 都是命名类型不能赋值。T 和 int 都是命名类型不能赋值。nil 不能赋值给 int。类型别名可以赋值。"
+    topic: properties
+    chapter: assignability
+
+  - id: q-assign-027
+    type: multiple
+    difficulty: medium
+    stem: "以下哪些情况需要显式类型转换？"
+    options:
+      - "A: 两个命名类型赋值"
+      - "B: 底层类型相同但都是命名类型"
+      - "C: 浮点常量赋值给整数类型"
+      - "D: 类型别名赋值"
+    answer: ABC
+    explanation: "类型别名不需要转换。"
+    topic: properties
+    chapter: assignability
+
+  - id: q-assign-028
+    type: multiple
+    difficulty: medium
+    stem: "关于接口赋值，以下哪些说法是正确的？"
+    options:
+      - "A: 值实现了接口可以赋值"
+      - "B: 指针实现了接口可以赋值"
+      - "C: 值的指针实现了接口，值不能赋值"
+      - "D: 空接口可以接受任何值"
+    answer: ABD
+    explanation: "只有当值类型本身实现接口时才能赋值。空接口可以接受任何值。"
+    topic: properties
+    chapter: assignability
+
+  # ============ 多选题 (Hard) ============
+  - id: q-assign-029
+    type: multiple
+    difficulty: hard
+    stem: "关于类型参数的可赋值性，以下哪些说法是正确的？"
+    options:
+      - "A: 类型参数的实例化类型相同可以赋值"
+      - "B: 类型参数的核心类型实现了接口可以赋值"
+      - "C: 类型参数总是可以赋值给 any"
+      - "D: 类型参数的约束决定可赋值性"
+    answer: ABD
+    explanation: "类型参数不能直接赋值给 any，需要通过实例化。"
+    topic: properties
+    chapter: assignability
+
+  - id: q-assign-030
+    type: multiple
+    difficulty: hard
+    stem: "以下哪些是涉及类型参数的额外可赋值性条件？"
+    options:
+      - "A: 类型参数的实例化类型相同"
+      - "B: T 是接口，V 的核心类型实现了 T"
+      - "C: 底层类型相同，忽略结构体标签"
+      - "D: 无类型常量可表示为 T"
+    answer: ABC
+    explanation: "这些都是涉及类型参数的额外条件。"
+    topic: properties
+    chapter: assignability
+
+  - id: q-assign-031
+    type: multiple
+    difficulty: hard
+    stem: "关于 channel 的可赋值性，以下哪些说法是正确的？"
+    options:
+      - "A: 双向 channel 可以赋值给单向 channel"
+      - "B: 单向 channel 不能赋值给双向 channel"
+      - "C: 元素类型必须相同"
+      - "D: 方向必须完全匹配"
+    answer: ABC
+    explanation: "方向不需要完全匹配，双向可以赋值给单向。"
+    topic: properties
+    chapter: assignability
+
+  - id: q-assign-032
+    type: multiple
+    difficulty: hard
+    stem: "以下哪些情况会导致赋值不合法？"
+    options:
+      - "A: 类型不同且底层类型不同"
+      - "B: 两个都是命名类型"
+      - "C: 常量超出类型范围"
+      - "D: nil 赋值给非指针/函数/切片/map/channel/接口"
+    answer: ABCD
+    explanation: "所有情况都会导致赋值不合法。"
+    topic: properties
+    chapter: assignability
+
+  # ============ 补充单选题 ============
+  - id: q-assign-033
+    type: single
+    difficulty: easy
+    stem: "常量 256 可以赋值给 uint8 类型吗？"
+    options:
+      - "A: 可以"
+      - "B: 不可以：超出范围"
+      - "C: 截断为 0"
+      - "D: 编译警告"
+    answer: B
+    explanation: "256 超出 uint8 范围 (0-255)。"
+    topic: properties
+    chapter: assignability
+
+  - id: q-assign-034
+    type: single
+    difficulty: medium
+    stem: "结构体标签不同是否影响可赋值性？"
+    options:
+      - "A: 影响"
+      - "B: 不影响"
+      - "C: 取决于标签内容"
+      - "D: 编译器决定"
+    answer: B
+    explanation: "结构体标签不影响可赋值性，可以忽略。"
+    topic: properties
+    chapter: assignability
+
+  - id: q-assign-035
+    type: single
+    difficulty: easy
+    stem: "空接口 interface{} 可以接受任何值吗？"
+    options:
+      - "A: 可以"
+      - "B: 不可以"
+      - "C: 只能接受接口值"
+      - "D: 需要转换"
+    answer: A
+    explanation: "空接口可以接受任何值。"
+    topic: properties
+    chapter: assignability
+
+  - id: q-assign-036
+    type: single
+    difficulty: medium
+    stem: "const x = 1 + 2i 可以赋值给 complex128 类型吗？"
+    options:
+      - "A: 可以"
+      - "B: 不可以"
+      - "C: 需要转换"
+      - "D: 取决于虚部"
+    answer: A
+    explanation: "复数常量可以赋值给复数类型。"
+    topic: properties
+    chapter: assignability
+
+  - id: q-assign-037
+    type: single
+    difficulty: easy
+    stem: "指针类型的 nil 可以赋值给相同指针类型吗？"
+    options:
+      - "A: 可以"
+      - "B: 不可以"
+      - "C: 需要初始化"
+      - "D: 编译错误"
+    answer: A
+    explanation: "nil 可以赋值给任何指针类型。"
+    topic: properties
+    chapter: assignability
+
+  - id: q-assign-038
+    type: single
+    difficulty: medium
+    stem: "单向 channel 可以赋值给双向 channel 吗？"
+    options:
+      - "A: 可以"
+      - "B: 不可以"
+      - "C: 需要转换"
+      - "D: 取决于方向"
+    answer: B
+    explanation: "单向 channel 不能赋值给双向 channel。"
+    topic: properties
+    chapter: assignability
+
+  - id: q-assign-039
+    type: single
+    difficulty: easy
+    stem: "const c = 'A' 可以赋值给 rune 类型吗？"
+    options:
+      - "A: 可以"
+      - "B: 不可以"
+      - "C: 需要转换"
+      - "D: 取决于字符"
+    answer: A
+    explanation: "字符常量可以赋值给 rune 类型。"
+    topic: properties
+    chapter: assignability
+
+  - id: q-assign-040
+    type: single
+    difficulty: medium
+    stem: "type MyInt int 和 int 可以互相赋值吗？"
+    options:
+      - "A: 可以"
+      - "B: 不可以：都是命名类型"
+      - "C: 只能单向赋值"
+      - "D: 需要转换"
+    answer: B
+    explanation: "MyInt 和 int 都是命名类型，不能直接互相赋值。"
+    topic: properties
+    chapter: assignability

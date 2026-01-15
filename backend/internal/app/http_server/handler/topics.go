@@ -28,6 +28,11 @@ var allTopics = []Topic{
 		Title:       "Types",
 		Description: "Go 语言类型学习 (Types)",
 	},
+	{
+		ID:          "properties",
+		Title:       "Properties",
+		Description: "Go 语言类型和值的属性学习 (Properties of Types and Values)",
+	},
 }
 
 // GetTopics 获取学习主题列表

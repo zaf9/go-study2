@@ -37,6 +37,7 @@ var (
 		"constants":        {},
 		"variables":        {},
 		"types":            {},
+		"properties":       {},
 	}
 	// ValidStatuses 定义允许的进度状态集合。
 	ValidStatuses = map[string]struct{}{

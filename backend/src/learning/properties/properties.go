@@ -11,13 +11,13 @@ import (
 type Topic string
 
 const (
-	TopicRepresentation     Topic = "representation"     // 值的表示
-	TopicUnderlyingType     Topic = "underlying_type"    // 底层类型
-	TopicCoreType           Topic = "core_type"          // 核心类型
-	TopicTypeIdentity       Topic = "type_identity"      // 类型标识
-	TopicAssignability      Topic = "assignability"      // 可赋值性
-	TopicRepresentability  Topic = "representability"   // 可表示性
-	TopicMethodSet          Topic = "method_set"         // 方法集
+	TopicRepresentation   Topic = "representation"   // 值的表示
+	TopicUnderlyingType   Topic = "underlying_type"  // 底层类型
+	TopicCoreType         Topic = "core_type"        // 核心类型
+	TopicTypeIdentity     Topic = "type_identity"    // 类型标识
+	TopicAssignability    Topic = "assignability"    // 可赋值性
+	TopicRepresentability Topic = "representability" // 可表示性
+	TopicMethodSet        Topic = "method_set"       // 方法集
 )
 
 var (

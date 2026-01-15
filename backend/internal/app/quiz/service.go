@@ -560,6 +560,8 @@ type QuizReviewItem struct {
 	CorrectChoice string   `json:"correctChoice"`
 	IsCorrect     bool     `json:"isCorrect"`
 	Explanation   string   `json:"explanation"`
+	Type          string   `json:"type"`          // 题型：single/multiple
+	Difficulty    string   `json:"difficulty"`    // 难度：easy/medium/hard
 }
 
 // RecentQuizSummary 表示最近测验记录的汇总信息（用于 Dashboard）。
@@ -771,6 +773,8 @@ func (s *Service) GetQuizReview(ctx context.Context, userID int64, sessionID str
 			CorrectChoice: correctChoice,
 			IsCorrect:     attempt.IsCorrect,
 			Explanation:   question.Explanation,
+			Type:          question.View.Type,
+			Difficulty:    question.View.Difficulty,
 		})
 	}
 

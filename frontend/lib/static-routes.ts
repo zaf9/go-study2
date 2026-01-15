@@ -6,6 +6,7 @@ export const topics: TopicKey[] = [
   "constants",
   "variables",
   "types",
+  "properties",
 ];
 
 export const topicChapters: Record<TopicKey, string[]> = {
@@ -52,6 +53,15 @@ export const topicChapters: Record<TopicKey, string[]> = {
     "interface_impl",
     "map",
     "channel",
+  ],
+  properties: [
+    "representation",
+    "underlying_type",
+    "core_type",
+    "type_identity",
+    "assignability",
+    "representability",
+    "method_set",
   ],
 };
 

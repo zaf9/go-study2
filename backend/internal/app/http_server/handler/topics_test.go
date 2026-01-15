@@ -46,13 +46,14 @@ func TestGetTopics_JSON(t *testing.T) {
 		// 验证数据结构
 		dataMap := result.Data.(map[string]interface{})
 		topics := dataMap["topics"].([]interface{})
-		t.Assert(len(topics), 4)
+		t.Assert(len(topics), 5)
 
 		// 验证包含特定主题
 		foundLexical := false
 		foundConstants := false
 		foundVariables := false
 		foundTypes := false
+		foundProperties := false
 		for _, topic := range topics {
 			topicMap := topic.(map[string]interface{})
 			if topicMap["id"] == "lexical_elements" {
@@ -67,11 +68,15 @@ func TestGetTopics_JSON(t *testing.T) {
 			if topicMap["id"] == "types" {
 				foundTypes = true
 			}
+			if topicMap["id"] == "properties" {
+				foundProperties = true
+			}
 		}
 		t.Assert(foundLexical, true)
 		t.Assert(foundConstants, true)
 		t.Assert(foundVariables, true)
 		t.Assert(foundTypes, true)
+		t.Assert(foundProperties, true)
 	})
 }
 

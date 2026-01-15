@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import { Card, Result, Button, Statistic, Row, Col, Typography } from 'antd';
+import { Card, Result, Button, Statistic, Row, Col, Tag, Typography } from 'antd';
 import { CheckCircleOutlined, CloseCircleOutlined, TrophyOutlined, CloseOutlined } from '@ant-design/icons';
 import { QuizSubmitResult } from '@/types/quiz';
 
@@ -84,6 +84,15 @@ const QuizResultPage: React.FC<QuizResultPageProps> = ({ result, onRetry, onRevi
                         </Button>,
                     ]}
                 >
+                    {/* 显示百分比及格状态 */}
+                    <div style={{ marginTop: 24, textAlign: 'center' }}>
+                        <Tag
+                            color={isPassed ? "green" : "red"}
+                            style={{ fontSize: 18, padding: '8px 24px', marginBottom: 16 }}
+                        >
+                            {isPassed ? "及格" : "不及格"} ({result.score}%)
+                        </Tag>
+                    </div>
                     <div className="text-left mt-8">
                         <Paragraph>
                             <Text strong>学习建议：</Text>
