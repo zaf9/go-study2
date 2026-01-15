@@ -42,6 +42,12 @@ go test ./...
 - 词法元素子主题：`GET /api/v1/topic/lexical_elements/{chapter}`
 - 常量菜单：`GET /api/v1/topic/constants`
 - 常量子主题：`GET /api/v1/topic/constants/{subtopic}`
+- 变量菜单：`GET /api/v1/topic/variables`
+- 变量子主题：`GET /api/v1/topic/variables/{subtopic}`
+- 类型菜单：`GET /api/v1/topic/types`
+- 类型子主题：`GET /api/v1/topic/types/{subtopic}`
+- 类型属性菜单：`GET /api/v1/topic/properties`
+- 类型属性子主题：`GET /api/v1/topic/properties/{subtopic}`
 - **测验题库**：`GET /api/v1/quiz/{topic}/{chapter}/start`（随机抽题）
 - **测验统计**：`GET /api/v1/quiz/{topic}/{chapter}/stats`（题库统计信息）
 - **测验提交**：`POST /api/v1/quiz/submit`（提交答案并记录结果）
@@ -263,7 +269,8 @@ quiz_data/
 ├── lexical_elements/     # 词法元素（11章节）
 ├── constants/           # 常量（12章节）
 ├── variables/           # 变量（4章节）
-└── types/               # 类型（14章节）
+├── types/               # 类型（14章节）
+└── properties/          # 类型属性（7章节）
 ```
 
 ### 质量保证
