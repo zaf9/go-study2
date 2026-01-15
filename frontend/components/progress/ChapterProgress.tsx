@@ -1,7 +1,7 @@
 "use client";
 
 import { Alert, Button, Space, Typography } from "antd";
-import ProgressBar from "./ProgressBar";
+import ProgressBar from "@/components/learning/ProgressBar";
 import { ProgressStatus } from "@/types/learning";
 import ProgressStatuses from "@/lib/progressStatus";
 

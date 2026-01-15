@@ -40,11 +40,11 @@ call :log [frontend] exporting static files...
 if exist "out" rmdir /s /q "out"
 mkdir "out"
 
-REM Try using robocopy (more reliable than xcopy)
-robocopy ".next\server\app" "out" /E /NFL /NDL /NJH /NJS >nul
-if errorlevel 8 goto :error
-robocopy ".next\static" "out\_next" /E /NFL /NDL /NJH /NJS >nul
-if errorlevel 8 goto :error
+REM Use xcopy instead of robocopy to avoid issues with MSYS Git bash
+xcopy ".next\server\app\*" "out\" /E /I /Y /Q
+if errorlevel 1 goto :error
+xcopy ".next\static\*" "out\_next\" /E /I /Y /Q
+if errorlevel 1 goto :error
 
 call :log [frontend] build success. Output: out
 goto :end

@@ -230,7 +230,6 @@ func TestSendLexicalMenuJSON(t *testing.T) {
 		s.SetPort(0)
 		s.SetAccessLogEnabled(false)
 
-		h := New()
 		var capturedResponse Response
 
 		s.Group("/test", func(group *ghttp.RouterGroup) {
@@ -238,7 +237,7 @@ func TestSendLexicalMenuJSON(t *testing.T) {
 				items := []LexicalMenuItem{
 					{ID: 0, Title: "Test Chapter", Name: "test"},
 				}
-				h.sendLexicalMenuJSON(r, items)
+				sendMenuJSON(r, items)
 			})
 		})
 

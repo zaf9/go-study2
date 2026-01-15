@@ -1,11 +1,14 @@
 "use client";
 
-import { Progress, Tag } from "antd";
+import { Progress, Tag, Tooltip } from "antd";
 import { ProgressStatus } from "@/types/learning";
+import ProgressStatuses from "@/lib/progressStatus";
 
 interface ProgressBarProps {
   status: ProgressStatus;
   percent?: number;
+  segments?: number;
+  label?: string;
 }
 
 const statusColor: Record<ProgressStatus, string> = {
@@ -15,48 +18,69 @@ const statusColor: Record<ProgressStatus, string> = {
   tested: "orange",
 };
 
-export default function ProgressBar({ status, percent }: ProgressBarProps) {
-  const value =
-    percent ??
-    (status === "completed"
-      ? 100
-      : status === "tested"
-        ? 70
-        : status === "in_progress"
-          ? 50
-          : 0);
-  // derive display status from percent when percent provided
-  const displayStatus: ProgressStatus =
-    typeof percent === "number"
-      ? value >= 100
-        ? "completed"
-        : value > 0
-          ? "in_progress"
-          : "not_started"
-      : status;
-  return (
-    <div className="flex items-center gap-3">
-      <Tag color={statusColor[displayStatus]}>{statusLabel(displayStatus)}</Tag>
-      <div className="flex-1">
-        <Progress
-          percent={value}
-          size="small"
-          status={displayStatus === "completed" ? "success" : "active"}
-        />
-      </div>
-    </div>
-  );
+function statusLabel(status: ProgressStatus): string {
+  if (status === ProgressStatuses.Completed) return "已完成";
+  if (status === ProgressStatuses.Tested) return "已测验";
+  if (status === ProgressStatuses.InProgress) return "学习中";
+  return "未开始";
 }
 
-function statusLabel(status: ProgressStatus) {
-  switch (status) {
-    case "completed":
-      return "已完成";
-    case "tested":
-      return "已测验";
-    case "in_progress":
-      return "学习中";
-    default:
-      return "未开始";
-  }
+export default function ProgressBar({
+  status,
+  percent,
+  segments = 0,
+  label,
+}: ProgressBarProps) {
+  const value =
+    percent ??
+    (status === ProgressStatuses.Completed
+      ? 100
+      : status === ProgressStatuses.Tested
+        ? 70
+        : status === ProgressStatuses.InProgress
+          ? 50
+          : 0);
+
+  const capped = Math.min(100, Math.max(0, Math.round(value)));
+
+  // Derive display status from percent when percent provided
+  const displayStatus: ProgressStatus =
+    typeof percent === "number"
+      ? capped >= 100
+        ? ProgressStatuses.Completed
+        : capped > 0
+          ? ProgressStatuses.InProgress
+          : ProgressStatuses.NotStarted
+      : status;
+
+  const effectiveStatus = status ?? displayStatus;
+  const progress = (
+    <Progress
+      percent={capped}
+      steps={segments > 0 ? segments : undefined}
+      showInfo
+      size="small"
+      status={
+        effectiveStatus === ProgressStatuses.Completed ? "success" : "active"
+      }
+    />
+  );
+
+  return (
+    <div className="flex items-center gap-3">
+      {label && (
+        <Tooltip title={label}>
+          <Tag color={statusColor[effectiveStatus]}>
+            {statusLabel(effectiveStatus)}
+          </Tag>
+        </Tooltip>
+      )}
+      {!label && (
+        <Tag color={statusColor[effectiveStatus]}>
+          {statusLabel(effectiveStatus)}
+        </Tag>
+      )}
+      <div className="flex-1">{progress}</div>
+    </div>
+  );
 }

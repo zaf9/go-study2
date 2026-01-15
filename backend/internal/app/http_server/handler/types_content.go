@@ -21,13 +21,7 @@ func (h *Handler) GetTypesMenu(r *ghttp.Request) {
 		return
 	}
 
-	r.Response.WriteJson(Response{
-		Code:    20000,
-		Message: "OK",
-		Data: LexicalMenuResponse{
-			Items: items,
-		},
-	})
+	sendMenuJSON(r, items)
 }
 
 func (h *Handler) sendTypesMenuHTML(r *ghttp.Request, items []LexicalMenuItem) {
@@ -47,13 +41,13 @@ func (h *Handler) GetTypesContent(r *ghttp.Request) {
 	subtopic := r.Get("subtopic").String()
 	topic := types.NormalizeTopic(subtopic)
 	if !types.IsSupportedTopic(topic) {
-		h.writeTypesNotFound(r, format, "未知的 Types 子主题")
+		writeNotFound(r, format, "未知的 Types 子主题")
 		return
 	}
 
 	content, err := types.LoadContent(topic)
 	if err != nil {
-		h.writeTypesNotFound(r, format, err.Error())
+		writeNotFound(r, format, err.Error())
 		return
 	}
 	quiz, quizErr := types.LoadQuiz(topic)
@@ -64,17 +58,13 @@ func (h *Handler) GetTypesContent(r *ghttp.Request) {
 	}
 
 	if quizErr != nil && quizErr != types.ErrQuizUnavailable {
-		h.writeErrorJSON(r, 500, quizErr.Error())
+		writeErrorJSON(r, 500, quizErr.Error())
 		return
 	}
 
-	r.Response.WriteJson(Response{
-		Code:    20000,
-		Message: "OK",
-		Data: map[string]interface{}{
-			"content": content,
-			"quiz":    quiz,
-		},
+	writeSuccess(r, "OK", map[string]interface{}{
+		"content": content,
+		"quiz":    quiz,
 	})
 }
 
@@ -93,7 +83,7 @@ func (h *Handler) SubmitTypesQuiz(r *ghttp.Request) {
 		body = r.GetBody()
 	}
 	if err := json.Unmarshal(body, &payload); err != nil {
-		h.writeErrorJSON(r, 400, "请求体解析失败")
+		writeErrorJSON(r, 400, "请求体解析失败")
 		return
 	}
 	answerMap := map[string]string{}
@@ -108,7 +98,7 @@ func (h *Handler) SubmitTypesQuiz(r *ghttp.Request) {
 
 	result, err := types.EvaluateComprehensiveQuiz(answerMap)
 	if err != nil {
-		h.writeErrorJSON(r, 400, err.Error())
+		writeErrorJSON(r, 400, err.Error())
 		return
 	}
 
@@ -117,11 +107,7 @@ func (h *Handler) SubmitTypesQuiz(r *ghttp.Request) {
 		return
 	}
 
-	r.Response.WriteJson(Response{
-		Code:    20000,
-		Message: "OK",
-		Data:    result,
-	})
+	writeSuccess(r, "OK", result)
 }
 
 // SearchTypes 返回检索占位响应。
@@ -130,11 +116,11 @@ func (h *Handler) SearchTypes(r *ghttp.Request) {
 	keyword := r.GetQuery("keyword").String()
 	results, err := types.SearchReferences(keyword)
 	if err != nil {
-		h.writeErrorJSON(r, 400, err.Error())
+		writeErrorJSON(r, 400, err.Error())
 		return
 	}
 	if len(results) == 0 {
-		h.writeTypesNotFound(r, format, "未找到匹配关键词")
+		writeNotFound(r, format, "未找到匹配关键词")
 		return
 	}
 
@@ -143,13 +129,9 @@ func (h *Handler) SearchTypes(r *ghttp.Request) {
 		return
 	}
 
-	r.Response.WriteJson(Response{
-		Code:    20000,
-		Message: "OK",
-		Data: map[string]interface{}{
-			"keyword": keyword,
-			"results": results,
-		},
+	writeSuccess(r, "OK", map[string]interface{}{
+		"keyword": keyword,
+		"results": results,
 	})
 }
 
@@ -287,24 +269,9 @@ func (h *Handler) GetTypesOutline(r *ghttp.Request) {
 		return
 	}
 
-	r.Response.WriteJson(Response{
-		Code:    20000,
-		Message: "OK",
-		Data: map[string]interface{}{
-			"title":     overview.Title,
-			"version":   overview.Version,
-			"printable": overview.Printable,
-		},
-	})
-}
-
-func (h *Handler) writeTypesNotFound(r *ghttp.Request, format, msg string) {
-	if format == "html" {
-		r.Response.WriteStatus(404, getHtmlPage("Not Found", fmt.Sprintf("<p>%s</p><a href=\"/api/v1/topic/types?format=html\" class=\"back-link\">返回 Types 菜单</a>", msg)))
-		return
-	}
-	r.Response.WriteStatusExit(404, Response{
-		Code:    404,
-		Message: msg,
+	writeSuccess(r, "OK", map[string]interface{}{
+		"title":     overview.Title,
+		"version":   overview.Version,
+		"printable": overview.Printable,
 	})
 }

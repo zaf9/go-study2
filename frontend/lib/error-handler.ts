@@ -1,14 +1,14 @@
 /**
  * 错误处理工具
- * 
+ *
  * 提供统一的错误处理和用户友好的错误提示
- * 
+ *
  * @module lib/error-handler
  */
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { toast } from 'react-hot-toast';
+import { message } from 'antd';
 
 /**
  * API错误类型
@@ -86,29 +86,23 @@ export function getErrorMessage(error: any, defaultMessage?: string): string {
 }
 
 /**
- * 显示错误提示toast
+ * 显示错误提示
  */
 export function showErrorToast(error: any, defaultMessage?: string): void {
-  const message = getErrorMessage(error, defaultMessage);
-  toast.error(message, {
-    duration: 4000,
-    position: 'top-center',
-  });
+  const msg = getErrorMessage(error, defaultMessage);
+  message.error(msg);
 }
 
 /**
- * 显示成功提示toast
+ * 显示成功提示
  */
-export function showSuccessToast(message: string): void {
-  toast.success(message, {
-    duration: 3000,
-    position: 'top-center',
-  });
+export function showSuccessToast(msg: string): void {
+  message.success(msg);
 }
 
 /**
  * 处理API调用错误
- * 
+ *
  * @param error - 错误对象
  * @param options - 处理选项
  * @returns 是否需要重试
@@ -132,12 +126,9 @@ export function handleApiError(
   const shouldRetry = errorType === ErrorType.NETWORK || errorType === ErrorType.SERVER;
 
   if (shouldRetry && onRetry) {
-    // 显示重试提示(简化版,避免JSX依赖)
-    const retryMessage = '操作失败,点击重试按钮';
-    toast.error(retryMessage, {
-      duration: 5000,
-    });
-    // 注: 可在UI层实现更复杂的重试按钮组件
+    // 显示重试提示
+    const retryMessage = '操作失败，点击重试按钮';
+    message.error(retryMessage);
   }
 
   return shouldRetry;

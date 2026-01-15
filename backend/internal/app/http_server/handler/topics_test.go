@@ -148,7 +148,6 @@ func TestSendTopicsJSON(t *testing.T) {
 		s.SetPort(0)
 		s.SetAccessLogEnabled(false)
 
-		h := New()
 		var capturedResponse Response
 
 		s.Group("/test", func(group *ghttp.RouterGroup) {
@@ -157,7 +156,7 @@ func TestSendTopicsJSON(t *testing.T) {
 					{ID: "test1", Title: "Test 1", Description: "Description 1"},
 					{ID: "test2", Title: "Test 2", Description: "Description 2"},
 				}
-				h.sendTopicsJSON(r, topics)
+				writeSuccess(r, "OK", TopicListResponse{Topics: topics})
 			})
 		})
 

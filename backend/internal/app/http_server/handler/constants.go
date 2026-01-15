@@ -40,42 +40,33 @@ func (h *Handler) GetConstantsMenu(r *ghttp.Request) {
 	}()
 
 	format := r.GetCtxVar("format").String()
+	items := buildConstantsMenuItems()
 
+	if format == "html" {
+		h.sendConstantsMenuHTML(r, items)
+		return
+	}
+	sendMenuJSON(r, items)
+}
+
+func buildConstantsMenuItems() []LexicalMenuItem {
 	items := make([]LexicalMenuItem, len(constantsChapters))
 	for i, c := range constantsChapters {
 		items[i] = LexicalMenuItem{
-			ID:    i, // 使用索引作为简单 ID
+			ID:    i,
 			Title: c.Title,
 			Name:  c.ID,
 		}
 	}
-
-	if format == "html" {
-		h.sendConstantsMenuHTML(r, items)
-	} else {
-		h.sendConstantsMenuJSON(r, items)
-	}
-}
-
-func (h *Handler) sendConstantsMenuJSON(r *ghttp.Request, items []LexicalMenuItem) {
-	response := Response{
-		Code:    20000,
-		Message: "OK",
-		Data: LexicalMenuResponse{
-			Items: items,
-		},
-	}
-	r.Response.WriteJson(response)
+	return items
 }
 
 func (h *Handler) sendConstantsMenuHTML(r *ghttp.Request, items []LexicalMenuItem) {
 	var sb strings.Builder
 	sb.WriteString("<h1>Constants Learning</h1>\n<ul>\n")
-
 	for _, item := range items {
 		sb.WriteString(fmt.Sprintf("<li><a href=\"/api/v1/topic/constants/%s?format=html\">%s</a></li>\n", item.Name, item.Title))
 	}
-
 	sb.WriteString("</ul>\n")
 	sb.WriteString("<a href=\"/api/v1/topics?format=html\" class=\"back-link\">Back to Topics</a>")
 	r.Response.Write(getHtmlPage("Constants Learning", sb.String()))
@@ -94,7 +85,7 @@ func (h *Handler) GetConstantsContent(r *ghttp.Request) {
 		}, nil, duration)
 	}()
 
-	chapterName := r.Get("subtopic").String() // 路由参数 subtopic
+	chapterName := r.Get("subtopic").String()
 	format := r.GetCtxVar("format").String()
 
 	var contentFunc func() string
@@ -109,15 +100,7 @@ func (h *Handler) GetConstantsContent(r *ghttp.Request) {
 	}
 
 	if contentFunc == nil {
-		r.Response.WriteStatus(404)
-		if format == "html" {
-			r.Response.Write("Subtopic not found")
-		} else {
-			r.Response.WriteJson(Response{
-				Code:    404,
-				Message: "Subtopic not found",
-			})
-		}
+		writeNotFound(r, format, "Subtopic not found")
 		return
 	}
 
@@ -130,14 +113,9 @@ func (h *Handler) GetConstantsContent(r *ghttp.Request) {
 		sb.WriteString("<a href=\"/api/v1/topic/constants?format=html\" class=\"back-link\">Back to Menu</a>")
 		r.Response.Write(getHtmlPage(title, sb.String()))
 	} else {
-		// JSON 响应
-		r.Response.WriteJson(Response{
-			Code:    20000,
-			Message: "OK",
-			Data: map[string]string{
-				"title":   title,
-				"content": content,
-			},
+		writeSuccess(r, "OK", map[string]string{
+			"title":   title,
+			"content": content,
 		})
 	}
 }

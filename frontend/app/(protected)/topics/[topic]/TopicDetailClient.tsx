@@ -9,7 +9,7 @@ import ErrorMessage from "@/components/common/ErrorMessage";
 import { fetchChapters } from "@/lib/learning";
 import { ChapterSummary } from "@/types/learning";
 import useProgress from "@/hooks/useProgress";
-import ProgressBar from "@/components/progress/ProgressBar";
+import ProgressBar from "@/components/learning/ProgressBar";
 import { topicChapters } from "@/lib/static-routes";
 
 const { Title, Paragraph } = Typography;

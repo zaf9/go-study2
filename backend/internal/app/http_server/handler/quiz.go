@@ -93,7 +93,7 @@ func (h *Handler) SubmitQuiz(r *ghttp.Request) {
 		}
 	}
 
-	writeSuccess(r, "提交成功", map[string]interface{}{
+	writeSuccess(r, "success", map[string]interface{}{
 		"score":           result.Score,
 		"total_questions": result.TotalQuestions,
 		"correct_answers": result.CorrectAnswers,

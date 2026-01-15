@@ -223,24 +223,6 @@ func (req *authRequest) isRemember() bool {
 	return req.RememberMe || req.Remember
 }
 
-func writeSuccess(r *ghttp.Request, message string, data interface{}) {
-	r.Response.WriteJson(Response{
-		Code:    20000,
-		Message: message,
-		Data:    data,
-	})
-}
-
-func writeError(r *ghttp.Request, status int, code int, message string) {
-	r.Response.WriteStatus(status)
-	r.Response.ClearBuffer()
-	r.Response.WriteJson(Response{
-		Code:    code,
-		Message: message,
-		Data:    nil,
-	})
-}
-
 func writeAuthError(r *ghttp.Request, err error) {
 	switch err {
 	case user.ErrInvalidInput:

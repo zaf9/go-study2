@@ -1,5 +1,11 @@
 package handler
 
+import (
+	"fmt"
+
+	"github.com/gogf/gf/v2/net/ghttp"
+)
+
 const htmlStyle = `
 <style>
 body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #1e1e1e; color: #d4d4d4; padding: 20px; max-width: 900px; margin: 0 auto; }
@@ -20,4 +26,56 @@ func getHtmlPage(title, content string) string {
 	return "<!DOCTYPE html>\n<html>\n<head><title>" + title + "</title>" + htmlStyle + "</head>\n<body>\n" +
 		content +
 		"\n</body>\n</html>"
+}
+
+// writeSuccess 统一成功响应
+func writeSuccess(r *ghttp.Request, message string, data interface{}) {
+	r.Response.WriteJson(Response{
+		Code:    20000,
+		Message: message,
+		Data:    data,
+	})
+}
+
+// writeError 统一错误响应
+func writeError(r *ghttp.Request, status int, code int, message string) {
+	r.Response.WriteStatus(status)
+	r.Response.ClearBuffer()
+	r.Response.WriteJson(Response{
+		Code:    code,
+		Message: message,
+		Data:    nil,
+	})
+}
+
+// writeErrorJSON JSON 格式错误响应（用于非 HTTP 状态码场景）
+func writeErrorJSON(r *ghttp.Request, code int, message string) {
+	r.Response.WriteJson(Response{
+		Code:    code,
+		Message: message,
+	})
+}
+
+// writeNotFound 404 响应
+func writeNotFound(r *ghttp.Request, format, message string) {
+	if format == "html" {
+		r.Response.WriteStatus(404)
+		r.Response.Write(getHtmlPage("Not Found", fmt.Sprintf("<p>%s</p>", message)))
+		return
+	}
+	r.Response.WriteStatusExit(404, Response{
+		Code:    404,
+		Message: message,
+	})
+}
+
+// sendMenuJSON 统一菜单 JSON 响应
+func sendMenuJSON(r *ghttp.Request, items []LexicalMenuItem) {
+	r.Response.WriteJson(Response{
+		Code:    20000,
+		Message: "OK",
+		Data: LexicalMenuResponse{
+			Items: items,
+		},
+	})
 }

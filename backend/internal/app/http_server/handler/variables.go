@@ -24,7 +24,16 @@ var variableTopics = []struct {
 // GetVariablesMenu 获取 Variables 菜单
 func (h *Handler) GetVariablesMenu(r *ghttp.Request) {
 	format := r.GetCtxVar("format").String()
+	items := buildVariablesMenuItems()
 
+	if format == "html" {
+		h.sendVariablesMenuHTML(r, items)
+		return
+	}
+	sendMenuJSON(r, items)
+}
+
+func buildVariablesMenuItems() []LexicalMenuItem {
 	items := make([]LexicalMenuItem, len(variableTopics))
 	for i, v := range variableTopics {
 		items[i] = LexicalMenuItem{
@@ -33,22 +42,7 @@ func (h *Handler) GetVariablesMenu(r *ghttp.Request) {
 			Name:  v.ID,
 		}
 	}
-
-	if format == "html" {
-		h.sendVariablesMenuHTML(r, items)
-		return
-	}
-	h.sendVariablesMenuJSON(r, items)
-}
-
-func (h *Handler) sendVariablesMenuJSON(r *ghttp.Request, items []LexicalMenuItem) {
-	r.Response.WriteJson(Response{
-		Code:    20000,
-		Message: "OK",
-		Data: LexicalMenuResponse{
-			Items: items,
-		},
-	})
+	return items
 }
 
 func (h *Handler) sendVariablesMenuHTML(r *ghttp.Request, items []LexicalMenuItem) {
@@ -69,13 +63,13 @@ func (h *Handler) GetVariableContent(r *ghttp.Request) {
 	topic := variables.NormalizeTopic(subtopic)
 
 	if !variables.IsSupportedTopic(topic) {
-		h.writeNotFound(r, format, "Subtopic not found")
+		writeNotFound(r, format, "Subtopic not found")
 		return
 	}
 
 	content, err := variables.LoadContent(topic)
 	if err != nil {
-		h.writeNotFound(r, format, err.Error())
+		writeNotFound(r, format, err.Error())
 		return
 	}
 	quiz, quizErr := variables.LoadQuiz(topic)
@@ -86,17 +80,13 @@ func (h *Handler) GetVariableContent(r *ghttp.Request) {
 	}
 
 	if quizErr != nil && quizErr != variables.ErrQuizUnavailable {
-		h.writeErrorJSON(r, 500, quizErr.Error())
+		writeErrorJSON(r, 500, quizErr.Error())
 		return
 	}
 
-	r.Response.WriteJson(Response{
-		Code:    20000,
-		Message: "OK",
-		Data: map[string]interface{}{
-			"content": content,
-			"quiz":    quiz,
-		},
+	writeSuccess(r, "OK", map[string]interface{}{
+		"content": content,
+		"quiz":    quiz,
 	})
 }
 
@@ -147,19 +137,4 @@ func (h *Handler) sendVariableContentHTML(r *ghttp.Request, content variables.Co
 	}
 	sb.WriteString("<a href=\"/api/v1/topic/variables?format=html\" class=\"back-link\">Back to Menu</a>")
 	r.Response.Write(getHtmlPage(string(content.Topic), sb.String()))
-}
-
-func (h *Handler) writeNotFound(r *ghttp.Request, format, msg string) {
-	if format == "html" {
-		r.Response.WriteStatus(404, msg)
-		return
-	}
-	h.writeErrorJSON(r, 404, msg)
-}
-
-func (h *Handler) writeErrorJSON(r *ghttp.Request, code int, msg string) {
-	r.Response.WriteJson(Response{
-		Code:    code,
-		Message: msg,
-	})
 }

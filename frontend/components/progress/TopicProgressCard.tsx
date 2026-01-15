@@ -3,7 +3,7 @@
 import { Button, Card, Collapse, List, Space, Typography } from "antd";
 import ChapterStatusIcon from "./ChapterStatusIcon";
 import ProgressStatuses from "@/lib/progressStatus";
-import ProgressBar from "./ProgressBar";
+import ProgressBar from "@/components/learning/ProgressBar";
 import { ChapterProgress, TopicProgressDetail } from "@/types/learning";
 
 /** 主题进度卡片属性：含主题摘要与章节列表，支持继续学习跳转。 */

@@ -12,7 +12,7 @@ import (
 )
 
 type chapterDef struct {
-	ID          string // API 路径参数
+	ID          string
 	Title       string
 	ContentFunc func() string
 }
@@ -35,42 +35,33 @@ var lexicalChapters = []chapterDef{
 // GetLexicalMenu 获取词法元素菜单
 func (h *Handler) GetLexicalMenu(r *ghttp.Request) {
 	format := r.GetCtxVar("format").String()
+	items := buildLexicalMenuItems()
 
+	if format == "html" {
+		h.sendLexicalMenuHTML(r, items)
+		return
+	}
+	sendMenuJSON(r, items)
+}
+
+func buildLexicalMenuItems() []LexicalMenuItem {
 	items := make([]LexicalMenuItem, len(lexicalChapters))
 	for i, c := range lexicalChapters {
 		items[i] = LexicalMenuItem{
-			ID:    i, // 使用索引作为简单 ID，通过 Name 路由
+			ID:    i,
 			Title: c.Title,
 			Name:  c.ID,
 		}
 	}
-
-	if format == "html" {
-		h.sendLexicalMenuHTML(r, items)
-	} else {
-		h.sendLexicalMenuJSON(r, items)
-	}
-}
-
-func (h *Handler) sendLexicalMenuJSON(r *ghttp.Request, items []LexicalMenuItem) {
-	response := Response{
-		Code:    20000,
-		Message: "OK",
-		Data: LexicalMenuResponse{
-			Items: items,
-		},
-	}
-	r.Response.WriteJson(response)
+	return items
 }
 
 func (h *Handler) sendLexicalMenuHTML(r *ghttp.Request, items []LexicalMenuItem) {
 	var sb strings.Builder
 	sb.WriteString("<h1>Lexical Elements</h1>\n<ul>\n")
-
 	for _, item := range items {
 		sb.WriteString(fmt.Sprintf("<li><a href=\"/api/v1/topic/lexical_elements/%s?format=html\">%s</a></li>\n", item.Name, item.Title))
 	}
-
 	sb.WriteString("</ul>\n")
 	sb.WriteString("<a href=\"/api/v1/topics?format=html\" class=\"back-link\">Back to Topics</a>")
 	r.Response.Write(getHtmlPage("Lexical Elements", sb.String()))
@@ -84,7 +75,6 @@ func (h *Handler) GetLexicalContent(r *ghttp.Request) {
 	start := time.Now()
 	ctx := r.Context()
 
-	// 记录内容请求
 	logger.LogBiz(ctx, "lexical_content_request", map[string]interface{}{
 		"chapter": chapterName,
 		"format":  format,
@@ -104,16 +94,7 @@ func (h *Handler) GetLexicalContent(r *ghttp.Request) {
 	if contentFunc == nil {
 		duration := time.Since(start)
 		logger.LogError(ctx, fmt.Errorf("chapter not found: %s", chapterName), "Lexical chapter not found", duration)
-
-		r.Response.WriteStatus(404)
-		if format == "html" {
-			r.Response.Write("Chapter not found")
-		} else {
-			r.Response.WriteJson(Response{
-				Code:    404,
-				Message: "Chapter not found",
-			})
-		}
+		writeNotFound(r, format, "Chapter not found")
 		return
 	}
 
@@ -134,15 +115,9 @@ func (h *Handler) GetLexicalContent(r *ghttp.Request) {
 		sb.WriteString("<a href=\"/api/v1/topic/lexical_elements?format=html\" class=\"back-link\">Back to Menu</a>")
 		r.Response.Write(getHtmlPage(title, sb.String()))
 	} else {
-		// JSON 响应：直接返回字符串内容
-		// 也可以包装在对象中
-		r.Response.WriteJson(Response{
-			Code:    20000,
-			Message: "OK",
-			Data: map[string]string{
-				"title":   title,
-				"content": content,
-			},
+		writeSuccess(r, "OK", map[string]string{
+			"title":   title,
+			"content": content,
 		})
 	}
 }
