@@ -36,7 +36,7 @@ export interface QuizResult {
 }
 
 export interface QuizAnswerDetail {
-  question_id: number;
+  question_id: string; // 改为string以避免大整数精度问题
   is_correct: boolean;
   correct_answers: string[];
   explanation: string;

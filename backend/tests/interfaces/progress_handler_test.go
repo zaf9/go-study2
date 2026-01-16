@@ -617,8 +617,8 @@ func TestProgressHandler_GetOverview(t *testing.T) {
 	if !ok {
 		t.Fatalf("totalChapters 字段缺失或格式不正确: %+v", data)
 	}
-	// lexical_elements(11) + constants(12) + variables(4) + types(14) = 41
-	expectedTotal := 41.0
+	// lexical_elements(11) + constants(12) + variables(4) + types(14) + properties(7) = 48
+	expectedTotal := 48.0
 	if totalChapters != expectedTotal {
 		t.Errorf("总章节数应为 %.0f，得到 %.0f", expectedTotal, totalChapters)
 	}
@@ -647,7 +647,7 @@ func TestProgressHandler_GetOverview(t *testing.T) {
 	if !ok {
 		t.Fatalf("completionRate 字段缺失或格式不正确: %+v", data)
 	}
-	expectedRate := (completedChapters / 41.0) * 100 // 使用实际的completedChapters
+	expectedRate := (completedChapters / 48.0) * 100 // 使用实际的completedChapters
 	tolerance := 0.1
 	if completionRate < expectedRate-tolerance || completionRate > expectedRate+tolerance {
 		t.Errorf("完成率应约为 %.2f%%，得到 %.2f%%", expectedRate, completionRate)
@@ -658,8 +658,8 @@ func TestProgressHandler_GetOverview(t *testing.T) {
 	if !ok {
 		t.Fatalf("topics 字段缺失或格式不正确: %+v", data)
 	}
-	if len(topicsRaw) != 4 {
-		t.Errorf("应有 4 个主题，得到 %d", len(topicsRaw))
+	if len(topicsRaw) != 5 {
+		t.Errorf("应有 5 个主题，得到 %d", len(topicsRaw))
 	}
 
 	// 验证主题汇总内容

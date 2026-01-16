@@ -93,7 +93,7 @@ const QuizQuestionCard: React.FC<QuizQuestionProps> = ({
                             const label = getOptionLabel(index);
                             return (
                                 <div key={opt.id} style={{ display: 'flex', alignItems: 'flex-start', padding: '8px 0' }}>
-                                    <Checkbox value={opt.label}>
+                                    <Checkbox value={opt.id}>
                                         <Text strong style={{ marginRight: 8 }}>{label}.</Text>
                                         <Text>{opt.label}</Text>
                                     </Checkbox>
@@ -117,7 +117,7 @@ const QuizQuestionCard: React.FC<QuizQuestionProps> = ({
                         {question.options.map((opt, index) => {
                             const label = getOptionLabel(index);
                             return (
-                                <Radio key={opt.id} value={opt.label} style={{ display: 'flex', alignItems: 'flex-start', padding: '8px 0', whiteSpace: 'normal' }}>
+                                <Radio key={opt.id} value={opt.id} style={{ display: 'flex', alignItems: 'flex-start', padding: '8px 0', whiteSpace: 'normal' }}>
                                     <Text strong style={{ marginRight: 8 }}>{label}.</Text>
                                     <Text>{opt.label}</Text>
                                 </Radio>

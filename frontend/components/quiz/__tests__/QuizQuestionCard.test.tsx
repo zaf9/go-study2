@@ -48,8 +48,8 @@ describe('QuizQuestionCard', () => {
         const optionA = screen.getByLabelText(/Rob Pike/);
         fireEvent.click(optionA);
 
-        // 注意：根据 data-model.md 决策，前端应提交选项内容 (label)
-        expect(onChange).toHaveBeenCalledWith(['Rob Pike']);
+        // 注意：现在提交选项ID而不是label
+        expect(onChange).toHaveBeenCalledWith(['1']);
     });
 
     it('多选题应当显示多选引导语并允许选择多个', () => {
@@ -61,7 +61,7 @@ describe('QuizQuestionCard', () => {
         render(
             <QuizQuestionCard
                 question={multipleQuestion}
-                value={['Rob Pike']}
+                value={['1']}
                 onChange={onChange}
             />
         );
@@ -71,8 +71,8 @@ describe('QuizQuestionCard', () => {
         const optionB = screen.getByLabelText(/Ken Thompson/);
         fireEvent.click(optionB);
 
-        // 应该包含原来的和新选的
-        expect(onChange).toHaveBeenCalledWith(['Rob Pike', 'Ken Thompson']);
+        // 应该包含原来的和新选的（使用ID而不是label）
+        expect(onChange).toHaveBeenCalledWith(['1', '2']);
     });
 
     it('应当正确处理空选项或异常情况', () => {

@@ -345,9 +345,9 @@ questions:
     chapter: core_type
 
   - id: q-core-024
-    type: multiple
+    type: single
     difficulty: easy
-    stem: "以下哪些是特殊的核心类型？"
+    stem: "以下哪个是特殊的核心类型？"
     options:
       - "A: bytestring"
       - "B: int"

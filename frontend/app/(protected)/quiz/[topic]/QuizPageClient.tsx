@@ -180,7 +180,21 @@ export default function QuizPageClient({
                                 {result.details && result.details.length > 0 && (
                                     <div id="quiz-explanation-section" style={{ marginTop: 24 }}>
                                         <Title level={4}>答题详解</Title>
-                                        <AnswerExplanation details={result.details} />
+                                        <AnswerExplanation
+                                            details={result.details}
+                                            topic={topic}
+                                            chapter={selectedChapter}
+                                            chapterTitle={chapters?.find(c => c.id === selectedChapter)?.title}
+                                            questions={questions.map(q => ({
+                                                id: q.id,
+                                                type: q.type ?? "single",
+                                                difficulty: q.difficulty ?? "easy",
+                                                question: q.stem,
+                                                options: q.options,
+                                                codeSnippet: q.codeSnippet,
+                                            }))}
+                                            userAnswers={answers}
+                                        />
                                     </div>
                                 )}
                             </div>

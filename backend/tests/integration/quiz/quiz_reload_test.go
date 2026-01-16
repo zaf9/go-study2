@@ -62,6 +62,15 @@ func TestLoadAllBanks_ReloadsUpdatedFile(t *testing.T) {
     explanation: "示例"
     topic: testtopic
     chapter: chapter1
+  - id: q3
+    type: multiple
+    difficulty: medium
+    stem: "样例题 3"
+    options: ["A","B","C"]
+    answer: AB
+    explanation: "示例"
+    topic: testtopic
+    chapter: chapter1
 `
 	if err := os.WriteFile(filePath, []byte(yaml2), 0o644); err != nil {
 		t.Fatalf("写入 yaml2 失败: %v", err)
@@ -72,7 +81,7 @@ func TestLoadAllBanks_ReloadsUpdatedFile(t *testing.T) {
 		t.Fatalf("第二次 LoadAllBanks 失败: %v", err)
 	}
 	qs2, ok2 := repo2.GetBank("testtopic", "chapter1")
-	if !ok2 || len(qs2) != 1 {
-		t.Fatalf("期望 1 道题（修改后），但得到 %d", len(qs2))
+	if !ok2 || len(qs2) != 2 {
+		t.Fatalf("期望 2 道题（修改后），但得到 %d", len(qs2))
 	}
 }

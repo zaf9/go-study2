@@ -22,4 +22,10 @@ Properties of types and values章节内容如下。如果需要，请联网查�
 
 # ralph-loop
 
+## speckit-impl.md 
+
 /ralph-loop:ralph-loop "读取./speckit-impl.md 内容，按照文件内容逐步实现. Output <promise>COMPLETE</promise> when done." --completion-promise "COMPLETE" --max-iterations 50
+
+## 修复bug
+
+/ralph-loop:ralph-loop "读取./fix-bug.md 内容，按照文件内容逐步实现. Output <promise>COMPLETE</promise> when done." --completion-promise "COMPLETE" --max-iterations 50

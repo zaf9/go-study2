@@ -345,7 +345,7 @@ questions:
     chapter: representability
 
   - id: q-repr-024
-    type: multiple
+    type: single
     difficulty: easy
     stem: "uint8 的范围是什么？"
     options:

@@ -432,9 +432,9 @@ questions:
     chapter: representation
 
   - id: q-rep-030
-    type: multiple
+    type: single
     difficulty: hard
-    stem: "以下哪些情况会导致底层数组重新分配?"
+    stem: "以下哪种情况会导致底层数组重新分配?"
     options:
       - "A: append 超过容量"
       - "B: 切片赋值"

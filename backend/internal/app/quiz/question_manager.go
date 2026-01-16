@@ -135,9 +135,13 @@ func (m *QuestionManager) PrepareFromYAML(yamlQuestions []quizdom.YAMLQuestion) 
 		// 构建选项
 		opts := make([]OptionDTO, 0, len(yq.Options))
 		for idx, opt := range yq.Options {
+			// Strip the letter prefix (e.g., "A: ", "B: ") from the option label
+			// This prevents confusion where shuffled options display both the new label
+			// (A., B., C., D.) and the original label text (A: xxx, B: xxx)
+			label := stripLetterPrefix(opt)
 			opts = append(opts, OptionDTO{
 				ID:    optionID(idx), // A, B, C, D
-				Label: opt,
+				Label: label,
 			})
 		}
 
@@ -199,4 +203,21 @@ func hashQuestionID(id string) int64 {
 		result = -result
 	}
 	return result
+}
+
+// stripLetterPrefix removes the letter prefix from option labels.
+// For example: "A: Go有25个关键字" -> "Go有25个关键字"
+// "B. 关键字不能用作标识符" -> "关键字不能用作标识符"
+func stripLetterPrefix(label string) string {
+	label = strings.TrimSpace(label)
+	// Check if the label starts with a letter followed by ": " or ". "
+	if len(label) >= 3 {
+		firstChar := label[0]
+		if (firstChar >= 'A' && firstChar <= 'Z') || (firstChar >= 'a' && firstChar <= 'z') {
+			if len(label) > 2 && (label[1] == ':' || label[1] == '.') && label[2] == ' ' {
+				return label[3:]
+			}
+		}
+	}
+	return label
 }

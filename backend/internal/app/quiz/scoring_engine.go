@@ -15,13 +15,13 @@ type AnswerSubmission struct {
 
 // AnswerDetail 返回判分细节。
 type AnswerDetail struct {
-	QuestionID     int64    `json:"question_id"`
+	QuestionID     int64    `json:"question_id,string"` // 使用string类型避免JavaScript精度丢失
 	IsCorrect      bool     `json:"is_correct"`
 	CorrectAnswers []string `json:"correct_answers"`
 	Explanation    string   `json:"explanation"`
 	ScorePart      float64  `json:"score_part"`
-	Type           string   `json:"type"`           // 题型：single/multiple
-	Difficulty     string   `json:"difficulty"`     // 难度：easy/medium/hard
+	Type           string   `json:"type"`       // 题型：single/multiple
+	Difficulty     string   `json:"difficulty"` // 难度：easy/medium/hard
 }
 
 // ScoringResult 汇总判分结果。
