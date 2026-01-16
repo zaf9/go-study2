@@ -35,6 +35,7 @@ func NewServer(cfg *config.Config, names ...string) (*ghttp.Server, error) {
 	s.SetGraceful(true) // 开启优雅关闭
 
 	// 注册全局中间件
+	s.Use(middleware.Security)      // 安全头（优先执行）
 	s.Use(middleware.Logger)
 	s.Use(middleware.Cors)
 	s.Use(middleware.PanicRecovery) // Panic recovery should be before access logging

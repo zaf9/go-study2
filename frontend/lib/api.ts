@@ -115,6 +115,17 @@ api.interceptors.response.use(
         window.location.href = "/login";
       }
     }
+    if (status === 429) {
+      // 速率限制错误 - 显示友好提示和等待时间
+      const data = error?.response?.data?.data;
+      const retryAfter = data?.retryAfter || 300; // 默认5分钟
+      const minutes = Math.ceil(retryAfter / 60);
+      const msg = `登录尝试次数过多，请等待 ${minutes} 分钟后再试`;
+      if (isBrowser) {
+        message.error(msg, 5); // 显示5秒
+      }
+      return Promise.reject(error);
+    }
     if (
       status === 403 &&
       error?.response?.data?.code === 40011 &&

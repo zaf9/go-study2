@@ -13,7 +13,8 @@ func RegisterRoutes(s *ghttp.Server) {
 
 	// API v1 路由组
 	s.Group("/api/v1", func(group *ghttp.RouterGroup) {
-		// 应用格式转换中间件
+		// 应用全局中间件
+		group.Middleware(middleware.LoginRateLimit) // 登录速率限制（内部只对特定路径生效）
 		group.Middleware(middleware.Format)
 
 		// 认证路由（无需 JWT 验证）
